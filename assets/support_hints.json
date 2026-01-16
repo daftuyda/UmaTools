@@ -8315,5 +8315,172 @@
         "HintLevel": null
       }
     ]
+  },
+  {
+    "SupportSlug": "30075-manhattan-cafe",
+    "SupportId": "30075",
+    "SupportName": "Manhattan Cafe (SSR) Support Card",
+    "SupportRarity": "SSR",
+    "SupportImage": "/assets/support_thumbs/30075-manhattan-cafe.png",
+    "SupportHints": [
+      {
+        "SkillId": "",
+        "Name": "Wet Conditions ○",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "",
+        "Name": "Rainy Days ○",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "",
+        "Name": "Passing Pro",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "",
+        "Name": "Long Straightaways ○",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "",
+        "Name": "Highlander",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "",
+        "Name": "Stamina Eater",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "",
+        "Name": "Long Corners ○",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "",
+        "Name": "Stamina Siphon",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "",
+        "Name": "Non-Standard Distance ○",
+        "HintLevel": null
+      }
+    ]
+  },
+  {
+    "SupportSlug": "20032-inari-one",
+    "SupportId": "20032",
+    "SupportName": "Inari One (SR) Support Card",
+    "SupportRarity": "SR",
+    "SupportImage": "/assets/support_thumbs/20032-inari-one.png",
+    "SupportHints": [
+      {
+        "SkillId": "",
+        "Name": "Spring Runner ○",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "",
+        "Name": "Winter Runner ○",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "",
+        "Name": "Target in Sight ○",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "",
+        "Name": "Familiar Ground",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "",
+        "Name": "Ramp Up",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "",
+        "Name": "Tail Held High",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "",
+        "Name": "Forward, March!",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "",
+        "Name": "Sharp Gaze",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "",
+        "Name": "Oi Racecourse ○",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "",
+        "Name": "Kyoto Racecourse ○",
+        "HintLevel": null
+      }
+    ]
+  },
+  {
+    "SupportSlug": "10068-inari-one",
+    "SupportId": "10068",
+    "SupportName": "Inari One (R) Support Card",
+    "SupportRarity": "R",
+    "SupportImage": "/assets/support_thumbs/10068-inari-one.png",
+    "SupportHints": [
+      {
+        "SkillId": "",
+        "Name": "Spring Runner ○",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "",
+        "Name": "Winter Runner ○",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "",
+        "Name": "Target in Sight ○",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "",
+        "Name": "Familiar Ground",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "",
+        "Name": "Ramp Up",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "",
+        "Name": "Tail Held High",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "",
+        "Name": "Forward, March!",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "",
+        "Name": "Sharp Gaze",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "",
+        "Name": "Kyoto Racecourse ○",
+        "HintLevel": null
+      }
+    ]
   }
 ]

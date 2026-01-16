@@ -35570,5 +35570,123 @@
       }
     ],
     "UmaEvents": []
+  },
+  {
+    "UmaKey": "Fine Motion :: [Noble Seamair]",
+    "UmaName": "Fine Motion",
+    "UmaNickname": "[Noble Seamair]",
+    "UmaSlug": "102201-fine-motion",
+    "UmaId": "102201",
+    "UmaBaseStars": 3,
+    "UmaBaseStats": {
+      "3★": {
+        "Speed": 96,
+        "Stamina": 84,
+        "Power": 95,
+        "Guts": 88,
+        "Wit": 87
+      },
+      "5★": {
+        "Speed": 117,
+        "Stamina": 102,
+        "Power": 116,
+        "Guts": 108,
+        "Wit": 107
+      }
+    },
+    "UmaStatBonuses": {
+      "Speed": 0,
+      "Stamina": 0,
+      "Power": 15,
+      "Guts": 0,
+      "Wit": 15
+    },
+    "UmaAptitudes": {
+      "Surface": {
+        "Turf": "A",
+        "Dirt": "G"
+      },
+      "Distance": {
+        "Short": "F",
+        "Mile": "A",
+        "Medium": "A",
+        "Long": "C"
+      },
+      "Strategy": {
+        "Front": "D",
+        "Pace": "A",
+        "Late": "E",
+        "End": "C"
+      }
+    },
+    "UmaHeightCm": 158,
+    "UmaThreeSizes": {
+      "B": 79,
+      "W": 56,
+      "H": 83
+    },
+    "UmaObjectives": [
+      {
+        "ObjectiveName": "1. Participate in the Junior Make Debut",
+        "Turn": "Turn 12",
+        "Time": "Junior Class, Late June",
+        "ObjectiveCondition": "Turf – 2000m – Medium"
+      },
+      {
+        "ObjectiveName": "2. Have at least 3000 fans",
+        "Turn": "Turn 24 (previous + 11)",
+        "Time": "Junior Class, Late December",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "3. Place 5th or better in the Oka Sho",
+        "Turn": "Turn 31 (previous + 6)",
+        "Time": "Classic Class, Early April",
+        "ObjectiveCondition": "G1 – Turf – 1600m – Mile"
+      },
+      {
+        "ObjectiveName": "4. Place 5th or better in the Japanese Oaks",
+        "Turn": "Turn 34 (previous + 2)",
+        "Time": "Classic Class, Late May",
+        "ObjectiveCondition": "G1 – Turf – 2400m – Medium"
+      },
+      {
+        "ObjectiveName": "5. Place 3rd or better in the Shuka Sho",
+        "Turn": "Turn 44 (previous + 9)",
+        "Time": "Classic Class, Late October",
+        "ObjectiveCondition": "G1 – Turf – 2000m – Medium"
+      },
+      {
+        "ObjectiveName": "6. Place 3rd or better in the Queen Elizabeth II Cup",
+        "Turn": "Turn 45",
+        "Time": "Classic Class, Early November",
+        "ObjectiveCondition": "G1 – Turf – 2200m – Medium"
+      },
+      {
+        "ObjectiveName": "7. Place 3rd or better in the Osaka Hai",
+        "Turn": "Turn 54 (previous + 8)",
+        "Time": "Senior Class, Late March",
+        "ObjectiveCondition": "G1 – Turf – 2000m – Medium"
+      },
+      {
+        "ObjectiveName": "8. Place 3rd or better in the Takarazuka Kinen",
+        "Turn": "Turn 60 (previous + 5)",
+        "Time": "Senior Class, Late June",
+        "ObjectiveCondition": "G1 – Turf – 2200m – Medium"
+      },
+      {
+        "ObjectiveName": "9. Place 3rd or better in the Sapporo Kinen",
+        "Turn": "Turn 64 (previous + 3)",
+        "Time": "Senior Class, Late August",
+        "ObjectiveCondition": "G2 – Turf – 2000m – Medium"
+      },
+      {
+        "ObjectiveName": "10. Place 1st in the Tenno Sho (Autumn)",
+        "Turn": "Turn 68 (previous + 3)",
+        "Time": "Senior Class, Late October",
+        "ObjectiveCondition": "G1 – Turf – 2000m – Medium"
+      }
+    ],
+    "UmaEvents": []
   }
 ]
