@@ -9,6 +9,7 @@
   const clearAllBtn = document.getElementById('clear-all');
   const budgetInput = document.getElementById('budget');
   const fastLearnerToggle = document.getElementById('fast-learner');
+  const optimizeModeSelect = document.getElementById('optimize-mode');
   const libStatus = document.getElementById('lib-status');
 
   const resultsEl = document.getElementById('results');
@@ -17,6 +18,8 @@
   const totalPointsEl = document.getElementById('total-points');
   const remainingPointsEl = document.getElementById('remaining-points');
   const selectedListEl = document.getElementById('selected-list');
+  const aptitudeScorePill = document.getElementById('aptitude-score-pill');
+  const aptitudeScoreEl = document.getElementById('aptitude-score');
   const autoBuildBtn = document.getElementById('auto-build-btn');
   const autoTargetInputs = document.querySelectorAll('input[name="auto-target"]');
   const autoBuilderStatus = document.getElementById('auto-builder-status');
@@ -79,6 +82,20 @@
 
   function getFastLearnerDiscount() {
     return fastLearnerToggle && fastLearnerToggle.checked ? 0.10 : 0;
+  }
+
+  function getOptimizeMode() {
+    return optimizeModeSelect ? optimizeModeSelect.value : 'rating';
+  }
+
+  // Trainer Aptitude Test scoring: normal skills = 400, gold/rare skills = 1200
+  // Lower skills for gold combos don't count toward aptitude score
+  const APTITUDE_TEST_SCORE_NORMAL = 400;
+  const APTITUDE_TEST_SCORE_GOLD = 1200;
+
+  function getAptitudeTestScore(category, isLowerForGold = false) {
+    if (isLowerForGold) return 0; // Lower skills don't count
+    return isGoldCategory(category) ? APTITUDE_TEST_SCORE_GOLD : APTITUDE_TEST_SCORE_NORMAL;
   }
 
   function getHintDiscountPct(lvl) {
@@ -1451,6 +1468,7 @@
   function collectItems() {
     const items = []; const rowsMeta = [];
     const rows = rowsEl.querySelectorAll('.optimizer-row');
+    const mode = getOptimizeMode();
     rows.forEach(row => {
       const nameInput = row.querySelector('.skill-name');
       const costEl = row.querySelector('.cost');
@@ -1469,14 +1487,30 @@
       const skill = findSkillByName(name);
       if (!skill) return;
       const category = skill.category || '';
-      const score = evaluateSkillScore(skill);
-      const rowId = row.dataset.rowId || Math.random().toString(36).slice(2);
       const parentGoldId = row.dataset.parentGoldId || '';
+      const isLowerForGold = !!parentGoldId; // This row is a lower skill linked to a gold
+
+      // Always calculate both scores
+      const ratingScore = evaluateSkillScore(skill);
+      const aptitudeScore = getAptitudeTestScore(category, isLowerForGold);
+
+      // For optimization: in aptitude mode, use combined score (aptitude * large multiplier + rating as tiebreaker)
+      // This ensures aptitude is maximized first, then rating among equal aptitude options
+      const score = mode === 'aptitude-test'
+        ? (aptitudeScore * 100000) + ratingScore  // Aptitude primary, rating secondary
+        : ratingScore;
+
+      const rowId = row.dataset.rowId || Math.random().toString(36).slice(2);
       const lowerRowId = row.dataset.lowerRowId || '';
       const parentSkillIds = Array.isArray(skill.parentIds) && skill.parentIds.length ? skill.parentIds : [];
       const lowerSkillId = skill.lowerSkillId || '';
       const skillId = skill.skillId || skill.id || '';
-      items.push({ id: rowId, name: skill.name, cost, score, baseCost: baseCostStored, category, parentGoldId, lowerRowId, checkType: skill.checkType || '', parentSkillIds, lowerSkillId, skillId, hintLevel, required });
+      items.push({
+        id: rowId, name: skill.name, cost, score,
+        ratingScore, aptitudeScore, // Track both scores
+        baseCost: baseCostStored, category, parentGoldId, lowerRowId,
+        checkType: skill.checkType || '', parentSkillIds, lowerSkillId, skillId, hintLevel, required
+      });
       rowsMeta.push({ id: rowId, category, parentGoldId, lowerRowId });
     });
     return { items, rowsMeta };
@@ -1511,9 +1545,12 @@
           const comboCost = (childIsGold && parentMatchesLower) ? it.cost : parent.cost + it.cost;
           groups.push([
             { none: true, items: [] },
-            { pick: j, cost: parent.cost, score: parent.score, items: [j] },
+            { pick: j, cost: parent.cost, score: parent.score,
+              ratingScore: parent.ratingScore || 0, aptitudeScore: parent.aptitudeScore || 0, items: [j] },
             // Upgraded (double-circle): pay both costs, only upgraded score counts.
-            { combo: [j, i], cost: comboCost, score: it.score, items: [j, i] }
+            // For aptitude: gold skill gets full aptitude, lower doesn't count
+            { combo: [j, i], cost: comboCost, score: it.score,
+              ratingScore: it.ratingScore || 0, aptitudeScore: it.aptitudeScore || 0, items: [j, i] }
           ]);
           used[j] = used[i] = true;
           handled = true;
@@ -1526,17 +1563,24 @@
         const j = idToIndex.get(it.lowerRowId);
         if (!used[j]) {
           // gold requires lower: offer none, lower only, or gold with lower cost included
+          // For aptitude: lower skill alone counts, gold combo only counts the gold
           groups.push([
             { none: true, items: [] },
-            { pick: j, cost: items[j].cost, score: items[j].score, items: [j] },
-            { combo: [j, i], cost: it.cost, score: it.score, items: [j, i] }
+            { pick: j, cost: items[j].cost, score: items[j].score,
+              ratingScore: items[j].ratingScore || 0, aptitudeScore: items[j].aptitudeScore || 0, items: [j] },
+            { combo: [j, i], cost: it.cost, score: it.score,
+              ratingScore: it.ratingScore || 0, aptitudeScore: it.aptitudeScore || 0, items: [j, i] }
           ]);
           used[i] = used[j] = true;
           continue;
         }
       }
       // If this is a lower-linked row, and its parent gold appears later, it will be grouped there.
-      groups.push([ { none: true, items: [] }, { pick: i, cost: it.cost, score: it.score, items: [i] } ]);
+      groups.push([
+        { none: true, items: [] },
+        { pick: i, cost: it.cost, score: it.score,
+          ratingScore: it.ratingScore || 0, aptitudeScore: it.aptitudeScore || 0, items: [i] }
+      ]);
       used[i] = true;
     }
     return groups;
@@ -1747,20 +1791,65 @@
 
   function renderResults(result, budget) {
     resultsEl.hidden = false;
-    bestScoreEl.textContent = String(result.best);
     usedPointsEl.textContent = String(result.used);
     totalPointsEl.textContent = String(budget);
     remainingPointsEl.textContent = String(Math.max(0, budget - result.used));
     selectedListEl.innerHTML = '';
+
+    const mode = getOptimizeMode();
+    const chosen = Array.isArray(result.chosen) ? result.chosen : [];
+
+    // Calculate actual rating and aptitude scores from chosen items
+    // For aptitude: don't count lower skills that are part of gold combos
+    let totalRatingScore = 0;
+    let totalAptitudeScore = 0;
+    const lowerIdsInGoldCombos = new Set();
+
+    // First pass: identify lower skills that are part of gold combos
+    chosen.forEach(it => {
+      if (isGoldCategory(it.category) && it.lowerRowId) {
+        lowerIdsInGoldCombos.add(it.lowerRowId);
+      }
+    });
+
+    // Second pass: calculate scores
+    chosen.forEach(it => {
+      if (!it.comboComponent) {
+        totalRatingScore += it.ratingScore || 0;
+        // For aptitude: lower skills in gold combos don't count
+        if (!lowerIdsInGoldCombos.has(it.id)) {
+          totalAptitudeScore += it.aptitudeScore || 0;
+        }
+      }
+    });
+
+    // Display the appropriate score in "Best Score"
+    if (mode === 'aptitude-test') {
+      // In aptitude mode, show rating score as best (aptitude shown separately)
+      bestScoreEl.textContent = String(totalRatingScore);
+    } else {
+      bestScoreEl.textContent = String(totalRatingScore);
+    }
+
+    // Show/hide aptitude test score based on mode
+    if (aptitudeScorePill && aptitudeScoreEl) {
+      if (mode === 'aptitude-test') {
+        aptitudeScorePill.style.display = '';
+        aptitudeScoreEl.textContent = String(totalAptitudeScore);
+      } else {
+        aptitudeScorePill.style.display = 'none';
+      }
+    }
+
     if (result.error === 'required_unreachable') {
       const li = document.createElement('li');
       li.className = 'result-item';
       li.textContent = 'Required skills cannot fit within the current budget.';
       selectedListEl.appendChild(li);
-      updateRatingDisplay(result.best);
+      updateRatingDisplay(0);
       return;
     }
-    const ordered = Array.isArray(result.chosen) ? [...result.chosen] : [];
+    const ordered = [...chosen];
     const indexMap = new Map(ordered.map((it, idx) => [it.id, idx]));
     const byId = new Map(ordered.map(it => [it.id, it]));
     const bySkillId = new Map();
@@ -1802,18 +1891,21 @@
       const includedWith = it.comboComponent
         ? it.comboParentName
         : (lowerToGold.has(it.id) ? lowerToGold.get(it.id)?.name : '');
+      // Show rating score in the meta, not the combined optimization score
+      const displayScore = it.ratingScore !== undefined ? it.ratingScore : it.score;
       const meta = includedWith
         ? `- included with ${includedWith}`
-        : `- cost ${it.cost}, score ${it.score}`;
+        : `- cost ${it.cost}, score ${displayScore}`;
       li.innerHTML = `<span class="res-name">${it.name}</span> <span class="res-meta">${meta}</span>`;
       selectedListEl.appendChild(li);
     });
-    updateRatingDisplay(result.best);
+    // Always use the rating score for the rating display
+    updateRatingDisplay(totalRatingScore);
   }
 
   // persistence
   function saveState() {
-    const state = { budget: parseInt(budgetInput.value, 10) || 0, cfg: {}, rows: [], autoTargets: [], rating: readRatingState(), fastLearner: !!fastLearnerToggle?.checked };
+    const state = { budget: parseInt(budgetInput.value, 10) || 0, cfg: {}, rows: [], autoTargets: [], rating: readRatingState(), fastLearner: !!fastLearnerToggle?.checked, optimizeMode: getOptimizeMode() };
     Object.entries(cfg).forEach(([k, el]) => { state.cfg[k] = el ? el.value : 'A'; });
     if (autoTargetInputs && autoTargetInputs.length) {
       state.autoTargets = Array.from(autoTargetInputs)
@@ -1848,6 +1940,7 @@
       const state = JSON.parse(raw); if (!state || !Array.isArray(state.rows)) return false;
       budgetInput.value = state.budget || 0;
       if (fastLearnerToggle) fastLearnerToggle.checked = !!state.fastLearner;
+      if (optimizeModeSelect && state.optimizeMode) optimizeModeSelect.value = state.optimizeMode;
       Object.entries(state.cfg || {}).forEach(([k, v]) => { if (cfg[k]) cfg[k].value = v; });
       if (Array.isArray(state.autoTargets) && state.autoTargets.length) {
         setAutoTargetSelections(state.autoTargets);
@@ -1989,6 +2082,12 @@
     fastLearnerToggle.addEventListener('change', () => {
       updateHintOptionLabels();
       refreshAllRowCosts();
+      saveState();
+      autoOptimizeDebounced();
+    });
+  }
+  if (optimizeModeSelect) {
+    optimizeModeSelect.addEventListener('change', () => {
       saveState();
       autoOptimizeDebounced();
     });

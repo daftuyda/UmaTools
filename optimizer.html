@@ -92,6 +92,13 @@
             <input id="fast-learner" type="checkbox" />
             Fast Learner (-10% cost)
           </label>
+          <label class="labelTitle" style="min-width:180px; margin-left:16px">
+            Optimize For
+            <select id="optimize-mode">
+              <option value="rating" selected>Rating</option>
+              <option value="aptitude-test">Trainer Aptitude Test</option>
+            </select>
+          </label>
           <div class="spacer"></div>
           <div id="lib-status" class="status" aria-live="polite"></div>
         </div>
@@ -327,6 +334,9 @@
             <div class="pill"><b>Used Points:</b> <span id="used-points">0</span></div>
             <div class="pill"><b>Total Points:</b> <span id="total-points">0</span></div>
             <div class="pill"><b>Remaining:</b> <span id="remaining-points">0</span></div>
+            <div class="pill aptitude-test-pill" id="aptitude-score-pill" style="display:none;">
+              <b>Aptitude Test Score:</b> <span id="aptitude-score">0</span>
+            </div>
           </div>
           <div class="results-list" id="selected-list" style="margin-top:.75rem"></div>
         </div>

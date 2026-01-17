@@ -1,15 +1,6 @@
-# Uma Event Helper (Web)
+# UmaTools (Web)
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/daftuyda/Uma-Event-Helper-Web)
-
-## Overview
-
-Uma Event Helper is a browser-based tool to assist with Uma Musume event choices. It:
-
-- Captures the game window using browser screen capture.
-- Uses Tesseract.js for OCR to read event titles.
-- Looks up events via a FastAPI backend.
-- Scores and recommends options based on stats, energy, hints, and statuses.
 
 ---
 

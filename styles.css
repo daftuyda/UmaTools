@@ -2185,6 +2185,37 @@ body.dark-mode .dropdown-item.active {
   box-shadow: 0 6px 18px rgba(99, 102, 241, 0.32);
 }
 
+/* toolbar select (optimize mode, etc.) */
+.toolbar select {
+  height: 44px;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 0.95rem;
+  font-weight: 500;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+.toolbar select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--ring);
+}
+.toolbar select:hover {
+  border-color: var(--accent);
+}
+body.dark-mode .toolbar select {
+  background: #1e293b;
+  border-color: #334155;
+  color: #e2e8f0;
+}
+body.dark-mode .toolbar select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--ring);
+}
+
 /* spacing & layout harmony */
 .toolbar {
   gap: 0.6rem;
@@ -2201,7 +2232,8 @@ body.dark-mode .dropdown-item.active {
 @media (max-width: 640px) {
   .toolbar input:not([type="checkbox"]),
   .dropdown-wrap input,
-  .toolbar .btn {
+  .toolbar .btn,
+  .toolbar select {
     height: 38px;
   }
   .dropdown-btn {
@@ -2218,7 +2250,8 @@ body.dark-mode .dropdown-item.active {
     min-width: 0 !important;
     width: 100%;
   }
-  .toolbar .labelTitle input {
+  .toolbar .labelTitle input,
+  .toolbar .labelTitle select {
     width: 100%;
     box-sizing: border-box;
   }
@@ -2268,7 +2301,28 @@ body.dark-mode .results-list .result-item.cat-green { border-left-color: #6ee7b7
 body.dark-mode .results-list .result-item.cat-red { border-left-color: #fca5a5; background-color: rgba(252,165,165,.18); }
 body.dark-mode .results-list .result-item.cat-ius, body.dark-mode .results-list .result-item.cat-orange { border-left-color: #fdba74; background-color: rgba(253,186,116,.18); }
 
-
+/* Aptitude Test Score Pill */
+.aptitude-test-pill {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(99, 102, 241, 0.15)) !important;
+  border-color: rgba(139, 92, 246, 0.4) !important;
+}
+.aptitude-test-pill b {
+  color: #7c3aed;
+}
+.aptitude-test-pill span {
+  font-weight: 700;
+  color: #6d28d9;
+}
+body.dark-mode .aptitude-test-pill {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.25), rgba(99, 102, 241, 0.25)) !important;
+  border-color: rgba(167, 139, 250, 0.5) !important;
+}
+body.dark-mode .aptitude-test-pill b {
+  color: #a78bfa;
+}
+body.dark-mode .aptitude-test-pill span {
+  color: #c4b5fd;
+}
 
 /* ===== Skill Optimizer Rows ===== */
 .rows { display: grid; gap: 10px; }

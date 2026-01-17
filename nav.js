@@ -15,7 +15,7 @@
   const DEFAULT_FOOTER = [
     {
       label: "GitHub",
-      href: "https://github.com/daftuyda/Uma-Event-Helper-Web",
+      href: "https://github.com/daftuyda/UmaTools",
     },
     { label: "YouTube", href: "https://youtube.com/@MaybeVoid" },
   ];
