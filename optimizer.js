@@ -2016,6 +2016,385 @@
     window.addEventListener('resize', updateVisibility);
   }
 
+  // ========== OCR Scanner Integration ==========
+  function initOcrScanner() {
+    const dropZone = document.getElementById('ocr-drop-zone');
+    const fileInput = document.getElementById('ocr-file-input');
+    const browseBtn = document.getElementById('ocr-browse-btn');
+    const scanBtn = document.getElementById('ocr-scan-btn');
+    const statusEl = document.getElementById('ocr-status');
+    const previewArea = document.getElementById('ocr-preview-area');
+    const debugArea = document.getElementById('ocr-debug-area');
+    const debugToggle = document.getElementById('ocr-debug-toggle');
+    const modalBackdrop = document.getElementById('ocr-modal-backdrop');
+    const resultsList = document.getElementById('ocr-results-list');
+    const cancelBtn = document.getElementById('ocr-cancel-btn');
+    const addBtn = document.getElementById('ocr-add-btn');
+
+    if (!dropZone || !fileInput) return;
+
+    let pendingFiles = [];
+    let scannedResults = [];
+
+    // Status update helper
+    function setOcrStatus(message, isError = false) {
+      if (statusEl) {
+        statusEl.textContent = message || '';
+        statusEl.classList.toggle('error', isError);
+      }
+    }
+
+    // Set up OcrScanner callbacks if available
+    if (window.OcrScanner) {
+      window.OcrScanner.setStatusCallback(setOcrStatus);
+    }
+
+    // Debug mode toggle
+    function isDebugEnabled() {
+      return debugToggle && debugToggle.checked;
+    }
+
+    // Show debug canvases
+    function showDebugCanvases(canvases) {
+      if (!debugArea) return;
+      debugArea.innerHTML = '';
+
+      if (!canvases || canvases.length === 0) {
+        debugArea.hidden = true;
+        return;
+      }
+
+      // Add legend
+      const legend = document.createElement('div');
+      legend.className = 'ocr-debug-legend';
+      legend.innerHTML = `
+        <span><span class="legend-box legend-skill"></span> Skill Region</span>
+        <span><span class="legend-box legend-hint"></span> Hint Region</span>
+        <span><span class="legend-box legend-match-high"></span> High Match</span>
+        <span><span class="legend-box legend-match-med"></span> Medium Match</span>
+        <span><span class="legend-box legend-match-low"></span> Low Match</span>
+      `;
+      debugArea.appendChild(legend);
+
+      // Add canvases
+      for (const canvas of canvases) {
+        debugArea.appendChild(canvas);
+      }
+
+      debugArea.hidden = false;
+    }
+
+    // File handling
+    function handleFiles(files) {
+      const validFiles = Array.from(files).filter(f =>
+        f.type.startsWith('image/') || /\.(png|jpe?g|webp|gif|bmp)$/i.test(f.name)
+      );
+
+      if (!validFiles.length) {
+        setOcrStatus('No valid image files selected', true);
+        return;
+      }
+
+      pendingFiles = pendingFiles.concat(validFiles);
+      updatePreview();
+      scanBtn.disabled = pendingFiles.length === 0;
+      setOcrStatus(`${pendingFiles.length} image${pendingFiles.length === 1 ? '' : 's'} ready to scan`);
+    }
+
+    function updatePreview() {
+      if (!previewArea) return;
+
+      // Get the drop label to show/hide based on files
+      const dropLabel = dropZone.querySelector('.ocr-drop-label');
+
+      if (pendingFiles.length === 0) {
+        previewArea.hidden = true;
+        previewArea.innerHTML = '';
+        if (dropLabel) dropLabel.style.display = '';
+        return;
+      }
+
+      previewArea.hidden = false;
+      previewArea.innerHTML = '';
+      if (dropLabel) dropLabel.style.display = 'none';
+
+      pendingFiles.forEach((file, idx) => {
+        const item = document.createElement('div');
+        item.className = 'ocr-preview-item';
+
+        const img = document.createElement('img');
+        img.src = URL.createObjectURL(file);
+        img.alt = file.name;
+        img.onload = () => URL.revokeObjectURL(img.src);
+
+        const removeBtn = document.createElement('button');
+        removeBtn.type = 'button';
+        removeBtn.className = 'remove-preview';
+        removeBtn.innerHTML = '&times;';
+        removeBtn.title = 'Remove this image';
+        removeBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          pendingFiles.splice(idx, 1);
+          updatePreview();
+          scanBtn.disabled = pendingFiles.length === 0;
+          setOcrStatus(pendingFiles.length
+            ? `${pendingFiles.length} image${pendingFiles.length === 1 ? '' : 's'} ready to scan`
+            : ''
+          );
+        });
+
+        item.appendChild(img);
+        item.appendChild(removeBtn);
+        previewArea.appendChild(item);
+      });
+    }
+
+    // Drag and drop
+    dropZone.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      dropZone.classList.add('drag-over');
+    });
+
+    dropZone.addEventListener('dragleave', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      dropZone.classList.remove('drag-over');
+    });
+
+    dropZone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      dropZone.classList.remove('drag-over');
+      handleFiles(e.dataTransfer.files);
+    });
+
+    // Click to upload
+    dropZone.addEventListener('click', (e) => {
+      if (e.target !== browseBtn && !browseBtn.contains(e.target)) {
+        fileInput.click();
+      }
+    });
+
+    if (browseBtn) {
+      browseBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        fileInput.click();
+      });
+    }
+
+    fileInput.addEventListener('change', () => {
+      if (fileInput.files && fileInput.files.length) {
+        handleFiles(fileInput.files);
+        fileInput.value = ''; // Reset for re-selection
+      }
+    });
+
+    // Scan button
+    if (scanBtn) {
+      scanBtn.addEventListener('click', async () => {
+        if (!window.OcrScanner) {
+          setOcrStatus('OCR module not loaded', true);
+          return;
+        }
+
+        if (pendingFiles.length === 0) {
+          setOcrStatus('No images to scan', true);
+          return;
+        }
+
+        scanBtn.disabled = true;
+        setOcrStatus('Initializing OCR engine...');
+
+        // Clear previous debug output
+        if (debugArea) debugArea.hidden = true;
+
+        try {
+          const debugEnabled = isDebugEnabled();
+          const result = await window.OcrScanner.scanMultipleImages(pendingFiles, allSkillNames, { debug: debugEnabled });
+
+          // Show debug canvases if enabled
+          if (debugEnabled && result.debugCanvases) {
+            showDebugCanvases(result.debugCanvases);
+          }
+
+          if (result.skills && result.skills.length > 0) {
+            scannedResults = result.skills;
+            showResultsModal(scannedResults);
+          } else {
+            setOcrStatus('No skills detected in the images. Try a clearer screenshot.', true);
+          }
+        } catch (err) {
+          console.error('OCR scan failed:', err);
+          setOcrStatus('Scan failed: ' + (err.message || 'Unknown error'), true);
+        } finally {
+          scanBtn.disabled = pendingFiles.length === 0;
+        }
+      });
+    }
+
+    // Modal handling
+    function showResultsModal(results) {
+      if (!modalBackdrop || !resultsList) return;
+
+      resultsList.innerHTML = '';
+
+      if (results.length === 0) {
+        resultsList.innerHTML = '<div class="ocr-no-results">No skills detected</div>';
+      } else {
+        results.forEach((item, idx) => {
+          const row = document.createElement('div');
+          row.className = 'ocr-result-item';
+          row.dataset.index = idx;
+
+          // Checkbox
+          const checkbox = document.createElement('input');
+          checkbox.type = 'checkbox';
+          checkbox.checked = true;
+          checkbox.id = `ocr-skill-${idx}`;
+
+          // Skill name
+          const nameDiv = document.createElement('div');
+          nameDiv.className = 'skill-name-display';
+          nameDiv.textContent = item.name;
+
+          // OCR text preview (what was actually read)
+          const ocrPreview = document.createElement('div');
+          ocrPreview.className = 'ocr-text-preview';
+          ocrPreview.textContent = item.ocrText !== item.name ? `OCR: "${item.ocrText}"` : '';
+
+          // Hint level selector
+          const hintSelect = document.createElement('select');
+          hintSelect.className = 'hint-select';
+          for (let i = 0; i <= 5; i++) {
+            const opt = document.createElement('option');
+            opt.value = i;
+            opt.textContent = `Hint Lv${i}`;
+            if (i === item.hintLevel) opt.selected = true;
+            hintSelect.appendChild(opt);
+          }
+
+          // Confidence badge
+          const confidenceBadge = document.createElement('span');
+          confidenceBadge.className = 'confidence-badge';
+          const conf = Math.round(item.confidence * 100);
+          confidenceBadge.textContent = `${conf}%`;
+          if (conf >= 85) confidenceBadge.classList.add('high');
+          else if (conf >= 70) confidenceBadge.classList.add('medium');
+          else confidenceBadge.classList.add('low');
+
+          row.appendChild(checkbox);
+          row.appendChild(nameDiv);
+          row.appendChild(ocrPreview);
+          row.appendChild(hintSelect);
+          row.appendChild(confidenceBadge);
+          resultsList.appendChild(row);
+        });
+      }
+
+      modalBackdrop.classList.add('open');
+    }
+
+    function closeModal() {
+      if (modalBackdrop) {
+        modalBackdrop.classList.remove('open');
+      }
+    }
+
+    // Modal buttons
+    if (cancelBtn) {
+      cancelBtn.addEventListener('click', closeModal);
+    }
+
+    if (modalBackdrop) {
+      modalBackdrop.addEventListener('click', (e) => {
+        if (e.target === modalBackdrop) {
+          closeModal();
+        }
+      });
+    }
+
+    if (addBtn) {
+      addBtn.addEventListener('click', () => {
+        const items = resultsList.querySelectorAll('.ocr-result-item');
+        const toAdd = [];
+
+        items.forEach((item, idx) => {
+          const checkbox = item.querySelector('input[type="checkbox"]');
+          const hintSelect = item.querySelector('.hint-select');
+
+          if (checkbox && checkbox.checked && scannedResults[idx]) {
+            toAdd.push({
+              name: scannedResults[idx].name,
+              hintLevel: parseInt(hintSelect?.value || '0', 10)
+            });
+          }
+        });
+
+        if (toAdd.length > 0) {
+          addSkillsToOptimizer(toAdd);
+          setOcrStatus(`Added ${toAdd.length} skill${toAdd.length === 1 ? '' : 's'} to optimizer`);
+
+          // Clear pending files after successful add
+          pendingFiles = [];
+          updatePreview();
+          scanBtn.disabled = true;
+        }
+
+        closeModal();
+      });
+    }
+  }
+
+  // Add skills from OCR to the optimizer rows
+  function addSkillsToOptimizer(skills) {
+    if (!skills || !skills.length || !rowsEl) return;
+
+    skills.forEach(skillData => {
+      const skill = findSkillByName(skillData.name);
+      if (!skill) return;
+
+      // Find the first empty row or create a new one
+      let targetRow = null;
+      const existingRows = rowsEl.querySelectorAll('.optimizer-row');
+
+      for (const row of existingRows) {
+        const nameInput = row.querySelector('.skill-name');
+        if (nameInput && !nameInput.value.trim()) {
+          targetRow = row;
+          break;
+        }
+      }
+
+      if (!targetRow) {
+        targetRow = makeRow();
+        rowsEl.appendChild(targetRow);
+      }
+
+      // Fill in the skill data
+      const nameInput = targetRow.querySelector('.skill-name');
+      const hintSelect = targetRow.querySelector('.hint-level');
+
+      if (nameInput) {
+        nameInput.value = skill.name;
+      }
+
+      if (hintSelect) {
+        hintSelect.value = String(skillData.hintLevel || 0);
+      }
+
+      // Trigger sync to update category, cost, etc.
+      if (typeof targetRow.syncSkillCategory === 'function') {
+        targetRow.syncSkillCategory({ triggerOptimize: false, allowLinking: true, updateCost: true });
+      }
+    });
+
+    ensureOneEmptyRow();
+    saveState();
+    autoOptimizeDebounced();
+  }
+
   function finishInit() {
     const had = loadState();
     if (!had) {
@@ -2024,6 +2403,7 @@
     initRatingInputs();
     loadRatingSprite();
     initRatingFloat();
+    initOcrScanner();
     updateAffinityStyles();
     updateHintOptionLabels();
     refreshAllRowCosts();
