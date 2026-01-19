@@ -242,7 +242,8 @@
     const candidates = ['/assets/skills_all.json', './assets/skills_all.json'];
     for (const url of candidates) {
       try {
-        const res = await fetch(url, { cache: 'no-store' });
+        // Use default caching - Vercel headers control TTL
+        const res = await fetch(url);
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const list = await res.json();
         if (!Array.isArray(list) || !list.length) continue;
@@ -830,7 +831,7 @@
     const candidates = [ '../../libs/skills_lib.json', '../libs/skills_lib.json', './libs/skills_lib.json', '/libs/skills_lib.json' ];
     let lib = null; let lastErr = null;
     for (const url of candidates) {
-      try { const res = await fetch(url, { cache: 'no-store' }); if (!res.ok) throw new Error(`HTTP ${res.status}`); lib = await res.json(); libStatus.textContent = `Loaded skills from ${url}`; break; } catch (e) { lastErr = e; }
+      try { const res = await fetch(url); if (!res.ok) throw new Error(`HTTP ${res.status}`); lib = await res.json(); libStatus.textContent = `Loaded skills from ${url}`; break; } catch (e) { lastErr = e; }
     }
     if (!lib) { console.error('Failed to load skills_lib.json from all candidates', lastErr); applyFallbackSkills('not found / blocked'); return; }
     skillsByCategory = {}; categories = [];
@@ -946,7 +947,8 @@
     let lastErr = null;
     for (const url of candidates) {
       try {
-        const res = await fetch(url, { cache: 'no-store' });
+        // Use default caching - Vercel headers control TTL
+        const res = await fetch(url);
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const text = await res.text();
         const ok = loadFromCSVContent(text);

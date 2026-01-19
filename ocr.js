@@ -101,7 +101,8 @@ async function loadTemplate(src) {
   if (PROBE_TEMPLATE_DATAURL) {
     canvasFromImg = await _decodeToCanvasFromDataURL(PROBE_TEMPLATE_DATAURL);
   } else {
-    const res = await fetch(src, { cache: "no-store" });
+    // Use default caching for template images
+    const res = await fetch(src);
     if (!res.ok) throw new Error(`Failed to fetch template ${src}: ${res.status} ${res.statusText}`);
 
     const ct = (res.headers.get("content-type") || "").toLowerCase();

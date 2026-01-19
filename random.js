@@ -57,12 +57,13 @@ function getSpeedFactorUma(){ return (els.speed2xUma && els.speed2xUma.checked) 
 
   async function fetchJSON(url, fallbackUrl){
     try{
-      const r = await fetch(url, { cache: "no-store" });
+      // Use default caching - Vercel headers control TTL
+      const r = await fetch(url);
       if (!r.ok) throw new Error(r.statusText);
       return await r.json();
     }catch(e){
       if (fallbackUrl){
-        const r2 = await fetch(fallbackUrl, { cache: "no-store" });
+        const r2 = await fetch(fallbackUrl);
         if (!r2.ok) throw new Error(r2.statusText);
         return await r2.json();
       }

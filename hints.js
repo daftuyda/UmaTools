@@ -1,6 +1,7 @@
 (async function () {
   const DATA_URL = "/assets/support_hints.json";
-  const res = await fetch(DATA_URL, { cache: "no-store" });
+  // Use default caching - Vercel headers control TTL
+  const res = await fetch(DATA_URL);
   const data = await res.json();
 
   // Normalizer used for fuzzy matching (unchanged behavior)

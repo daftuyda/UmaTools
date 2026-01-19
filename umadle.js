@@ -109,7 +109,8 @@ function renderGuess(rowsWrap, g, target) {
 }
 
 (function init(){
-  fetch(DATA_URL, {cache:"no-store"})
+  // Use default caching - Vercel headers control TTL
+  fetch(DATA_URL)
     .then(r=>r.json())
     .then(data=>{
       const byLabel = {};
