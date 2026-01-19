@@ -76,6 +76,12 @@
   let skillIndex = new Map();   // normalized name -> { name, score, checkType, category }
   let skillIdIndex = new Map(); // id string -> skill object
   let allSkillNames = [];
+
+  // Performance optimization: track active skill keys for O(1) duplicate detection
+  const activeSkillKeys = new Map(); // skillKey -> rowId
+
+  // Performance optimization: shared datalist for all skill inputs
+  let sharedSkillDatalist = null;
   const HINT_DISCOUNT_STEP = 0.10;
   const HINT_DISCOUNTS = { 0: 0.0, 1: 0.10, 2: 0.20, 3: 0.30, 4: 0.35, 5: 0.40 };
   const HINT_LEVELS = [0, 1, 2, 3, 4, 5];
@@ -786,6 +792,7 @@
     const uniqueNames = Array.from(new Set(names));
     uniqueNames.sort((a, b) => a.localeCompare(b));
     allSkillNames = uniqueNames;
+    rebuildSharedDatalist();
     refreshAllRows();
   }
 
@@ -983,16 +990,31 @@
     else if (c === 'ius') row.classList.add('cat-ius');
   }
 
-  function populateSkillDatalist(datalistEl) {
-    datalistEl.innerHTML = '';
-    allSkillNames.forEach(name => { const opt = document.createElement('option'); opt.value = name; datalistEl.appendChild(opt); });
+  // Performance optimization: create shared datalist once instead of per-row
+  function getOrCreateSharedDatalist() {
+    if (sharedSkillDatalist) return sharedSkillDatalist;
+    sharedSkillDatalist = document.createElement('datalist');
+    sharedSkillDatalist.id = 'skills-datalist-shared';
+    document.body.appendChild(sharedSkillDatalist);
+    rebuildSharedDatalist();
+    return sharedSkillDatalist;
+  }
+
+  function rebuildSharedDatalist() {
+    if (!sharedSkillDatalist) return;
+    sharedSkillDatalist.innerHTML = '';
+    const frag = document.createDocumentFragment();
+    allSkillNames.forEach(name => {
+      const opt = document.createElement('option');
+      opt.value = name;
+      frag.appendChild(opt);
+    });
+    sharedSkillDatalist.appendChild(frag);
   }
 
   function refreshAllRows() {
     const dataRows = rowsEl.querySelectorAll('.optimizer-row');
     dataRows.forEach(row => {
-      const skillList = row.querySelector('datalist[id^="skills-datalist-"]');
-      if (skillList) populateSkillDatalist(skillList);
       if (typeof row.syncSkillCategory === 'function') {
         row.syncSkillCategory({ triggerOptimize: false, allowLinking: false, updateCost: false });
       }
@@ -1039,8 +1061,13 @@
   }
 
   function clearAllRows() {
-    // remove all rows (both top-level and linked)
-    Array.from(rowsEl.querySelectorAll('.optimizer-row')).forEach(n => n.remove());
+    // Clean up skill key tracking and remove all rows
+    Array.from(rowsEl.querySelectorAll('.optimizer-row')).forEach(n => {
+      if (typeof n.cleanupSkillTracking === 'function') {
+        n.cleanupSkillTracking();
+      }
+      n.remove();
+    });
     // add a fresh empty row and reset UI
     rowsEl.appendChild(makeRow());
     ensureOneEmptyRow();
@@ -1049,6 +1076,7 @@
   }
 
   function makeRow() {
+    getOrCreateSharedDatalist(); // Ensure shared datalist exists
     const row = document.createElement('div'); row.className = 'optimizer-row';
     const id = Math.random().toString(36).slice(2);
     row.dataset.rowId = id;
@@ -1059,8 +1087,7 @@
       </div>
       <div class="skill-cell">
         <label>Skill</label>
-        <input type="text" class="skill-name" list="skills-datalist-${id}" placeholder="Start typing..." />
-        <datalist id="skills-datalist-${id}"></datalist>
+        <input type="text" class="skill-name" list="skills-datalist-shared" placeholder="Start typing..." />
         <div class="dup-warning" role="status" aria-live="polite"></div>
       </div>
       <div class="hint-cell">
@@ -1093,9 +1120,18 @@
     const removeBtn = row.querySelector('.remove');
     if (removeBtn) {
       removeBtn.addEventListener('click', () => {
+        // Clean up skill key tracking for this row
+        if (typeof row.cleanupSkillTracking === 'function') {
+          row.cleanupSkillTracking();
+        }
         if (row.dataset.lowerRowId) {
           const linked = rowsEl.querySelector(`.optimizer-row[data-row-id="${row.dataset.lowerRowId}"]`);
-          if (linked) linked.remove();
+          if (linked) {
+            if (typeof linked.cleanupSkillTracking === 'function') {
+              linked.cleanupSkillTracking();
+            }
+            linked.remove();
+          }
           delete row.dataset.lowerRowId;
         }
         row.remove();
@@ -1105,7 +1141,6 @@
       });
     }
     const skillInput = row.querySelector('.skill-name');
-    const skillList = row.querySelector(`#skills-datalist-${id}`);
     const categoryChip = row.querySelector('.category-chip');
     const hintSelect = row.querySelector('.hint-level');
     const dupWarning = row.querySelector('.dup-warning');
@@ -1113,7 +1148,6 @@
     const baseCostDisplay = row.querySelector('.base-cost');
     const costInput = row.querySelector('.cost');
     const requiredToggle = row.querySelector('.required-skill');
-    if (skillList) populateSkillDatalist(skillList);
 
     function getHintLevel() {
       if (!hintSelect) return 0;
@@ -1207,20 +1241,43 @@
       return { id: id ? String(id) : '', name: canonicalName, skill };
     }
 
+    function getSkillKey(identity) {
+      if (!identity || !identity.name) return '';
+      return identity.id || normalize(identity.name);
+    }
+
+    // O(1) duplicate check using activeSkillKeys map
     function isDuplicateSkill(identity) {
-      if (!rowsEl || !identity || !identity.name) return false;
-      const primaryKey = identity.id || normalize(identity.name);
+      const primaryKey = getSkillKey(identity);
       if (!primaryKey) return false;
-      const rows = rowsEl.querySelectorAll('.optimizer-row');
-      for (const other of rows) {
-        if (other === row) continue;
-        const otherName = other.querySelector('.skill-name')?.value?.trim();
-        if (!otherName) continue;
-        const otherIdentity = getSkillIdentity(otherName);
-        const otherKey = otherIdentity.id || normalize(otherIdentity.name);
-        if (otherKey && otherKey === primaryKey) return true;
+      const existingRowId = activeSkillKeys.get(primaryKey);
+      return existingRowId !== undefined && existingRowId !== id;
+    }
+
+    // Update the activeSkillKeys map when this row's skill changes
+    function updateSkillKeyTracking(newIdentity) {
+      // Remove old key for this row
+      for (const [key, rowId] of activeSkillKeys) {
+        if (rowId === id) {
+          activeSkillKeys.delete(key);
+          break;
+        }
       }
-      return false;
+      // Add new key if valid
+      const newKey = getSkillKey(newIdentity);
+      if (newKey) {
+        activeSkillKeys.set(newKey, id);
+      }
+    }
+
+    // Clean up when row is removed
+    function removeSkillKeyTracking() {
+      for (const [key, rowId] of activeSkillKeys) {
+        if (rowId === id) {
+          activeSkillKeys.delete(key);
+          break;
+        }
+      }
     }
 
     function showDupWarning(message) {
@@ -1325,6 +1382,7 @@
       if (!rawName) {
         delete row.dataset.lastSkillName;
         if (!row.dataset.dupWarningHold) clearDupWarning();
+        updateSkillKeyTracking(null); // Clear tracking when skill is removed
       }
       const identity = getSkillIdentity(rawName);
       const skill = identity.skill;
@@ -1350,6 +1408,7 @@
           return;
         }
         row.dataset.lastSkillName = canonical;
+        updateSkillKeyTracking(identity); // Update tracking with new skill
       }
       clearDupWarning();
       const category = skill ? skill.category : '';
@@ -1391,6 +1450,7 @@
     }
 
     row.syncSkillCategory = syncSkillCategory;
+    row.cleanupSkillTracking = removeSkillKeyTracking;
     setCategoryDisplay(row.dataset.skillCategory || '');
     if (skillInput) {
       const syncFromInput = () => syncSkillCategory({ triggerOptimize: true, updateCost: true });
@@ -1611,31 +1671,40 @@
     }
     const G = filteredGroups.length;
     const NEG = -1e15;
-    const dp = Array.from({ length: G + 1 }, () => new Array(B + 1).fill(NEG));
+    // Performance optimization: use rolling array for dp (only need prev and curr rows)
+    // This reduces memory from O(G × B) to O(2 × B) for dp array
+    let dpPrev = new Array(B + 1).fill(0); // dp[0] starts at 0
+    let dpCurr = new Array(B + 1).fill(NEG);
+    // We still need full choice array for reconstruction
     const choice = Array.from({ length: G + 1 }, () => new Array(B + 1).fill(-1));
-    for (let b = 0; b <= B; b++) dp[0][b] = 0;
     for (let g = 1; g <= G; g++) {
       const opts = filteredGroups[g - 1];
       const hasNone = opts.some(o => o.none);
       for (let b = 0; b <= B; b++) {
         if (hasNone) {
-          dp[g][b] = dp[g - 1][b];
+          dpCurr[b] = dpPrev[b];
           choice[g][b] = -1;
         } else {
-          dp[g][b] = NEG;
+          dpCurr[b] = NEG;
           choice[g][b] = -1;
         }
         for (let k = 0; k < opts.length; k++) {
           const o = opts[k]; if (o.none) continue;
           const w = Math.max(0, Math.floor(o.cost)); const v = Math.max(0, Math.floor(o.score));
-          if (w <= b && dp[g - 1][b - w] > NEG / 2) {
-            const cand = dp[g - 1][b - w] + v;
-            if (cand > dp[g][b]) { dp[g][b] = cand; choice[g][b] = k; }
+          if (w <= b && dpPrev[b - w] > NEG / 2) {
+            const cand = dpPrev[b - w] + v;
+            if (cand > dpCurr[b]) { dpCurr[b] = cand; choice[g][b] = k; }
           }
         }
       }
+      // Swap arrays for next iteration
+      const temp = dpPrev;
+      dpPrev = dpCurr;
+      dpCurr = temp;
+      dpCurr.fill(NEG); // Reset for next iteration
     }
-    if (dp[G][B] <= NEG / 2) {
+    // After loop, dpPrev contains dp[G]
+    if (dpPrev[B] <= NEG / 2) {
       return { best: 0, chosen: [], used: 0, error: 'required_unreachable' };
     }
     // reconstruct
@@ -1698,7 +1767,7 @@
       }
     });
     const used = chosen.reduce((sum, it) => it.comboComponent ? sum : sum + Math.max(0, Math.floor(it.cost)), 0);
-    const best = dp[G][B] + addedScore;
+    const best = dpPrev[B] + addedScore;
     if (used > B) {
       return { best: 0, chosen: [], used: 0, error: 'required_unreachable' };
     }
@@ -1813,13 +1882,11 @@
     });
 
     // Second pass: calculate scores
+    // Lower skills in gold combos don't count (gold score includes the upgrade)
     chosen.forEach(it => {
-      if (!it.comboComponent) {
+      if (!it.comboComponent && !lowerIdsInGoldCombos.has(it.id)) {
         totalRatingScore += it.ratingScore || 0;
-        // For aptitude: lower skills in gold combos don't count
-        if (!lowerIdsInGoldCombos.has(it.id)) {
-          totalAptitudeScore += it.aptitudeScore || 0;
-        }
+        totalAptitudeScore += it.aptitudeScore || 0;
       }
     });
 
@@ -2156,6 +2223,5 @@
     }
   };
   document.addEventListener('change', persistIfRelevant);
-  document.addEventListener('input', persistIfRelevant);
   document.addEventListener('input', persistIfRelevant);
 })();
