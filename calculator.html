@@ -3,18 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>UmaTools - Uma Musume Skill Optimizer & Rating Calculator</title>
+    <title>UmaTools - Uma Musume Rating Calculator</title>
     <meta
       name="description"
-      content="Uma Musume skill optimizer and rating calculator to plan builds, manage skill points, and project final ratings."
+      content="Uma Musume rating calculator to plan builds and project final ratings without optimization."
     />
     <meta
       property="og:title"
-      content="UmaTools - Uma Musume Skill Optimizer & Rating Calculator"
+      content="UmaTools - Uma Musume Rating Calculator"
     />
     <meta
       property="og:description"
-      content="Uma Musume skill optimizer and rating calculator to plan builds, manage skill points, and project final ratings."
+      content="Uma Musume rating calculator to plan builds and project final ratings without optimization."
     />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="UmaTools" />
@@ -79,38 +79,15 @@
     </button>
 
     <main class="container">
-      <h1>Skill Optimizer</h1>
+      <h1>Rating Calculator</h1>
 
-      <!-- Budget + library status -->
-      <section class="card card-elevated">
-        <div class="toolbar toolbar-centered" style="align-items:center">
-          <label class="labelTitle" style="min-width:220px">
-            Skill Points Budget
-            <input id="budget" type="number" min="0" step="1" value="1200" />
-          </label>
-          <label class="target-check" style="margin-left:16px">
-            <input id="fast-learner" type="checkbox" />
-            Fast Learner (-10% cost)
-          </label>
-          <label class="labelTitle" style="min-width:180px; margin-left:16px">
-            Optimize For
-            <select id="optimize-mode">
-              <option value="rating" selected>Rating</option>
-              <option value="aptitude-test">Trainer Aptitude Test</option>
-            </select>
-          </label>
-          <div class="spacer"></div>
-          <div id="lib-status" class="status" aria-live="polite"></div>
-        </div>
-      </section>
-
-      <!-- Race configuration + Ideal builder -->
-      <section class="card card-elevated race-config-container" aria-labelledby="raceConfigTitle">
-        <div class="race-card-grid">
+      <!-- Combined Race Config + Stats/Rating -->
+      <section class="card card-elevated calculator-top-section race-config-container">
+        <div class="calculator-top-grid">
+          <!-- Left: Race Configuration -->
           <div class="race-config-pane">
             <div class="race-card-header">
               <h2 id="raceConfigTitle">Race Configuration</h2>
-              <p class="muted">Set your target affinities so the optimizer scores skills appropriately.</p>
             </div>
             <div class="opt-grid">
               <div class="kv-row">
@@ -132,7 +109,6 @@
                   </label>
                 </div>
               </div>
-
               <div class="kv-row">
                 <div class="k">Distance</div>
                 <div class="v row">
@@ -166,7 +142,6 @@
                   </label>
                 </div>
               </div>
-
               <div class="kv-row">
                 <div class="k">Strategy</div>
                 <div class="v row">
@@ -202,155 +177,96 @@
               </div>
             </div>
           </div>
-          <div class="ideal-builder-pane">
-            <div class="ideal-header">
-              <h3 id="autoBuilderTitle">Ideal Skill Builder</h3>
-              <p class="muted">Pick the aptitudes you care about &mdash; matching rows will be highlighted.</p>
+
+          <!-- Right: Stats & Rating -->
+          <div class="stats-rating-pane" id="rating-card">
+            <div class="rating-card-header">
+              <h2 id="ratingCalcTitle">Stats &amp; Rating</h2>
             </div>
-            <div class="ideal-target-groups">
-              <div>
-                <div class="target-group-title">Track</div>
-                <div class="ideal-targets auto-targets">
-                  <label class="target-check"><input type="checkbox" name="auto-target" value="turf" checked /> Turf</label>
-                  <label class="target-check"><input type="checkbox" name="auto-target" value="dirt" checked /> Dirt</label>
-                </div>
-              </div>
-              <div>
-                <div class="target-group-title">Distance</div>
-                <div class="ideal-targets auto-targets">
-                  <label class="target-check"><input type="checkbox" name="auto-target" value="sprint" checked /> Sprint</label>
-                  <label class="target-check"><input type="checkbox" name="auto-target" value="mile" checked /> Mile</label>
-                  <label class="target-check"><input type="checkbox" name="auto-target" value="medium" checked /> Medium</label>
-                  <label class="target-check"><input type="checkbox" name="auto-target" value="long" checked /> Long</label>
-                </div>
-              </div>
-              <div>
-                <div class="target-group-title">Strategy</div>
-                <div class="ideal-targets auto-targets">
-                  <label class="target-check"><input type="checkbox" name="auto-target" value="front" checked /> Front</label>
-                  <label class="target-check"><input type="checkbox" name="auto-target" value="pace" checked /> Pace</label>
-                  <label class="target-check"><input type="checkbox" name="auto-target" value="late" checked /> Late</label>
-                  <label class="target-check"><input type="checkbox" name="auto-target" value="end" checked /> End</label>
-                </div>
-              </div>
+            <div class="rating-grid">
+              <label>Speed
+                <input id="stat-speed" type="number" min="0" max="1600" step="1" value="0" inputmode="numeric" />
+              </label>
+              <label>Stamina
+                <input id="stat-stamina" type="number" min="0" max="1600" step="1" value="0" inputmode="numeric" />
+              </label>
+              <label>Power
+                <input id="stat-power" type="number" min="0" max="1600" step="1" value="0" inputmode="numeric" />
+              </label>
+              <label>Guts
+                <input id="stat-guts" type="number" min="0" max="1600" step="1" value="0" inputmode="numeric" />
+              </label>
+              <label>Wisdom
+                <input id="stat-wisdom" type="number" min="0" max="1600" step="1" value="0" inputmode="numeric" />
+              </label>
+              <label>Star Level
+                <select id="star-level">
+                  <option value="1">★1</option>
+                  <option value="2">★2</option>
+                  <option value="3" selected>★3</option>
+                  <option value="4">★4</option>
+                  <option value="5">★5</option>
+                </select>
+              </label>
+              <label>Unique Skill Level
+                <select id="unique-level">
+                  <option value="1">Lv1</option>
+                  <option value="2">Lv2</option>
+                  <option value="3" selected>Lv3</option>
+                  <option value="4">Lv4</option>
+                  <option value="5">Lv5</option>
+                  <option value="6">Lv6</option>
+                </select>
+              </label>
             </div>
-            <div class="ideal-actions">
-              <label class="target-check general-check"><input type="checkbox" name="auto-target" value="general" checked /> General</label>
-              <button id="auto-build-btn" class="btn" type="button">Generate Build</button>
-              <div id="auto-builder-status" class="status muted" aria-live="polite"></div>
+            <div class="rating-summary">
+              <div class="pill"><div class="label">Stats</div><div id="rating-stats-score" class="value">0</div></div>
+              <div class="pill"><div class="label">Skills</div><div id="rating-skills-score" class="value">0</div></div>
+              <div class="pill"><div class="label">Unique</div><div id="rating-unique-bonus" class="value">0</div></div>
+            </div>
+            <div class="rating-projected-row">
+              <div class="pill rating-total-pill">
+                <div class="label">Projected Rating</div>
+                <div id="rating-total" class="value">0</div>
+                <div class="rating-progress" aria-live="polite">
+                  <div class="rating-progress-label">
+                    <span id="rating-next-label">Next: G+</span>
+                    <span id="rating-next-needed">+300</span>
+                  </div>
+                  <div class="rating-progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                    <div id="rating-progress-fill" class="rating-progress-fill"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="rating-badge" id="rating-badge">
+                <div id="rating-badge-sprite" class="rating-badge-sprite" role="img" aria-label="Projected rank badge"></div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Rating calculator -->
-      <section class="card card-elevated" id="rating-card" aria-labelledby="ratingCalcTitle">
-        <div class="toolbar rating-card-toolbar">
-          <div class="rating-card-header">
-            <h2 id="ratingCalcTitle">Rating Calculator</h2>
-            <p class="muted">
-              Enter your Uma's final stats, star rarity, and unique skill level.
-              The optimized skill score fills in automatically to project the final evaluation.
-            </p>
-          </div>
-          <div class="spacer"></div>
-          <div class="pill rating-total-pill">
-            <div class="label">Projected Rating</div>
-            <div id="rating-total" class="value">0</div>
-            <div class="rating-progress" aria-live="polite">
-              <div class="rating-progress-label">
-                <span id="rating-next-label">Next: G+ at 300</span>
-                <span id="rating-next-needed">+0</span>
-              </div>
-              <div class="rating-progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-                <div id="rating-progress-fill" class="rating-progress-fill"></div>
-              </div>
-            </div>
-          </div>
-          <div class="rating-badge" id="rating-badge">
-            <div id="rating-badge-sprite" class="rating-badge-sprite" role="img"
-                 aria-label="Projected rank badge"></div>
-          </div>
-        </div>
-        <div class="rating-grid">
-          <label>Speed
-            <input id="stat-speed" type="number" min="0" max="1600" step="1" value="0" inputmode="numeric" />
-          </label>
-          <label>Stamina
-            <input id="stat-stamina" type="number" min="0" max="1600" step="1" value="0" inputmode="numeric" />
-          </label>
-          <label>Power
-            <input id="stat-power" type="number" min="0" max="1600" step="1" value="0" inputmode="numeric" />
-          </label>
-          <label>Guts
-            <input id="stat-guts" type="number" min="0" max="1600" step="1" value="0" inputmode="numeric" />
-          </label>
-          <label>Wisdom
-            <input id="stat-wisdom" type="number" min="0" max="1600" step="1" value="0" inputmode="numeric" />
-          </label>
-          <label>Star Level
-            <select id="star-level">
-              <option value="1">★1</option>
-              <option value="2">★2</option>
-              <option value="3" selected>★3</option>
-              <option value="4">★4</option>
-              <option value="5">★5</option>
-            </select>
-          </label>
-          <label>Unique Skill Level
-            <select id="unique-level">
-              <option value="1">Lv1</option>
-              <option value="2">Lv2</option>
-              <option value="3" selected>Lv3</option>
-              <option value="4">Lv4</option>
-              <option value="5">Lv5</option>
-              <option value="6">Lv6</option>
-            </select>
-          </label>
-        </div>
-        <div class="rating-summary">
-          <div class="pill">
-            <div class="label">Stats Score</div>
-            <div id="rating-stats-score" class="value">0</div>
-          </div>
-          <div class="pill">
-            <div class="label">Skill Score</div>
-            <div id="rating-skills-score" class="value">0</div>
-          </div>
-          <div class="pill">
-            <div class="label">Unique Bonus</div>
-            <div id="rating-unique-bonus" class="value">0</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Results -->
+      <!-- Selected Skills Display -->
       <section class="card card-elevated" style="margin-bottom:16px">
-        <h3 style="margin:.2rem 0 .5rem 0">Results</h3>
+        <h3 style="margin:.2rem 0 .5rem 0">Selected Skills</h3>
         <div id="results" class="results">
-          <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:12px;">
-            <div class="pill"><b>Best Score:</b> <span id="best-score">0</span></div>
-            <div class="pill"><b>Used Points:</b> <span id="used-points">0</span></div>
-            <div class="pill"><b>Total Points:</b> <span id="total-points">0</span></div>
-            <div class="pill"><b>Remaining:</b> <span id="remaining-points">0</span></div>
-            <div class="pill aptitude-test-pill" id="aptitude-score-pill" style="display:none;">
-              <b>Aptitude Test Score:</b> <span id="aptitude-score">0</span>
-            </div>
+          <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:12px;">
+            <div class="pill"><b>Skills:</b> <span id="skill-count">0</span></div>
+            <div class="pill"><b>Skill Score:</b> <span id="total-skill-score">0</span></div>
           </div>
           <div class="results-list" id="selected-list" style="margin-top:.75rem"></div>
         </div>
       </section>
 
-      <!-- Rows builder (auto-add; live optimize) -->
+      <!-- Skill Rows (simplified - no cost, hint, or must buy) -->
       <section class="card card-elevated">
         <div class="toolbar" role="group" aria-label="Skill rows">
-          <span class="muted">Tip: just enter the skill name and cost - its type auto-detects</span>
+          <span class="muted">Add skills to calculate your build's rating</span>
           <div class="spacer"></div>
-          <button id="copy-build" class="btn btn-secondary" type="button">Copy Build</button>
-          <button id="load-build" class="btn btn-secondary" type="button">Load Build</button>
+          <div id="lib-status" class="status" aria-live="polite"></div>
           <button id="clear-all" class="btn" type="button">Clear All</button>
         </div>
-        <div id="rows" class="rows"></div>
+        <div id="rows" class="rows calculator-rows"></div>
       </section>
     </main>
 
@@ -397,6 +313,6 @@
         window.addEventListener("storage", function (e) { if (e.key === "umasearch-darkmode") applyTheme(e.newValue === "dark", false); });
       })();
     </script>
-    <script src="optimizer.js" defer></script>
+    <script src="calculator.js" defer></script>
   </body>
 </html>

@@ -32,6 +32,10 @@
           document.documentElement.classList.toggle("dark-mode", dark);
           if (document.body && document.body.classList) {
             document.body.classList.toggle("dark-mode", dark);
+          } else {
+            document.addEventListener("DOMContentLoaded", function () {
+              document.body && document.body.classList.toggle("dark-mode", dark);
+            });
           }
           document.documentElement.style.colorScheme = dark ? "dark" : "light";
         } catch (e) {}
@@ -144,8 +148,17 @@
       </section>
     </main>
 
+    <script>
+      window.NAV_ROUTES = [
+        { label: "Events", path: "/", file: "/index.html" },
+        { label: "Support Hints", path: "/hints", file: "/hints.html" },
+        { label: "Umadle", path: "/umadle", file: "/umadle.html" },
+        { label: "Randomizer", path: "/random", file: "/random.html" },
+        { label: "Optimizer", path: "/optimizer", file: "/optimizer.html" },
+        { label: "Calculator", path: "/calculator", file: "/calculator.html" }
+      ];
+    </script>
     <script src="nav.js" defer></script>
-    <script src="random.js" defer></script>
     <script>
       (function () {
         function applyTheme(dark, persist) {
@@ -192,14 +205,6 @@
         });
       })();
     </script>
-    <script>
-      window.NAV_ROUTES = [
-        { label: "Events", path: "/", file: "/index.html" },
-        { label: "Support Hints", path: "/hints", file: "/hints.html" },
-        { label: "Umadle", path: "/umadle", file: "/umadle.html" },
-        { label: "Randomizer", path: "/random", file: "/random.html" },
-        { label: "Optimizer", path: "/optimizer", file: "/optimizer.html" },
-      ];
-    </script>
+    <script src="random.js" defer></script>
   </body>
 </html>

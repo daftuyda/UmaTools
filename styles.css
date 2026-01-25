@@ -90,7 +90,7 @@ h1 {
 }
 .site-nav .nav-links {
   display: flex;
-  align-items: center;
+  /*align-items: center;*/
   gap: 0.25rem;
   flex-wrap: wrap;
 }
@@ -343,7 +343,14 @@ body.dark-mode {
   background: #121212;
   color: #ddd;
 }
+html.dark-mode body {
+  background: #121212;
+  color: #ddd;
+}
 body.dark-mode .container {
+  background: #1e1e1e;
+}
+html.dark-mode .container {
   background: #1e1e1e;
 }
 body.dark-mode h1 {
@@ -375,7 +382,15 @@ body.dark-mode .choice {
   box-shadow: inset 0 0 4px rgba(99, 179, 237, 0.5);
   color: #eee;
 }
+html.dark-mode .choice {
+  background: #333844;
+  box-shadow: inset 0 0 4px rgba(99, 179, 237, 0.5);
+  color: #eee;
+}
 body.dark-mode .choice h3 {
+  color: #63b3ed;
+}
+html.dark-mode .choice h3 {
   color: #63b3ed;
 }
 body.dark-mode .reward-groups {
@@ -484,6 +499,13 @@ body.dark-mode .option-score {
   align-items: center;
   margin: 0.5rem 0 1rem;
 }
+.toolbar.toolbar-centered {
+  justify-content: center;
+}
+.toolbar.toolbar-centered .spacer {
+  flex: 0 0 auto;
+  width: 0;
+}
 .chips {
   display: flex;
   gap: 0.5rem;
@@ -585,6 +607,13 @@ body.dark-mode .pill.match {
 }
 body.dark-mode .controls input[type="text"],
 body.dark-mode .controls select {
+  background: #1a1a1a;
+  border-color: #334155;
+  color: #e5e7eb;
+}
+html.dark-mode .toolbar input:not([type="checkbox"]),
+html.dark-mode .controls input[type="text"],
+html.dark-mode .controls select {
   background: #1a1a1a;
   border-color: #334155;
   color: #e5e7eb;
@@ -842,11 +871,13 @@ body.dark-mode .btn.btn-secondary:hover {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 4px 12px;
+  height: 44px;
+  padding: 0 12px;
   border: 1px solid var(--border, #d1d5db);
   border-radius: 999px;
   background: var(--card-bg, #fff);
   font-size: .9rem;
+  box-sizing: border-box;
   cursor: pointer;
   transition: border-color .15s ease, background .15s ease;
 }
@@ -1019,6 +1050,90 @@ body.dark-mode button#clearBtn:hover {
     box-shadow: none;
     box-sizing: border-box;
   }
+  .card-elevated {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .rating-card-toolbar {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .rating-card-toolbar .spacer {
+    display: none;
+  }
+  .rating-card-toolbar .rating-total-pill {
+    width: 100%;
+    max-width: 420px;
+    min-width: 0;
+    text-align: center;
+    align-items: center;
+    box-sizing: border-box;
+  }
+  .rating-card-toolbar .rating-total-pill .label,
+  .rating-card-toolbar .rating-total-pill .value {
+    align-self: center;
+  }
+  .rating-card-toolbar .rating-badge {
+    align-self: center;
+  }
+  .race-config-pane,
+  .calculator-top-grid .stats-rating-pane {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+  .race-config-container .v.row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .race-config-container label {
+    width: 100%;
+    box-sizing: border-box;
+    max-width: 260px;
+    align-self: flex-start;
+  }
+  .race-config-container select {
+    max-width: 220px;
+    box-sizing: border-box;
+  }
+  .calculator-top-grid .stats-rating-pane .rating-grid {
+    display: flex !important;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .calculator-top-grid .stats-rating-pane .rating-grid label,
+  .calculator-top-grid .stats-rating-pane .rating-grid input,
+  .calculator-top-grid .stats-rating-pane .rating-grid select {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .calculator-top-grid .stats-rating-pane .rating-summary {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .calculator-top-grid .stats-rating-pane .rating-summary .pill {
+    width: 100%;
+    flex: 0 0 auto;
+    box-sizing: border-box;
+  }
+  .rating-summary {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .rating-summary .pill {
+    width: 100%;
+    min-width: 0;
+    flex: 0 0 auto;
+    box-sizing: border-box;
+  }
+  .rating-projected-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .rating-projected-row .rating-badge {
+    align-self: center;
+  }
 
   .site-nav {
     --navH: 56px;
@@ -1045,6 +1160,8 @@ body.dark-mode button#clearBtn:hover {
     background: #fff;
     border-top: 1px solid #e5e7eb;
     z-index: 60;
+    width: 15em;
+    border-radius: 15px;
   }
   body.dark-mode .site-nav.open .nav-links {
     background: #151515;
@@ -2220,6 +2337,21 @@ body.dark-mode .toolbar select:focus {
 .toolbar {
   gap: 0.6rem;
 }
+.toolbar .labelTitle {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-width: 260px;
+  box-sizing: border-box;
+}
+.toolbar .target-check {
+  align-self: flex-end;
+}
+.toolbar .labelTitle input,
+.toolbar .labelTitle select {
+  width: 100%;
+  box-sizing: border-box;
+}
 .dropdown-wrap {
   flex: 1 1 320px;
   max-width: 560px;
@@ -2234,6 +2366,9 @@ body.dark-mode .toolbar select:focus {
   .dropdown-wrap input,
   .toolbar .btn,
   .toolbar select {
+    height: 38px;
+  }
+  .target-check {
     height: 38px;
   }
   .dropdown-btn {
@@ -2831,12 +2966,11 @@ body.dark-mode .rating-grid select {
 
 .rating-summary {
   display: flex;
-  flex-wrap: wrap;
   gap: 10px;
   margin-top: 16px;
 }
 .rating-summary .pill {
-  flex: 1 1 180px;
+  flex: 1 1 auto;
   border-radius: 40px;
   background: rgba(15,23,42,0.08);
   padding: 12px 20px;
@@ -2863,7 +2997,7 @@ body.dark-mode .rating-summary .pill {
 .rating-total-pill {
   min-width: 190px;
   text-align: right;
-  border-radius: 40px;
+  border-radius: 20px;
   padding: 10px 24px;
   background: linear-gradient(120deg, #334155, #0f172a);
   color: #f8fafc;
@@ -3036,9 +3170,8 @@ body.dark-mode .rating-card-header .muted { color: #c7d2fe; }
   background: linear-gradient(180deg, rgba(255,255,255,0.97), rgba(245,248,255,0.95));
   box-shadow: 0 25px 50px rgba(15,23,42,0.12);
   padding: 1.25rem;
-}
-#rating-card {
-  margin-bottom: 16px;
+  margin: 16px;
+  box-sizing: border-box;
 }
 body.dark-mode .card-elevated {
   background: linear-gradient(180deg, rgba(17,24,39,0.94), rgba(11,17,29,0.94));
@@ -3149,3 +3282,359 @@ body.dark-mode .target-group-title { color: #cbd5f5; }
 }
 body.dark-mode .race-card-header h2 { color: #f8fafc; }
 body.dark-mode .race-card-header .muted { color: #cbd5f5; }
+
+/* ===== CALCULATOR PAGE STYLES ===== */
+
+/* Top section: side-by-side layout */
+.calculator-top-section { margin-bottom: 16px; padding: 20px; }
+.calculator-top-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 20px;
+}
+
+/* Stats pane gets same container styling as race-config-pane */
+.calculator-top-grid .stats-rating-pane {
+  flex: 1 1 320px;
+  border-radius: 18px;
+  border: 1px solid rgba(148,163,184,0.35);
+  background: rgba(255,255,255,0.65);
+  padding: 16px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.7), 0 12px 24px rgba(15,23,42,0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+body.dark-mode .calculator-top-grid .stats-rating-pane {
+  background: rgba(15,23,42,0.85);
+  border-color: rgba(71,85,105,0.8);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 18px 36px rgba(0,0,0,0.65);
+}
+
+.calculator-top-grid .stats-rating-pane .rating-card-header h2 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+/* Compact rating grid for calculator */
+.calculator-top-grid .stats-rating-pane .rating-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  gap: 6px;
+  margin-top: 0;
+}
+.calculator-top-grid .stats-rating-pane .rating-grid label {
+  padding: 6px 8px;
+  font-size: 1rem;
+}
+.calculator-top-grid .stats-rating-pane .rating-grid input,
+.calculator-top-grid .stats-rating-pane .rating-grid select {
+  font-size: 0.85rem;
+  margin-top: 2px;
+}
+
+/* Compact rating summary */
+.calculator-top-grid .stats-rating-pane .rating-summary {
+  margin-top: 4px;
+  gap: 6px;
+}
+.calculator-top-grid .stats-rating-pane .rating-summary .pill {
+  padding: 6px 10px;
+  font-size: 0.8rem;
+}
+.calculator-top-grid .stats-rating-pane .rating-summary .value {
+  font-size: 0.95rem;
+}
+
+/* Rating projected row: pill on left, badge on right */
+.rating-projected-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 4px;
+}
+.rating-projected-row .rating-total-pill {
+  flex: 1;
+  padding: 8px 12px;
+}
+.rating-projected-row .rating-total-pill .label {
+  font-size: 0.75rem;
+}
+.rating-projected-row .rating-total-pill .value {
+  font-size: 1.4rem;
+}
+.rating-projected-row .rating-badge {
+  width: 78px;
+  height: 78px;
+  padding: 6px;
+  flex-shrink: 0;
+}
+.rating-projected-row .rating-badge-sprite {
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 900px) {
+  .container {
+    min-width: 0;
+    max-width: 100%;
+    width: 95%;
+    box-sizing: border-box;
+  }
+  .calculator-top-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+/* Skill rows */
+.calculator-rows { display: grid; gap: 10px; }
+.calculator-row {
+  display: grid;
+  grid-template-columns: minmax(90px, 0.15fr) minmax(200px, 1fr) minmax(70px, 0.1fr) minmax(90px, 0.1fr);
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border, #d1d5db);
+  background: var(--card-bg, #fff);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
+  transition: box-shadow 0.15s, border-color 0.15s;
+}
+.calculator-row:hover { box-shadow: 0 6px 16px rgba(15, 23, 42, 0.1); }
+.calculator-row > * { min-width: 0; }
+
+/* category accent strip */
+.calculator-row.cat-gold { border-left: 4px solid #c28f2c; }
+.calculator-row.cat-yellow { border-left: 4px solid #facc15; }
+.calculator-row.cat-blue { border-left: 4px solid #60a5fa; }
+.calculator-row.cat-green { border-left: 4px solid #34d399; }
+.calculator-row.cat-red { border-left: 4px solid #f87171; }
+.calculator-row.cat-ius, .calculator-row.cat-orange { border-left: 4px solid #fb923c; }
+
+/* category background tint */
+.calculator-row.cat-gold { background-color: rgba(194,143,44,.14); }
+.calculator-row.cat-yellow { background-color: rgba(250,204,21,.12); }
+.calculator-row.cat-blue { background-color: rgba(96,165,250,.14); }
+.calculator-row.cat-green { background-color: rgba(52,211,153,.14); }
+.calculator-row.cat-red { background-color: rgba(248,113,113,.14); }
+.calculator-row.cat-ius, .calculator-row.cat-orange { background-color: rgba(251,146,60,.14); }
+
+.calculator-row .skill-name {
+  width: 95%;
+  padding: 6px 8px;
+  border: 1px solid var(--border, #d1d5db);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  background: var(--input-bg, #fff);
+  color: var(--text, #111827);
+}
+.calculator-row .category-chip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 10px;
+  border-radius: 16px;
+  border: 1px solid var(--border, #d1d5db);
+  font-size: .8rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  background: var(--card-bg, #fafafa);
+  color: var(--text, #111827);
+}
+.calculator-row .category-chip[data-empty="true"] {
+  opacity: .75;
+  font-weight: 500;
+}
+.calculator-row .skill-score-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 8px;
+  border: 1px dashed var(--border, #d1d5db);
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--accent, #2563eb);
+  background: var(--card-bg, #fafafa);
+  height: auto;
+  box-sizing: border-box;
+}
+.calculator-row .skill-score-display[data-empty="true"] {
+  opacity: .6;
+  font-weight: 500;
+  color: var(--muted, #6b7280);
+}
+.calculator-row .actions-cell {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+.calculator-row .remove.btn {
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+}
+.calculator-row .dup-warning {
+  display: none;
+  margin-top: 6px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: .85rem;
+  background: rgba(254,226,226,.9);
+  border: 1px solid rgba(248,113,113,.5);
+  color: #b91c1c;
+}
+.calculator-row .dup-warning.visible { display: block; }
+body.dark-mode .calculator-row .dup-warning {
+  border-color: rgba(248, 113, 113, 0.6);
+  background: rgba(127, 29, 29, 0.35);
+  color: #fca5a5;
+}
+
+/* Labels inside grid cells */
+/* Hide labels on calculator rows for compact view */
+.calculator-row > div > label { display: none; }
+
+/* tint inputs per category */
+.calculator-row.cat-gold .category-chip, .calculator-row.cat-gold .skill-name { border-color: rgba(194,143,44,.5); }
+.calculator-row.cat-yellow .category-chip, .calculator-row.cat-yellow .skill-name { border-color: rgba(250,204,21,.5); }
+.calculator-row.cat-blue .category-chip, .calculator-row.cat-blue .skill-name { border-color: rgba(96,165,250,.5); }
+.calculator-row.cat-green .category-chip, .calculator-row.cat-green .skill-name { border-color: rgba(52,211,153,.5); }
+.calculator-row.cat-red .category-chip, .calculator-row.cat-red .skill-name { border-color: rgba(248,113,113,.5); }
+.calculator-row.cat-ius .category-chip, .calculator-row.cat-ius .skill-name,
+.calculator-row.cat-orange .category-chip, .calculator-row.cat-orange .skill-name { border-color: rgba(251,146,60,.5); }
+
+/* Dark mode */
+body.dark-mode .calculator-row {
+  background: #101214;
+  border-color: #2b2f36;
+  box-shadow: none;
+}
+body.dark-mode .calculator-row.cat-gold { border-left-color: #f2c56a; }
+body.dark-mode .calculator-row.cat-yellow { border-left-color: #fde047; }
+body.dark-mode .calculator-row.cat-blue { border-left-color: #93c5fd; }
+body.dark-mode .calculator-row.cat-green { border-left-color: #6ee7b7; }
+body.dark-mode .calculator-row.cat-red { border-left-color: #fca5a5; }
+body.dark-mode .calculator-row.cat-ius, body.dark-mode .calculator-row.cat-orange { border-left-color: #fdba74; }
+body.dark-mode .calculator-row.cat-gold { background-color: rgba(242,197,106,.26); }
+body.dark-mode .calculator-row.cat-yellow { background-color: rgba(253,224,71,.22); }
+body.dark-mode .calculator-row.cat-blue { background-color: rgba(147,197,253,.24); }
+body.dark-mode .calculator-row.cat-green { background-color: rgba(110,231,183,.24); }
+body.dark-mode .calculator-row.cat-red { background-color: rgba(252,165,165,.24); }
+body.dark-mode .calculator-row.cat-ius, body.dark-mode .calculator-row.cat-orange { background-color: rgba(253,186,116,.24); }
+body.dark-mode .calculator-row .category-chip,
+body.dark-mode .calculator-row .skill-name {
+  background: #0c0d10;
+  border-color: #2b2f36;
+  color: #e5e7eb;
+}
+body.dark-mode .calculator-row .skill-score-display {
+  background: #0c0d10;
+  border-color: #2b2f36;
+  color: #60a5fa;
+}
+
+/* Light mode enhanced */
+body:not(.dark-mode) .calculator-row {
+  background: #f3f4f6;
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.14);
+}
+body:not(.dark-mode) .calculator-row .skill-name {
+  background: #ffffff;
+}
+body:not(.dark-mode) .calculator-row .category-chip {
+  background: #111827;
+  color: #f9fafb;
+  border-style: solid;
+  border-color: #111827;
+}
+body:not(.dark-mode) .calculator-row.cat-gold { background-color: rgba(194, 143, 44, 0.18); }
+body:not(.dark-mode) .calculator-row.cat-yellow { background-color: rgba(250, 204, 21, 0.18); }
+body:not(.dark-mode) .calculator-row.cat-blue { background-color: rgba(96, 165, 250, 0.20); }
+body:not(.dark-mode) .calculator-row.cat-green { background-color: rgba(52, 211, 153, 0.20); }
+body:not(.dark-mode) .calculator-row.cat-red { background-color: rgba(248, 113, 113, 0.20); }
+body:not(.dark-mode) .calculator-row.cat-ius,
+body:not(.dark-mode) .calculator-row.cat-orange { background-color: rgba(251, 146, 60, 0.20); }
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .calculator-row {
+    grid-template-columns: minmax(90px, 0.2fr) minmax(160px, 1fr) minmax(80px, 0.15fr) minmax(90px, 0.14fr);
+    gap: 10px;
+  }
+}
+@media (max-width: 700px) {
+  .calculator-rows { gap: 6px; }
+  .calculator-row {
+    grid-template-columns: 1fr;
+    padding: 10px;
+    gap: 8px;
+    border-radius: 10px;
+  }
+  .calculator-row .type-cell,
+  .calculator-row .skill-cell,
+  .calculator-row .score-cell { grid-column: 1 / -1; }
+  .calculator-row .actions-cell {
+    grid-column: 1 / -1;
+    align-self: stretch;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 8px;
+  }
+  .calculator-row > div > label {
+    display: block;
+    font-size: 0.75rem;
+    margin-bottom: 2px;
+  }
+  .calculator-row .skill-name {
+    padding: 5px 6px;
+    font-size: 0.9rem;
+  }
+  .calculator-row .category-chip {
+    min-height: 26px;
+    padding: 2px 8px;
+    font-size: 0.75rem;
+  }
+  .calculator-row .remove.btn {
+    padding: 6px 10px;
+    width: auto;
+  }
+}
+
+/* Skill chips in results display */
+.skill-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 12px;
+  margin: 3px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  background: rgba(15, 23, 42, 0.08);
+  color: var(--text, #111827);
+  border: 1px solid var(--border, #d1d5db);
+}
+.skill-chip small {
+  font-weight: 500;
+  opacity: 0.75;
+}
+.skill-chip.cat-gold { background-color: rgba(194,143,44,.2); border-color: rgba(194,143,44,.5); }
+.skill-chip.cat-yellow { background-color: rgba(250,204,21,.2); border-color: rgba(250,204,21,.5); }
+.skill-chip.cat-blue { background-color: rgba(96,165,250,.2); border-color: rgba(96,165,250,.5); }
+.skill-chip.cat-green { background-color: rgba(52,211,153,.2); border-color: rgba(52,211,153,.5); }
+.skill-chip.cat-red { background-color: rgba(248,113,113,.2); border-color: rgba(248,113,113,.5); }
+.skill-chip.cat-ius, .skill-chip.cat-orange { background-color: rgba(251,146,60,.2); border-color: rgba(251,146,60,.5); }
+body.dark-mode .skill-chip {
+  background: rgba(15, 23, 42, 0.6);
+  border-color: rgba(71, 85, 105, 0.6);
+  color: #e5e7eb;
+}
+body.dark-mode .skill-chip.cat-gold { background-color: rgba(242,197,106,.3); border-color: rgba(242,197,106,.5); }
+body.dark-mode .skill-chip.cat-yellow { background-color: rgba(253,224,71,.25); border-color: rgba(253,224,71,.5); }
+body.dark-mode .skill-chip.cat-blue { background-color: rgba(147,197,253,.3); border-color: rgba(147,197,253,.5); }
+body.dark-mode .skill-chip.cat-green { background-color: rgba(110,231,183,.3); border-color: rgba(110,231,183,.5); }
+body.dark-mode .skill-chip.cat-red { background-color: rgba(252,165,165,.3); border-color: rgba(252,165,165,.5); }
+body.dark-mode .skill-chip.cat-ius, body.dark-mode .skill-chip.cat-orange { background-color: rgba(253,186,116,.3); border-color: rgba(253,186,116,.5); }
