@@ -15,6 +15,13 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from webdriver_manager.chrome import ChromeDriverManager
 
+# Stat key mappings from JSON abbreviations to display names
+STAT_KEY_MAP = {
+    "sp": "Speed", "st": "Stamina", "po": "Power", "gu": "Guts",
+    "in": "Intelligence", "wi": "Wisdom", "sk": "Skill Points",
+    "bo": "Bond", "pt": "Skill Points", "vi": "Vitality", "mo": "Motivation"
+}
+
 DELAY = 0.25
 RETRIES = 3
 NAV_TIMEOUT = 45
@@ -22,6 +29,7 @@ JS_TIMEOUT  = 45
 
 JSON_LOCK = threading.Lock()
 THUMB_LOCK = threading.Lock()
+_SKILL_NAME_MAP: Optional[Dict[str, str]] = None
 
 
 def _read_json_list(path: str) -> List[Any]:
@@ -33,6 +41,39 @@ def _read_json_list(path: str) -> List[Any]:
             return data if isinstance(data, list) else []
     except json.JSONDecodeError:
         return []
+
+def _load_skill_name_map() -> Dict[str, str]:
+    global _SKILL_NAME_MAP
+    if _SKILL_NAME_MAP is not None:
+        return _SKILL_NAME_MAP
+    _SKILL_NAME_MAP = {}
+    candidates = [
+        os.path.join("assets", "skills_all.json"),
+        os.path.join("assets", "skills.json"),
+        "skills_all.json",
+        "skills.json",
+    ]
+    for path in candidates:
+        if not os.path.exists(path):
+            continue
+        for item in _read_json_list(path):
+            if not isinstance(item, dict):
+                continue
+            sid = item.get("id") or item.get("skill_id") or item.get("skillId")
+            if sid is None:
+                continue
+            name = (
+                item.get("name_en")
+                or item.get("enname")
+                or item.get("name")
+                or item.get("jpname")
+                or ""
+            )
+            if name:
+                _SKILL_NAME_MAP[str(sid)] = name
+        if _SKILL_NAME_MAP:
+            break
+    return _SKILL_NAME_MAP
 
 def _atomic_write(path: str, data: List[Any]) -> None:
     os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
@@ -368,6 +409,60 @@ def txt(el) -> str:
     try: return (el.get_attribute("innerText") or "").strip().replace("\u00a0", " ")
     except Exception: return ""
 
+def extract_next_data(driver) -> Optional[Dict[str, Any]]:
+    """Extract __NEXT_DATA__ JSON from the page (Next.js data)."""
+    try:
+        script = driver.find_element(By.ID, "__NEXT_DATA__")
+        if script:
+            raw = script.get_attribute("innerHTML") or script.get_attribute("textContent")
+            if raw:
+                return json.loads(raw)
+    except Exception:
+        pass
+    # Fallback: search for script tag containing __NEXT_DATA__
+    try:
+        scripts = driver.find_elements(By.TAG_NAME, "script")
+        for s in scripts:
+            sid = s.get_attribute("id") or ""
+            if sid == "__NEXT_DATA__":
+                raw = s.get_attribute("innerHTML") or s.get_attribute("textContent")
+                if raw:
+                    return json.loads(raw)
+    except Exception:
+        pass
+    return None
+
+def get_page_props(driver) -> Optional[Dict[str, Any]]:
+    """Get pageProps from __NEXT_DATA__."""
+    data = extract_next_data(driver)
+    if data:
+        return data.get("props", {}).get("pageProps", {})
+    return None
+
+def _format_stat_rewards(rewards: List[Any]) -> str:
+    """Convert reward abbreviations to readable format like 'Speed +10, Stamina +5'."""
+    if not rewards:
+        return ""
+    parts = []
+    for r in rewards:
+        if isinstance(r, dict):
+            for k, v in r.items():
+                stat_name = STAT_KEY_MAP.get(k, k)
+                if isinstance(v, (int, float)) and v != 0:
+                    sign = "+" if v > 0 else ""
+                    parts.append(f"{stat_name} {sign}{v}")
+                elif isinstance(v, str):
+                    parts.append(f"{stat_name}: {v}")
+        elif isinstance(r, str):
+            # Handle string format like "sp+10"
+            m = re.match(r"([a-z]{2})([+-]?\d+)", r)
+            if m:
+                stat_name = STAT_KEY_MAP.get(m.group(1), m.group(1))
+                val = int(m.group(2))
+                sign = "+" if val > 0 else ""
+                parts.append(f"{stat_name} {sign}{val}")
+    return ", ".join(parts) if parts else ""
+
 # ---------- Visibility helpers ----------
 def is_visible(driver, el) -> bool:
     if el is None: return False
@@ -421,14 +516,19 @@ def _scroll_page_until_stable(driver, max_rounds: int = 10, delay: float = 0.2) 
 
 def _collect_support_card_anchors(driver) -> List[Any]:
     anchors: List[Any] = []
+    seen_hrefs = set()
+
     # Prefer anchors that include support card images.
     for img in safe_find_all(driver, By.CSS_SELECTOR, "img[src*='/images/umamusume/supports/']"):
         try:
             a = img.find_element(By.XPATH, "./ancestor::a[1]")
+            href = a.get_attribute("href") or ""
+            if href and href not in seen_hrefs:
+                seen_hrefs.add(href)
+                anchors.append(a)
         except Exception:
             continue
-        if a not in anchors:
-            anchors.append(a)
+
     if anchors:
         return filter_visible(driver, anchors)
 
@@ -437,7 +537,12 @@ def _collect_support_card_anchors(driver) -> List[Any]:
         href = a.get_attribute("href") or ""
         if re.search(r"/umamusume/supports/?$", href):
             continue
-        anchors.append(a)
+        # Check if it's a specific support card page (has ID in URL)
+        if re.search(r'/supports/\d+-', href):
+            if href not in seen_hrefs:
+                seen_hrefs.add(href)
+                anchors.append(a)
+
     return filter_visible(driver, anchors)
 
 def _wait_support_cards(driver, timeout_s: float = 8.0) -> List[Any]:
@@ -682,6 +787,24 @@ def parse_support_hints_on_page(d) -> List[Dict[str, Any]]:
                 name = (b.get_attribute("innerText") or "").strip()
             except Exception:
                 name = ""
+            if not name:
+                for attr in ("alt", "title", "aria-label"):
+                    try:
+                        name = (img.get_attribute(attr) or "").strip()
+                    except Exception:
+                        name = ""
+                    if name:
+                        break
+            if not name:
+                try:
+                    raw = (tile.get_attribute("innerText") or "").strip()
+                    if raw:
+                        parts = [p.strip() for p in re.split(r"[\r\n]+", raw) if p.strip()]
+                        parts = [p for p in parts if not re.search(r"hint\\s*lv|lv\\.?\\s*\\d|hint", p, flags=re.I)]
+                        if parts:
+                            name = parts[0]
+                except Exception:
+                    pass
             if not name or name in seen_names:
                 continue
 
@@ -703,6 +826,12 @@ def parse_support_hints_on_page(d) -> List[Dict[str, Any]]:
                     pop = tippy_show_and_get_popper(d, tippy_anchor)
                 try:
                     if pop:
+                        if not name:
+                            try:
+                                cand = pop.find_element(By.CSS_SELECTOR, "b, strong, h3, h4")
+                                name = (cand.get_attribute("innerText") or "").strip()
+                            except Exception:
+                                pass
                         for l in pop.find_elements(By.CSS_SELECTOR, 'a[href*="/umamusume/skills/"]'):
                             sid = _skill_id_from_href(l.get_attribute("href") or "")
                             if sid:
@@ -710,6 +839,12 @@ def parse_support_hints_on_page(d) -> List[Dict[str, Any]]:
                 finally:
                     if tippy_anchor is not None:
                         tippy_hide(d, tippy_anchor)
+
+            if sid and not name:
+                name = _load_skill_name_map().get(sid, "")
+
+            if not name or name in seen_names:
+                continue
 
             hints.append({
                 "SkillId": sid,            # stays "" if no link is exposed
@@ -757,24 +892,400 @@ def with_retries(func, *args, **kwargs):
     return None
 
 
+def _parse_events_from_json(event_data: Dict[str, Any], lang: str = "en") -> List[Dict[str, Any]]:
+    """Parse events from the new JSON structure (wchoice, nochoice, version, outings, secret)."""
+    events: List[Dict[str, Any]] = []
+    if not event_data:
+        return events
+
+    # Get the language-specific data
+    lang_data = event_data.get(lang) or event_data.get("en") or event_data.get("ja") or {}
+
+    # If lang_data is not a dict (might be string or other), try event_data directly
+    if not isinstance(lang_data, dict):
+        lang_data = event_data if isinstance(event_data, dict) else {}
+
+    # Process different event categories
+    for category in ["wchoice", "nochoice", "version", "outings", "secret", "random", "arrows"]:
+        cat_events = lang_data.get(category, []) if isinstance(lang_data, dict) else []
+        if not isinstance(cat_events, list):
+            continue
+
+        for evt in cat_events:
+            if not isinstance(evt, dict):
+                continue
+
+            event_name = evt.get("n") or evt.get("name") or ""
+            if not event_name:
+                continue
+
+            choices = evt.get("c") or evt.get("choices") or []
+            if not choices:
+                # No-choice event - just record the rewards
+                rewards = evt.get("r") or evt.get("rewards") or []
+                reward_str = _format_stat_rewards(rewards)
+                events.append({
+                    "EventName": event_name,
+                    "EventOptions": {"(Auto)": reward_str or "See details"}
+                })
+            else:
+                # Event with choices
+                for choice in choices:
+                    if isinstance(choice, dict):
+                        choice_name = choice.get("n") or choice.get("name") or "Option"
+                        rewards = choice.get("r") or choice.get("rewards") or []
+                        reward_str = _format_stat_rewards(rewards)
+                        events.append({
+                            "EventName": event_name,
+                            "EventOptions": {choice_name: reward_str or "See details"}
+                        })
+
+    return events
+
+def _parse_character_events_from_page(d) -> List[Dict[str, Any]]:
+    events: List[Dict[str, Any]] = []
+    # Try the same event helper list used on support pages
+    lists = safe_find_all(d, By.CSS_SELECTOR, 'div[class*=eventhelper_elist]')
+    if not lists:
+        # Fallback: broader selectors seen on event helper pages
+        lists = safe_find_all(d, By.CSS_SELECTOR, '[class*=eventhelper_] [class*=elist], [class*=eventhelper_] [class*=eventlist]')
+    for elist in lists:
+        if not is_visible(d, elist):
+            continue
+        items = elist.find_elements(By.CSS_SELECTOR, 'div[class*=compatibility_viewer_item], [class*=eventhelper_item], [class*=event_item]')
+        for it in items:
+            if not is_visible(d, it):
+                continue
+            ev_name = txt(it)
+            if not ev_name:
+                continue
+            pop = tippy_show_and_get_popper(d, it)
+            try:
+                rows = parse_event_from_tippy_popper(pop)
+                if rows:
+                    for kv in rows:
+                        events.append(make_support_card(ev_name, kv))
+                else:
+                    events.append(make_support_card(ev_name, {"(Auto)": "See details"}))
+            finally:
+                tippy_hide(d, it)
+    return events
+
+def _open_support_hints_tab(d) -> bool:
+    def _click_text(label: str) -> bool:
+        xpath = ("//*[self::button or self::a or self::div or self::span]"
+                 "[contains(translate(normalize-space(.),"
+                 "'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),"
+                 f"'{label.lower()}')]")
+        for el in safe_find_all(d, By.XPATH, xpath):
+            if not is_visible(d, el):
+                continue
+            try:
+                ok = d.execute_script("""
+                    const el = arguments[0];
+                    if (!el) return false;
+                    const inMain = !!el.closest('main');
+                    const inHeader = !!el.closest('header');
+                    const inNav = !!el.closest('nav');
+                    const inFooter = !!el.closest('footer');
+                    return inMain && !inHeader && !inNav && !inFooter;
+                """, el)
+                if not ok:
+                    continue
+            except Exception:
+                pass
+            try:
+                el.click()
+                time.sleep(0.25)
+                return True
+            except Exception:
+                continue
+        return False
+
+    # Try tabs that commonly gate the hints section
+    return (
+        _click_text("support hints")
+        or _click_text("skills from events")
+        or _click_text("hints")
+        or _click_text("skills")
+    )
+
+def _merge_support_hints(base: List[Dict[str, Any]], extra: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    # Dedupe by name, prefer entries with SkillId
+    by_name: Dict[str, Dict[str, Any]] = {}
+    for h in base + extra:
+        if not isinstance(h, dict):
+            continue
+        name = (h.get("Name") or "").strip()
+        if not name:
+            continue
+        key = name.lower()
+        cur = by_name.get(key)
+        if not cur:
+            by_name[key] = h
+            continue
+        cur_id = str(cur.get("SkillId") or "")
+        new_id = str(h.get("SkillId") or "")
+        if not cur_id and new_id:
+            by_name[key] = h
+    return list(by_name.values())
+
+def _open_character_events_tab(d) -> bool:
+    def _click_text(label: str) -> bool:
+        xpath = ("//*[self::button or self::a or self::div or self::span]"
+                 "[contains(translate(normalize-space(.),"
+                 "'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),"
+                 f"'{label.lower()}')]")
+        for el in safe_find_all(d, By.XPATH, xpath):
+            if not is_visible(d, el):
+                continue
+            try:
+                ok = d.execute_script("""
+                    const el = arguments[0];
+                    if (!el) return false;
+                    const inMain = !!el.closest('main');
+                    const inHeader = !!el.closest('header');
+                    const inNav = !!el.closest('nav');
+                    const inFooter = !!el.closest('footer');
+                    return inMain && !inHeader && !inNav && !inFooter;
+                """, el)
+                if not ok:
+                    continue
+            except Exception:
+                pass
+            try:
+                el.click()
+                time.sleep(0.25)
+                return True
+            except Exception:
+                continue
+        return False
+
+    return _click_text("events") or _click_text("event")
+
+def _parse_objectives_from_json(objective_data: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    """Parse objectives from the new JSON structure."""
+    objectives: List[Dict[str, Any]] = []
+    if not objective_data:
+        return objectives
+
+    for obj in objective_data:
+        if not isinstance(obj, dict):
+            continue
+
+        # Get race info
+        races = obj.get("races") or []
+        race_names = []
+        for race in races:
+            if isinstance(race, dict):
+                race_name = race.get("name_en") or race.get("name") or ""
+                if race_name:
+                    race_names.append(race_name)
+
+        objective_name = ", ".join(race_names) if race_names else f"Objective {obj.get('order', '?')}"
+
+        # Parse turn to schedule
+        turn = obj.get("turn", 0)
+        cond_type = obj.get("cond_type", "")
+        cond_value = obj.get("cond_value", "")
+
+        # Convert turn to year/period
+        if turn <= 24:
+            year = "Junior Year"
+        elif turn <= 48:
+            year = "Classic Year"
+        else:
+            year = "Senior Year"
+
+        objectives.append({
+            "ObjectiveName": objective_name,
+            "Turn": str(turn),
+            "Time": year,
+            "ObjectiveCondition": f"{cond_type}: {cond_value}" if cond_type else ""
+        })
+
+    return objectives
+
+def _parse_stats_from_json(item_data: Dict[str, Any]) -> Tuple[Dict, Dict, Dict]:
+    """Parse base stats, stat bonuses, and aptitudes from JSON."""
+    base_stats: Dict = {}
+    stat_bonuses: Dict = {}
+    aptitudes: Dict = {}
+
+    # Base stats - usually in arrays like [speed, stamina, power, guts, wit]
+    stat_names = ["Speed", "Stamina", "Power", "Guts", "Wit"]
+    stat_key_map = {
+        "speed": "Speed", "spd": "Speed",
+        "stamina": "Stamina", "sta": "Stamina",
+        "power": "Power", "pow": "Power",
+        "guts": "Guts", "gut": "Guts",
+        "wit": "Wit", "wis": "Wit", "wisdom": "Wit", "int": "Wit", "intelligence": "Wit",
+    }
+
+    def _normalize_stat_key(k: str) -> str:
+        return stat_key_map.get((k or "").strip().lower(), k)
+
+    def _stats_from_value(v: Any) -> Dict[str, Any]:
+        if isinstance(v, list):
+            return {stat_names[i]: v[i] for i in range(min(len(stat_names), len(v)))}
+        if isinstance(v, dict):
+            out = {}
+            for k, val in v.items():
+                nk = _normalize_stat_key(str(k))
+                if nk in stat_names and val is not None:
+                    out[nk] = val
+            return out
+        return {}
+
+    three_star = item_data.get("status_3") or item_data.get("base_stats_3") or item_data.get("status3") or []
+    five_star = item_data.get("status_5") or item_data.get("base_stats_5") or item_data.get("status5") or item_data.get("status") or []
+
+    three_stats = _stats_from_value(three_star)
+    five_stats = _stats_from_value(five_star)
+    if three_stats:
+        base_stats["3★"] = three_stats
+    if five_stats:
+        base_stats["5★"] = five_stats
+
+    # Stat bonuses / growths
+    bonus_data = (
+        item_data.get("bonus")
+        or item_data.get("stat_bonus")
+        or item_data.get("stat_bonus_rate")
+        or item_data.get("growth")
+        or item_data.get("growth_rate")
+        or item_data.get("growths")
+        or item_data.get("stat_growth")
+        or item_data.get("stats_growth")
+        or []
+    )
+    if isinstance(bonus_data, list):
+        for i, val in enumerate(bonus_data):
+            if i < len(stat_names):
+                stat_bonuses[stat_names[i]] = val or 0
+    elif isinstance(bonus_data, dict):
+        for k, val in bonus_data.items():
+            nk = _normalize_stat_key(str(k))
+            if nk in stat_names:
+                stat_bonuses[nk] = val or 0
+
+    # Aptitudes - [turf, dirt, short, mile, medium, long, front, pace, late, end]
+    apt_data = item_data.get("apt") or item_data.get("aptitude") or item_data.get("aptitudes") or []
+    if isinstance(apt_data, list) and len(apt_data) >= 10:
+        aptitudes["Surface"] = {"Turf": apt_data[0], "Dirt": apt_data[1]}
+        aptitudes["Distance"] = {"Short": apt_data[2], "Mile": apt_data[3], "Medium": apt_data[4], "Long": apt_data[5]}
+        aptitudes["Strategy"] = {"Front": apt_data[6], "Pace": apt_data[7], "Late": apt_data[8], "End": apt_data[9]}
+    elif isinstance(apt_data, dict):
+        surface = apt_data.get("surface") or apt_data.get("Surface") or {}
+        distance = apt_data.get("distance") or apt_data.get("Distance") or {}
+        strategy = apt_data.get("strategy") or apt_data.get("Strategy") or {}
+        if surface: aptitudes["Surface"] = surface
+        if distance: aptitudes["Distance"] = distance
+        if strategy: aptitudes["Strategy"] = strategy
+
+    return base_stats, stat_bonuses, aptitudes
+
+def _normalize_strategy_names(aptitudes: Dict) -> Dict:
+    if not aptitudes or "Strategy" not in aptitudes:
+        return aptitudes
+    strat = aptitudes.get("Strategy") or {}
+    if not isinstance(strat, dict):
+        return aptitudes
+    remapped = {}
+    for k, v in strat.items():
+        if k == "Stalker":
+            remapped["Pace"] = v
+        elif k == "Mid":
+            remapped["Late"] = v
+        else:
+            remapped[k] = v
+    aptitudes["Strategy"] = remapped
+    return aptitudes
+
+def _parse_base_stats_from_page(d) -> Dict:
+    cap = _get_caption_el(d, "Base stats")
+    blocks = _stats_blocks_after_caption(d, cap)
+    out: Dict = {}
+    for b in blocks:
+        parsed = _parse_base_stats_from_block(b)
+        if parsed:
+            out[f"{parsed['stars']}★"] = parsed["stats"]
+    return out
+
+def _parse_stat_bonuses_from_page(d) -> Dict:
+    cap = _get_caption_el(d, "Stat bonuses")
+    blocks = _stats_blocks_after_caption(d, cap)
+    if blocks:
+        return _parse_stat_bonuses(blocks[0])
+    return {}
+
+def _parse_aptitudes_from_page(d) -> Dict:
+    cap = _get_caption_el(d, "Aptitude")
+    blocks = _stats_blocks_after_caption(d, cap)
+    return _parse_aptitudes(blocks)
+
+def _parse_height_from_page(d) -> Optional[int]:
+    raw = _label_value(d, "Height") or _label_value(d, "Height (cm)")
+    m = re.search(r"(\d+)", raw or "")
+    return int(m.group(1)) if m else None
+
+def _parse_sizes_from_item(item_data: Dict[str, Any]) -> Dict:
+    for key in ("three_sizes", "three_size", "threeSizes", "sizes"):
+        v = item_data.get(key)
+        if isinstance(v, dict):
+            b = v.get("B") or v.get("bust")
+            w = v.get("W") or v.get("waist")
+            h = v.get("H") or v.get("hip")
+            if b and w and h:
+                return {"B": b, "W": w, "H": h}
+        if isinstance(v, list) and len(v) >= 3:
+            return {"B": v[0], "W": v[1], "H": v[2]}
+        if isinstance(v, str):
+            parsed = _parse_three_sizes(v)
+            if parsed:
+                return parsed
+    if item_data.get("bust") and item_data.get("waist") and item_data.get("hip"):
+        return {"B": item_data["bust"], "W": item_data["waist"], "H": item_data["hip"]}
+    return {}
+
 def scrape_characters(save_path: str, server: str, headless: bool = True):
     d = new_driver(headless=headless)
     try:
-        with_retries(nav, d, "https://gametora.com/umamusume/characters", "main main")
+        with_retries(nav, d, "https://gametora.com/umamusume/characters", "body")
         ensure_server(d, server=server, keep_raw_en=True)
+        time.sleep(1)  # Wait for page to fully load
 
-        anchors = filter_visible(d, safe_find_all(d, By.CSS_SELECTOR, "main main div:last-child a[href*='/umamusume/characters/']"))
+        # Find character links - use broader selector since classes are hashed
+        anchors = safe_find_all(d, By.CSS_SELECTOR, "a[href*='/umamusume/characters/']")
+        anchors = filter_visible(d, anchors)
         urls = []
         for a in anchors:
-            try:
-                inner = a.find_element(By.CSS_SELECTOR, "div")
-                if not is_visible(d, inner): continue
-            except Exception: pass
             href = a.get_attribute("href") or ""
-            if href and href not in urls: urls.append(href)
+            # Filter out the main list page and duplicates
+            if href and "/umamusume/characters/" in href and href != "https://gametora.com/umamusume/characters" and href not in urls:
+                # Make sure it's a specific character page (has ID in URL)
+                if re.search(r'/characters/\d+-', href) or re.search(r'/characters/[a-z]+-[a-z]+', href):
+                    urls.append(href)
 
+        urls = list(dict.fromkeys(urls))  # Remove duplicates while preserving order
         urls = list(reversed(urls))
         total = len(urls)
+
+        if total == 0:
+            print("[character] No character links found; trying to scroll and reload...")
+            _scroll_page_until_stable(d)
+            time.sleep(1)
+            anchors = safe_find_all(d, By.CSS_SELECTOR, "a[href*='/umamusume/characters/']")
+            anchors = filter_visible(d, anchors)
+            for a in anchors:
+                href = a.get_attribute("href") or ""
+                if href and "/umamusume/characters/" in href and "characters" != href.split("/")[-1] and href not in urls:
+                    urls.append(href)
+            urls = list(dict.fromkeys(urls))
+            total = len(urls)
+
+        print(f"[character] Found {total} character URLs to scrape")
+
         for i, url in enumerate(urls, 1):
             for attempt in range(RETRIES + 1):
                 try:
@@ -782,85 +1293,85 @@ def scrape_characters(save_path: str, server: str, headless: bool = True):
                     slug, uma_id = _slug_and_id_from_url(url)
                     if not ok: raise TimeoutException("no body")
 
-                    # --- Core identity ---
-                    wait_css(d, 'div[class*=characters_infobox_character_name] > a', 8)
-                    name_el = safe_find(d, By.CSS_SELECTOR, 'div[class*=characters_infobox_character_name] > a')
-                    name = (txt(name_el) or "").replace("\n","")
-                    if not name:
-                        raise WebDriverException("Missing character name")
+                    time.sleep(0.5)  # Wait for JS to load
 
-                    # top meta: nickname + base-stars
-                    nickname, base_stars = _parse_top_meta(d)
-                    uma_key = _make_uma_key(name, nickname, slug)
+                    # Try to get data from __NEXT_DATA__ JSON first
+                    page_props = get_page_props(d)
 
-                    # height + three sizes
-                    height_cm = None
-                    try:
-                        h_raw = _label_value(d, "Height")
-                        m = re.search(r"(\d+)", h_raw or "")
-                        height_cm = int(m.group(1)) if m else None
-                    except Exception:
-                        pass
-                    sizes_raw = _label_value(d, "Three sizes")
-                    sizes = _parse_three_sizes(sizes_raw)
+                    if page_props:
+                        # New JSON-based extraction
+                        item_data = page_props.get("itemData", {})
+                        event_data = (
+                            page_props.get("eventData")
+                            or page_props.get("events")
+                            or page_props.get("event")
+                            or page_props.get("event_data")
+                            or {}
+                        )
+                        objective_data = page_props.get("objectiveData", [])
 
-                    # --- Base stats (3★ / 5★) ---
-                    base_stats: dict = {}
-                    cap_base = _get_caption_el(d, "Base stats")
-                    base_blocks = _stats_blocks_after_caption(d, cap_base)
+                        # Get character name
+                        name = item_data.get("name_en") or item_data.get("name") or ""
+                        if not name:
+                            # Fallback to DOM
+                            name_el = safe_find(d, By.CSS_SELECTOR, "h1, [class*='name']")
+                            name = (txt(name_el) or "").replace("\n", "")
 
-                    for idx, blk in enumerate(base_blocks[:2]):  # usually two blocks: 3★ then 5★
-                        parsed = _parse_base_stats_from_block(blk)  # {'stars': 3|5, 'stats': {...}} or {}
-                        stars = parsed.get("stars") or (3 if idx == 0 else 5)
-                        stats = parsed.get("stats", {})
-                        if stats:
-                            base_stats[f"{stars}★"] = stats
+                        if not name:
+                            raise WebDriverException("Missing character name")
 
-                    # --- Stat bonuses ---
-                    stat_bonuses: dict = {}
-                    cap_bonus = _get_caption_el(d, "Stat bonuses")
-                    bonus_blocks = _stats_blocks_after_caption(d, cap_bonus)
-                    if bonus_blocks:
-                        stat_bonuses = _parse_stat_bonuses(bonus_blocks[0])
+                        nickname = item_data.get("title_en") or item_data.get("title") or ""
+                        uma_key = _make_uma_key(name, nickname, slug)
 
-                    # --- Aptitudes (Surface / Distance / Strategy) ---
-                    aptitudes: dict = {}
-                    cap_apt = _get_caption_el(d, "Aptitude")
-                    apt_blocks = _stats_blocks_after_caption(d, cap_apt)
-                    if apt_blocks:
-                        aptitudes = _parse_aptitudes(apt_blocks)
+                        # Parse stats (JSON first, DOM fallback)
+                        base_stats, stat_bonuses, aptitudes = _parse_stats_from_json(item_data)
+                        if not base_stats:
+                            base_stats = _parse_base_stats_from_page(d)
+                        if not stat_bonuses:
+                            stat_bonuses = _parse_stat_bonuses_from_page(d)
+                        if not aptitudes:
+                            aptitudes = _parse_aptitudes_from_page(d)
+                        aptitudes = _normalize_strategy_names(aptitudes)
 
-                    # --- Objectives ---
-                    objectives = []
-                    for card in safe_find_all(d, By.CSS_SELECTOR,
-                        'div[class*=characters_objective_box] > div[class*=characters_objective]'):
-                        if not is_visible(d, card): continue
-                        objective_name = txt(safe_find(card, By.CSS_SELECTOR,
-                            'div[class*=characters_objective_text] > div:nth-of-type(1)'))
-                        turn = txt(safe_find(card, By.CSS_SELECTOR,
-                            'div[class*=characters_objective_text] > div:nth-of-type(2)'))
-                        tim = txt(safe_find(card, By.CSS_SELECTOR,
-                            'div[class*=characters_objective_text] > div:nth-of-type(3)'))
-                        cond = txt(safe_find(card, By.CSS_SELECTOR,
-                            'div[class*=characters_objective_text] > div:nth-of-type(4)'))
-                        objectives.append({
-                            "ObjectiveName": objective_name, "Turn": turn, "Time": tim, "ObjectiveCondition": cond
-                        })
+                        # Get base stars from rarity field
+                        base_stars = item_data.get("rarity") or item_data.get("stars") or 0
 
-                    # --- Events ---
-                    events: List[Dict[str, Any]] = []
-                    for elist in safe_find_all(d, By.CSS_SELECTOR, 'div[class*=eventhelper_elist]'):
-                        if not is_visible(d, elist): continue
-                        for it in elist.find_elements(By.CSS_SELECTOR, 'div[class*=compatibility_viewer_item]'):
-                            if not is_visible(d, it): continue
-                            event_name = txt(it)
-                            if not event_name: continue
-                            pop = tippy_show_and_get_popper(d, it)
-                            try:
-                                for kv in parse_event_from_tippy_popper(pop):
-                                    events.append({"EventName": event_name, "EventOptions": kv})
-                            finally:
-                                tippy_hide(d, it)
+                        # Height and sizes
+                        height_cm = item_data.get("height") or item_data.get("height_cm") or item_data.get("heightCm") or None
+                        if height_cm is None:
+                            height_cm = _parse_height_from_page(d)
+                        sizes = _parse_sizes_from_item(item_data)
+                        if not sizes:
+                            sizes = _parse_three_sizes(_label_value(d, "Three sizes") or _label_value(d, "Three Sizes"))
+
+                        # Parse objectives
+                        objectives = _parse_objectives_from_json(objective_data)
+
+                        # Parse events
+                        events = _parse_events_from_json(event_data, lang="en")
+                        if not events:
+                            _open_character_events_tab(d)
+                            events = _parse_character_events_from_page(d)
+
+                    else:
+                        # Fallback to old DOM-based parsing (may not work with new UI)
+                        print(f"  [warn] No __NEXT_DATA__ found for {url}, trying DOM fallback...")
+
+                        name_el = safe_find(d, By.CSS_SELECTOR, 'h1, div[class*=character] [class*=name]')
+                        name = (txt(name_el) or "").replace("\n", "")
+                        if not name:
+                            raise WebDriverException("Missing character name")
+
+                        nickname, base_stars = _parse_top_meta(d)
+                        uma_key = _make_uma_key(name, nickname, slug)
+
+                        base_stats = _parse_base_stats_from_page(d)
+                        stat_bonuses = _parse_stat_bonuses_from_page(d)
+                        aptitudes = _normalize_strategy_names(_parse_aptitudes_from_page(d))
+                        height_cm = _parse_height_from_page(d)
+                        sizes = _parse_three_sizes(_label_value(d, "Three sizes") or _label_value(d, "Three Sizes"))
+                        objectives = []
+                        events = []
 
                     # --- Upsert record ---
                     upsert_json_item(save_path, "UmaKey", uma_key, {
@@ -890,7 +1401,7 @@ def scrape_characters(save_path: str, server: str, headless: bool = True):
                         try: d.quit()
                         except Exception: pass
                         d = new_driver(headless=headless)
-                        with_retries(nav, d, "https://gametora.com/umamusume/characters", "main main")
+                        with_retries(nav, d, "https://gametora.com/umamusume/characters", "body")
                         ensure_server(d, server=server, keep_raw_en=True)
                         continue
                     else:
@@ -1027,20 +1538,152 @@ def scrape_supports(out_events_path: str, out_hints_path: str, server: str, head
         except Exception: pass
 
 
+def _parse_support_events_from_json(event_data: Dict[str, Any], lang: str = "en") -> List[Dict[str, Any]]:
+    """Parse support card events from JSON (random events and chain/arrow events)."""
+    events: List[Dict[str, Any]] = []
+    if not event_data:
+        return events
+
+    # Get language-specific data
+    lang_data = event_data.get(lang) or event_data.get("en") or event_data.get("ja") or {}
+    if not isinstance(lang_data, dict):
+        lang_data = event_data if isinstance(event_data, dict) else {}
+
+    # Process random events and arrows (chain events)
+    for category in ["random", "arrows", "chain"]:
+        cat_events = lang_data.get(category, []) if isinstance(lang_data, dict) else []
+        if not isinstance(cat_events, list):
+            continue
+
+        for evt in cat_events:
+            if not isinstance(evt, dict):
+                continue
+
+            event_name = evt.get("n") or evt.get("name") or ""
+            if not event_name:
+                continue
+
+            choices = evt.get("c") or evt.get("choices") or []
+            if not choices:
+                # No-choice event
+                rewards = evt.get("r") or evt.get("rewards") or []
+                reward_str = _format_stat_rewards(rewards)
+                events.append({
+                    "EventName": event_name,
+                    "EventOptions": {"(Auto)": reward_str or "See details"}
+                })
+            else:
+                for choice in choices:
+                    if isinstance(choice, dict):
+                        choice_name = choice.get("n") or choice.get("name") or "Option"
+                        rewards = choice.get("r") or choice.get("rewards") or []
+                        reward_str = _format_stat_rewards(rewards)
+                        events.append({
+                            "EventName": event_name,
+                            "EventOptions": {choice_name: reward_str or "See details"}
+                        })
+
+    return events
+
+def _parse_support_hints_from_json(item_data: Dict[str, Any]) -> List[Dict[str, Any]]:
+    """Parse support hints/skills from JSON."""
+    hints: List[Dict[str, Any]] = []
+
+    hints_data = item_data.get("hints", {})
+    if not hints_data:
+        return hints
+
+    # hint_skills is a list of skill IDs
+    name_map = _load_skill_name_map()
+    hint_skills = hints_data.get("hint_skills", [])
+    for skill_id in hint_skills:
+        sid = str(skill_id)
+        hints.append({
+            "SkillId": sid,
+            "Name": name_map.get(sid, ""),
+            "HintLevel": None
+        })
+
+    # hint_others contains stat bonuses like "Speed +6"
+    hint_others = hints_data.get("hint_others", [])
+    for other in hint_others:
+        if isinstance(other, str):
+            hints.append({
+                "SkillId": "",
+                "Name": other,
+                "HintLevel": None
+            })
+        elif isinstance(other, dict):
+            name = other.get("name") or other.get("n") or other.get("label") or ""
+            if name:
+                hints.append({
+                    "SkillId": "",
+                    "Name": name,
+                    "HintLevel": None
+                })
+
+    return hints
+
 def _scrape_support_detail(d, url: str, previews: dict, thumbs_dir: str,
                            out_events_path: str, out_hints_path: str) -> tuple[str, str, Optional[str], int, int]:
     slug, sup_id = _slug_and_id_from_url(url)
 
-    name_el = safe_find(d, By.CSS_SELECTOR, 'h1, div[class*=supports_infobox_] [class*="name"], [class*="support_name"]')
-    sname = txt(name_el) or url.rstrip("/").split("/")[-1]
+    time.sleep(0.3)  # Wait for page to load
 
-    m = re.search(r"\((SSR|SR|R)\)", sname, flags=re.I)
-    rarity = m.group(1).upper() if m else "UNKNOWN"
+    # Try to get data from __NEXT_DATA__ JSON first
+    page_props = get_page_props(d)
 
-    added = 0
+    if page_props:
+        # New JSON-based extraction
+        item_data = page_props.get("itemData", {})
+        event_data = page_props.get("eventData", {})
 
-    hints = parse_support_hints_on_page(d)
+        # Get support card name
+        sname = item_data.get("name_en") or item_data.get("name") or ""
+        if not sname:
+            # Fallback to DOM
+            name_el = safe_find(d, By.CSS_SELECTOR, "h1, [class*='name']")
+            sname = txt(name_el) or url.rstrip("/").split("/")[-1]
 
+        # Get rarity from JSON
+        rarity_map = {1: "R", 2: "SR", 3: "SSR"}
+        rarity_num = item_data.get("rarity") or 0
+        rarity = rarity_map.get(rarity_num, "UNKNOWN")
+
+        # If rarity not in JSON, try to parse from name
+        if rarity == "UNKNOWN":
+            m = re.search(r"\((SSR|SR|R)\)", sname, flags=re.I)
+            rarity = m.group(1).upper() if m else "UNKNOWN"
+
+        # Get support ID from JSON if not from URL
+        if not sup_id:
+            sup_id = str(item_data.get("id") or item_data.get("support_id") or "")
+
+        # Parse hints from JSON first, then enrich from DOM (includes "Skills from events")
+        hints = _parse_support_hints_from_json(item_data)
+        _open_support_hints_tab(d)
+        dom_hints = parse_support_hints_on_page(d)
+        if dom_hints:
+            hints = _merge_support_hints(hints, dom_hints)
+
+        # Parse events from JSON
+        events = _parse_support_events_from_json(event_data, lang="en")
+
+    else:
+        # Fallback to DOM-based parsing
+        print(f"  [warn] No __NEXT_DATA__ found for {url}, trying DOM fallback...")
+
+        name_el = safe_find(d, By.CSS_SELECTOR, 'h1, div[class*=support] [class*="name"]')
+        sname = txt(name_el) or url.rstrip("/").split("/")[-1]
+
+        m = re.search(r"\((SSR|SR|R)\)", sname, flags=re.I)
+        rarity = m.group(1).upper() if m else "UNKNOWN"
+
+        _open_support_hints_tab(d)
+        hints = parse_support_hints_on_page(d)
+        events = []
+
+    # Handle image
     img_url = ""
     if slug in previews:
         img_url = previews[slug].get("SupportImage", "") or ""
@@ -1051,28 +1694,17 @@ def _scrape_support_detail(d, url: str, previews: dict, thumbs_dir: str,
         src = _abs_url(d, big.get_attribute("src") or "") if big else ""
         img_url = _save_thumb(src, thumbs_dir, slug, sup_id)
 
-    for elist in safe_find_all(d, By.CSS_SELECTOR, 'div[class*=eventhelper_elist]'):
-        if not is_visible(d, elist):
-            continue
-        for it in elist.find_elements(By.CSS_SELECTOR, 'div[class*=compatibility_viewer_item]'):
-            if not is_visible(d, it):
-                continue
-            ev_name = txt(it)
-            if not ev_name:
-                continue
-            pop = tippy_show_and_get_popper(d, it)
-            try:
-                rows = parse_event_from_tippy_popper(pop)
-                for kv in rows:
-                    if append_json_item(
-                        out_events_path,
-                        make_support_card(ev_name, kv),
-                        dedup_key=("EventName", "EventOptions")
-                    ):
-                        added += 1
-            finally:
-                tippy_hide(d, it)
+    # Save events
+    added = 0
+    for evt in events:
+        if append_json_item(
+            out_events_path,
+            make_support_card(evt["EventName"], evt["EventOptions"]),
+            dedup_key=("EventName", "EventOptions")
+        ):
+            added += 1
 
+    # Upsert hints
     upsert_json_item(out_hints_path, "SupportSlug", slug or sname, {
         "SupportSlug": slug or sname,
         "SupportId": sup_id,
@@ -1090,32 +1722,53 @@ def scrape_supports_threaded(out_events_path: str, out_hints_path: str, server: 
                              min_interval: float = 0.9, jitter: float = 0.25) -> None:
     d = new_driver(headless=headless)
     try:
-        with_retries(nav, d, "https://gametora.com/umamusume/supports", "main main")
+        with_retries(nav, d, "https://gametora.com/umamusume/supports", "body")
         ensure_server(d, server=server, keep_raw_en=True)
+        time.sleep(1)  # Wait for JS to load
 
         # collect preview thumbnails by slug/id once
         previews = collect_support_previews(d, thumbs_dir)
+
+        # Scroll to load all cards
+        _scroll_page_until_stable(d)
+        time.sleep(0.5)
 
         cards = _wait_support_cards(d)
         if not cards:
             _scroll_page_until_stable(d)
             cards = _wait_support_cards(d, timeout_s=4.0)
+
         urls = []
+        seen = set()
         for a in cards:
-            try:
-                inner = a.find_element(By.CSS_SELECTOR, "div")
-                if not is_visible(d, inner):
-                    continue
-            except Exception:
-                pass
             href = a.get_attribute("href") or ""
-            if href and href not in urls:
-                urls.append(href)
+            if href and href not in seen:
+                # Validate it's a specific support page
+                if re.search(r'/supports/\d+-', href):
+                    seen.add(href)
+                    urls.append(href)
+
+        # Also try to get URLs from __NEXT_DATA__ if available
+        if not urls:
+            page_props = get_page_props(d)
+            if page_props:
+                items = page_props.get("items") or page_props.get("supports") or []
+                for item in items:
+                    if isinstance(item, dict):
+                        item_id = item.get("id") or item.get("support_id")
+                        slug = item.get("slug") or ""
+                        if item_id:
+                            url = f"https://gametora.com/umamusume/supports/{item_id}-{slug}" if slug else f"https://gametora.com/umamusume/supports/{item_id}"
+                            if url not in seen:
+                                seen.add(url)
+                                urls.append(url)
 
         total = len(urls)
         if total == 0:
             print("[support] No support cards found on list page; site layout may have changed.")
             return
+
+        print(f"[support] Found {total} support card URLs to scrape")
     finally:
         try: d.quit()
         except Exception: pass
@@ -1182,40 +1835,77 @@ def scrape_career(save_path: str, server: str, headless: bool = True):
     d = new_driver(headless=headless)
     try:
         with_retries(nav, d, "https://gametora.com/umamusume/training-event-helper", "body")
+        time.sleep(1)  # Wait for JS to load
+
         # Pre-set deck
         d.execute_script('localStorage.setItem("u-eh-d1","[\\"Deck 1\\",106101,1,30024,30024,30009,30024,30009,30008]")')
         d.refresh()
+        time.sleep(1)
         ensure_server(d, server=server, keep_raw_en=True)
 
-        _click(d, "#boxScenario"); time.sleep(DELAY)
-        scenario_entries = safe_find_all(d, By.CSS_SELECTOR, 'div[class*=tooltips_tooltip_striped] > div')
+        # Find scenario dropdown - try multiple selectors
+        scenario_btn = safe_find(d, By.CSS_SELECTOR, "#boxScenario") or safe_find(d, By.XPATH, "//*[contains(text(), 'Scenario')]")
+        if scenario_btn:
+            try: scenario_btn.click()
+            except Exception: pass
+            time.sleep(DELAY)
+
+        # Find scenario entries - use more flexible selectors
+        scenario_entries = safe_find_all(d, By.CSS_SELECTOR, '[data-tippy-root] > div > div > div')
+        if not scenario_entries:
+            scenario_entries = safe_find_all(d, By.CSS_SELECTOR, 'div[role="tooltip"] > div')
+
         total = len(scenario_entries)
+        print(f"[career] Found {total} scenario entries")
 
         for idx in range(total):
-            _click(d, "#boxScenario"); time.sleep(DELAY)
-            entry = safe_find(d, By.CSS_SELECTOR, f'div[class*=tooltips_tooltip_striped] > div:nth-of-type({idx + 1})')
-            if not entry or not is_visible(d, entry): continue
+            # Re-open dropdown each iteration
+            scenario_btn = safe_find(d, By.CSS_SELECTOR, "#boxScenario") or safe_find(d, By.XPATH, "//*[contains(text(), 'Scenario')]")
+            if scenario_btn:
+                try: scenario_btn.click()
+                except Exception: pass
+                time.sleep(DELAY)
+
+            # Re-find entries
+            entries = safe_find_all(d, By.CSS_SELECTOR, '[data-tippy-root] > div > div > div')
+            if not entries:
+                entries = safe_find_all(d, By.CSS_SELECTOR, 'div[role="tooltip"] > div')
+
+            if idx >= len(entries):
+                continue
+
+            entry = entries[idx]
+            if not entry or not is_visible(d, entry):
+                continue
+
             try: entry.click()
             except Exception: pass
             time.sleep(DELAY)
 
-            btn = safe_find(d, By.CSS_SELECTOR, f'[id="{idx + 1}"][class*="filters_viewer_image_"]')
+            # Find filter buttons by ID
+            btn = safe_find(d, By.CSS_SELECTOR, f'[id="{idx + 1}"]') or safe_find(d, By.ID, str(idx + 1))
             if btn:
                 try: btn.click()
                 except Exception: pass
                 time.sleep(DELAY)
 
                 added = 0
-                for it in safe_find_all(d, By.CSS_SELECTOR,
-                        'div[class*=eventhelper_elist] > div[class*=compatibility_viewer_item]'):
-                    if not is_visible(d, it): continue
+                # Find event items - use broader selectors
+                event_items = safe_find_all(d, By.CSS_SELECTOR, '[class*="event"] [class*="item"]')
+                if not event_items:
+                    event_items = safe_find_all(d, By.CSS_SELECTOR, '[class*="elist"] > div')
+
+                for it in event_items:
+                    if not is_visible(d, it):
+                        continue
                     name = txt(it)
-                    if not name: continue
+                    if not name:
+                        continue
                     pop = tippy_show_and_get_popper(d, it)
                     try:
                         for kv in parse_event_from_tippy_popper(pop):
                             if append_json_item(save_path, make_career(name, kv),
-                                                dedup_key=("EventName","EventOptions")):
+                                                dedup_key=("EventName", "EventOptions")):
                                 added += 1
                     finally:
                         tippy_hide(d, it)
@@ -1242,92 +1932,133 @@ def scrape_races(save_path: str, server: str, headless: bool = True):
     d = new_driver(headless=headless)
     try:
         with_retries(nav, d, "https://gametora.com/umamusume/races", "body")
+        time.sleep(1)  # Wait for JS to load
         ensure_server(d, server=server, keep_raw_en=True)
+        time.sleep(0.5)
 
-        rows = filter_visible(d, safe_find_all(d, By.CSS_SELECTOR, 'div[class*="races_race_list"] > div[class*="races_row"]'))
+        # Scroll to load all races
+        _scroll_page_until_stable(d)
+        time.sleep(0.5)
+
+        # Find race rows - use flexible selectors
+        rows = safe_find_all(d, By.CSS_SELECTOR, '[class*="race"] [class*="row"]')
+        if not rows:
+            rows = safe_find_all(d, By.CSS_SELECTOR, '[class*="list"] > div[class*="row"]')
+        if not rows:
+            # Try to find any clickable race items
+            rows = safe_find_all(d, By.CSS_SELECTOR, 'a[href*="/umamusume/races/"]')
+
+        rows = filter_visible(d, rows)
         total = len(rows)
+        print(f"[races] Found {total} race rows")
+
         for idx, row in enumerate(rows, 1):
-            name_el = safe_find(row, By.CSS_SELECTOR, 'div[class*="races_name"] > div[class*="races_item"]')
-            if name_el and not is_visible(d, name_el): continue
-            race_name = txt(name_el)
+            # Find race name - look for text in various locations
+            name_el = safe_find(row, By.CSS_SELECTOR, '[class*="name"]') or safe_find(row, By.CSS_SELECTOR, 'div > div:first-child')
+            race_name = txt(name_el) if name_el else ""
+
             if not race_name:
-                print(f"[{idx}/{total}] (skip unnamed race)"); continue
+                # If this is a link, try to extract name from the URL or inner text
+                if row.tag_name == "a":
+                    href = row.get_attribute("href") or ""
+                    race_name = txt(row) or href.split("/")[-1].replace("-", " ").title()
+
+            if not race_name:
+                print(f"[{idx}/{total}] (skip unnamed race)")
+                continue
 
             if race_name in ("Junior Make Debut", "Junior Maiden Race"):
                 item = make_race(
                     race_name, "Junior Year Pre-Debut", "Pre Debut",
                     "Varies", "Varies", "Varies", "Varies", "Varies", "Varies"
                 )
-                append_json_item(save_path, item, dedup_key=("RaceName","Schedule","DistanceMeter"))
+                append_json_item(save_path, item, dedup_key=("RaceName", "Schedule", "DistanceMeter"))
                 print(f"[{idx}/{total}] {race_name} (special) ✓")
                 continue
 
-            date_el = safe_find(row, By.CSS_SELECTOR, 'div[class*="races_date"]')
-            if not date_el or not is_visible(d, date_el):
-                print(f"[{idx}/{total}] {race_name} (no date) skip"); continue
+            # Try to find date info
+            date_el = safe_find(row, By.CSS_SELECTOR, '[class*="date"]')
+            year = ""
+            month = ""
+            if date_el and is_visible(d, date_el):
+                divs = safe_find_all(date_el, By.CSS_SELECTOR, "div")
+                if len(divs) >= 2:
+                    year = txt(divs[0])
+                    month = txt(divs[1])
 
-            year = txt(safe_find(date_el, By.CSS_SELECTOR, "div:nth-of-type(1)"))
-            month = txt(safe_find(date_el, By.CSS_SELECTOR, "div:nth-of-type(2)"))
-            if not (year and month):
-                print(f"[{idx}/{total}] {race_name} (incomplete date) skip"); continue
+            schedule = _parse_schedule(year, month) if (year and month) else "Unknown"
 
-            schedule = _parse_schedule(year, month)
+            # Try to find terrain and distance
+            terrain = ""
+            distance_type = ""
+            distance_meter = ""
 
-            right1 = safe_find(row, By.CSS_SELECTOR, 'div[class*="aces_desc_right"] > div:nth-of-type(1)')
-            right2 = safe_find(row, By.CSS_SELECTOR, 'div[class*="aces_desc_right"] > div:nth-of-type(2)')
-            if not (right1 and right2) or not (is_visible(d, right1) and is_visible(d, right2)):
-                print(f"[{idx}/{total}] {race_name} (no descriptors) skip"); continue
+            # Look for descriptors
+            desc_divs = safe_find_all(row, By.CSS_SELECTOR, '[class*="desc"] > div')
+            for dv in desc_divs:
+                t = txt(dv)
+                if "Turf" in t or "Dirt" in t:
+                    terrain = "Turf" if "Turf" in t else "Dirt"
+                if any(x in t for x in ["Short", "Mile", "Medium", "Long"]):
+                    for dt in ["Short", "Mile", "Medium", "Long"]:
+                        if dt in t:
+                            distance_type = dt
+                            break
+                if re.search(r"\d{3,4}\s*m", t):
+                    m = re.search(r"(\d{3,4})\s*m", t)
+                    if m:
+                        distance_meter = m.group(1) + "m"
 
-            tab1 = txt(safe_find(right1, By.CSS_SELECTOR, 'div[class*="races_tabtext"]'))
-            tab2 = txt(safe_find(right2, By.CSS_SELECTOR, 'div[class*="races_tabtext"]'))
-            terrain = (txt(right1) or "").replace(tab1, "").strip()
-            distance_type = (txt(right2) or "").replace(tab2, "").strip()
-            distance_meter = tab2
-
-            details = safe_find(row, By.CSS_SELECTOR, 'div[class*="races_ribbon"] > div[class*="utils_linkcolor"]')
-            if details and is_visible(d, details):
-                try: details.click()
+            # Try to click for details
+            details_btn = safe_find(row, By.CSS_SELECTOR, '[class*="detail"]') or safe_find(row, By.CSS_SELECTOR, 'button')
+            if details_btn and is_visible(d, details_btn):
+                try: details_btn.click()
                 except Exception: pass
                 time.sleep(DELAY)
 
-            dialog = safe_find(d, By.CSS_SELECTOR, 'div[role="dialog"]')
-            if not dialog:
-                print(f"[{idx}/{total}] {race_name} (no dialog) skip"); continue
+            dialog = safe_find(d, By.CSS_SELECTOR, 'div[role="dialog"]') or safe_find(d, By.CSS_SELECTOR, '[class*="modal"]')
 
-            grade_text = txt(safe_find(dialog, By.CSS_SELECTOR, 'div[class*="races_det_item"]:nth-of-type(8)'))
-            try:
-                int(grade_text)
-                grade_text = txt(safe_find(dialog, By.CSS_SELECTOR, 'div[class*="races_det_item"]:nth-of-type(10)'))
-            except Exception:
-                pass
+            grade_text = ""
+            season_text = ""
+            fans_required = ""
+            fans_gained = ""
 
-            season_text = txt(safe_find(dialog, By.CSS_SELECTOR, 'div[class*="races_det_item"]:nth-of-type(16)'))
+            if dialog:
+                # Extract info from dialog
+                dialog_text = txt(dialog)
 
-            schedule_items = safe_find_all(dialog, By.CSS_SELECTOR, 'div[class*="races_schedule_item"]')
-            if len(schedule_items) < 2:
-                print(f"[{idx}/{total}] {race_name} (no fans info) skip")
-                close_btn = safe_find(dialog, By.CSS_SELECTOR, "img")
+                # Try to find grade
+                grade_match = re.search(r"(G1|G2|G3|OP|Pre-OP|Maiden|Pre Debut)", dialog_text)
+                if grade_match:
+                    grade_text = grade_match.group(1)
+
+                # Try to find season
+                season_match = re.search(r"(Spring|Summer|Autumn|Winter|Fall)", dialog_text)
+                if season_match:
+                    season_text = season_match.group(1)
+
+                # Try to find fans info
+                fans_req_match = re.search(r"Fans required[:\s]*(\d[\d,]*)", dialog_text)
+                if fans_req_match:
+                    fans_required = fans_req_match.group(1)
+
+                fans_gain_match = re.search(r"Fans gained[:\s]*(\d[\d,]*)", dialog_text)
+                if fans_gain_match:
+                    fans_gained = fans_gain_match.group(1)
+
+                # Close dialog
+                close_btn = safe_find(dialog, By.CSS_SELECTOR, "img, button, [class*='close']")
                 if close_btn:
                     try: close_btn.click()
                     except Exception: pass
                 time.sleep(DELAY)
-                continue
-
-            fans_required = (txt(schedule_items[0]) or "").replace("Fans required", "").strip()
-            fans_gained = (txt(schedule_items[1]) or "").replace("Fans gained", "").replace("See all", "").strip()
 
             item = make_race(
-                race_name, schedule, grade_text, terrain,
-                distance_type, distance_meter, season_text,
-                fans_required, fans_gained
+                race_name, schedule, grade_text or "Unknown", terrain or "Unknown",
+                distance_type or "Unknown", distance_meter or "Unknown", season_text or "Unknown",
+                fans_required or "Unknown", fans_gained or "Unknown"
             )
-            append_json_item(save_path, item, dedup_key=("RaceName","Schedule","DistanceMeter"))
-
-            close_btn = safe_find(dialog, By.CSS_SELECTOR, "img")
-            if close_btn:
-                try: close_btn.click()
-                except Exception: pass
-            time.sleep(DELAY)
+            append_json_item(save_path, item, dedup_key=("RaceName", "Schedule", "DistanceMeter"))
 
             print(f"[{idx}/{total}] {race_name} ✓")
     finally:
