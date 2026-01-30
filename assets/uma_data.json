@@ -6770,5 +6770,229 @@
       }
     ],
     "UmaEvents": []
+  },
+  {
+    "UmaKey": "Haru Urara :: First Urara ♪ Saku Sakura",
+    "UmaName": "Haru Urara",
+    "UmaNickname": "First Urara ♪ Saku Sakura",
+    "UmaSlug": "105202-haru-urara",
+    "UmaId": "105202",
+    "UmaBaseStars": 3,
+    "UmaBaseStats": {
+      "3★": {
+        "Speed": 94,
+        "Stamina": 54,
+        "Power": 106,
+        "Guts": 98,
+        "Wit": 98
+      },
+      "5★": {
+        "Speed": 115,
+        "Stamina": 66,
+        "Power": 130,
+        "Guts": 119,
+        "Wit": 120
+      }
+    },
+    "UmaStatBonuses": {
+      "Speed": 0,
+      "Stamina": 0,
+      "Power": 20,
+      "Guts": 10,
+      "Wit": 0
+    },
+    "UmaAptitudes": {
+      "Surface": {
+        "Turf": "G",
+        "Dirt": "A"
+      },
+      "Distance": {
+        "Short": "A",
+        "Mile": "A",
+        "Medium": "G",
+        "Long": "G"
+      },
+      "Strategy": {
+        "Front": "G",
+        "Pace": "G",
+        "Late": "A",
+        "End": "B"
+      }
+    },
+    "UmaHeightCm": 140,
+    "UmaThreeSizes": {
+      "B": 74,
+      "W": 51,
+      "H": 73
+    },
+    "UmaObjectives": [
+      {
+        "ObjectiveName": "Junior Make Debut",
+        "Turn": "12",
+        "Time": "Junior Year",
+        "ObjectiveCondition": "1: 0"
+      },
+      {
+        "ObjectiveName": "Objective 2",
+        "Turn": "37",
+        "Time": "Classic Year",
+        "ObjectiveCondition": "3: 5000"
+      },
+      {
+        "ObjectiveName": "Objective 3",
+        "Turn": "45",
+        "Time": "Classic Year",
+        "ObjectiveCondition": "3: 9000"
+      },
+      {
+        "ObjectiveName": "Objective 4",
+        "Turn": "48",
+        "Time": "Classic Year",
+        "ObjectiveCondition": "3: 12000"
+      },
+      {
+        "ObjectiveName": "Negishi Stakes",
+        "Turn": "50",
+        "Time": "Senior Year",
+        "ObjectiveCondition": "1: 5"
+      },
+      {
+        "ObjectiveName": "February Stakes",
+        "Turn": "52",
+        "Time": "Senior Year",
+        "ObjectiveCondition": "1: 5"
+      },
+      {
+        "ObjectiveName": "Elm Stakes",
+        "Turn": "63",
+        "Time": "Senior Year",
+        "ObjectiveCondition": "1: 5"
+      },
+      {
+        "ObjectiveName": "JBC Sprint, JBC Sprint, JBC Sprint, JBC Sprint",
+        "Turn": "69",
+        "Time": "Senior Year",
+        "ObjectiveCondition": "1: 1"
+      },
+      {
+        "ObjectiveName": "Arima Kinen",
+        "Turn": "72",
+        "Time": "Senior Year",
+        "ObjectiveCondition": "1: 0"
+      }
+    ],
+    "UmaEvents": []
+  },
+  {
+    "UmaKey": "TM Opera O :: Blue Dazzle",
+    "UmaName": "TM Opera O",
+    "UmaNickname": "Blue Dazzle",
+    "UmaSlug": "101502-tm-opera-o",
+    "UmaId": "101502",
+    "UmaBaseStars": 3,
+    "UmaBaseStats": {
+      "3★": {
+        "Speed": 87,
+        "Stamina": 102,
+        "Power": 74,
+        "Guts": 88,
+        "Wit": 99
+      },
+      "5★": {
+        "Speed": 106,
+        "Stamina": 124,
+        "Power": 91,
+        "Guts": 107,
+        "Wit": 122
+      }
+    },
+    "UmaStatBonuses": {
+      "Speed": 14,
+      "Stamina": 8,
+      "Power": 0,
+      "Guts": 0,
+      "Wit": 8
+    },
+    "UmaAptitudes": {
+      "Surface": {
+        "Turf": "A",
+        "Dirt": "E"
+      },
+      "Distance": {
+        "Short": "G",
+        "Mile": "E",
+        "Medium": "A",
+        "Long": "A"
+      },
+      "Strategy": {
+        "Front": "C",
+        "Pace": "A",
+        "Late": "A",
+        "End": "G"
+      }
+    },
+    "UmaHeightCm": 156,
+    "UmaThreeSizes": {
+      "B": 76,
+      "W": 55,
+      "H": 80
+    },
+    "UmaObjectives": [
+      {
+        "ObjectiveName": "Junior Make Debut",
+        "Turn": "12",
+        "Time": "Junior Year",
+        "ObjectiveCondition": "1: 0"
+      },
+      {
+        "ObjectiveName": "Objective 2",
+        "Turn": "28",
+        "Time": "Classic Year",
+        "ObjectiveCondition": "3: 5000"
+      },
+      {
+        "ObjectiveName": "Satsuki Sho",
+        "Turn": "31",
+        "Time": "Classic Year",
+        "ObjectiveCondition": "1: 5"
+      },
+      {
+        "ObjectiveName": "Tokyo Yushun (Japanese Derby)",
+        "Turn": "34",
+        "Time": "Classic Year",
+        "ObjectiveCondition": "1: 5"
+      },
+      {
+        "ObjectiveName": "Arima Kinen",
+        "Turn": "48",
+        "Time": "Classic Year",
+        "ObjectiveCondition": "1: 3"
+      },
+      {
+        "ObjectiveName": "Tenno Sho (Spring)",
+        "Turn": "56",
+        "Time": "Senior Year",
+        "ObjectiveCondition": "1: 3"
+      },
+      {
+        "ObjectiveName": "Takarazuka Kinen",
+        "Turn": "60",
+        "Time": "Senior Year",
+        "ObjectiveCondition": "1: 3"
+      },
+      {
+        "ObjectiveName": "Japan Cup",
+        "Turn": "70",
+        "Time": "Senior Year",
+        "ObjectiveCondition": "1: 2"
+      },
+      {
+        "ObjectiveName": "Arima Kinen",
+        "Turn": "72",
+        "Time": "Senior Year",
+        "ObjectiveCondition": "1: 1"
+      }
+    ],
+    "UmaEvents": []
   }
 ]

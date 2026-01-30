@@ -8546,5 +8546,201 @@
         "HintLevel": null
       }
     ]
+  },
+  {
+    "SupportSlug": "30077-admire-vega",
+    "SupportId": "30077",
+    "SupportName": "Admire Vega (SSR) Support Card",
+    "SupportRarity": "SSR",
+    "SupportImage": "/assets/support_thumbs/30077-admire-vega.png",
+    "SupportHints": [
+      {
+        "SkillId": "201492",
+        "Name": "Levelheaded",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "200632",
+        "Name": "Masterful Gambit",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "201452",
+        "Name": "End Closer Straightaways ○",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "201502",
+        "Name": "Strategist",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "201152",
+        "Name": "Tether",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "",
+        "Name": "Flustered Pace Chasers",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "",
+        "Name": "Daring Strike",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "",
+        "Name": "Subdued Pace Chasers",
+        "HintLevel": null
+      }
+    ]
+  },
+  {
+    "SupportSlug": "30078-matikanefukukitaru",
+    "SupportId": "30078",
+    "SupportName": "Matikanefukukitaru (SSR) Support Card",
+    "SupportRarity": "SSR",
+    "SupportImage": "/assets/support_thumbs/30078-matikanefukukitaru.png",
+    "SupportHints": [
+      {
+        "SkillId": "200092",
+        "Name": "Hakodate Racecourse ○",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "201562",
+        "Name": "Lucky Seven",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "200482",
+        "Name": "Calm in a Crowd",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "201422",
+        "Name": "A Small Breather",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "201571",
+        "Name": "Triple 7s",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "201392",
+        "Name": "Late Surger Corners ○",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "200781",
+        "Name": "Trick (Rear)",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "",
+        "Name": "Super Lucky Seven",
+        "HintLevel": null
+      }
+    ]
+  },
+  {
+    "SupportSlug": "30079-meisho-doto",
+    "SupportId": "30079",
+    "SupportName": "Meisho Doto (SSR) Support Card",
+    "SupportRarity": "SSR",
+    "SupportImage": "/assets/support_thumbs/30079-meisho-doto.png",
+    "SupportHints": [
+      {
+        "SkillId": "200302",
+        "Name": "Long Shot ○",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "200142",
+        "Name": "Non-Standard Distance ○",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "200152",
+        "Name": "Firm Conditions ○",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "200252",
+        "Name": "Inner Post Proficiency ○",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "201621",
+        "Name": "Shake It Out",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "201382",
+        "Name": "Late Surger Straightaways ○",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "201122",
+        "Name": "Hawkeye",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "",
+        "Name": "Medium Corners ○",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "",
+        "Name": "Killer Tunes",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "",
+        "Name": "Pace Chaser Corners ○",
+        "HintLevel": null
+      }
+    ]
+  },
+  {
+    "SupportSlug": "10075-admire-vega",
+    "SupportId": "10075",
+    "SupportName": "Admire Vega (R) Support Card",
+    "SupportRarity": "R",
+    "SupportImage": "/assets/support_thumbs/10075-admire-vega.png",
+    "SupportHints": [
+      {
+        "SkillId": "201492",
+        "Name": "Levelheaded",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "200632",
+        "Name": "Masterful Gambit",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "201452",
+        "Name": "End Closer Straightaways ○",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "201502",
+        "Name": "Strategist",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "201152",
+        "Name": "Tether",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "",
+        "Name": "Subdued Pace Chasers",
+        "HintLevel": null
+      }
+    ]
   }
 ]
