@@ -41868,5 +41868,142 @@
       }
     ],
     "UmaImage": "/assets/character_thumbs/102203-fine-motion.png"
+  },
+  {
+    "UmaKey": "Rulership :: Monochrome GM",
+    "UmaName": "Rulership",
+    "UmaNameJP": "ルーラーシップ",
+    "UmaNickname": "Monochrome GM",
+    "UmaNicknameJP": "Monochrome GM",
+    "UmaSlug": "114501-rulership",
+    "UmaId": "114501",
+    "UmaServer": "jp",
+    "UmaBaseStars": 3,
+    "UmaBaseStats": {
+      "3★": {
+        "Speed": 97,
+        "Stamina": 87,
+        "Power": 97,
+        "Guts": 72,
+        "Wit": 97
+      },
+      "5★": {
+        "Speed": 119,
+        "Stamina": 106,
+        "Power": 119,
+        "Guts": 88,
+        "Wit": 118
+      },
+      "4★": {
+        "Speed": 108,
+        "Stamina": 97,
+        "Power": 108,
+        "Guts": 80,
+        "Wit": 107
+      }
+    },
+    "UmaStatBonuses": {
+      "Speed": 0,
+      "Stamina": 10,
+      "Power": 10,
+      "Guts": 0,
+      "Wit": 10
+    },
+    "UmaAptitudes": {
+      "Surface": {
+        "Turf": "A",
+        "Dirt": "G"
+      },
+      "Distance": {
+        "Short": "G",
+        "Mile": "B",
+        "Medium": "A",
+        "Long": "B"
+      },
+      "Strategy": {
+        "Front": "G",
+        "Pace": "A",
+        "Late": "A",
+        "End": "A"
+      }
+    },
+    "UmaHeightCm": null,
+    "UmaThreeSizes": {},
+    "UmaObjectives": [
+      {
+        "ObjectiveName": "Junior Make Debut",
+        "Turn": "12",
+        "Time": "Junior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Wakagoma Stakes",
+        "Turn": "26",
+        "Time": "Classic Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Mainichi Hai",
+        "Turn": "30",
+        "Time": "Classic Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Tokyo Yushun (Japanese Derby)",
+        "Turn": "34",
+        "Time": "Classic Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Challenge Cup",
+        "Turn": "47",
+        "Time": "Classic Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Arima Kinen",
+        "Turn": "48",
+        "Time": "Classic Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Nikkei Shinshun Hai",
+        "Turn": "49",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Takarazuka Kinen",
+        "Turn": "60",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Arima Kinen",
+        "Turn": "72",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "URA Preliminary",
+        "Turn": "74",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "URA Semi-Final",
+        "Turn": "76",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "URA Final",
+        "Turn": "78",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      }
+    ],
+    "UmaEvents": [],
+    "UmaImage": "/assets/character_thumbs/114501-rulership.png"
   }
 ]
