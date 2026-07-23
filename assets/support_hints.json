@@ -15413,7 +15413,7 @@
     "SupportName": "Light Hello (R)",
     "SupportNameJP": "ライトハロー (R)",
     "SupportRarity": "R",
-    "SupportServer": "jp",
+    "SupportServer": "global",
     "SupportType": "Friend",
     "SupportEffects": [
       {
@@ -62246,7 +62246,7 @@
     "SupportName": "Light Hello (SSR)",
     "SupportNameJP": "ライトハロー (SSR)",
     "SupportRarity": "SSR",
-    "SupportServer": "jp",
+    "SupportServer": "global",
     "SupportType": "Friend",
     "SupportEffects": [
       {
@@ -73173,7 +73173,7 @@
     "SupportName": "Agnes Tachyon (SSR)",
     "SupportNameJP": "アグネスタキオン (SSR)",
     "SupportRarity": "SSR",
-    "SupportServer": "jp",
+    "SupportServer": "global",
     "SupportType": "Speed",
     "SupportEffects": [
       {
@@ -78032,7 +78032,7 @@
     "SupportName": "Mihono Bourbon (SSR)",
     "SupportNameJP": "ミホノブルボン (SSR)",
     "SupportRarity": "SSR",
-    "SupportServer": "jp",
+    "SupportServer": "global",
     "SupportType": "Speed",
     "SupportEffects": [
       {

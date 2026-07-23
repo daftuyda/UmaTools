@@ -14744,7 +14744,7 @@
     "UmaNicknameJP": "黄昏トライアンフ",
     "UmaSlug": "104602-smart-falcon",
     "UmaId": "104602",
-    "UmaServer": "jp",
+    "UmaServer": "global",
     "UmaBaseStars": 3,
     "UmaBaseStats": {
       "3★": {
@@ -14884,20 +14884,20 @@
     ],
     "UmaEvents": [
       {
-        "EventName": "私のファーストライブ",
+        "EventName": "My First Concert",
         "EventOptions": {
           "": "Speed +10\nWit +10\nFull Tilt hint +3\nSpeed +5\nFull Tilt hint +1"
         }
       },
       {
-        "EventName": "お届け、ホットステージ！",
+        "EventName": "One Hot Stage, Coming Right Up!",
         "EventOptions": {
           "Top Option": "Energy +20\nMotivation +1",
           "Bottom Option": "Skill Pts +30"
         }
       },
       {
-        "EventName": "遥かなるウマドル・ロード",
+        "EventName": "The Umadol Road, Far, Far Away",
         "EventOptions": {
           "Top Option": "Stamina +20",
           "Bottom Option": "Prudent Positioning hint +2"
@@ -42003,7 +42003,29 @@
         "ObjectiveCondition": ""
       }
     ],
-    "UmaEvents": [],
+    "UmaEvents": [
+      {
+        "EventName": "支配者は最強デッキを纏う",
+        "EventOptions": {
+          "Top Option": "Wit +20",
+          "Bottom Option": "Speed +20"
+        }
+      },
+      {
+        "EventName": "ハイソでジャンクなティータイム",
+        "EventOptions": {
+          "Top Option": "Power +20",
+          "Bottom Option": "Wit +20"
+        }
+      },
+      {
+        "EventName": "隣の席の真面目チャン",
+        "EventOptions": {
+          "Top Option": "Stamina +20",
+          "Bottom Option": "Guts +20"
+        }
+      }
+    ],
     "UmaImage": "/assets/character_thumbs/114501-rulership.png"
   }
 ]
