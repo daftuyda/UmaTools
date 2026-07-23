@@ -3,7 +3,7 @@
  * Tests all key pages and generates performance reports
  */
 
-const { exec } = require('child_process');
+const { exec, execFile } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 
@@ -77,9 +77,20 @@ function runLighthouse(page) {
 
     console.log(`\n→ Testing ${page.name} (${page.path})...`);
 
-    const cmd = `npx lighthouse "${url}" --only-categories=performance --preset=desktop --throttling-method=simulate --throttling.cpuSlowdownMultiplier=4 --output=json --output=html --output-path="${outputPath}" --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage"`;
+    const args = [
+      'lighthouse',
+      url,
+      '--only-categories=performance',
+      '--preset=desktop',
+      '--throttling-method=simulate',
+      '--throttling.cpuSlowdownMultiplier=4',
+      '--output=json',
+      '--output=html',
+      `--output-path=${outputPath}`,
+      '--chrome-flags=--headless --no-sandbox --disable-dev-shm-usage'
+    ];
 
-    exec(cmd, { maxBuffer: 10 * 1024 * 1024 }, (error, stdout, stderr) => {
+    execFile('npx', args, { maxBuffer: 10 * 1024 * 1024 }, (error, stdout, stderr) => {
       if (error) {
         reject(new Error(`Lighthouse failed: ${error.message}`));
         return;
