@@ -3168,59 +3168,59 @@
     }
   },
   {
-    "EventName": "帝王の泣きどころ",
+    "EventName": "The Monarch's Weak Point",
     "EventOptions": {
       "Top Option": "Motivation +2\nBond +5",
       "Bottom Option": "Power +5\nWit +10\nBond +5"
     }
   },
   {
-    "EventName": "“カッコよさ”は1つじゃない",
+    "EventName": "A New Way of Cool",
     "EventOptions": {
       "Top Option": "Skill Pts +20\nPreferred Position hint +1\nBond +5\nSkill Pts +15\nBond +5",
       "Bottom Option": "Power +10\nWit +10\nBond +5"
     }
   },
   {
-    "EventName": "帝王的プレイスタイル",
+    "EventName": "The Monarch's Play Style",
     "EventOptions": {
       "": "Power +10\nWit +20\nProfessor of Curvature hint +1\nBond +5"
     }
   },
   {
-    "EventName": "ターボを追っかけて！",
+    "EventName": "Chasing Down Turbo!",
     "EventOptions": {
       "Top Option": "Speed +15\nGuts +15\nBond +5\nEnergy -20\nSpeed +10\nGuts +10\nPlaytime's Over! hint +1\nBond +5",
       "Bottom Option": "Skill Pts +10\nBond +5"
     }
   },
   {
-    "EventName": "ターボとゲームして！",
+    "EventName": "Gaming with Turbo!",
     "EventOptions": {
       "": "Energy -5\nSpeed +15\nGuts +15\nSkill Pts +15\nBond +5\nEnergy -20\nSpeed +10\nGuts +10\nGivin' It 1000% hint +1\nBond +5"
     }
   },
   {
-    "EventName": "ターボが最強！",
+    "EventName": "The Unbeatable Turbo!",
     "EventOptions": {
       "": "Energy -20\nSpeed +10\nGuts +10\nGivin' It 1000% hint +2\nBond +5\nEnergy -5\nSpeed +15\nGuts +15\nGivin' It 1000% hint +3\nBond +5"
     }
   },
   {
-    "EventName": "実家業務において生じる諸問題について",
+    "EventName": "The Problems in Running a Family Business",
     "EventOptions": {
       "": "Motivation +1\nSkill Pts +10\nBond +5"
     }
   },
   {
-    "EventName": "仮想空間を活用した認知の修正について",
+    "EventName": "Cognitive Restructuring in a Virtual Space",
     "EventOptions": {
       "Top Option": "Stamina +20\nBond +5",
       "Bottom Option": "Skill Pts +10\nPrepared to Pass hint +1\nBond +5"
     }
   },
   {
-    "EventName": "幹事の特性が宴会に与える影響について",
+    "EventName": "The Planner's Effect on the Party",
     "EventOptions": {
       "": "Stamina +10\nVIP Pass hint +1\nBond +5"
     }

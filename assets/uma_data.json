@@ -14914,7 +14914,7 @@
     "UmaNicknameJP": "Dream Deliverer",
     "UmaSlug": "103502-winning-ticket",
     "UmaId": "103502",
-    "UmaServer": "jp",
+    "UmaServer": "global",
     "UmaBaseStars": 3,
     "UmaBaseStats": {
       "3★": {
@@ -15042,21 +15042,21 @@
     ],
     "UmaEvents": [
       {
-        "EventName": "チケゾー配達日記～蒸気編～",
+        "EventName": "Tickezo's Delivery Service: The Outset",
         "EventOptions": {
           "Top Option": "Guts +10",
           "Bottom Option": "Power +10"
         }
       },
       {
-        "EventName": "チケゾー配達日記～学園編～",
+        "EventName": "Tickezo's Delivery Service: Academy Antics",
         "EventOptions": {
           "Top Option": "Wit +20",
           "Bottom Option": "Stamina +20"
         }
       },
       {
-        "EventName": "チケゾー配達日記～真心編～",
+        "EventName": "Tickezo's Delivery Service: From the Heart",
         "EventOptions": {
           "": "bp2 1\nMedium Corners ○ hint +2\nTake the Chance hint +2\nbp2 2\nLong Straightaways ○ hint +2\nPassing Pro hint +2\nSpeed +30\nGuts +10"
         }
@@ -15072,7 +15072,7 @@
     "UmaNicknameJP": "ディファレンス・エンジニア",
     "UmaSlug": "105002-narita-taishin",
     "UmaId": "105002",
-    "UmaServer": "jp",
+    "UmaServer": "global",
     "UmaBaseStars": 3,
     "UmaBaseStats": {
       "3★": {
@@ -15200,21 +15200,21 @@
     ],
     "UmaEvents": [
       {
-        "EventName": "クエスト：撤去作業のお手伝い！",
+        "EventName": "Quest: Help Dismantle the Set!",
         "EventOptions": {
           "Top Option": "Stamina +10",
           "Bottom Option": "Speed +10"
         }
       },
       {
-        "EventName": "クエスト：演劇部のお手伝い！",
+        "EventName": "Quest: Help the Theater Club!",
         "EventOptions": {
           "Top Option": "Guts +20",
           "Bottom Option": "Power +10\nWit +10"
         }
       },
       {
-        "EventName": "クエスト：少年を救え！",
+        "EventName": "Quest: Help the Boy!",
         "EventOptions": {
           "": "bp2 1\nLong Corners ○ hint +2\nPressure hint +2\nbp2 2\nMedium Corners ○ hint +2\nEager hint +2\n5s +3\nSkill Pts +25"
         }
