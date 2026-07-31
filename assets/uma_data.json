@@ -42027,5 +42027,329 @@
       }
     ],
     "UmaImage": "/assets/character_thumbs/114501-rulership.png"
+  },
+  {
+    "UmaKey": "Seiun Sky :: 102003-seiun-sky",
+    "UmaName": "Seiun Sky",
+    "UmaNameJP": "セイウンスカイ",
+    "UmaNickname": null,
+    "UmaNicknameJP": "渚のきまぐれオランジュ",
+    "UmaSlug": "102003-seiun-sky",
+    "UmaId": "102003",
+    "UmaServer": "jp",
+    "UmaBaseStars": 3,
+    "UmaBaseStats": {
+      "3★": {
+        "Speed": 97,
+        "Stamina": 88,
+        "Power": 79,
+        "Guts": 89,
+        "Wit": 97
+      },
+      "5★": {
+        "Speed": 118,
+        "Stamina": 108,
+        "Power": 97,
+        "Guts": 109,
+        "Wit": 118
+      },
+      "4★": {
+        "Speed": 107,
+        "Stamina": 98,
+        "Power": 88,
+        "Guts": 99,
+        "Wit": 108
+      }
+    },
+    "UmaStatBonuses": {
+      "Speed": 0,
+      "Stamina": 0,
+      "Power": 5,
+      "Guts": 10,
+      "Wit": 15
+    },
+    "UmaAptitudes": {
+      "Surface": {
+        "Turf": "A",
+        "Dirt": "G"
+      },
+      "Distance": {
+        "Short": "G",
+        "Mile": "C",
+        "Medium": "A",
+        "Long": "A"
+      },
+      "Strategy": {
+        "Front": "A",
+        "Pace": "B",
+        "Late": "D",
+        "End": "E"
+      }
+    },
+    "UmaHeightCm": null,
+    "UmaThreeSizes": {},
+    "UmaObjectives": [
+      {
+        "ObjectiveName": "Junior Make Debut",
+        "Turn": "12",
+        "Time": "Junior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Earn 3,000 fans",
+        "Turn": "25",
+        "Time": "Classic Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Satsuki Sho",
+        "Turn": "31",
+        "Time": "Classic Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Tokyo Yushun (Japanese Derby)",
+        "Turn": "34",
+        "Time": "Classic Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Kikuka Sho",
+        "Turn": "44",
+        "Time": "Classic Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Arima Kinen",
+        "Turn": "48",
+        "Time": "Classic Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Tenno Sho (Spring)",
+        "Turn": "56",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Takarazuka Kinen",
+        "Turn": "60",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Tenno Sho (Autumn)",
+        "Turn": "68",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Arima Kinen",
+        "Turn": "72",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "URA Preliminary",
+        "Turn": "74",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "URA Semi-Final",
+        "Turn": "76",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "URA Final",
+        "Turn": "78",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      }
+    ],
+    "UmaEvents": [
+      {
+        "EventName": "『特別な夏』を探せ",
+        "EventOptions": {
+          "Top Option": "Energy +5\nSummer Runner ○ hint +1",
+          "Bottom Option": "lo_s +5\nSummer Runner ○ hint +1",
+          "Option 3": "Wit +10\nSkill Pts +15"
+        }
+      },
+      {
+        "EventName": "『特別な夏』は君と",
+        "EventOptions": {
+          "": "Wit +10\nSkill Pts +30"
+        }
+      },
+      {
+        "EventName": "息抜きにはイタズラを",
+        "EventOptions": {
+          "Top Option": "Stamina +10\nPrudent Positioning hint +1",
+          "Bottom Option": "Power +15\nSkill Pts +15"
+        }
+      }
+    ],
+    "UmaImage": "/assets/character_thumbs/102003-seiun-sky.png"
+  },
+  {
+    "UmaKey": "Mejiro Bright :: 107403-mejiro-bright",
+    "UmaName": "Mejiro Bright",
+    "UmaNameJP": "メジロブライト",
+    "UmaNickname": null,
+    "UmaNicknameJP": "海辺のエレガンスシフォン",
+    "UmaSlug": "107403-mejiro-bright",
+    "UmaId": "107403",
+    "UmaServer": "jp",
+    "UmaBaseStars": 3,
+    "UmaBaseStats": {
+      "3★": {
+        "Speed": 97,
+        "Stamina": 91,
+        "Power": 97,
+        "Guts": 76,
+        "Wit": 89
+      },
+      "5★": {
+        "Speed": 118,
+        "Stamina": 111,
+        "Power": 118,
+        "Guts": 93,
+        "Wit": 110
+      },
+      "4★": {
+        "Speed": 108,
+        "Stamina": 101,
+        "Power": 108,
+        "Guts": 85,
+        "Wit": 98
+      }
+    },
+    "UmaStatBonuses": {
+      "Speed": 5,
+      "Stamina": 10,
+      "Power": 0,
+      "Guts": 5,
+      "Wit": 10
+    },
+    "UmaAptitudes": {
+      "Surface": {
+        "Turf": "A",
+        "Dirt": "G"
+      },
+      "Distance": {
+        "Short": "F",
+        "Mile": "C",
+        "Medium": "A",
+        "Long": "A"
+      },
+      "Strategy": {
+        "Front": "G",
+        "Pace": "D",
+        "Late": "A",
+        "End": "A"
+      }
+    },
+    "UmaHeightCm": null,
+    "UmaThreeSizes": {},
+    "UmaObjectives": [
+      {
+        "ObjectiveName": "Junior Make Debut",
+        "Turn": "12",
+        "Time": "Junior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Hopeful Stakes",
+        "Turn": "24",
+        "Time": "Junior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Satsuki Sho",
+        "Turn": "31",
+        "Time": "Classic Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Tokyo Yushun (Japanese Derby)",
+        "Turn": "34",
+        "Time": "Classic Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Kikuka Sho",
+        "Turn": "44",
+        "Time": "Classic Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Stayers Stakes",
+        "Turn": "47",
+        "Time": "Classic Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Tenno Sho (Spring)",
+        "Turn": "56",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Tenno Sho (Autumn)",
+        "Turn": "68",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Arima Kinen",
+        "Turn": "72",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "URA Preliminary",
+        "Turn": "74",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "URA Semi-Final",
+        "Turn": "76",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "URA Final",
+        "Turn": "78",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      }
+    ],
+    "UmaEvents": [
+      {
+        "EventName": "ほんわか接客はじめました",
+        "EventOptions": {
+          "Top Option": "Energy +5\nBe Ambitious hint +1",
+          "Bottom Option": "lo_s +5\nBe Ambitious hint +1",
+          "Option 3": "Stamina +10\nSkill Pts +15"
+        }
+      },
+      {
+        "EventName": "ゆったリズム・バカンス",
+        "EventOptions": {
+          "": "Energy +30"
+        }
+      },
+      {
+        "EventName": "リラックス大決戦",
+        "EventOptions": {
+          "Top Option": "Power +10\nSimmering Heat hint +1",
+          "Bottom Option": "Guts +15\nSkill Pts +15"
+        }
+      }
+    ],
+    "UmaImage": "/assets/character_thumbs/107403-mejiro-bright.png"
   }
 ]

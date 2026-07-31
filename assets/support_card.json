@@ -6630,5 +6630,65 @@
     "EventOptions": {
       "": "Energy +5\nWit +10\nSkill Pts +10\nBreach hint +1\nLatent Fighting Spirit hint +2\nBond +5"
     }
+  },
+  {
+    "EventName": "挑戦！不敗のヌシ",
+    "EventOptions": {
+      "": "Motivation +1\nStamina +20\nBond +10"
+    }
+  },
+  {
+    "EventName": "これがあたしの漫画道",
+    "EventOptions": {
+      "Top Option": "Energy +10\nStamina +20\nBond +5",
+      "Bottom Option": "Energy +10\nSkill Pts +5\nFirm Resolve hint +1\nBond +5"
+    }
+  },
+  {
+    "EventName": "炎のコンテスト",
+    "EventOptions": {
+      "Top Option": "Stamina +20\nOne Sky, One Goal hint +2\nレースメイカー hint +1\nBond +5",
+      "Bottom Option": "Stamina +10\nSkill Pts +10\nSend It! ☆ hint +2\nレースメイカー hint +1\nBond +5"
+    }
+  },
+  {
+    "EventName": "衝動のイントロダクション",
+    "EventOptions": {
+      "Top Option": "Energy +15\nMotivation +1\nGuts +10\nBond +5",
+      "Bottom Option": "Energy +20\nGuts +5\nBond +10"
+    }
+  },
+  {
+    "EventName": "そよ風と烈風のセッション",
+    "EventOptions": {
+      "Top Option": "Energy +10\nGuts +10\nSkill Pts +10\nBond +5",
+      "Bottom Option": "Motivation +1\nGuts +10\nSwitch Over Pro hint +1\nBond +5"
+    }
+  },
+  {
+    "EventName": "鳴り響け！エモーション",
+    "EventOptions": {
+      "Top Option": "Energy +5\nGuts +15\nOne and Only hint +1\n一石二鳥 hint +1\nBond +5",
+      "Bottom Option": "Energy +5\nGuts +5\nSkill Pts +10\nCounterclockwise Demon hint +1\nOne and Only hint +1\nBond +5"
+    }
+  },
+  {
+    "EventName": "アイペース、マイペース♪",
+    "EventOptions": {
+      "": "Energy +10\nWit +5\nBond +5"
+    }
+  },
+  {
+    "EventName": "カラダおもおも、ぴえん丸",
+    "EventOptions": {
+      "Top Option": "Energy +15\nBond +5",
+      "Bottom Option": "Wit +15\nBond +5"
+    }
+  },
+  {
+    "EventName": "街は輝く夢を見る",
+    "EventOptions": {
+      "": "Energy +5\nWit +5\nDetermined Descent hint +1\nBond +5"
+    }
   }
 ]
