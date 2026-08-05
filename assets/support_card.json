@@ -2983,20 +2983,20 @@
     }
   },
   {
-    "EventName": "交感：走力の限界突破に関する質的研究",
+    "EventName": "Researching the Limits of Running: Rapport",
     "EventOptions": {
       "Top Option": "Motivation +1\nEnergy +10\nBond +5",
       "Bottom Option": "Speed +5\nStamina +5\nWit +5\nPace Chaser Straightaways ○ hint +1/+3\nMurmur hint +1\nBond +5\nSpeed +5\nWit +5\nPace Chaser Straightaways ○ hint +1\nBond +5"
     }
   },
   {
-    "EventName": "夢寐：走力の限界突破に関する質的研究",
+    "EventName": "Researching the Limits of Running: Dreams",
     "EventOptions": {
       "": "Speed +5\nStamina +5\nWit +5\nSkill Pts +10\nBond +5"
     }
   },
   {
-    "EventName": "疾駆：走力の限界突破に関する質的研究",
+    "EventName": "Researching the Limits of Running: Velocity",
     "EventOptions": {
       "": "Energy +10\nSkill Pts +30\nUnstoppable hint +3\nEnergy +5\nSkill Pts +10\nUnstoppable hint +1"
     }
@@ -3017,7 +3017,7 @@
   {
     "EventName": "With All the Courage I Have",
     "EventOptions": {
-      "": "Speed +5\nGuts +15\nSkill Pts +30\nSpeed Star hint +3\nBond +5\nSpeed +5\nGuts +15\nSkill Pts +30\nSpeed Star hint +1\nBond +5"
+      "": "brp 1\nSpeed +5\nGuts +15\nSkill Pts +30\nSpeed Star hint +3\nBond +5\nSpeed +5\nGuts +15\nSpeed Star hint +1\nBond +5"
     }
   },
   {
@@ -3168,59 +3168,59 @@
     }
   },
   {
-    "EventName": "帝王の泣きどころ",
+    "EventName": "The Monarch's Weak Point",
     "EventOptions": {
       "Top Option": "Motivation +2\nBond +5",
       "Bottom Option": "Power +5\nWit +10\nBond +5"
     }
   },
   {
-    "EventName": "“カッコよさ”は1つじゃない",
+    "EventName": "A New Way of Cool",
     "EventOptions": {
       "Top Option": "Skill Pts +20\nPreferred Position hint +1\nBond +5\nSkill Pts +15\nBond +5",
       "Bottom Option": "Power +10\nWit +10\nBond +5"
     }
   },
   {
-    "EventName": "帝王的プレイスタイル",
+    "EventName": "The Monarch's Play Style",
     "EventOptions": {
       "": "Power +10\nWit +20\nProfessor of Curvature hint +1\nBond +5"
     }
   },
   {
-    "EventName": "ターボを追っかけて！",
+    "EventName": "Chasing Down Turbo!",
     "EventOptions": {
       "Top Option": "Speed +15\nGuts +15\nBond +5\nEnergy -20\nSpeed +10\nGuts +10\nPlaytime's Over! hint +1\nBond +5",
       "Bottom Option": "Skill Pts +10\nBond +5"
     }
   },
   {
-    "EventName": "ターボとゲームして！",
+    "EventName": "Gaming with Turbo!",
     "EventOptions": {
       "": "Energy -5\nSpeed +15\nGuts +15\nSkill Pts +15\nBond +5\nEnergy -20\nSpeed +10\nGuts +10\nGivin' It 1000% hint +1\nBond +5"
     }
   },
   {
-    "EventName": "ターボが最強！",
+    "EventName": "The Unbeatable Turbo!",
     "EventOptions": {
       "": "Energy -20\nSpeed +10\nGuts +10\nGivin' It 1000% hint +2\nBond +5\nEnergy -5\nSpeed +15\nGuts +15\nGivin' It 1000% hint +3\nBond +5"
     }
   },
   {
-    "EventName": "実家業務において生じる諸問題について",
+    "EventName": "The Problems in Running a Family Business",
     "EventOptions": {
       "": "Motivation +1\nSkill Pts +10\nBond +5"
     }
   },
   {
-    "EventName": "仮想空間を活用した認知の修正について",
+    "EventName": "Cognitive Restructuring in a Virtual Space",
     "EventOptions": {
       "Top Option": "Stamina +20\nBond +5",
       "Bottom Option": "Skill Pts +10\nPrepared to Pass hint +1\nBond +5"
     }
   },
   {
-    "EventName": "幹事の特性が宴会に与える影響について",
+    "EventName": "The Planner's Effect on the Party",
     "EventOptions": {
       "": "Stamina +10\nVIP Pass hint +1\nBond +5"
     }
@@ -3356,20 +3356,20 @@
     }
   },
   {
-    "EventName": "タスクを再実行します。",
+    "EventName": "Please Rerun Task",
     "EventOptions": {
       "Top Option": "Energy +5\nMotivation +1\nBond +5",
       "Bottom Option": "Speed +10\nFast-Paced hint +1\nBond +5"
     }
   },
   {
-    "EventName": "共通項は……？",
+    "EventName": "Finding the Common Denominator",
     "EventOptions": {
       "": "Speed +10\nSkill Pts +15\nBond +5"
     }
   },
   {
-    "EventName": "ファン感謝企画抽選会！",
+    "EventName": "The Fan-Appreciation Prize Drawing!",
     "EventOptions": {
       "": "Speed +10\nTrackblazer hint +1\nBond +5"
     }
@@ -6629,6 +6629,66 @@
     "EventName": "【??】可変的レアリティ",
     "EventOptions": {
       "": "Energy +5\nWit +10\nSkill Pts +10\nBreach hint +1\nLatent Fighting Spirit hint +2\nBond +5"
+    }
+  },
+  {
+    "EventName": "挑戦！不敗のヌシ",
+    "EventOptions": {
+      "": "Motivation +1\nStamina +20\nBond +10"
+    }
+  },
+  {
+    "EventName": "これがあたしの漫画道",
+    "EventOptions": {
+      "Top Option": "Energy +10\nStamina +20\nBond +5",
+      "Bottom Option": "Energy +10\nSkill Pts +5\nFirm Resolve hint +1\nBond +5"
+    }
+  },
+  {
+    "EventName": "炎のコンテスト",
+    "EventOptions": {
+      "Top Option": "Stamina +20\nOne Sky, One Goal hint +2\nレースメイカー hint +1\nBond +5",
+      "Bottom Option": "Stamina +10\nSkill Pts +10\nSend It! ☆ hint +2\nレースメイカー hint +1\nBond +5"
+    }
+  },
+  {
+    "EventName": "衝動のイントロダクション",
+    "EventOptions": {
+      "Top Option": "Energy +15\nMotivation +1\nGuts +10\nBond +5",
+      "Bottom Option": "Energy +20\nGuts +5\nBond +10"
+    }
+  },
+  {
+    "EventName": "そよ風と烈風のセッション",
+    "EventOptions": {
+      "Top Option": "Energy +10\nGuts +10\nSkill Pts +10\nBond +5",
+      "Bottom Option": "Motivation +1\nGuts +10\nSwitch Over Pro hint +1\nBond +5"
+    }
+  },
+  {
+    "EventName": "鳴り響け！エモーション",
+    "EventOptions": {
+      "Top Option": "Energy +5\nGuts +15\nOne and Only hint +1\n一石二鳥 hint +1\nBond +5",
+      "Bottom Option": "Energy +5\nGuts +5\nSkill Pts +10\nCounterclockwise Demon hint +1\nOne and Only hint +1\nBond +5"
+    }
+  },
+  {
+    "EventName": "アイペース、マイペース♪",
+    "EventOptions": {
+      "": "Energy +10\nWit +5\nBond +5"
+    }
+  },
+  {
+    "EventName": "カラダおもおも、ぴえん丸",
+    "EventOptions": {
+      "Top Option": "Energy +15\nBond +5",
+      "Bottom Option": "Wit +15\nBond +5"
+    }
+  },
+  {
+    "EventName": "街は輝く夢を見る",
+    "EventOptions": {
+      "": "Energy +5\nWit +5\nDetermined Descent hint +1\nBond +5"
     }
   }
 ]
