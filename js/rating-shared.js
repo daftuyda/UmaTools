@@ -23,6 +23,31 @@
     }
   }
 
+  // GameTora exposes the skill-point cost for removing purple skills, not their
+  // rating penalty. Convert those costs to the rating tiers used by the game and
+  // by the older GameWith data. Already-normalized negative values are preserved.
+  function normalizeSkillRatingValue(value, category, skillName = '') {
+    const numericValue = Number(value);
+    if (!Number.isFinite(numericValue)) return numericValue;
+    const normalizedCategory = normalize(category);
+    if (normalizedCategory !== 'purple' && normalizedCategory !== 'violet') return numericValue;
+    if (numericValue < 0) return numericValue;
+    const zeroCostOverrides = {
+      'creeping anxiety': 0,
+      "feelin' a bit silly": -500,
+      "you're not the boss of me!": -174,
+      '99 problems': -174,
+    };
+    const normalizedName = normalize(skillName);
+    if (Object.prototype.hasOwnProperty.call(zeroCostOverrides, normalizedName)) {
+      return zeroCostOverrides[normalizedName];
+    }
+    if (numericValue >= 100) return -262;
+    if (numericValue >= 70) return -174;
+    if (numericValue <= 0) return 0;
+    return -129;
+  }
+
   function createAffinityHelpers(cfg) {
     const ROLE_GROUP = Object.freeze({
       turf: 'surface',
@@ -1172,5 +1197,6 @@
     createAffinityHelpers,
     createRatingEngine,
     getRatingBadgeCatalog,
+    normalizeSkillRatingValue,
   };
 })(window);

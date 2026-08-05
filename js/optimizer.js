@@ -2200,7 +2200,8 @@
       }
       const type = idx.type !== -1 ? (cols[idx.type] || '').trim().toLowerCase() : 'misc';
       const baseCost = idx.baseCost !== -1 ? parseInt(cols[idx.baseCost] || '', 10) : NaN;
-      const base = idx.base !== -1 ? parseInt(cols[idx.base] || '', 10) : NaN;
+      const rawBase = idx.base !== -1 ? parseInt(cols[idx.base] || '', 10) : NaN;
+      const base = RatingShared.normalizeSkillRatingValue(rawBase, type, name);
       const sa = idx.sa !== -1 ? parseInt(cols[idx.sa] || '', 10) : NaN;
       const bc = idx.bc !== -1 ? parseInt(cols[idx.bc] || '', 10) : NaN;
       const def = idx.def !== -1 ? parseInt(cols[idx.def] || '', 10) : NaN;

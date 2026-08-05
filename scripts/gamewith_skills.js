@@ -866,6 +866,21 @@ function deriveGameToraSkillType(skill, overlay) {
 
 function fallbackGameToraScore(skill, skillType) {
   if (skillType === 'ius') return 180;
+  if (skillType === 'purple') {
+    const gradeValueOverrides = new Map([
+      [300041, 0],
+      [1100011, -500],
+      [202141, -174],
+      [202181, -174],
+    ]);
+    const skillId = Number(skill?.id);
+    if (gradeValueOverrides.has(skillId)) return gradeValueOverrides.get(skillId);
+    const removalCost = Number(skill?.cost);
+    if (removalCost >= 100) return -262;
+    if (removalCost >= 70) return -174;
+    if (removalCost <= 0) return 0;
+    return -129;
+  }
   if (typeof skill?.cost === 'number') return skill.cost;
   return 0;
 }
@@ -914,10 +929,14 @@ function buildGameToraRows(gameWithRows, locale) {
       .forEach((alias) => addAlias(aliases, alias, primaryName));
 
     const localizedName = String(officialName || overlay?.localized_name || '').trim();
-    const baseValue =
+    let baseValue =
       overlay && overlay.base_value !== ''
         ? overlay.base_value
         : toFixedOne(fallbackGameToraScore(skill, skillType));
+    const numericBaseValue = Number(baseValue);
+    if (skillType === 'purple' && Number.isFinite(numericBaseValue) && numericBaseValue >= 0) {
+      baseValue = toFixedOne(fallbackGameToraScore(skill, skillType));
+    }
 
     return {
       skill_type: skillType,
