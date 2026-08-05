@@ -41177,6 +41177,20 @@
     ],
     "UmaEvents": [
       {
+        "EventName": "夜に浮かぶ",
+        "EventOptions": {
+          "Top Option": "Energy +15\nGuts +10",
+          "Bottom Option": "Energy -15\nSkill Pts +45"
+        }
+      },
+      {
+        "EventName": "恐怖に立ち向かえ！",
+        "EventOptions": {
+          "Top Option": "brp 1\nEnergy -10\nStamina +15\nSkill Pts +15\nGo With the Flow hint +1\nbrp 2\nStamina +15\nGuts +10\nGo With the Flow hint +1",
+          "Bottom Option": "brp 1\nMotivation +1\nWit +10\nGo With the Flow hint +1\nbrp 2\nEnergy +20\nMotivation +1\nGo With the Flow hint +1"
+        }
+      },
+      {
         "EventName": "繰り返す、アナタが選ぶまで",
         "EventOptions": {
           "Top Option": "Energy +10\nSkill Pts +15",

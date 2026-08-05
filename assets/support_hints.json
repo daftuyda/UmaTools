@@ -72918,6 +72918,12 @@
           "name": "Skill Point Bonus",
           "symbol": "none",
           "value": 1
+        },
+        {
+          "id": 9991,
+          "name": "Increases Stats from Hints",
+          "symbol": "none",
+          "value": 0
         }
       ]
     },

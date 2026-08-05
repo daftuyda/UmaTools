@@ -3017,7 +3017,7 @@
   {
     "EventName": "With All the Courage I Have",
     "EventOptions": {
-      "": "Speed +5\nGuts +15\nSkill Pts +30\nSpeed Star hint +3\nBond +5\nSpeed +5\nGuts +15\nSkill Pts +30\nSpeed Star hint +1\nBond +5"
+      "": "brp 1\nSpeed +5\nGuts +15\nSkill Pts +30\nSpeed Star hint +3\nBond +5\nSpeed +5\nGuts +15\nSpeed Star hint +1\nBond +5"
     }
   },
   {
