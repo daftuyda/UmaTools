@@ -15230,7 +15230,7 @@
     "UmaNicknameJP": "めんこいめんこいむつのはな",
     "UmaSlug": "102901-yukino-bijin",
     "UmaId": "102901",
-    "UmaServer": "jp",
+    "UmaServer": "global",
     "UmaBaseStars": 3,
     "UmaBaseStats": {
       "3★": {
@@ -15364,21 +15364,21 @@
     ],
     "UmaEvents": [
       {
-        "EventName": "ふるさと、想えば",
+        "EventName": "No Place Like Home",
         "EventOptions": {
           "Top Option": "Guts +20",
           "Bottom Option": "Speed +20"
         }
       },
       {
-        "EventName": "イマドキ♪お出かけコース",
+        "EventName": "A Trendy Day Out ♪",
         "EventOptions": {
           "Top Option": "Power +20",
           "Bottom Option": "Wit +20"
         }
       },
       {
-        "EventName": "山育ちはたくましい",
+        "EventName": "Mountain Folks Are Tough",
         "EventOptions": {
           "Top Option": "Speed +20",
           "Bottom Option": "Power +20"
