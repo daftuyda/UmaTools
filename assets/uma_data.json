@@ -15395,7 +15395,7 @@
     "UmaNicknameJP": "Rocket☆Star",
     "UmaSlug": "104201-seeking-the-pearl",
     "UmaId": "104201",
-    "UmaServer": "jp",
+    "UmaServer": "global",
     "UmaBaseStars": 3,
     "UmaBaseStats": {
       "3★": {
@@ -15535,21 +15535,21 @@
     ],
     "UmaEvents": [
       {
-        "EventName": "前人未踏のチャレンジ",
+        "EventName": "Unprecedented Challenge",
         "EventOptions": {
           "Top Option": "Guts +20",
           "Bottom Option": "Speed +10\nPower +10"
         }
       },
       {
-        "EventName": "くじけぬガッツ、みなぎるパワー",
+        "EventName": "Steadfast Spirit and Prevailing Power",
         "EventOptions": {
           "Top Option": "Wit +20",
           "Bottom Option": "Power +20"
         }
       },
       {
-        "EventName": "ファンタスティックなお茶会",
+        "EventName": "A Fantastic Tea Party",
         "EventOptions": {
           "Top Option": "Power +10\nSkill Pts +15",
           "Bottom Option": "Speed +20"

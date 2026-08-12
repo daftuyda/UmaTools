@@ -14667,7 +14667,7 @@
     "SupportName": "Daiichi Ruby (R)",
     "SupportNameJP": "ダイイチルビー (R)",
     "SupportRarity": "R",
-    "SupportServer": "jp",
+    "SupportServer": "global",
     "SupportType": "Power",
     "SupportEffects": [
       {
@@ -14855,7 +14855,7 @@
     "SupportName": "K.S.Miracle (R)",
     "SupportNameJP": "ケイエスミラクル (R)",
     "SupportRarity": "R",
-    "SupportServer": "jp",
+    "SupportServer": "global",
     "SupportType": "Guts",
     "SupportEffects": [
       {
@@ -39592,7 +39592,7 @@
     "SupportName": "K.S.Miracle (SR)",
     "SupportNameJP": "ケイエスミラクル (SR)",
     "SupportRarity": "SR",
-    "SupportServer": "jp",
+    "SupportServer": "global",
     "SupportType": "Guts",
     "SupportEffects": [
       {
@@ -76629,7 +76629,7 @@
     "SupportName": "Daiichi Ruby (SSR)",
     "SupportNameJP": "ダイイチルビー (SSR)",
     "SupportRarity": "SSR",
-    "SupportServer": "jp",
+    "SupportServer": "global",
     "SupportType": "Power",
     "SupportEffects": [
       {

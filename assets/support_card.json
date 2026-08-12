@@ -624,13 +624,13 @@
     }
   },
   {
-    "EventName": "凪いだ水面にて",
+    "EventName": "Across Still Waters",
     "EventOptions": {
       "": "Speed +5\nPower +5\nGuts +5\nSprint Straightaways ○ hint +1\nBond +5"
     }
   },
   {
-    "EventName": "薄氷の上にて",
+    "EventName": "On Thin Ice",
     "EventOptions": {
       "Top Option": "Skill Pts +35\nBond +5",
       "Bottom Option": "Energy +30\nBond +5"
@@ -3226,22 +3226,22 @@
     }
   },
   {
-    "EventName": "伸ばす背筋は何のため",
+    "EventName": "To Uphold Oneself with Strictness",
     "EventOptions": {
       "": "Power +10\nBond +5\nPower +15\nLate Surger Corners ○ hint +2\nBond +5"
     }
   },
   {
-    "EventName": "辣腕振るうは何のため",
+    "EventName": "To Exert Oneself with Diligence",
     "EventOptions": {
       "Top Option": "Energy +10\nPower +10\nBond +5",
       "Bottom Option": "Skill Pts +10\nSprinting Gear hint +2\nBond +5"
     }
   },
   {
-    "EventName": "その優しさは誰のため",
+    "EventName": "To Conduct Oneself with Kindness",
     "EventOptions": {
-      "": "Power +15\nSkill Pts +25\nFlash Forward hint +1\nBond +5"
+      "": "Power +15\nSkill Pts +25\nLightning Surge hint +1\nBond +5"
     }
   },
   {
@@ -4823,13 +4823,13 @@
     "EventName": "俺のノーティ・キッズ",
     "EventOptions": {
       "Top Option": "Energy +10\nGuts +10\nLeap Forward hint +2\nBond +5",
-      "Bottom Option": "Guts +15\nFlash Forward hint +1\nBond +5"
+      "Bottom Option": "Guts +15\nLightning Surge hint +1\nBond +5"
     }
   },
   {
     "EventName": "俺なりにストレート！！",
     "EventOptions": {
-      "": "Speed +7\nPower +7\nGuts +10\nFlash Forward hint +2\nBond +5"
+      "": "Speed +7\nPower +7\nGuts +10\nLightning Surge hint +2\nBond +5"
     }
   },
   {
@@ -5979,7 +5979,7 @@
   {
     "EventName": "忠誠は己が道に",
     "EventOptions": {
-      "Top Option": "Wit +20\nMoonlit Flash hint +1\nFlash Forward hint +1\nBond +5",
+      "Top Option": "Wit +20\nMoonlit Flash hint +1\nLightning Surge hint +1\nBond +5",
       "Bottom Option": "Speed +10\nWit +10\nMoonlit Flash hint +1\nSwift Decision hint +1\nBond +5"
     }
   },
