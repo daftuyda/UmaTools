@@ -42365,5 +42365,142 @@
       }
     ],
     "UmaImage": "/assets/character_thumbs/107403-mejiro-bright.png"
+  },
+  {
+    "UmaKey": "Fusaichi Pandora :: Snatchin' Hearts ♡",
+    "UmaName": "Fusaichi Pandora",
+    "UmaNameJP": "フサイチパンドラ",
+    "UmaNickname": "Snatchin' Hearts ♡",
+    "UmaNicknameJP": "Snatchin' Hearts ♡",
+    "UmaSlug": "111302-fusaichi-pandora",
+    "UmaId": "111302",
+    "UmaServer": "jp",
+    "UmaBaseStars": 3,
+    "UmaBaseStats": {
+      "3★": {
+        "Speed": 83,
+        "Stamina": 96,
+        "Power": 95,
+        "Guts": 77,
+        "Wit": 99
+      },
+      "5★": {
+        "Speed": 101,
+        "Stamina": 118,
+        "Power": 116,
+        "Guts": 94,
+        "Wit": 121
+      },
+      "4★": {
+        "Speed": 92,
+        "Stamina": 107,
+        "Power": 105,
+        "Guts": 86,
+        "Wit": 110
+      }
+    },
+    "UmaStatBonuses": {
+      "Speed": 0,
+      "Stamina": 0,
+      "Power": 14,
+      "Guts": 8,
+      "Wit": 8
+    },
+    "UmaAptitudes": {
+      "Surface": {
+        "Turf": "A",
+        "Dirt": "E"
+      },
+      "Distance": {
+        "Short": "G",
+        "Mile": "B",
+        "Medium": "A",
+        "Long": "G"
+      },
+      "Strategy": {
+        "Front": "C",
+        "Pace": "A",
+        "Late": "B",
+        "End": "F"
+      }
+    },
+    "UmaHeightCm": null,
+    "UmaThreeSizes": {},
+    "UmaObjectives": [
+      {
+        "ObjectiveName": "Junior Make Debut",
+        "Turn": "12",
+        "Time": "Junior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Hanshin Juvenile Fillies",
+        "Turn": "23",
+        "Time": "Junior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Oka Sho",
+        "Turn": "31",
+        "Time": "Classic Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Japanese Oaks",
+        "Turn": "34",
+        "Time": "Classic Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Shuka Sho",
+        "Turn": "44",
+        "Time": "Classic Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Queen Elizabeth II Cup",
+        "Turn": "45",
+        "Time": "Classic Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Victoria Mile",
+        "Turn": "57",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Sapporo Kinen",
+        "Turn": "64",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Queen Elizabeth II Cup",
+        "Turn": "69",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "URA Preliminary",
+        "Turn": "74",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "URA Semi-Final",
+        "Turn": "76",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "URA Final",
+        "Turn": "78",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      }
+    ],
+    "UmaEvents": [],
+    "UmaImage": "/assets/character_thumbs/111302-fusaichi-pandora.png"
   }
 ]

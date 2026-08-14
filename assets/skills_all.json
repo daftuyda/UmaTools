@@ -26938,6 +26938,7 @@
         30165,
         30169,
         30181,
+        30310,
         20011,
         20018,
         20030,
@@ -35981,6 +35982,7 @@
         30127,
         30140,
         30151,
+        30310,
         20022,
         20034,
         20047,
@@ -40978,7 +40980,8 @@
       102901,
       102702,
       110902,
-      111301
+      111301,
+      111302
     ],
     "char_e": [
       102201,
@@ -41525,6 +41528,7 @@
         30146,
         30172,
         30260,
+        30310,
         20043,
         20082,
         20086,
@@ -48474,7 +48478,8 @@
       110902,
       111301,
       114301,
-      114501
+      114501,
+      111302
     ],
     "condition_groups": [
       {
@@ -75239,6 +75244,7 @@
         30287,
         30293,
         30294,
+        30310,
         20062,
         20083,
         20091
@@ -97991,7 +97997,8 @@
         30291,
         30300,
         30304,
-        30308
+        30308,
+        30310
       ],
       [
         10106,
@@ -103777,7 +103784,8 @@
   {
     "activation": 0,
     "char": [
-      103202
+      103202,
+      111302
     ],
     "condition_groups": [
       {
@@ -103812,6 +103820,12 @@
         "card_id": 103202,
         "evos": [
           103202111
+        ]
+      },
+      {
+        "card_id": 111302,
+        "evos": [
+          111302111
         ]
       }
     ],
@@ -103871,6 +103885,7 @@
       103202,
       110202,
       102203,
+      111302,
       110301
     ],
     "char_e": [
@@ -119647,7 +119662,8 @@
       113301,
       106302,
       113401,
-      102203
+      102203,
+      111302
     ],
     "char_e": [
       104702,
@@ -135620,6 +135636,7 @@
       109102,
       104902,
       100503,
+      111302,
       107301
     ],
     "condition_groups": [
@@ -138404,7 +138421,8 @@
   {
     "activation": 1,
     "char": [
-      109102
+      109102,
+      111302
     ],
     "condition_groups": [
       {
@@ -138428,6 +138446,12 @@
         "card_id": 109102,
         "evos": [
           109102111
+        ]
+      },
+      {
+        "card_id": 111302,
+        "evos": [
+          111302211
         ]
       }
     ],
@@ -141052,7 +141076,8 @@
         30258,
         30265,
         30287,
-        30306
+        30306,
+        30310
       ],
       [
         10133
@@ -145055,6 +145080,7 @@
     "sup_e": [
       [
         30306,
+        30310,
         20095
       ],
       [
@@ -162803,7 +162829,8 @@
   {
     "activation": 1,
     "char": [
-      111201
+      111201,
+      111302
     ],
     "char_e": [
       113401
@@ -166849,6 +166876,228 @@
     "type": [
       "btw",
       "l_2"
+    ],
+    "unreleased": [
+      "ko",
+      "zh_tw",
+      "en"
+    ]
+  },
+  {
+    "activation": 0,
+    "char": [
+      111302
+    ],
+    "condition_groups": [
+      {
+        "base_time": 50000,
+        "condition": "phase_laterhalf==1&overtake_target_time>=1&order_rate<=50&motivation==5&distance_type==3",
+        "effects": [
+          {
+            "type": 27,
+            "value": 2500
+          },
+          {
+            "type": 27,
+            "value": 1500
+          }
+        ]
+      },
+      {
+        "base_time": 50000,
+        "condition": "phase_laterhalf==1&overtake_target_time>=1&order_rate<=50",
+        "effects": [
+          {
+            "type": 27,
+            "value": 2500
+          }
+        ]
+      }
+    ],
+    "endesc": "",
+    "enname": "",
+    "gene_version": {
+      "activation": 1,
+      "condition_groups": [
+        {
+          "base_time": 30000,
+          "condition": "phase_laterhalf==1&overtake_target_time>=1&order_rate<=50",
+          "effects": [
+            {
+              "type": 27,
+              "value": 500
+            }
+          ]
+        }
+      ],
+      "cost": 200,
+      "iconid": 20011,
+      "id": 911131,
+      "inherited": true,
+      "parent_skills": [
+        111131
+      ],
+      "rarity": 1,
+      "tid": "yi"
+    },
+    "iconid": 20013,
+    "id": 111131,
+    "jpdesc": "レース終盤が迫ったとき前方で近寄られると速度が少し上がるさらに中距離レースで絶好調なら加えて速度がわずかに上がる",
+    "jpname": "渚のヴィーナスタイム♡",
+    "rarity": 5,
+    "tid": "yh",
+    "type": [
+      "l_1",
+      "med",
+      "nac"
+    ],
+    "unreleased": [
+      "ko",
+      "zh_tw",
+      "en"
+    ]
+  },
+  {
+    "activation": 0,
+    "char": [
+      111302
+    ],
+    "condition_groups": [
+      {
+        "base_time": -1,
+        "condition": "running_style==2&distance_type==3&base_speed>=1200&motivation==5",
+        "effects": [
+          {
+            "type": 1,
+            "value": 800000
+          },
+          {
+            "type": 32,
+            "value": 200000
+          }
+        ]
+      },
+      {
+        "base_time": -1,
+        "condition": "running_style==2&distance_type==3&base_speed>=1200&motivation<=4",
+        "effects": [
+          {
+            "type": 1,
+            "value": 800000
+          }
+        ]
+      }
+    ],
+    "endesc": "",
+    "enname": "",
+    "evo_cond": [
+      [
+        [
+          "stat",
+          5,
+          800
+        ]
+      ],
+      [
+        [
+          "a_skill",
+          "strat",
+          2,
+          2
+        ],
+        [
+          "a_skill",
+          "dist",
+          2,
+          2
+        ]
+      ]
+    ],
+    "iconid": 10016,
+    "id": 111302111,
+    "jpdesc": "スピードが十二分に高いとスピードがすごく上がる、さらに絶好調なら全ての基礎能力がわずかに上がる＜先行・中距離＞",
+    "jpname": "愛されすぎてマジごめん♡",
+    "pre_evo": {
+      "card_id": 111302,
+      "old": 202701
+    },
+    "rarity": 6,
+    "tid": "yj",
+    "type": [
+      "ldr",
+      "med"
+    ],
+    "unreleased": [
+      "ko",
+      "zh_tw",
+      "en"
+    ]
+  },
+  {
+    "activation": 1,
+    "char": [
+      111302
+    ],
+    "condition_groups": [
+      {
+        "base_time": 30000,
+        "condition": "distance_type==3&is_lastspurt==1&phase_firsthalf_random==3&motivation==5",
+        "effects": [
+          {
+            "type": 27,
+            "value": 5500
+          }
+        ]
+      },
+      {
+        "base_time": 30000,
+        "condition": "distance_type==3&is_lastspurt==1&phase_firsthalf_random==3",
+        "effects": [
+          {
+            "type": 27,
+            "value": 3500
+          }
+        ]
+      }
+    ],
+    "endesc": "",
+    "enname": "",
+    "evo_cond": [
+      [
+        [
+          "dt_gn_race_w",
+          "dist",
+          2,
+          100,
+          3
+        ],
+        [
+          "stat",
+          4,
+          600
+        ]
+      ],
+      [
+        [
+          "e_skill",
+          "speed",
+          3
+        ]
+      ]
+    ],
+    "iconid": 20016,
+    "id": 111302211,
+    "jpdesc": "レース最終盤始めの方でラストスパートの最中なら速度が上がる絶好調ならものすごく上がる＜中距離＞",
+    "jpname": "秘める気のない才気",
+    "pre_evo": {
+      "card_id": 111302,
+      "old": 203431
+    },
+    "rarity": 6,
+    "tid": "yk",
+    "type": [
+      "med",
+      "l_3"
     ],
     "unreleased": [
       "ko",
