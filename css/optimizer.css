@@ -821,6 +821,16 @@
   border-top: 1px solid var(--border);
 }
 
+.skill-tree-help-steps {
+  margin: 1rem 0;
+  padding-left: 1.4rem;
+  list-style: decimal;
+}
+
+.skill-tree-help-steps li + li {
+  margin-top: 0.65rem;
+}
+
 .builds-list {
   display: flex;
   flex-direction: column;

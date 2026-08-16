@@ -203,6 +203,23 @@
       'optimizer.imageEnhancement': 'Image Enhancement',
       'optimizer.debugMode': 'Debug Mode',
       'optimizer.importJSON': 'Import JSON',
+      'optimizer.getSkillTreeJSON': 'Get skill_tree.json',
+      'optimizer.skillTreeHelpTitle': 'Get skill_tree.json',
+      'optimizer.skillTreeHelpIntro':
+        'For the quickest no-install option, close this window and use Upload Screenshot or Screen Capture. For an exact JSON export on desktop, use the community UmaExtractor skill tool.',
+      'optimizer.skillTreeHelpStep1':
+        'Install Python 3.10 or newer, then install Frida with: pip install frida',
+      'optimizer.skillTreeHelpStep2':
+        'Download skill_extract.py from the UmaExtractor instructions.',
+      'optimizer.skillTreeHelpStep3':
+        'Start the game and enter a training session, then run: python skill_extract.py',
+      'optimizer.skillTreeHelpStep4':
+        'Open the in-game skill learning screen. After capture completes, press Ctrl+C.',
+      'optimizer.skillTreeHelpStep5':
+        'Return here, choose Import JSON, and select the generated skill_tree.json file.',
+      'optimizer.skillTreeHelpWarning':
+        'UmaExtractor is an unofficial third-party tool that attaches to the running game. Review its source and instructions before use. Game updates may temporarily break it.',
+      'optimizer.openExtractorInstructions': 'Open extractor instructions',
       'optimizer.uploadScreenshot': 'Upload Screenshot',
       'optimizer.screenCapture': 'Screen Capture',
       'optimizer.saveBuild': 'Save Build',
@@ -881,6 +898,23 @@
       'optimizer.imageEnhancement': '画像補正',
       'optimizer.debugMode': 'デバッグモード',
       'optimizer.importJSON': 'JSONインポート',
+      'optimizer.getSkillTreeJSON': 'skill_tree.jsonを取得',
+      'optimizer.skillTreeHelpTitle': 'skill_tree.jsonを取得',
+      'optimizer.skillTreeHelpIntro':
+        'インストール不要の最も簡単な方法は、この画面を閉じて「スクリーンショットアップロード」または「画面キャプチャ」を使うことです。デスクトップで正確なJSONを出力するには、コミュニティ製のUmaExtractorスキルツールを使用します。',
+      'optimizer.skillTreeHelpStep1':
+        'Python 3.10以降をインストールし、pip install frida を実行します。',
+      'optimizer.skillTreeHelpStep2':
+        'UmaExtractorの手順ページから skill_extract.py をダウンロードします。',
+      'optimizer.skillTreeHelpStep3':
+        'ゲームを起動して育成を開始し、python skill_extract.py を実行します。',
+      'optimizer.skillTreeHelpStep4':
+        'ゲーム内のスキル取得画面を開きます。取得完了後、Ctrl+Cを押します。',
+      'optimizer.skillTreeHelpStep5':
+        'この画面に戻り、「JSONインポート」から生成された skill_tree.json を選択します。',
+      'optimizer.skillTreeHelpWarning':
+        'UmaExtractorは実行中のゲームに接続する非公式のサードパーティツールです。使用前にソースと手順を確認してください。ゲームの更新により一時的に動作しない場合があります。',
+      'optimizer.openExtractorInstructions': 'UmaExtractorの手順を開く',
       'optimizer.uploadScreenshot': 'スクリーンショットアップロード',
       'optimizer.screenCapture': '画面キャプチャ',
       'optimizer.saveBuild': 'ビルド保存',

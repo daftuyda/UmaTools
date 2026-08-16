@@ -1049,6 +1049,14 @@
             Import JSON
           </button>
           <button
+            id="json-import-help-btn"
+            class="btn btn-secondary"
+            type="button"
+            data-i18n="optimizer.getSkillTreeJSON"
+          >
+            Get skill_tree.json
+          </button>
+          <button
             id="screenshot-upload-btn"
             class="btn btn-secondary"
             type="button"
@@ -1251,6 +1259,80 @@
           </button>
           <button id="save-modal-save" class="btn" type="button" data-i18n="common.save">
             Save
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Skill tree JSON help -->
+    <div
+      id="json-import-help-modal"
+      class="modal"
+      style="display: none"
+      role="dialog"
+      aria-modal="true"
+      aria-hidden="true"
+      aria-labelledby="json-import-help-title"
+    >
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 id="json-import-help-title" data-i18n="optimizer.skillTreeHelpTitle">
+            Get skill_tree.json
+          </h3>
+          <button
+            id="json-import-help-close"
+            class="modal-close"
+            type="button"
+            aria-label="Close"
+          >
+            &times;
+          </button>
+        </div>
+        <div class="modal-body">
+          <p data-i18n="optimizer.skillTreeHelpIntro">
+            For the quickest no-install option, close this window and use Upload Screenshot or
+            Screen Capture. For an exact JSON export on desktop, use the community UmaExtractor
+            skill tool.
+          </p>
+          <ol class="skill-tree-help-steps">
+            <li data-i18n="optimizer.skillTreeHelpStep1">
+              Install Python 3.10 or newer, then install Frida with: pip install frida
+            </li>
+            <li data-i18n="optimizer.skillTreeHelpStep2">
+              Download skill_extract.py from the UmaExtractor instructions.
+            </li>
+            <li data-i18n="optimizer.skillTreeHelpStep3">
+              Start the game and enter a training session, then run: python skill_extract.py
+            </li>
+            <li data-i18n="optimizer.skillTreeHelpStep4">
+              Open the in-game skill learning screen. After capture completes, press Ctrl+C.
+            </li>
+            <li data-i18n="optimizer.skillTreeHelpStep5">
+              Return here, choose Import JSON, and select the generated skill_tree.json file.
+            </li>
+          </ol>
+          <p class="muted" data-i18n="optimizer.skillTreeHelpWarning">
+            UmaExtractor is an unofficial third-party tool that attaches to the running game. Review
+            its source and instructions before use. Game updates may temporarily break it.
+          </p>
+        </div>
+        <div class="modal-footer">
+          <a
+            class="btn btn-secondary"
+            href="https://github.com/xancia/UmaExtractor/tree/main/py/skills"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-i18n="optimizer.openExtractorInstructions"
+          >
+            Open extractor instructions
+          </a>
+          <button
+            id="json-import-help-done"
+            class="btn"
+            type="button"
+            data-i18n="common.close"
+          >
+            Close
           </button>
         </div>
       </div>

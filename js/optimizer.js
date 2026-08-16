@@ -6493,6 +6493,20 @@
   // JSON Import: Load skill tree from exported JSON file
   const jsonImportBtn = document.getElementById('json-import-btn');
   const jsonImportInput = document.getElementById('json-import-input');
+  const jsonImportHelpBtn = document.getElementById('json-import-help-btn');
+  const jsonImportHelpModal = document.getElementById('json-import-help-modal');
+  const jsonImportHelpClose = document.getElementById('json-import-help-close');
+  const jsonImportHelpDone = document.getElementById('json-import-help-done');
+
+  if (jsonImportHelpBtn && jsonImportHelpModal) {
+    jsonImportHelpBtn.addEventListener('click', () => openModal(jsonImportHelpModal));
+    jsonImportHelpClose?.addEventListener('click', () => closeModal(jsonImportHelpModal));
+    jsonImportHelpDone?.addEventListener('click', () => closeModal(jsonImportHelpModal));
+    jsonImportHelpModal.addEventListener('click', (e) => {
+      if (e.target === jsonImportHelpModal) closeModal(jsonImportHelpModal);
+    });
+  }
+
   if (jsonImportBtn && jsonImportInput) {
     jsonImportBtn.addEventListener('click', () => jsonImportInput.click());
     jsonImportInput.addEventListener('change', (e) => {
