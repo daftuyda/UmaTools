@@ -1021,57 +1021,58 @@
         data-scroll-section
         data-scroll-label="Skills"
       >
-        <div class="toolbar" role="group" aria-label="Skill rows">
+        <div class="toolbar skill-intake-toolbar" role="group" aria-label="Skill rows">
           <span class="muted" data-i18n="optimizer.rowTip"
             >Tip: just enter the skill name and cost - its type auto-detects</span
           >
-          <div style="flex:1"></div>
-          <input
-            type="file"
-            id="screenshot-upload-input"
-            accept="image/*"
-            style="display: none"
-            aria-label="Upload screenshot"
-          />
-          <input
-            type="file"
-            id="json-import-input"
-            accept=".json"
-            style="display: none"
-            aria-label="Import JSON skill tree"
-          />
-          <button
-            id="json-import-btn"
-            class="btn btn-secondary"
-            type="button"
-            data-i18n="optimizer.importJSON"
-          >
-            Import JSON
-          </button>
-          <button
-            id="json-import-help-btn"
-            class="btn btn-secondary"
-            type="button"
-            data-i18n="optimizer.getSkillTreeJSON"
-          >
-            Get skill_tree.json
-          </button>
-          <button
-            id="screenshot-upload-btn"
-            class="btn btn-secondary"
-            type="button"
-            data-i18n="optimizer.uploadScreenshot"
-          >
-            Upload Screenshot
-          </button>
-          <button
-            id="captureBtn"
-            class="btn btn-secondary"
-            type="button"
-            data-i18n="optimizer.screenCapture"
-          >
-            Screen Capture
-          </button>
+          <div class="skill-intake-actions">
+            <input
+              type="file"
+              id="screenshot-upload-input"
+              accept="image/*"
+              style="display: none"
+              aria-label="Upload screenshot"
+            />
+            <input
+              type="file"
+              id="json-import-input"
+              accept=".json"
+              style="display: none"
+              aria-label="Import JSON skill tree"
+            />
+            <button
+              id="json-import-btn"
+              class="btn btn-secondary"
+              type="button"
+              data-i18n="optimizer.importJSON"
+            >
+              Import JSON
+            </button>
+            <button
+              id="json-import-help-btn"
+              class="btn btn-secondary"
+              type="button"
+              data-i18n="optimizer.getSkillTreeJSON"
+            >
+              Get skill_tree.json
+            </button>
+            <button
+              id="screenshot-upload-btn"
+              class="btn btn-secondary"
+              type="button"
+              data-i18n="optimizer.uploadScreenshot"
+            >
+              Upload Screenshot
+            </button>
+            <button
+              id="captureBtn"
+              class="btn btn-secondary"
+              type="button"
+              data-i18n="optimizer.screenCapture"
+            >
+              Screen Capture
+            </button>
+          </div>
         </div>
         <div class="toolbar" style="justify-content: flex-end">
           <button

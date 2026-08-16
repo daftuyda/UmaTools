@@ -831,6 +831,21 @@
   margin-top: 0.65rem;
 }
 
+.skill-intake-toolbar {
+  justify-content: space-between;
+}
+
+.skill-intake-toolbar > .muted {
+  flex: 1 1 24rem;
+}
+
+.skill-intake-actions {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 0.6rem;
+  margin-left: auto;
+}
+
 .builds-list {
   display: flex;
   flex-direction: column;
@@ -1397,6 +1412,12 @@
   }
   .card-elevated > .toolbar .btn {
     width: 100%;
+  }
+
+  .skill-intake-actions {
+    flex-direction: column;
+    width: 100%;
+    margin-left: 0;
   }
 
   /* OCR buttons prominent on mobile */
