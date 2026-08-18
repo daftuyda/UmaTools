@@ -15566,7 +15566,7 @@
     "UmaNicknameJP": "愛麗♡キョンシー",
     "UmaSlug": "101902-agnes-digital",
     "UmaId": "101902",
-    "UmaServer": "jp",
+    "UmaServer": "global",
     "UmaBaseStars": 3,
     "UmaBaseStats": {
       "3★": {
@@ -15682,20 +15682,20 @@
     ],
     "UmaEvents": [
       {
-        "EventName": "ハロウィンカラオケパーリィ",
+        "EventName": "Halloween Karaoke Party",
         "EventOptions": {
           "Top Option": "Down in the Dirt ○ hint +2",
           "Bottom Option": "Power +20"
         }
       },
       {
-        "EventName": "哀しき怪物・ヲタキョンシー！",
+        "EventName": "The Tragic Tale of the Otaku Jiangshi",
         "EventOptions": {
           "": "Power +10\nMile Straightaways ○ hint +1\nPower +10\nWit +10\nMile Straightaways ○ hint +3\nPower +20\nWit +20\nMile Straightaways ○ hint +3"
         }
       },
       {
-        "EventName": "好きこそものの上手なれ",
+        "EventName": "Love Makes You Stronger",
         "EventOptions": {
           "Top Option": "Motivation +1\nGuts +15",
           "Bottom Option": "Stamina +10\nPower +10"
@@ -15712,7 +15712,7 @@
     "UmaNicknameJP": "Dot-o'-Lantern",
     "UmaSlug": "105802-meisho-doto",
     "UmaId": "105802",
-    "UmaServer": "jp",
+    "UmaServer": "global",
     "UmaBaseStars": 3,
     "UmaBaseStats": {
       "3★": {
@@ -15840,20 +15840,20 @@
     ],
     "UmaEvents": [
       {
-        "EventName": "友情のハロウィンパレード",
+        "EventName": "A Friendly Halloween Parade",
         "EventOptions": {
           "Top Option": "Speed +10\nPower +10",
           "Bottom Option": "All I've Got hint +2"
         }
       },
       {
-        "EventName": "ドトウのパリピ屋敷！？",
+        "EventName": "Doto's Party Palace?!",
         "EventOptions": {
           "": "Stamina +10\nMedium Corners ○ hint +1\nStamina +10\nGuts +10\nMedium Corners ○ hint +3\nStamina +20\nGuts +20\nMedium Corners ○ hint +3"
         }
       },
       {
-        "EventName": "泣き虫フレンズ",
+        "EventName": "Friends Cry Together",
         "EventOptions": {
           "Top Option": "Stamina +10\nGuts +10",
           "Bottom Option": "Energy +10\nWit +10"

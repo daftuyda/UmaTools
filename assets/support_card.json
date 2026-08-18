@@ -3245,56 +3245,56 @@
     }
   },
   {
-    "EventName": "お菓子を配るのが得意でさ",
+    "EventName": "Giving up Candy's No Big Deal",
     "EventOptions": {
       "Top Option": "Skill Pts +30\nBond +5",
       "Bottom Option": "Energy +30\nPassing Pro hint +2"
     }
   },
   {
-    "EventName": "それで満足なんだけど",
+    "EventName": "As Long as You’re Happy",
     "EventOptions": {
       "": "Speed +15\nFront Runner Corners ○ hint +1\nBond +5"
     }
   },
   {
-    "EventName": "別の『味』も楽しみたいワケ",
+    "EventName": "This Is Just Who I Am",
     "EventOptions": {
       "": "Speed +10\nStamina +10\nTaking the Lead hint +1\nBond +5\nSpeed +15\nStamina +15\nTaking the Lead hint +3\nBond +5"
     }
   },
   {
-    "EventName": "ヘリオス・アゲヘヴン前日たん☆",
+    "EventName": "Helios's Hype Heaven: The Lead-up ☆",
     "EventOptions": {
       "": "Speed +5\nSkill Pts +10\nBond +5\nSpeed +15\nSkill Pts +20\nFront Runner Straightaways ○ hint +1\nBond +5"
     }
   },
   {
-    "EventName": "ヘリオス・アゲヘヴン・ウィーク開幕！",
+    "EventName": "Helios's Hype Heaven Week!",
     "EventOptions": {
       "": "Skill Pts +15\nBond +5\nSkill Pts +40\nTail Held High hint +1\nBond +10"
     }
   },
   {
-    "EventName": "アゲヘヴン・延長戦！",
+    "EventName": "Hype Heaven, Part Two!",
     "EventOptions": {
       "": "Speed +10\nGuts +5\nSkill Pts +10\nPerfect Spot! hint +1\nBond +5\nSpeed +15\nGuts +10\nSkill Pts +10\nPerfect Spot! hint +3\nBond +5"
     }
   },
   {
-    "EventName": "マンネリなのだ！？",
+    "EventName": "What Do You Mean, \"Stale?!\"",
     "EventOptions": {
       "": "Speed +15\nBond +5"
     }
   },
   {
-    "EventName": "びっくり計画なのだ！",
+    "EventName": "The Big Prank Plan!",
     "EventOptions": {
       "": "Power +15\nFull Tilt hint +1\nBond +5"
     }
   },
   {
-    "EventName": "計画実行なのだ！",
+    "EventName": "Executing the Plan!",
     "EventOptions": {
       "": "Guts +20\nSkill Pts +10\nMaestro of the Mud hint +1\nBond +5"
     }

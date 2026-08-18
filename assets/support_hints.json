@@ -76845,7 +76845,7 @@
     "SupportName": "Mejiro Palmer (SSR)",
     "SupportNameJP": "メジロパーマー (SSR)",
     "SupportRarity": "SSR",
-    "SupportServer": "jp",
+    "SupportServer": "global",
     "SupportType": "Stamina",
     "SupportEffects": [
       {
@@ -77064,7 +77064,7 @@
     "SupportName": "Daitaku Helios (SSR)",
     "SupportNameJP": "ダイタクヘリオス (SSR)",
     "SupportRarity": "SSR",
-    "SupportServer": "jp",
+    "SupportServer": "global",
     "SupportType": "Speed",
     "SupportEffects": [
       {
@@ -77306,7 +77306,7 @@
     "SupportName": "Shinko Windy (SSR)",
     "SupportNameJP": "シンコウウインディ (SSR)",
     "SupportRarity": "SSR",
-    "SupportServer": "jp",
+    "SupportServer": "global",
     "SupportType": "Guts",
     "SupportEffects": [
       {
