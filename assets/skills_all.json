@@ -15172,7 +15172,8 @@
         "char": [
           100201,
           102602,
-          103102
+          103102,
+          104603
         ],
         "sup_e": [
           [
@@ -15319,6 +15320,7 @@
           106801,
           101303,
           103102,
+          104603,
           106601
         ],
         "sup_e": [
@@ -16064,7 +16066,8 @@
           104601,
           105202,
           108001,
-          108702
+          108702,
+          104603
         ],
         "char_e": [
           101302,
@@ -16531,6 +16534,7 @@
             30217,
             30220,
             30231,
+            30251,
             20015,
             20024,
             20032,
@@ -18173,6 +18177,8 @@
             30205,
             30213,
             30240,
+            30251,
+            30260,
             20007,
             20019,
             20026,
@@ -19329,6 +19335,7 @@
           106803,
           108001,
           106502,
+          104603,
           106601
         ],
         "char_e": [
@@ -19367,6 +19374,7 @@
             30181,
             30210,
             30235,
+            30260,
             20062,
             20085
           ],
@@ -27959,6 +27967,7 @@
             30189,
             30220,
             30221,
+            30260,
             20036,
             20066
           ],
@@ -32414,6 +32423,7 @@
             30206,
             30229,
             30238,
+            30251,
             20005,
             20039
           ],
@@ -34584,6 +34594,7 @@
             30203,
             30209,
             30233,
+            30250,
             20004,
             20005,
             20010,
@@ -37101,6 +37112,7 @@
             30193,
             30220,
             30226,
+            30260,
             20054,
             20058
           ],
@@ -39284,6 +39296,7 @@
           104601,
           104602,
           106802,
+          104603,
           106601
         ],
         "sup_e": [
@@ -41492,6 +41505,7 @@
             30133,
             30146,
             30172,
+            30260,
             20043,
             20082,
             20086
@@ -44700,6 +44714,7 @@
             30168,
             30223,
             30246,
+            30250,
             20014,
             20046,
             20056,
@@ -46340,6 +46355,7 @@
             30126,
             30130,
             30159,
+            30260,
             20003,
             20028,
             20034,
@@ -47905,7 +47921,8 @@
           110401,
           100202,
           112001,
-          110402
+          110402,
+          109802
         ],
         "sup_e": [
           [
@@ -47934,6 +47951,7 @@
             30218,
             30237,
             30238,
+            30249,
             20004,
             20048,
             20050,
@@ -47944,7 +47962,8 @@
             10006,
             10013,
             10025,
-            10087
+            10087,
+            10125
           ]
         ]
       },
@@ -49318,6 +49337,7 @@
             30222,
             30227,
             30235,
+            30249,
             20030
           ],
           [
@@ -49325,7 +49345,8 @@
             10096,
             10098,
             10103,
-            10110
+            10110,
+            10125
           ]
         ]
       },
@@ -49885,6 +49906,12 @@
           104601,
           104602,
           109901
+        ],
+        "sup_e": [
+          [
+            30251
+          ],
+          []
         ]
       },
       "zh_tw": {
@@ -49994,7 +50021,9 @@
           104602,
           101902,
           104301,
-          107901
+          107901,
+          104603,
+          109802
         ],
         "sup_e": [
           [
@@ -50009,12 +50038,14 @@
         "sup_hint": [
           [
             30156,
+            30249,
             20045,
             20064
           ],
           [
             10092,
-            10093
+            10093,
+            10125
           ]
         ]
       },
@@ -52457,7 +52488,16 @@
           103402,
           109901,
           104301,
-          109902
+          109902,
+          109802
+        ],
+        "sup_e": [
+          [
+            30249
+          ],
+          [
+            10125
+          ]
         ],
         "sup_hint": [
           [
@@ -52465,6 +52505,7 @@
             30156,
             30182,
             30212,
+            30249,
             20032,
             20045,
             20064
@@ -52473,7 +52514,8 @@
             10068,
             10090,
             10092,
-            10093
+            10093,
+            10125
           ]
         ]
       },
@@ -60205,7 +60247,8 @@
         "sup_e": [
           [
             30165,
-            30203
+            30203,
+            30250
           ],
           []
         ]
@@ -60353,7 +60396,8 @@
             30190,
             30198,
             30203,
-            30239
+            30239,
+            30250
           ],
           [
             10099,
@@ -64842,7 +64886,8 @@
         ],
         "char_e": [
           104601,
-          104602
+          104602,
+          104603
         ]
       },
       "zh_tw": {
@@ -65697,7 +65742,8 @@
       "ko": {
         "char": [
           109801,
-          107901
+          107901,
+          109802
         ],
         "sup_hint": [
           [
@@ -65916,7 +65962,9 @@
           109801,
           104602,
           109901,
-          109902
+          109902,
+          104603,
+          109802
         ],
         "sup_e": [
           [
@@ -66286,7 +66334,8 @@
           [
             30117,
             30156,
-            30182
+            30182,
+            30251
           ],
           [
             10090,
@@ -66562,7 +66611,8 @@
           109902
         ],
         "char_e": [
-          101902
+          101902,
+          109802
         ],
         "sup_hint": [
           [
@@ -66570,6 +66620,7 @@
             30156,
             30211,
             30222,
+            30251,
             20064
           ],
           [
@@ -67102,7 +67153,8 @@
           109902
         ],
         "char_e": [
-          109801
+          109801,
+          109802
         ],
         "sup_e": [
           [
@@ -67117,10 +67169,12 @@
         "sup_hint": [
           [
             30211,
-            30222
+            30222,
+            30249
           ],
           [
-            10110
+            10110,
+            10125
           ]
         ]
       },
@@ -67375,7 +67429,8 @@
         "sup_hint": [
           [
             30117,
-            30156
+            30156,
+            30251
           ],
           [
             10093
@@ -68029,6 +68084,7 @@
             30219,
             30232,
             30234,
+            30260,
             20051,
             20059,
             20085
@@ -75343,6 +75399,7 @@
             30205,
             30214,
             30234,
+            30250,
             20062,
             20083
           ],
@@ -98708,7 +98765,8 @@
         "sup_e": [
           [
             30142,
-            30216
+            30216,
+            30250
           ],
           [
             10118
@@ -100336,7 +100394,8 @@
           109101,
           110801,
           103203,
-          108402
+          108402,
+          109802
         ],
         "char_e": [
           113101
@@ -100355,6 +100414,7 @@
             30238,
             30243,
             30245,
+            30251,
             20073,
             20075,
             20084
@@ -102203,7 +102263,8 @@
         "char_e": [
           102902,
           110901,
-          106502
+          106502,
+          104603
         ],
         "sup_e": [
           [
@@ -108966,6 +109027,7 @@
           [
             30172,
             30231,
+            30260,
             20085
           ],
           []
@@ -112536,7 +112598,8 @@
     "loc": {
       "ko": {
         "char": [
-          109902
+          109902,
+          104603
         ],
         "sup_e": [
           [
@@ -112625,7 +112688,8 @@
     "loc": {
       "ko": {
         "char": [
-          109902
+          109902,
+          104603
         ],
         "char_e": [
           108001
@@ -112722,7 +112786,8 @@
         "sup_e": [
           [
             30211,
-            30222
+            30222,
+            30251
           ],
           [
             10110
@@ -114893,6 +114958,12 @@
         "char": [
           110801,
           111501
+        ],
+        "sup_e": [
+          [
+            30250
+          ],
+          []
         ]
       },
       "zh_tw": {
@@ -114966,7 +115037,8 @@
         "sup_hint": [
           [
             30187,
-            30223
+            30223,
+            30250
           ],
           [
             10103
@@ -116693,23 +116765,27 @@
     "loc": {
       "ko": {
         "char": [
-          108001
+          108001,
+          109802
         ],
         "char_e": [
           107901
         ],
         "sup_e": [
           [
-            30211
+            30211,
+            30249
           ],
           []
         ],
         "sup_hint": [
           [
-            30222
+            30222,
+            30249
           ],
           [
-            10110
+            10110,
+            10125
           ]
         ]
       },
@@ -122319,6 +122395,7 @@
             30218,
             30229,
             30238,
+            30251,
             20081,
             20087
           ],
@@ -125051,13 +125128,17 @@
       "ko": {
         "char": [
           109902,
-          107901
+          107901,
+          109802
         ],
         "sup_hint": [
           [
-            30211
+            30211,
+            30249
           ],
-          []
+          [
+            10125
+          ]
         ]
       },
       "zh_tw": {
@@ -125171,13 +125252,21 @@
     "jpname": "ダートコーナー○",
     "loc": {
       "ko": {
+        "char": [
+          104603
+        ],
+        "char_e": [
+          109802
+        ],
         "sup_hint": [
           [
             30211,
-            30222
+            30222,
+            30249
           ],
           [
-            10110
+            10110,
+            10125
           ]
         ]
       },
@@ -128286,6 +128375,12 @@
         "char": [
           111001,
           103302
+        ],
+        "sup_hint": [
+          [
+            30250
+          ],
+          []
         ]
       },
       "zh_tw": {
@@ -128447,10 +128542,12 @@
         ],
         "sup_hint": [
           [
-            30222
+            30222,
+            30249
           ],
           [
-            10110
+            10110,
+            10125
           ]
         ]
       },
@@ -131313,6 +131410,16 @@
     "id": 203301,
     "jpdesc": "レース中盤に速度が上がる＜長距離＞",
     "jpname": "熾烈の極み",
+    "loc": {
+      "ko": {
+        "sup_e": [
+          [
+            30260
+          ],
+          []
+        ]
+      }
+    },
     "name_ko": "극한의 치열함",
     "name_tw": "極盡熾烈",
     "rarity": 2,
@@ -133426,6 +133533,12 @@
       "ko": {
         "char": [
           103302
+        ],
+        "sup_hint": [
+          [
+            30250
+          ],
+          []
         ]
       },
       "zh_tw": {
@@ -135804,6 +135917,9 @@
       "ko": {
         "char": [
           110402
+        ],
+        "char_e": [
+          104603
         ]
       },
       "zh_tw": {
@@ -135872,7 +135988,8 @@
         "sup_hint": [
           [
             30233,
-            30242
+            30242,
+            30250
           ],
           [
             10122
@@ -139028,6 +139145,12 @@
       "ko": {
         "char": [
           111501
+        ],
+        "sup_hint": [
+          [
+            30250
+          ],
+          []
         ]
       },
       "zh_tw": {
@@ -139085,6 +139208,12 @@
       "ko": {
         "char": [
           111501
+        ],
+        "sup_hint": [
+          [
+            30250
+          ],
+          []
         ]
       },
       "zh_tw": {
@@ -141134,6 +141263,16 @@
     "id": 203091,
     "jpdesc": "直線で速度が上がる＜ダート＞",
     "jpname": "砂塵一閃",
+    "loc": {
+      "ko": {
+        "sup_e": [
+          [
+            30249
+          ],
+          []
+        ]
+      }
+    },
     "name_ko": "사진일섬",
     "name_tw": "沙塵一閃",
     "rarity": 2,
@@ -142561,6 +142700,13 @@
     "id": 110981,
     "jpdesc": "レース終盤以降に前方にいるときゴールまで遠いと前に出る＜ダート＞",
     "jpname": "五獣挙りて彩光奏づ",
+    "loc": {
+      "ko": {
+        "char": [
+          109802
+        ]
+      }
+    },
     "name_ko": "오방신이 모여 광채를 연주하니",
     "name_tw": "五獸齊聚奏響彩光",
     "rarity": 5,
@@ -142637,6 +142783,13 @@
     "id": 120461,
     "jpdesc": "レース後半に速度が上がる出遅れず前方をキープしているとものすごく上がる＜ダート＞",
     "jpname": "Forward March!",
+    "loc": {
+      "ko": {
+        "char": [
+          104603
+        ]
+      }
+    },
     "name_ko": "Forward March!",
     "name_tw": "Forward March!",
     "rarity": 5,
@@ -142687,6 +142840,13 @@
     "id": 202254,
     "jpdesc": "交流重賞のレースが得意になりスピードとパワーが上昇する",
     "jpname": "交流重賞の鬼",
+    "loc": {
+      "ko": {
+        "char": [
+          109802
+        ]
+      }
+    },
     "name_ko": "교류 대상경주의 귀신",
     "name_tw": "交流主要競賽之鬼",
     "rarity": 2,
@@ -142727,6 +142887,16 @@
     "id": 203601,
     "jpdesc": "すぐ後ろにウマ娘が長くいると速度が上がる＜ダート＞",
     "jpname": "見事な砂蹴り",
+    "loc": {
+      "ko": {
+        "sup_e": [
+          [
+            30249
+          ],
+          []
+        ]
+      }
+    },
     "name_ko": "훌륭한 모래 차기",
     "name_tw": "漂亮地踢沙",
     "rarity": 2,
@@ -142773,6 +142943,18 @@
     "id": 203602,
     "jpdesc": "すぐ後ろにウマ娘が長くいると速度がわずかに上がる＜ダート＞",
     "jpname": "砂蹴り",
+    "loc": {
+      "ko": {
+        "sup_hint": [
+          [
+            30249
+          ],
+          [
+            10125
+          ]
+        ]
+      }
+    },
     "name_ko": "모래 차기",
     "name_tw": "踢沙",
     "rarity": 1,
@@ -142832,6 +143014,13 @@
     "id": 203611,
     "jpdesc": "レース最終盤始めの方でラストスパートの最中なら速度が上がる＜ダート＞",
     "jpname": "点滴穿石",
+    "loc": {
+      "ko": {
+        "char": [
+          109802
+        ]
+      }
+    },
     "name_ko": "수적천석",
     "name_tw": "滴水穿石",
     "rarity": 2,
@@ -142880,6 +143069,13 @@
     "id": 203612,
     "jpdesc": "レース最終盤始めの方でラストスパートの最中なら速度がわずかに上がる＜ダート＞",
     "jpname": "精進",
+    "loc": {
+      "ko": {
+        "char": [
+          109802
+        ]
+      }
+    },
     "name_ko": "정진",
     "name_tw": "精進",
     "rarity": 1,
@@ -142954,6 +143150,13 @@
     "id": 104603111,
     "jpdesc": "スタート時に出遅れる時間が少なくなり加速力がわずかに上がる",
     "jpname": "立ち位置ゼロ番！",
+    "loc": {
+      "ko": {
+        "char": [
+          104603
+        ]
+      }
+    },
     "name_ko": "포지션은 센터!",
     "name_tw": "站位零號！",
     "pre_evo": {
@@ -143023,6 +143226,13 @@
     "id": 104603211,
     "jpdesc": "レース中盤にスキルを発動すると速度が上がる、その後レース終盤以降にスキルを発動すると少し前に出て加速力がちょっと上がる＜逃げ・ダート＞",
     "jpname": "爆レスあげちゃう☆",
+    "loc": {
+      "ko": {
+        "char": [
+          104603
+        ]
+      }
+    },
     "name_ko": "역대급 팬 서비스 간다☆",
     "name_tw": "送上爆熱情回覆☆",
     "pre_evo": {
@@ -143088,6 +143298,13 @@
     "id": 109802111,
     "jpdesc": "レース最終盤始めの方でラストスパートの最中なら速度がすごく上がる＜ダート＞",
     "jpname": "黄龍、天へと昇る",
+    "loc": {
+      "ko": {
+        "char": [
+          109802
+        ]
+      }
+    },
     "name_ko": "황룡, 하늘로 오르다",
     "name_tw": "黃龍升天",
     "pre_evo": {
@@ -143162,6 +143379,13 @@
     "id": 109802211,
     "jpdesc": "スピードとパワーが上がる交流重賞のレースならすごく上がる＜ダート＞",
     "jpname": "走る縁起物",
+    "loc": {
+      "ko": {
+        "char": [
+          109802
+        ]
+      }
+    },
     "name_ko": "달리는 길조",
     "name_tw": "奔跑的幸運物",
     "pre_evo": {
@@ -161415,6 +161639,13 @@
     "id": 109802221,
     "jpdesc": "スピードとパワーが上がる絶好調なら全ての基礎能力が上がる＜ダート＞",
     "jpname": "盛運のドラムロール",
+    "loc": {
+      "ko": {
+        "char": [
+          109802
+        ]
+      }
+    },
     "pre_evo": {
       "card_id": 109802,
       "old": 202254
@@ -166119,7 +166350,7 @@
         ]
       }
     ],
-    "endesc": "",
+    "endesc": "Runner・Turf・If you're in the first half of the pack at a random point during the Middle Leg, you will get a great speed boost; (Medium only) then, if you didn't have a late start, your acceleration will increase at a random point during the first quarter of the Final Leg",
     "enname": "",
     "gene_version": {
       "activation": 1,
@@ -166195,7 +166426,7 @@
         ]
       }
     ],
-    "endesc": "",
+    "endesc": "If you're in the middle of the pack on the Final Straight during the Final Leg, your speed will increase; (Medium/Long only) if you were overtaken during the Middle Leg, you will also get a slight speed boost",
     "enname": "",
     "gene_version": {
       "activation": 1,
@@ -166270,7 +166501,7 @@
       }
     ],
     "cost": 170,
-    "endesc": "",
+    "endesc": "Runner・Long・If you're in the first half of the pack at a random point during the Middle Leg, your speed will increase",
     "enname": "",
     "evo": [],
     "iconid": 20012,
@@ -166314,7 +166545,7 @@
       }
     ],
     "cost": 170,
-    "endesc": "",
+    "endesc": "Runner・Long・If you're in the first half of the pack at a random point during the Middle Leg, your speed will slightly increase",
     "enname": "",
     "iconid": 20011,
     "id": 204482,
@@ -166359,7 +166590,7 @@
       }
     ],
     "cost": 120,
-    "endesc": "",
+    "endesc": "Runner・At a random point on a random uphill, your speed will slightly increase",
     "enname": "",
     "iconid": 20011,
     "id": 204492,
@@ -166404,7 +166635,7 @@
       }
     ],
     "cost": 200,
-    "endesc": "",
+    "endesc": "Medium・At a random point during the first half of the Middle Leg, your speed will increase and you will get a slight speed boost",
     "enname": "",
     "evo": [],
     "iconid": 20012,
@@ -166451,7 +166682,7 @@
       }
     ],
     "cost": 200,
-    "endesc": "",
+    "endesc": "Medium・At a random point during the first half of the Middle Leg, your speed will marginally increase and you will get a marginal speed boost",
     "enname": "",
     "iconid": 20011,
     "id": 204502,
@@ -166496,7 +166727,7 @@
       }
     ],
     "cost": 170,
-    "endesc": "",
+    "endesc": "Runner・Medium・If you're in the first half of the pack at a random point during the Middle Leg, your speed will increase",
     "enname": "",
     "evo": [
       {
@@ -166544,7 +166775,7 @@
       }
     ],
     "cost": 170,
-    "endesc": "",
+    "endesc": "Runner・Medium・If you're in the first half of the pack at a random point during the Middle Leg, your speed will slightly increase",
     "enname": "",
     "iconid": 20011,
     "id": 204542,
@@ -166584,7 +166815,7 @@
       }
     ],
     "cost": 180,
-    "endesc": "",
+    "endesc": "Runner・If you're in a last spurt at a random point during the first half of the Last Spurt, your speed will slightly increase",
     "enname": "",
     "iconid": 20011,
     "id": 204552,
@@ -166630,7 +166861,7 @@
       }
     ],
     "cost": 120,
-    "endesc": "",
+    "endesc": "Runner・Medium・If your base Speed is at least 1200, it will increase by another 20; if your base Wisdom is also at least 1200, the Speed increase will be 40 instead",
     "enname": "",
     "iconid": 10011,
     "id": 204562,
@@ -166685,7 +166916,7 @@
         "precondition": "track_id==10006&course_distance!=1800@track_id!=10006&course_distance==1800@track_id!=10006&course_distance!=1800"
       }
     ],
-    "endesc": "",
+    "endesc": "Your Speed and Power stats are increased by 60 on counterclockwise tracks; in 1800 m Tokyo races, they are increased by 120 instead",
     "enname": "",
     "evo_cond": [
       [
@@ -166771,7 +167002,7 @@
         ]
       }
     ],
-    "endesc": "",
+    "endesc": "Runner・Medium・If you're in the first half of the pack at a random point during the Middle Leg, your speed will increase; it will increase tremendously in Turf races",
     "enname": "",
     "evo_cond": [
       [
@@ -166840,7 +167071,7 @@
         ]
       }
     ],
-    "endesc": "",
+    "endesc": "Runner・Medium・If you're in the first half of the pack at a random point during the Middle Leg, your speed will increase; it will increase tremendously in Turf races if your base Wisdom is at least 1000",
     "enname": "",
     "evo_cond": [
       [
@@ -166914,7 +167145,7 @@
         "precondition": "distance_type==3&running_style==4"
       }
     ],
-    "endesc": "",
+    "endesc": "Chaser・Medium・Nakayama・During the Final Leg, your acceleration will slightly increase; the effect is stronger if you were at least 15 meters behind first place around the end of the Middle Leg",
     "enname": "",
     "evo_cond": [
       [
@@ -166985,7 +167216,7 @@
         "precondition": "distance_type==3@distance_type==4"
       }
     ],
-    "endesc": "",
+    "endesc": "Medium/Long・If you're not in the front during the second half of the Middle Leg, your speed will increase",
     "enname": "",
     "evo_cond": [
       [
@@ -167048,7 +167279,7 @@
         ]
       }
     ],
-    "endesc": "",
+    "endesc": "Betweener・2000 m+・If you have enough stamina for a full spurt at a random point during the first half of the Final Leg, you will get a great speed boost",
     "enname": "",
     "evo_cond": [
       [
@@ -167118,7 +167349,7 @@
         ]
       }
     ],
-    "endesc": "",
+    "endesc": "If you're in the first half of the pack and someone is trying to overtake you during the second half of the Middle Leg, your speed will increase; the effect is stronger if the race is Medium and your Motivation is Great",
     "enname": "",
     "gene_version": {
       "activation": 1,
@@ -167192,7 +167423,7 @@
         ]
       }
     ],
-    "endesc": "",
+    "endesc": "Leader・Medium・If your base Speed is at least 1200, your Speed stat is increased by 80; if your Motivation is Great, all your stats are increased by an additional 20",
     "enname": "",
     "evo_cond": [
       [
@@ -167264,7 +167495,7 @@
         ]
       }
     ],
-    "endesc": "",
+    "endesc": "Medium・If you're in a last spurt at a random point during the first half of the Last Spurt, your speed will increase; it will increase tremendously if your Motivation is Great",
     "enname": "",
     "evo_cond": [
       [
