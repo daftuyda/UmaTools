@@ -166351,7 +166351,7 @@
       }
     ],
     "endesc": "Runner・Turf・If you're in the first half of the pack at a random point during the Middle Leg, you will get a great speed boost; (Medium only) then, if you didn't have a late start, your acceleration will increase at a random point during the first quarter of the Final Leg",
-    "enname": "",
+    "enname": "Let the Sea Breeze Carry Me",
     "gene_version": {
       "activation": 1,
       "condition_groups": [
@@ -166427,7 +166427,7 @@
       }
     ],
     "endesc": "If you're in the middle of the pack on the Final Straight during the Final Leg, your speed will increase; (Medium/Long only) if you were overtaken during the Middle Leg, you will also get a slight speed boost",
-    "enname": "",
+    "enname": "Evening Calm Retreat Memory",
     "gene_version": {
       "activation": 1,
       "condition_groups": [
@@ -166502,7 +166502,7 @@
     ],
     "cost": 170,
     "endesc": "Runner・Long・If you're in the first half of the pack at a random point during the Middle Leg, your speed will increase",
-    "enname": "",
+    "enname": "Race Maker",
     "evo": [],
     "iconid": 20012,
     "id": 204481,
@@ -166546,7 +166546,7 @@
     ],
     "cost": 170,
     "endesc": "Runner・Long・If you're in the first half of the pack at a random point during the Middle Leg, your speed will slightly increase",
-    "enname": "",
+    "enname": "Let the Brush Lead",
     "iconid": 20011,
     "id": 204482,
     "jpdesc": "レース中盤に前方だと速度がわずかに上がる＜逃げ・長距離＞",
@@ -166591,7 +166591,7 @@
     ],
     "cost": 120,
     "endesc": "Runner・At a random point on a random uphill, your speed will slightly increase",
-    "enname": "",
+    "enname": "Point Man",
     "iconid": 20011,
     "id": 204492,
     "jpdesc": "上り坂で速度がわずかに上がる＜作戦・逃げ＞",
@@ -166636,7 +166636,7 @@
     ],
     "cost": 200,
     "endesc": "Medium・At a random point during the first half of the Middle Leg, your speed will increase and you will get a slight speed boost",
-    "enname": "",
+    "enname": "Two Birds, One Stone",
     "evo": [],
     "iconid": 20012,
     "id": 204501,
@@ -166683,7 +166683,7 @@
     ],
     "cost": 200,
     "endesc": "Medium・At a random point during the first half of the Middle Leg, your speed will marginally increase and you will get a marginal speed boost",
-    "enname": "",
+    "enname": "Double Axel",
     "iconid": 20011,
     "id": 204502,
     "jpdesc": "レース中盤始めの方に速度がちょっと上がりほんのわずかに前に出る＜中距離＞",
@@ -166728,7 +166728,7 @@
     ],
     "cost": 170,
     "endesc": "Runner・Medium・If you're in the first half of the pack at a random point during the Middle Leg, your speed will increase",
-    "enname": "",
+    "enname": "Vanguard",
     "evo": [
       {
         "card_id": 102003,
@@ -166776,7 +166776,7 @@
     ],
     "cost": 170,
     "endesc": "Runner・Medium・If you're in the first half of the pack at a random point during the Middle Leg, your speed will slightly increase",
-    "enname": "",
+    "enname": "Forerunner",
     "iconid": 20011,
     "id": 204542,
     "jpdesc": "レース中盤に前方だと速度がわずかに上がる＜逃げ・中距離＞",
@@ -166816,7 +166816,7 @@
     ],
     "cost": 180,
     "endesc": "Runner・If you're in a last spurt at a random point during the first half of the Last Spurt, your speed will slightly increase",
-    "enname": "",
+    "enname": "Ace Up the Sleeve",
     "iconid": 20011,
     "id": 204552,
     "jpdesc": "レース最終盤始めの方でラストスパートの最中なら速度がわずかに上がる＜作戦・逃げ＞",
@@ -166862,7 +166862,7 @@
     ],
     "cost": 120,
     "endesc": "Runner・Medium・If your base Speed is at least 1200, it will increase by another 20; if your base Wisdom is also at least 1200, the Speed increase will be 40 instead",
-    "enname": "",
+    "enname": "Game Sense",
     "iconid": 10011,
     "id": 204562,
     "jpdesc": "スピードが十二分に高いとスピードがわずかに上がる、賢さも十二分なら少し上がる＜逃げ・中距離＞",
@@ -166917,7 +166917,7 @@
       }
     ],
     "endesc": "Your Speed and Power stats are increased by 60 on counterclockwise tracks; in 1800 m Tokyo races, they are increased by 120 instead",
-    "enname": "",
+    "enname": "A World All My Own",
     "evo_cond": [
       [
         [
@@ -167003,7 +167003,7 @@
       }
     ],
     "endesc": "Runner・Medium・If you're in the first half of the pack at a random point during the Middle Leg, your speed will increase; it will increase tremendously in Turf races",
-    "enname": "",
+    "enname": "Carefree Vacation♪",
     "evo_cond": [
       [
         [
@@ -167072,7 +167072,7 @@
       }
     ],
     "endesc": "Runner・Medium・If you're in the first half of the pack at a random point during the Middle Leg, your speed will increase; it will increase tremendously in Turf races if your base Wisdom is at least 1000",
-    "enname": "",
+    "enname": "Summer Breeze Frontrunner",
     "evo_cond": [
       [
         [
@@ -167146,7 +167146,7 @@
       }
     ],
     "endesc": "Chaser・Medium・Nakayama・During the Final Leg, your acceleration will slightly increase; the effect is stronger if you were at least 15 meters behind first place around the end of the Middle Leg",
-    "enname": "",
+    "enname": "Indomitable Rebellion",
     "evo_cond": [
       [
         [
@@ -167217,7 +167217,7 @@
       }
     ],
     "endesc": "Medium/Long・If you're not in the front during the second half of the Middle Leg, your speed will increase",
-    "enname": "",
+    "enname": "Beachside Chase",
     "evo_cond": [
       [
         [
@@ -167280,7 +167280,7 @@
       }
     ],
     "endesc": "Betweener・2000 m+・If you have enough stamina for a full spurt at a random point during the first half of the Final Leg, you will get a great speed boost",
-    "enname": "",
+    "enname": "Rudbeckia Brings the Summer Breeze",
     "evo_cond": [
       [
         [
@@ -167350,7 +167350,7 @@
       }
     ],
     "endesc": "If you're in the first half of the pack and someone is trying to overtake you during the second half of the Middle Leg, your speed will increase; the effect is stronger if the race is Medium and your Motivation is Great",
-    "enname": "",
+    "enname": "Beachside Venus Time♡",
     "gene_version": {
       "activation": 1,
       "condition_groups": [
@@ -167424,7 +167424,7 @@
       }
     ],
     "endesc": "Leader・Medium・If your base Speed is at least 1200, your Speed stat is increased by 80; if your Motivation is Great, all your stats are increased by an additional 20",
-    "enname": "",
+    "enname": "Sorry I'm So Loved♡",
     "evo_cond": [
       [
         [
@@ -167496,7 +167496,7 @@
       }
     ],
     "endesc": "Medium・If you're in a last spurt at a random point during the first half of the Last Spurt, your speed will increase; it will increase tremendously if your Motivation is Great",
-    "enname": "",
+    "enname": "Brilliance on Full Display",
     "evo_cond": [
       [
         [

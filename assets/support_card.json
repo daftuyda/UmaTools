@@ -6647,8 +6647,8 @@
   {
     "EventName": "炎のコンテスト",
     "EventOptions": {
-      "Top Option": "Stamina +20\nOne Sky, One Goal hint +2\nレースメイカー hint +1\nBond +5",
-      "Bottom Option": "Stamina +10\nSkill Pts +10\nSend It! ☆ hint +2\nレースメイカー hint +1\nBond +5"
+      "Top Option": "Stamina +20\nOne Sky, One Goal hint +2\nRace Maker hint +1\nBond +5",
+      "Bottom Option": "Stamina +10\nSkill Pts +10\nSend It! ☆ hint +2\nRace Maker hint +1\nBond +5"
     }
   },
   {
@@ -6668,7 +6668,7 @@
   {
     "EventName": "鳴り響け！エモーション",
     "EventOptions": {
-      "Top Option": "Energy +5\nGuts +15\nOne and Only hint +1\n一石二鳥 hint +1\nBond +5",
+      "Top Option": "Energy +5\nGuts +15\nOne and Only hint +1\nTwo Birds, One Stone hint +1\nBond +5",
       "Bottom Option": "Energy +5\nGuts +5\nSkill Pts +10\nCounterclockwise Demon hint +1\nOne and Only hint +1\nBond +5"
     }
   },
