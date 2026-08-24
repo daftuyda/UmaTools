@@ -28265,6 +28265,462 @@
     ]
   },
   {
+    "SupportSlug": "10146-efforia",
+    "SupportId": "10146",
+    "SupportName": "Efforia (R)",
+    "SupportNameJP": "エフフォーリア (R)",
+    "SupportRarity": "R",
+    "SupportServer": "jp",
+    "SupportType": "Speed",
+    "SupportEffects": [
+      {
+        "id": 1,
+        "name": "Friendship Bonus",
+        "symbol": "percent",
+        "values": [
+          5,
+          7,
+          9,
+          12,
+          15,
+          16,
+          17,
+          18,
+          20,
+          20,
+          20
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Speed Bonus",
+        "symbol": "none",
+        "values": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "id": 8,
+        "name": "Training Effectiveness",
+        "symbol": "percent",
+        "values": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          5,
+          5,
+          5
+        ]
+      },
+      {
+        "id": 11,
+        "name": "Initial Power",
+        "symbol": "none",
+        "values": [
+          10,
+          10,
+          12,
+          15,
+          15,
+          16,
+          18,
+          20,
+          20,
+          20,
+          20
+        ]
+      },
+      {
+        "id": 14,
+        "name": "Initial Friendship Gauge",
+        "symbol": "none",
+        "values": [
+          10,
+          12,
+          14,
+          17,
+          20,
+          21,
+          22,
+          23,
+          25,
+          25,
+          25
+        ]
+      },
+      {
+        "id": 15,
+        "name": "Race Bonus",
+        "symbol": "percent",
+        "values": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          3,
+          5,
+          5,
+          5,
+          5
+        ]
+      },
+      {
+        "id": 16,
+        "name": "Fan Bonus",
+        "symbol": "percent",
+        "values": [
+          1,
+          1,
+          3,
+          5,
+          5,
+          6,
+          8,
+          10,
+          10,
+          10,
+          10
+        ]
+      },
+      {
+        "id": 19,
+        "name": "Specialty Priority",
+        "symbol": "none",
+        "values": [
+          5,
+          11,
+          19,
+          27,
+          35,
+          38,
+          42,
+          46,
+          50,
+          50,
+          50
+        ]
+      }
+    ],
+    "SupportUnique": null,
+    "SupportImage": "/assets/support_thumbs/10146-efforia.png",
+    "SupportHints": [
+      {
+        "SkillId": "200012",
+        "Name": "Right-Handed ○",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "200332",
+        "Name": "Corner Adept ○",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "200362",
+        "Name": "Straightaway Adept",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "201312",
+        "Name": "Pace Chaser Straightaways ○",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "201322",
+        "Name": "Pace Chaser Corners ○",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "202662",
+        "Name": "Rising Heat",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "203632",
+        "Name": "Dream-Fulfilling Challenge",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "203862",
+        "Name": "Carefree Step",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "204012",
+        "Name": "Brute Force",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "204202",
+        "Name": "Strategist",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "204572",
+        "Name": "ただその先へ",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "204702",
+        "Name": "突き抜ける走り",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "",
+        "Name": "Initial Speed bonus",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "",
+        "Name": "Initial Power bonus",
+        "HintLevel": null
+      }
+    ]
+  },
+  {
+    "SupportSlug": "10147-rulership",
+    "SupportId": "10147",
+    "SupportName": "Rulership (R)",
+    "SupportNameJP": "ルーラーシップ (R)",
+    "SupportRarity": "R",
+    "SupportServer": "jp",
+    "SupportType": "Stamina",
+    "SupportEffects": [
+      {
+        "id": 1,
+        "name": "Friendship Bonus",
+        "symbol": "percent",
+        "values": [
+          5,
+          6,
+          8,
+          10,
+          10,
+          11,
+          13,
+          15,
+          15,
+          15,
+          15
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Mood Effect",
+        "symbol": "percent",
+        "values": [
+          10,
+          13,
+          17,
+          21,
+          25,
+          27,
+          30,
+          32,
+          35,
+          35,
+          35
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Stamina Bonus",
+        "symbol": "none",
+        "values": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "id": 10,
+        "name": "Initial Stamina",
+        "symbol": "none",
+        "values": [
+          10,
+          10,
+          12,
+          15,
+          15,
+          16,
+          18,
+          20,
+          20,
+          20,
+          20
+        ]
+      },
+      {
+        "id": 14,
+        "name": "Initial Friendship Gauge",
+        "symbol": "none",
+        "values": [
+          10,
+          10,
+          12,
+          15,
+          15,
+          16,
+          18,
+          20,
+          20,
+          20,
+          20
+        ]
+      },
+      {
+        "id": 15,
+        "name": "Race Bonus",
+        "symbol": "percent",
+        "values": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          5,
+          5,
+          5
+        ]
+      },
+      {
+        "id": 16,
+        "name": "Fan Bonus",
+        "symbol": "percent",
+        "values": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          10,
+          10,
+          10
+        ]
+      },
+      {
+        "id": 17,
+        "name": "Hint Levels",
+        "symbol": "level",
+        "values": [
+          1,
+          1,
+          1,
+          1,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ]
+      },
+      {
+        "id": 18,
+        "name": "Hint Frequency",
+        "symbol": "percent",
+        "values": [
+          5,
+          10,
+          16,
+          23,
+          30,
+          32,
+          35,
+          37,
+          40,
+          40,
+          40
+        ]
+      }
+    ],
+    "SupportUnique": null,
+    "SupportImage": "/assets/support_thumbs/10147-rulership.png",
+    "SupportHints": [
+      {
+        "SkillId": "200162",
+        "Name": "Wet Conditions ○",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "200512",
+        "Name": "Homestretch Haste",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "200732",
+        "Name": "Steadfast",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "201142",
+        "Name": "Soft Step",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "202662",
+        "Name": "Rising Heat",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "203312",
+        "Name": "Towards the Light",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "203432",
+        "Name": "Dynamic Motion",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "204202",
+        "Name": "Strategist",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "",
+        "Name": "Initial Stamina bonus",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "",
+        "Name": "Initial Guts bonus",
+        "HintLevel": null
+      }
+    ]
+  },
+  {
     "SupportSlug": "20001-fuji-kiseki",
     "SupportId": "20001",
     "SupportName": "Fuji Kiseki (SR)",
@@ -127878,6 +128334,844 @@
       {
         "SkillId": "",
         "Name": "Initial Wit bonus",
+        "HintLevel": null
+      }
+    ]
+  },
+  {
+    "SupportSlug": "30311-efforia",
+    "SupportId": "30311",
+    "SupportName": "Efforia (SSR)",
+    "SupportNameJP": "エフフォーリア (SSR)",
+    "SupportRarity": "SSR",
+    "SupportServer": "jp",
+    "SupportType": "Speed",
+    "SupportEffects": [
+      {
+        "id": 1,
+        "name": "Friendship Bonus",
+        "symbol": "percent",
+        "values": [
+          10,
+          12,
+          14,
+          17,
+          19,
+          22,
+          25,
+          28,
+          32,
+          36,
+          40
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Mood Effect",
+        "symbol": "percent",
+        "values": [
+          10,
+          10,
+          10,
+          10,
+          15,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20
+        ]
+      },
+      {
+        "id": 8,
+        "name": "Training Effectiveness",
+        "symbol": "percent",
+        "values": [
+          1,
+          2,
+          3,
+          5,
+          6,
+          8,
+          10,
+          12,
+          15,
+          17,
+          20
+        ]
+      },
+      {
+        "id": 9,
+        "name": "Initial Speed",
+        "symbol": "none",
+        "values": [
+          10,
+          12,
+          14,
+          17,
+          19,
+          22,
+          25,
+          26,
+          27,
+          28,
+          30
+        ]
+      },
+      {
+        "id": 14,
+        "name": "Initial Friendship Gauge",
+        "symbol": "none",
+        "values": [
+          10,
+          12,
+          14,
+          17,
+          19,
+          22,
+          25,
+          27,
+          30,
+          32,
+          35
+        ]
+      },
+      {
+        "id": 15,
+        "name": "Race Bonus",
+        "symbol": "percent",
+        "values": [
+          1,
+          1,
+          2,
+          3,
+          4,
+          5,
+          5,
+          6,
+          7,
+          8,
+          10
+        ]
+      },
+      {
+        "id": 16,
+        "name": "Fan Bonus",
+        "symbol": "percent",
+        "values": [
+          1,
+          1,
+          1,
+          4,
+          7,
+          10,
+          10,
+          12,
+          15,
+          17,
+          20
+        ]
+      },
+      {
+        "id": 17,
+        "name": "Hint Levels",
+        "symbol": "level",
+        "values": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          2,
+          3,
+          3,
+          4
+        ]
+      },
+      {
+        "id": 18,
+        "name": "Hint Frequency",
+        "symbol": "percent",
+        "values": [
+          10,
+          16,
+          25,
+          34,
+          42,
+          51,
+          60,
+          70,
+          80,
+          90,
+          100
+        ]
+      },
+      {
+        "id": 19,
+        "name": "Specialty Priority",
+        "symbol": "none",
+        "values": [
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          60,
+          120
+        ]
+      },
+      {
+        "id": 30,
+        "name": "Skill Point Bonus",
+        "symbol": "none",
+        "values": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2
+        ]
+      },
+      {
+        "id": 32,
+        "name": "Effect #32",
+        "symbol": "none",
+        "values": [
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          20,
+          50,
+          50,
+          50
+        ]
+      }
+    ],
+    "SupportUnique": {
+      "level": 0,
+      "effects": [
+        {
+          "id": 101,
+          "name": "Effect #101",
+          "symbol": "",
+          "value": 80
+        }
+      ]
+    },
+    "SupportImage": "/assets/support_thumbs/30311-efforia.png",
+    "SupportHints": [
+      {
+        "SkillId": "200012",
+        "Name": "Right-Handed ○",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "200332",
+        "Name": "Corner Adept ○",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "200362",
+        "Name": "Straightaway Adept",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "201312",
+        "Name": "Pace Chaser Straightaways ○",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "201322",
+        "Name": "Pace Chaser Corners ○",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "202662",
+        "Name": "Rising Heat",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "203632",
+        "Name": "Dream-Fulfilling Challenge",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "203862",
+        "Name": "Carefree Step",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "204012",
+        "Name": "Brute Force",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "204202",
+        "Name": "Strategist",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "204572",
+        "Name": "ただその先へ",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "204702",
+        "Name": "突き抜ける走り",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "",
+        "Name": "Initial Speed bonus",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "",
+        "Name": "Initial Power bonus",
+        "HintLevel": null
+      }
+    ]
+  },
+  {
+    "SupportSlug": "30312-mr-cb",
+    "SupportId": "30312",
+    "SupportName": "Mr. C.B. (SSR)",
+    "SupportNameJP": "ミスターシービー (SSR)",
+    "SupportRarity": "SSR",
+    "SupportServer": "jp",
+    "SupportType": "Speed",
+    "SupportEffects": [
+      {
+        "id": 1,
+        "name": "Friendship Bonus",
+        "symbol": "percent",
+        "values": [
+          10,
+          12,
+          14,
+          17,
+          19,
+          22,
+          25,
+          27,
+          30,
+          32,
+          35
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Mood Effect",
+        "symbol": "percent",
+        "values": [
+          15,
+          18,
+          22,
+          27,
+          31,
+          35,
+          40,
+          50,
+          60,
+          70,
+          80
+        ]
+      },
+      {
+        "id": 8,
+        "name": "Training Effectiveness",
+        "symbol": "percent",
+        "values": [
+          1,
+          2,
+          3,
+          5,
+          6,
+          8,
+          10,
+          12,
+          15,
+          17,
+          20
+        ]
+      },
+      {
+        "id": 14,
+        "name": "Initial Friendship Gauge",
+        "symbol": "none",
+        "values": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          15,
+          30,
+          30,
+          30
+        ]
+      },
+      {
+        "id": 15,
+        "name": "Race Bonus",
+        "symbol": "percent",
+        "values": [
+          1,
+          1,
+          2,
+          3,
+          4,
+          5,
+          5,
+          6,
+          7,
+          8,
+          10
+        ]
+      },
+      {
+        "id": 16,
+        "name": "Fan Bonus",
+        "symbol": "percent",
+        "values": [
+          1,
+          1,
+          1,
+          4,
+          7,
+          10,
+          10,
+          12,
+          15,
+          17,
+          20
+        ]
+      },
+      {
+        "id": 17,
+        "name": "Hint Levels",
+        "symbol": "level",
+        "values": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2
+        ]
+      },
+      {
+        "id": 18,
+        "name": "Hint Frequency",
+        "symbol": "percent",
+        "values": [
+          10,
+          16,
+          25,
+          34,
+          42,
+          51,
+          60,
+          70,
+          80,
+          90,
+          100
+        ]
+      },
+      {
+        "id": 19,
+        "name": "Specialty Priority",
+        "symbol": "none",
+        "values": [
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          60,
+          120
+        ]
+      },
+      {
+        "id": 30,
+        "name": "Skill Point Bonus",
+        "symbol": "none",
+        "values": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2
+        ]
+      },
+      {
+        "id": 32,
+        "name": "Effect #32",
+        "symbol": "none",
+        "values": [
+          20,
+          20,
+          20,
+          20,
+          25,
+          30,
+          30,
+          33,
+          36,
+          40,
+          40
+        ]
+      }
+    ],
+    "SupportUnique": {
+      "level": 0,
+      "effects": [
+        {
+          "id": 101,
+          "name": "Effect #101",
+          "symbol": "",
+          "value": 80
+        }
+      ]
+    },
+    "SupportImage": "/assets/support_thumbs/30312-mr-cb.png",
+    "SupportHints": [
+      {
+        "SkillId": "200642",
+        "Name": "Straightaway Spurt",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "201452",
+        "Name": "End Closer Straightaways ○",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "201462",
+        "Name": "End Closer Corners ○",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "202022",
+        "Name": "Early Start",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "202382",
+        "Name": "Breakin' Out",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "202522",
+        "Name": "Break the Mold",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "202852",
+        "Name": "Rapid Overtakes",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "202872",
+        "Name": "Mighty Step",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "202932",
+        "Name": "Shadowstepper",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "203582",
+        "Name": "Capture",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "203762",
+        "Name": "Give Chase",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "203902",
+        "Name": "Nosedive",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "204522",
+        "Name": "潮目を掴んで",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "204632",
+        "Name": "広がる景色",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "204642",
+        "Name": "私の足取り",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "",
+        "Name": "Initial Speed bonus",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "",
+        "Name": "Initial Power bonus",
+        "HintLevel": null
+      }
+    ]
+  },
+  {
+    "SupportSlug": "30313-rulership",
+    "SupportId": "30313",
+    "SupportName": "Rulership (SSR)",
+    "SupportNameJP": "ルーラーシップ (SSR)",
+    "SupportRarity": "SSR",
+    "SupportServer": "jp",
+    "SupportType": "Stamina",
+    "SupportEffects": [
+      {
+        "id": 1,
+        "name": "Friendship Bonus",
+        "symbol": "percent",
+        "values": [
+          10,
+          11,
+          13,
+          15,
+          17,
+          20,
+          25,
+          26,
+          27,
+          28,
+          30
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Mood Effect",
+        "symbol": "percent",
+        "values": [
+          10,
+          14,
+          19,
+          24,
+          29,
+          34,
+          40,
+          45,
+          50,
+          55,
+          60
+        ]
+      },
+      {
+        "id": 14,
+        "name": "Initial Friendship Gauge",
+        "symbol": "none",
+        "values": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          15,
+          30
+        ]
+      },
+      {
+        "id": 15,
+        "name": "Race Bonus",
+        "symbol": "percent",
+        "values": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          5,
+          10,
+          10,
+          10
+        ]
+      },
+      {
+        "id": 16,
+        "name": "Fan Bonus",
+        "symbol": "percent",
+        "values": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          10,
+          15,
+          15,
+          15
+        ]
+      },
+      {
+        "id": 17,
+        "name": "Hint Levels",
+        "symbol": "level",
+        "values": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "id": 18,
+        "name": "Hint Frequency",
+        "symbol": "percent",
+        "values": [
+          5,
+          5,
+          5,
+          5,
+          12,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20
+        ]
+      },
+      {
+        "id": 19,
+        "name": "Specialty Priority",
+        "symbol": "none",
+        "values": [
+          5,
+          5,
+          5,
+          5,
+          12,
+          20,
+          35,
+          40,
+          45,
+          50,
+          50
+        ]
+      }
+    ],
+    "SupportUnique": {
+      "level": 0,
+      "effects": [
+        {
+          "id": 101,
+          "name": "Effect #101",
+          "symbol": "",
+          "value": 80
+        }
+      ]
+    },
+    "SupportImage": "/assets/support_thumbs/30313-rulership.png",
+    "SupportHints": [
+      {
+        "SkillId": "200162",
+        "Name": "Wet Conditions ○",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "200512",
+        "Name": "Homestretch Haste",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "200732",
+        "Name": "Steadfast",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "201142",
+        "Name": "Soft Step",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "202662",
+        "Name": "Rising Heat",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "203312",
+        "Name": "Towards the Light",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "203432",
+        "Name": "Dynamic Motion",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "204202",
+        "Name": "Strategist",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "",
+        "Name": "Initial Stamina bonus",
+        "HintLevel": null
+      },
+      {
+        "SkillId": "",
+        "Name": "Initial Guts bonus",
         "HintLevel": null
       }
     ]

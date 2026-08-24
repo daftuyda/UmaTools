@@ -42500,7 +42500,192 @@
         "ObjectiveCondition": ""
       }
     ],
-    "UmaEvents": [],
+    "UmaEvents": [
+      {
+        "EventName": "燃えてんですぅーっ！",
+        "EventOptions": {
+          "Top Option": "Energy +10\nStamina +5",
+          "Bottom Option": "Refined Conduct hint +1"
+        }
+      },
+      {
+        "EventName": "やればできるしっ！",
+        "EventOptions": {
+          "": "Energy +5\nSkill Pts +15\nCarefree Step hint +1\nStamina +5\nWit +10\nCarefree Step hint +1"
+        }
+      },
+      {
+        "EventName": "ワガママめぇ～☆",
+        "EventOptions": {
+          "": "bo_l_c +7\nEnergy +30\nPower +15\nGuts +15"
+        }
+      }
+    ],
     "UmaImage": "/assets/character_thumbs/111302-fusaichi-pandora.png"
+  },
+  {
+    "UmaKey": "Epiphaneia :: Fate's Chosen Star",
+    "UmaName": "Epiphaneia",
+    "UmaNameJP": "エピファネイア",
+    "UmaNickname": "Fate's Chosen Star",
+    "UmaNicknameJP": "Fate's Chosen Star",
+    "UmaSlug": "114101-epiphaneia",
+    "UmaId": "114101",
+    "UmaServer": "jp",
+    "UmaBaseStars": 3,
+    "UmaBaseStats": {
+      "3★": {
+        "Speed": 92,
+        "Stamina": 90,
+        "Power": 94,
+        "Guts": 93,
+        "Wit": 81
+      },
+      "5★": {
+        "Speed": 112,
+        "Stamina": 110,
+        "Power": 115,
+        "Guts": 114,
+        "Wit": 99
+      },
+      "4★": {
+        "Speed": 102,
+        "Stamina": 100,
+        "Power": 105,
+        "Guts": 103,
+        "Wit": 90
+      }
+    },
+    "UmaStatBonuses": {
+      "Speed": 0,
+      "Stamina": 10,
+      "Power": 10,
+      "Guts": 0,
+      "Wit": 10
+    },
+    "UmaAptitudes": {
+      "Surface": {
+        "Turf": "A",
+        "Dirt": "G"
+      },
+      "Distance": {
+        "Short": "G",
+        "Mile": "E",
+        "Medium": "A",
+        "Long": "A"
+      },
+      "Strategy": {
+        "Front": "D",
+        "Pace": "A",
+        "Late": "B",
+        "End": "G"
+      }
+    },
+    "UmaHeightCm": null,
+    "UmaThreeSizes": {},
+    "UmaObjectives": [
+      {
+        "ObjectiveName": "Junior Make Debut",
+        "Turn": "12",
+        "Time": "Junior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Hopeful Stakes",
+        "Turn": "24",
+        "Time": "Junior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Satsuki Sho",
+        "Turn": "31",
+        "Time": "Classic Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Tokyo Yushun (Japanese Derby)",
+        "Turn": "34",
+        "Time": "Classic Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Kikuka Sho",
+        "Turn": "44",
+        "Time": "Classic Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Osaka Hai",
+        "Turn": "54",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Takarazuka Kinen",
+        "Turn": "60",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Tenno Sho (Autumn)",
+        "Turn": "68",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Japan Cup",
+        "Turn": "70",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Arima Kinen",
+        "Turn": "72",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "URA Preliminary",
+        "Turn": "74",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "URA Semi-Final",
+        "Turn": "76",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "URA Final",
+        "Turn": "78",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      }
+    ],
+    "UmaEvents": [
+      {
+        "EventName": "進め、心のままに！",
+        "EventOptions": {
+          "Top Option": "Power +20",
+          "Bottom Option": "Speed +20"
+        }
+      },
+      {
+        "EventName": "爆発★ヨガフィーバー",
+        "EventOptions": {
+          "Top Option": "Guts +20",
+          "Bottom Option": "Power +20"
+        }
+      },
+      {
+        "EventName": "デザイン奮闘記",
+        "EventOptions": {
+          "Top Option": "Speed +20",
+          "Bottom Option": "Stamina +20"
+        }
+      }
+    ],
+    "UmaImage": "/assets/character_thumbs/114101-epiphaneia.png"
   }
 ]

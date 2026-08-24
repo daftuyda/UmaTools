@@ -6690,5 +6690,69 @@
     "EventOptions": {
       "": "Energy +5\nWit +5\nDetermined Descent hint +1\nBond +5"
     }
+  },
+  {
+    "EventName": "いつもの歓迎会",
+    "EventOptions": {
+      "": "Wit +15\nBond +5"
+    }
+  },
+  {
+    "EventName": "いつものみんなと",
+    "EventOptions": {
+      "Top Option": "Wit +15\nBond +5",
+      "Bottom Option": "Energy +10\nMotivation +1\nBond +5"
+    }
+  },
+  {
+    "EventName": "そして、いつもへ",
+    "EventOptions": {
+      "": "Wit +15\nElated hint +1\nBond +5"
+    }
+  },
+  {
+    "EventName": "淑女、粛々と読書中",
+    "EventOptions": {
+      "Top Option": "Energy +20\nMotivation +1\nSpeed +5\nBond +5",
+      "Bottom Option": "Motivation +1\nSkill Pts +25\nBond +5"
+    }
+  },
+  {
+    "EventName": "運命の暴走散歩道",
+    "EventOptions": {
+      "Top Option": "Motivation +1\nSkill Pts +25\nWith Feelings Aboard hint +1\nBond +5",
+      "Bottom Option": "Energy +15\nMotivation +1\n5s +6\nBond +5"
+    }
+  },
+  {
+    "EventName": "『運命』のライバル",
+    "EventOptions": {
+      "Top Option": "Energy +15\nMotivation +1\n華麗な踏み込み hint +5\n素質の証明 hint +2\n清麗高雅 hint +2\nBond +5\nEnergy +10\nMotivation +1\n華麗な踏み込み hint +1\n素質の証明 hint +1\n清麗高雅 hint +1\nBond +5",
+      "Bottom Option": "Energy +15\nMotivation +1\nStamina +15\nSkill Pts +10\n素質の証明 hint +2\n純真無垢 hint +2\nBond +5\nEnergy +10\nMotivation +1\n素質の証明 hint +1\n純真無垢 hint +1\nBond +5",
+      "Option 3": "Energy +15\nMotivation +1\nOne Brave Step hint +5\n素質の証明 hint +2\nShowdown hint +2\nBond +5\nEnergy +10\nMotivation +1\nOne Brave Step hint +1\n素質の証明 hint +1\nShowdown hint +1\nBond +5"
+    }
+  },
+  {
+    "EventName": "『気分』熱意に触れて",
+    "EventOptions": {
+      "Top Option": "Motivation +1\nSpeed +25\nBond +10",
+      "Bottom Option": "Energy +5\nMotivation +1\nSkill Pts +25\nBond +5"
+    }
+  },
+  {
+    "EventName": "『気分』キミの中に",
+    "EventOptions": {
+      "Top Option": "Energy +10\nPower +20\nCapture hint +2\nBond +5",
+      "Bottom Option": "Energy +10\nSpeed +15\nStamina +10\nImmovable Spirit hint +1\nBond +5",
+      "Option 3": "Energy +10\nSpeed +10\nPower +10\nSkill Pts +20\nBond +5"
+    }
+  },
+  {
+    "EventName": "『気分』思うままに",
+    "EventOptions": {
+      "Top Option": "Energy +5\nMotivation +1\nPower +25\nDaring Strike hint +1\n当機立断 hint +2\nBond +5",
+      "Bottom Option": "Energy +5\nMotivation +1\nSpeed +10\nPower +15\nDaring Strike hint +1\nReign hint +2\nBond +5",
+      "Option 3": "Energy +5\nMotivation +1\nStamina +10\nPower +15\nDaring Strike hint +2\nClean Sweep hint +1\nBond +5"
+    }
   }
 ]
