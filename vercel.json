@@ -3,6 +3,12 @@
   "buildCommand": "npm run build",
   "outputDirectory": ".",
   "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/api/og/:page.png",
+      "destination": "/api/og?page=:page"
+    }
+  ],
   "functions": {
     "api/[...path].py": {
       "includeFiles": "assets/**"

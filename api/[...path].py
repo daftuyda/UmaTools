@@ -293,8 +293,8 @@ async def list_events():
     return {"events": EVENT_NAMES}
 
 
-@app.get("/og/{page}.png", response_class=Response)
-async def open_graph_image(page: str):
+@app.get("/og", response_class=Response)
+async def open_graph_image(page: str = Query(..., description="Open Graph page key")):
     if page not in OG_PAGES:
         raise HTTPException(status_code=404, detail="Unknown Open Graph image")
 
