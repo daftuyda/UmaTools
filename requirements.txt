@@ -1,4 +1,5 @@
 fastapi
+Pillow
 python-multipart
 rapidfuzz
 uvicorn

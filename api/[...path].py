@@ -1,15 +1,175 @@
 import json
+from functools import lru_cache
+from io import BytesIO
 from pathlib import Path
 from typing import Dict, List
 
 from fastapi import FastAPI, HTTPException, Query
+from fastapi.responses import Response
+from PIL import Image, ImageChops, ImageDraw, ImageFilter, ImageFont
 from rapidfuzz import fuzz, process
 from starlette.middleware.base import BaseHTTPMiddleware
 
 BASE_DIR = Path(__file__).resolve().parents[1]
 ASSETS = BASE_DIR / "assets"
+OG_FONT = ASSETS / "fonts" / "PlusJakartaSans-Variable.ttf"
+OG_ICON = ASSETS / "icon-512.png"
+
+OG_PAGES = {
+    "home": {
+        "title": "Uma Musume Training Toolkit",
+        "description": "Faster decisions for training, skills, events, ratings, and more.",
+    },
+    "accel": {
+        "title": "Valid Accel Checker",
+        "description": "Find acceleration skills that activate for your exact race setup.",
+    },
+    "calculator": {
+        "title": "Rating Calculator",
+        "description": "Estimate your final rating from stats, skills, and aptitudes.",
+    },
+    "collection": {
+        "title": "Deck Optimizer",
+        "description": "Turn your support collection into a stronger training deck.",
+    },
+    "deck": {
+        "title": "Deck Builder",
+        "description": "Build a training deck and review combined hints and bonuses.",
+    },
+    "events": {
+        "title": "Event OCR Helper",
+        "description": "Capture an event screen and find the best outcome instantly.",
+    },
+    "hints": {
+        "title": "Support Hint Finder",
+        "description": "Find support cards by skill hint, rarity, and match rules.",
+    },
+    "optimizer": {
+        "title": "Skill Optimizer",
+        "description": "Plan efficient skill builds around your budget and target race.",
+    },
+    "random": {
+        "title": "Uma Randomizer",
+        "description": "Roll a fresh character and support deck for your next run.",
+    },
+    "rank": {
+        "title": "Rating Rank Breakdown",
+        "description": "Explore rating thresholds and badges from G through LS24.",
+    },
+    "skills": {
+        "title": "Skill Library",
+        "description": "Search every skill by name, type, cost, score, and efficiency.",
+    },
+    "stamina": {
+        "title": "Stamina Check",
+        "description": "Estimate race stamina needs with recovery and condition settings.",
+    },
+    "token-planner": {
+        "title": "Grand Live Token Planner",
+        "description": "Plan songs and track every token you still need to save.",
+    },
+    "umadle": {
+        "title": "Umadle Daily Guess",
+        "description": "Test your Uma Musume knowledge with a new puzzle every day.",
+    },
+    "not-found": {
+        "title": "Page Not Found",
+        "description": "That page left the track. Head back to UmaTools to keep training.",
+    },
+}
 
 app = FastAPI()
+
+
+def _font(size: int, weight: str = "Regular") -> ImageFont.FreeTypeFont:
+    font = ImageFont.truetype(str(OG_FONT), size=size)
+    try:
+        font.set_variation_by_name(weight)
+    except (OSError, ValueError):
+        pass
+    return font
+
+
+def _wrap_text(
+    draw: ImageDraw.ImageDraw, text: str, font: ImageFont.FreeTypeFont, max_width: int
+) -> List[str]:
+    words = text.split()
+    lines: List[str] = []
+    current = ""
+    for word in words:
+        candidate = f"{current} {word}".strip()
+        if not current or draw.textbbox((0, 0), candidate, font=font)[2] <= max_width:
+            current = candidate
+        else:
+            lines.append(current)
+            current = word
+    if current:
+        lines.append(current)
+    return lines
+
+
+@lru_cache(maxsize=2)
+def _brand_icon(size: int) -> Image.Image:
+    icon = Image.open(OG_ICON).convert("RGB")
+    difference = ImageChops.difference(icon, Image.new("RGB", icon.size, "white"))
+    bounds = difference.getbbox()
+    if bounds:
+        icon = icon.crop(bounds)
+    icon.thumbnail((size, size), Image.Resampling.LANCZOS)
+    icon = icon.convert("RGBA")
+
+    mask = Image.new("L", icon.size, 0)
+    ImageDraw.Draw(mask).rounded_rectangle(
+        (0, 0, icon.width, icon.height), radius=min(icon.size) // 5, fill=255
+    )
+    icon.putalpha(mask)
+
+    canvas = Image.new("RGBA", (size, size), (0, 0, 0, 0))
+    canvas.alpha_composite(icon, ((size - icon.width) // 2, (size - icon.height) // 2))
+    return canvas
+
+
+@lru_cache(maxsize=len(OG_PAGES))
+def _render_og_image(page: str) -> bytes:
+    config = OG_PAGES[page]
+    image = Image.new("RGBA", (1200, 630), (17, 20, 26, 255))
+
+    # Match the site's dark-mode radial background without adding visual noise.
+    glow = Image.new("RGBA", image.size, (0, 0, 0, 0))
+    glow_draw = ImageDraw.Draw(glow)
+    glow_draw.ellipse((-260, -330, 760, 650), fill=(100, 116, 139, 42))
+    glow_draw.ellipse((760, -330, 1420, 430), fill=(71, 85, 105, 30))
+    glow_draw.ellipse((720, 300, 1370, 900), fill=(148, 163, 184, 20))
+    image = Image.alpha_composite(image, glow.filter(ImageFilter.GaussianBlur(120)))
+    draw = ImageDraw.Draw(image)
+
+    image.alpha_composite(_brand_icon(56), (72, 56))
+    draw.text((146, 66), "UmaTools", font=_font(31, "Bold"), fill=(241, 245, 249, 255))
+    draw.rounded_rectangle((72, 137, 142, 144), radius=4, fill=(148, 163, 184, 255))
+
+    title = config["title"]
+    title_size = 70 if len(title) > 25 else 78
+    title_font = _font(title_size, "Bold")
+    title_lines = _wrap_text(draw, title, title_font, 920)[:2]
+    title_y = 180
+    for line in title_lines:
+        draw.text((72, title_y), line, font=title_font, fill=(241, 245, 249, 255))
+        title_y += title_size + 8
+
+    body_font = _font(26)
+    description_y = max(388, title_y + 14)
+    for line in _wrap_text(draw, config["description"], body_font, 780)[:2]:
+        draw.text((75, description_y), line, font=body_font, fill=(203, 213, 225, 255))
+        description_y += 39
+
+    draw.text((75, 557), "daftuyda.moe", font=_font(20, "Bold"), fill=(226, 232, 240, 255))
+    draw.ellipse((1085, 559, 1097, 571), fill=(203, 213, 225, 255))
+    draw.ellipse((1105, 559, 1117, 571), fill=(148, 163, 184, 255))
+    draw.ellipse((1125, 559, 1137, 571), fill=(71, 85, 105, 255))
+
+    output = BytesIO()
+    image.convert("RGB").save(output, format="PNG", optimize=True)
+    return output.getvalue()
 
 
 class StripPathPrefix(BaseHTTPMiddleware):
@@ -131,6 +291,22 @@ EVENT_NAMES = list(EVENT_MAP.keys())
 @app.get("/events")
 async def list_events():
     return {"events": EVENT_NAMES}
+
+
+@app.get("/og/{page}.png", response_class=Response)
+async def open_graph_image(page: str):
+    if page not in OG_PAGES:
+        raise HTTPException(status_code=404, detail="Unknown Open Graph image")
+
+    return Response(
+        content=_render_og_image(page),
+        media_type="image/png",
+        headers={
+            "Cache-Control": "public, max-age=86400, s-maxage=604800, stale-while-revalidate=2592000",
+            "Content-Disposition": f'inline; filename="umatools-{page}.png"',
+            "X-Content-Type-Options": "nosniff",
+        },
+    )
 
 
 @app.get("/event_by_name")

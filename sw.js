@@ -82,7 +82,6 @@ const STATIC_ASSETS = [
   '/assets/apple-touch-icon.png',
   '/assets/icon-192.png',
   '/assets/icon-512.png',
-  '/assets/og-default.png',
   '/assets/Rank_tex.png',
 ];
 
