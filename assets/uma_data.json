@@ -15870,7 +15870,7 @@
     "UmaNicknameJP": "Flare",
     "UmaSlug": "108701-aston-machan",
     "UmaId": "108701",
-    "UmaServer": "jp",
+    "UmaServer": "global",
     "UmaBaseStars": 3,
     "UmaBaseStats": {
       "3★": {
@@ -15992,21 +15992,21 @@
     ],
     "UmaEvents": [
       {
-        "EventName": "むすんでおぼえて",
+        "EventName": "Wrapped and Remembered",
         "EventOptions": {
           "Top Option": "Power +20",
           "Bottom Option": "Speed +20"
         }
       },
       {
-        "EventName": "マーちゃんはマーちゃんなのです",
+        "EventName": "Call Me Machan",
         "EventOptions": {
           "Top Option": "Stamina +10\nWit +10",
           "Bottom Option": "Guts +20"
         }
       },
       {
-        "EventName": "くっきんメモリーズ",
+        "EventName": "Cooking up Memories",
         "EventOptions": {
           "Top Option": "Stamina +20",
           "Bottom Option": "Power +20"
@@ -22017,7 +22017,7 @@
       {
         "EventName": "モルモットの幸せ",
         "EventOptions": {
-          "": "Medium Straightaways ○ hint +2\nUp-Tempo hint +2"
+          "": "bp2 1\nMedium Straightaways ○ hint +2\nUp-Tempo hint +2\nbp2 2\nMedium Corners ○ hint +2\nSoft Step hint +2\nPower +20\nSkill Pts +25"
         }
       }
     ],

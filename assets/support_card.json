@@ -3778,19 +3778,19 @@
     }
   },
   {
-    "EventName": "偉大なる芸術家の如く……",
+    "EventName": "As the Great Artists of Yore...",
     "EventOptions": {
       "": "Power +15\nSkill Pts +15\nBond +5\nSkill Pts +10\nBond +5"
     }
   },
   {
-    "EventName": "北国の罪人の如く……",
+    "EventName": "As the Criminal from the North...",
     "EventOptions": {
       "": "Stamina +15\nPower +15\nBond +5\nPower +10\nBond +5"
     }
   },
   {
-    "EventName": "葡萄酒の神の如く……",
+    "EventName": "As Bacchus, God of Wine...",
     "EventOptions": {
       "": "Stamina +10\nPower +10\nSturm und Drang hint +1\nBond +5"
     }
@@ -6713,8 +6713,8 @@
   {
     "EventName": "淑女、粛々と読書中",
     "EventOptions": {
-      "Top Option": "Energy +20\nMotivation +1\nSpeed +5\nBond +5",
-      "Bottom Option": "Motivation +1\nSkill Pts +25\nBond +5"
+      "Top Option": "Energy +20\nMotivation +1\nSpeed +5\nBond +10",
+      "Bottom Option": "Motivation +1\nSkill Pts +25\nBond +10"
     }
   },
   {
@@ -6727,9 +6727,9 @@
   {
     "EventName": "『運命』のライバル",
     "EventOptions": {
-      "Top Option": "Energy +15\nMotivation +1\n華麗な踏み込み hint +5\n素質の証明 hint +2\n清麗高雅 hint +2\nBond +5\nEnergy +10\nMotivation +1\n華麗な踏み込み hint +1\n素質の証明 hint +1\n清麗高雅 hint +1\nBond +5",
-      "Bottom Option": "Energy +15\nMotivation +1\nStamina +15\nSkill Pts +10\n素質の証明 hint +2\n純真無垢 hint +2\nBond +5\nEnergy +10\nMotivation +1\n素質の証明 hint +1\n純真無垢 hint +1\nBond +5",
-      "Option 3": "Energy +15\nMotivation +1\nOne Brave Step hint +5\n素質の証明 hint +2\nShowdown hint +2\nBond +5\nEnergy +10\nMotivation +1\nOne Brave Step hint +1\n素質の証明 hint +1\nShowdown hint +1\nBond +5"
+      "Top Option": "Energy +15\nMotivation +1\nSplendid Stride hint +5\nProof of Talent hint +2\nRefined Elegance hint +2\nBond +5\nEnergy +10\nMotivation +1\nSplendid Stride hint +1\nProof of Talent hint +1\nRefined Elegance hint +1\nBond +5",
+      "Bottom Option": "Energy +15\nMotivation +1\nStamina +15\nSkill Pts +10\nProof of Talent hint +2\nPurehearted hint +2\nBond +5\nEnergy +10\nMotivation +1\nProof of Talent hint +1\nPurehearted hint +1\nBond +5",
+      "Option 3": "Energy +15\nMotivation +1\nOne Brave Step hint +5\nProof of Talent hint +2\nShowdown hint +2\nBond +5\nEnergy +10\nMotivation +1\nOne Brave Step hint +1\nProof of Talent hint +1\nShowdown hint +1\nBond +5"
     }
   },
   {
@@ -6750,9 +6750,29 @@
   {
     "EventName": "『気分』思うままに",
     "EventOptions": {
-      "Top Option": "Energy +5\nMotivation +1\nPower +25\nDaring Strike hint +1\n当機立断 hint +2\nBond +5",
+      "Top Option": "Energy +5\nMotivation +1\nPower +25\nDaring Strike hint +1\nDecisive Moment hint +2\nBond +5",
       "Bottom Option": "Energy +5\nMotivation +1\nSpeed +10\nPower +15\nDaring Strike hint +1\nReign hint +2\nBond +5",
       "Option 3": "Energy +5\nMotivation +1\nStamina +10\nPower +15\nDaring Strike hint +2\nClean Sweep hint +1\nBond +5"
+    }
+  },
+  {
+    "EventName": "集え、最強？の猛者たち",
+    "EventOptions": {
+      "Top Option": "Stamina +15\nBond +5",
+      "Bottom Option": "Energy +15\nBond +5"
+    }
+  },
+  {
+    "EventName": "カードは配られた",
+    "EventOptions": {
+      "Top Option": "Motivation +1\nStamina +10\nBond +5",
+      "Bottom Option": "Energy +15\nBond +5"
+    }
+  },
+  {
+    "EventName": "最強のチーム",
+    "EventOptions": {
+      "": "Energy +5\nStamina +10\nCome What May hint +1\nBond +5"
     }
   }
 ]

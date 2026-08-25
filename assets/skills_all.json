@@ -21,7 +21,6 @@
     "desc_ko": "최종 코너 이후에 전방에 따라붙으면 최종 직선을 달리는 중에 불굴의 투지로 속도가 많이 상승한다",
     "desc_tw": "在最後彎道之後若位於隊列前方緊追不捨，跑在最後直線時會以不屈服的鬥志使速度大幅上升",
     "endesc": "If you're chasing after another girl in the front during the Final Corner or beyond, your speed on the Final Straight will increase",
-    "endesc_needs_retranslation": true,
     "enname": "It's Going to Be Me",
     "gene_version": {
       "activation": 1,
@@ -138,7 +137,6 @@
     "desc_ko": "레이스 종반이면서 최종 코너 이후에 전방에서 누군가 따라붙으면 속도가 계속해서 상승한다",
     "desc_tw": "在競賽後期且在最後彎道之後若位於隊列前方當被逼近時會使速度持續上升",
     "endesc": "During the Final Corner or beyond, if you're in the top 4 and someone is about to overtake you, your speed will increase",
-    "endesc_needs_retranslation": true,
     "enname": "For the Strongest Name",
     "gene_version": {
       "activation": 1,
@@ -225,7 +223,6 @@
     "desc_ko": "레이스 중간 부근에서 후방에 있으면 롱 스퍼트를 걸어 속도가 계속해서 약간 상승한다",
     "desc_tw": "在競賽中間附近若位於隊列後方將進行長距離衝刺使速度略微持續上升",
     "endesc": "If you're in the second half of the pack halfway through the race, your speed will slightly increase",
-    "endesc_needs_retranslation": true,
     "enname": "Warning Shot!",
     "gene_version": {
       "activation": 1,
@@ -309,7 +306,6 @@
     "desc_ko": "남은 거리가 200m 이하일 때 전방에 있으면 경합에 강해지고 속도가 다소 상승한다",
     "desc_tw": "剩餘200m以內若位於隊列前方會變得擅長與對手競爭而使速度稍微上升",
     "endesc": "Increase speed slightly when close to the lead in last 200m",
-    "endesc_needs_retranslation": true,
     "enname": "Accelerator X",
     "gene_version": {
       "activation": 1,
@@ -397,7 +393,6 @@
     "desc_ko": "레이스 후반에 전방에 있으면 1등이 될 힘을 약간 발휘한다",
     "desc_tw": "在競賽後半若位於隊列前方會略微發揮想成為第1的力量",
     "endesc": "If you're competing for the first position during the second half of the race, your speed and acceleration will increase",
-    "endesc_needs_retranslation": true,
     "enname": "Red Ace",
     "gene_version": {
       "activation": 1,
@@ -485,7 +480,6 @@
     "desc_ko": "최종 직선일 때 후방에서 추월하면 뒷심을 발휘해 속도가 다소 상승한다",
     "desc_tw": "在最後直線若由隊列後方追過對手會以尾段加速使速度稍微上升",
     "endesc": "If you're not in the front and overtake another girl during the Final Straight, your speed will slightly increase",
-    "endesc_needs_retranslation": true,
     "enname": "Desire to Win",
     "gene_version": {
       "activation": 1,
@@ -604,7 +598,6 @@
     "desc_ko": "최종 직선에서 여력을 남기고 앞에 있으면 약간 우위를 유지하기 쉬워진다",
     "desc_tw": "在最後直線若保有餘力且位於隊列前方能略微變得容易保持優勢",
     "endesc": "If you're in the front during the Final Straight with plenty of stamina left, your speed and acceleration will slightly increase",
-    "endesc_needs_retranslation": true,
     "enname": "Hot Blooded ☆ Amigo",
     "gene_version": {
       "activation": 1,
@@ -731,7 +724,6 @@
     "desc_ko": "최종 코너의 중위권 그룹 이후로부터 추월하면 여제다운 달리기로 속도가 다소 상승한다",
     "desc_tw": "在最後彎道若由隊列中段之後追過對手會以女帝應有的跑法使速度稍微上升",
     "endesc": "If you're not in the front during the Final Corner and are passing someone, your speed will increase",
-    "endesc_needs_retranslation": true,
     "enname": "Empress・Pride",
     "gene_version": {
       "activation": 1,
@@ -821,7 +813,6 @@
     "desc_ko": "최종 코너 이후에 전방에서 경합하면 약간 빠져나가기 쉬워진다",
     "desc_tw": "在最後彎道之後若於隊列前方與對手競爭略微變得容易突圍",
     "endesc": "If you're competing for the lead on the Final Corner or beyond, your speed and acceleration will increase",
-    "endesc_needs_retranslation": true,
     "enname": "Victory Kiss ☆",
     "gene_version": {
       "activation": 1,
@@ -911,7 +902,6 @@
     "desc_ko": "레이스 종반 코너에서 중위권 그룹에 있으면 앞쪽 위치로 가기 위해 가속력이 다소 상승한다",
     "desc_tw": "在競賽後期的彎道若位於隊列中段會為了追趕至前方位置而使加速力稍微上升",
     "endesc": "If you're in the middle of the pack during any Final Leg corner, your acceleration will increase",
-    "endesc_needs_retranslation": true,
     "enname": "Burning Muscles!",
     "gene_version": {
       "activation": 1,
@@ -1208,7 +1198,6 @@
     "desc_ko": "레이스 후반에 전방에서 경합하면 돌진력(?)을 발휘해 속도가 다소 상승한다",
     "desc_tw": "在競賽後半若於隊列前方與對手競爭會發揮驀進力(?)使速度稍微上升",
     "endesc": "While fighting for the lead during the second part of the race, lightly increase your speed through displaying your Bakushin power",
-    "endesc_needs_retranslation": true,
     "enname": "Class President + Speed = Bakushin",
     "gene_version": {
       "activation": 1,
@@ -1292,7 +1281,6 @@
     "desc_ko": "레이스 중반에 좋은 위치에 있을 때 지구력을 회복한다",
     "desc_tw": "在競賽中期位於良好位置時會回復持久力",
     "endesc": "At a random point during the Middle Leg, if you're in the top 40% but not first, your stamina will recover",
-    "endesc_needs_retranslation": true,
     "enname": "Clear Heart",
     "gene_version": {
       "activation": 1,
@@ -1377,7 +1365,6 @@
     "desc_ko": "최종 코너에서 후방에 있으면 근처 우마무스메를 보고 지구력을 다소 회복한다",
     "desc_tw": "在最後彎道若位於隊列後方看見身旁的賽馬娘會稍微回復持久力",
     "endesc": "If you're in the second half of the pack during the Final Corner and there's at least one other girl nearby, your stamina will recover",
-    "endesc_needs_retranslation": true,
     "enname": "Ready, Steady, Go!",
     "gene_version": {
       "activation": 1,
@@ -1464,10 +1451,9 @@
       }
     ],
     "desc_en": "Moderately clear a path forward with the power of divination when the way ahead is jammed late-race.",
-    "desc_ko": "레이스 종반에 3위 이하이고 전방이 막히면 계시의 힘으로 길을 다소 개척한다",
+    "desc_ko": "레이스 종반에 3위 이후이고 전방이 막히면 계시의 힘으로 길을 다소 개척한다",
     "desc_tw": "在競賽後期若位列第3之後當前方被阻擋時會以神助之力稍微開闢道路",
     "endesc": "If during the Final Leg of the race your way to the front of the field is blocked, your power of divination will make it lightly easier to spot an opening",
-    "endesc_needs_retranslation": true,
     "enname": "Come, Come!",
     "gene_version": {
       "activation": 1,
@@ -1489,7 +1475,7 @@
       ],
       "cost": 200,
       "desc_en": "Slightly clear a path forward depending on divination results when the way ahead is jammed late-race.",
-      "desc_ko": "레이스 종반에 3위 이하이고 전방이 막히면 계시 나름대로 길을 약간 개척한다",
+      "desc_ko": "레이스 종반에 3위 이후이고 전방이 막히면 계시 나름대로 길을 약간 개척한다",
       "desc_tw": "在競賽後期若位列第3以後當前方被阻擋時能否略微開闢道路全視神助而定",
       "iconid": 20011,
       "id": 900561,
@@ -1642,7 +1628,6 @@
     "desc_ko": "레이스를 침착하게 진행하면 남은 거리가 200m고 중위권 그룹에 있을 때 실력을 발휘해 속도가 상승한다",
     "desc_tw": "在場上若能冷靜表現當剩餘200m時位於隊列中段便可發揮實力使速度上升",
     "endesc": "If you can get calm and composed through the race, you will be able to showcase your ability and increase your speed for the last 200m",
-    "endesc_needs_retranslation": true,
     "enname": "Call me KING",
     "gene_version": {
       "activation": 1,
@@ -2308,7 +2293,6 @@
     "desc_ko": "최종 코너 이후에서 전방에 있으면 기어를 바꿔 가속력이 상승한다",
     "desc_tw": "在進入最後彎道之後若位於隊列前方會換檔提升加速力",
     "endesc": "If you're in the first half of the pack (and not worse than 5th) on the Final Corner or beyond, your acceleration will increase",
-    "endesc_needs_retranslation": true,
     "enname": "Red Flame Gear/LP1211-M",
     "gene_version": {
       "activation": 1,
@@ -2393,7 +2377,6 @@
     "desc_ko": "남은 거리가 200m일 때 전방에 있으면 길을 개척해 속도가 많이 상승한다",
     "desc_tw": "在剩餘200m處若位於隊列前方會開闢道路並使速度大幅上升",
     "endesc": "Be close to the lead during the last 200m to make it easier to break through and find a way through the field",
-    "endesc_needs_retranslation": true,
     "enname": "The Beat of Victory",
     "gene_version": {
       "activation": 1,
@@ -2476,7 +2459,6 @@
     "desc_ko": "레이스 중간 부근에서 후방에 있으면 롱 스퍼트를 걸어 속도가 계속해서 다소 상승한다",
     "desc_tw": "在競賽中間附近若位於隊列後方將進行長距離衝刺使速度稍微持續上升",
     "endesc": "If you're in the second half of the pack halfway through the race, your speed will increase",
-    "endesc_needs_retranslation": true,
     "enname": "Unsinkable Ship, Anchored!",
     "gene_version": {
       "activation": 1,
@@ -2560,7 +2542,6 @@
     "desc_ko": "남은 거리가 200m 이하일 때 전방에 있으면 경합에 강해지고 속도가 상승한다",
     "desc_tw": "剩餘200m以內若位於隊列前方會變得擅長與對手競爭使速度上升",
     "endesc": "Increase speed when close to the lead in last 200m",
-    "endesc_needs_retranslation": true,
     "enname": "Cutting × DRIVE!",
     "gene_version": {
       "activation": 1,
@@ -2648,7 +2629,6 @@
     "desc_ko": "레이스 후반에 전방에 있으면 1등이 될 힘을 발휘한다",
     "desc_tw": "在競賽後半若位於隊列前方會發揮想成為第1的力量",
     "endesc": "If you're competing for the first position during the second half of the race, your speed and acceleration will increase",
-    "endesc_needs_retranslation": true,
     "enname": "Brilliant Red Ace",
     "gene_version": {
       "activation": 1,
@@ -2736,7 +2716,6 @@
     "desc_ko": "최종 코너 후반에 좋은 위치에 있으면 탄력을 받아 가속력이 계속해서 상승한다",
     "desc_tw": "在最後彎道後半若位於良好位置會激發動力使加速力持續上升",
     "endesc": "If you're in the middle of the pack during the second half of the final corner, your acceleration will increase",
-    "endesc_needs_retranslation": true,
     "enname": "Victory Shot!",
     "gene_version": {
       "activation": 1,
@@ -2847,7 +2826,6 @@
     "desc_ko": "최종 직선일 때 후방에서 추월하면 뒷심을 발휘해 속도가 상승한다",
     "desc_tw": "在最後直線若由隊列後方追過對手會以尾段加速使速度上升",
     "endesc": "If you're not in the front and overtake another girl during the Final Straight, your speed slightly increase",
-    "endesc_needs_retranslation": true,
     "enname": "Where There's a Will, There's a Way",
     "gene_version": {
       "activation": 1,
@@ -2972,7 +2950,6 @@
     "desc_ko": "최종 코너에서 전방에 있으면 추월당하지 않겠다는 각오를 굳혀 속도가 상승한다 장거리에서 여력이 충분하면 속도가 많이 상승한다",
     "desc_tw": "在最後彎道若位於隊列前方會以絕不能被追過的決心使速度上升當長距離且保有充足餘力時則大幅上升",
     "endesc": "If you're in the front during the Final Corner, your speed will increase; bonus speed if it's a Long race and you have plenty of stamina left",
-    "endesc_needs_retranslation": true,
     "enname": "Fulfilling Your Noble Duty",
     "gene_version": {
       "activation": 1,
@@ -3072,7 +3049,6 @@
     "desc_ko": "최종 직선에서 여력을 남기고 앞에 있으면 더욱 우위를 유지하기 쉬워진다",
     "desc_tw": "在最後直線若保有餘力且位於隊列前方能變得容易保持優勢",
     "endesc": "If you're in the front during the Final Straight with plenty of stamina left, your speed and acceleration will slightly increase",
-    "endesc_needs_retranslation": true,
     "enname": "Plancha ☆ Ganador",
     "gene_version": {
       "activation": 1,
@@ -3199,7 +3175,6 @@
     "desc_ko": "최종 코너 이후에 전방에서 앞 혹은 뒤의 우마무스메와 거리가 가까우면 왕에 걸맞은 광채로 속도가 상승한다",
     "desc_tw": "在最後彎道之後若位於隊列前方與前方或後方的賽馬娘拉近距離會散發霸王光輝並使速度上升",
     "endesc": "If you're in the front during the Final Corner or beyond and there's another girl nearby, your speed will increase",
-    "endesc_needs_retranslation": true,
     "enname": "Dance for Vittoria",
     "gene_version": {
       "activation": 1,
@@ -3284,7 +3259,6 @@
     "desc_ko": "레이스 종반에 3회 추월하면 최종 직선에서 속도가 많이 상승한다",
     "desc_tw": "在競賽後期若追過對手3次進入最後直線時速度會大幅上升",
     "endesc": "During the Final Leg of the race make three overtakes to strongly increase your speed on the final straight",
-    "endesc_needs_retranslation": true,
     "enname": "Thou, Witness the Heavenly Might of the Emperor",
     "gene_version": {
       "activation": 1,
@@ -3398,7 +3372,6 @@
     "desc_ko": "최종 코너의 중위권 그룹 이후로부터 추월하면 여제다운 달리기로 속도가 상승한다",
     "desc_tw": "在最後彎道若由隊列中段之後追過對手會以女帝應有的跑法使速度上升",
     "endesc": "If you're not in the front during the Final Corner and are passing someone, your speed will increase",
-    "endesc_needs_retranslation": true,
     "enname": "Blaze of Pride",
     "gene_version": {
       "activation": 1,
@@ -3494,7 +3467,6 @@
     "desc_ko": "종반의 최종 코너 이후에 전방에 있다면 속도가 상승하며, 냉정함을 유지했다면 승리 방정식을 도출해 속도가 많이 상승한다",
     "desc_tw": "在後期的最後彎道之後若位於隊列前方速度會上升，若能保持冷靜則會在導出勝利方程式後大幅上升",
     "endesc": "If you're in the front during the Final Corner or beyond, your speed will increase; bonus speed if you haven't panicked (kakari) during the race",
-    "endesc_needs_retranslation": true,
     "enname": "∴win Q.E.D.",
     "gene_version": {
       "activation": 1,
@@ -3595,7 +3567,6 @@
     "desc_ko": "최종 코너 이후에 전방에서 경합하면 빠져나가기 쉬워진다",
     "desc_tw": "在最後彎道之後若於隊列前方與對手競爭會變得容易突圍",
     "endesc": "If you're competing for the lead on the Final Corner or beyond, your speed and acceleration will increase",
-    "endesc_needs_retranslation": true,
     "enname": "Inspiration ☆ Landing",
     "gene_version": {
       "activation": 1,
@@ -3695,7 +3666,6 @@
     "desc_ko": "늦게 출발하지 않고 최종 직선에서 전방에 있으면 속도가 상승하며, 전방 순위를 유지한 경우에는 속도가 많이 상승한다",
     "desc_tw": "若沒有晚起跑且在最後直線位於隊列前方速度會上升，當持續維持前方名次時會大幅上升",
     "endesc": "If you didn't have a late start to the race, and you're in the front during the Final Straight, your speed will increase; bonus speed if you've been in the front for the entire race",
-    "endesc_needs_retranslation": true,
     "enname": "G00 1st.F∞;",
     "gene_version": {
       "activation": 1,
@@ -3839,7 +3809,6 @@
     "desc_ko": "레이스 종반 코너에서 중위권 그룹에 있으면 앞쪽 위치로 가기 위해 가속력이 상승한다",
     "desc_tw": "在競賽後期的彎道若位於隊列中段會為了追趕至前方位置而使加速力上升",
     "endesc": "If you're in the middle of the pack during any Final Leg corner, your acceleration will increase",
-    "endesc_needs_retranslation": true,
     "enname": "Let's Anabolic!",
     "gene_version": {
       "activation": 1,
@@ -3927,7 +3896,6 @@
     "desc_ko": "레이스 종반에 추월해서 선두 그룹에 따라붙으면 최종 직선에서 강한 의지를 가지고 속도가 상승한다",
     "desc_tw": "在競賽後期若追過對手並進入領先集團，會在最後直線以堅強的意志使速度上升",
     "endesc": "If you've overtaken another girl in the front during the Final Leg or beyond, then on the Final Straight, your speed will increase",
-    "endesc_needs_retranslation": true,
     "enname": "Blue Rose Chaser",
     "gene_version": {
       "activation": 1,
@@ -4254,7 +4222,6 @@
     "desc_ko": "레이스 후반에 전방에서 경합하면  돌진력(?)을 발휘해 속도가 상승한다",
     "desc_tw": "在競賽後半若於隊列前方與對手競爭會發揮驀進力(?)使速度上升",
     "endesc": "During the later half of the race, your speed increases when competing for the lead",
-    "endesc_needs_retranslation": true,
     "enname": "Honor Student x Bakushin = Big Victory",
     "gene_version": {
       "activation": 1,
@@ -4338,7 +4305,6 @@
     "desc_ko": "레이스 중반에 좋은 위치에 있을 때 지구력을 많이 회복한다",
     "desc_tw": "在競賽中期位於良好位置時會大幅回復持久力",
     "endesc": "At a random point during the Middle Leg, if you're in the top 40% but not first, your stamina will greatly recover",
-    "endesc_needs_retranslation": true,
     "enname": "Purity of Heart",
     "gene_version": {
       "activation": 1,
@@ -4423,7 +4389,6 @@
     "desc_ko": "최종 코너에서 후방에 있으면 근처 우마무스메를 보고 지구력을 회복한다",
     "desc_tw": "在最後彎道若位於隊列後方看見身旁的賽馬娘會回復持久力",
     "endesc": "If you're in the second half of the pack during the Final Corner and there's at least one other girl nearby, your stamina will recover",
-    "endesc_needs_retranslation": true,
     "enname": "Exciting Climax",
     "gene_version": {
       "activation": 1,
@@ -4510,10 +4475,9 @@
       }
     ],
     "desc_en": "Clear a path forward with the power of divination when the way ahead is jammed late-race.",
-    "desc_ko": "레이스 종반에 3위 이하이고 전방이 막히면 계시의 힘으로 길을 개척한다",
+    "desc_ko": "레이스 종반에 3위 이후이고 전방이 막히면 계시의 힘으로 길을 개척한다",
     "desc_tw": "在競賽後期若位列第3之後當前方被阻擋時會以神助之力開闢道路",
     "endesc": "When the front is packed during the Final Leg of the race, the oracle's power will open a path",
-    "endesc_needs_retranslation": true,
     "enname": "Luck Is Coming",
     "gene_version": {
       "activation": 1,
@@ -4535,7 +4499,7 @@
       ],
       "cost": 200,
       "desc_en": "Slightly clear a path forward depending on divination results when the way ahead is jammed late-race.",
-      "desc_ko": "레이스 종반에 3위 이하이고 전방이 막히면 계시 나름대로 길을 약간 개척한다",
+      "desc_ko": "레이스 종반에 3위 이후이고 전방이 막히면 계시 나름대로 길을 약간 개척한다",
       "desc_tw": "在競賽後期若位列第3以後當前方被阻擋時能否略微開闢道路全視神助而定",
       "iconid": 20011,
       "id": 900561,
@@ -4688,7 +4652,6 @@
     "desc_ko": "레이스를 침착하게 진행하면 남은 거리가 200m고 중위권 그룹에 있을 때 실력을 발휘해 속도가 많이 상승한다",
     "desc_tw": "在場上若能冷靜表現當剩餘200m時位於隊列中段便可發揮實力使速度大幅上升",
     "endesc": "After proceeding through the race calmly, your speed drastically increases during the last 200m",
-    "endesc_needs_retranslation": true,
     "enname": "Pride of KING",
     "gene_version": {
       "activation": 1,
@@ -8509,7 +8472,8 @@
           101901,
           102301,
           104601,
-          101002
+          101002,
+          108701
         ],
         "char_e": [
           101402,
@@ -14144,6 +14108,7 @@
             30173,
             30195,
             30207,
+            30241,
             20007,
             20027
           ],
@@ -14226,6 +14191,7 @@
             30173,
             30195,
             30207,
+            30241,
             20007,
             20027
           ],
@@ -14293,6 +14259,7 @@
         30173,
         30195,
         30207,
+        30241,
         30264,
         30267,
         20007,
@@ -15119,7 +15086,7 @@
     ],
     "cost": 100,
     "desc_en": "Moderately increase carelessness when in the lead with around 200m remaining.",
-    "desc_ko": "남은 거리가 200m 부근일 때 선두라면 다소 방심하기 쉬워진다",
+    "desc_ko": "남은 거리 200m 부근일 때 선두라면 다소 방심하기 쉬워진다",
     "desc_tw": "在剩餘200m附近若位居領先會稍微容易輕敵",
     "endesc": "Tends to get off-guard when leading at the remaining 200m",
     "enname": "Negligence",
@@ -16425,8 +16392,10 @@
       104501
     ],
     "char_e": [
+      102201,
       107101,
       107201,
+      102202,
       103401,
       103402,
       105701,
@@ -16436,7 +16405,8 @@
       107202,
       105702,
       110602,
-      105502
+      105502,
+      102203
     ],
     "condition_groups": [
       {
@@ -16475,8 +16445,10 @@
           104501
         ],
         "char_e": [
+          102201,
           107101,
           107201,
+          102202,
           103401
         ],
         "sup_e": [
@@ -16531,8 +16503,10 @@
           104501
         ],
         "char_e": [
+          102201,
           107101,
           107201,
+          102202,
           103401,
           103402,
           105701,
@@ -16622,8 +16596,10 @@
           104501
         ],
         "char_e": [
+          102201,
           107101,
           107201,
+          102202,
           103401,
           103402,
           105701,
@@ -19121,7 +19097,8 @@
       "en": {
         "char": [
           102601,
-          106801
+          106801,
+          108701
         ],
         "condition_groups": [
           {
@@ -19302,7 +19279,8 @@
           102601,
           106801,
           102002,
-          106401
+          106401,
+          108701
         ],
         "char_e": [
           100201,
@@ -24988,6 +24966,9 @@
           101001,
           101002
         ],
+        "char_e": [
+          108701
+        ],
         "sup_hint": [
           [
             30020,
@@ -25907,7 +25888,9 @@
       106802
     ],
     "char_e": [
+      108701,
       110701,
+      108702,
       110702,
       106601
     ],
@@ -25940,6 +25923,9 @@
           102601,
           102002
         ],
+        "char_e": [
+          108701
+        ],
         "sup_hint": [
           [
             30002,
@@ -25966,7 +25952,9 @@
           106802
         ],
         "char_e": [
+          108701,
           110701,
+          108702,
           110702,
           106601
         ],
@@ -25999,7 +25987,9 @@
           106802
         ],
         "char_e": [
+          108701,
           110701,
+          108702,
           110702,
           106601
         ],
@@ -26246,6 +26236,7 @@
       102202,
       104201,
       105802,
+      108701,
       102102,
       102702,
       106902,
@@ -26253,6 +26244,7 @@
       103202,
       104202,
       101103,
+      108702,
       102203,
       101101,
       106601
@@ -26299,6 +26291,7 @@
           102202,
           104201,
           105802,
+          108701,
           101101
         ],
         "sup_e": [
@@ -26366,6 +26359,7 @@
           102202,
           104201,
           105802,
+          108701,
           102102,
           102702,
           106902,
@@ -26373,6 +26367,7 @@
           103202,
           104202,
           101103,
+          108702,
           101101,
           106601
         ],
@@ -26461,6 +26456,7 @@
           102202,
           104201,
           105802,
+          108701,
           102102,
           102702,
           106902,
@@ -26468,6 +26464,7 @@
           103202,
           104202,
           101103,
+          108702,
           101101,
           106601
         ],
@@ -31111,7 +31108,8 @@
     "loc": {
       "en": {
         "char": [
-          105301
+          105301,
+          108701
         ],
         "char_e": [
           103802
@@ -33092,6 +33090,7 @@
         "char_e": [
           105101,
           101002,
+          108701,
           100801,
           100901
         ],
@@ -34926,6 +34925,7 @@
       105802,
       108301,
       107102,
+      103202,
       108302,
       104202
     ],
@@ -35039,6 +35039,7 @@
           105802,
           108301,
           107102,
+          103202,
           108302,
           104202
         ],
@@ -35141,6 +35142,7 @@
           105802,
           108301,
           107102,
+          103202,
           108302,
           104202
         ],
@@ -35888,6 +35890,7 @@
       106801,
       106802,
       107102,
+      103202,
       106803,
       103503,
       101401
@@ -35972,6 +35975,7 @@
           106801,
           106802,
           107102,
+          103202,
           106803,
           103503,
           101401
@@ -36029,6 +36033,7 @@
           106801,
           106802,
           107102,
+          103202,
           106803,
           103503,
           101401
@@ -46070,7 +46075,8 @@
           102602
         ],
         "char_e": [
-          106401
+          106401,
+          108701
         ],
         "sup_e": [
           [
@@ -47715,6 +47721,7 @@
             30095,
             30137,
             30236,
+            30241,
             20029
           ],
           [
@@ -47777,6 +47784,7 @@
             30095,
             30137,
             30236,
+            30241,
             20029
           ],
           [
@@ -47831,6 +47839,7 @@
         30095,
         30137,
         30236,
+        30241,
         30290,
         30304,
         20029
@@ -47935,7 +47944,8 @@
     "loc": {
       "en": {
         "char": [
-          102602
+          102602,
+          108701
         ],
         "sup_e": [
           [
@@ -49547,7 +49557,6 @@
     "desc_ko": "레이스 중간 부근에서 좋은 위치에 있을 때 추월하면 기세 좋게 진출을 개시한다",
     "desc_tw": "在競賽中間附近位於良好位置並追過對手時會趁勝追趕並開始超前",
     "endesc": "Gain momentum while in a good position when overtaking someone in the middle leg",
-    "endesc_needs_retranslation": true,
     "enname": "#LookatCurren",
     "gene_version": {
       "activation": 1,
@@ -49747,7 +49756,6 @@
     "desc_ko": "최종 코너 이후에 중위권 그룹에서 앞으로 나갈 때, 돌파력이 증가해 속도가 상승한다",
     "desc_tw": "在最後彎道之後由隊列中段往前進攻時，會增加衝勁使速度上升",
     "endesc": "If you're overtaking someone on the Final Corner or beyond from the middle of the pack, your speed will increase",
-    "endesc_needs_retranslation": true,
     "enname": "Nemesis",
     "gene_version": {
       "activation": 1,
@@ -49836,7 +49844,6 @@
     "desc_ko": "레이스 중반의 직선에서 전방에 있을 때 뒤의 우마무스메와 거리가 가까우면 양보할 수 없는 마음이 힘이 된다",
     "desc_tw": "在競賽中期的直線位於隊列前方時若與後方的賽馬娘拉近距離不想退讓的意志會化為力量",
     "endesc": "If you're in the front during a Middle Leg straight and competing for position, your speed and acceleration will increase",
-    "endesc_needs_retranslation": true,
     "enname": "Sparkling☆STARDOM",
     "gene_version": {
       "activation": 1,
@@ -50219,7 +50226,6 @@
     "desc_ko": "최종 코너 이후에 중위권 그룹이고 바깥쪽에서 추월하면 괴물 같은 힘으로 속도가 상승하며 중반 경합을 했을 경우에는 많이 상승한다",
     "desc_tw": "在進入最後彎道之後若從隊列中段由外側追過對手，會以怪物般的力量使速度上升若有在中期與對手競爭則會大幅上升",
     "endesc": "If you're passing from the outside during the Final Corner or beyond, your speed will increase; if someone was blocking you from the side during the Middle Leg, your speed will increase even more",
-    "endesc_needs_retranslation": true,
     "enname": "Shadow Break",
     "gene_version": {
       "activation": 1,
@@ -50315,7 +50321,6 @@
     "desc_ko": "레이스 중반에 전방에서 스퍼트를 시작할 때 속도가 상승한다",
     "desc_tw": "在競賽中期由隊列前方急起直追時，速度會上升",
     "endesc": "If you're near the front during the Middle Leg and try to overtake someone, your speed will increase",
-    "endesc_needs_retranslation": true,
     "enname": "Summer Breeze, the Eternal Moment",
     "gene_version": {
       "activation": 1,
@@ -50409,7 +50414,6 @@
     "desc_ko": "최종 코너 이후에 전방에서 추월하면 속도가, 후방에서 추월하면 가속력이 상승한다",
     "desc_tw": "在最後彎道之後若於隊列前方追過對手會使速度上升，於隊列後方追過對手會使加速力上升",
     "endesc": "If you overtake someone during the Final Corner or beyond, then: 1) if you're in the front, your speed will increase; 2) if you're in the middle of the pack, your acceleration will increase",
-    "endesc_needs_retranslation": true,
     "enname": "Flowery ☆ Maneuver",
     "gene_version": {
       "activation": 1,
@@ -50581,7 +50585,6 @@
     "desc_ko": "레이스 종반 코너에서 선두에 있으면 기회를 틈타 가속력이 상승한다",
     "desc_tw": "在競賽後期的彎道若位居領先會把握這個大好機會，使加速力上升",
     "endesc": "If you're in the first position on any corner in the Final Leg or beyond, your acceleration will increase",
-    "endesc_needs_retranslation": true,
     "enname": "Angling×Scheming",
     "gene_version": {
       "activation": 1,
@@ -50668,7 +50671,6 @@
     "desc_ko": "최종 코너 이후에 후방에서 바깥쪽을 돌아 추월하면 최종 직선에서 속도가 상승한다",
     "desc_tw": "在最後彎道之後若由隊列後方繞至外側追過對手會在最後直線使速度上升",
     "endesc": "During the Final Corner or beyond, if you were in the back of the pack and passed someone from the outside, then during the Final Straight, your speed will increase",
-    "endesc_needs_retranslation": true,
     "enname": "One-On-One! Dead Heat!",
     "gene_version": {
       "activation": 1,
@@ -50785,7 +50787,6 @@
     "desc_ko": "중반에 후방에서 순위가 떨어졌을 때 상냥한 빛으로 지구력을 많이 회복한다",
     "desc_tw": "在中期於隊列後方名次下滑時會以溫柔之光大幅回復持久力",
     "endesc": "During the Middle Leg, if you're not in the front and someone overtakes you, your stamina will greatly recover",
-    "endesc_needs_retranslation": true,
     "enname": "Gain Superior Heal",
     "gene_version": {
       "activation": 1,
@@ -50869,7 +50870,6 @@
     "desc_ko": "최종 코너의, 중위권 그룹에서 앞을 노릴 때 영혼을 불태워 가속력이 상승한다",
     "desc_tw": "在最後彎道由隊列中段瞄準前方進攻時會燃燒鬥魂使加速力上升",
     "endesc": "During the last corner, gain acceleration when aiming for the lead from the middle of the pack",
-    "endesc_needs_retranslation": true,
     "enname": "Condor Onslaught",
     "gene_version": {
       "activation": 1,
@@ -50955,7 +50955,6 @@
     "desc_ko": "종반에 전방에서 다소 앞서 있으면 남은 거리가 300m 이하일 때 반짝임이 더해지며 속도가 많이 상승한다",
     "desc_tw": "在後期若從隊列前方稍微突圍會在剩餘不到300ｍ處更加耀眼而使速度大幅上升",
     "endesc": "During the Final Leg or beyond, if you were ever in the front with another girl behind you, then with 300 m remaining in the race, your speed will greatly increase",
-    "endesc_needs_retranslation": true,
     "enname": "Glittering Star Vaudeville",
     "gene_version": {
       "activation": 1,
@@ -51039,7 +51038,6 @@
     "desc_ko": "레이스 후반에 중위권 그룹에서 스퍼트를 시작할 때, 멋진 퍼포먼스를 발휘하여 속도가 계속해서 다소 상승한다",
     "desc_tw": "在競賽後半由隊列中段急起直追時會發揮實力使速度稍微持續上升",
     "endesc": "In the second half of the race, if you're about to overtake someone from the middle of the pack, your speed will slightly increase",
-    "endesc_needs_retranslation": true,
     "enname": "KEEP IT REAL.",
     "gene_version": {
       "activation": 1,
@@ -51154,7 +51152,6 @@
     "desc_ko": "중반에 스킬을 2회 사용하고 중위권 그룹에 있으면 지구력을 회복하고 속도가 다소 상승한다",
     "desc_tw": "在中期若使用2次技能且位於隊列中段時回復持久力後速度會稍微上升",
     "endesc": "During the Middle Leg, if you activate at least two skills and are in the middle of the pack, your speed will increase and your stamina will recover",
-    "endesc_needs_retranslation": true,
     "enname": "Wayakawa ♪ Marine Dive",
     "gene_version": {
       "activation": 1,
@@ -51268,7 +51265,6 @@
     "desc_ko": "스킬로 지구력을 회복하면 레이스 후반에서 전방에 있을 때 고고씽! 하며 속도가 상승한다",
     "desc_tw": "若用技能回復持久力，在競賽後半位於隊列前方時會以 Let's go! 的氣勢使速度上升",
     "endesc": "In the second half of the race, increase speed when you recover stamina with your skills while being in front",
-    "endesc_needs_retranslation": true,
     "enname": "Heartfelt ♪ Smooch",
     "gene_version": {
       "activation": 1,
@@ -51355,7 +51351,6 @@
     "desc_ko": "레이스 종반에 추월하면 포기하지 않는 마음을 발휘해 앞을 목표로 한다",
     "desc_tw": "在競賽後期若追過對手會發揮不屈不撓之心向前奔馳",
     "endesc": "If you overtake someone during the Final Leg or beyond, your speed and acceleration will slightly increase",
-    "endesc_needs_retranslation": true,
     "enname": "I Never Goof Up!",
     "gene_version": {
       "activation": 1,
@@ -51451,10 +51446,9 @@
       }
     ],
     "desc_en": "Increase velocity when 3rd or worse on the final straight after racing calmly. If the user has maintained position in midpack, greatly increase velocity instead.",
-    "desc_ko": "냉정하게 레이스를 운영해 최종 직선에서 3등 이후라면 속도가 상승하며, 중위권 그룹 위치를 유지하고 있으면 많이 상승한다",
+    "desc_ko": "냉정하게 레이스를 운영해 최종 직선에서 3위 이후라면 속도가 상승하며, 중위권 그룹 위치를 유지하고 있으면 많이 상승한다",
     "desc_tw": "若能冷靜地進行比賽且在最後直線位列第3之後，速度會上升若維持住隊列中段取位則大幅上升",
     "endesc": "If you haven't panicked (kakari) during the race and you're 3rd or worse during the Final Straight, your speed will increase; bonus speed if you've been in the middle of the pack for the entire race",
-    "endesc_needs_retranslation": true,
     "enname": "Schwarzes Schwert",
     "gene_version": {
       "activation": 1,
@@ -51482,7 +51476,7 @@
       ],
       "cost": 200,
       "desc_en": "Slightly increase velocity when 3rd or worse on the final straight after racing calmly. If the user has maintained position in midpack, moderately increase velocity instead.",
-      "desc_ko": "냉정하게 레이스를 운영해 최종 직선에서 3등 이후라면 속도가 약간 상승하며, 중위권 그룹 위치를 유지하고 있으면 다소 상승한다",
+      "desc_ko": "냉정하게 레이스를 운영해 최종 직선에서 3위 이후라면 속도가 약간 상승하며, 중위권 그룹 위치를 유지하고 있으면 다소 상승한다",
       "desc_tw": "若能冷靜地進行比賽且在最後直線位列第3名之後，速度會略微上升若維持住隊列中段取位則稍微上升",
       "iconid": 20011,
       "id": 900371,
@@ -51598,7 +51592,6 @@
     "desc_ko": "레이스 후반에 후방에서 누군가가 따라붙으면 막대한 행운 파워가 몸에 깃들어 속도가 상승한다",
     "desc_tw": "在競賽後半若於隊列後方被對手逼近滿滿的幸運之力會充斥全身使速度上升",
     "endesc": "During the second half of the race, if you're not in the front and someone is trying to overtake you, your speed will increase",
-    "endesc_needs_retranslation": true,
     "enname": "Grains Become Ripe",
     "gene_version": {
       "activation": 1,
@@ -52096,7 +52089,6 @@
     "desc_ko": "레이스 중간에 좋은 위치에서 추월하려고 하면 속도가 다소 상승하며 단거리 레이스에서는 효과가 바뀌어 다소 앞으로 나간다",
     "desc_tw": "在競賽中間若位於良好位置當準備追過對手時使速度稍微上升若是短距離競賽則效果變為稍微向前邁進",
     "endesc": "Halfway through the race, if you're in a good position (but not leading) and about to overtake someone, your speed will slightly increase; in Short races, you will get a slight instant speed boost instead",
-    "endesc_needs_retranslation": true,
     "enname": "I'M☆FULL☆SPEED!!",
     "gene_version": {
       "activation": 1,
@@ -52231,7 +52223,6 @@
     "desc_ko": "레이스 종반에 2회 추월하면 가까이서 보는 우마무스메가 너무 존귀한 나머지 무심코 속도가 상승하고 코스를 능숙하게 잡는다",
     "desc_tw": "在競賽後期若追過對手2次就會因為在近距離瞻仰的賽馬娘們太尊而不禁使速度上升並變得擅長爭搶賽道",
     "endesc": "If you overtake others at least twice at the end of the race, your speed will increase",
-    "endesc_needs_retranslation": true,
     "enname": "Kyuute☆Last SpuU(ﾟ∀ﾟ)Uurt!",
     "gene_version": {
       "activation": 1,
@@ -52701,7 +52692,6 @@
     "desc_ko": "레이스 중반에 좋은 위치에 있으면 전방의 우마무스메에게서 지구력을 흡수하고 자신의 속도가 다소 상승한다",
     "desc_tw": "競賽中期若位於良好位置會吸收前方賽馬娘的持久力並使自己的速度稍微上升",
     "endesc": "During the Middle Leg, if you're in the first half of the pack but aren't in the lead, your speed will slightly increase, your stamina will recover, and you will drain stamina from all enemies ahead of you",
-    "endesc_needs_retranslation": true,
     "enname": "Drain for Rose",
     "gene_version": {
       "activation": 1,
@@ -52800,7 +52790,6 @@
     "desc_ko": "최종 직선을 좋은 위치에서 달릴 때 앞에 있는 우마무스메와의 거리가 가까우면 빠져나가기 쉬워진다",
     "desc_tw": "於最後直線跑在良好位置時若拉近與前方賽馬娘的距離會變得容易突圍",
     "endesc": "If you're in front after the final corner and about to overtake another girl, your speed and acceleration will increase",
-    "endesc_needs_retranslation": true,
     "enname": "Round and Round, Mummy Trick♡",
     "gene_version": {
       "activation": 1,
@@ -53401,7 +53390,6 @@
     "desc_ko": "최종 직선을 달릴 때 경합하면 청순가련하게 날려버리며 속도가 상승한다",
     "desc_tw": "跑在最後直線時若與對手競爭會以動人之姿飛奔而使速度上升",
     "endesc": "If you struggle for victory on the last straight, your speed will increase",
-    "endesc_needs_retranslation": true,
     "enname": "Victory Befitting a Princess",
     "gene_version": {
       "activation": 1,
@@ -53521,7 +53509,6 @@
     "desc_ko": "레이스 후반에 중위권 그룹에서 『친구』를 쫓아 속도가 다소 상승세를 타고 전방의 우마무스메를 아주 조금 위축시킨다",
     "desc_tw": "在競賽後半自隊列中段起因追著「朋友」而使速度逐漸稍微上升並使前方的賽馬娘些微感到畏縮",
     "endesc": "If you're in the middle of the pack in the second half of the race, your speed will increase while draining the speed of the girls ahead of you",
-    "endesc_needs_retranslation": true,
     "enname": "Chasing After You",
     "gene_version": {
       "activation": 1,
@@ -53731,7 +53718,8 @@
     "sup_e": [
       [
         30043,
-        30269
+        30269,
+        30313
       ],
       []
     ],
@@ -54106,7 +54094,6 @@
     "desc_ko": "레이스 종반에 선두 그룹에서 누군가 따라붙으면 최종 코너 이후에 투지를 불태워 속도가 계속해서 상승한다",
     "desc_tw": "競賽後期若位於領先集團被對手逼近時會在最後彎道之後點燃鬥志使速度持續上升",
     "endesc": "If someone has been trying to overtake you in the first half of the pack during the Final Leg or beyond, then on the Final Corner, your speed will increase",
-    "endesc_needs_retranslation": true,
     "enname": "Howling Arrow Piercing the Darkness",
     "gene_version": {
       "activation": 1,
@@ -54196,7 +54183,6 @@
     "desc_ko": "최종 코너를 달릴 때 중위권 그룹에서 경합하면 빠져나가기 쉬워진다",
     "desc_tw": "跑在最後彎道時若在隊列中段與對手競爭會變得容易突圍",
     "endesc": "If you're blocked in the middle of the pack at the final corner, it will become easier to get out",
-    "endesc_needs_retranslation": true,
     "enname": "GET DOWN",
     "gene_version": {
       "activation": 1,
@@ -54364,7 +54350,6 @@
     "desc_ko": "최종 직선을 달릴 때 전방에서 추월하려고 하거나 누군가가 따라붙으면 텐션을 올려 속도가 상승한다",
     "desc_tw": "跑在最後直線時若位於隊列前方準備追過對手或被逼近時會提高鬥志使速度上升",
     "endesc": "If you're in the front during the Final Straight and you've been trying to overtake someone or someone has been trying to overtake you, your speed will increase",
-    "endesc_needs_retranslation": true,
     "enname": "YEAH☆VIVID TIME!",
     "gene_version": {
       "activation": 1,
@@ -54511,7 +54496,6 @@
     "desc_ko": "흥분하지 않고 중반의 최종 코너 혹은 종반의 최종 코너가 아닌 코너를 중위권 그룹에서 달리면 분발해서 가속력이 상승한다",
     "desc_tw": "若能夠不暴衝，並在中期的最後彎道或後期不是最後彎道的彎道跑在隊列中段則會振奮精神使加速力上升",
     "endesc": "If you keep your calm in the middle of the pack during a Middle or Final Leg corner, your acceleration will increase",
-    "endesc_needs_retranslation": true,
     "enname": "Beyond the Other Side",
     "gene_version": {
       "activation": 1,
@@ -54690,7 +54674,6 @@
     "desc_ko": "스킬로 지구력을 3회 이상 회복하면 레이스 후반에 승리를 향해 호흡을 가다듬고 힘차게 앞으로 달려 나간다",
     "desc_tw": "若用技能回復持久力3次以上會在競賽後半調整呼吸以強勁步伐奔向勝利",
     "endesc": "If you activate at least 3 recovery skills, then in the second half of the race, your speed and acceleration will increase, and you'll recover more stamina",
-    "endesc_needs_retranslation": true,
     "enname": "Christmas Eve Miracle Run!",
     "gene_version": {
       "activation": 1,
@@ -54781,7 +54764,6 @@
     "desc_ko": "스타트 후부터 레이스 후반까지 좋은 위치를 계속 유지하면 레이스 중반에 승리를 향한 코스를 발견하고 속도가 상승한다",
     "desc_tw": "從起跑後到競賽後半為止若持續維持良好位置，會在競賽中期找到通往勝利的道路而使速度上升",
     "endesc": "If you maintain good position from the start to the second half of the race, your speed will increase",
-    "endesc_needs_retranslation": true,
     "enname": "Presents from X",
     "gene_version": {
       "activation": 1,
@@ -55257,7 +55239,6 @@
     "desc_ko": "레이스 후반에 좋은 위치에서 경합하면 달리는 것에 마음이 설레어 속도가 상승한다",
     "desc_tw": "在競賽後半若於良好位置與對手競爭會因為對跑步感到雀躍而使速度上升",
     "endesc": "If you're competing for good position in the second half of the race, your speed will increase",
-    "endesc_needs_retranslation": true,
     "enname": "Fairy Tale",
     "gene_version": {
       "activation": 1,
@@ -55340,8 +55321,7 @@
     "desc_en": "Slightly recover endurance when positioned toward the back mid-race. (Dirt)",
     "desc_ko": "레이스 중반에 후방에 있으면 지구력을 약간 회복한다＜더트＞",
     "desc_tw": "在競賽中期若位於隊列後方會略微回復持久力＜沙地＞",
-    "endesc": "Dirt・If you're behind in the Middle Leg, your stamina will slightly recover",
-    "endesc_needs_retranslation": true,
+    "endesc": "Dirt・If you're not in the front in the Middle Leg, your stamina will slightly recover",
     "enname": "Sandstorm Practice",
     "iconid": 20021,
     "id": 202002,
@@ -55470,7 +55450,6 @@
     "desc_ko": "레이스 후반 직선에서 좋은 위치에 있거나 중위권 그룹에서 앞을 노리면 번개같이 달려 나간다",
     "desc_tw": "在競賽後半的直線若位於良好位置或由隊列中段瞄準前方進攻會如同閃電般向前衝刺",
     "endesc": "In the second half of the race on a straight, if you're in a good position or aiming for one from the back of the pack, you will start running like a lightning bolt",
-    "endesc_needs_retranslation": true,
     "enname": "Imma Show You White Lightning!",
     "gene_version": {
       "activation": 1,
@@ -55958,7 +55937,6 @@
     "desc_ko": "남은 거리가 400m일 때 선두 그룹에 있다면 속도가 상승한다. 그때까지 스킬을 7번 이상 사용했을 경우에는 많이 상승한다",
     "desc_tw": "在剩餘400m處若位於領先集團會使速度上升，若在此之前使用過7次以上技能則會大幅上升",
     "endesc": "If you're in the front with 400 m remaining in the race, your speed will increase; bonus speed if you've activated at least 7 skills",
-    "endesc_needs_retranslation": true,
     "enname": "Blessed Barcarolle",
     "gene_version": {
       "activation": 1,
@@ -56426,8 +56404,7 @@
     "desc_en": "Moderately increase velocity for a medium duration when positioned toward the back mid-race. (End Closer)",
     "desc_ko": "레이스 중반에 후방에 있으면 한동안 속도가 다소 상승한다＜작전・추입＞",
     "desc_tw": "在競賽中期若位於隊列後方一段時間內速度會稍微上升＜作戰．後追＞",
-    "endesc": "Chaser・If you're in the second half of the pack at a random point during the Middle Leg, your speed will increase",
-    "endesc_needs_retranslation": true,
+    "endesc": "Chaser・If you're not in the front at a random point during the Middle Leg, your speed will increase",
     "enname": "Daring Attack",
     "evo": [
       {
@@ -56562,8 +56539,7 @@
     "desc_en": "Very slightly increase velocity for a medium duration when positioned toward the back mid-race. (End Closer)",
     "desc_ko": "레이스 중반에 후방에 있으면 한동안 속도가 아주 조금 상승한다＜작전・추입＞",
     "desc_tw": "在競賽中期若位於隊列後方一段時間內速度會些微上升＜作戰．後追＞",
-    "endesc": "Chaser・If you're in the second half of the pack at a random point during the Middle Leg, your speed will slightly increase",
-    "endesc_needs_retranslation": true,
+    "endesc": "Chaser・If you're not in the front at a random point during the Middle Leg, your speed will slightly increase",
     "enname": "Early Gambit",
     "iconid": 20011,
     "id": 202022,
@@ -57059,7 +57035,6 @@
     "desc_ko": "남은 거리가 300m 이하고 좋은 위치에 있을 때 앞에 있는 우마무스메와의 거리가 가까우면 강한 마음이 피어나 속도가 상승한다",
     "desc_tw": "在剩餘不到300m處且位於良好位置時若拉近與前方賽馬娘的距離會綻放出強烈意志使速度上升",
     "endesc": "If you are in a good position with less than 300 meters remaining and catching up to the girl in front of you, your speed will increase",
-    "endesc_needs_retranslation": true,
     "enname": "Longing Beyond the Sakura",
     "gene_version": {
       "activation": 1,
@@ -57226,7 +57201,6 @@
     "desc_ko": "최종 직선일 때 뒤에 있는 우마무스메와의 거리가 가까우면 그 순간에 지구력을 약간 사용해 잠시 동안 속도가 많이 상승한다",
     "desc_tw": "在最後直線若後方賽馬娘拉近距離會賭上該瞬間，略微消耗持久力使速度短時間內大幅上升",
     "endesc": "If there's another girl right behind you during the Final Straight, use a little of your stamina in exchange for a significant increase in speed",
-    "endesc_needs_retranslation": true,
     "enname": "A Lifetime's Dream, A Moment's Flight",
     "gene_version": {
       "activation": 1,
@@ -57356,7 +57330,6 @@
     "desc_ko": "중반 코너에서 선두 그룹을 달릴 때 뒤쪽에서 다른 우마무스메를 감지하면 약간 한숨 돌리고 속도가 상승한다",
     "desc_tw": "在中期的彎道跑在領先集團時若偵測到後方有其他賽馬娘略微喘口氣後速度會上升",
     "endesc": "During any Middle Leg corner, if you detect another girl right behind you, your speed will increase and stamina will recover",
-    "endesc_needs_retranslation": true,
     "enname": "Operation Cacao",
     "gene_version": {
       "activation": 1,
@@ -57677,6 +57650,9 @@
     "jpname": "意気衝天",
     "loc": {
       "en": {
+        "char": [
+          108701
+        ],
         "sup_e": [
           [
             30083
@@ -57773,10 +57749,12 @@
     "loc": {
       "en": {
         "char": [
-          104201
+          104201,
+          108701
         ],
         "char_e": [
           101002,
+          108701,
           104101
         ],
         "sup_e": [
@@ -57938,7 +57916,6 @@
     "desc_ko": "최종 직선일 때 선두로부터 거리가 벌어져 있으면 별에 이끌리는 것처럼 속도가 상승한다 최후방 부근이라면 많이 상승한다",
     "desc_tw": "在最後直線若與最前頭拉開距離會如同受到星星指引般使速度上升若位於最後方附近，則會大幅上升",
     "endesc": "If you're far away from the front on the Last Straight, your speed will increase",
-    "endesc_needs_retranslation": true,
     "enname": "Meteor of Dioscuri",
     "gene_version": {
       "activation": 1,
@@ -58086,7 +58063,6 @@
     "desc_ko": "레이스 중간 부근에서 중위권 그룹에 있을 때 기합을 다시 넣어 지구력을 다소 회복하며 속도가 약간 상승한다",
     "desc_tw": "在競賽中間附近位於隊列中段時會重新振作並稍微回復持久力速度會略微上升",
     "endesc": "If you're in the middle of the pack in the second half of the race, your stamina will recover and your speed will increase slightly",
-    "endesc_needs_retranslation": true,
     "enname": "Ready, Bang!",
     "gene_version": {
       "activation": 1,
@@ -58179,7 +58155,6 @@
     "desc_ko": "레이스 중간 부근에서 중위권 그룹에 있을 때 기합을 다시 넣어 지구력을 회복하며 속도가 다소 상승한다",
     "desc_tw": "在競賽中間附近位於隊列中段時會重新振作並回復持久力速度會稍微上升",
     "endesc": "If you're in the middle of the pack in the second half of the race, your stamina will recover and your speed will increase",
-    "endesc_needs_retranslation": true,
     "enname": "Bang, Bam, Mun",
     "gene_version": {
       "activation": 1,
@@ -58282,7 +58257,6 @@
     "desc_ko": "전방에 있을 때, 레이스 후반 제3 코너에서 속도가 다소 상승하거나, 또는 종반의 백스트레치에서 힘차게 앞으로 내디딘다",
     "desc_tw": "位於隊列前方時，在競賽後半的第3彎道使速度稍微上升，或在後期於對向直線跑道強而有力地向前踏穩腳步",
     "endesc": "If you're in front of the pack, your speed will increase at the third corner (if it's in the second half of the race), or alternatively, your acceleration will increase near the end of the race",
-    "endesc_needs_retranslation": true,
     "enname": "Shout of Victory",
     "gene_version": {
       "activation": 1,
@@ -58749,7 +58723,6 @@
     "desc_ko": "최종 직선에 들어왔을 때 좋은 위치에 붙어 있으면 강한 의지로 속도가 상승하고 선두가 가까울 경우 많이 상승한다",
     "desc_tw": "進入最後直線時若取得良好位置會以堅定意志使速度上升若接近領先則會大幅上升",
     "endesc": "If you're in a good position on the last straight, your speed will increase",
-    "endesc_needs_retranslation": true,
     "enname": "Brilliance Illuminating the Darkness",
     "gene_version": {
       "activation": 1,
@@ -59408,7 +59381,6 @@
     "desc_ko": "최종 코너 이후에 선두 그룹에서 추월하면 번쩍이듯 화려한 움직임을 선보이며 잠시 동안 속도가 많이 상승한다",
     "desc_tw": "在最後彎道之後若於領先集團追過對手，會表演璀璨的華麗動作使速度於短時間內大幅上升",
     "endesc": "If you overtake someone in the front during the Final Corner, your speed will greatly increase",
-    "endesc_needs_retranslation": true,
     "enname": "Ravissante",
     "gene_version": {
       "activation": 1,
@@ -59507,7 +59479,6 @@
     "desc_ko": "종반 직선에서 전방에 있으면 의기양양하게 속도가 상승하며, 추가로 그곳이 백스트레치인 경우 가속력이 약간 상승한다",
     "desc_tw": "在後期的直線若位於隊列前方會意氣風發使速度上升且若該處是對向直線跑道則會再使加速力略微上升",
     "endesc": "During the Final Leg or beyond, if you're in the front during any straight, your speed will increase; if the straight is on the opposite side from the audience, your acceleration will slightly increase too",
-    "endesc_needs_retranslation": true,
     "enname": "Do Ya Breakin!",
     "gene_version": {
       "activation": 1,
@@ -60391,8 +60362,7 @@
     "desc_en": "When positioned toward the back mid-race, increase velocity. (Medium)",
     "desc_ko": "레이스 중반에 후방에 있으면 속도가 상승한다＜중거리＞",
     "desc_tw": "在競賽中期若位於隊列後方速度會上升＜中距離＞",
-    "endesc": "Medium・If you're in the second half of the pack at a random point during the Middle Leg, your speed will increase",
-    "endesc_needs_retranslation": true,
+    "endesc": "Medium・If you're not in the front at a random point during the Middle Leg, your speed will increase",
     "enname": "Elation",
     "evo": [
       {
@@ -60584,8 +60554,7 @@
     "desc_en": "When positioned toward the back mid-race, slightly increase velocity. (Medium)",
     "desc_ko": "레이스 중반에 후방에 있으면 속도가 약간 상승한다＜중거리＞",
     "desc_tw": "在競賽中期若位於隊列後方速度會略微上升＜中距離＞",
-    "endesc": "Medium・If you're in the second half of the pack at a random point during the Middle Leg, your speed will slightly increase",
-    "endesc_needs_retranslation": true,
+    "endesc": "Medium・If you're not in the front at a random point during the Middle Leg, your speed will slightly increase",
     "enname": "Tumbling Forward",
     "iconid": 20011,
     "id": 202102,
@@ -60809,7 +60778,6 @@
     "desc_ko": "레이스 중반 코너에서 경합할 경우, 종반이면서 최종 코너 절반 이후에 좋은 위치에 있으면 가속력이 상승한다",
     "desc_tw": "在競賽中期的彎道若與對手競爭進入後期且最後彎道過半之後若位於良好位置則會使加速力上升",
     "endesc": "If you're trying to push for the front near the end of the race, your acceleration will increase",
-    "endesc_needs_retranslation": true,
     "enname": "When the Flower Bud Opens",
     "gene_version": {
       "activation": 1,
@@ -61095,10 +61063,9 @@
       }
     ],
     "desc_en": "If the user passes another runner on the final corner or later, increase velocity with fiery fighting spirit when in the front part of the pack with 300m or less remaining.",
-    "desc_ko": "최종 코너 이후 추월한 경우 남은 거리 300m 이하일 때 선두 그룹에 있으면 열화와 같은 투쟁심으로 속도가 상승한다",
+    "desc_ko": "최종 코너 이후 추월한 경우 남은 거리가 300m 이하일 때 선두 그룹에 있으면 열화와 같은 투쟁심으로 속도가 상승한다",
     "desc_tw": "在最後彎道之後若追過對手在剩餘不到300m處位於領先集團時會以宛如烈火般的鬥爭心使速度上升",
     "endesc": "If you've overtaken someone during or after the Final Corner, your speed will increase in the last 300 meters if you're in front of the pack",
-    "endesc_needs_retranslation": true,
     "enname": "Dazzling Fire, Invincible Dance",
     "gene_version": {
       "activation": 1,
@@ -61117,7 +61084,7 @@
       ],
       "cost": 200,
       "desc_en": "If the user passed another runner on the final corner or later, slightly increase velocity when in the front part of the pack with 300m or less remaining.",
-      "desc_ko": "최종 코너 이후 추월한 경우 남은 거리 300m 이하일 때 선두 그룹에 있으면 속도가 약간 상승한다",
+      "desc_ko": "최종 코너 이후 추월한 경우 남은 거리가 300m 이하일 때 선두 그룹에 있으면 속도가 약간 상승한다",
       "desc_tw": "在最後彎道之後若追過對手在剩餘不到300m處位於領先集團時會使速度略微上升",
       "iconid": 20011,
       "id": 900721,
@@ -61194,7 +61161,6 @@
     "desc_ko": "최종 코너 이후에 추월한 경우 최종 직선에서 중위권 그룹에 있으면 속도가 상승하며 인기가 낮을 경우 분발해 계속해서 상승한다",
     "desc_tw": "在最後彎道之後若追過對手且最後直線位於隊列中段，會使速度上升若支持度低則會奮起並使速度持續上升",
     "endesc": "If you're in the middle of the pack during the Final Straight, and you've overtaken someone since entering the final corner, your speed will increase (bonus duration if you're not popular)",
-    "endesc_needs_retranslation": true,
     "enname": "Go☆Go☆For It!",
     "gene_version": {
       "activation": 1,
@@ -61345,7 +61311,6 @@
     "desc_ko": "레이스 전반에 흥분하지 않고 최후방 부근에서 계속 대기하면, 최종 직선에서 기합을 폭발시켜 가속력이 상승한다",
     "desc_tw": "競賽前半若不暴衝並持續潛伏於隊列最後方附近，會在最後直線爆發毅力使加速力上升",
     "endesc": "If you stay near the back of the pack without panicking during the first half of the race, your acceleration will increase on the Final Straight",
-    "endesc_needs_retranslation": true,
     "enname": "Roaring Tracen Cheerleading Squad",
     "gene_version": {
       "activation": 1,
@@ -61462,8 +61427,7 @@
     "desc_en": "When positioned toward the back on the final corner, increase velocity. (Mile)",
     "desc_ko": "최종 코너에서 후방에 있으면 속도가 상승한다＜마일＞",
     "desc_tw": "在最後彎道若位於隊列後方速度會上升＜一哩＞",
-    "endesc": "Mile・If you're in the back of the pack during the last corner, your speed will increase",
-    "endesc_needs_retranslation": true,
+    "endesc": "Mile・If you're not in the front during the last corner, your speed will increase",
     "enname": "Unstoppable Force",
     "evo": [
       {
@@ -61604,8 +61568,7 @@
     "desc_en": "When positioned toward the back on the final corner, slightly increase velocity. (Mile)",
     "desc_ko": "최종 코너에서 후방에 있으면 속도가 약간 상승한다＜마일＞",
     "desc_tw": "在最後彎道若位於隊列後方速度會略微上升＜一哩＞",
-    "endesc": "Mile・If you're in the back of the pack during the last corner, your speed will slightly increase",
-    "endesc_needs_retranslation": true,
+    "endesc": "Mile・If you're not in the front during the last corner, your speed will slightly increase",
     "enname": "Sufficient Spirit",
     "iconid": 20011,
     "id": 202112,
@@ -62170,7 +62133,6 @@
     "desc_ko": "남은 거리 300m 부근에서 전방이라면 속도가 다소 상승하고, 그때에 맞춰 오르막길을 올랐을 경우는 많이 상승한다",
     "desc_tw": "在剩餘300m附近若位於隊列前方會使速度稍微上升若剛好在爬完坡道處則會大幅上升",
     "endesc": "If you're in the front with 300 m remaining in the race, your speed will increase; bonus speed if you have just finished climbing up a hill",
-    "endesc_needs_retranslation": true,
     "enname": "Charge Complete! Full Speed Ahead!",
     "gene_version": {
       "activation": 1,
@@ -62457,7 +62419,7 @@
       }
     ],
     "desc_en": "If positioned toward the front from the start of the race until the second half of the race, good vibes recover endurance and moderately increase velocity steadily.",
-    "desc_ko": "스타트 후부터 레이스 후반까지 전방을 유지 하면 기분이 엄청 좋아져서 지구력을 회복하 고 추가로 속도가 다소 상승세를 탄다",
+    "desc_ko": "스타트 후부터 레이스 후반까지 전방을 유지 하면 기분이 엄청 좋아져서 지구력을 회복하고 속도가 계속해서 다소 상승한다",
     "desc_tw": "從起跑後到競賽後半為止若能維持在隊列前方，會讓情緒嗨翻天來回復持久力且使速度稍微持續上升",
     "endesc": "If you've been in the front of the pack for the entire first half of the race, your stamina will recover and your speed will increase",
     "enname": "The Breakaway Road",
@@ -62673,7 +62635,6 @@
     "desc_ko": "종반 최종 코너 이후에 좋은 위치에 있으면 속도가 상승하며 추가로 결승점이 멀면 최고의 달리기로 가속력이 아주 조금 상승한다",
     "desc_tw": "在後期且在最後彎道之後若位於良好位置速度會上升且當距離終點尚遠時加速力會因最棒的跑姿而些微上升",
     "endesc": "If you're in a good position during the Final Corner or beyond, your speed will increase; if there's still more than 400m left in the race, your acceleration will increase too",
-    "endesc_needs_retranslation": true,
     "enname": "Best Day Ever",
     "gene_version": {
       "activation": 1,
@@ -62710,7 +62671,7 @@
       "iconid": 20011,
       "id": 910221,
       "inherited": true,
-      "name_en": "Best Day Ever",
+      "name_en": "Best day ever",
       "name_ko": "Best day ever",
       "name_tw": "Best day ever",
       "parent_skills": [
@@ -62775,10 +62736,9 @@
       }
     ],
     "desc_en": "If positioned toward the front with 350m or less remaining and there is another Umamusume close behind, the determination to stay ahead makes it easier to break out of the pack.",
-    "desc_ko": "남은 거리 350m 이하일 때 전방에서 뒤의 우마무스메와의 거리가 가까우면 양보하지 않겠다는 마음으로 빠져나가기 쉬워진다",
+    "desc_ko": "남은 거리가 350m 이하일 때 전방에서 뒤의 우마무스메와의 거리가 가까우면 양보하지 않겠다는 마음으로 빠져나가기 쉬워진다",
     "desc_tw": "在剩餘不到350m處若於隊列前方與後方賽馬娘拉近距離會以不願退讓的意志變得容易突圍",
     "endesc": "If you're in a good position with less than 350m remaining in the race and there's another girl right behind you, your speed and acceleration will increase",
-    "endesc_needs_retranslation": true,
     "enname": "One True Color",
     "gene_version": {
       "activation": 1,
@@ -62800,7 +62760,7 @@
       ],
       "cost": 200,
       "desc_en": "If positioned toward the front with 350m remaining and there is another Umamusume close behind, break out of the pack slightly more easily.",
-      "desc_ko": "남은 거리 350m 이하일 때 전방에서 뒤의 우마무스메와의 거리가 가까우면 아주 조금 빠져나가기 쉬워진다",
+      "desc_ko": "남은 거리가 350m 이하일 때 전방에서 뒤의 우마무스메와의 거리가 가까우면 아주 조금 빠져나가기 쉬워진다",
       "desc_tw": "在剩餘不到350m處若於隊列前方與後方賽馬娘拉近距離會些微變得容易突圍",
       "iconid": 20011,
       "id": 910381,
@@ -63165,7 +63125,6 @@
     "desc_ko": "레이스 전반에 중위권 그룹 이후에서 계속 대기하며 추월 경쟁 중이라면 에도 토박이의 저력을 보여 주며 속도가 많이 상승한다",
     "desc_tw": "在競賽前半若持續潛伏於隊列中段之後同位競爭時，會發揮江戶之子的潛力使速度大幅上升",
     "endesc": "If you stayed behind for the entire first half of the race, and then directly compete for position with another girl on the Final Straight, your speed will increase",
-    "endesc_needs_retranslation": true,
     "enname": "Fast Running, Fast Running!",
     "gene_version": {
       "activation": 1,
@@ -63253,8 +63212,7 @@
     "desc_en": "Recover endurance and increase velocity when positioned toward the back mid-race. (Dirt)",
     "desc_ko": "레이스 중반에 후방에 있으면 지구력을 회복하고 속도가 상승한다＜더트＞",
     "desc_tw": "在競賽中期若位於隊列後方會回復持久力並使速度上升＜沙地＞",
-    "endesc": "Dirt・If you're in the second half of the pack in the Middle Leg, your stamina will recover and your speed will increase",
-    "endesc_needs_retranslation": true,
+    "endesc": "Dirt・If you're not in the front in the Middle Leg, your stamina will recover and your speed will increase",
     "enname": "Sand Expert",
     "evo": [
       {
@@ -63366,10 +63324,9 @@
       }
     ],
     "desc_en": "If positioned toward the back and racing calmly until the start of the final corner, when there are 300m remaining, cast a magic spell to increase velocity continuously.",
-    "desc_ko": "최종 코너 돌입 시까지 냉정히 후방에서 대기 하고 있으면 남은 거리 300m일 때 스피드 업 마법을 걸어 속도가 계속해서 상승한다",
+    "desc_ko": "최종 코너 돌입 시까지 냉정히 후방에서 대기 하고 있으면 남은 거리가 300m일 때 스피드 업 마법을 걸어 속도가 계속해서 상승한다",
     "desc_tw": "在衝進最後彎道前若冷靜潛伏於隊列後方在剩餘300m處會施予加速魔法使速度持續上升",
     "endesc": "If you stay in the second half of the pack for the entire race without panicking, you will speed up on the Final Corner or beyond when there's 300 m remaining in the race",
-    "endesc_needs_retranslation": true,
     "enname": "You're Mine ☆ Strelitzia",
     "gene_version": {
       "activation": 1,
@@ -63388,7 +63345,7 @@
       ],
       "cost": 200,
       "desc_en": "If positioned toward the back and racing calmly until the start of the final corner, when there are 300m remaining, slightly increase velocity continuously.",
-      "desc_ko": "최종 코너 돌입 시까지 냉정히 후방에서 대기하고 있으면 남은 거리 300m 지점에서 속도가 계속해서 약간 상승한다",
+      "desc_ko": "최종 코너 돌입 시까지 냉정히 후방에서 대기하고 있으면 남은 거리가 300m일 때 속도가 계속해서 약간 상승한다",
       "desc_tw": "在衝進最後彎道前若冷靜潛伏於隊列後方由剩餘300m處開始使速度略微持續上升",
       "iconid": 20011,
       "id": 900441,
@@ -63665,7 +63622,6 @@
     "desc_ko": "남은 거리가 200m일 때 전방에 있으면 속도가 상승하며, 추가로 선두 우마무스메와 가까울 경우 파워풀하게 약간 앞으로 나간다",
     "desc_tw": "在剩餘200m處若位於隊列前方會使速度上升，且與領先的賽馬娘接近時會以強勁有力的跑姿略微向前邁進",
     "endesc": "With 200 meters remaining in the race, your target speed will increase if you're near the front, and you will also immediately speed up if you're close to the first position",
-    "endesc_needs_retranslation": true,
     "enname": "Joyful Voyage!",
     "gene_version": {
       "activation": 1,
@@ -63762,7 +63718,6 @@
     "desc_ko": "종반 직전의 내리막에서 중위권 그룹에 대기 중이고, 결승점이 멀면 레이스를 마음껏 즐기며 속도가 상승한다",
     "desc_tw": "在即將進入後期的下坡潛伏於隊列中段當距離終點尚遠時，會想盡情享受競賽而使速度上升",
     "endesc": "If you're in the middle of the pack on a downhill late into the race, your speed will increase",
-    "endesc_needs_retranslation": true,
     "enname": "To Where the Heart Beckons",
     "gene_version": {
       "activation": 1,
@@ -64306,7 +64261,6 @@
     "desc_ko": "종반 최종 코너에서 스킬을 발동하면 성원을 품고 속도가 다소 상승한다 나카야마 경기장이라면 많이 상승한다",
     "desc_tw": "在後期最後彎道若發動技能會因為聲援而使速度稍微上升若在中山賽場則會大幅上升",
     "endesc": "If you activate any skill on the Final Corner, your speed will increase; the effect is stronger in Nakayama",
-    "endesc_needs_retranslation": true,
     "enname": "Dignified Dreamlike Brocade",
     "gene_version": {
       "activation": 1,
@@ -64679,7 +64633,6 @@
     "desc_ko": "레이스 후반 어딘가에서 속도가 약간 상승하고 추가로 쓸만한 레어 스킬 2개의 조건을 무시하고 발동시킨다",
     "desc_tw": "在競賽後半某處使速度略微上升順便無視發動條件發動2項有效的稀有技能",
     "endesc": "At a random point in the second half of the race, your speed will increase and you will activate two of your gold skills at random, ignoring their conditions",
-    "endesc_needs_retranslation": true,
     "enname": "Adventure of 564",
     "gene_version": {
       "activation": 1,
@@ -64767,7 +64720,6 @@
     "desc_ko": "레이스 후반에 선두 그룹에 있으면 남은 지구력에 따라 롱 스퍼트를 걸어 속도가 계속해서 약간 상승한다",
     "desc_tw": "在競賽後半若位於領先集團視剩餘持久力進行長距離衝刺使速度略微持續上升",
     "endesc": "If you're in front in the second half of the race, your speed will increase; bonus duration depending on your remaining stamina",
-    "endesc_needs_retranslation": true,
     "enname": "The Sea Glitters, but You're Dazzling",
     "gene_version": {
       "activation": 1,
@@ -65066,7 +65018,6 @@
     "desc_ko": "종반 최종 코너 이후에 후방에서 따라붙으면 짧은 시간 동안 가속력이 아주 조금 상승하며 효과 중에 추월하면 3회까지 효과와 시간이 증가한다",
     "desc_tw": "後期最後彎道之後若從隊列後方向前逼近會使加速力極短時間內些微上升效果期間中如追過對手最多可增加效果與時間3次",
     "endesc": "During or after the Final Corner, if you're in the second half of the pack, your acceleration will increase; bonus duration and effect strength for overtaking up to 3 times",
-    "endesc_needs_retranslation": true,
     "enname": "Hot-Blooded Disciplinary Attack!",
     "gene_version": {
       "activation": 1,
@@ -65169,7 +65120,6 @@
     "desc_ko": "종반이 다가올 때 어딘가에서 속도가 다소 상승하며, 추가로 능력을 끌어내는 스킬의 발동 횟수에 따라 속도와 가속력이 상승한다",
     "desc_tw": "接近競賽後期的某處使速度稍微提升並依照提升能力的技能發動數量使速度和加速力上升",
     "endesc": "In the second half of the Middle Leg, your speed and acceleration will increase depending on the amount of green skills you've activated",
-    "endesc_needs_retranslation": true,
     "enname": "Luck Comes to the Prepared",
     "gene_version": {
       "activation": 1,
@@ -66504,8 +66454,7 @@
     "desc_en": "Increase velocity when positioned toward the back mid-race. (Dirt)",
     "desc_ko": "레이스 중반에 후방에 있으면 속도가 상승한다＜더트＞",
     "desc_tw": "在競賽中期若位於隊列後方速度會上升＜沙地＞",
-    "endesc": "Dirt・If you're in the second half of the pack during the Middle Leg, your speed will increase",
-    "endesc_needs_retranslation": true,
+    "endesc": "Dirt・If you're not in the front during the Middle Leg, your speed will increase",
     "enname": "Redoubled Efforts",
     "evo": [
       {
@@ -66609,8 +66558,7 @@
     "desc_en": "Slightly increase velocity when positioned toward the back mid-race. (Dirt)",
     "desc_ko": "레이스 중반에 후방에 있으면 속도가 약간 상승한다＜더트＞",
     "desc_tw": "在競賽中期若位於隊列後方速度會略微上升＜沙地＞",
-    "endesc": "Dirt・If you're in the second half of the pack during the Middle Leg, your speed will slightly increase",
-    "endesc_needs_retranslation": true,
+    "endesc": "Dirt・If you're not in the front during the Middle Leg, your speed will slightly increase",
     "enname": "Turnaround",
     "iconid": 20011,
     "id": 202272,
@@ -66926,8 +66874,7 @@
     "desc_en": "Increase velocity when positioned toward the back in the early part of mid-race after recovering endurance with a skill. (Dirt)",
     "desc_ko": "스킬로 지구력을 회복하면 레이스 중반이 시작될 때 후방에서 속도가 상승한다＜더트＞",
     "desc_tw": "若用技能回復持久力在競賽中期一開始位於隊列後方時使速度上升＜沙地＞",
-    "endesc": "Dirt・If you're in the second half of the pack and you've recovered stamina with a skill, your speed will increase in the Middle Leg",
-    "endesc_needs_retranslation": true,
+    "endesc": "Dirt・If you're not in the front and you've recovered stamina with a skill, your speed will increase in the Middle Leg",
     "enname": "Clear and Serene",
     "evo": [],
     "iconid": 20012,
@@ -67009,8 +66956,7 @@
     "desc_en": "Slightly increase velocity when positioned toward the back in the early part of mid-race after recovering endurance with a skill. (Dirt)",
     "desc_ko": "스킬로 지구력을 회복하면 레이스 중반이 시작될 때 후방에서 속도가 약간 상승한다＜더트＞",
     "desc_tw": "若用技能回復持久力在競賽中期一開始位於隊列後方時使速度略微上升＜沙地＞",
-    "endesc": "Dirt・If you're in the second half of the pack and you've recovered stamina with a skill, your speed will slightly increase in the Middle Leg",
-    "endesc_needs_retranslation": true,
+    "endesc": "Dirt・If you're not in the front and you've recovered stamina with a skill, your speed will slightly increase in the Middle Leg",
     "enname": "Clear Head",
     "iconid": 20011,
     "id": 202292,
@@ -67504,8 +67450,7 @@
     "desc_en": "Increase acceleration when positioned midpack or further back late-race. (Dirt)",
     "desc_ko": "레이스 종반에 중위권 그룹 이후에 있으면 가속력이 상승한다＜더트＞",
     "desc_tw": "在競賽後期若位於隊列中段之後加速力會上升＜沙地＞",
-    "endesc": "Dirt・If you're in the second half of the pack during the Final Leg, your acceleration will increase",
-    "endesc_needs_retranslation": true,
+    "endesc": "Dirt・If you're not in the front during the Final Leg, your acceleration will increase",
     "enname": "Blast Mode!",
     "evo": [],
     "iconid": 20042,
@@ -67594,8 +67539,7 @@
     "desc_en": "Slightly increase acceleration when positioned midpack or further back late-race. (Dirt)",
     "desc_ko": "레이스 종반에 중위권 그룹 이후에 있으면 가속력이 약간 상승한다＜더트＞",
     "desc_tw": "在競賽後期若位於隊列中段之後加速力會略微上升＜沙地＞",
-    "endesc": "Dirt・If you're in the second half of the pack during the Final Leg, your acceleration will slightly increase",
-    "endesc_needs_retranslation": true,
+    "endesc": "Dirt・If you're not in the front during the Final Leg, your acceleration will slightly increase",
     "enname": "Rapid Ascent",
     "iconid": 20041,
     "id": 202322,
@@ -67705,7 +67649,7 @@
     ],
     "cost": 120,
     "desc_en": "Increase Speed when the Power attribute exceeds a certain amount. If Power greatly exceeds that amount, increase Speed greatly instead. (Dirt)",
-    "desc_ko": "파워가 충분히 강하면 스피드가 상승하고, 파워가 더욱 충분히 갖춰져 있는 경우는 많이 상승한다＜더트＞",
+    "desc_ko": "파워가 충분히 강하면 스피드가 상승하고, 파워가 상당히 갖춰져 있는 경우는 많이 상승한다＜더트＞",
     "desc_tw": "若力量十分強大時速度上升若力量鍛鍊到十二分充足時速度大幅上升＜沙地＞",
     "endesc": "Dirt・If your Power stat is 1000 or higher, gain 60 Speed stat; if it's 1200 or higher, gain 80 instead",
     "enname": "Outstanding Step",
@@ -67803,7 +67747,7 @@
     ],
     "cost": 120,
     "desc_en": "Slightly increase Speed when the Power attribute exceeds a certain amount. If Power greatly exceeds that amount, increase Speed moderately instead. (Dirt)",
-    "desc_ko": "파워가 충분히 강하면 스피드가 약간 상승하고, 파워가 더욱 충분히 갖춰져 있는 경우는 다소 상승한다＜더트＞",
+    "desc_ko": "파워가 충분히 강하면 스피드가 약간 상승하고, 파워가 상당히 갖춰져 있는 경우는 다소 상승한다＜더트＞",
     "desc_tw": "若力量十分強大時速度略微上升若力量鍛鍊到十二分充足時速度稍微上升＜沙地＞",
     "endesc": "Dirt・If your Power stat is 1000 or higher, gain 20 Speed stat; if it's 1200 or higher, gain 40 instead",
     "enname": "Skillful Step",
@@ -68459,7 +68403,6 @@
     "desc_ko": "레이스 중간 부근에서 선두 부근이라면 속도가 계속해서 다소 상승하며, 추가로 더트 레이스에서는 지구력을 다소 회복한다",
     "desc_tw": "在競賽中間附近若與領先位置接近會使速度稍微持續上升且若是沙地競賽持久力則會再稍微回復",
     "endesc": "Halfway through the race, if you're near the front, your speed will increase; if this is a dirt race, you will also recover stamina",
-    "endesc_needs_retranslation": true,
     "enname": "α-star*",
     "gene_version": {
       "activation": 1,
@@ -68986,7 +68929,6 @@
     "desc_ko": "라스트 스퍼트의 최종 직선에서 중위권 그룹 이후일 때 속도가 다소 상승세를 타며, 효과 중 스킬을 발동하면 3회까지 효과가 증가한다",
     "desc_tw": "在最後衝刺的最後直線位於隊列中段之後使速度逐漸稍微上升，若於效果期間發動技能最多可使效果增加3次",
     "endesc": "During the Final Straight, if you're not in the front, your speed will increase; bonus speed for activating skills while this is active (up to 3 times)",
-    "endesc_needs_retranslation": true,
     "enname": "Delivering Beyond the Dreams!",
     "gene_version": {
       "activation": 1,
@@ -69115,7 +69057,6 @@
     "desc_ko": "레이스 종반의 최종 코너 후반에 높은 경지를 향해 중위권 그룹에서 속도가 상승한다",
     "desc_tw": "在競賽後期的最後彎道後半會追求更高的名次從隊列中段使速度上升",
     "endesc": "If you're in the middle of the pack during the second half of the Final Corner in the Final Leg, your speed will increase",
-    "endesc_needs_retranslation": true,
     "enname": "Hephaistos",
     "gene_version": {
       "activation": 1,
@@ -69205,8 +69146,7 @@
     "desc_en": "Increase velocity and increase navigation when positioned around the very back mid-race. (End Closer)",
     "desc_ko": "레이스 중반에 후방에 있으면 속도가 상승하며 코스를 능숙하게 잡는다＜작전・추입＞",
     "desc_tw": "在競賽中期若位於隊列後方速度會上升並變得擅長爭搶賽道＜作戰．後追＞",
-    "endesc": "Chaser・If you're in the second half of the pack at a random point during the Middle Leg, your speed and lane movement speed will increase",
-    "endesc_needs_retranslation": true,
+    "endesc": "Chaser・If you're not in the front at a random point during the Middle Leg, your speed and lane movement speed will increase",
     "enname": "Breakthrough",
     "evo": [
       {
@@ -69330,8 +69270,7 @@
     "desc_en": "Slightly increase velocity and slightly increase navigation when positioned around the very back mid-race. (End Closer)",
     "desc_ko": "레이스 중반에 후방에 있으면 속도가 약간 상승하며 코스를 약간 능숙하게 잡는다＜작전・추입＞",
     "desc_tw": "在競賽中期若位於隊列後方速度會略微上升並變得略微擅長爭搶賽道＜作戰．後追＞",
-    "endesc": "Chaser・If you're in the second half of the pack at a random point during the Middle Leg, your speed and lane movement speed will slightly increase",
-    "endesc_needs_retranslation": true,
+    "endesc": "Chaser・If you're not in the front at a random point during the Middle Leg, your speed and lane movement speed will slightly increase",
     "enname": "Breakthrough Plan",
     "iconid": 20011,
     "id": 202382,
@@ -69732,7 +69671,6 @@
     "desc_ko": "남은 거리가 300m 이하일 때 선두 혹은 전방에서 선두 우마무스메와 거리가 가까우면 속도가 상승한다",
     "desc_tw": "在剩餘不到300m處若位居領先或位於隊列前方並與領先的賽馬娘接近時會使速度上升",
     "endesc": "If you're close to the first place with 300 m remaining in the race, your speed will increase",
-    "endesc_needs_retranslation": true,
     "enname": "Chasing the Snowlight",
     "gene_version": {
       "activation": 1,
@@ -69822,10 +69760,9 @@
       }
     ],
     "desc_en": "Increase velocity when positioned 2nd or later within 4 lengths of the lead with 200m remaining. If within 2 lengths, increase velocity greatly instead.",
-    "desc_ko": "남은 거리 200m 지점에서 선두가 아닐 때 선두로부터 4마신 이내라면 속도가 상승하며 2마신 이내면 많이 상승한다",
+    "desc_ko": "남은 거리가 200m일 때 선두가 아닐 경우 선두로부터 4마신 이내라면 속도가 상승하며 2마신 이내라면 많이 상승한다",
     "desc_tw": "在剩餘200m處若尚未位居領先距離最前頭4身距內時使速度上升當距離2身距內時則使速度大幅上升",
     "endesc": "With 200 meters remaining in the race, your speed will increase if you're within 10 meters from the first place; it will increase greatly if you're within 5 meters",
-    "endesc_needs_retranslation": true,
     "enname": "『I'm Possible』",
     "gene_version": {
       "activation": 1,
@@ -69853,7 +69790,7 @@
       ],
       "cost": 200,
       "desc_en": "Slightly increase velocity when positioned 2nd or later within 4 lengths of the lead with 200m remaining. If within 2 lengths, increase velocity moderately instead.",
-      "desc_ko": "남은 거리 200m 지점에서 선두가 아닐 때 선두로부터 4마신 이내라면 속도가 약간 상승하며 2마신 이내에 있으면 다소 상승한다",
+      "desc_ko": "남은 거리가 200m일 때 선두가 아닐 경우 선두로부터 4마신 이내라면 속도가 약간 상승하며 2마신 이내라면 다소 상승한다",
       "desc_tw": "在剩餘200m處若尚未位居領先距離最前頭4身距內時使速度略微上升當距離2身距內時則使速度稍微上升",
       "iconid": 20011,
       "id": 900421,
@@ -70005,8 +69942,7 @@
     "desc_en": "Increase acceleration when trying to pass another runner from the back late-race. (Sprint/Mile)",
     "desc_ko": "레이스 종반에 후방에서 추월하려고 하면 가속력이 상승한다＜단거리/마일＞",
     "desc_tw": "在競賽後期若於隊列後方準備追過對手加速力上升＜短距離/一哩＞",
-    "endesc": "Short/Mile・If you're about to overtake someone in the second half of the pack during the Final Leg, your acceleration will increase",
-    "endesc_needs_retranslation": true,
+    "endesc": "Short/Mile・If you're not in the front and about to overtake someone during the Final Leg, your acceleration will increase",
     "enname": "Lightning Speed",
     "evo": [
       {
@@ -70159,8 +70095,7 @@
     "desc_en": "Slightly increase acceleration when trying to pass another runner from the back late-race. (Sprint/Mile)",
     "desc_ko": "레이스 종반에 후방에서 추월하려고 하면 가속력이 약간 상승한다 ＜단거리/마일＞",
     "desc_tw": "在競賽後期若於隊列後方準備追過對手加速力略微上升＜短距離/一哩＞",
-    "endesc": "Short/Mile・If you're about to overtake someone in the second half of the pack during the Final Leg, your acceleration will slightly increase",
-    "endesc_needs_retranslation": true,
+    "endesc": "Short/Mile・If you're not in the front and about to overtake someone during the Final Leg, your acceleration will slightly increase",
     "enname": "Mighty Leap",
     "iconid": 20041,
     "id": 202402,
@@ -70414,7 +70349,6 @@
     "desc_ko": "최종 직선에 들어왔을 때 전방이라면 속도가 상승하고 앞뒤 각 2인까지의 우마무스메를 아주 조금 위축시킨다",
     "desc_tw": "進入最後直線時若位於隊列前方使速度上升，並使前方2名後方2名賽馬娘些微感到畏縮",
     "endesc": "If you're in front during the last straight, your speed will increase, and you will slow down two girls in front of you, and two girls behind you",
-    "endesc_needs_retranslation": true,
     "enname": "Spooky-Scary-Happy",
     "gene_version": {
       "activation": 1,
@@ -70620,10 +70554,9 @@
       }
     ],
     "desc_en": "Increase ability to break out of the pack with a strong desire to linger in fans' hearts when pressured toward the front with 400m or less remaining.",
-    "desc_ko": "남은 거리 400m 이하일 때 전방에서 누군가 따라붙으면 팬의 마음에 남는 달리기로 빠져나가기 쉬워진다",
+    "desc_ko": "남은 거리가 400m 이하일 때 전방에서 누군가 따라붙으면 팬의 마음에 남는 달리기로 빠져나가기 쉬워진다",
     "desc_tw": "在剩餘不到400m處若於隊列前方被逼近時會展現讓粉絲難以忘懷的跑姿變得容易突圍",
     "endesc": "With less than 400 meters remaining, if you're in the front and someone is about to overtake you, your speed and acceleration will increase",
-    "endesc_needs_retranslation": true,
     "enname": "Silent Letter",
     "gene_version": {
       "activation": 1,
@@ -70645,7 +70578,7 @@
       ],
       "cost": 200,
       "desc_en": "Very slightly increase ability to break out of the pack when pressured toward the front with 400m or less remaining.",
-      "desc_ko": "남은 거리 400m 이하일 때 전방에서 누군가 따라붙으면 아주 조금 빠져나가기 쉬워진다",
+      "desc_ko": "남은 거리가 400m 이하일 때 전방에서 누군가 따라붙으면 아주 조금 빠져나가기 쉬워진다",
       "desc_tw": "在剩餘不到400m處若於隊列前方被逼近時會些微變得容易突圍",
       "iconid": 20011,
       "id": 900871,
@@ -70664,6 +70597,11 @@
     "jpdesc": "残り400mを切って2番手以内で近寄られるとファンの心に残る走りで速度と加速力が少し上がる",
     "jpname": "Silent letter",
     "loc": {
+      "en": {
+        "char": [
+          108701
+        ]
+      },
       "ko": {
         "char": [
           108701
@@ -70682,9 +70620,6 @@
     "tid": "b2",
     "type": [
       "nac"
-    ],
-    "unreleased": [
-      "en"
     ]
   },
   {
@@ -70717,10 +70652,9 @@
       }
     ],
     "desc_en": "Very slightly increase acceleration continuously for a long duration when toward the front on the latter half of the final corner after biding time in the race's first half. Effect increases if 2nd.",
-    "desc_ko": "레이스 전반에 대기하고, 최종 코너 후반에 전방이라면 오랫동안 가속력이 계속해서 아주 조금 상승하며, 2등이라면 효과가 상승한다",
+    "desc_ko": "레이스 전반에 대기하고, 최종 코너 후반에 전방이라면 오랫동안 가속력이 계속해서 아주 조금 상승하며, 2위라면 효과가 상승한다",
     "desc_tw": "競賽前半潛伏於隊列中，且最後彎道後半位於隊列前方時使加速力長時間些微持續上升，位列第2時使效果上升",
     "endesc": "If you weren't ever in front until the second half of the race, your acceleration will increase during the second half of the Final Corner; the effect is stronger if you're in the 2nd place",
-    "endesc_needs_retranslation": true,
     "enname": "A Spring in My Step",
     "gene_version": {
       "activation": 1,
@@ -70750,7 +70684,7 @@
       ],
       "cost": 200,
       "desc_en": "Very minimally increase acceleration continuously for a long duration when toward the front on the latter half of the final corner after biding time in the race's first half. Effect increases if 2nd.",
-      "desc_ko": "레이스 전반에 대기하고, 최종 코너 후반에 전방이라면 오랫동안 가속력이 계속해서 매우 조금 상승하며, 2등이라면 효과가 상승한다",
+      "desc_ko": "레이스 전반에 대기하고, 최종 코너 후반에 전방이라면 오랫동안 가속력이 계속해서 매우 조금 상승하며, 2위라면 효과가 상승한다",
       "desc_tw": "競賽前半潛伏於隊列中，且最後彎道後半位於隊列前方時使加速力長時間微微持續上升，位列第2時使效果上升",
       "iconid": 20041,
       "id": 900781,
@@ -70814,7 +70748,7 @@
     ],
     "cost": 180,
     "desc_en": "Moderately increase velocity for a medium duration when positioned 2nd or later and within 2 lengths of the lead just before late-race. (Pace Chaser)",
-    "desc_ko": "레이스 종반 직전에 2위 이하로 대기하며 선두로부터 2마신 이내라면 한동안 속도가 다소 상승한다＜작전・선행＞",
+    "desc_ko": "레이스 종반 직전에 2위 이후로 대기하며 선두로부터 2마신 이내라면 한동안 속도가 다소 상승한다＜작전・선행＞",
     "desc_tw": "即將進入競賽後期時，潛伏於第2之後且距離最前頭2身距以內一段時間內速度會稍微上升＜作戰．前列＞",
     "endesc": "Leader・During the latter part of the Middle Leg, if you're less than 5 meters away from the 1st place, your speed will increase",
     "enname": "Winds of Change",
@@ -70917,7 +70851,7 @@
     ],
     "cost": 180,
     "desc_en": "Very slightly increase velocity for a medium duration when positioned 2nd or later and within 2 lengths of the lead just before late-race. (Pace Chaser)",
-    "desc_ko": "레이스 종반 직전에 2위 이하로 대기하며 선두로부터 2마신 이내라면 한동안 속도가 아주 조금 상승한다＜작전・선행＞",
+    "desc_ko": "레이스 종반 직전에 2위 이후로 대기하며 선두로부터 2마신 이내라면 한동안 속도가 아주 조금 상승한다＜작전・선행＞",
     "desc_tw": "即將進入競賽後期時，潛伏於第2之後且距離最前頭2身距以內一段時間內速度會些微上升＜作戰．前列＞",
     "endesc": "Leader・During the latter part of the Middle Leg, if you're less than 5 meters away from the 1st place, your speed will slightly increase",
     "enname": "Ambitions",
@@ -71416,7 +71350,6 @@
     "desc_ko": "종반 코너에서 후방에서 따라붙으면 최종 직선에서 속도가 상승하며, 종반 코너에서 추월한 횟수에 따라 효과가 증가한다",
     "desc_tw": "在後期的彎道若由隊列後方向前逼近進入最後直線時速度會上升並依照在後期的彎道追過對手的次數使效果增加",
     "endesc": "If you were in the back of the pack during a Final Leg corner, your speed on the last straight will increase depending on the number of times you've overtaken someone on the corner",
-    "endesc_needs_retranslation": true,
     "enname": "Bristling Lights",
     "gene_version": {
       "activation": 1,
@@ -71503,7 +71436,7 @@
     ],
     "cost": 170,
     "desc_en": "Moderately increase velocity and acceleration upon approaching late-race when leading or within 4 lengths of the lead. (Pace, Medium)",
-    "desc_ko": "종반이 다가올 때 선두로 있거나 선두로부터 4마신 이내라면 속도와 가속력이 다소 상승한다＜선행・중거리＞",
+    "desc_ko": "종반이 다가올 때 선두이거나 선두로부터 4마신 이내라면 속도와 가속력이 다소 상승한다＜선행・중거리＞",
     "desc_tw": "接近後期時若位居領先或距離最前頭4身距以內速度及加速力稍微上升＜前列．中距離＞",
     "endesc": "Leader・Medium・If you're in lead or close to the lead during the second half of the Middle Leg, your speed and acceleration will increase",
     "enname": "Steady Advance",
@@ -71593,7 +71526,7 @@
     ],
     "cost": 170,
     "desc_en": "Very slightly increase velocity and acceleration upon approaching late-race when leading or within 4 lengths of the lead. (Pace, Medium)",
-    "desc_ko": "종반이 다가올 때 선두로 있거나 선두로부터 4마신 이내라면 속도와 가속력이 아주 조금 상승한다＜선행・중거리＞",
+    "desc_ko": "종반이 다가올 때 선두이거나 선두로부터 4마신 이내라면 속도와 가속력이 아주 조금 상승한다＜선행・중거리＞",
     "desc_tw": "接近後期時若位居領先或距離最前頭4身距以內速度及加速力些微上升＜前列．中距離＞",
     "endesc": "Leader・Medium・If you're in lead or close to the lead during the second half of the Middle Leg, your speed and acceleration will slightly increase",
     "enname": "Firm Step",
@@ -71729,7 +71662,6 @@
     "desc_ko": "최종 코너 이후에 추월하려고 하는 경우 남은 거리가 400m 이하일 때 좋은 위치에 있으면 속도가 상승하며, 인기가 낮으면 많이 상승한다",
     "desc_tw": "在最後彎道之後若準備追過對手在剩餘不到400m處且位於良好位置時，會使速度上升支持度低時大幅上升",
     "endesc": "If you tried to overtake someone on the Final Corner, and are in the middle of the pack with at most 400 m remaining, your speed will increase; bonus effect if you're not popular",
-    "endesc_needs_retranslation": true,
     "enname": "Laugh in the Face of Danger",
     "gene_version": {
       "activation": 1,
@@ -72016,10 +71948,9 @@
       }
     ],
     "desc_en": "Moderately increase velocity when positioned toward the front with 300m remaining. If it's a dirt race and the skill user is close to the lead, also moderately surge ahead.",
-    "desc_ko": "남은 거리가 300m일 때 전방에 있으면 속도가 다소 상승하며, 추가로 더트 레이스에서 선두와 2마신 이내라면 다소 앞으로 나간다",
+    "desc_ko": "남은 거리가 300m일 때 전방에 있으면 속도가 다소 상승하며, 추가로 더트 레이스에서 선두로부터 2마신 이내라면 다소 앞으로 나간다",
     "desc_tw": "在剩餘300m處若位於隊列前方速度會稍微上升，且若在沙地競賽時距離最前頭2身距內則會再稍微向前邁進",
     "endesc": "With 300 meters remaining in the race, if you're in a good position, your speed will increase; if it's a dirt race and you're close to the lead, you will also immediately accelerate",
-    "endesc_needs_retranslation": true,
     "enname": "Never Say Never",
     "gene_version": {
       "activation": 1,
@@ -72580,7 +72511,6 @@
     "desc_ko": "레이스 중반 이후 내리막에서 중위권 그룹이면 언덕을 내려간 후 잠시 동안 속도가 상승하며 도쿄 경기장이라면 추가로 기어를 올린다",
     "desc_tw": "在競賽中期之後的下坡若位於隊列中段通過下坡後使速度於短時間內上升若在東京賽場則使速度更為上升",
     "endesc": "After running downhill in the back of the pack during the Middle Leg or later, your speed will increase; if you're in Tokyo, your acceleration will increase too",
-    "endesc_needs_retranslation": true,
     "enname": "Into High Gear!",
     "gene_version": {
       "activation": 1,
@@ -72688,7 +72618,6 @@
     "desc_ko": "레이스 후반 직선에서 전방에 있으면 속도가 계속해서 다소 상승하며, 선두에서 뒤의 우마무스메와의 차이가 1마신 이내라면 효과가 증가한다",
     "desc_tw": "在競賽後半的直線若位於隊列前方使速度稍微持續上升，若位居領先且與後方的賽馬娘相差1身距之內則效果增加",
     "endesc": "If you're in front during any second half straight, your speed will increase; bonus speed if you're first and there's another girl right behind you",
-    "endesc_needs_retranslation": true,
     "enname": "Queen's Lumination",
     "gene_version": {
       "activation": 1,
@@ -72781,7 +72710,7 @@
     ],
     "cost": 180,
     "desc_en": "Greatly increase velocity when positioned 2nd or further back within 4 lengths of the lead on the final straight. (Late Surger)",
-    "desc_ko": "최종 직선에서 2위 이하이고 선두로부터 4마신 이내라면 속도가 많이 상승한다＜작전・선입＞",
+    "desc_ko": "최종 직선에서 2위 이후이고 선두로부터 4마신 이내라면 속도가 많이 상승한다＜작전・선입＞",
     "desc_tw": "在最後直線若位列第2之後且距離最前頭4身距內時速度大幅上升＜作戰．居中＞",
     "endesc": "Betweener・On the Final Straight, if you're not in lead but also not more than 10 meters from it, your speed will increase significantly",
     "enname": "Top Gear",
@@ -72920,7 +72849,7 @@
     ],
     "cost": 180,
     "desc_en": "Moderately increase velocity when positioned 2nd or further back within 4 lengths of the lead on the final straight. (Late Surger)",
-    "desc_ko": "최종 직선에서 2위 이하이고 선두로부터 4마신 이내라면 속도가 다소 상승한다＜작전・선입＞",
+    "desc_ko": "최종 직선에서 2위 이후이고 선두로부터 4마신 이내라면 속도가 다소 상승한다＜작전・선입＞",
     "desc_tw": "在最後直線若位列第2之後且距離最前頭4身距內時速度稍微上升＜作戰．居中＞",
     "endesc": "Betweener・On the Final Straight, if you're not in lead but also not more than 10 meters from it, your speed will increase",
     "enname": "Razor-Sharp Stride",
@@ -73806,7 +73735,6 @@
     "desc_ko": "레이스 종반 남은 거리가 400m일 때 전방에 있으면 속도가 상승하며, GⅠ등 큰 무대에서 인기가 높은 경우 많이 상승한다",
     "desc_tw": "競賽後期剩餘400m處若位於隊列前方速度上升，若在GⅠ等大舞台獲得高支持度則大幅上升",
     "endesc": "With 400 meters remaining, if you're in the front of the pack, your speed will increase; the effect is stronger if it's a big race (G1 or similar) and you're popular",
-    "endesc_needs_retranslation": true,
     "enname": "Raise Thy Soul's Sword!",
     "gene_version": {
       "activation": 1,
@@ -73910,7 +73838,6 @@
     "desc_ko": "종반 최종 코너 후반에 선두 그룹에 있으면 속도가 상승하며, 장거리 레이스에서 중반에 경합을 했을 경우에는 아주 많이 상승한다",
     "desc_tw": "在後期的最後彎道後半若位於領先集團速度上升，若在長距離競賽中期與對手競爭時則極大幅上升",
     "endesc": "If you're in front during the second half of the Final Corner, your speed will increase; bonus effect if it's a long race and you were blocked from the side during the Middle Leg",
-    "endesc_needs_retranslation": true,
     "enname": "Critical Point: Gray",
     "gene_version": {
       "activation": 1,
@@ -74113,7 +74040,6 @@
     "desc_ko": "레이스 중간 부근에서 중위권 그룹에 있을 때 찬란히 빛을 발해 속도가 상승하며 지구력을 다소 회복한다",
     "desc_tw": "在競賽中間附近位於隊列中段時釋放燦爛光輝後速度會上升並稍微回復持久力",
     "endesc": "Halfway through the race, if you're in the middle of the pack, your speed will increase and your stamina recover",
-    "endesc_needs_retranslation": true,
     "enname": "Arrow of Gold, Break up the Dark Clouds",
     "gene_version": {
       "activation": 1,
@@ -74202,7 +74128,6 @@
     "desc_ko": "종반 코너에서 전방에 있을 때 결승점이 멀면 잠시 동안 앞으로 나가면서 가속력이 아주 조금 상승한다",
     "desc_tw": "在競賽後期的彎道位於隊列前方時若距離終點尚遠，則短時間內向前邁進加速力會些微上升",
     "endesc": "During a Final Leg corner where at least 600 meters remain, if you're in front of the pack, your speed and acceleration will increase",
-    "endesc_needs_retranslation": true,
     "enname": "Lavish Feast",
     "gene_version": {
       "activation": 1,
@@ -74508,7 +74433,6 @@
     "desc_ko": "중반 코너에서 경합한 경우 라스트 스퍼트 중에 좋은 위치에 있으면 가속력이 약간 상승하고 여력이 충분하면 효과가 증가한다＜더트＞",
     "desc_tw": "若在中期的彎道與對手競爭當最後衝刺階段取得良好位置時加速力略微上升若保有充足餘力則效果增加＜沙地＞",
     "endesc": "Dirt・If you were blocked from the side during any Middle Leg corner, then if you're in a good position during the Last Spurt, your acceleration will increase; the effect is stronger if you have plenty of stamina left",
-    "endesc_needs_retranslation": true,
     "enname": "Shine ☆ Tomakomai",
     "gene_version": {
       "activation": 1,
@@ -74597,7 +74521,6 @@
     "desc_ko": "종반이 다가온 어딘가에서 전방에 있으면 속도가 다소 상승하며, 단거리나 마일 경기장인 경우는 계속해서 다소 상승한다",
     "desc_tw": "接近競賽後期的某處若位於隊列前方使速度稍微上升，當在短距離或一哩競賽時則稍微持續上升",
     "endesc": "If you're in the first half of the pack during the second half of the Middle Leg, your speed will increase; the effect lasts longer on short and mile tracks",
-    "endesc_needs_retranslation": true,
     "enname": "Everybody Put Your Hands Up!",
     "gene_version": {
       "activation": 1,
@@ -75036,10 +74959,9 @@
       }
     ],
     "desc_en": "Increase velocity for a moderate duration when 2nd or worse and within 4 lengths of the lead on a downhill just before late-race. If the race is medium, also very slightly increase acceleration.",
-    "desc_ko": "종반 직전의 내리막에서 2위 이하이고 선두로부터 4마신 이내라면 잠시 동안 속도가 상승하며, 추가로 중거리 레이스에서는 가속력이 아주 조금 상승한다",
+    "desc_ko": "종반 직전의 내리막에서 2위 이후이고 선두로부터 4마신 이내라면 잠시 동안 속도가 상승하며, 추가로 중거리 레이스에서는 가속력이 아주 조금 상승한다",
     "desc_tw": "在即將進入後期的下坡若位列第2之後且距離最前頭4身距內時短時間內速度上升若是中距離競賽加速力會再些微上升",
     "endesc": "During any downhill around the end of the Middle Leg, if you're 2nd on worse and close to the lead, your speed will increase; if it's a medium distance race, your acceleration will too",
-    "endesc_needs_retranslation": true,
     "enname": "Latte Art For You",
     "gene_version": {
       "activation": 1,
@@ -75071,7 +74993,7 @@
       ],
       "cost": 200,
       "desc_en": "Slightly increase velocity for a moderate duration when 2nd or worse and within 4 lengths of the lead on a downhill just before late-race. If the race is medium, also very minimally increase acceleration.",
-      "desc_ko": "종반 직전의 내리막에서 2위 이하이고 선두로부터 4마신 이내라면 잠시 동안 속도가 약간 상승하며, 추가로 중거리 레이스에서는 가속력이 매우 조금 상승한다",
+      "desc_ko": "종반 직전의 내리막에서 2위 이후이고 선두로부터 4마신 이내라면 잠시 동안 속도가 약간 상승하며, 추가로 중거리 레이스에서는 가속력이 매우 조금 상승한다",
       "desc_tw": "在即將進入後期的下坡若位列第2之後且距離最前頭4身距內時短時間內速度略微上升若是中距離競賽加速力會再微微上升",
       "iconid": 20011,
       "id": 910271,
@@ -75140,7 +75062,6 @@
     "desc_ko": "레이스 중반이 시작될 때 전방에 있으면 속도가 계속해서 다소 상승하며 덤으로 지구력을 다소 회복한다",
     "desc_tw": "在競賽中期一開始若位於隊列前方會使速度稍微持續上升並順帶稍微回復持久力",
     "endesc": "During the first half of the Middle Leg, if you're in the front, your speed will increase and your stamina recover",
-    "endesc_needs_retranslation": true,
     "enname": "Fresh ☆ Parlor",
     "gene_version": {
       "activation": 1,
@@ -75465,7 +75386,6 @@
     "desc_ko": "추월 경쟁 시, 속도가 다소 상승하며 추가로 더트 레이스에서는 달려드는 듯한 기백으로 가속력이 상승한다",
     "desc_tw": "同位競爭時速度會稍微上升且在沙地競賽時加速力會以緊咬不放的氣勢上升",
     "endesc": "When directly competing for position on the Final Straight in a Showdown (追い比べ), your speed will increase; on dirt tracks, your acceleration will increase too",
-    "endesc_needs_retranslation": true,
     "enname": "Ding Dong Boo",
     "gene_version": {
       "activation": 1,
@@ -75571,7 +75491,6 @@
     "desc_ko": "중반의 중간에 거리를 벌린 채 선두라면 아주 오랫동안 속도가 계속해서 아주 조금 상승하지만 종반의 끝에 아주 조금 뒤처져 버린다",
     "desc_tw": "在中期的一半若位居領先並拉開一段距離，會使速度超長時間些微持續上升但後期的尾聲會些微力竭",
     "endesc": "If you're leading by at least one length one-third through the race, your speed will marginally increase, but then during the Last Spurt, it will marginally decrease",
-    "endesc_needs_retranslation": true,
     "enname": "Engine Ignition!",
     "gene_version": {
       "activation": 1,
@@ -75599,7 +75518,7 @@
       ],
       "cost": 200,
       "desc_en": "Minimally increase velocity continuously for an extremely long duration when leading by a fair margin halfway through mid-race, but very slightly lose steam at the end of late-race.",
-      "desc_ko": "중반의 중간에 거리를 벌린 채 선두라면 아주 오랫동안 속도가 계속해서 아주 약간 상승하지만 종반의 끝에 아주 조금 뒤처지고 만다",
+      "desc_ko": "중반의 중간에 거리를 벌린 채 선두라면 아주 오랫동안 속도가 계속해서 아주 약간 상승하지만 종반의 끝에 아주 조금 뒤처져 버린다",
       "desc_tw": "在中期的一半若位居領先並拉開一段距離，會使速度超長時間稍稍持續上升但後期的尾聲會些微力竭",
       "iconid": 20011,
       "id": 900661,
@@ -75767,7 +75686,6 @@
     "desc_ko": "종반이 다가오는 어딘가에서 후방에 있으면 속도가 계속해서 다소 상승하며 중장거리 레이스에서 선두로부터 거리가 벌어져 있으면 효과가 증가한다",
     "desc_tw": "接近後期的某處若位於隊列後方使速度稍微持續上升在中距離或長距離競賽且與最前頭拉開距離時則效果增加",
     "endesc": "During the second half of the Middle Leg, if you're the second half of the pack, your speed will slightly increase; bonus speed in Medium and Long races if you'll at least 20 meters away from the first place",
-    "endesc_needs_retranslation": true,
     "enname": "Lyricism at Journey's End",
     "gene_version": {
       "activation": 1,
@@ -75873,7 +75791,6 @@
     "desc_ko": "중반의 중간에 거리를 벌린 채 선두라면 아주 오랫동안 속도가 계속해서 약간 상승하지만 종반의 끝에 아주 조금 뒤처져 버린다",
     "desc_tw": "在中期的一半若位居領先並拉開一段距離，會使速度超長時間略微持續上升但後期的尾聲會些微力竭",
     "endesc": "If you're leading by at least one length one-third through the race, your speed will slightly increase, but then during the Last Spurt, it will marginally decrease",
-    "endesc_needs_retranslation": true,
     "enname": "Engine, Full Throttle! Turbo Time!",
     "gene_version": {
       "activation": 1,
@@ -75901,7 +75818,7 @@
       ],
       "cost": 200,
       "desc_en": "Minimally increase velocity continuously for an extremely long duration when leading by a fair margin halfway through mid-race, but very slightly lose steam at the end of late-race.",
-      "desc_ko": "중반의 중간에 거리를 벌린 채 선두라면 아주 오랫동안 속도가 계속해서 아주 약간 상승하지만 종반의 끝에 아주 조금 뒤처지고 만다",
+      "desc_ko": "중반의 중간에 거리를 벌린 채 선두라면 아주 오랫동안 속도가 계속해서 아주 약간 상승하지만 종반의 끝에 아주 조금 뒤처져 버린다",
       "desc_tw": "在中期的一半若位居領先並拉開一段距離，會使速度超長時間稍稍持續上升但後期的尾聲會些微力竭",
       "iconid": 20011,
       "id": 900661,
@@ -76060,8 +75977,7 @@
     "desc_en": "Surge ahead when positioned toward the back on a third corner just before the final corner. (Medium/Long)",
     "desc_ko": "최종 코너 전의 제3 코너에서 후방에 있으면 앞으로 나간다＜중거리/장거리＞",
     "desc_tw": "在最後彎道前的第3彎道若位於隊列後方會向前邁進＜中距離/長距離＞",
-    "endesc": "Medium/Long・At a random point during the third corner, if you're in the second half of the pack, your will get a speed boost",
-    "endesc_needs_retranslation": true,
+    "endesc": "Medium/Long・At a random point during the third corner, if you're not in the front, your will get a speed boost",
     "enname": "Seamless",
     "evo": [
       {
@@ -76174,8 +76090,7 @@
     "desc_en": "Slightly surge ahead when positioned toward the back on a third corner just before the final corner. (Medium/Long)",
     "desc_ko": "최종 코너 전의 제3 코너에서 후방에 있으면 약간 앞으로 나간다＜중거리/장거리＞",
     "desc_tw": "在最後彎道前的第3彎道若位於隊列後方會略微向前邁進＜中距離/長距離＞",
-    "endesc": "Medium/Long・At a random point during the third corner, if you're in the second half of the pack, you will get a slight speed boost",
-    "endesc_needs_retranslation": true,
+    "endesc": "Medium/Long・At a random point during the third corner, if you're not in the front, you will get a slight speed boost",
     "enname": "Mold Breaker",
     "iconid": 20011,
     "id": 202522,
@@ -79134,8 +79049,7 @@
     "desc_en": "Increase velocity for a medium duration when positioned toward the back mid-race. (Medium)",
     "desc_ko": "레이스 중반에 후방에 있으면 한동안 속도가 상승한다＜중거리＞",
     "desc_tw": "在競賽中期若位於隊列後方一段時間內速度會上升＜中距離＞",
-    "endesc": "Medium・If you're in the second half of the pack at a random point during the Middle Leg, your speed will increase",
-    "endesc_needs_retranslation": true,
+    "endesc": "Medium・If you're not in the front at a random point during the Middle Leg, your speed will increase",
     "enname": "Squid for a Quid!",
     "evo_cond": [
       [
@@ -79481,7 +79395,7 @@
       }
     ],
     "desc_en": "Massively increase velocity when positioned 2nd or later within 4 lengths of the lead on the final straight. (Late Surger)",
-    "desc_ko": "최종 직선에서 2위 이하이고 선두로부터 4마신 이내라면 속도가 아주 많이 상승한다＜작전・선입＞",
+    "desc_ko": "최종 직선에서 2위 이후이고 선두로부터 4마신 이내라면 속도가 아주 많이 상승한다＜작전・선입＞",
     "desc_tw": "在最後直線若位列第2之後且距離最前頭4身距內時速度極大幅上升＜作戰．居中＞",
     "endesc": "Betweener・During the Final Straight, if you're not in the lead but are close to it, your speed will increase tremendously",
     "enname": "Fastest Top Gear",
@@ -83176,8 +83090,7 @@
     "desc_en": "Increase velocity and slightly recover endurance when positioned toward the back mid-race. (Dirt)",
     "desc_ko": "레이스 중반에 후방에 있으면 속도가 상승하고 지구력을 약간 회복한다＜더트＞",
     "desc_tw": "在競賽中期若位於隊列後方速度會上升且略微回復持久力＜沙地＞",
-    "endesc": "Dirt・At a random point during the Middle Leg, if you're in the second half of the pack, your speed will increase and your stamina recover slightly",
-    "endesc_needs_retranslation": true,
+    "endesc": "Dirt・At a random point during the Middle Leg, if you're not in the front, your speed will increase and your stamina recover slightly",
     "enname": "Revived For Moe!",
     "evo_cond": [
       [
@@ -87210,8 +87123,7 @@
     "desc_en": "Increase velocity and greatly recover endurance when positioned toward the back mid-race. (Dirt)",
     "desc_ko": "레이스 중반에 후방에 있으면 지구력을 많이 회복하고 속도가 상승한다＜더트＞",
     "desc_tw": "在競賽中期若位於隊列後方會大幅回復持久力且速度會上升＜沙地＞",
-    "endesc": "Dirt・If you're in the second half of the pack in the Middle Leg, your stamina will greatly recover and your speed will increase",
-    "endesc_needs_retranslation": true,
+    "endesc": "Dirt・If you're not in the front in the Middle Leg, your stamina will greatly recover and your speed will increase",
     "enname": "Sandstorm Wielder",
     "evo_cond": [
       [
@@ -87804,8 +87716,7 @@
     "desc_en": "Increase velocity and slightly recover endurance when positioned toward the back mid-race. (Medium)",
     "desc_ko": "레이스 중반에 후방에 있으면 속도가 상승하며, 지구력을 약간 회복한다＜중거리＞",
     "desc_tw": "在競賽中期若位於隊列後方速度會上升持久力略微回復＜中距離＞",
-    "endesc": "Medium・If you're in the second half of the pack at a random point during the Middle Leg, your speed will increase and your stamina slightly recover",
-    "endesc_needs_retranslation": true,
+    "endesc": "Medium・If you're not in the front at a random point during the Middle Leg, your speed will increase and your stamina slightly recover",
     "enname": "Uplifting",
     "evo_cond": [
       [
@@ -89776,7 +89687,7 @@
       }
     ],
     "desc_en": "Unnerve runners in focus and slightly surge ahead when positioned 2nd or later late-race. (End Closer)",
-    "desc_ko": "레이스 종반에 2등 이하로 있으면 약간 앞으로 나가면서, 눈독을 들인 우마무스메의 긴장감이 고조된다＜작전・추입＞",
+    "desc_ko": "레이스 종반에 2위 이후로 있으면 약간 앞으로 나가면서, 눈독을 들인 우마무스메의 긴장감이 고조된다＜작전・추입＞",
     "desc_tw": "在競賽後期若位列第2之後會略微邁進，提高盯上的賽馬娘的緊張感＜作戰．後追＞",
     "endesc": "Chaser・At a random point during the Final Leg, if you're not in the lead, you will drain speed from all enemies in your FoV",
     "enname": "Charm Magic",
@@ -91252,8 +91163,7 @@
     "desc_en": "Increase velocity and navigation for a medium duration when positioned around the very back mid-race. (End Closer)",
     "desc_ko": "레이스 중반에 후방에 있으면 한동안 속도가 상승하고 코스를 능숙하게 잡는다 ＜작전・추입＞",
     "desc_tw": "在競賽中期若位於隊列後方一段時間內速度會上升並變得擅長爭搶賽道＜作戰．後追＞",
-    "endesc": "Chaser・If you're in the second half of the pack at a random point during the Middle Leg, your speed and lane movement speed will increase",
-    "endesc_needs_retranslation": true,
+    "endesc": "Chaser・If you're not in the front at a random point during the Middle Leg, your speed and lane movement speed will increase",
     "enname": "I'll Show You!",
     "evo_cond": [
       [
@@ -92015,8 +91925,7 @@
     "desc_en": "Increase velocity and slightly increase acceleration when positioned toward the back on the final corner. (Mile)",
     "desc_ko": "최종 코너에서 후방에 있으면 속도가 상승하고 가속력이 약간 상승한다＜마일＞",
     "desc_tw": "在最後彎道若位於隊列後方速度上升且加速力略微上升＜一哩＞",
-    "endesc": "Mile・If you're in the second half of the pack during the Final Corner, your speed and acceleration will increase",
-    "endesc_needs_retranslation": true,
+    "endesc": "Mile・If you're not in the front during the Final Corner, your speed and acceleration will increase",
     "enname": "Osu! I'm Fired Up!",
     "evo_cond": [
       [
@@ -92461,8 +92370,7 @@
     "desc_en": "Greatly surge ahead when positioned toward the back on a third corner just before the final corner. (Medium/Long)",
     "desc_ko": "최종 코너 전의 제3 코너에서 후방에 있으면 앞으로 많이 나간다 ＜중거리/장거리＞",
     "desc_tw": "在最後彎道前的第3彎道若位於隊列後方會大幅向前邁進＜中距離/長距離＞",
-    "endesc": "Medium/Long・If you're in the second half of the pack during the 3rd corner, your speed will greatly increase",
-    "endesc_needs_retranslation": true,
+    "endesc": "Medium/Long・If you're not in the front during the 3rd corner, your speed will greatly increase",
     "enname": "Soaring Step",
     "evo_cond": [
       [
@@ -96107,7 +96015,7 @@
       }
     ],
     "desc_en": "Increase velocity for a medium duration when positioned 2nd or later within 2 lengths of the lead just before late-race. (Pace Chaser)",
-    "desc_ko": "레이스 종반 직전에 2위 이하로 대기하며 선두로부터 2마신 이내라면 한동안 속도가 상승한다＜작전・선행＞",
+    "desc_ko": "레이스 종반 직전에 2위 이후로 대기하며 선두로부터 2마신 이내라면 한동안 속도가 상승한다＜작전・선행＞",
     "desc_tw": "即將進入競賽後期時，潛伏於第2之後且距離最前頭2身距以內一段時間內速度會上升＜作戰．前列＞",
     "endesc": "Leader・If you're not in the lead but are close to it, then near the end of the Middle Leg, your speed will increase",
     "enname": "Divine Crossing",
@@ -96215,6 +96123,11 @@
     "jpdesc": "スタート時にしばらくの間加速力が上がる＜作戦・逃げ＞",
     "jpname": "必勝のピッチアップ",
     "loc": {
+      "en": {
+        "char": [
+          108701
+        ]
+      },
       "ko": {
         "char": [
           108701
@@ -96320,6 +96233,11 @@
     "jpdesc": "レース終盤が迫ったどこかで前方だと速度が上がり加速力がわずかに上がる＜短距離＞",
     "jpname": "記憶に刻む足取り",
     "loc": {
+      "en": {
+        "char": [
+          108701
+        ]
+      },
       "ko": {
         "char": [
           108701
@@ -96451,7 +96369,7 @@
       }
     ],
     "desc_en": "Greatly increase Speed when the Power attribute exceeds a certain amount. If Power greatly exceeds that amount, increase Speed massively instead.",
-    "desc_ko": "파워가 충분히 강하면 스피드가 많이 상승하고 파워가 더욱 충분히 갖춰져 있는 경우는 아주 많이 상승한다＜더트＞",
+    "desc_ko": "파워가 충분히 강하면 스피드가 많이 상승하고 파워가 상당히 갖춰져 있는 경우는 아주 많이 상승한다＜더트＞",
     "desc_tw": "若力量十分強大時速度大幅上升若力量鍛鍊到十二分充足時速度極大幅上升＜沙地＞",
     "endesc": "Dirt・If your Power stat is at least 1000, gain 80 Speed stat; if your Power stat is at least 1200, gain 100 Speed stat instead",
     "enname": "Surging Ley Lines",
@@ -96835,7 +96753,6 @@
     "desc_ko": "침착하게 달려 종반에 돌입할 때 후방 부근이라면 다소 앞으로 나가면서, 선두로부터 4명까지의 우마무스메를 아주 조금 위축시킨다",
     "desc_tw": "在場上冷靜奔馳且進入競賽後期時位於隊列後方附近，會稍微邁進並使從最前頭算起的4名賽馬娘些微感到畏縮",
     "endesc": "When entering the last third of the race, if you're in the back of the pack but aren't last, and if you haven't panicked at all, your speed will slightly increase, and you will slow down the first four girls",
-    "endesc_needs_retranslation": true,
     "enname": "Reign Supreme",
     "gene_version": {
       "activation": 1,
@@ -97275,8 +97192,7 @@
     "desc_en": "Increase acceleration and slightly intimidate runners ahead when trying to pass from toward the back late-race. (Sprint/Mile)",
     "desc_ko": "레이스 종반에 후방에서 추월하려고 하면 가속력이 상승하며, 눈앞의 우마무스메를 약간 위축시킨다＜단거리/마일＞",
     "desc_tw": "在競賽後期若於隊列後方準備追過對手加速力上升，使眼前的賽馬娘略微感到畏縮＜短距離/一哩＞",
-    "endesc": "Short/Mile・If you're about to overtake someone in the second half of the pack during the Final Leg, your acceleration will increase and you will slow down girls around(?) you",
-    "endesc_needs_retranslation": true,
+    "endesc": "Short/Mile・If you're not in the front and about to overtake someone during the Final Leg, your acceleration will increase and you will slow down the closest girl ahead of you",
     "enname": "Pursuing Greater Brilliance",
     "evo_cond": [
       [
@@ -97413,7 +97329,6 @@
     "desc_ko": "레이스 중간 부근 이후 직선에서 중위권 그룹에 있으면 속도가 상승하며 그곳이 내리막이라면 계속해서 상승한다",
     "desc_tw": "在競賽中間附近以後的直線若位於隊列中段速度會上升該處若是下坡則會持續上升",
     "endesc": "If you're in the middle of the pack during any straight after the middle of the race, your speed will increase; bonus duration if you're running downhill",
-    "endesc_needs_retranslation": true,
     "enname": "Mission: Triumph",
     "gene_version": {
       "activation": 1,
@@ -97717,8 +97632,7 @@
     "desc_en": "Increase velocity when positioned toward the back upon approaching late-race. (Long)",
     "desc_ko": "레이스 종반이 다가올 때 후방에 있으면 속도가 상승한다＜장거리＞",
     "desc_tw": "接近競賽後期時若位於隊列後方速度會上升＜長距離＞",
-    "endesc": "Long・If you're in the second half of the pack during the second half of the Middle Leg, your speed will increase",
-    "endesc_needs_retranslation": true,
+    "endesc": "Long・If you're not in the front during the second half of the Middle Leg, your speed will increase",
     "enname": "One-shot",
     "evo": [
       {
@@ -97836,8 +97750,7 @@
     "desc_en": "Slightly increase velocity when positioned toward the back upon approaching late-race. (Long)",
     "desc_ko": "레이스 종반이 다가올 때 후방에 있으면 속도가 약간 상승한다＜장거리＞",
     "desc_tw": "接近競賽後期時若位於隊列後方速度會略微上升＜長距離＞",
-    "endesc": "Long・If you're in the second half of the pack during the second half of the Middle Leg, your speed will slightly increase",
-    "endesc_needs_retranslation": true,
+    "endesc": "Long・If you're not in the front during the second half of the Middle Leg, your speed will slightly increase",
     "enname": "Lock On",
     "iconid": 20011,
     "id": 202562,
@@ -98096,8 +98009,7 @@
     "desc_en": "Increase velocity and slightly recover endurance when positioned toward the back upon approaching late-race. (Medium/Long)",
     "desc_ko": "레이스 종반이 다가올 때 후방에 있으면 속도가 상승하고, 지구력을 약간 회복한다 ＜중거리/장거리＞",
     "desc_tw": "接近競賽後期時若位於隊列後方速度會上升並略微回復持久力＜中距離/長距離＞",
-    "endesc": "Medium/Long・If you're in the second half of the pack during the second half of the Middle Leg, your speed will increase and your stamina will slightly recover",
-    "endesc_needs_retranslation": true,
+    "endesc": "Medium/Long・If you're not in the front during the second half of the Middle Leg, your speed will increase and your stamina will slightly recover",
     "enname": "Revolutionary Presence",
     "evo_cond": [
       [
@@ -98223,7 +98135,6 @@
     "desc_ko": "레이스 중반에 경합했을 경우 남은 거리가 650m일 때 좋은 위치에 있으면 꿈을 이루기 위해 가속력이 계속해서 상승한다",
     "desc_tw": "在競賽中期若與對手競爭且在剩下650m時位於良好位置則會為了達成夢想使加速力持續上升",
     "endesc": "If you were blocked from the side during the Middle Leg, then with 650 m remaining in the race, if you're in a good position, your acceleration will increase",
-    "endesc_needs_retranslation": true,
     "enname": "Bloom! Blossom! Sakura!",
     "gene_version": {
       "activation": 1,
@@ -98907,7 +98818,6 @@
     "desc_ko": "레이스 중간 지점에서 중위권 그룹에 있으면 속도가 다소 상승하며, 장거리 레이스라면 효과 시간이 증가하고 추가로 지구력을 많이 회복한다",
     "desc_tw": "在競賽中間點若位於隊列中段使速度稍微提升，在長距離競賽效果時間會增加且大幅回復持久力",
     "endesc": "If you are in the middle of the pack during the middle of the race, your speed will slightly increase; in a long-distance race, this effect will last longer and stamina will greatly recover",
-    "endesc_needs_retranslation": true,
     "enname": "Blossoming World",
     "gene_version": {
       "activation": 1,
@@ -99384,7 +99294,6 @@
     "desc_ko": "레이스 중간 부근에서 중위권 그룹에 있으면 속도가 상승하며, 중거리 레이스에서 스킬을 7회 이상 발동했다면 많이 상승한다",
     "desc_tw": "在競賽中間附近位於隊列中段時速度會上升，在中距離競賽使用技能7次以上則會大幅上升",
     "endesc": "If you're in the middle of the pack halfway through the race, your speed will increase; bonus speed if it's a Medium-distance race and you've activated at least 7 skills",
-    "endesc_needs_retranslation": true,
     "enname": "Ad Astra",
     "gene_version": {
       "activation": 1,
@@ -99862,7 +99771,6 @@
     "desc_ko": "남은 거리가 400m일 때 3위 이내라면 짧은 시간 동안 가속력이 아주 조금 상승하며 레이스 중반에 연속해서 경합한 시간이 길수록 효과와 시간이 증가한다",
     "desc_tw": "在剩餘400m處若位列第3以內極短時間內加速力些微上升若競賽中期連續競爭的時間越長技能的效果與時間增加越多",
     "endesc": "If you're top 3 with 400 m remaining in the race, your acceleration will increase",
-    "endesc_needs_retranslation": true,
     "enname": "Cherry☆Scramble",
     "gene_version": {
       "activation": 1,
@@ -99882,7 +99790,7 @@
       ],
       "cost": 200,
       "desc_en": "Very minimally increase acceleration for a brief duration when toward the front with 400m remaining. Effect and duration increase based on how long the user engaged in a challenge mid-race.",
-      "desc_ko": "남은 거리 400m일 때 3위 이내라면 짧은 시간 동안 가속력이 매우 조금 상승하며 레이스 중반에 연속해서 경합한 시간이 길수록 효과와 시간이 증가한다",
+      "desc_ko": "남은 거리가 400m일 때 3위 이내라면 짧은 시간 동안 가속력이 매우 조금 상승하며 레이스 중반에 연속해서 경합한 시간이 길수록 효과와 시간이 증가한다",
       "desc_tw": "在剩餘400m處若位列第3以內極短時間內加速力微微上升若競賽中期連續競爭的時間越長技能的效果與時間增加越多",
       "iconid": 20041,
       "id": 910411,
@@ -99961,7 +99869,6 @@
     "desc_ko": "레이스 후반 코너에서 중위권 그룹에 있으면 남은 지구력에 따른 시간 동안 속도가 다소 상승하며, 추가로 중거리 레이스에서는 가속력이 아주 조금 상승한다",
     "desc_tw": "在競賽後半的彎道若位居隊列中段速度會稍微上升並依照剩餘持久力決定效果時間，且若是中距離競賽加速力則會再些微上升",
     "endesc": "If you're in the middle of the pack during any corner in the second half of the race, your speed will slightly increase; in Medium races, your acceleration will also slightly increase",
-    "endesc_needs_retranslation": true,
     "enname": "Rolling Power Drive!",
     "gene_version": {
       "activation": 1,
@@ -100799,7 +100706,6 @@
     "desc_ko": "최종 코너 후반에서 중위권 그룹에 있으면 속도가 계속해서 다소 상승하며, 장거리 레이스에서 인기가 낮을 경우 계속해서 많이 상승한다",
     "desc_tw": "在最後彎道後半若位於隊列中段會使速度稍微持續上升，在長距離競賽若支持度低時會大幅持續上升",
     "endesc": "During the second half of the Final Corner, if you're in the middle of the pack, your speed will increase; the effect is stronger if it's a long race and you're 4th or less popular",
-    "endesc_needs_retranslation": true,
     "enname": "Bang☆Miracle Maker!",
     "gene_version": {
       "activation": 1,
@@ -100895,8 +100801,7 @@
     "desc_en": "Moderately increase velocity for a medium duration when positioned midpack mid-race. (Late Surger)",
     "desc_ko": "레이스 중반에 중위권 그룹에 있으면 한동안 속도가 다소 상승한다 ＜작전・선입＞",
     "desc_tw": "在競賽中期若位於隊列中段一段時間內速度會稍微上升＜作戰．居中＞",
-    "endesc": "Betweener・If you're in the middle of the pack at a random point during the Middle Leg, your speed will slightly increase",
-    "endesc_needs_retranslation": true,
+    "endesc": "Betweener・If you're not in the front at a random point during the Middle Leg, your speed will slightly increase",
     "enname": "Thousand-Mile Journey",
     "evo": [
       {
@@ -101031,8 +100936,7 @@
     "desc_en": "Very slightly increase velocity for a medium duration when positioned midpack mid-race. (Late Surger)",
     "desc_ko": "레이스 중반에 중위권 그룹에 있으면 한동안 속도가 아주 조금 상승한다 ＜작전・선입＞",
     "desc_tw": "在競賽中期若位於隊列中段一段時間內速度會些微上升＜作戰．居中＞",
-    "endesc": "Betweener・If you're in the middle of the pack at a random point during the Middle Leg, your speed will marginally increase",
-    "endesc_needs_retranslation": true,
+    "endesc": "Betweener・If you're not in the front at a random point during the Middle Leg, your speed will marginally increase",
     "enname": "From the First Step",
     "iconid": 20011,
     "id": 202642,
@@ -101580,8 +101484,7 @@
     "desc_en": "Increase velocity for a medium duration when positioned midpack mid-race. (Late Surger)",
     "desc_ko": "레이스 중반에 중위권 그룹에 있으면 한동안 속도가 상승한다＜작전・선입＞",
     "desc_tw": "在競賽中期若位於隊列中段一段時間內速度會上升＜作戰．居中＞",
-    "endesc": "Betweener・If you're in the middle of the pack at a random point during the Middle Leg, your speed will increase",
-    "endesc_needs_retranslation": true,
+    "endesc": "Betweener・If you're not in the front at a random point during the Middle Leg, your speed will increase",
     "enname": "Collecting Little Joys",
     "evo_cond": [
       [
@@ -101703,7 +101606,6 @@
     "desc_ko": "레이스 종반에 후방에 있으면 최종 직선에서 힘을 해방해 앞으로 나가며, 도쿄 경기장의 중거리 레이스라면 아주 많이 앞으로 나간다",
     "desc_tw": "在競賽後期若位於隊列後方會在最後直線解放力量向前邁進在東京賽場的中距離競賽則會極大幅邁進",
     "endesc": "If you were in the second half of the pack during the Final Leg or beyond, then on the Final Straight, your speed will increase; the effect is stronger in medium Tokyo races",
-    "endesc_needs_retranslation": true,
     "enname": "Thunderstorm Sublation",
     "gene_version": {
       "activation": 1,
@@ -102161,7 +102063,8 @@
         ],
         "sup_e": [
           [
-            30179
+            30179,
+            30241
           ],
           []
         ],
@@ -102192,7 +102095,8 @@
         ],
         "sup_e": [
           [
-            30179
+            30179,
+            30241
           ],
           []
         ],
@@ -102216,7 +102120,8 @@
     "rarity": 1,
     "sup_e": [
       [
-        30179
+        30179,
+        30241
       ],
       []
     ],
@@ -102495,7 +102400,6 @@
     "desc_ko": "레이스 중반에 3회 추월한 경우 종반 직전의 내리막에서 후방에 있으면 잠시 동안 속도가 상승하고 가속력이 아주 조금 상승한다",
     "desc_tw": "若在競賽中期追過對手3次並在即將進入後期的下坡時位於隊列後方短時間內速度上升且加速力些微上升",
     "endesc": "If you overtook someone at least three times during the Middle Leg but you are still in the second half of the pack during any downhill around the end of the Middle Leg, your speed will increase and your accelearation will slightly increase",
-    "endesc_needs_retranslation": true,
     "enname": "Extra Large First Bite!",
     "gene_version": {
       "activation": 1,
@@ -102597,7 +102501,6 @@
     "desc_ko": "남은 거리가 200m일 때 2위~중위권 그룹에 있으면 속도가 상승하며 추가로 근처에 우마무스메가 3명 이상 있으면 약간 앞으로 나간다",
     "desc_tw": "在剩餘200m處若位列第2～隊列中段速度會上升，且若身邊有3名以上的賽馬娘會再略微向前邁進",
     "endesc": "With 200 meters remaining in the race, if you're not in the lead but also not in the back of the pack, your speed will increase; if there are at 3 other girls around you, you will also get an speed boost",
-    "endesc_needs_retranslation": true,
     "enname": "Flowering Dreams",
     "gene_version": {
       "activation": 1,
@@ -102755,8 +102658,7 @@
     "desc_en": "Increase velocity for a medium duration when positioned toward the back mid-race. (End Closer)",
     "desc_ko": "레이스 중반에 후방에 있으면 한동안 속도가 상승한다＜작전・추입＞",
     "desc_tw": "在競賽中期若位於隊列後方一段時間內速度會上升＜作戰．後追＞",
-    "endesc": "Chaser・If you're in the second half of the pack at a random point during the Middle Leg, your speed will increase",
-    "endesc_needs_retranslation": true,
+    "endesc": "Chaser・If you're not in the front at a random point during the Middle Leg, your speed will increase",
     "enname": "Passionate Engagement!",
     "evo_cond": [
       [
@@ -103222,8 +103124,7 @@
     "desc_en": "Greatly increase velocity when positioned toward the back mid-race. (Medium)",
     "desc_ko": "레이스 중반에 후방에 있으면 속도가 많이 상승한다＜중거리＞",
     "desc_tw": "在競賽中期若位於隊列後方速度會大幅上升＜中距離＞",
-    "endesc": "Medium・If you're in the second half of the pack at a random point during the Middle Leg, your speed will greatly increase",
-    "endesc_needs_retranslation": true,
+    "endesc": "Medium・If you're not in the front at a random point during the Middle Leg, your speed will greatly increase",
     "enname": "Exciting☆Marvelous Zone",
     "evo_cond": [
       [
@@ -103446,7 +103347,6 @@
     "desc_ko": "레이스 중간 부근에서 중위권 그룹에 있으면 속도가 계속해서 다소 상승하며 컨디션이 최상이라면 효과가 증가한다",
     "desc_tw": "在競賽中間附近位於隊列中段時速度會稍微持續上升若幹勁絕佳則使效果增加",
     "endesc": "If you're in the middle of the pack halfway through the race, your speed will increase; bonus speed if you're fully motivated",
-    "endesc_needs_retranslation": true,
     "enname": "GALmem. forever♪",
     "gene_version": {
       "activation": 1,
@@ -103547,7 +103447,6 @@
     "desc_ko": "남은 거리가 200m일 때 전방에 있으면 속도가 다소 상승하며, 단거리 레이스에서 종반에 추월했을 경우에는 많이 상승한다",
     "desc_tw": "在剩餘200m處若位於隊列前方速度稍微上升，當在短距離競賽的後期追過對手時則大幅上升",
     "endesc": "If you're in the first half of the pack (but not in the lead) with 200 m remaining, your speed will increase; bonus speed if the race is Short and you've overtaken someone since entering the Final Leg",
-    "endesc_needs_retranslation": true,
     "enname": "Secret Technique: Everlasting Summer!!",
     "gene_version": {
       "activation": 1,
@@ -104500,7 +104399,6 @@
     "desc_ko": "제3 코너에서 선두라면 속도가 다소 상승하고 지구력을 다소 회복하며, 도쿄의 중거리 레이스라면 효과 시간이 증가한다",
     "desc_tw": "若在第3彎道領先會使速度稍微上升並稍微回復持久力東京的中距離競賽則會使效果時間增加",
     "endesc": "If you're in the lead during the third corner, your speed will slightly increase and your stamina will slightly recover; bonus duration in Medium Tokyo races",
-    "endesc_needs_retranslation": true,
     "enname": "Flag of Dawn: Katsuragi Ace",
     "gene_version": {
       "activation": 1,
@@ -104815,7 +104713,6 @@
     "desc_ko": "남은 거리가 800m일 때 중위권 그룹에 있으면 가속력이 약간 상승하며, 2400m 레이스에서 인기가 높으면 많이 상승한다",
     "desc_tw": "在剩餘800m處若位於隊列中段加速力略微上升，在2400m的競賽且獲得高支持度時則大幅上升",
     "endesc": "With 800 meters remaining in the race, if you're in the middle of the pack, your acceleration will slightly increase; it will increase greatly if the race is 2400 m long and you're top 3 in popularity",
-    "endesc_needs_retranslation": true,
     "enname": "Seirios",
     "gene_version": {
       "activation": 1,
@@ -104843,7 +104740,7 @@
       ],
       "cost": 200,
       "desc_en": "Minimally increase acceleration when positioned midpack with 800m remaining. If it's a 2400m race and the skill user is favored, increase acceleration moderately instead.",
-      "desc_ko": "남은 거리 800m일 때 중위권 그룹에 있으면 가속력이 아주 약간 상승하며, 2400m 레이스에서 인기가 높으면 다소 상승한다",
+      "desc_ko": "남은 거리가 800m일 때 중위권 그룹에 있으면 가속력이 아주 약간 상승하며, 2400m 레이스에서 인기가 높으면 다소 상승한다",
       "desc_tw": "在剩餘800m處若位於隊列中段加速力稍稍上升，在2400m的競賽且獲得高支持度時則稍微上升",
       "iconid": 20041,
       "id": 900701,
@@ -105075,7 +104972,6 @@
     "desc_ko": "종반 돌입 시 선두라면 다소 앞으로 나가며 그곳이 제3 코너이고 중반에 크게 거리를 벌린 선두일 경우에는 많이 앞으로 나간다",
     "desc_tw": "在進入後期時若位居領先會稍微向前邁進當該處為第3彎道且中期大幅度領先則會大幅向前邁進",
     "endesc": "If you're in the first place two-thirds through the race, you will get a speed boost; the effect will greatly increase if the two-thirds point is on the third corner and if you were leading by at least 3 lengths during the Middle Leg",
-    "endesc_needs_retranslation": true,
     "enname": "Beyond the Ocean's Infinity",
     "gene_version": {
       "activation": 1,
@@ -105623,7 +105519,7 @@
     ],
     "cost": 120,
     "desc_en": "Increase Speed when the Speed attribute greatly exceeds a certain amount. If the Wit attribute also greatly exceeds that amount, increase Speed greatly instead. (Pace, Medium)",
-    "desc_ko": "스피드가 더욱 높으면 스피드가 상승하고 지능도 더욱 높다면 스피드가 많이 상승한다 ＜선행・중거리＞",
+    "desc_ko": "스피드가 상당히 높으면 스피드가 상승하고 지능도 상당히 높다면 스피드가 많이 상승한다 ＜선행・중거리＞",
     "desc_tw": "若速度十二分強大時速度會上升當智力也十二分強大時速度會大幅上升＜前列．中距離＞",
     "endesc": "Leader・Medium・If your Speed stat is at least 1200, it will further increase by 60; bonus 20 Speed if your Wisdom is also at least 1200",
     "enname": "Singularity",
@@ -105728,7 +105624,7 @@
     ],
     "cost": 120,
     "desc_en": "Slightly increase Speed when the Speed attribute greatly exceeds a certain amount. If the Wit attribute also greatly exceeds that amount, increase Speed moderately instead. (Pace, Medium)",
-    "desc_ko": "스피드가 더욱 높으면 스피드가 약간 상승하고 지능도 더욱 높다면 스피드가 다소 상승한다 ＜선행・중거리＞",
+    "desc_ko": "스피드가 상당히 높으면 스피드가 약간 상승하고 지능도 상당히 높다면 스피드가 다소 상승한다＜선행・중거리＞",
     "desc_tw": "若速度十二分強大時速度會略微上升當智力也十二分強大時速度會稍微上升＜前列．中距離＞",
     "endesc": "Leader・Medium・If your Speed stat is at least 1200, it will further increase by 20; bonus 20 Speed if your Wisdom is also at least 1200",
     "enname": "Inquisitive Mind",
@@ -106025,7 +105921,7 @@
       }
     ],
     "desc_en": "Greatly increase Speed when the Speed attribute greatly exceeds a certain amount. If the Wit attribute also greatly exceeds that amount, increase Speed massively instead. (Pace, Medium)",
-    "desc_ko": "스피드가 더욱 높으면 스피드가 많이 상승하고 지능도 더욱 높다면 스피드가 아주 많이 상승한다 ＜선행・중거리＞",
+    "desc_ko": "스피드가 상당히 높으면 스피드가 많이 상승하고 지능도 상당히 높다면 스피드가 아주 많이 상승한다＜선행・중거리＞",
     "desc_tw": "若速度十二分強大時速度大幅上升，當智力也十二分強大時速度會極大幅上升＜前列．中距離＞",
     "endesc": "Leader・Medium・If your Speed stat is at least 1200, it will further increase by 80; bonus 20 Speed if your Wisdom is also at least 1200",
     "enname": "Laplace's Demon",
@@ -106194,10 +106090,9 @@
         "precondition": "distance_rate>=60&phase==1&order>=2&order_rate<=40"
       }
     ],
-    "desc_ko": "레이스 종반 직전에 좋은 위치에 있는 경우 남은 거리 400m일 때 속도가 많이 상승하며 장거리에서 스킬 발동 시, 선두이거나 선두로부터 1마신 이내라면 아주 많이 상승한다",
+    "desc_ko": "레이스 종반 직전에 좋은 위치에 있는 경우 남은 거리가 400m일 때 속도가 많이 상승하며 장거리에서 스킬 발동 시, 선두이거나 선두로부터 1마신 이내라면 아주 많이 상승한다",
     "desc_tw": "在即將進入競賽後期時若位於良好位置在剩餘400m處速度大幅上升當在長距離發動技能且若位居領先或距離最前頭1身距內時極大幅上升",
     "endesc": "If you were in a good position around the end of the Middle Leg, then with 400 m remaining in the race, your speed will greatly increase; it will increase tremendously if the race is Long and you're within 2.5 m from the lead",
-    "endesc_needs_retranslation": true,
     "enname": "Road to Glory",
     "gene_version": {
       "activation": 1,
@@ -107549,7 +107444,6 @@
     "desc_ko": "종반이 다가올 때 어딘가에서 중위권 그룹에 있으면 속도가 다소 상승하며 중거리 레이스라면 효과가 증가한다",
     "desc_tw": "接近競賽後期的某處若位於隊列中段會使速度稍微上升若是中距離競賽則使效果增加",
     "endesc": "During the second half of the Middle Leg, if you're around the middle of the pack, your speed will slightly increase; bonus speed if the race is Medium",
-    "endesc_needs_retranslation": true,
     "enname": "Ponte de Diamant",
     "gene_version": {
       "activation": 1,
@@ -107811,7 +107705,6 @@
     "desc_ko": "종반이 시작되는 어딘가에서 전방에 있으면 다소 앞으로 나가며 단거리나 마일 레이스인 경우 효과가 증가한다",
     "desc_tw": "在後期一開始的某處若位於隊列前方會稍微向前邁進，當在短距離或一哩競賽時則使效果增加",
     "endesc": "During the first half of the Final Leg, if you're in a good position, you will get a speed boost; the effect is stronger in Short and Mile races",
-    "endesc_needs_retranslation": true,
     "enname": "Blue Ray of Happiness",
     "gene_version": {
       "activation": 1,
@@ -108108,7 +108001,7 @@
         ]
       }
     ],
-    "desc_ko": "레이스 종반이 시작될 때 전방에 있으면 가속력이 상승하고, 그 후 남은 거리 200m 지점에서 속도가 약간 상승한다＜작전・선행＞",
+    "desc_ko": "레이스 종반이 시작될 때 전방에 있으면 가속력이 상승하고, 그 후 남은 거리가 200m 일 때 속도가 약간 상승한다＜작전・선행＞",
     "desc_tw": "在競賽後期一開始若位於隊列前方加速力會上升，之後在剩餘200m處速度略微上升＜作戰．前列＞",
     "endesc": "Leader・During the first half of the Final Leg, if you're in the first half of the pack, your acceleration will increase; then, when there's 200 m remaining in the race, your speed will slightly increase",
     "enname": "Spark of Life",
@@ -108197,7 +108090,6 @@
     "desc_ko": "종반의 최종 코너 후반 이후에 추월하려고 하면 속도가 상승하며, 레이스 중반에 중위권 그룹에서 추월당했다면 많이 상승한다",
     "desc_tw": "在後期的最後彎道後半之後準備追過對手時會使速度上升若競賽中期於隊列中段被對手追過則大幅上升",
     "endesc": "If you try to overtake someone during the second half of the Final Corner or later, your speed will increase; the effect will be stronger if someone previously overtook you from the middle of the pack during the Middle Leg",
-    "endesc_needs_retranslation": true,
     "enname": "...found you.",
     "gene_version": {
       "activation": 1,
@@ -108302,7 +108194,6 @@
     "desc_ko": "레이스 중간 지점에서 중위권 그룹에 있으면 최종 직선에서 속도가 상승하며 나카야마 경기장의 중거리 레이스라면 아주 많이 상승한다",
     "desc_tw": "在競賽中間點若位於隊列中段會在最後直線使速度上升在中山賽場的中距離競賽則會極大幅上升",
     "endesc": "If you were in the middle of the pack halfway through the race, then during the Last Straight, your speed will increase; the effect is stronger in Medium Nakayama races",
-    "endesc_needs_retranslation": true,
     "enname": "Immortal Work",
     "gene_version": {
       "activation": 1,
@@ -108867,7 +108758,7 @@
         ]
       }
     ],
-    "desc_ko": "레이스 중반에 중위권 그룹에서 경합하면 지구력을 다소 회복하고, 속도가 많이 상승하며 자신을 제외한 팀 멤버의 속도가 약간 상승한다＜중거리＞",
+    "desc_ko": "레이스 중반에 중위권 그룹에서 경합하면 지구력을 다소 회복하고, 속도가 많이 상승하며 추가로 자신을 제외한 팀 멤버의 속도가 약간 상승한다＜중거리＞",
     "desc_tw": "在競賽中期若位於隊列中段與對手競爭會稍微回復持久力，速度會大幅上升且自己以外的隊伍成員的速度會略微上升＜中距離＞",
     "endesc": "Medium・If you're in the middle of the pack during the Middle Leg and someone is blocking you from the side, your speed will increase, your stamina will slightly recover, and you will slightly increase the speed of all your teammates",
     "enname": "Burn Down",
@@ -109024,10 +108915,9 @@
         ]
       }
     ],
-    "desc_ko": "남은 거리 1000ｍ 지점에서 전방에 있으면 속도가 상승한다",
+    "desc_ko": "남은 거리가 1000ｍ일 때 전방에 있으면 속도가 상승한다",
     "desc_tw": "在剩餘1000m處若位於隊列前方會使速度上升",
     "endesc": "If you're in the first half of the pack (but not in the lead) with 1000 m remaining, your speed will increase",
-    "endesc_needs_retranslation": true,
     "enname": "Melt in Love's Embrace",
     "gene_version": {
       "activation": 1,
@@ -109044,7 +108934,7 @@
         }
       ],
       "cost": 200,
-      "desc_ko": "남은 거리 1000ｍ 지점에서 전방에 있으면 속도가 약간 상승한다",
+      "desc_ko": "남은 거리가 1000ｍ일 때 전방에 있으면 속도가 약간 상승한다",
       "desc_tw": "在剩餘1000m處若位於隊列前方會使速度略微上升",
       "iconid": 20011,
       "id": 900861,
@@ -109446,7 +109336,6 @@
     "desc_ko": "레이스 중반 이후의 오르막에서 중위권 그룹에 있으면 오르막을 오른 뒤 우아하게 한 방 먹여 주며 속도가 상승한다",
     "desc_tw": "在競賽中期之後的上坡若位於隊列中段通過上坡後會優雅地展現出全力使速度上升",
     "endesc": "If you run uphill during the Middle Leg or later while being in the middle of the pack, then after the finishing the hill, your speed will increase",
-    "endesc_needs_retranslation": true,
     "enname": "Invigorating Strength",
     "gene_version": {
       "activation": 1,
@@ -109541,7 +109430,6 @@
     "desc_ko": "레이스 후반에 전방에서 누군가 따라붙으면 종반의 최종 코너 후반 이후에 속도가 상승하고 추가로 2400m~2500m 레이스에서는 약간 앞으로 나간다",
     "desc_tw": "在競賽後半若位於隊列前方被對手逼近速度會在後期最後彎道後半之後上升且若是2400m～2500m的競賽則會再略微向前邁進",
     "endesc": "If someone tried to overtake you in the first half of the pack during the second half of the race, then during the second half of the Final Corner, your speed will increase; you will also get a speed boost in races between 2400 and 2500 m long",
-    "endesc_needs_retranslation": true,
     "enname": "Merrymaking Song and Dance",
     "gene_version": {
       "activation": 1,
@@ -110064,8 +109952,7 @@
     ],
     "desc_ko": "레이스 중반에 후방에 있으면 지구력을 다소 회복하고 속도가 많이 상승한다 ＜중거리＞",
     "desc_tw": "在競賽中期若位於隊列後方會稍微回復持久力且速度會大幅上升＜中距離＞",
-    "endesc": "Medium・If you're in the second half of the pack at a random point in the Middle Leg, your speed will greatly increase and your stamina will recover",
-    "endesc_needs_retranslation": true,
+    "endesc": "Medium・If you're not in the front at a random point in the Middle Leg, your speed will greatly increase and your stamina will recover",
     "enname": "Stylish and Masterful",
     "evo_cond": [
       [
@@ -110182,7 +110069,7 @@
         ]
       }
     ],
-    "desc_ko": "최종 직선에서 2위 이하이고 선두로부터 4마신 이내라면 속도가 아주 많이 상승한다＜작전・선입＞",
+    "desc_ko": "최종 직선에서 2위 이후이고 선두로부터 4마신 이내라면 속도가 아주 많이 상승한다＜작전・선입＞",
     "desc_tw": "在最後直線若位列第2之後且距離最前頭4身距內時速度極大幅上升＜作戰．居中＞",
     "endesc": "Betweener・During the Final Straight, if you're not in the lead but are close to it, your speed will increase tremendously",
     "enname": "Top Princess!",
@@ -110831,7 +110718,6 @@
     "desc_ko": "종반의 최종 직선에서 선두에 있으면 속도가 다소 상승하며, 종반 시작까지 벌린 리드 거리에 따라 효과가 증가한다",
     "desc_tw": "在後期的最後直線若位居領先速度會稍微上升，並依照後期開始前取得的領先距離使效果增加",
     "endesc": "If you're in the lead during the final straight, your speed will slightly increase (special scaling under investigation)",
-    "endesc_needs_retranslation": true,
     "enname": "Billions of Stars",
     "gene_version": {
       "activation": 1,
@@ -111348,7 +111234,6 @@
     "desc_ko": "레이스 중간 부근 이후의 직선에서 선두라면 긴 시간 속도가 계속해서 다소 상승하고, 추가로 나카야마 경기장에서 「대도주」가 발동했다면 긴 시간 동안 가속력이 계속해서 아주 조금 상승한다",
     "desc_tw": "在競賽中間附近之後的直線若位居領先會使速度在較長時間內稍微持續上升且若在中山賽場發動了「強勢領頭」則使加速力也在較長時間內些微持續上升",
     "endesc": "If you're in the lead on any straight in the last 60% of the race, your speed will slightly increase; if you're in Nakayama and you've activated the Great Escape skill, your acceleration will also slightly increase",
-    "endesc_needs_retranslation": true,
     "enname": "Jingle All the Way",
     "gene_version": {
       "activation": 1,
@@ -111440,7 +111325,6 @@
     "desc_ko": "중반에 중위권 그룹에 있을 때 속도를 약간 떨어뜨리고 지구력을 많이 회복하며 스태미나가 상당히 높으면 그 후 종반에 오랫동안 계속해서 약간 앞으로 나간다",
     "desc_tw": "在中期位於隊列中段時會略微降低速度並大幅回復持久力當持久力數值十二分強大時之後在後期會長時間略微持續向前邁進",
     "endesc": "If you're in the middle of the pack during the Middle Leg, your stamina will greatly recover but your speed will slightly decrease; then, during the Final Leg, if your Stamina stat is at least 1200, you will get a slight speed boost",
-    "endesc_needs_retranslation": true,
     "enname": "Illuminate You",
     "gene_version": {
       "activation": 1,
@@ -111601,8 +111485,7 @@
     ],
     "desc_ko": "레이스 중반에 후방에 있으면 속도가 많이 상승한다＜장거리＞",
     "desc_tw": "在競賽中期若位於隊列後方速度會大幅上升＜長距離＞",
-    "endesc": "Long・If you're in the second half of the pack at a random point during the Middle Leg, your speed will greatly increase",
-    "endesc_needs_retranslation": true,
+    "endesc": "Long・If you're not in the front at a random point during the Middle Leg, your speed will greatly increase",
     "enname": "It's Getting Exciting!!",
     "evo_cond": [
       [
@@ -112569,7 +112452,6 @@
     "desc_ko": "레이스 중간 부근에서 전방에 있으면 속도가 상승하고 지구력을 약간 회복하며 2400m 이상 레이스라면 회복량이 증가한다",
     "desc_tw": "在競賽中間附近若位於隊列前方速度上升後持久力會略微回復若是2400m以上的競賽回復量會增加",
     "endesc": "Around the middle of the race, if you're near the front but not leading, your speed will increase and your stamina will slightly recover; bonus stamina recovery in races of at least 2400 m",
-    "endesc_needs_retranslation": true,
     "enname": "Celeste Oath",
     "gene_version": {
       "activation": 1,
@@ -112885,7 +112767,6 @@
     "desc_ko": "초・중반에 전방에서 추월당하거나 경합했을 때 짧은 시간 동안 속도가 상승하고, 그 후 장거리 레이스에서 레이스 후반에 2위 이내면 속도가 계속해서 다소 상승한다",
     "desc_tw": "初期、中期位於隊列前方被對手追過或發生競爭時，極短時間內使速度上升之後若是長距離競賽，在競賽後半如位居第2以內則使速度稍微持續上升",
     "endesc": "During the Opening or Middle Leg, if you were overtaken or blocked from the side for at least two seconds, your speed will increase; (Long only) then, if you're in the front in the second half of the race, your speed will slightly increase",
-    "endesc_needs_retranslation": true,
     "enname": "Becoming Everyone's Joy!",
     "gene_version": {
       "activation": 1,
@@ -113312,7 +113193,7 @@
         "precondition": "is_finalcorner==1&change_order_onetime<0"
       }
     ],
-    "desc_ko": "최종 코너 이후에 추월하면 남은 거리 200m일 때 속도가 많이 상승한다 ＜중거리＞",
+    "desc_ko": "최종 코너 이후에 추월하면 남은 거리가 200m일 때 속도가 많이 상승한다 ＜중거리＞",
     "desc_tw": "在最後彎道之後若追過對手在剩餘200m處速度大幅上升＜中距離＞",
     "endesc": "Medium・If you overtook someone during the Final Corner, then when there's 200 m remaining in the race, your speed will greatly increase",
     "enname": "One-On-One Obsession",
@@ -114108,7 +113989,6 @@
     "desc_ko": "레이스 종반의 최종 직선에 들어왔을 때 중위권 그룹에 있으면 남은 거리가 300m 이하일 때 속도가 다소 상승하며, 레이스를 침착하게 진행했다면 많이 상승한다",
     "desc_tw": "進入競賽後期的最後直線時若位於隊列中段會在剩餘不到300m處使速度稍微上升若一直保持冷靜表現則大幅上升",
     "endesc": "If you entered the Final Straight in the middle of the pack, then when there's 300 m remaining in the race, your speed will increase; it will increase greatly if you didn't panic (kakari) during the race",
-    "endesc_needs_retranslation": true,
     "enname": "Deluxe☆Fountain",
     "gene_version": {
       "activation": 1,
@@ -114692,7 +114572,6 @@
     "desc_ko": "레이스 전반에 중위권 그룹 이후에서 계속 대기하면 레이스 종반의 최종 코너 이후에 다소 앞으로 나가며 장거리 레이스라면 효과가 증가한다",
     "desc_tw": "在競賽前半若持續潛伏於隊列中段之後競賽後期且在最後彎道之後會稍微向前邁進若是長距離競賽則效果增加",
     "endesc": "If you stayed in the back of the pack for the entire first half of the race, then during the Final Corner, you will get a speed boost; the effect is stronger in Long races",
-    "endesc_needs_retranslation": true,
     "enname": "Purrfect Hospitality",
     "gene_version": {
       "activation": 1,
@@ -114796,7 +114675,6 @@
     "desc_ko": "레이스 중간 부근에 전방에서 스퍼트를 시작할 때 잠시 동안 속도가 상승하며 마일 레이스라면 효과가 증가한다",
     "desc_tw": "在競賽中間附近若由隊列前方急起直追時，短時間內速度會上升若是一哩競賽則使效果增加",
     "endesc": "Around the middle of the race, if you're near the front and about to overtake someone, your speed will increase; the effect is stronger in Mile races",
-    "endesc_needs_retranslation": true,
     "enname": "Have Your Fill!",
     "gene_version": {
       "activation": 1,
@@ -115852,7 +115730,7 @@
         ]
       }
     ],
-    "desc_ko": "레이스 후반에 3위 이하라면 한동안 속도가 상승한다＜작전・선행＞",
+    "desc_ko": "레이스 후반에 3위 이후라면 한동안 속도가 상승한다＜작전・선행＞",
     "desc_tw": "在競賽後半若位列第3之後一段時間內速度會上升＜作戰．前列＞",
     "endesc": "Leader・If you're 3rd or worse during the second half of the race, your speed will increase",
     "enname": "Heavenly Wind",
@@ -115927,10 +115805,9 @@
         "precondition": "order_rate>=45&distance_rate>=50&change_order_onetime<0"
       }
     ],
-    "desc_ko": "레이스 후반에 후방에서 추월한 경우 남은 거리 150m 이하일 때 전방에 있으면 잠시 동안 속도가 상승한다",
+    "desc_ko": "레이스 후반에 후방에서 추월한 경우 남은 거리가 150m 이하일 때 전방에 있으면 잠시 동안 속도가 상승한다",
     "desc_tw": "在競賽後半若從隊列後方追過對手並在剩餘不到150m處位於隊列前段使速度於短時間內上升",
     "endesc": "If you overtook someone in the back of the pack during the second half of the race, then when there's less than 150 m remaining and you're near the front of the pack, your speed will increase",
-    "endesc_needs_retranslation": true,
     "enname": "Pegasus Full Power!",
     "gene_version": {
       "activation": 1,
@@ -115948,7 +115825,7 @@
         }
       ],
       "cost": 200,
-      "desc_ko": "레이스 후반에 후방에서 추월한 경우 남은 거리 150m 이하일 때 전방에 있으면 잠시 동안 속도가 다소 상승한다",
+      "desc_ko": "레이스 후반에 후방에서 추월한 경우 남은 거리가 150m 이하일 때 전방에 있으면 잠시 동안 속도가 다소 상승한다",
       "desc_tw": "在競賽後半若從隊列後方追過對手並在剩餘不到150m處位於隊列前段使速度於短時間內稍微上升",
       "iconid": 20011,
       "id": 900541,
@@ -116010,7 +115887,6 @@
     "desc_ko": "레이스 후반에 후방에서 추월한 경우 남은 거리가 150m 이하일 때 전방에 있으면 잠시 동안 속도가 많이 상승한다",
     "desc_tw": "在競賽後半若從隊列後方追過對手並在剩餘不到150m處位於隊列前段使速度於短時間內大幅上升",
     "endesc": "If you overtook someone in the back of the pack during the second half of the race, then when there's less than 150 m remaining and you're near the front of the pack, your speed will greatly increase",
-    "endesc_needs_retranslation": true,
     "enname": "Blasting Gale Pegasus Dash!",
     "gene_version": {
       "activation": 1,
@@ -116028,7 +115904,7 @@
         }
       ],
       "cost": 200,
-      "desc_ko": "레이스 후반에 후방에서 추월한 경우 남은 거리 150m 이하일 때 전방에 있으면 잠시 동안 속도가 다소 상승한다",
+      "desc_ko": "레이스 후반에 후방에서 추월한 경우 남은 거리가 150m 이하일 때 전방에 있으면 잠시 동안 속도가 다소 상승한다",
       "desc_tw": "在競賽後半若從隊列後方追過對手並在剩餘不到150m處位於隊列前段使速度於短時間內稍微上升",
       "iconid": 20011,
       "id": 900541,
@@ -116243,7 +116119,6 @@
     "desc_ko": "레이스를 침착하게 진행하면 라스트 스퍼트 중일 때 속도가 계속해서 약간 상승한다",
     "desc_tw": "在場上若能冷靜表現在展開最後衝刺時使速度略微持續上升",
     "endesc": "If you haven't panicked (kakari) during the race, then during your last spurt, your speed will slightly increase",
-    "endesc_needs_retranslation": true,
     "enname": "Strike and Strengthen",
     "gene_version": {
       "activation": 1,
@@ -116322,7 +116197,6 @@
     "desc_ko": "레이스를 침착하게 진행하면 라스트 스퍼트 중일 때 속도가 계속해서 다소 상승한다",
     "desc_tw": "在場上若能冷靜表現在展開最後衝刺時使速度稍微持續上升",
     "endesc": "If you haven't panicked (kakari) during the race, then during your last spurt, your speed will slightly increase",
-    "endesc_needs_retranslation": true,
     "enname": "Forged From a Hundred Trials",
     "gene_version": {
       "activation": 1,
@@ -116411,7 +116285,6 @@
     "desc_ko": "레이스 중간 지점에서 후방에 있으면 속도가 상승하며, 그 후 종반의 최종 코너에서 추월하려고 하면 짧은 시간 동안 약간 앞으로 나간다",
     "desc_tw": "在競賽中間點若位於隊列後方速度會上升，之後在後期的最後彎道當準備追過對手時在極短時間內略微向前邁進",
     "endesc": "If you're in the second half of the pack halfway through the race, your speed will increase; then, if you try to overtake someone during the Final Corner in the Final Leg, you will get a slight speed boost",
-    "endesc_needs_retranslation": true,
     "enname": "Scarlet Ascension of the Rakshasa",
     "gene_version": {
       "activation": 1,
@@ -116762,7 +116635,7 @@
       }
     ],
     "cost": 180,
-    "desc_ko": "최종 직선에서 2위 이하이고 선두로부터 4마신 이내라면 속도가 다소 상승한다＜작전・추입＞",
+    "desc_ko": "최종 직선에서 2위 이후이고 선두로부터 4마신 이내라면 속도가 다소 상승한다＜작전・추입＞",
     "desc_tw": "在最後直線若位列第2之後且距離最前頭4身距內時速度稍微上升＜作戰．後追＞",
     "endesc": "Chaser・During the Final Straight, if you're not in the first place but also no more than 10 meters away from it, your speed will increase",
     "enname": "Boiling Blood",
@@ -116879,8 +116752,7 @@
     "cost": 180,
     "desc_ko": "레이스 중반이 다가올 때 후방에 있으면 지구력을 약간 회복한다 ＜작전・추입＞",
     "desc_tw": "接近競賽中期時若位於隊列後方會略微回復持久力＜作戰．後追＞",
-    "endesc": "Chaser・If you're in the second half of the pack at a random point during the second half of the Opening Leg, your stamina will slightly recover",
-    "endesc_needs_retranslation": true,
+    "endesc": "Chaser・If you're not in the front at a random point during the second half of the Opening Leg, your stamina will slightly recover",
     "enname": "Immovable Spirit",
     "iconid": 20021,
     "id": 202892,
@@ -117110,8 +116982,7 @@
     "cost": 190,
     "desc_ko": "최종 코너에서 후방이라면 앞뒤로 3명씩 속도를 아주 약간 떨어뜨리고 자신의 속도가 약간 상승한다＜작전・추입＞",
     "desc_tw": "在最後彎道若位於隊列後方會各使前後3人的速度稍稍下降並使自己的速度略微上升＜作戰．後追＞",
-    "endesc": "Chaser・If you're in the second half of the pack at a random point during the Final Corner, your speed will slightly increase, and the speed of the closest three girls in front and three girls behind you will slightly decrease",
-    "endesc_needs_retranslation": true,
+    "endesc": "Chaser・If you're not in the front at a random point during the Final Corner, your speed will slightly increase, and the speed of the closest three girls in front and three girls behind you will slightly decrease",
     "enname": "Cleave",
     "iconid": 20011,
     "id": 202912,
@@ -117441,8 +117312,7 @@
     "cost": 160,
     "desc_ko": "레이스 중반에 후방에 있으면 앞의 속도를 아주 약간 떨어뜨리고 자신의 속도가 약간 상승한다＜추입・중거리＞",
     "desc_tw": "在競賽中期若位於隊列後方會使前方的速度稍稍下降並使自己的速度略微上升＜後追．中距離＞",
-    "endesc": "Chaser・Medium・If you're in the second half of the pack at a random point during the Middle Leg, your speed will slightly increase, and you will slightly lower speed of the five closest girls in front of you",
-    "endesc_needs_retranslation": true,
+    "endesc": "Chaser・Medium・If you're not in the front at a random point during the Middle Leg, your speed will slightly increase, and you will slightly lower speed of the five closest girls in front of you",
     "enname": "Ghastly",
     "iconid": 20011,
     "id": 202942,
@@ -118811,7 +118681,6 @@
     "desc_ko": "레이스 전반 코너에서 중위권 그룹에 있으면 속도가 다소 상승하며, 단거리나 마일 레이스인 경우에는 계속해서 다소 상승한다",
     "desc_tw": "在競賽前半的彎道若位於隊列中段使速度稍微上升，當在短距離或一哩競賽時則稍微持續上升",
     "endesc": "If you're in the middle of the pack on any corner during the first half of the race, your speed will slightly increase; bonus duration in Short and Mile races",
-    "endesc_needs_retranslation": true,
     "enname": "Connecting Dreams With the Future",
     "gene_version": {
       "activation": 1,
@@ -118998,7 +118867,7 @@
         ]
       }
     ],
-    "desc_ko": "레이스 종반이 시작될 때 전방에 있으면 가속력이 상승하고 그 후 남은 거리 200m 지점에서 속도가 약간 상승한다＜작전・선행＞",
+    "desc_ko": "레이스 종반이 시작될 때 전방에 있으면 가속력이 상승하고 그 후 남은 거리가 200m일 때 속도가 약간 상승한다＜작전・선행＞",
     "desc_tw": "在競賽後期一開始若位於隊列前方加速力會上升，之後在剩餘200m處速度略微上升＜作戰．前列＞",
     "endesc": "Leader・During the first half of the Final Leg, if you're in the first half of the pack, your acceleration will increase; then, when there's 200 m remaining in the race, your speed will slightly increase",
     "enname": "There's No Way I'll Lose!",
@@ -119083,7 +118952,6 @@
     "desc_ko": "레이스 초반에 전방에서 경합했을 때 속도가 상승하며, 마일 레이스라면 지구력을 사용해서 속도가 많이 상승한다",
     "desc_tw": "在競賽初期若位於隊列前方與對手競爭則使速度上升，若是一哩競賽則會消耗持久力使速度大幅上升",
     "endesc": "During the Opening Leg, if you're in the first half of the pack and being blocked from the side, your speed will increase; in Mile races, your speed will increase greatly, but you will use a little extra stamina",
-    "endesc_needs_retranslation": true,
     "enname": "It's Mashup Time!",
     "gene_version": {
       "activation": 1,
@@ -119186,7 +119054,6 @@
     "desc_ko": "레이스 중간 부근에서 중위권 그룹에 있으면 속도가 다소 상승하며 마일 레이스라면 효과와 시간이 증가한다",
     "desc_tw": "在競賽中間附近若位於隊列中段速度稍微上升若是一哩競賽則使效果及時間增加",
     "endesc": "If you're in the middle of the pack halfway through the race, your speed will slightly increase; the effect is stronger and lasts longer in Mile races",
-    "endesc_needs_retranslation": true,
     "enname": "Sapphire Flame",
     "gene_version": {
       "activation": 1,
@@ -120104,7 +119971,6 @@
     "desc_ko": "레이스 중반에 중위권 그룹에서 추월하면 제3 코너에서 잠시 동안 속도가 상승하며 2400m 레이스에서 인기가 높으면 계속해서 상승한다",
     "desc_tw": "在競賽中期若從隊列中段追過對手則在第3彎道短時間內會使速度上升在2400m的競賽且獲得高支持度時則持續上升",
     "endesc": "If you overtake someone from the middle of the pack during the Middle Leg, then on the third corner, your speed will increase; bonus duration if you're top 3 in popularity in a 2400 m race",
-    "endesc_needs_retranslation": true,
     "enname": "GO! Full-send",
     "gene_version": {
       "activation": 1,
@@ -120201,7 +120067,7 @@
         ]
       }
     ],
-    "desc_ko": "레이스 종반이 다가올 때 4등 이하라면 속도가 상승하며 도쿄 경기장의 2400m 레이스라면 많이 상승한다＜중거리＞",
+    "desc_ko": "레이스 종반이 다가올 때 4위 이후라면 속도가 상승하며 도쿄 경기장의 2400m 레이스라면 많이 상승한다＜중거리＞",
     "desc_tw": "接近競賽後期時若位列第4之後速度會上升，在東京賽場的2400m競賽則會大幅上升＜中距離＞",
     "endesc": "Medium・If you're 4th or worse during the second half of the Middle Leg, your speed will increase; it will increase greatly if it's a 2400 m Tokyo race",
     "enname": "All-Out Excitement!!",
@@ -120277,8 +120143,7 @@
     ],
     "desc_ko": "레이스 중반에 중위권 그룹에 있으면 한동안 속도가 상승한다＜작전・선입＞",
     "desc_tw": "在競賽中期若位於隊列中段一段時間內速度會上升＜作戰．居中＞",
-    "endesc": "Betweener・If you're in the middle of the pack at a random point during the Middle Leg, your speed will increase",
-    "endesc_needs_retranslation": true,
+    "endesc": "Betweener・If you're not in the front at a random point during the Middle Leg, your speed will increase",
     "enname": "Dreamer's Path",
     "evo_cond": [
       [
@@ -120652,7 +120517,6 @@
     "desc_ko": "레이스 중간 부근에서 경합하면 레이스 후반의 어딘가에서 속도가 상승하며 스킬 발동 시 레인 안쪽에 있으면 효과가 증가한다",
     "desc_tw": "在競賽中間附近若與對手競爭在競賽後半的某處速度會上升發動技能時若位於內側圍欄則使效果增加",
     "endesc": "If someone was blocking you from the side around halfway through the race, then at a random point in the second half of the race, your speed will increase; it will increase greatly if you're currently running in the inner lane",
-    "endesc_needs_retranslation": true,
     "enname": "Decisive Blade of Blazing Fire",
     "gene_version": {
       "activation": 1,
@@ -120744,7 +120608,6 @@
     "desc_ko": "레이스 중반 코너에서 좋은 위치에 있으면 지구력을 회복하며, 추가로 중장거리 레이스라면 속도가 계속해서 다소 상승한다",
     "desc_tw": "在競賽中期的彎道若位於良好位置會回復持久力且在中距離或長距離競賽則會再使速度稍微持續上升",
     "endesc": "If you're in a good position (but not leading) during any Middle Leg corner, your stamina will recover; in Medium and Long races, your speed will also slightly increase",
-    "endesc_needs_retranslation": true,
     "enname": "Ninja Art: Seal of the Smiling Heart",
     "gene_version": {
       "activation": 1,
@@ -122076,7 +121939,6 @@
     "desc_ko": "최종 코너에서 좋은 위치에 있으면 잠시 동안 속도가 상승하며 마일 레이스라면 효과 시간이 증가한다",
     "desc_tw": "在最後彎道位於良好位置時短時間內速度上升在一哩競賽則會使效果時間增加",
     "endesc": "If you're in a good position (but not leading) during the Final Corner, your speed will increase; bonus duration in Mile races",
-    "endesc_needs_retranslation": true,
     "enname": "Shining Runway",
     "gene_version": {
       "activation": 1,
@@ -122258,7 +122120,7 @@
         ]
       }
     ],
-    "desc_ko": "레이스 종반이 시작될 때 전방에 있으면 가속력이 상승하고 그 후 남은 거리 200m 지점에서 속도가 약간 상승한다＜마일＞",
+    "desc_ko": "레이스 종반이 시작될 때 전방에 있으면 가속력이 상승하고 그 후 남은 거리가 200m일 때 속도가 약간 상승한다＜마일＞",
     "desc_tw": "在競賽後期一開始若位於隊列前方加速力會上升，之後在剩餘200m處速度略微上升＜一哩＞",
     "endesc": "Mile・If you're in the first half of the pack during the first half of the Final Leg, your acceleration will increase; then, when there's 200 m remaining, your speed will slightly increase",
     "enname": "Enjoy the Flight",
@@ -122357,7 +122219,6 @@
     "desc_ko": "레이스 중반 이후 내리막에서 후방에 있으면 지구력을 다소 사용해서 짧은 시간 동안 앞으로 나가고, 그 후 컨디션이 양호나 최상이면 종반의 최종 직선에서 짧은 시간 동안 속도가 상승한다",
     "desc_tw": "在競賽中期之後的下坡若位於隊列後方會稍微消耗持久力極短時間內向前邁進之後幹勁狀態為良好或絕佳時在後期的最後直線極短時間內使速度上升",
     "endesc": "If you're in the second half of the pack on any downhill during the Middle Leg or later, you will use a little extra stamina to get a speed boost; then, during the Last Straight, if your motivation is at least Good, your speed will increase",
-    "endesc_needs_retranslation": true,
     "enname": "Special Materialization",
     "gene_version": {
       "activation": 1,
@@ -122440,10 +122301,9 @@
         "precondition": "remain_distance<=600&order_rate>=40&order_rate<=80&is_behind_in==1&change_order_onetime<0"
       }
     ],
-    "desc_ko": "남은 거리가 600m 이하일 때 중위권 그룹 바깥쪽에서 추월하면 라스트 스퍼트가 한창일 때 속도가 계속해서 상승한다",
+    "desc_ko": "남은 거리가 600m 이하일 때 중위권 그룹 바깥쪽에서 추월하면 라스트 스퍼트 중일 때 속도가 계속해서 상승한다",
     "desc_tw": "在剩餘不到600m處若位於隊列中段並由外側追過對手，則在最後衝刺途中使速度持續上升",
     "endesc": "When there's less than 600 m remaining, if you're in the middle of the pack and overtake someone from the outside, then during the Last Spurt, your speed will increase",
-    "endesc_needs_retranslation": true,
     "enname": "The Winding Road to Ideals",
     "gene_version": {
       "activation": 1,
@@ -122461,7 +122321,7 @@
         }
       ],
       "cost": 200,
-      "desc_ko": "남은 거리가 600m 이하일 때 중위권 그룹 바깥쪽에서 추월하면 라스트 스퍼트가 한창일 때 속도가 계속해서 약간 상승한다",
+      "desc_ko": "남은 거리가 600m 이하일 때 중위권 그룹 바깥쪽에서 추월하면 라스트 스퍼트 중일 때 속도가 계속해서 약간 상승한다",
       "desc_tw": "在剩餘不到600m處若位於隊列中段並由外側追過對手，則在最後衝刺途中使速度略微持續上升",
       "iconid": 20011,
       "id": 920611,
@@ -123425,7 +123285,6 @@
     "desc_ko": "레이스 중간 지점에서 중위권 그룹에 있으면 속도가 상승하며 중거리 레이스라면 많이 상승한다",
     "desc_tw": "在競賽中間點若位於隊列中段會使速度上升在中距離競賽則會大幅上升",
     "endesc": "If you're in the middle of the pack halfway through the race, your speed will increase; it will increase greatly in Medium races",
-    "endesc_needs_retranslation": true,
     "enname": "Faith in the Feral",
     "gene_version": {
       "activation": 1,
@@ -123759,7 +123618,7 @@
         ]
       }
     ],
-    "desc_ko": "종반 돌입 시 후방에 있을 때 결승점까지 멀면 짧은 시간 동안 다소 앞으로 나가며 나카야마나 한신 경기장의 중장거리 레이스라면 그 후 직선에서 짧은 시간 동안 많이 앞으로 나간다",
+    "desc_ko": "종반 돌입 시 후방에 있을 때 결승점이 멀면 짧은 시간 동안 다소 앞으로 나가며 나카야마나 한신 경기장의 중장거리 레이스라면 그 후 직선에서 짧은 시간 동안 많이 앞으로 나간다",
     "desc_tw": "在進入後期時若位於隊列後方且距離終點尚遠時，極短時間內稍微向前邁進在中山或阪神賽場的中距離或長距離競賽則之後在直線會極短時間內大幅向前邁進",
     "endesc": "If you're in the back of the pack 2/3 through the race, your will get a speed boost; then, if it's a Medium or Long distance race in Nakayama or Hanshin and you're on any straight, you will get a great speed boost",
     "enname": "«Bon Voyage»",
@@ -123788,7 +123647,7 @@
         }
       ],
       "cost": 200,
-      "desc_ko": "종반 돌입 시 후방에 있을 때 결승점까지 멀면 짧은 시간 동안 아주 조금 앞으로 나가며 나카야 마나 한신 경기장의 중장거리 레이스라면 그 후 직선에서 짧은 시간 동안 다소 앞으로 나간다",
+      "desc_ko": "종반 돌입 시 후방에 있을 때 결승점이 멀면 짧은 시간 동안 아주 조금 앞으로 나가며 나카야 마나 한신 경기장의 중장거리 레이스라면 그 후 직선에서 짧은 시간 동안 다소 앞으로 나간다",
       "desc_tw": "在進入後期時若位於隊列後方且距離終點尚遠時，極短時間內些微向前邁進在中山或阪神賽場的中距離或長距離競賽則之後在直線會極短時間內稍微向前邁進",
       "iconid": 20011,
       "id": 901191,
@@ -124849,8 +124708,7 @@
     ],
     "desc_ko": "레이스 종반에 후방에서 추월하려고 하면 가속력이 상승하고 그 후 남은 거리가 200m 이하일 때 속도가 약간 상승한다＜단거리/마일＞",
     "desc_tw": "在競賽後期若位於隊列後方準備追過對手加速力上升，之後在剩餘不到200m處速度會略微上升＜短距離/一哩＞",
-    "endesc": "Short/Mile・If you're about to overtake someone in the second half of the pack during the Final Leg, your acceleration will increase; then, when there's 200 m remaining in the race, your speed will slightly increase",
-    "endesc_needs_retranslation": true,
+    "endesc": "Short/Mile・If you're not in the front and about to overtake someone during the Final Leg, your acceleration will increase; then, when there's 200 m remaining in the race, your speed will slightly increase",
     "enname": "Here You Go!",
     "evo_cond": [
       [
@@ -125436,7 +125294,6 @@
     "desc_ko": "종반의 최종 코너에서 전방에 있으면 속도가 상승하며, 교토 경기장의 장거리 레이스라면 아주 많이 상승한다",
     "desc_tw": "在後期的最後彎道若位於隊列前方會使速度上升，在京都賽場的長距離競賽則會極大幅上升",
     "endesc": "If you're in the front during the Final Corner, your speed will increase; it will increase tremendously in Long races in Kyoto",
-    "endesc_needs_retranslation": true,
     "enname": "Clear Sky Cooking♪",
     "gene_version": {
       "activation": 1,
@@ -125915,7 +125772,6 @@
     "desc_ko": "4펄롱째에 전방이면 잠시 동안 속도가 상승하며 「무이」, 「무삼」을 모두 발동했다면 효과량이 바뀌어 잠시 동안 속도가 엄청 많이 상승한다",
     "desc_tw": "在第4化朗時若位於隊列前方短時間內速度會上升，若有發動「無二」「無三」兩技能則效果量改變短時間內速度極巨幅上升",
     "endesc": "If you're in the first half of the pack during the fourth furlong, your speed will increase; it will increase tremendously if you've also activated the 無二 and 無三 skills",
-    "endesc_needs_retranslation": true,
     "enname": "Path of Singular Focus",
     "gene_version": {
       "activation": 1,
@@ -126492,7 +126348,6 @@
     "desc_ko": "레이스 중간 지점에서 속도가 다소 상승하고 추가로 더트 레이스에서 스킬 발동 시 제3 코너가 아니라면 추가로 속도가 약간 상승한다",
     "desc_tw": "在競賽中間點使速度稍微上升在沙地競賽發動技能時若不在第3彎道則會再使速度略微上升",
     "endesc": "Halfway through the race, your speed will slightly increase; the effect is stronger on Dirt races where the halfway point is not on the 3rd corner",
-    "endesc_needs_retranslation": true,
     "enname": "Popping☆Clams",
     "gene_version": {
       "activation": 1,
@@ -126595,7 +126450,6 @@
     "desc_ko": "최종 코너에서 중위권 그룹에 있으면 앞으로 나가며 도쿄 경기장의 레이스라면 많이 앞으로 나간다＜중거리＞",
     "desc_tw": "在最後彎道位於隊列中段會向前邁進若在東京賽場的競賽則會大幅向前邁進＜中距離＞",
     "endesc": "Medium・If you're in the middle of the pack during the Final Corner, your speed will increase; in Tokyo races, it will increase greatly",
-    "endesc_needs_retranslation": true,
     "enname": "Geschenk of the Salty Sea Breeze",
     "gene_version": {
       "activation": 1,
@@ -128020,7 +127874,6 @@
     "desc_ko": "레이스 전반 코너에서 전방에 있으면 속도가 다소 상승하고 그 후 종반의 최종 직선에서 선두 그룹에 있으면 짧은 시간 동안 속도가 많이 상승한다",
     "desc_tw": "在競賽前半的彎道若位於隊列前方使速度稍微上升，之後在後期的最後直線若位於領先集團極短時間內速度大幅上升",
     "endesc": "If you're in the first half of the pack on any corner during the first half of the race, your speed will slightly increase; then, if you're near the front during the Last Straight, your speed will greatly increase",
-    "endesc_needs_retranslation": true,
     "enname": "Rose Conquest",
     "gene_version": {
       "activation": 1,
@@ -128276,7 +128129,7 @@
       }
     ],
     "cost": 180,
-    "desc_ko": "최종 직선에서 선두에 있거나 선두로부터 1마신 이내라면 속도가 다소 상승한다＜작전・선행＞",
+    "desc_ko": "최종 직선에서 선두이거나 선두로부터 1마신 이내라면 속도가 다소 상승한다＜작전・선행＞",
     "desc_tw": "在最後直線若位居領先或距離最前頭1身距內速度稍微上升＜作戰．前列＞",
     "endesc": "Leader・If you're leading or at most 2.5 m from the lead during the Final Straight, your speed will slightly increase",
     "enname": "Decisive Blow",
@@ -128600,7 +128453,8 @@
     ],
     "char_e": [
       111701,
-      113501
+      113501,
+      111801
     ],
     "condition_groups": [
       {
@@ -128874,7 +128728,7 @@
         ]
       }
     ],
-    "desc_ko": "2400m~2500m 레이스에서 레이스 종반이 다가올 때 속도가 많이 상승하며 파워가 상당히 강하면 아주 많이 상승한다 ＜작전・선행＞",
+    "desc_ko": "2400m~2500m 레이스에서 레이스 종반이 다가올 때 속도가 많이 상승하며 파워가 상당히 높으면 아주 많이 상승한다 ＜작전・선행＞",
     "desc_tw": "在2400～2500m的競賽接近後期時速度大幅上升當力量數值十二分強大時則極大幅上升＜作戰．前列＞",
     "endesc": "Leader・In races between 2400 and 2500 m long, at a random point during the second half of the Middle Leg, your speed will greatly increase; if you have at least 1200 base Power, your speed will increase tremendously instead",
     "enname": "A Lady's Domain",
@@ -128959,7 +128813,6 @@
     "desc_ko": "종반의 최종 직선에서 전방에 있으면 속도가 다소 상승하며, 추가로 도쿄 경기장의 중거리 또는 나카야마 경기장의 2500m 레이스에서는 다소 앞으로 나간다",
     "desc_tw": "在後期的最後直線若位於隊列前方速度會稍微上升，且若是東京賽場中距離或中山賽場2500m的競賽時則會再稍微向前邁進",
     "endesc": "If you're near the front during the Final Straight, your (target) speed will slightly increase; in Nakayama or Tokyo, you will also get a slight (immediate) speed boost",
-    "endesc_needs_retranslation": true,
     "enname": "Close Encounters of the Literary Kind",
     "gene_version": {
       "activation": 1,
@@ -129060,7 +128913,7 @@
         ]
       }
     ],
-    "desc_ko": "종반의 최종 직선에서 2위 이하라면 속도가 상승하고 레이스 중반에 스킬을 정확히 7번 또는 13번 발동했다면 아주 많이 상승한다",
+    "desc_ko": "종반의 최종 직선에서 2위 이후라면 속도가 상승하고 레이스 중반에 스킬을 정확히 7번 또는 13번 발동했다면 아주 많이 상승한다",
     "desc_tw": "在後期的最後直線若位列第2之後會使速度上升，在競賽中期若剛好發動了7次或13次技能則會極大幅上升",
     "endesc": "If you're not in the lead during the Final Straight, your speed will increase; it will increase tremendously if you activated exactly 7 or 13 skills during the Middle Leg",
     "enname": "Encounter With U",
@@ -129079,7 +128932,7 @@
         }
       ],
       "cost": 200,
-      "desc_ko": "종반의 최종 직선에서 2위 이하라면 속도가 약간 상승한다",
+      "desc_ko": "종반의 최종 직선에서 2위 이후라면 속도가 약간 상승한다",
       "desc_tw": "在後期的最後直線若位列第2之後會使速度略微上升",
       "iconid": 20011,
       "id": 911051,
@@ -130031,7 +129884,6 @@
     "desc_ko": "남은 거리가 800m일 때 중위권 그룹이라면 잠시 동안 다소 앞으로 나가면서 가속력이 아주 조금 상승하며, 근간거리 레이스에서 후방이라면 추가로 가속력이 약간 상승한다",
     "desc_tw": "在剩餘800m處若位於隊列中段短時間內稍微向前邁進加速力些微上升且在主要距離競賽若位於隊列後方則會再使加速力略微上升",
     "endesc": "If you're in the middle of the pack with 800 m remaining, you will get a slight speed boost and your acceleration will slightly increase; bonus acceleration if you're in a Core race (length divisible by 400) and you're slightly more in the back of the pack",
-    "endesc_needs_retranslation": true,
     "enname": "Guiding Sea",
     "gene_version": {
       "activation": 1,
@@ -130070,7 +129922,7 @@
         }
       ],
       "cost": 200,
-      "desc_ko": "남은 거리 800m일 때 중위권 그룹이라면 잠시 동안 아주 조금 앞으로 나가면서 가속력이 매우 조금 상승하며, 근간거리 레이스에서 후방이라면 추가로 가속력이 아주 약간 상승한다",
+      "desc_ko": "남은 거리가 800m일 때 중위권 그룹이라면 잠시 동안 아주 조금 앞으로 나가면서 가속력이 매우 조금 상승하며, 근간거리 레이스에서 후방이라면 추가로 가속력이 아주 약간 상승한다",
       "desc_tw": "在剩餘800m處若位於隊列中段短時間內些微向前邁進加速力微微上升在主要距離競賽若位於隊列後方則會再使加速力稍稍上升",
       "iconid": 20011,
       "id": 901101,
@@ -130654,7 +130506,6 @@
     "desc_ko": "최종 코너에서 추월하면 라스트 스퍼트 중에 속도가 상승하며 단거리나 마일 레이스에서 스킬 발동 시 중위권 그룹에 있으면 많이 상승한다",
     "desc_tw": "在最後彎道若追過對手會在最後衝刺時使速度上升在短距離或一哩競賽發動技能時若位於隊列中段則會大幅上升",
     "endesc": "If you overtook someone during the Final Corner, then during the Last Spurt, your speed will increase; if it's a Short or Mile race and you're in the middle of the pack, it will increase greatly",
-    "endesc_needs_retranslation": true,
     "enname": "Lame de Vent",
     "gene_version": {
       "activation": 1,
@@ -131088,7 +130939,6 @@
     "desc_ko": "레이스 중반 이후에 선두이거나 3위 이내에서 추월하려고 하면 지구력을 많이 회복하고 계속해서 다소 앞으로 나간다",
     "desc_tw": "在競賽中期之後若位於領先或第3以內準備追過對手時，會大幅回復持久力並稍微持續向前邁進",
     "endesc": "During the Middle Leg or later, if you're either in the first place, or second/third and trying to overtake, you will get a speed boost and your stamina will greatly recover",
-    "endesc_needs_retranslation": true,
     "enname": "HOP STEP♪LOCK ON!",
     "gene_version": {
       "activation": 1,
@@ -132590,7 +132440,7 @@
         ]
       }
     ],
-    "desc_ko": "남은 거리 200m일 때 속도가 다소 상승하거나, 또는 마일이나 중거리의 최종 직선에서 선두이거나 선두로부터 1마신 이내 라면 아주 많이 앞으로 나간다＜작전・선행＞",
+    "desc_ko": "남은 거리가 200m일 때 속도가 다소 상승하거나, 또는 마일이나 중거리의 최종 직선에서 선두이거나 선두로부터 1마신 이내 라면 아주 많이 앞으로 나간다＜작전・선행＞",
     "desc_tw": "在剩餘200m處速度稍微上升或在一哩或中距離的最後直線若位居領先或距離最前頭1身距以內則極大幅向前邁進＜作戰．前列＞",
     "endesc": "Leader・Your speed will slightly increase when there's 200 m remaining in the race; (Mile/Medium only) if you're leading or at most 2.5 m from the lead during the Final Straight, your speed will increase tremendously",
     "enname": "Vanguard's Limelight",
@@ -132679,7 +132529,6 @@
     "desc_ko": "레이스 중간 지점에서 전방에 있으면 속도가 상승하며 장거리 레이스의 전반 코너에서 경합한 경우 아주 많이 상승한다",
     "desc_tw": "在競賽中間點若位於隊列前方會使速度上升，若在長距離競賽前半的彎道有與對手發生競爭則會極大幅上升",
     "endesc": "If you're in the first half of the pack halfway through the race, your speed will increase; it will increase tremendously if the race is Long and you were blocked from the side during any corner",
-    "endesc_needs_retranslation": true,
     "enname": "Accumulative Victory",
     "gene_version": {
       "activation": 1,
@@ -134178,8 +134027,7 @@
     ],
     "desc_ko": "레이스 중반에 후방에 있으면 한동안 속도가 상승한다＜작전・선입＞",
     "desc_tw": "在競賽中期若位於隊列後段一段時間內速度會上升＜作戰．居中＞",
-    "endesc": "Betweener・If you're in the second half of the pack at a random point during the Middle Leg, your speed will increase",
-    "endesc_needs_retranslation": true,
+    "endesc": "Betweener・If you're not in the front at a random point during the Middle Leg, your speed will increase",
     "enname": "Marvelous Momentum☆",
     "evo_cond": [
       [
@@ -134356,10 +134204,9 @@
         ]
       }
     ],
-    "desc_ko": "레이스 종반 코너에서 후방에 있을 때 결승점이 멀면 잠시 동안 앞으로 나가며 나카야마 경기장의 중거리 레이스라면 효과가 증가해 추가로 가속력이 아주 조금 상승한다",
+    "desc_ko": "레이스 종반 코너에서 후방에 있을 때 결승점이 멀면 잠시 동안 앞으로 나가며 나카야마 경기장의 중거리 레이스라면 효과가 증가하고 추가로 가속력이 아주 조금 상승한다",
     "desc_tw": "在競賽後期的彎道若位於隊列後方當距離終點尚遠時短時間內向前邁進若在中山賽場的中距離競賽則效果增加且加速力些微上升",
     "endesc": "If you're in the second half of the pack during any Final Leg corner, you will get a speed boost; in Medium-distance Nakayama races, the effect is stronger and your acceleration will also slightly increase",
-    "endesc_needs_retranslation": true,
     "enname": "Overdrive Speed",
     "gene_version": {
       "activation": 1,
@@ -134438,7 +134285,7 @@
       }
     ],
     "cost": 180,
-    "desc_ko": "최종 직선에서 2위 이하이고 선두로부터 4마신 이내라면 속도가 많이 상승한다＜작전・추입＞",
+    "desc_ko": "최종 직선에서 2위 이후이고 선두로부터 4마신 이내라면 속도가 많이 상승한다＜작전・추입＞",
     "desc_tw": "在最後直線若位列第2之後且距離最前頭4身距內時速度大幅上升＜作戰．後追＞",
     "endesc": "Chaser・During the Final Straight, if you're not in the first place but also no more than 10 meters away from it, your speed will greatly increase",
     "enname": "Complete Combustion",
@@ -134585,7 +134432,7 @@
         ]
       }
     ],
-    "desc_ko": "최종 직선에서 2위 이하이고 선두로부터 4마신 이내라면 속도가 아주 많이 상승한다＜작전・추입＞",
+    "desc_ko": "최종 직선에서 2위 이후이고 선두로부터 4마신 이내라면 속도가 아주 많이 상승한다＜작전・추입＞",
     "desc_tw": "在最後直線若位列第2之後且距離最前頭4身距內時使速度極大幅上升＜作戰．後追＞",
     "endesc": "Chaser・During the Final Straight, if you're not in the first place but also no more than 10 meters away from it, your speed will tremendously increase",
     "enname": "Indomitable Limit Breaker",
@@ -134667,7 +134514,6 @@
     "desc_ko": "레이스 중간 부근에서 중위권 그룹에 있으면 속도가 계속해서 다소 상승하며 그곳이 오르막이라면 효과가 증가한다",
     "desc_tw": "在競賽中間附近若位於隊列中段會使速度稍微持續上升若該處是上坡則效果增加",
     "endesc": "If you're in the middle of the pack halfway through the race, your speed will slightly increase; the effect is stronger if you're running uphill",
-    "endesc_needs_retranslation": true,
     "enname": "Traced Bloodline, Budding Future",
     "gene_version": {
       "activation": 1,
@@ -135183,7 +135029,6 @@
     "desc_ko": "최종 코너 이후에 중위권 그룹 이후에 있으면 가속력이 상승하고, 2400m 레이스라면 많이 상승한다＜작전・추입＞",
     "desc_tw": "在最後彎道之後若位於隊列中段之後加速力會上升，若是2400m的競賽則會大幅上升＜作戰．後追＞",
     "endesc": "Chaser・If you're not in the front during the Final Corner, your acceleration will increase; it will increase greatly in 2400 m races",
-    "endesc_needs_retranslation": true,
     "enname": "Crystal Mist",
     "gene_version": {
       "activation": 1,
@@ -135274,7 +135119,6 @@
     "desc_ko": "레이스 중반이 시작될 때 스킬로 지구력을 회복했고 레이스 중간 부근 이후에 좋은 위치에 있으면 속도가 다소 상승하며 결승점이 많이 멀면 많이 상승한다",
     "desc_tw": "在競賽中期一開始若用技能回復持久力在競賽中間附近之後位於良好位置時會使速度稍微上升當距離終點很遠時則會大幅上升",
     "endesc": "If you used a stamina-recovery skill during the first half of the Middle Leg, then around the half point of the race, if you're in a good position but not leading, your speed will increase; it will increase greatly if there's at least 1000 m remaining at that point",
-    "endesc_needs_retranslation": true,
     "enname": "Joy to the World",
     "gene_version": {
       "activation": 1,
@@ -136913,7 +136757,7 @@
         "precondition": "distance_rate>=50&order_rate<=70&order_rate>=30&overtake_target_time>=1@distance_rate>=50&order_rate<=70&order_rate>=30&is_overtake==1"
       }
     ],
-    "desc_ko": "레이스 후반에 중위권 그룹에서 추월하려고 하거나 누군가 따라붙으면 남은 거리 400m일 때 속도가 상승하며 비근간거리 레이스라면 많이 상승한다",
+    "desc_ko": "레이스 후반에 중위권 그룹에서 추월하려고 하거나 누군가 따라붙으면 남은 거리가 400m일 때 속도가 상승하며 비근간거리 레이스라면 많이 상승한다",
     "desc_tw": "在競賽後半若位於隊列中段準備追過對手或被逼近時在剩餘400m處會使速度上升當在非主要距離競賽時則會大幅上升",
     "endesc": "If you were in the middle of the pack trying to overtake someone or someone tried to overtake you anywhere during the second half of the race, then with 400 m remaining in the race, your speed will increase; in non-core (not divisible by 400) races, it will increase greatly instead",
     "enname": "Naginata Maiden's Dance",
@@ -136944,7 +136788,7 @@
         }
       ],
       "cost": 200,
-      "desc_ko": "레이스 후반에 중위권 그룹에서 추월하려고 하거나 누군가 따라붙으면 남은 거리 400m일 때 속도가 약간 상승하며 비근간거리 레이스라면 다소 상승한다",
+      "desc_ko": "레이스 후반에 중위권 그룹에서 추월하려고 하거나 누군가 따라붙으면 남은 거리가 400m일 때 속도가 약간 상승하며 비근간거리 레이스라면 다소 상승한다",
       "desc_tw": "在競賽後半若位於隊列中段準備追過對手或被逼近時在剩餘400m處會使速度略微上升當在非主要距離競賽時則會稍微上升",
       "iconid": 20011,
       "id": 920111,
@@ -137310,7 +137154,6 @@
     "desc_ko": "레이스 후반에 후방에 있으면 남은 지구력에 따른 롱 스퍼트를 걸어 속도가 계속해서 약간 상승한다",
     "desc_tw": "在競賽後半若位於隊列後方視剩餘持久力進行長距離衝刺使速度略微持續上升",
     "endesc": "If you're in the second half of the pack during the second half of the race, your speed will increase; the more stamina you have remaining, the bigger the increase",
-    "endesc_needs_retranslation": true,
     "enname": "Radiant Stride",
     "gene_version": {
       "activation": 1,
@@ -137398,7 +137241,6 @@
     "desc_ko": "레이스 후반까지 전방을 유지하면 오랫동안 속도가 계속해서 다소 상승하며 「대도주」가 발동 중이면 효과가 바뀌어 지구력을 많이 회복한다＜중거리＞",
     "desc_tw": "到競賽後半為止若能維持在隊列前方會使速度於長時間內稍微持續上升若「強勢領頭」有發動時則效果變為大幅回復持久力＜中距離＞",
     "endesc": "Medium・If you were in the top 40% for the entire first half of the race, your speed will slightly increase; if you activated the 大逃げ (Great Escape) skill, then instead of increasing speed, your stamina will recover tremendously instead",
-    "endesc_needs_retranslation": true,
     "enname": "Determined Stroke",
     "gene_version": {
       "activation": 1,
@@ -138474,7 +138316,6 @@
     "desc_ko": "레이스 중반이 시작될 때 전방에서 추월하려고 하거나 누군가 따라붙으면 잠시 동안 다소 앞으로 나가며 마일 레이스라면 잠시 동안 많이 앞으로 나간다",
     "desc_tw": "在競賽中期一開始若位於隊列前方準備追過對手或被逼近時，短時間內稍微向前邁進，當在一哩競賽時則短時間內大幅向前邁進",
     "endesc": "During the first half of the Middle Leg, if you're in the front, and if you're trying to overtake someone or someone is trying to overtake you, you will get a speed boost; the effect is much stronger in Mile races",
-    "endesc_needs_retranslation": true,
     "enname": "Miraculously Tubular Oracle",
     "gene_version": {
       "activation": 1,
@@ -139304,10 +139145,9 @@
         ]
       }
     ],
-    "desc_ko": "남은 거리 350m일 때 지점에서 전방에 있으면 잠시 동안 앞으로 나가며 추가로 마일 레이스라면 속도가 약간 상승한다",
+    "desc_ko": "남은 거리가 350m일 때 전방에 있으면 잠시 동안 앞으로 나가며 추가로 마일 레이스라면 속도가 약간 상승한다",
     "desc_tw": "在剩餘350m處若位於隊列前方短時間內向前邁進且在一哩競賽時會再使速度略微上升",
     "endesc": "If you're in the first half of the pack with 350 m remaining in the race, you will get an (immediate) speed boost; in Mile races, your (target) speed will additionally also slightly increase",
-    "endesc_needs_retranslation": true,
     "enname": "Breezy Treat",
     "gene_version": {
       "activation": 1,
@@ -139409,7 +139249,6 @@
     "desc_ko": "레이스 중간 부근에서 전방에 있으면 속도가 상승하며, 지능이 상당히 높으면 많이 상승한다＜단거리＞",
     "desc_tw": "在競賽中間附近若位於隊列前方速度會上升，當智力數值十二分強大時則會大幅上升＜短距離＞",
     "endesc": "Short・If you're in the front halfway through the race, your speed will increase; it will increase greatly if your base Wisdom is at least 1200",
-    "endesc_needs_retranslation": true,
     "enname": "Fluffy Fuzzy Hour",
     "gene_version": {
       "activation": 1,
@@ -140566,7 +140405,7 @@
         }
       ],
       "cost": 200,
-      "desc_ko": "남은 거리 1000m일 때 계속해서 아주 조금 앞으로 나간다＜작전・추입＞",
+      "desc_ko": "남은 거리가 1000m일 때 계속해서 아주 조금 앞으로 나간다＜작전・추입＞",
       "desc_tw": "在剩餘1000m處會些微持續向前邁進＜作戰．後追＞",
       "iconid": 20011,
       "id": 901151,
@@ -140996,9 +140835,12 @@
     "rarity": 1,
     "sup_e": [
       [
+        30313,
         20094
       ],
-      []
+      [
+        10147
+      ]
     ],
     "sup_hint": [
       [
@@ -142061,7 +141903,6 @@
     "desc_ko": "레이스 중간 지점에서 중위권 그룹 이후에 있으면 짧은 시간 동안 앞으로 나가며 단거리나 마일 레이스라면 그 후 라스트 스퍼트 중에 짧은 시간 동안 많이 앞으로 나간다",
     "desc_tw": "在競賽中間點若位於隊列中段之後極短時間內向前邁進，當在短距離或一哩競賽的最終衝刺時極短時間內大幅向前邁進",
     "endesc": "If you're not in the front halfway through the race, you will get a speed boost; (Short/Mile only) then, during the Last Spurt, you will get a great speed boost",
-    "endesc_needs_retranslation": true,
     "enname": "¡Qué alegría!",
     "gene_version": {
       "activation": 1,
@@ -142600,7 +142441,6 @@
     "desc_ko": "레이스 후반 제3 코너에서 중위권 그룹에 있으면 잠시 동안 속도가 상승하며 그 후 종반 최종 직선에서 추월하려고 하면 속도가 약간 상승한다",
     "desc_tw": "在競賽後半的第3彎道若位於隊列中段短時間內速度上升之後在後期的最後直線準備追過對手時速度會略微上升",
     "endesc": "If you're in the middle of the pack in the second half of the race on corner 3, your speed will increase; then, when you're about to overtake someone on the Final Straight, your speed will increase slightly",
-    "endesc_needs_retranslation": true,
     "enname": "Deceive Thy Foe and Be Certain of Victory",
     "gene_version": {
       "activation": 1,
@@ -142845,7 +142685,6 @@
     "desc_ko": "레이스 종반에 후방에 있으면 다소 앞으로 나가며 마일 레이스에서 최후방 부근에서 계속 대기하면 많이 앞으로 나간다",
     "desc_tw": "在競賽後期若位於隊列後方會稍微向前邁進在一哩競賽若持續潛伏於隊列最後方附近則會大幅向前邁進",
     "endesc": "If you're in the second half of the pack during the Final Leg, you will get a slight speed boost; the effect is much stronger if the race is Mile and you've been at the back of the pack (last 30%) the entire time until now",
-    "endesc_needs_retranslation": true,
     "enname": "Terpsichore of the Abyss",
     "gene_version": {
       "activation": 1,
@@ -142939,7 +142778,6 @@
     "desc_ko": "종반이 다가오는 어딘가에서 전방에 있으면 속도가 계속해서 다소 상승하며 추가로 3위 이내라면 가속력이 계속해서 아주 조금 상승한다＜중거리＞",
     "desc_tw": "接近後期的某處若位於隊列前方會使速度稍微持續上升且若位居第3以內則會再使加速力些微持續上升＜中距離＞",
     "endesc": "Medium・If you're in the first half of the pack at a random point during the second half of the Middle Leg, your speed will slightly increase; if you're third or better, your acceleration will also slightly increase",
-    "endesc_needs_retranslation": true,
     "enname": "Romantic Horizon",
     "gene_version": {
       "activation": 1,
@@ -143911,7 +143749,6 @@
     "desc_ko": "레이스 중간 부근에서 중위권 그룹에 있으면 속도가 계속해서 다소 상승하며 중거리 레이스에서 파워가 상당히 높으면 긴 시간 동안 속도가 계속해서 다소 상승한다",
     "desc_tw": "在競賽中間附近若位於隊列中段會使速度稍微持續上升當在中距離競賽力量數值十二分強大時會使速度在較長時間內稍微持續上升",
     "endesc": "If you're in the middle of the pack halfway through the race, your speed will slightly increase; the effect is longer in Medium races if your base Power is at least 1200",
-    "endesc_needs_retranslation": true,
     "enname": "Driven by Light, the Heavenly Wolf Hunts",
     "gene_version": {
       "activation": 1,
@@ -144253,7 +144090,7 @@
         "precondition": "ground_condition==1"
       }
     ],
-    "desc_ko": "레이스 종반이 시작될 때 일찍 중위권 그룹에 있으면 앞으로 나가며, 추가로 「다습」, 「포화」, 「불량」 상태인 경기장이라면 가속력이 아주 조금 상승한다＜중거리＞",
+    "desc_ko": "레이스 종반이 시작될 때 일찍 중위권 그룹에 있으면 앞으로 나가며, 추가로 「다습」, 「포화」,「불량」 상태인 경기장이라면 가속력이 아주 조금 상승한다＜중거리＞",
     "desc_tw": "在競賽後期一開始若提早位於隊列中段會向前邁進，且場地狀態若為「略差」「差」「極差」則加速力會再些微上升＜中距離＞",
     "endesc": "Medium・If you're in the middle of the pack at a random point during the first quarter of the Final Leg, you will get a speed boost; if the track condition is NOT good, your acceleration will also increase slightly",
     "enname": "Beat the Stars",
@@ -144342,7 +144179,6 @@
     "desc_ko": "레이스 후반 직선에서 중위권 그룹에 있으면 속도가 상승하며, 장거리 레이스라면 효과가 증가한다",
     "desc_tw": "在競賽後半的直線若位於隊列中段速度會上升，若是長距離競賽則效果增加",
     "endesc": "If you're in the middle of the pack on any straight during the second half of the race, your speed will increase; the effect is stronger in Long races",
-    "endesc_needs_retranslation": true,
     "enname": "Target Acquired! Serving Justice!",
     "gene_version": {
       "activation": 1,
@@ -144547,7 +144383,7 @@
         ]
       }
     },
-    "name_ko": "맹수는 태양을 향해 외친다",
+    "name_ko": "맹수는 태양에 소리친다",
     "name_tw": "對太陽咆哮的猛獸",
     "pre_evo": {
       "card_id": 112701,
@@ -144667,7 +144503,6 @@
     "desc_ko": "레이스 후반에 속도가 상승하며 늦은 출발을 하지 않고 전방을 유지하면 아주 많이 상승한다＜더트＞",
     "desc_tw": "在競賽後半速度上升若沒有晚起跑且能維持在隊列前方則會極大幅上升＜沙地＞",
     "endesc": "Dirt・During the second half of the race, your speed will increase; it will increase tremendously if you didn't have a late start and you've been in the top 40% for the entire race",
-    "endesc_needs_retranslation": true,
     "enname": "Forward March!",
     "gene_version": {
       "activation": 1,
@@ -145430,7 +145265,7 @@
         ]
       }
     ],
-    "desc_ko": "레이스 전반 코너에서 전방에 있으면 짧은 시간 동안 속도가 상승하며, 마일 또는 중거리 레이스 라면 종반 최종 직선에서 누군가 따라 붙으면 잠시 동안 다소 앞으로 나간다＜잔디＞",
+    "desc_ko": "레이스 전반 코너에서 전방에 있으면 짧은 시간 동안 속도가 상승하며, 마일 또는 중거리 레이스라면 종반 최종 직선에서 누군가 따라 붙으면 잠시 동안 다소 앞으로 나간다＜잔디＞",
     "desc_tw": "在競賽前半的彎道若位於隊列前方速度會於極短時間內上升，若是一哩或中距離競賽，之後在後期的最後直線當被逼近時短時間內稍微向前邁進＜草地＞",
     "endesc": "Turf・If you're in the first half of the pack on any corner during the first half of the race, your speed will increase; (Mile/Medium only) then, if someone is trying to overtake you during the Last Straight, you will get a speed boost",
     "enname": "Queen's Rebirth",
@@ -145459,7 +145294,7 @@
         }
       ],
       "cost": 200,
-      "desc_ko": "전반 코너에서 전방에 있으면 짧은 시간 동안 속도가 약간 상승하고, 마일 또는 중거리 레이 스 라면 종반 최종 직선에서 누군가 따라붙으면 잠시 동안 아주 조금 앞으로 나간다＜잔디＞",
+      "desc_ko": "전반 코너에서 전방에 있으면 짧은 시간 동안 속도가 약간 상승하고, 마일 또는 중거리 레이 스라면 종반 최종 직선에서 누군가 따라붙으면 잠시 동안 아주 조금 앞으로 나간다＜잔디＞",
       "desc_tw": "在前半的彎道若位於隊列前方極短時間內速度略微上升，若是一哩或中距離競賽，之後在後期的最後直線當被逼近時短時間內些微向前邁進＜草地＞",
       "iconid": 20011,
       "id": 900901,
@@ -146121,7 +145956,6 @@
     "desc_ko": "남은 거리가 300m일 때 전방에 있으면 속도가 다소 상승하며 스킬 발동 시, 선두이거나 선두로부터 2마신 이내라면 많이 상승한다＜작전・선행＞",
     "desc_tw": "在剩餘300m處若位於隊列前方速度會稍微上升，若發動技能時位居領先或距離最前頭2身距以內則會大幅上升＜作戰．前列＞",
     "endesc": "Leader・If you're in the front with 300 m remaining in the race, your speed will increase; it will increase greatly if you're leading or at most 5 m away from the lead",
-    "endesc_needs_retranslation": true,
     "enname": "Everlasting Knot",
     "gene_version": {
       "activation": 1,
@@ -146625,7 +146459,6 @@
     "desc_ko": "레이스 중간 부근에서 잠시 동안 속도가 다소 상승하며, 중장거리 레이스라면 이 스킬과 각성 스킬이 진화한 스킬의 효과 시간이 2배가 된다＜선행・잔디＞",
     "desc_tw": "在競賽中間附近會使速度於短時間內稍微上升，若在中距離或長距離競賽此技能和已進化的覺醒技能的效果時間變成2倍＜前列．草地＞",
     "endesc": "Leader・Turf・40% through the race, your speed will slightly increase; in Medium and Long races, the duration of this skill and all Evolved Awakening skills triggered afterward is doubled",
-    "endesc_needs_retranslation": true,
     "enname": "Weaving History",
     "gene_version": {
       "activation": 1,
@@ -146970,7 +146803,6 @@
     "desc_ko": "레이스 중간 부근에서 중위권 그룹에 있으면 짧은 시간 동안 속도가 다소 상승하며, 그 후 종반의 코너에서 경합한 경우, 남은 거리가 350m일 때 짧은 시간 동안 속도가 많이 상승한다",
     "desc_tw": "在競賽中間附近若位於隊列中段極短時間內速度稍微上升之後若在後期的彎道與對手競爭在剩餘350m處極短時間內速度大幅上升",
     "endesc": "If you're in the middle of the pack 40% into the race, your speed will slightly increase; then, if you were blocked from the side on any Final Leg corner, then with 350 m remaining in the race, your speed will greatly increase",
-    "endesc_needs_retranslation": true,
     "enname": "Silent Sunset Gold",
     "gene_version": {
       "activation": 1,
@@ -148198,7 +148030,6 @@
     "desc_ko": "중반이 다가올 때 전방에 있으면 속도가 약간 상승하며 중거리 레이스라면 그 후 중반 직선에서 속도가 다소 상승한다",
     "desc_tw": "接近競賽中期時若位於隊列前方速度會略微上升，若是中距離競賽則之後在中期的直線速度稍微上升",
     "endesc": "If you're in the front during the second half of the Opening Leg, your speed will slightly increase; (Medium only) then, during any Middle Leg straight, your speed will slightly increase again",
-    "endesc_needs_retranslation": true,
     "enname": "Full-Throttle Cyclone!",
     "gene_version": {
       "activation": 1,
@@ -148553,7 +148384,6 @@
     "desc_ko": "레이스 전반 코너에서 좋은 위치에 있으면 속도가 상승하며, 2200m 레이스라면 계속해서 상승한다",
     "desc_tw": "在競賽前半的彎道若位於良好位置速度會上升，若是2200m的競賽則會持續上升",
     "endesc": "If you're near the front during any corner in the first half of the race, your speed will increase; if the race is 2200 m long, the effect lasts longer",
-    "endesc_needs_retranslation": true,
     "enname": "Hop Step Gotcha ♡",
     "gene_version": {
       "activation": 1,
@@ -149183,7 +149013,7 @@
         ]
       }
     ],
-    "desc_ko": "레이스 중간 부근에서 중위권 그룹이라면 긴 시간 동안 속도가 계속해서 다소 상승하고 지구력을 회복하며, 3000m 미만 레이스라면 회복하지 않고 긴 시간 동안 속도가 계속해서 상승한다＜장거리＞",
+    "desc_ko": "레이스 중간 부근에서 중위권 그룹이면 긴 시간 동안 속도가 계속해서 다소 상승하고 지구력을 회복하며, 3000m 미만 레이스면 회복 대신 긴 시간 동안 속도가 계속 상승한다＜장거리＞",
     "desc_tw": "在競賽中間附近位於隊列中段時使速度在較長時間內稍微持續上升並回復持久力若是不到3000m的競賽則不回復持久力使速度在較長時間內持續上升＜長距離＞",
     "endesc": "Long・If you're in the middle of the pack halfway through the race, your speed will increase and your stamina will recover; if the race is shorter than 3000 m, you won't recover any stamina, but the speed effect is stronger",
     "enname": "Tidebreaker",
@@ -149206,7 +149036,7 @@
         }
       ],
       "cost": 200,
-      "desc_ko": "레이스 중간 부근에서 중위권 그룹이면 긴 시간 동안 속도가 계속해서 다소 상승하고 지구력을 회복하며, 3000m 미만 레이스면 회복 대신 긴 시간 동안 속도가 계속 상승한다＜장거리＞",
+      "desc_ko": "레이스 중간 부근에서 중위권 그룹이면 긴 시간 동안 속도가 계속해서 아주 조금 상승하고 지구력을 약간 회복한다＜장거리＞",
       "desc_tw": "在競賽中間附近位於隊列中段時使速度在較長時間內些微持續上升並略微回復持久力＜長距離＞",
       "iconid": 20011,
       "id": 910891,
@@ -150271,7 +150101,6 @@
     "desc_ko": "레이스 후반 제3 코너에서 중위권 그룹에 있으면 속도가 다소 상승하며 2000m 레이스에 그곳이 오르막이라면 효과와 시간이 증가한다",
     "desc_tw": "在競賽後半的第3彎道若位於隊列中段速度會稍微上升若是2000m的競賽且該處是上坡則效果及時間增加",
     "endesc": "If you're in the middle of the pack during the third corner in the second half of the race, your speed will slightly increase; the effect and duration are better if the race is 2000 m and you're running uphill",
-    "endesc_needs_retranslation": true,
     "enname": "Je t'aime ☆ Vacances",
     "gene_version": {
       "activation": 1,
@@ -150418,8 +150247,7 @@
     ],
     "desc_ko": "레이스 중반에 중위권 그룹에 있으면 한동안 속도가 상승하며, 교토 경기장에서 지능이 상당히 높으면 효과가 상승한다 ＜작전・선입＞",
     "desc_tw": "在競賽中期若位於隊列中段一段時間內速度會上升，當在京都賽場且智力數值十二分強大時效果會上升＜作戰．居中＞",
-    "endesc": "Betweener・If you're in the middle of the pack at a random point during the Middle Leg, your speed will increase; the effect is stronger if your base Wisdom is at least 1200 and the race is in Kyoto",
-    "endesc_needs_retranslation": true,
+    "endesc": "Betweener・If you're not in the front at a random point during the Middle Leg, your speed will increase; the effect is stronger if your base Wisdom is at least 1200 and the race is in Kyoto",
     "enname": "Onward! To the Sea!",
     "evo_cond": [
       [
@@ -150542,7 +150370,6 @@
     "desc_ko": "남은 거리가 300m일 때 중위권 그룹에 있으면 속도가 많이 상승하며, 만약 중거리 레이스에서 「충동」이 발동했다면 레이스 종반 코너에서 순위와 상관없이 가속력이 상승한다",
     "desc_tw": "在剩餘300m處若位於隊列中段速度會大幅上升或在中距離競賽且「衝動」有發動時在競賽後期的彎道加速力會無視名次上升",
     "endesc": "If you're in the middle of the pack with 300m remaining, your speed will greatly increase; (Medium only) or, if you've activated the Impulse skill, then during a Final Leg corner, your acceleration will increase",
-    "endesc_needs_retranslation": true,
     "enname": "Scarlet Lily's Elation",
     "gene_version": {
       "activation": 1,
@@ -151736,7 +151563,6 @@
     "desc_ko": "레이스 중반에 추월하려고 하면 짧은 시간 동안 다소 앞으로 나가며, 그 후 종반의 최종 코너 후반에서 중위권 그룹 이후에 있으면 잠시 동안 속도가 상승한다",
     "desc_tw": "在競賽中期準備追過對手時於極短時間內稍微向前邁進，之後在後期的最後彎道後半若位於隊列中段之後短時間內速度上升",
     "endesc": "If you're trying to overtake someone in the Middle Leg, you will get a speed boost; then, if you're NOT in the front in the second half of the Final Corner, your speed will increase",
-    "endesc_needs_retranslation": true,
     "enname": "A Small Miracle for You♪",
     "gene_version": {
       "activation": 1,
@@ -152699,7 +152525,6 @@
     "desc_ko": "레이스 종반 코너에서 잠시 동안 다소 앞으로 나가며, 더트 레이스라면 효과가 증가하고 추가로 가속력이 아주 조금 상승한다 ＜도주/선행＞",
     "desc_tw": "在競賽後期的彎道短時間內稍微向前邁進，若是沙地競賽則效果增加且加速力些微上升＜領頭/前列＞",
     "endesc": "Runner/Leader・During any Final Leg corner, you will get a speed boost; in Dirt races, your acceleration will also slightly increase",
-    "endesc_needs_retranslation": true,
     "enname": "Punkish Bite",
     "gene_version": {
       "activation": 1,
@@ -153139,7 +152964,6 @@
     ],
     "desc_ko": "レース終盤突入時に前方にいると わずかに前に出る 短距離レースならゴールするまで わずかに前に出続ける＜作戦・先行＞",
     "endesc": "Leader・if you're in the first half of the pack 2/3 through the race, you will get a slight speed boost; in Short races, the effect lasts until the end of the race",
-    "endesc_needs_retranslation": true,
     "enname": "Because I Believe",
     "gene_version": {
       "activation": 1,
@@ -153429,7 +153253,6 @@
     ],
     "desc_ko": "中盤が迫ったどこかで好位置にいると 少しの間速度が上がる 短距離かマイルレースなら少しの間 すごく上がる",
     "endesc": "If you're close to the lead at a random point during the second half of the Opening Leg, your speed will increase; in Short and Mile races, it will increase greatly",
-    "endesc_needs_retranslation": true,
     "enname": "Sugar Parade: Start!",
     "gene_version": {
       "activation": 1,
@@ -154621,7 +154444,6 @@
     ],
     "desc_ko": "レース中間付近で好位置にいると 速度が上がる 中距離レースなら効果が増える",
     "endesc": "If you're in the first half of the pack (but not leading) halfway through the race, your speed will increase; the effect is stronger in Medium races",
-    "endesc_needs_retranslation": true,
     "enname": "My Flame Lights the Way",
     "gene_version": {
       "activation": 1,
@@ -154964,7 +154786,6 @@
     ],
     "desc_ko": "中盤が迫ったとき前方にいると短い間 速度がすごく上がる、その後レース中間 付近で詰め寄られると少し前に出る ＜ダート＞",
     "endesc": "Dirt・If you're in the front at a random point in the second half of the Opening Leg, your speed will greatly increase; then, if someone is trying to overtake you halfway through the race, you will get a speed boost",
-    "endesc_needs_retranslation": true,
     "enname": "Geothermal Overdrive",
     "gene_version": {
       "activation": 1,
@@ -156262,7 +156083,6 @@
     ],
     "desc_ko": "レース中間地点で中団以降にいると 少し前に出る マイルか中距離レースなら すごく前に出る",
     "endesc": "If you're not in the front halfway through the race, you will get a speed boost; the boost will be greater in Mile and Medium races",
-    "endesc_needs_retranslation": true,
     "enname": "To Our Vista",
     "gene_version": {
       "activation": 1,
@@ -156558,7 +156378,6 @@
     ],
     "desc_ko": "中盤始めのどこかで速度を落とす、その 後終盤が迫ったどこかで中団だと速度を 少し上げ続ける、先頭から離れていると すごく上げ続ける＜中距離/長距離＞",
     "endesc": "Medium/Long・At a random point during the first half of the Middle Leg, you will slow down; then, if you're in the middle of the pack at a random point during the second half of the Middle Leg, your speed will increase; it will increase more the further you are from the first place",
-    "endesc_needs_retranslation": true,
     "enname": "Wager on the Holy Night Stars",
     "gene_version": {
       "activation": 1,
@@ -156643,7 +156462,6 @@
     ],
     "desc_ko": "残り1000ｍ地点で後方だと少しの間 少し前に出る、長距離ならその後 終盤以降のコーナーで追い抜いていた 場合最終直線で短い間速度が上がる",
     "endesc": "If you're in the second half of the pack with 1000 m remaining, you will get a speed boost; (Long only) then, if you overtook someone on any Final Leg corner, then during the Final Straight, your speed will increase",
-    "endesc_needs_retranslation": true,
     "enname": "Dreaming of the Silver World",
     "gene_version": {
       "activation": 1,
@@ -156714,8 +156532,7 @@
     ],
     "cost": 180,
     "desc_ko": "レース中盤が迫ったとき 後方にいると持久力を回復する ＜作戦・追込＞",
-    "endesc": "Chaser・If you're in the second half of the pack at a random point during the second half of the Opening Leg, your stamina will recover",
-    "endesc_needs_retranslation": true,
+    "endesc": "Chaser・If you're not in the front at a random point during the second half of the Opening Leg, your stamina will recover",
     "enname": "Clear Mind",
     "evo": [],
     "iconid": 20022,
@@ -158122,7 +157939,6 @@
     ],
     "desc_ko": "レース中盤始めに追い抜こうとするか 近寄られると少しの間少し前に出る 中距離レースならその後終盤が迫った どこかで前方だと短い間速度が上がる",
     "endesc": "If you're trying to overtake someone or someone is trying to overtake you during the first half of the Middle Leg, you will get a speed boost; (Medium only) then, if you're near the front at a random point during the second half of the Middle Leg, your speed will increase",
-    "endesc_needs_retranslation": true,
     "enname": "Spinning Top of Longevity",
     "gene_version": {
       "activation": 1,
@@ -158197,7 +158013,6 @@
     ],
     "desc_ko": "終盤以降の最終コーナー後半に 中団にいると速度が上がる 長距離レースかつ中盤に 競り合っていた場合はものすごく上がる",
     "endesc": "If you're in the middle of the pack during the second half of the Final Corner, your speed will increase; (Long only) if you were blocked from the side in the Middle Leg, your speed will increase tremendously instead",
-    "endesc_needs_retranslation": true,
     "enname": "Spring Light: Bon Appétit",
     "gene_version": {
       "activation": 1,
@@ -159165,7 +158980,6 @@
     ],
     "desc_ko": "終盤以降の最終コーナー後半に前方に いると短い間少し前に出る、マイルか 中距離レースならその後最終直線で 短い間すごく前に出る＜作戦・先行＞",
     "endesc": "Leader・If you're in the first half of the pack at a random point during the second half of the Final Corner, you will get a slight speed boost; (Mile/Medium only) then, during the Final Straight, you will get another speed boost",
-    "endesc_needs_retranslation": true,
     "enname": "Clear the Haze, Seize the Morning",
     "gene_version": {
       "activation": 1,
@@ -159863,7 +159677,6 @@
     ],
     "desc_ko": "レース後半まで前方をキープしていると 終盤以降の最終直線で速度が上がる 中距離レースならすごく上がる",
     "endesc": "If you stay in the first half of the pack for the entire first half of the race, then on the Final Straight, your speed will increase; in Medium races, it will increase greatly",
-    "endesc_needs_retranslation": true,
     "enname": "Che Piacevole!",
     "gene_version": {
       "activation": 1,
@@ -159939,7 +159752,6 @@
     ],
     "desc_ko": "中盤が迫ったどこかで中団にいると 少しの間速度が上がる 芝のマイルレースなら少しの間 ものすごく上がる＜作戦・先行＞",
     "endesc": "Leader・If you're in the middle of the pack at a random point in the second half of the Opening Leg, your speed will increase; in Mile races on Turf, it will increase tremendously",
-    "endesc_needs_retranslation": true,
     "enname": "Have S'more Love!",
     "gene_version": {
       "activation": 1,
@@ -160831,7 +160643,6 @@
     ],
     "desc_ko": "レース中盤に前方で競り合うと 少しの間速度が上がる さらに追い比べをしているとその後 少しの間わずかに前に出る",
     "endesc": "If you're in the first half of the pack during the Middle Leg and you're being blocked from the side, your speed will increase; then, if you participate in a Showdown (追い比べ), you will get a slight speed boost",
-    "endesc_needs_retranslation": true,
     "enname": "Absolute Strongest ☆ Showcase Time!",
     "gene_version": {
       "activation": 1,
@@ -162383,7 +162194,6 @@
     ],
     "desc_ko": "レース中盤の直線で前方にいると 速度を少し上げ続ける 海外レース場なら効果が増える",
     "endesc": "If you're in the first half of the pack during any Middle Leg straight, your speed will slightly increase; the effect is stronger if the race takes place abroad",
-    "endesc_needs_retranslation": true,
     "enname": "Watch Us Flourish",
     "gene_version": {
       "activation": 1,
@@ -162946,7 +162756,6 @@
       }
     ],
     "endesc": "If you're not in the front anywhere during the second half of the race, your speed will increase; the effect lasts longer if it's a Mile race and you've been in the second half of the pack the entire race",
-    "endesc_needs_retranslation": true,
     "enname": "Sparkling Arrow Line",
     "gene_version": {
       "activation": 1,
@@ -163032,7 +162841,6 @@
       }
     ],
     "endesc": "Runner/Leader・If you're in top 40% halfway through the race, your speed will increase; in Sprint races, you will also get an (immediate) speed boost",
-    "endesc_needs_retranslation": true,
     "enname": "Sakura Storm Spring Burst",
     "gene_version": {
       "activation": 1,
@@ -163734,7 +163542,6 @@
       }
     ],
     "endesc": "If you're in the first half of the pack with 1000 m to go, your speed will slightly increase; if the race is Turf and Mile or Medium and the skill activates on a straight, you will get an (immediate) speed boost instead",
-    "endesc_needs_retranslation": true,
     "enname": "Blooming Star",
     "gene_version": {
       "activation": 1,
@@ -164157,7 +163964,6 @@
       }
     ],
     "endesc": "40% through the race, your speed will slightly increase; (Medium + Turf only) if you're not in the front at the time of activation, the effect is longer and stronger",
-    "endesc_needs_retranslation": true,
     "enname": "Distant Far North",
     "gene_version": {
       "activation": 1,
@@ -164764,6 +164570,14 @@
     "jpdesc": "レース終盤が迫ったどこかで速度がわずかに上がる＜先行/差し＞",
     "jpname": "流れに任せて",
     "rarity": 1,
+    "sup_e": [
+      [
+        30311
+      ],
+      [
+        10146
+      ]
+    ],
     "sup_hint": [
       [
         30297
@@ -165879,7 +165693,6 @@
       }
     ],
     "endesc": "Medium・If you were in the middle of the pack halfway through the race, then with 400 m remaining, your speed will greatly increase; the effect is stronger if you're in a good position when it activates",
-    "endesc_needs_retranslation": true,
     "enname": "Unwithering Cattleya",
     "gene_version": {
       "activation": 1,
@@ -165960,7 +165773,6 @@
       }
     ],
     "endesc": "Betweener・During the Middle Leg, your stamina will recover; (Long only) then, during the second half of the race, if you're in the middle of the pack, you will get a speed boost",
-    "endesc_needs_retranslation": true,
     "enname": "In Times You're Wandering the Night",
     "gene_version": {
       "activation": 1,
@@ -166896,7 +166708,6 @@
       }
     ],
     "endesc": "During the Middle Leg, if you're in the first half of the pack with at least two other girls near you, your speed will slightly increase; the effect is stronger in Medium and Long races",
-    "endesc_needs_retranslation": true,
     "enname": "Flora That Will Bloom for You",
     "gene_version": {
       "activation": 1,
@@ -167113,7 +166924,6 @@
       }
     ],
     "endesc": "Leader・Long・After activating at least 3 recovery skills, during the latter part of the Middle Leg, you will get a speed boost; if you're in the first half of the pack when it activates, your acceleration will also increase",
-    "endesc_needs_retranslation": true,
     "enname": "One Bowl, Full Power Delivery!",
     "gene_version": {
       "activation": 1,
@@ -168153,7 +167963,6 @@
       }
     ],
     "endesc": "Leader/Chaser・If you get a good start, you will get a slight speed boost; if you get a late start, then halfway through the race, if you're in the second half of the pack, your speed will greatly increase",
-    "endesc_needs_retranslation": true,
     "enname": "Unmatched Tactics",
     "gene_version": {
       "activation": 1,
@@ -169627,7 +169436,7 @@
       }
     ],
     "endesc": "Runner/Leader・In the second half of the race, your speed will slightly increase; (2000+ m races only) then, when you start a last spurt, your acceleration will increase",
-    "enname": "",
+    "enname": "Shine! Burst! Supernova!",
     "gene_version": {
       "activation": 1,
       "condition_groups": [
@@ -169701,7 +169510,7 @@
     ],
     "cost": 200,
     "endesc": "Medium/Long・If you're in the first half of the pack at a random point during the first half of the Middle Leg, your speed will increase and your stamina will slightly recover",
-    "enname": "",
+    "enname": "Transcendental",
     "evo": [
       {
         "card_id": 114101,
@@ -169754,7 +169563,7 @@
     ],
     "cost": 200,
     "endesc": "Medium/Long・If you're in the first half of the pack at a random point during the first half of the Middle Leg, your speed will slightly increase and your stamina will marginally recover",
-    "enname": "",
+    "enname": "Presence",
     "iconid": 20011,
     "id": 204512,
     "jpdesc": "レース中盤始めのどこかで前方だと速度がわずかに上がり持久力をほんのわずかに回復する＜中距離/長距離＞",
@@ -169791,7 +169600,7 @@
     ],
     "cost": 180,
     "endesc": "Chaser・If you're not in the front at a random point during the Middle Leg, your speed will increase",
-    "enname": "",
+    "enname": "Decisive Moment",
     "evo": [],
     "iconid": 20012,
     "id": 204521,
@@ -169834,7 +169643,7 @@
     ],
     "cost": 180,
     "endesc": "Chaser・If you're not in the front at a random point during the Middle Leg, your speed will slightly increase",
-    "enname": "",
+    "enname": "Seize the Turning Tide",
     "iconid": 20011,
     "id": 204522,
     "jpdesc": "レース中盤のどこかで中団以降だと速度がわずかに上がる＜作戦・追込＞",
@@ -169876,7 +169685,7 @@
     ],
     "cost": 190,
     "endesc": "Medium・At a random point during the Middle Leg, you will get a speed boost",
-    "enname": "",
+    "enname": "Refined Elegance",
     "evo": [],
     "iconid": 20012,
     "id": 204531,
@@ -169919,7 +169728,7 @@
     ],
     "cost": 190,
     "endesc": "Medium・At a random point during the Middle Leg, you will get a slight speed boost",
-    "enname": "",
+    "enname": "Splendid Stride",
     "iconid": 20011,
     "id": 204532,
     "jpdesc": "レース中盤のどこかでわずかに前に出る＜中距離＞",
@@ -169961,7 +169770,7 @@
     ],
     "cost": 180,
     "endesc": "Leader・At a random point during the second half of the race, you will get a speed boost",
-    "enname": "",
+    "enname": "Purehearted",
     "evo": [],
     "iconid": 20012,
     "id": 204571,
@@ -170003,7 +169812,7 @@
     ],
     "cost": 180,
     "endesc": "Leader・At a random point during the second half of the race, you will get a slight speed boost",
-    "enname": "",
+    "enname": "Simply Onward",
     "iconid": 20011,
     "id": 204572,
     "jpdesc": "レース後半のどこかでわずかに前に出る＜作戦・先行＞",
@@ -170046,7 +169855,7 @@
     ],
     "cost": 0,
     "endesc": "The chance of kakari (panicking) is increased",
-    "enname": "",
+    "enname": "I Can't Hold Back!!",
     "iconid": 10054,
     "id": 204591,
     "jpdesc": "逸る気持ちが抑えられない！！意気込みすぎて少し掛かりやすくなる",
@@ -170078,7 +169887,7 @@
     ],
     "cost": 0,
     "endesc": "If you're in first place during the Final Straight, your speed will decrease",
-    "enname": "",
+    "enname": "Me, Struggling!?",
     "iconid": 20014,
     "id": 204601,
     "jpdesc": "先走る気持ちに脚が追い付かず最終直線で先頭だと速度が少し下がる",
@@ -170110,7 +169919,7 @@
     ],
     "cost": 0,
     "endesc": "Your Wisdom stat is decreased by 40",
-    "enname": "",
+    "enname": "Me, Me, Me!!",
     "iconid": 10054,
     "id": 204611,
     "jpdesc": "運命の声に煽られて闘志があふれ出し賢さが少し下がる",
@@ -170152,7 +169961,7 @@
     ],
     "cost": 200,
     "endesc": "At a random point during the Middle Leg, your speed will slightly increase; the effect is stronger if you have at least 3 inherited skills",
-    "enname": "",
+    "enname": "Unbroken",
     "iconid": 20011,
     "id": 204622,
     "jpdesc": "レース中盤のどこかで速度がわずかに上がる継承スキルを3つ以上持っていると効果が増える",
@@ -170185,7 +169994,7 @@
     ],
     "cost": 160,
     "endesc": "Chaser・Medium・If you overtake someone on any corner during the second half of the race, you will get a slight speed boost",
-    "enname": "",
+    "enname": "Widening Vista",
     "iconid": 20011,
     "id": 204632,
     "jpdesc": "レース後半のコーナーで追い抜くとわずかに前に出る＜追込・中距離＞",
@@ -170225,7 +170034,7 @@
     ],
     "cost": 180,
     "endesc": "Chaser・If you overtake someone from the outside on the Final Corner, your speed will slightly increase",
-    "enname": "",
+    "enname": "My Step",
     "iconid": 20011,
     "id": 204642,
     "jpdesc": "最終コーナーで外から追い抜くと速度がわずかに上がる＜作戦・追込＞",
@@ -170265,7 +170074,7 @@
     ],
     "cost": 200,
     "endesc": "At a random point during the Middle Leg, you will get a speed boost",
-    "enname": "",
+    "enname": "Proof of Talent",
     "evo": [],
     "iconid": 20012,
     "id": 204701,
@@ -170308,7 +170117,7 @@
     ],
     "cost": 200,
     "endesc": "At a random point during the Middle Leg, you will get a marginal speed boost",
-    "enname": "",
+    "enname": "Breakthrough Run",
     "iconid": 20011,
     "id": 204702,
     "jpdesc": "レース中盤のどこかでしばらくの間ちょっと前に出る",
@@ -170364,7 +170173,7 @@
       }
     ],
     "endesc": "Leader・Turf・If you're in the first half of the pack at a random point during the second half of the Middle Leg, your speed will increase; (2000+ m races only) then, if you're near the front during the Final Straight, you will get a speed boost",
-    "enname": "",
+    "enname": "A Racing Star Lights the Heavens",
     "evo_cond": [
       [
         [
@@ -170435,7 +170244,7 @@
       }
     ],
     "endesc": "Leader・Medium・If you're in the first half of the pack at a random point during the first half of the Middle Leg, your speed will slightly increase; then, at a random point on the third corner, you will get a speed boost",
-    "enname": "",
+    "enname": "Beyond Heaven's Will",
     "evo_cond": [
       [
         [
@@ -170498,7 +170307,7 @@
       }
     ],
     "endesc": "Leader・Long・If you're in the first half of the pack at a random point during the first half of the Middle Leg, your speed will greatly increase and your stamina will recover",
-    "enname": "",
+    "enname": "Eternal Horizon",
     "evo_cond": [
       [
         [
