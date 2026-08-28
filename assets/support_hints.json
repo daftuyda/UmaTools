@@ -15589,7 +15589,7 @@
     "SupportName": "Tanino Gimlet (R)",
     "SupportNameJP": "タニノギムレット (R)",
     "SupportRarity": "R",
-    "SupportServer": "jp",
+    "SupportServer": "global",
     "SupportType": "Power",
     "SupportEffects": [
       {
@@ -84300,7 +84300,7 @@
     "SupportName": "Tanino Gimlet (SSR)",
     "SupportNameJP": "タニノギムレット (SSR)",
     "SupportRarity": "SSR",
-    "SupportServer": "jp",
+    "SupportServer": "global",
     "SupportType": "Power",
     "SupportEffects": [
       {
