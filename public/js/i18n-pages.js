@@ -684,6 +684,8 @@
       'teamTrials.noCandidates': 'No candidate skills provided.',
       'teamTrials.filteredSkills':
         'Filtered {count} skills that do not match selected targets/aptitudes.',
+      'teamTrials.filteredLowCoverageGreens':
+        'Filtered {count} green skills below {rate}% selected-course coverage or tied to an unresolved racecourse.',
       'teamTrials.ignoredRequired':
         'Ignored required skills outside selected targets/aptitudes: {names}.',
       'teamTrials.noMatchTargets': 'No skills match the selected Team Trials targets/aptitudes.',
@@ -1389,6 +1391,8 @@
       'teamTrials.riskyPick': 'リスク選択: {name} は推定信頼性が低い。',
       'teamTrials.noCandidates': '候補スキルが提供されていません。',
       'teamTrials.filteredSkills': '選択したターゲット/適性に一致しない{count}件のスキルを除外。',
+      'teamTrials.filteredLowCoverageGreens':
+        '選択コースでの適合率が{rate}%未満、または未対応の競馬場条件を持つ緑スキルを{count}件除外。',
       'teamTrials.ignoredRequired': '選択したターゲット/適性外の必須スキルを無視: {names}。',
       'teamTrials.noMatchTargets':
         '選択したチームレースターゲット/適性に一致するスキルがありません。',

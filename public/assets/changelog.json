@@ -18,8 +18,8 @@
       "ja": "オプティマイザーに進化スキルと関連スキルの分かりやすい表示、統一されたビルド画面、詳細なスキル情報、改善されたクイックツアーを追加しました。"
     },
     {
-      "en": "Rebuilt Team Trials optimization around track-pool coverage and the correct Wisdom activation formula; fixed-condition green skills now bypass Wisdom, and Expected SV replaces the old squared heuristic.",
-      "ja": "チームレース最適化をコース出現率と正しい賢さ発動率の式に基づいて再構築しました。固定条件の緑スキルは賢さ判定を受けず、従来の二乗ヒューリスティックを期待SVに置き換えました。"
+      "en": "Rebuilt Team Trials optimization around racing-strategy compatibility, expected race position, selected-build track coverage, and the correct Wisdom formula; low-coverage and unresolved racecourse greens are excluded, while eligible fixed-condition greens bypass Wisdom.",
+      "ja": "チームレース最適化を脚質適性、想定される隊列位置、選択ビルドのコース適合率、正しい賢さ発動率の式に基づいて再構築しました。低適合率および未対応の競馬場条件を持つ緑スキルは除外し、適合する固定条件の緑スキルは賢さ判定を受けません。"
     },
     {
       "en": "Overhauled Deck Builder layouts and selectors, fixed viewport-centered modals, and added Grand Live / Grand Concert templates that include required Light Hello decks.",

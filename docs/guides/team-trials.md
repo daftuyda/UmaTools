@@ -54,6 +54,8 @@ Exact-distance conditions use the observed distance counts for the selected cate
 
 These are aggregate estimates, not exact race simulations. Conditions tied to a specific track or course ID remain on the conservative fallback model because the aggregate sheet cannot resolve them.
 
+Green skills must reach at least 40% coverage for the selected build. The threshold is applied after choosing the target distance/surface context, so a condition can be rejected for one build and retained for another. Racecourse-specific greens are excluded because the aggregate pool cannot establish reliable coverage for them.
+
 ### 2.2 Conditional trigger chance
 
 Once a race is eligible, non-fixed requirements are estimated from the skill metadata in `skills_all.json`. The heuristic considers:
@@ -115,6 +117,8 @@ Before optimization, skills are filtered against selected targets and aptitudes:
 
 Metadata conditions are preferred, with skill type tags used as a fallback. A required skill that cannot apply to the target is omitted rather than consuming SP for zero value.
 
+Strategy tags are global restrictions even when a skill also has activation-condition groups. General skills without a strategy tag are checked against their expected race position: front-half conditions favor Front Runner/Pace Chaser, while rear-half conditions favor Late Surger/End Closer. This prevents recommendations such as `Trick (Rear)` for a Front Runner.
+
 The optimizer currently works on one character's purchasable skills. Team-wide decisions still need human review. In particular, the source guide recommends avoiding duplicate strategies within the same distance category so more teammates can earn the good-position bonus.
 
 ## 5. Dependencies and solver priority
@@ -144,6 +148,7 @@ This naturally allows several cheap, reliable ordinary skills to beat an expensi
 - Conditional trigger estimates are heuristics, not a frame-by-frame race solver.
 - Unique skill activation values vary; the current purchasable-skill optimizer uses the gold/ordinary point model and does not optimize unique skill inheritance.
 - Course-specific IDs use a conservative fallback until exact course geometry is added locally.
+- Green skills below the configurable 40% selected-course coverage threshold are excluded rather than merely downweighted.
 
 ## 7. Implementation map
 

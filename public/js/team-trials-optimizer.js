@@ -17,6 +17,7 @@
     volatileRaceConditionConsistencyPenalty: 0.18,
     volatileRaceConditionExpectedPenalty: 0.18,
     tierCorePenaltyReduction: 0.5,
+    minGreenCourseCoverage: 0.4,
   };
   var DISTANCE_VALUE_TO_KEY = { 1: 'sprint', 2: 'mile', 3: 'medium', 4: 'long' };
   var GROUND_VALUE_TO_KEY = { 1: 'turf', 2: 'dirt' };
@@ -766,10 +767,80 @@
     }
     return true;
   }
+
+  var STRATEGY_POSITION_BANDS = {
+    front: { order: [1, 4], order_rate: [0, 40] },
+    pace: { order: [2, 7], order_rate: [15, 55] },
+    late: { order: [5, 10], order_rate: [40, 85] },
+    end: { order: [7, 12], order_rate: [55, 100] },
+  };
+
+  function bandMatchesComparators(band, comparators) {
+    if (!Array.isArray(comparators) || !comparators.length) return true;
+    for (var value = band[0]; value <= band[1]; value += 1) {
+      if (valueMatchesComparators(value, comparators)) return true;
+    }
+    return false;
+  }
+
+  function positionalStyleRestrictionPasses(skill, allowed) {
+    var allowedStyles = allowed && allowed.style;
+    if (!allowedStyles || !allowedStyles.size) return true;
+
+    // These two general debuffs have no strategy tag in the source data, but
+    // their activation positions make them front-half/rear-half skills.
+    var skillName = nName(skill && skill.name);
+    if (skillName === 'trick rear' || skillName === 'trick back') {
+      return allowedStyles.has('late') || allowedStyles.has('end');
+    }
+    if (skillName === 'trick front') {
+      return allowedStyles.has('front') || allowedStyles.has('pace');
+    }
+
+    var groups = Array.isArray(skill && skill.conditionGroups) ? skill.conditionGroups : [];
+    var tags = tagSet(skill && skill.typeTags);
+    var hasStyleTag = Object.keys(TYPE_STYLE_TAG_TO_KEY).some(function (tag) {
+      return tags.has(tag);
+    });
+    var hasRunningStyleCondition = groups.some(function (group) {
+      return hasKeyComparator(condText(group), 'running_style');
+    });
+    // Explicit strategy metadata is more reliable than an inferred position
+    // band, so leave those skills to the exact tag/condition filters.
+    if (hasStyleTag || hasRunningStyleCondition) return true;
+
+    var sawPositionRestriction = false;
+    for (var i = 0; i < groups.length; i += 1) {
+      var text = condText(groups[i]);
+      var orderRateComparators = parseComparators(text, 'order_rate');
+      var orderComparators = parseComparators(text, 'order');
+      if (!orderRateComparators.length && !orderComparators.length) {
+        // An alternative condition group with no position restriction can
+        // still activate for the selected strategy.
+        return true;
+      }
+      sawPositionRestriction = true;
+      var groupMatches = Array.from(allowedStyles).some(function (style) {
+        var bands = STRATEGY_POSITION_BANDS[style];
+        if (!bands) return true;
+        return (
+          bandMatchesComparators(bands.order_rate, orderRateComparators) &&
+          bandMatchesComparators(bands.order, orderComparators)
+        );
+      });
+      if (groupMatches) return true;
+    }
+    return !sawPositionRestriction;
+  }
+
   function skillIsApplicableToContext(skill, allowed) {
     if (!skill || typeof skill !== 'object') return true;
+    // Type tags are global skill restrictions and must be checked even when
+    // the skill also has explicit activation-condition groups.
+    if (!typeTagRestrictionPasses(skill, allowed)) return false;
+    if (!positionalStyleRestrictionPasses(skill, allowed)) return false;
     var groups = Array.isArray(skill.conditionGroups) ? skill.conditionGroups : [];
-    if (!groups.length) return typeTagRestrictionPasses(skill, allowed);
+    if (!groups.length) return true;
     var sawRestriction = false;
     for (var i = 0; i < groups.length; i += 1) {
       var text = condText(groups[i]);
@@ -785,7 +856,7 @@
       if (ok) return true;
     }
     if (sawRestriction) return false;
-    return typeTagRestrictionPasses(skill, allowed);
+    return true;
   }
   function applyTeamMetrics(items, input, weights) {
     var missMeta = 0;
@@ -852,6 +923,8 @@
         conditionalActivationRate: conditionalRate,
         courseConditionRate: course.rate,
         courseCategories: course.categories,
+        hasModeledCourseCondition: !!course.hasModeledCondition,
+        hasUnmodeledCourseCondition: hasUnmodeledCourseCondition,
         wisdomGated: wisdomGated,
         wisdomModifier: wisdomRate,
         activationRate: activationRate,
@@ -1546,13 +1619,26 @@
       items = met.items;
     var allowedContext = deriveAllowedContext(cfg);
     var filteredOutCount = 0;
+    var lowCoverageGreenCount = 0;
     var requiredMismatch = [];
+    var minGreenCourseCoverage = clamp(num(w.minGreenCourseCoverage, 0.4), 0, 1);
     items = items.filter(function (it) {
       var applicable = skillIsApplicableToContext(it.normalizedSkill, allowedContext);
-      if (applicable) return true;
-      filteredOutCount += 1;
-      if (it.required) requiredMismatch.push(it.name);
-      return false;
+      if (!applicable) {
+        filteredOutCount += 1;
+        if (it.required) requiredMismatch.push(it.name);
+        return false;
+      }
+      var isLowCoverageGreen =
+        isGreen(it.category) &&
+        (it.hasUnmodeledCourseCondition ||
+          (it.hasModeledCourseCondition &&
+            num(it.courseConditionRate, 0) < minGreenCourseCoverage));
+      if (isLowCoverageGreen) {
+        lowCoverageGreenCount += 1;
+        return false;
+      }
+      return true;
     });
     if (filteredOutCount > 0) {
       warnings.push(window.t('teamTrials.filteredSkills', { count: filteredOutCount }));
@@ -1561,6 +1647,14 @@
       var uniqueRequiredMismatch = Array.from(new Set(requiredMismatch));
       warnings.push(
         window.t('teamTrials.ignoredRequired', { names: uniqueRequiredMismatch.join(', ') })
+      );
+    }
+    if (lowCoverageGreenCount > 0) {
+      warnings.push(
+        window.t('teamTrials.filteredLowCoverageGreens', {
+          count: lowCoverageGreenCount,
+          rate: Math.round(minGreenCourseCoverage * 100),
+        })
       );
     }
     if (!items.length) {
@@ -1572,7 +1666,7 @@
         totalRatingScore: 0,
         consistencyScore: 0,
         perSkillBreakdown: [],
-        warnings: [window.t('teamTrials.noMatchTargets')],
+        warnings: warnings.concat([window.t('teamTrials.noMatchTargets')]),
         explain: {
           strengths: [],
           risks: [window.t('teamTrials.noMatchTargets')],

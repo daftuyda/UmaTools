@@ -316,6 +316,106 @@ function testFiltersByAptitudesAndIdealTargets() {
   assert(/ignored.*required|ignoredRequired/i.test(warningText), 'Expected warning for ignored out-of-scope required skills.');
 }
 
+function testFiltersStrategyTagsWithConditionGroups() {
+  const input = {
+    budget: 180,
+    raceConfig: { front: 'A', pace: 'G', late: 'G', end: 'G' },
+    autoTargets: ['front'],
+    items: [
+      {
+        id: 'late1',
+        name: 'Late Surger Skill',
+        skillId: '551',
+        cost: 180,
+        ratingScore: 300,
+        category: 'yellow',
+        parentSkillIds: [],
+        lowerSkillId: '',
+        required: false
+      },
+      {
+        id: 'front1',
+        name: 'Front Runner Skill',
+        skillId: '552',
+        cost: 180,
+        ratingScore: 180,
+        category: 'yellow',
+        parentSkillIds: [],
+        lowerSkillId: '',
+        required: false
+      }
+    ],
+    skillMetaById: {
+      '551': {
+        id: '551',
+        name: 'Late Surger Skill',
+        desc: 'A Late Surger speed skill.',
+        conditionGroups: [{ condition: 'phase_random==1', effects: [{ type: 27, value: 2500 }] }],
+        typeTags: ['btw']
+      },
+      '552': {
+        id: '552',
+        name: 'Front Runner Skill',
+        desc: 'A Front Runner speed skill.',
+        conditionGroups: [{ condition: 'phase_random==1', effects: [{ type: 27, value: 1800 }] }],
+        typeTags: ['run']
+      }
+    }
+  };
+
+  const result = TeamTrialsOptimizer.optimizeTeamTrialsBuild(input);
+  assert.strictEqual(result.error, null);
+  assert.deepStrictEqual(nonComboIds(result), ['front1'], 'Expected a Front Runner build to reject a Late Surger type tag.');
+}
+
+function testFiltersRearPositionSkillsForFrontRunner() {
+  const trickRearMeta = {
+    id: '561',
+    name: 'Trick (Rear)',
+    desc: 'Increase fatigue for rushed runners ahead when positioned toward the back mid-race.',
+    conditionGroups: [
+      {
+        condition: 'phase==1&order_rate>50&temptation_opponent_count_infront>=1',
+        effects: [{ type: 9, value: -100 }]
+      }
+    ],
+    typeTags: ['dbf', 'nac']
+  };
+  const base = {
+    budget: 140,
+    items: [
+      {
+        id: 'rear-trick',
+        name: 'Trick (Rear)',
+        skillId: '561',
+        cost: 140,
+        ratingScore: 300,
+        category: 'purple',
+        parentSkillIds: [],
+        lowerSkillId: '',
+        required: false
+      }
+    ],
+    skillMetaById: { '561': trickRearMeta }
+  };
+
+  const frontResult = TeamTrialsOptimizer.optimizeTeamTrialsBuild({
+    ...base,
+    raceConfig: { front: 'A', pace: 'G', late: 'G', end: 'G' },
+    autoTargets: ['front']
+  });
+  assert.strictEqual(frontResult.error, 'no_applicable_skills');
+  assert.deepStrictEqual(nonComboIds(frontResult), []);
+
+  const lateResult = TeamTrialsOptimizer.optimizeTeamTrialsBuild({
+    ...base,
+    raceConfig: { front: 'G', pace: 'G', late: 'A', end: 'G' },
+    autoTargets: ['late']
+  });
+  assert.strictEqual(lateResult.error, null);
+  assert.deepStrictEqual(nonComboIds(lateResult), ['rear-trick']);
+}
+
 function testUsesMeasuredCoverageForGreenSkills() {
   const input = {
     budget: 180,
@@ -372,6 +472,81 @@ function testUsesMeasuredCoverageForGreenSkills() {
   assert(green, 'Expected green skill breakdown');
   assert.strictEqual(green.courseConditionRate, 0.77);
   assert.strictEqual(green.wisdomGated, false);
+}
+
+function testFiltersLowCoverageAndRacecourseGreens() {
+  const input = {
+    budget: 90,
+    autoTargets: ['medium'],
+    items: [
+      {
+        id: 'tokyo', name: 'Tokyo Racecourse ○', skillId: '571', cost: 90,
+        ratingScore: 400, category: 'green', parentSkillIds: [], lowerSkillId: '', required: false
+      },
+      {
+        id: 'autumn', name: 'Autumn Runner ○', skillId: '572', cost: 90,
+        ratingScore: 350, category: 'green', parentSkillIds: [], lowerSkillId: '', required: false
+      },
+      {
+        id: 'firm', name: 'Firm Conditions ○', skillId: '573', cost: 90,
+        ratingScore: 150, category: 'green', parentSkillIds: [], lowerSkillId: '', required: false
+      }
+    ],
+    skillMetaById: {
+      '571': {
+        id: '571', name: 'Tokyo Racecourse ○', desc: 'Perform well at Tokyo Racecourse.',
+        conditionGroups: [{ condition: 'track_id==10006', effects: [{ type: 1, value: 40 }] }]
+      },
+      '572': {
+        id: '572', name: 'Autumn Runner ○', desc: 'Perform well in autumn.',
+        conditionGroups: [{ condition: 'season==3', effects: [{ type: 1, value: 40 }] }]
+      },
+      '573': {
+        id: '573', name: 'Firm Conditions ○', desc: 'Perform well on firm ground.',
+        conditionGroups: [{ condition: 'ground_condition==1', effects: [{ type: 1, value: 40 }] }]
+      }
+    }
+  };
+
+  const result = TeamTrialsOptimizer.optimizeTeamTrialsBuild(input);
+  assert.strictEqual(result.error, null);
+  assert.deepStrictEqual(nonComboIds(result), ['firm']);
+  assert(
+    (result.warnings || []).some((warning) => /filteredLowCoverageGreens/i.test(warning)),
+    'Expected a warning for low-coverage green skills.'
+  );
+}
+
+function testGreenCoverageUsesSelectedDistanceBuild() {
+  const base = {
+    budget: 90,
+    items: [
+      {
+        id: 'nonstandard', name: 'Non-Standard Distance ○', skillId: '581', cost: 90,
+        ratingScore: 200, category: 'green', parentSkillIds: [], lowerSkillId: '', required: false
+      }
+    ],
+    skillMetaById: {
+      '581': {
+        id: '581', name: 'Non-Standard Distance ○', desc: 'Perform well at non-standard distances.',
+        conditionGroups: [{ condition: 'is_basis_distance==0', effects: [{ type: 1, value: 40 }] }]
+      }
+    }
+  };
+
+  const mediumResult = TeamTrialsOptimizer.optimizeTeamTrialsBuild({
+    ...base,
+    autoTargets: ['medium']
+  });
+  assert.strictEqual(mediumResult.error, 'no_applicable_skills');
+  assert.deepStrictEqual(nonComboIds(mediumResult), []);
+
+  const longResult = TeamTrialsOptimizer.optimizeTeamTrialsBuild({
+    ...base,
+    autoTargets: ['long']
+  });
+  assert.strictEqual(longResult.error, null);
+  assert.deepStrictEqual(nonComboIds(longResult), ['nonstandard']);
 }
 
 function testTrackCoverageModel() {
@@ -586,7 +761,11 @@ testDeterministicFixtureOutput();
 testExplainIgnoresGoldPrereqSkills();
 testConsistencyIsPrimaryObjective();
 testFiltersByAptitudesAndIdealTargets();
+testFiltersStrategyTagsWithConditionGroups();
+testFiltersRearPositionSkillsForFrontRunner();
 testUsesMeasuredCoverageForGreenSkills();
+testFiltersLowCoverageAndRacecourseGreens();
+testGreenCoverageUsesSelectedDistanceBuild();
 testTrackCoverageModel();
 testWisdomFormulaAndGreenBypass();
 testPrioritizesConsistentGoldSkills();
