@@ -1,303 +1,162 @@
 # Team Trials: Activation-First Skill Selection
 
-How Team Trials mode selects skills, why activation consistency and SV efficiency matter more than skill effects, and how the optimizer maximizes your expected activation score.
+This guide explains how UmaTools selects Team Trials skills, including measured course coverage, Wisdom checks, dependencies, and the expected-value knapsack solver.
 
----
+## 1. Objective
 
-## 1. What is Team Trials Mode?
+Team Trials awards base points when skills activate. Ordinary skills award 500 points and gold skills award 1,200 points. The effect itself does not change that activation award, so rarity, cost, applicability, and activation probability are the important inputs.
 
-In Team Trials (Champions Meeting), skills are scored purely on **activation**, not on what they do. Every gold skill that fires earns **1,200 points**. Every white skill that fires earns **500 points**. Whether the skill boosts acceleration, speed, or recovery is irrelevant to the scoring -- only activation matters.
+| Skill type | Activation points | Skill Value (SV) |
+| ---------- | ----------------: | ---------------: |
+| Gold       |             1,200 |               12 |
+| Ordinary   |               500 |                5 |
 
-The optimizer's job is to select the set of skills that maximizes **total expected activation points** within your SP budget. This means picking skills that are:
+One gold is worth 2.4 ordinary activations. Three inexpensive ordinary skills can therefore outscore one gold when all three fit the same SP budget and activate reliably.
 
-1. **Consistent** -- high probability of actually firing
-2. **Cost-efficient** -- high Skill Value (SV) per SP spent
-3. **Numerous** -- more skills = more potential activations
-
-The #1 rule from competitive guides: *"What the skill does is NOT as important as its rarity, cost, and consistency."*
-
----
-
-## 2. Skill Value (SV) System
-
-The fundamental unit of Team Trials skill scoring is **Skill Value (SV)**:
-
-| Skill Type | Activation Points | SV |
-| ---------- | ----------------: | -: |
-| Gold       |             1,200 | 12 |
-| White      |               500 |  5 |
-
-Key implications:
-
-- **1 gold = 2.4 whites** in point value. If a 300 SP gold competes with three 100 SP whites, the whites win (1,500 pts vs 1,200 pts) assuming all activate.
-- **Maximize total SV**, not gold count. An uma with 3 golds + 9 whites (81 SV) outscores one with 5 golds + 2 whites (70 SV).
-- **Debuffs count as normal activations** -- they award the same points as any other skill.
-
----
-
-## 3. Priority Order
-
-The optimizer uses a strict priority chain in its DP solver. Each criterion is only considered if the previous one ties:
-
-1. **Maximize total expected value** -- `SV * consistency²` summed across all chosen skills
-2. **Maximize total SV** -- rewards gold skills (12 SV) over whites (5 SV)
-3. **Maximize expected activations** -- sum of consistency scores
-4. **Maximize total rating score** -- traditional rating contribution (tiebreaker)
-
-Expected value is first because it captures the right trade-off: a consistent gold (high SV, high consistency) naturally scores higher than inconsistent alternatives, while cheap consistent whites can collectively outperform an expensive unreliable gold.
-
----
-
-## 4. Consistency Scoring
-
-![Consistency Score Components](../images/consistency-weights.svg)
-
-Each skill receives a consistency score in the range **[0.05, 0.99]** based on analysis of its trigger conditions. The score is built from three components.
-
-### 4.1 Timing Certainty (weight: 45%)
-
-How reliably the skill activates based on its timing window.
-
-| Timing Pattern                               | Score    | Notes                                |
-| -------------------------------------------- | -------- | ------------------------------------ |
-| `always == 1` (passive/constant)             | **0.98** | Highest reliability -- always active |
-| Last spurt / final corner / last straight    | **0.88** | 0.76 if random variant               |
-| Distance rate within 20% window              | **0.82** | Narrow positional trigger            |
-| Specific phase (phase 1-4)                   | **0.76** | Predictable but phase-dependent      |
-| Distance rate outside 20% window             | **0.72** | Wider positional trigger             |
-| Default (unrecognized)                       | **0.68** | Unknown timing pattern               |
-| Random timing (phase/corner/straight random) | **0.62** | Lowest -- unpredictable activation   |
-
-### 4.2 Condition Breadth (weight: 30%)
-
-How many race scenarios trigger the skill.
-
-- **`order == 1`** (first place only): capped at **0.18** -- extremely narrow
-- **`order <= 5`**: boosted to at least **0.52** -- reasonably broad
-- Each complex comparator beyond 4: **-0.05** penalty
-- **`near_count >= X`**: contribution calculated as `(10 - X) / 10`
-
-### 4.3 Scenario Dependence (weight: 25%)
-
-Penalty for situational triggers that may not occur. Base score starts at **0.95**.
-
-| Condition                        | Penalty   |
-| -------------------------------- | --------- |
-| `blocked_front` / `blocked_side` | **-0.22** |
-| `is_overtake`                    | **-0.18** |
-| `is_surrounded` / `temptation`   | **-0.20** |
-| `change_order_onetime`           | **-0.14** |
-| `popularity` / `post_number`     | **-0.12** |
-| `is_activate_other_skill_detail` | **-0.09** |
-| `always == 1` bonus              | **+0.04** |
-
-### 4.4 Group Synthesis
-
-Skills with multiple trigger condition groups (logical OR) are combined:
-
-1. Score each group independently: `timing * 0.45 + breadth * 0.30 + scenario * 0.25 - strictnessPenalty`
-2. Combine via miss probability: `1 - product(1 - groupScore * 0.9)`
-3. Add fallback bonus: +0.03 per additional group, capped at +0.08
-
-### 4.5 Tier Tag Adjustments
-
-Tags from the skill scorer adjust consistency:
-
-| Tag                     | Effect                             |
-| ----------------------- | ---------------------------------- |
-| `inconsistent`          | Cap at **0.45**                    |
-| `consistent`            | **+0.10** bonus                    |
-| `team_trials` or `core` | **+0.12** bonus, floor at **0.65** |
-
-### 4.6 Penalties
-
-**Green skills** (passive stat boosts with volatile race conditions):
-- Consistency penalty (configurable, default **-0.05**)
-- Expected value reduction (default **-12%**)
-- Savvy skills are exempt
-
-**Volatile race conditions** (track_id, ground_condition, weather, season, rotation):
-- Consistency penalty (default **-0.22**)
-- Expected value reduction (default **-20%**)
-- Skills tagged `team_trials` or `core` receive half penalty
-
----
-
-## 5. Automated Skill Scoring
-
-The skill scorer (`public/js/skill-scorer.js`) analyzes skills from `skills_all.json` and assigns tier tags used by the optimizer. Unlike the old system that scored skills by their effect type (acceleration, speed, etc.), the new scorer focuses entirely on what matters for Team Trials.
-
-### 5.1 Two Scoring Dimensions
-
-| Dimension           | Weight | What it measures                                    |
-| ------------------- | -----: | --------------------------------------------------- |
-| **Consistency**     |    60% | Reliability of activation from trigger conditions   |
-| **Cost Efficiency** |    40% | SV per SP spent (Gold=12 SV, White=5 SV) / cost    |
-
-Effect type, duration, and applicability are **not** scoring dimensions. In TT, a cheap gold that always activates is worth the same 1,200 points as an expensive powerful gold that always activates.
-
-### 5.2 Cost Efficiency Formula
+The optimizer maximizes expected SV within the entered SP budget:
 
 ```text
-ratio = SV / cost        (where SV = 12 for gold, 5 for white)
-score = ratio / 0.1      (normalized so 12 SV / 120 SP = 1.0)
+expected SV = base SV × activation probability
 ```
 
-Cost bracket modifiers:
-- Cost <= 120 SP: **x1.15** (cheap bonus)
-- Cost <= 160 SP: **x1.05**
-- Cost >= 300 SP: **x0.80** (expensive penalty)
-- Cost >= 360 SP: **x0.70**
+Cost is not included again in this formula. The knapsack budget already accounts for it.
 
-### 5.3 Tier Markers
+## 2. Activation probability
 
-| Composite Score | Marker | Meaning      |
-| --------------- | ------ | ------------ |
-| >= 0.72         | ◎      | Excellent    |
-| >= 0.52         | ○      | Good         |
-| >= 0.36         | ▲      | Average      |
-| >= 0.20         | △      | Below avg    |
-| < 0.20          | ✕      | Poor         |
-
-### 5.4 Tunable Weight Sliders
-
-The optimizer UI exposes 2 weight sliders (Consistency and Cost Efficiency) that let users adjust the scorer's dimension weights in real-time.
-
----
-
-## 6. Expected Value
-
-Expected value represents the **expected activation points** a skill contributes. It combines SV with consistency:
+The model separates three questions that were previously blended into one heuristic score:
 
 ```text
-expectedValue = SV * consistency²
+activation probability
+  = course eligibility
+  × conditional trigger chance
+  × Wisdom check (when applicable)
 ```
 
-Where:
-- **SV** = 12 for gold, 5 for white
-- **consistency** = the skill's consistency score (0.05 to 0.99)
+### 2.1 Course eligibility
 
-Cost is **not** in this formula -- it's handled by the knapsack budget constraint in the DP solver. This prevents double-counting cost (once in value, once in budget).
+Fixed course conditions use the supplied Team Trials track data instead of receiving a blanket penalty. The optimizer chooses the relevant row from the selected target or aptitude.
 
-### Modifiers
+| Category | Downhill | Uphill | Right-handed | Non-standard |
+| -------- | -------: | -----: | -----------: | -----------: |
+| Sprint   |      59% |    71% |          65% |          47% |
+| Mile     |      76% |    82% |          71% |          59% |
+| Medium   |      76% |    76% |          57% |          29% |
+| Long     |      75% |    92% |          83% |          83% |
+| Dirt     |      45% |    64% |          50% |          75% |
 
-- **Green/volatile penalties**: `expectedValue *= expectedMultiplier` (reduced by green/volatile penalties)
-- **Consistent gold bonus**: +0.14 for gold skills with consistency >= 0.58 and no volatile conditions
+The global pool frequencies are:
 
----
+- Seasons: Spring 40%, Summer 22%, Autumn 12%, Winter 26%
+- Weather: Sunny 58%, Cloudy 30%, Rain 11%, Snow 1%
+- Ground: Firm 77%, Good 11%, Soft 7%, Heavy 5%
 
-## 7. Predicted Activation Score
+Exact-distance conditions use the observed distance counts for the selected category. Multiple simultaneous fixed conditions are multiplied, while alternative activation groups use the best eligible branch. For example, a Medium right-handed + Firm condition has estimated coverage of `0.57 × 0.77 = 43.89%`.
 
-The optimizer predicts the base skill activation score you'll earn in a Team Trials race by combining each skill's consistency with the **wisdom proc modifier** and actual point values.
+These are aggregate estimates, not exact race simulations. Conditions tied to a specific track or course ID remain on the conservative fallback model because the aggregate sheet cannot resolve them.
+
+### 2.2 Conditional trigger chance
+
+Once a race is eligible, non-fixed requirements are estimated from the skill metadata in `skills_all.json`. The heuristic considers:
+
+- timing breadth, such as always-on, phase, corner, straight, and random windows;
+- placement breadth, such as first-only versus a wider order range;
+- situational requirements, such as being blocked, overtaking, or changing position;
+- multiple activation groups, which can provide fallback opportunities;
+- Team Trials consistency tags produced by the skill scorer.
+
+This portion remains an estimate. It is used for conditions that cannot be derived from the track pool alone.
+
+### 2.3 Wisdom check
+
+Skills that use the normal Wisdom activation roll apply:
 
 ```text
-predictedScore = sum( consistency_i * wisdomModifier * points_i )
+Wisdom rate = max(1 - 90 / Wisdom, 0.20)
 ```
 
-Where `points_i` = 1,200 for gold, 500 for white.
+Examples:
 
-### Wisdom Proc Rate Table
+| Wisdom | Activation roll |
+| -----: | --------------: |
+|     90 |             20% |
+|    180 |             50% |
+|    500 |             82% |
+|    900 |             90% |
+|  1,200 |           92.5% |
 
-Higher wisdom increases the chance skills fire when their conditions are met:
+Fixed-condition green skills do not use this roll. A Firm-condition green therefore remains at 77% estimated activation whether the entered Wisdom is 100 or 1,200. Ordinary skills still respond live to the Wisdom input.
 
-| Wisdom | Proc Rate |
-| -----: | --------: |
-|    100 |      ~15% |
-|    200 |      ~55% |
-|    300 |      ~70% |
-|    400 |      ~78% |
-|    500 |      ~82% |
-|    600 |      ~85% |
-|    900 |      ~90% |
-|  1200+ |      ~93% |
+## 3. Expected score outputs
 
-Values between breakpoints are linearly interpolated. The predicted score updates live as you change the wisdom stat input.
-
-This is the **base score before multipliers** (opponent rating bonus, ace bonus, support card bonus, win streak). The opponent rating bonus alone can add 50-135%+ to this base.
-
----
-
-## 8. Applicability Filtering
-
-Before optimization, skills are strictly filtered against the race configuration:
-
-- **`distance_type`** -- sprint, mile, medium, long
-- **`ground_type`** -- turf, dirt
-- **`running_style`** -- front, pace, late, end
-- Falls back to **skill type tags** (`mil`, `med`, `lng`, `sho`, `tur`, `dir`, etc.)
-
-Even **required skills** are removed if inapplicable. An out-of-scope skill provides zero value and wastes SP.
-
----
-
-## 9. Dependency Groups
-
-Team Trials uses the same dependency group system as Rating mode:
-
-- **Gold + lower combos** -- selecting a gold automatically includes its linked lower; gold cost accounts for both
-- **Circle skill combos** (◎/○) -- additive cost; ○ can bring ◎ as upgrade
-- **Parent chain requirements** -- some skills need prerequisites
-- **Standalone skills** -- no dependencies
-
-The grouped knapsack solver handles all of these as atomic selection units.
-
----
-
-## 10. DP Solver
-
-The solver uses a grouped knapsack algorithm optimized for Team Trials:
+For each skill:
 
 ```text
-better(candidate, current):
-  1. Higher expected value?     -> pick candidate
-  2. Higher total SV?           -> pick candidate
-  3. Higher activations?        -> pick candidate
-  4. Higher rating?             -> pick candidate
-  5. Lower tie index?           -> pick candidate (deterministic)
+expected activation points
+  = activation probability × (1,200 if gold, otherwise 500)
 ```
 
-The solver is a standard knapsack over budget, tracking 4 dimensions per state (expected value, SV, activations, rating). This is simpler than the previous version which tracked 4 core mask states -- since skill effects don't matter for TT scoring, the mask was removed, reducing memory usage by 4x.
+The Team Trials result panel reports:
 
----
+- **Expected SV**: sum of probability-weighted SV;
+- **Total SV**: maximum SV if every selected skill activates;
+- **Expected Activations**: sum of individual activation probabilities;
+- **SV per SP**: unadjusted total SV divided by spent SP;
+- **Estimated Activation Score**: probability-weighted base activation points.
 
-## 11. Tuning Weights
+The estimated activation score does not include opponent-strength, ace, support-card, placement, or other race bonuses.
 
-All weights are configurable via `DEFAULT_WEIGHTS` in `public/js/team-trials-optimizer.js`:
+## 4. Applicability and composition
 
-| Weight                                    | Default | Description                                                |
-| ----------------------------------------- | ------: | ---------------------------------------------------------- |
-| `consistentGoldMinConsistency`            |    0.58 | Minimum consistency for gold priority treatment            |
-| `consistentGoldConsistencyBonus`          |    0.06 | Consistency bonus for qualifying gold skills               |
-| `consistentGoldExpectedBonus`             |    0.14 | Expected value bonus for qualifying gold skills            |
-| `greenSkillConsistencyPenalty`            |    0.05 | Consistency reduction for green-category skills            |
-| `greenSkillExpectedPenalty`               |    0.12 | Expected value reduction for green-category skills         |
-| `volatileRaceConditionConsistencyPenalty` |    0.22 | Consistency reduction for volatile race conditions         |
-| `volatileRaceConditionExpectedPenalty`    |    0.20 | Expected value reduction for volatile race conditions      |
-| `tierCorePenaltyReduction`                |    0.50 | Penalty reduction multiplier for team_trials-tagged skills |
+Before optimization, skills are filtered against selected targets and aptitudes:
 
----
+- distance: Sprint, Mile, Medium, or Long;
+- surface: Turf or Dirt;
+- strategy: Front, Pace, Late, or End.
 
-## 12. Rating Mode vs Team Trials
+Metadata conditions are preferred, with skill type tags used as a fallback. A required skill that cannot apply to the target is omitted rather than consuming SP for zero value.
 
-| Aspect                  | Rating Mode             | Team Trials                                                    |
-| ----------------------- | ----------------------- | -------------------------------------------------------------- |
-| **Primary goal**        | Maximize rating score   | Maximize expected activation points                            |
-| **What matters**        | Skill effect strength   | Activation probability + SV (Gold=12, White=5)                 |
-| **DP priority**         | Single criterion: score | Multi-criterion: expected value > SV > activations > rating   |
-| **Green skills**        | Normal weight           | Consistency + EV penalties                                     |
-| **Volatile conditions** | Normal weight           | Consistency + EV penalties                                     |
-| **Skill filtering**     | All available skills    | Strict: must match distance/track/strategy                     |
-| **Skill scoring**       | Not used                | 2-dimension scoring (consistency + cost efficiency)            |
-| **Predicted score**     | Not shown               | Estimated activation points based on wisdom stat               |
-| **Comparison function** | Higher score wins       | 4-level priority chain                                         |
+The optimizer currently works on one character's purchasable skills. Team-wide decisions still need human review. In particular, the source guide recommends avoiding duplicate strategies within the same distance category so more teammates can earn the good-position bonus.
 
----
+## 5. Dependencies and solver priority
 
-## 13. Source Files
+The grouped knapsack solver preserves:
 
-| File                          | Responsibility                                                                |
-| ----------------------------- | ----------------------------------------------------------------------------- |
-| `public/js/team-trials-optimizer.js` | Consistency scoring, expected value, filtering, DP solver, predicted score    |
-| `public/js/skill-scorer.js`          | Automated skill scoring: consistency and cost efficiency (SV/SP)              |
-| `public/js/optimizer.js`             | UI integration, dependency group construction, mode switching, wisdom listener |
-| `public/assets/skills_all.json`      | Skill metadata including trigger conditions, effects, and timing data         |
+- gold skill and lower-skill dependencies;
+- circle/double-circle upgrade relationships;
+- explicit parent chains;
+- required skills and SP costs;
+- deterministic conflict resolution.
+
+Candidate solutions are compared in this order:
+
+1. higher total expected SV;
+2. higher maximum total SV;
+3. more expected activations;
+4. higher rating score;
+5. deterministic input order.
+
+This naturally allows several cheap, reliable ordinary skills to beat an expensive gold skill without adding arbitrary skill-count or phase-diversity multipliers.
+
+## 6. Limits and maintenance
+
+- Track percentages are based on the supplied observed pool and should be refreshed if the Team Trials course pool changes.
+- Multiplying simultaneous course frequencies assumes independence because the aggregate sheet does not provide every joint distribution.
+- Conditional trigger estimates are heuristics, not a frame-by-frame race solver.
+- Unique skill activation values vary; the current purchasable-skill optimizer uses the gold/ordinary point model and does not optimize unique skill inheritance.
+- Course-specific IDs use a conservative fallback until exact course geometry is added locally.
+
+## 7. Implementation map
+
+| File                                       | Responsibility                                                                              |
+| ------------------------------------------ | ------------------------------------------------------------------------------------------- |
+| `public/js/team-trials-optimizer.js`       | Course model, activation probabilities, expected SV, dependencies, solver, score prediction |
+| `public/js/skill-scorer.js`                | Conditional consistency and cost-efficiency metadata                                        |
+| `public/js/optimizer.js`                   | UI inputs, target context, Wisdom integration, and result rendering                         |
+| `public/assets/skills_all.json`            | Skill conditions, types, descriptions, and dependencies                                     |
+| `tests/unit/team-trials-optimizer.test.js` | Course coverage, Wisdom behavior, dependency, filtering, and deterministic regression tests |
+
+## 8. Research sources
+
+- Tracen Trials Team Trials guide and TT Skill Analyzer
+- _Basic Umamusume Team Trials Guide_ by Mango Konata
+- _Track Data_ Team Trials course-frequency sheet

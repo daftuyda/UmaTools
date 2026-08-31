@@ -1,8 +1,8 @@
 {
-  "version": "2026-08 Beta",
+  "version": "2026-08-31 Beta",
   "summary": {
-    "en": "A complete UmaTools suite overhaul with Grand Live updates and beta polish.",
-    "ja": "UmaTools全体の刷新、グランドライブ更新、ベータ版の改善。"
+    "en": "A major Beta update with more accurate Team Trials planning, in-game Grand Live token colors, expanded documentation, and suite-wide polish.",
+    "ja": "チームレース計画の精度向上、ゲーム準拠のグランドライブトークン色、ドキュメント拡充、全体的な改善を含むベータ版アップデート。"
   },
   "entries": [
     {
@@ -16,6 +16,10 @@
     {
       "en": "Updated the Optimizer with clearer evolution and linked-skill relationships, a standardized build workspace, improved skill details, and a polished quick tour.",
       "ja": "オプティマイザーに進化スキルと関連スキルの分かりやすい表示、統一されたビルド画面、詳細なスキル情報、改善されたクイックツアーを追加しました。"
+    },
+    {
+      "en": "Rebuilt Team Trials optimization around track-pool coverage and the correct Wisdom activation formula; fixed-condition green skills now bypass Wisdom, and Expected SV replaces the old squared heuristic.",
+      "ja": "チームレース最適化をコース出現率と正しい賢さ発動率の式に基づいて再構築しました。固定条件の緑スキルは賢さ判定を受けず、従来の二乗ヒューリスティックを期待SVに置き換えました。"
     },
     {
       "en": "Overhauled Deck Builder layouts and selectors, fixed viewport-centered modals, and added Grand Live / Grand Concert templates that include required Light Hello decks.",
@@ -32,6 +36,10 @@
     {
       "en": "Updated the Grand Live planner with English song and token names, refreshed scenario data, and improved planning controls.",
       "ja": "グランドライブプランナーに英語の楽曲名とトークン名を追加し、シナリオデータと計画操作を更新しました。"
+    },
+    {
+      "en": "Matched Grand Live Performance Point colors to the game across token legends, costs, totals, held-token labels, and table headers, with accessible light and dark variants.",
+      "ja": "グランドライブのパフォーマンスポイント色をゲームに合わせ、凡例、コスト、合計、所持トークン、表見出しに適用しました。ライト／ダークテーマでも見やすい配色です。"
     },
     {
       "en": "Reorganized the project, refreshed suite-wide documentation, and expanded automated checks for routes, data, assets, performance, and mobile compatibility.",

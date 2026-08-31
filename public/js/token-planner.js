@@ -305,7 +305,7 @@
     elements.heldInputs.innerHTML = TOKEN_TYPES.map((type) => {
       return `
         <label>
-          <span>${escapeHtml(type.label)} · ${escapeHtml(type.name)}</span>
+          <span class="${escapeHtml(type.className)}">${escapeHtml(type.label)} · ${escapeHtml(type.name)}</span>
           <input
             type="number"
             inputmode="numeric"

@@ -10,12 +10,12 @@
 
   var DEFAULT_WEIGHTS = {
     consistentGoldMinConsistency: 0.58,
-    consistentGoldConsistencyBonus: 0.06,
-    consistentGoldExpectedBonus: 0.14,
-    greenSkillConsistencyPenalty: 0.05,
-    greenSkillExpectedPenalty: 0.12,
-    volatileRaceConditionConsistencyPenalty: 0.22,
-    volatileRaceConditionExpectedPenalty: 0.2,
+    consistentGoldConsistencyBonus: 0,
+    consistentGoldExpectedBonus: 0,
+    greenSkillConsistencyPenalty: 0,
+    greenSkillExpectedPenalty: 0,
+    volatileRaceConditionConsistencyPenalty: 0.18,
+    volatileRaceConditionExpectedPenalty: 0.18,
     tierCorePenaltyReduction: 0.5,
   };
   var DISTANCE_VALUE_TO_KEY = { 1: 'sprint', 2: 'mile', 3: 'medium', 4: 'long' };
@@ -25,6 +25,52 @@
   var TYPE_GROUND_TAG_TO_KEY = { tur: 'turf', dir: 'dirt' };
   var TYPE_STYLE_TAG_TO_KEY = { run: 'front', ldr: 'pace', btw: 'late', cha: 'end' };
   var GRADE_RANK = { S: 7, A: 6, B: 5, C: 4, D: 3, E: 2, F: 1, G: 0 };
+
+  // Course frequencies from the supplied Team Trials track sheet. Slopes were
+  // checked against Umalator; the other percentages are the sheet's observed
+  // Team Trials pool. These are aggregate probabilities, not a race simulator.
+  var TEAM_TRIAL_COURSE_PROFILES = {
+    sprint: {
+      downhill: 0.59,
+      uphill: 0.71,
+      rightHanded: 0.65,
+      nonStandard: 0.47,
+      distances: { 1000: 2, 1200: 9, 1400: 7 },
+    },
+    mile: {
+      downhill: 0.76,
+      uphill: 0.82,
+      rightHanded: 0.71,
+      nonStandard: 0.59,
+      distances: { 1500: 1, 1600: 7, 1800: 9 },
+    },
+    medium: {
+      downhill: 0.76,
+      uphill: 0.76,
+      rightHanded: 0.57,
+      nonStandard: 0.29,
+      distances: { 2000: 11, 2200: 5, 2300: 1, 2400: 4 },
+    },
+    long: {
+      downhill: 0.75,
+      uphill: 0.92,
+      rightHanded: 0.83,
+      nonStandard: 0.83,
+      distances: { 2500: 2, 2600: 5, 3000: 2, 3200: 1, 3400: 1, 3600: 1 },
+    },
+    dirt: {
+      downhill: 0.45,
+      uphill: 0.64,
+      rightHanded: 0.5,
+      nonStandard: 0.75,
+      distances: { 1600: 4, 1700: 4, 1800: 8 },
+    },
+  };
+  var TEAM_TRIAL_FIXED_CONDITION_RATES = {
+    season: { 1: 0.4, 2: 0.22, 3: 0.12, 4: 0.26 },
+    weather: { 1: 0.58, 2: 0.3, 3: 0.11, 4: 0.01 },
+    ground_condition: { 1: 0.77, 2: 0.11, 3: 0.07, 4: 0.05 },
+  };
 
   function num(v, f) {
     var n = Number(v);
@@ -349,7 +395,11 @@
     // Strategy compatibility bonus: +0.06 if skill matches configured running style
     if (raceConfig && raceConfig.style) {
       var cfgStyle = String(raceConfig.style);
-      var allCond = gs.map(function (g) { return condText(g); }).join(' ');
+      var allCond = gs
+        .map(function (g) {
+          return condText(g);
+        })
+        .join(' ');
       var posMatch = new RegExp('running_style\\s*==\\s*' + cfgStyle).test(allCond);
       var negExclude = new RegExp('running_style\\s*!=\\s*' + cfgStyle).test(allCond);
       var posOther = /running_style\s*==\s*\d/.test(allCond) && !posMatch;
@@ -527,6 +577,157 @@
       style: mergeTargetAndAptitude(targetStyle, aptitudeStyle),
     };
   }
+
+  function teamTrialCourseCategories(input, allowed) {
+    var targets = new Set(
+      (Array.isArray(input && input.autoTargets) ? input.autoTargets : []).map(lower)
+    );
+    if (targets.has('dirt')) return ['dirt'];
+    var explicitDistances = ['sprint', 'mile', 'medium', 'long'].filter(function (key) {
+      return targets.has(key);
+    });
+    if (explicitDistances.length) return explicitDistances;
+
+    var track = allowed && allowed.track;
+    if (track && track.size === 1 && track.has('dirt')) return ['dirt'];
+    var distance = allowed && allowed.distance;
+    var inferred = ['sprint', 'mile', 'medium', 'long'].filter(function (key) {
+      return distance && distance.has(key);
+    });
+    return inferred.length ? inferred : ['sprint', 'mile', 'medium', 'long'];
+  }
+
+  function averageCourseRate(categories, key) {
+    var values = (Array.isArray(categories) ? categories : [])
+      .map(function (category) {
+        var profile = TEAM_TRIAL_COURSE_PROFILES[category];
+        return profile ? num(profile[key], NaN) : NaN;
+      })
+      .filter(Number.isFinite);
+    if (!values.length) return 1;
+    return clamp(
+      values.reduce(function (sum, value) {
+        return sum + value;
+      }, 0) / values.length,
+      0,
+      1
+    );
+  }
+
+  function comparatorProbability(segment, key, rates) {
+    var comps = parseComparators(segment, key);
+    if (!comps.length) return null;
+    var total = 0;
+    Object.keys(rates || {}).forEach(function (raw) {
+      var value = parseInt(raw, 10);
+      if (valueMatchesComparators(value, comps)) total += num(rates[raw], 0);
+    });
+    return clamp(total, 0, 1);
+  }
+
+  function distanceProbability(segment, categories) {
+    var comps = parseComparators(segment, 'course_distance');
+    if (!comps.length) return null;
+    var hit = 0,
+      total = 0;
+    (Array.isArray(categories) ? categories : []).forEach(function (category) {
+      var distances = TEAM_TRIAL_COURSE_PROFILES[category]?.distances || {};
+      Object.keys(distances).forEach(function (raw) {
+        var count = Math.max(0, num(distances[raw], 0));
+        total += count;
+        if (valueMatchesComparators(parseInt(raw, 10), comps)) hit += count;
+      });
+    });
+    return total > 0 ? clamp(hit / total, 0, 1) : 1;
+  }
+
+  function segmentCourseCoverage(segment, categories) {
+    var text = lower(segment);
+    var factors = [];
+    var modeled = false;
+    var unmodeled = /(?:track_id|course_id|race_track_id)\s*(?:==|!=|>=|<=|>|<)/.test(text);
+    function add(value) {
+      if (value == null) return;
+      modeled = true;
+      factors.push(clamp(value, 0, 1));
+    }
+
+    add(
+      comparatorProbability(text, 'rotation', {
+        1: averageCourseRate(categories, 'rightHanded'),
+        2: 1 - averageCourseRate(categories, 'rightHanded'),
+      })
+    );
+    add(
+      comparatorProbability(text, 'is_basis_distance', {
+        0: averageCourseRate(categories, 'nonStandard'),
+        1: 1 - averageCourseRate(categories, 'nonStandard'),
+      })
+    );
+    Object.keys(TEAM_TRIAL_FIXED_CONDITION_RATES).forEach(function (key) {
+      add(comparatorProbability(text, key, TEAM_TRIAL_FIXED_CONDITION_RATES[key]));
+    });
+    add(distanceProbability(text, categories));
+
+    if (/down_slope_random\s*==\s*1/.test(text) || /(?:^|[^a-z_])slope\s*==\s*2/.test(text)) {
+      add(averageCourseRate(categories, 'downhill'));
+    } else if (
+      /up_slope_random(?:_later_half)?\s*==\s*1/.test(text) ||
+      /(?:^|[^a-z_])slope\s*==\s*1/.test(text)
+    ) {
+      add(averageCourseRate(categories, 'uphill'));
+    }
+
+    return {
+      coverage: factors.length
+        ? factors.reduce(function (product, value) {
+            return product * value;
+          }, 1)
+        : 1,
+      modeled: modeled,
+      unmodeled: unmodeled,
+    };
+  }
+
+  function estimateCourseCoverage(skill, input) {
+    var allowed = deriveAllowedContext(input || {});
+    var categories = teamTrialCourseCategories(input || {}, allowed);
+    var groups = Array.isArray(skill && skill.conditionGroups) ? skill.conditionGroups : [];
+    var alternatives = [];
+    var modeled = false,
+      unmodeled = false;
+    groups.forEach(function (group) {
+      var text = condText(group);
+      if (!text) return;
+      text.split('@').forEach(function (segment) {
+        var result = segmentCourseCoverage(segment, categories);
+        alternatives.push(result.coverage);
+        modeled = modeled || result.modeled;
+        unmodeled = unmodeled || result.unmodeled;
+      });
+    });
+    return {
+      rate: clamp(alternatives.length ? Math.max.apply(Math, alternatives) : 1, 0, 1),
+      categories: categories,
+      hasModeledCondition: modeled,
+      hasUnmodeledCondition: unmodeled,
+    };
+  }
+
+  function isFixedEligibilityOnly(skill) {
+    var groups = Array.isArray(skill && skill.conditionGroups) ? skill.conditionGroups : [];
+    if (!groups.length) return false;
+    var keyPattern =
+      '(?:always|distance_type|ground_type|running_style|rotation|is_basis_distance|season|weather|ground_condition|course_distance|down_slope_random|up_slope_random(?:_later_half)?|slope)';
+    var comparatorPattern = new RegExp(keyPattern + '\\s*(?:==|!=|>=|<=|>|<)\\s*-?\\d+', 'g');
+    return groups.every(function (group) {
+      var text = lower(condText(group));
+      if (!text) return false;
+      var remaining = text.replace(comparatorPattern, '').replace(/[\s@&|()!0-9.-]/g, '');
+      return !/[a-z_]/.test(remaining);
+    });
+  }
+
   function tagSet(tags) {
     var s = new Set();
     (Array.isArray(tags) ? tags : []).forEach(function (t) {
@@ -587,10 +788,6 @@
     return typeTagRestrictionPasses(skill, allowed);
   }
   function applyTeamMetrics(items, input, weights) {
-    var maxRating = 1;
-    items.forEach(function (it) {
-      maxRating = Math.max(maxRating, num(it.ratingScore, 0));
-    });
     var missMeta = 0;
     var out = items.map(function (it) {
       var skill = resolveSkillMeta(it, input);
@@ -604,19 +801,14 @@
       var rating = Math.max(0, Math.floor(num(it.ratingScore, 0)));
       var cost = Math.max(0, Math.floor(num(it.cost, 0)));
       var ratio = perSp(rating, cost);
-      var rNorm = clamp(rating / maxRating, 0, 1);
       var extraPen = 0;
-      var expectedMul = 1;
       var scoreReasons = Array.isArray(c.reasons) ? c.reasons.slice() : [];
       var tierTags = Array.isArray(c.tierTags) ? c.tierTags : [];
-      if (isGreen(it.category)) {
-        extraPen += num(weights.greenSkillConsistencyPenalty, 0);
-        expectedMul *= 1 - clamp(num(weights.greenSkillExpectedPenalty, 0), 0, 0.8);
-        scoreReasons.unshift(window.t('teamTrials.greenDownweighted'));
-      }
-      if (c.hasVolatileRaceCondition) {
+      var course = estimateCourseCoverage(skill, input);
+      var fixedEligibility = isFixedEligibilityOnly(skill);
+      var hasUnmodeledCourseCondition = !!course.hasUnmodeledCondition;
+      if (c.hasVolatileRaceCondition && hasUnmodeledCourseCondition) {
         extraPen += num(weights.volatileRaceConditionConsistencyPenalty, 0);
-        expectedMul *= 1 - clamp(num(weights.volatileRaceConditionExpectedPenalty, 0), 0, 0.8);
       }
       if (
         extraPen > 0 &&
@@ -624,32 +816,45 @@
       ) {
         extraPen *= clamp(num(weights.tierCorePenaltyReduction, 0.5), 0, 1);
       }
-      var consistencyScore = clamp(c.score - extraPen, 0.05, 0.99);
+      var conditionalRate = fixedEligibility ? 1 : clamp(c.score - extraPen, 0.05, 0.99);
+      var trackConditionRate = clamp(conditionalRate * course.rate, 0, 1);
+      var wisdomGated = !isGreen(it.category);
+      var wisdomRate = wisdomProcModifier(input && input.wisdom);
+      var activationRate = clamp(trackConditionRate * (wisdomGated ? wisdomRate : 1), 0, 1);
+      if (course.hasModeledCondition) {
+        scoreReasons.unshift(
+          window.t('teamTrials.courseCoverage', { rate: Math.round(course.rate * 100) })
+        );
+      }
+      if (hasUnmodeledCourseCondition) {
+        scoreReasons.push(window.t('teamTrials.courseCoverageUnmodeled'));
+      }
+      scoreReasons.push(
+        wisdomGated
+          ? window.t('teamTrials.wisdomApplied', { rate: Math.round(wisdomRate * 100) })
+          : window.t('teamTrials.wisdomNotApplied')
+      );
       var goldConsistencyThreshold = clamp(num(weights.consistentGoldMinConsistency, 0.58), 0, 1);
       var getsGoldPriority =
         isGold(it.category) &&
-        !c.hasVolatileRaceCondition &&
-        consistencyScore >= goldConsistencyThreshold;
+        !hasUnmodeledCourseCondition &&
+        activationRate >= goldConsistencyThreshold;
       if (getsGoldPriority) {
-        consistencyScore = clamp(
-          consistencyScore + num(weights.consistentGoldConsistencyBonus, 0),
-          0.05,
-          0.99
-        );
         scoreReasons.unshift(window.t('teamTrials.consistentGoldPrioritized'));
       }
-      // SV-based expected value for Team Trials
-      // In TT, skills score purely on activation: Gold=1200pts (SV 12), White=500pts (SV 5)
-      // Expected value = SV * consistency² (absolute expected points, not per-SP)
-      // Cost is already handled by the knapsack budget constraint
+      // Expected SV uses activation probability and base activation value.
+      // Cost is already handled by the SP budget constraint.
       var skillSV = isGold(it.category) ? 12 : 5;
-      var expected = skillSV * (consistencyScore * consistencyScore);
-      // Apply green/volatile penalties
-      expected *= clamp(expectedMul, 0.2, 1);
-      // Consistent gold bonus
-      if (getsGoldPriority) expected += Math.max(0, num(weights.consistentGoldExpectedBonus, 0));
+      var expected = skillSV * activationRate;
       return Object.assign({}, it, {
-        consistencyScore: consistencyScore,
+        consistencyScore: activationRate,
+        trackConditionRate: trackConditionRate,
+        conditionalActivationRate: conditionalRate,
+        courseConditionRate: course.rate,
+        courseCategories: course.categories,
+        wisdomGated: wisdomGated,
+        wisdomModifier: wisdomRate,
+        activationRate: activationRate,
         consistencyReasons: Array.from(new Set(scoreReasons)),
         consistencyBreakdown: c.breakdown,
         tierBonus: c.tierBonus,
@@ -660,10 +865,10 @@
         scorePerSP: ratio,
         expectedValue: expected,
         expectedValueInt: Math.round(expected * 10000),
-        consistencyInt: Math.round(consistencyScore * 1000),
+        consistencyInt: Math.round(activationRate * 1000),
         consistentGoldPriority: !!getsGoldPriority,
         consistentGoldInt: getsGoldPriority ? 1 : 0,
-        isRisky: !!c.isRisky || consistencyScore < 0.42,
+        isRisky: !!c.isRisky || activationRate < 0.42,
         normalizedSkill: skill || null,
       });
     });
@@ -938,7 +1143,12 @@
           changed = true;
         }
         // If this ○ skill is a lower for a gold and has a ◎ circle upgrade, require it too
-        if (it.parentGoldId && it.circleRowId && idToIdx.has(it.circleRowId) && !reqIds.has(it.circleRowId)) {
+        if (
+          it.parentGoldId &&
+          it.circleRowId &&
+          idToIdx.has(it.circleRowId) &&
+          !reqIds.has(it.circleRowId)
+        ) {
           reqIds.add(it.circleRowId);
           changed = true;
         }
@@ -1214,7 +1424,9 @@
   }
 
   function detectPhaseDiversity(chosen) {
-    var early = false, mid = false, late = false;
+    var early = false,
+      mid = false,
+      late = false;
     var lowerInGold = collectLowerPrereqIdsInGoldCombos(chosen);
     (Array.isArray(chosen) ? chosen : []).forEach(function (it) {
       if (!it || it.comboComponent || lowerInGold.has(it.id)) return;
@@ -1223,10 +1435,22 @@
       gs.forEach(function (g) {
         var t = condText(g);
         if (!t) return;
-        if (/distance_rate\s*(<|<=|==)\s*(3[0-4]|[12]?\d)(\D|$)/.test(t) || /phase\s*==\s*0/.test(t)) early = true;
-        if (/distance_rate\s*(>=|>|==)\s*(3[5-9]|[45]\d|6[0-5])/.test(t) || /phase\s*==\s*1/.test(t)) mid = true;
+        if (
+          /distance_rate\s*(<|<=|==)\s*(3[0-4]|[12]?\d)(\D|$)/.test(t) ||
+          /phase\s*==\s*0/.test(t)
+        )
+          early = true;
+        if (
+          /distance_rate\s*(>=|>|==)\s*(3[5-9]|[45]\d|6[0-5])/.test(t) ||
+          /phase\s*==\s*1/.test(t)
+        )
+          mid = true;
         if (/is_lastspurt|is_finalcorner|is_last_straight/.test(t)) late = true;
-        if (/distance_rate\s*(>=|>|==)\s*(6[5-9]|[789]\d)/.test(t) || /phase\s*(>=|==)\s*[23]/.test(t)) late = true;
+        if (
+          /distance_rate\s*(>=|>|==)\s*(6[5-9]|[789]\d)/.test(t) ||
+          /phase\s*(>=|==)\s*[23]/.test(t)
+        )
+          late = true;
       });
     });
     return { early: early, mid: mid, late: late, allCovered: early && mid && late };
@@ -1373,11 +1597,7 @@
     var optional = items.filter(function (it) {
       return !req.requiredIds.has(it.id);
     });
-    var groupResult = optimizeGroups(
-      buildGroups(optional),
-      optional,
-      budget - req.requiredCost
-    );
+    var groupResult = optimizeGroups(buildGroups(optional), optional, budget - req.requiredCost);
     if (groupResult.error) {
       return {
         error: groupResult.error,
@@ -1411,9 +1631,7 @@
     var t = totals(chosen);
     if (t.count === 0) warnings.push(window.t('teamTrials.noScoredSkills'));
     var phases = detectPhaseDiversity(chosen);
-    var densityMul = t.count < 8 ? 0.70 : t.count < 10 ? 0.85 : t.count >= 14 ? 1.10 : 1.0;
-    var phaseMul = phases.allCovered ? 1.05 : 1.0;
-    var adjustedExpected = t.expected * densityMul * phaseMul;
+    var adjustedExpected = t.expected;
     var perSkill = chosen.map(function (it) {
       var rating = Math.max(0, Math.floor(num(it.ratingScore, 0)));
       var cost = Math.max(0, Math.floor(num(it.cost, 0)));
@@ -1426,6 +1644,11 @@
         ratingScore: rating,
         scorePerSP: Number(perSp(rating, cost).toFixed(4)),
         consistencyScore: Number(clamp(num(it.consistencyScore, 0), 0, 1).toFixed(4)),
+        trackConditionRate: Number(clamp(num(it.trackConditionRate, 0), 0, 1).toFixed(4)),
+        courseConditionRate: Number(clamp(num(it.courseConditionRate, 1), 0, 1).toFixed(4)),
+        wisdomGated: it.wisdomGated !== false,
+        wisdomModifier: Number(clamp(num(it.wisdomModifier, 1), 0, 1).toFixed(4)),
+        activationRate: Number(clamp(num(it.activationRate, 0), 0, 1).toFixed(4)),
         tierBonus: Number(clamp(num(it.tierBonus, 0), 0, 1).toFixed(4)),
         expectedValue: Number(Math.max(0, num(it.expectedValue, 0)).toFixed(6)),
         tierNote: it.tierNote || '',
@@ -1451,44 +1674,24 @@
       svPerSP: Number(t.svPerSP.toFixed(4)),
       skillDensity: t.count,
       phaseDiversityBonus: phases.allCovered,
-      adjustedExpectedValue: Number((adjustedExpected / 10000).toFixed(4)),
+      adjustedExpectedValue: Number(adjustedExpected.toFixed(4)),
       perSkillBreakdown: perSkill,
       warnings: warnings,
       explain: explain(chosen, t, warnings),
     };
   }
 
-  // Wisdom proc modifier: higher wisdom → higher chance skills fire when conditions are met.
-  // Piecewise linear interpolation based on community-researched proc rates.
-  // Steep early gains, diminishing returns past ~500 wit.
-  var WISDOM_BREAKPOINTS = [
-    { wit: 0,    rate: 0.05 },
-    { wit: 100,  rate: 0.15 },
-    { wit: 200,  rate: 0.55 },
-    { wit: 300,  rate: 0.70 },
-    { wit: 400,  rate: 0.78 },
-    { wit: 500,  rate: 0.82 },
-    { wit: 600,  rate: 0.85 },
-    { wit: 900,  rate: 0.90 },
-    { wit: 1200, rate: 0.93 },
-  ];
+  // Normal skills use max(1 - 90 / Wisdom, 20%); fixed-condition green skills
+  // bypass the Wisdom roll.
   function wisdomProcModifier(wisdom) {
     var w = num(wisdom, 900);
-    if (w >= 1200) return 0.93;
-    if (w <= 0) return 0.05;
-    for (var i = 1; i < WISDOM_BREAKPOINTS.length; i += 1) {
-      var lo = WISDOM_BREAKPOINTS[i - 1], hi = WISDOM_BREAKPOINTS[i];
-      if (w <= hi.wit) {
-        var t = (w - lo.wit) / (hi.wit - lo.wit);
-        return lo.rate + t * (hi.rate - lo.rate);
-      }
-    }
-    return 0.93;
+    if (w <= 0) return 0.2;
+    return clamp(1 - 90 / w, 0.2, 1);
   }
 
   // Predict the base skill activation score for Team Trials.
-  // For each chosen skill: expected_points = consistency * wisdom_modifier * activation_points
-  // Gold = 1200 pts, White = 500 pts per activation.
+  // Expected points use course/trigger coverage and an optional Wisdom roll.
+  // Gold = 1200 pts, ordinary = 500 pts per activation.
   // Returns the base score BEFORE opponent rating bonus and other multipliers.
   function predictActivationScore(chosen, wisdom) {
     var lowerInGold = collectLowerPrereqIdsInGoldCombos(chosen);
@@ -1496,9 +1699,10 @@
     var total = 0;
     (Array.isArray(chosen) ? chosen : []).forEach(function (it) {
       if (!it || it.comboComponent || lowerInGold.has(it.id)) return;
-      var consistency = clamp(num(it.consistencyScore, 0), 0, 1);
+      var conditionRate = clamp(num(it.trackConditionRate, num(it.consistencyScore, 0)), 0, 1);
+      var activation = conditionRate * (it.wisdomGated === false ? 1 : wMod);
       var points = isGold(it.category) ? 1200 : 500;
-      total += consistency * wMod * points;
+      total += activation * points;
     });
     return Math.round(total);
   }
@@ -1512,6 +1716,8 @@
     optimizeTeamTrialsBuild: optimizeTeamTrialsBuild,
     predictActivationScore: predictActivationScore,
     wisdomProcModifier: wisdomProcModifier,
+    TEAM_TRIAL_COURSE_PROFILES: TEAM_TRIAL_COURSE_PROFILES,
+    estimateCourseCoverage: estimateCourseCoverage,
     timingScore: timingScore,
     breadthScore: breadthScore,
     scenarioScore: scenarioScore,

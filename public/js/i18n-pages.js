@@ -64,8 +64,7 @@
       'home.umadleBadge': 'Daily challenge',
       'home.openUmadle': 'Open Umadle',
       'home.rankBreakdown': 'Rating Rank Breakdown',
-      'home.rankBreakdownDesc':
-        'Browse every rating threshold and jump directly to a target rank.',
+      'home.rankBreakdownDesc': 'Browse every rating threshold and jump directly to a target rank.',
       'home.rankBreakdownBadge': 'Rating reference',
       'home.openRankBreakdown': 'Open Rank Breakdown',
 
@@ -195,7 +194,7 @@
       'optimizer.totalPoints': 'Total Points:',
       'optimizer.remaining': 'Remaining:',
       'optimizer.consistency': 'Consistency:',
-      'optimizer.expectedValue': 'Expected Value:',
+      'optimizer.expectedValue': 'Expected SV:',
       'optimizer.totalSV': 'Total SV:',
       'optimizer.expectedActivations': 'Expected Activations:',
       'optimizer.svPerSP': 'SV per SP:',
@@ -404,8 +403,7 @@
       'hints.loadFailed': 'Failed to load support hints.',
       'hints.loadSupportFailed': 'Failed to load support data. Please refresh.',
       'hints.copyLink': 'Copy link',
-      'hints.counts':
-        '{matched} card(s) matched | {total} cards total | {hints} unique hints',
+      'hints.counts': '{matched} card(s) matched | {total} cards total | {hints} unique hints',
 
       // ── Deck ──
       'deck.title': 'Deck Builder',
@@ -669,6 +667,12 @@
       'teamTrials.core': 'Scored as Team Trials core skill.',
       'teamTrials.greenDownweighted':
         'Green skill is downweighted in Team Trials due to variable race conditions.',
+      'teamTrials.courseCoverage': 'Estimated Team Trials course coverage: {rate}%.',
+      'teamTrials.courseCoverageUnmodeled':
+        'Specific course condition is not covered by the aggregate track model.',
+      'teamTrials.wisdomApplied': 'Wisdom check applied at {rate}%.',
+      'teamTrials.wisdomNotApplied':
+        'Condition-based skill; Wisdom does not reduce its activation rate.',
       'teamTrials.consistentGoldPrioritized':
         'Consistent gold skill prioritized for Team Trials rating value.',
       'teamTrials.multipleHighProc': 'Multiple picks have high proc reliability (>= 65%).',
@@ -780,7 +784,8 @@
       'home.umadleBadge': 'デイリーチャレンジ',
       'home.openUmadle': 'ウマドルを開く',
       'home.rankBreakdown': 'レーティングランク内訳',
-      'home.rankBreakdownDesc': 'すべてのレーティングしきい値を確認し、目標ランクへ直接移動できます。',
+      'home.rankBreakdownDesc':
+        'すべてのレーティングしきい値を確認し、目標ランクへ直接移動できます。',
       'home.rankBreakdownBadge': 'レーティング早見表',
       'home.openRankBreakdown': 'ランク内訳を開く',
 
@@ -904,7 +909,7 @@
       'optimizer.totalPoints': '合計ポイント:',
       'optimizer.remaining': '残りポイント:',
       'optimizer.consistency': '安定度:',
-      'optimizer.expectedValue': '期待値:',
+      'optimizer.expectedValue': '期待SV:',
       'optimizer.totalSV': '合計SV:',
       'optimizer.expectedActivations': '期待発動数:',
       'optimizer.svPerSP': 'SP当たりSV:',
@@ -1112,8 +1117,7 @@
       'hints.loadFailed': 'サポートヒントの読み込みに失敗しました。',
       'hints.loadSupportFailed': 'サポートデータの読み込みに失敗しました。更新してください。',
       'hints.copyLink': 'リンクをコピー',
-      'hints.counts':
-        '{matched}件一致 | 全{total}枚 | ヒント{hints}種',
+      'hints.counts': '{matched}件一致 | 全{total}枚 | ヒント{hints}種',
 
       // ── Deck ──
       'deck.title': 'デッキ編成',
@@ -1163,8 +1167,7 @@
       'deck.openInOptimizer': 'オプティマイザーで開く',
       'deck.noSupportsForOptimizer': 'まずサポートカードを追加してください。',
       'deck.metaTemplates': 'メタテンプレート',
-      'deck.templatesSource':
-        'uma.moe 2026-08-28 Grand Live / Grand Concertクラス6統計に基づく',
+      'deck.templatesSource': 'uma.moe 2026-08-28 Grand Live / Grand Concertクラス6統計に基づく',
       'deck.templateUsage': 'Grand Liveクラス6デッキの{0}%が使用',
       'deck.loadTemplate': '読込',
       'deck.sortBy': '並べ替え：',
@@ -1373,11 +1376,14 @@
       'teamTrials.inconsistent': '不安定な発動と評価。',
       'teamTrials.core': 'チームレースコアスキルと評価。',
       'teamTrials.greenDownweighted': '緑スキルはレース条件の変動によりチームレースで低評価。',
+      'teamTrials.courseCoverage': 'チームレースの推定コース適合率: {rate}%。',
+      'teamTrials.courseCoverageUnmodeled': 'この特定コース条件は集計トラックモデルの対象外です。',
+      'teamTrials.wisdomApplied': '賢さ判定を{rate}%で適用。',
+      'teamTrials.wisdomNotApplied': '条件系スキルのため、賢さによる発動率低下はありません。',
       'teamTrials.consistentGoldPrioritized':
         '安定した金スキルがチームレースのレーティング価値で優先。',
       'teamTrials.multipleHighProc': '複数の選択肢が高い発動信頼性（65%以上）。',
-      'teamTrials.prioritizesConsistent':
-        '発動スコアリングで安定した金スキルを優先。',
+      'teamTrials.prioritizesConsistent': '発動スコアリングで安定した金スキルを優先。',
       'teamTrials.averageConsistency': '平均安定度スコア: {score}%。',
       'teamTrials.totalSVReport': '合計SV: {sv}（{cost} SP使用）。',
       'teamTrials.riskyPick': 'リスク選択: {name} は推定信頼性が低い。',

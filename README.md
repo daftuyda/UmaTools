@@ -127,6 +127,10 @@ dependencies, and the retained browser fallback.
 | [Team Trials](docs/guides/team-trials.md) | Consistency scoring, trigger analysis, expected value, and optimizer priorities. |
 | [OCR Guide](docs/guides/ocr-guide.md) | Capture, preprocessing, recognition, matching, and troubleshooting. |
 | [Accel Checker](docs/guides/accel-checker.md) | Course segmentation, valid acceleration windows, uncertainty, and generated data. |
+| [Deck Tools](docs/guides/deck-tools.md) | Deck construction, limit breaks, compatibility scoring, collection search, and optimizer heuristics. |
+| [Stamina Calculator](docs/guides/stamina-calculator.md) | Race inputs, stat adjustments, recovery math, phase modeling, and result thresholds. |
+| [Grand Live Token Planner](docs/guides/token-planner.md) | Song state, presets, token totals, filtering, persistence, and content maintenance. |
+| [Local Data and Share Links](docs/guides/persistence-and-sharing.md) | Browser storage inventory, URL formats, privacy boundaries, and schema-change rules. |
 | [Translation Guide](docs/guides/translations.md) | Translation modules, adding locales, interpolation, and validation. |
 | [Data Tooling](scripts/data/README.md) | Dataset ownership, sync commands, optional dependencies, and generated outputs. |
 

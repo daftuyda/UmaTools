@@ -4283,6 +4283,7 @@
       {
         budget,
         items,
+        wisdom: Number(ratingInputs.wisdom?.value) || 900,
         raceConfig: getRaceConfigSnapshot(),
         autoTargets: getSelectedAutoTargets(),
         skillMetaById: teamTrialsSkillMetaById,

@@ -4858,19 +4858,19 @@
     background: currentColor;
   }
   .token-vo {
-    color: rgb(var(--cat-red-rgb));
+    color: rgb(var(--token-vo-rgb));
   }
   .token-da {
-    color: rgb(var(--cat-blue-rgb));
+    color: rgb(var(--token-da-rgb));
   }
   .token-vi {
-    color: rgb(var(--cat-purple-rgb));
+    color: rgb(var(--token-vi-rgb));
   }
   .token-pa {
-    color: rgb(var(--cat-yellow-rgb));
+    color: rgb(var(--token-pa-rgb));
   }
   .token-me {
-    color: rgb(var(--cat-green-rgb));
+    color: rgb(var(--token-co-rgb));
   }
 
   /* Umadle */
@@ -7220,6 +7220,24 @@ button.primary,
 }
 
 /* Grand Live token planner */
+.token-planner-page {
+  /* In-game Performance Point palette, darkened slightly for light-theme contrast. */
+  --token-da-rgb: 35 121 207;
+  --token-pa-rgb: 210 65 85;
+  --token-vo-rgb: 194 47 132;
+  --token-vi-rgb: 160 108 0;
+  --token-co-rgb: 119 73 190;
+}
+
+:root.dark .token-planner-page,
+:root.oled .token-planner-page {
+  --token-da-rgb: 76 173 238;
+  --token-pa-rgb: 241 100 122;
+  --token-vo-rgb: 222 83 163;
+  --token-vi-rgb: 232 171 39;
+  --token-co-rgb: 158 116 220;
+}
+
 .token-page-header {
   align-items: end;
   padding-bottom: var(--space-2);

@@ -316,7 +316,7 @@ function testFiltersByAptitudesAndIdealTargets() {
   assert(/ignored.*required|ignoredRequired/i.test(warningText), 'Expected warning for ignored out-of-scope required skills.');
 }
 
-function testDeprioritizesGreenRaceConditionSkills() {
+function testUsesMeasuredCoverageForGreenSkills() {
   const input = {
     budget: 180,
     raceConfig: {},
@@ -367,7 +367,42 @@ function testDeprioritizesGreenRaceConditionSkills() {
   const result = TeamTrialsOptimizer.optimizeTeamTrialsBuild(input);
   assert.strictEqual(result.error, null);
   const picked = nonComboIds(result);
-  assert.deepStrictEqual(picked, ['y1'], 'Expected Team Trials to deprioritize volatile green skills.');
+  assert.deepStrictEqual(picked, ['g1'], 'Expected Firm-condition green skill to use its 77% course coverage.');
+  const green = result.perSkillBreakdown.find((item) => item.id === 'g1');
+  assert(green, 'Expected green skill breakdown');
+  assert.strictEqual(green.courseConditionRate, 0.77);
+  assert.strictEqual(green.wisdomGated, false);
+}
+
+function testTrackCoverageModel() {
+  function coverage(condition, target) {
+    return TeamTrialsOptimizer.estimateCourseCoverage(
+      { conditionGroups: [{ condition }] },
+      { autoTargets: [target] }
+    ).rate;
+  }
+
+  assert.strictEqual(coverage('rotation==1', 'medium'), 0.57);
+  assert.strictEqual(coverage('is_basis_distance==0', 'long'), 0.83);
+  assert.strictEqual(coverage('down_slope_random==1', 'sprint'), 0.59);
+  assert.strictEqual(coverage('ground_condition==1', 'mile'), 0.77);
+  assert.strictEqual(coverage('course_distance==2000', 'medium'), 11 / 21);
+  assert(Math.abs(coverage('rotation==1&ground_condition==1', 'medium') - 0.4389) < 1e-12);
+}
+
+function testWisdomFormulaAndGreenBypass() {
+  assert.strictEqual(TeamTrialsOptimizer.wisdomProcModifier(0), 0.2);
+  assert.strictEqual(TeamTrialsOptimizer.wisdomProcModifier(90), 0.2);
+  assert.strictEqual(TeamTrialsOptimizer.wisdomProcModifier(180), 0.5);
+  assert.strictEqual(TeamTrialsOptimizer.wisdomProcModifier(900), 0.9);
+  assert.strictEqual(TeamTrialsOptimizer.wisdomProcModifier(1200), 0.925);
+
+  const green = [{ id: 'g', category: 'green', trackConditionRate: 0.77, wisdomGated: false }];
+  const yellow = [{ id: 'y', category: 'yellow', trackConditionRate: 1, wisdomGated: true }];
+  assert.strictEqual(TeamTrialsOptimizer.predictActivationScore(green, 100), 385);
+  assert.strictEqual(TeamTrialsOptimizer.predictActivationScore(green, 1200), 385);
+  assert.strictEqual(TeamTrialsOptimizer.predictActivationScore(yellow, 100), 100);
+  assert.strictEqual(TeamTrialsOptimizer.predictActivationScore(yellow, 1200), 463);
 }
 
 function testPrioritizesConsistentGoldSkills() {
@@ -551,7 +586,9 @@ testDeterministicFixtureOutput();
 testExplainIgnoresGoldPrereqSkills();
 testConsistencyIsPrimaryObjective();
 testFiltersByAptitudesAndIdealTargets();
-testDeprioritizesGreenRaceConditionSkills();
+testUsesMeasuredCoverageForGreenSkills();
+testTrackCoverageModel();
+testWisdomFormulaAndGreenBypass();
 testPrioritizesConsistentGoldSkills();
 testConsistentGoldBeatsHigherExpectedNonGold();
 testGoldUsesExplicitLinkedLowerRowForCosts();
