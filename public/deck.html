@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>UmaTools - Deck Builder</title>
+    <meta
+      name="description"
+      content="Build a training deck with 1 character and 6 support cards. See combined skill hints, stat bonuses, and aptitudes."
+    />
+    <link rel="canonical" href="https://daftuyda.moe/deck" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
+    <meta name="color-scheme" content="light dark" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="UmaTools" />
+    <meta property="og:title" content="UmaTools - Deck Builder" />
+    <meta
+      property="og:description"
+      content="Build a training deck with 1 character and 6 support cards. See combined skill hints, stat bonuses, and aptitudes."
+    />
+    <meta property="og:url" content="https://daftuyda.moe/deck" />
+    <meta property="og:image" content="https://daftuyda.moe/api/og?page=deck" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="UmaTools - Deck Builder" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="UmaTools - Deck Builder" />
+    <meta
+      name="twitter:description"
+      content="Build a training deck with 1 character and 6 support cards. See combined skill hints, stat bonuses, and aptitudes."
+    />
+    <meta name="twitter:image" content="https://daftuyda.moe/api/og?page=deck" />
+    <meta name="twitter:image:alt" content="UmaTools - Deck Builder" />
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=optional"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=optional"
+      rel="stylesheet"
+      media="print"
+      onload="this.media = 'all'"
+    />
+    <noscript
+      ><link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=optional"
+        rel="stylesheet"
+    /></noscript>
+    <link rel="preload" href="/assets/uma_data.json" as="fetch" crossorigin />
+    <link rel="preload" href="/assets/support_hints.json" as="fetch" crossorigin />
+    <link rel="stylesheet" href="/css/air.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://daftuyda.moe/#organization",
+            "name": "UmaTools",
+            "url": "https://daftuyda.moe/",
+            "logo": "https://daftuyda.moe/assets/icon-512.png",
+            "sameAs": ["https://github.com/daftuyda/UmaTools", "https://youtube.com/@MaybeVoid"]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://daftuyda.moe/#website",
+            "url": "https://daftuyda.moe/",
+            "name": "UmaTools",
+            "publisher": { "@id": "https://daftuyda.moe/#organization" },
+            "inLanguage": "en"
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://daftuyda.moe/deck#webpage",
+            "url": "https://daftuyda.moe/deck",
+            "name": "Deck Builder",
+            "description": "Build a training deck with 1 character and 6 support cards.",
+            "isPartOf": { "@id": "https://daftuyda.moe/#website" },
+            "about": { "@id": "https://daftuyda.moe/#organization" },
+            "inLanguage": "en"
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://daftuyda.moe/deck#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://daftuyda.moe/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Deck Builder",
+                "item": "https://daftuyda.moe/deck"
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+  </head>
+  <body class="ui-revamp-page app-revamp">
+    <div id="site-nav-slot" class="site-nav-slot" aria-hidden="true"></div>
+    <script>
+      (function () {
+        try {
+          var theme = localStorage.getItem('umatools-theme');
+          var pref = localStorage.getItem('umasearch-darkmode');
+          var dark = theme
+            ? theme === 'dark' || theme === 'oled'
+            : pref
+              ? pref === 'dark'
+              : window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var root = document.documentElement;
+          root.classList.add('is-loading');
+          root.classList.toggle('dark', dark);
+          root.classList.toggle('oled', theme === 'oled');
+          root.dataset.theme = theme || (dark ? 'dark' : 'light');
+          root.style.colorScheme = dark ? 'dark' : 'light';
+
+          var pageLoaded = false;
+          var navReady = !document.querySelector('script[src="/js/nav.js"]');
+          var release = function () {
+            root.classList.remove('is-loading');
+          };
+          var tryRelease = function () {
+            if (!pageLoaded || !navReady) return;
+            if (document.fonts && document.fonts.ready) {
+              Promise.race([
+                document.fonts.ready,
+                new Promise(function (resolve) {
+                  setTimeout(resolve, 1200);
+                }),
+              ]).then(function () {
+                requestAnimationFrame(release);
+              });
+            } else {
+              requestAnimationFrame(release);
+            }
+          };
+          window.addEventListener('load', function () {
+            pageLoaded = true;
+            tryRelease();
+          });
+          window.addEventListener('nav:ready', function () {
+            navReady = true;
+            tryRelease();
+          });
+          window.setTimeout(function () {
+            pageLoaded = true;
+            navReady = true;
+            tryRelease();
+          }, 2400);
+        } catch (e) {}
+      })();
+    </script>
+
+    <main id="main" class="container deck-page">
+      <h1 data-i18n="deck.title">Deck Builder</h1>
+
+      <button
+        id="modeToggleBtn"
+        aria-label="Toggle dark/light mode"
+        class="mode-toggle-btn"
+        title="Toggle dark/light mode"
+        data-i18n-aria="common.toggleDarkLight"
+        data-i18n-title="common.toggleDarkLight"
+      >
+        <svg
+          id="iconSun"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="feather feather-sun"
+        >
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg
+          id="iconMoon"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="feather feather-moon"
+          style="display: none"
+        >
+          <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+        </svg>
+      </button>
+
+      <!-- Character Section -->
+      <section
+        class="deck-section"
+        id="deck-character"
+        data-scroll-section
+        data-scroll-label="Character"
+      >
+        <div class="deck-section-title" data-i18n="deck.character">Character</div>
+        <div id="charDisplay"></div>
+      </section>
+
+      <!-- Character Picker Modal -->
+      <div id="charModal" class="support-modal" hidden>
+        <div class="support-modal-backdrop"></div>
+        <div class="support-modal-content">
+          <div class="support-modal-header">
+            <span class="support-modal-title" data-i18n="deck.selectCharacter"
+              >Select Character</span
+            >
+            <button class="support-modal-close" aria-label="Close" data-i18n-aria="common.close">
+              &times;
+            </button>
+          </div>
+          <div class="support-modal-filters">
+            <input
+              id="charSearch"
+              type="text"
+              placeholder="Search by name..."
+              autocomplete="off"
+              data-i18n-placeholder="common.searchByName"
+            />
+            <div class="filter-row">
+              <div class="filter-group-wrap">
+                <span class="filter-group-label" data-i18n="deck.distance">Distance</span>
+                <div class="filter-group" id="charDistFilters"></div>
+              </div>
+              <div class="filter-group-wrap">
+                <span class="filter-group-label" data-i18n="deck.surface">Surface</span>
+                <div class="filter-group" id="charSurfFilters"></div>
+              </div>
+              <div class="filter-group-wrap">
+                <span class="filter-group-label" data-i18n="deck.strategy">Strategy</span>
+                <div class="filter-group" id="charStratFilters"></div>
+              </div>
+            </div>
+          </div>
+          <div id="charModalList" class="support-modal-list"></div>
+        </div>
+      </div>
+
+      <!-- Support Cards Section -->
+      <section
+        class="deck-section"
+        id="deck-support"
+        data-scroll-section
+        data-scroll-label="Support"
+      >
+        <div class="deck-section-title">Support Cards (<span id="supportCount">0</span>/6)</div>
+        <div id="supportSlots" class="deck-support-slots">
+          <div class="skeleton-card" aria-hidden="true" style="width: 140px; height: 180px"></div>
+          <div class="skeleton-card" aria-hidden="true" style="width: 140px; height: 180px"></div>
+          <div class="skeleton-card" aria-hidden="true" style="width: 140px; height: 180px"></div>
+          <div class="skeleton-card" aria-hidden="true" style="width: 140px; height: 180px"></div>
+          <div class="skeleton-card" aria-hidden="true" style="width: 140px; height: 180px"></div>
+          <div class="skeleton-card" aria-hidden="true" style="width: 140px; height: 180px"></div>
+        </div>
+      </section>
+
+      <!-- Support Card Picker Modal -->
+      <div id="supportModal" class="support-modal" hidden>
+        <div class="support-modal-backdrop"></div>
+        <div class="support-modal-content">
+          <div class="support-modal-header">
+            <span class="support-modal-title" data-i18n="deck.selectSupportCard"
+              >Select Support Card</span
+            >
+            <button class="support-modal-close" aria-label="Close" data-i18n-aria="common.close">
+              &times;
+            </button>
+          </div>
+          <div class="support-modal-filters">
+            <input
+              id="supportSearch"
+              type="text"
+              placeholder="Search by name..."
+              autocomplete="off"
+              data-i18n-placeholder="common.searchByName"
+            />
+            <div class="filter-row">
+              <div class="filter-group" id="typeFilters"></div>
+              <div class="filter-group" id="rarityFilters"></div>
+            </div>
+            <div class="filter-row sort-row">
+              <label class="sort-label" for="supportSort" data-i18n="deck.sortBy">Sort by:</label>
+              <select id="supportSort" class="sort-select"></select>
+            </div>
+          </div>
+          <div id="supportModalList" class="support-modal-list"></div>
+        </div>
+      </div>
+
+      <!-- Support Card Effects Panel -->
+      <div id="effectsPanel" class="effects-panel" hidden>
+        <div class="effects-panel-backdrop"></div>
+        <div class="effects-panel-content">
+          <div class="effects-panel-header">
+            <span id="effectsPanelTitle" class="effects-panel-title"></span>
+            <button class="effects-panel-close" aria-label="Close" data-i18n-aria="common.close">
+              &times;
+            </button>
+          </div>
+          <div class="effects-panel-level">
+            <label for="effectsLevelSlider" data-i18n="deck.levelLabel">Level:</label>
+            <input id="effectsLevelSlider" type="range" min="0" max="4" value="4" />
+            <span id="effectsLevelLabel">MLB</span>
+          </div>
+          <div id="effectsPanelBody" class="effects-panel-body"></div>
+        </div>
+      </div>
+
+      <!-- Combined Summary -->
+      <section
+        class="deck-section"
+        id="summarySection"
+        style="display: none"
+        data-scroll-section
+        data-scroll-label="Summary"
+      >
+        <div class="deck-section-title" data-i18n="deck.combinedSummary">Combined Summary</div>
+        <div id="summaryContent" class="deck-summary"></div>
+      </section>
+
+      <!-- Actions -->
+      <div class="deck-actions">
+        <button id="openSavedBtn" class="primary" data-i18n="deck.savedDecks">Saved Decks</button>
+        <button id="openTemplatesBtn" data-i18n="deck.metaTemplates">Meta Templates</button>
+        <button id="shareLinkBtn" data-i18n="deck.copyShareLink">Copy Share Link</button>
+        <button id="openOptimizerBtn" data-i18n="deck.openInOptimizer">Open in Optimizer</button>
+        <button id="clearAllBtn" data-i18n="deck.clearAll">Clear All</button>
+      </div>
+
+      <!-- Saved Decks Modal -->
+      <div id="savedDecksModal" class="support-modal" hidden>
+        <div class="support-modal-backdrop"></div>
+        <div class="support-modal-content">
+          <div class="support-modal-header">
+            <span class="support-modal-title" data-i18n="deck.savedDecks">Saved Decks</span>
+            <button class="support-modal-close" aria-label="Close" data-i18n-aria="common.close">
+              &times;
+            </button>
+          </div>
+          <div class="saved-modal-actions">
+            <div class="saved-modal-save-row">
+              <input
+                id="saveDeckName"
+                type="text"
+                placeholder="Deck name..."
+                autocomplete="off"
+                data-i18n-placeholder="deck.deckName"
+              />
+              <button id="saveDeckBtn" class="saved-modal-save-btn" data-i18n="common.save">
+                Save
+              </button>
+            </div>
+          </div>
+          <div id="savedDecksList" class="support-modal-list saved-decks-list"></div>
+        </div>
+      </div>
+
+      <!-- Meta Templates Modal -->
+      <div id="templatesModal" class="support-modal" hidden>
+        <div class="support-modal-backdrop"></div>
+        <div class="support-modal-content">
+          <div class="support-modal-header">
+            <span class="support-modal-title" data-i18n="deck.metaTemplates">Meta Templates</span>
+            <button class="support-modal-close" aria-label="Close" data-i18n-aria="common.close">
+              &times;
+            </button>
+          </div>
+          <p class="templates-source" data-i18n="deck.templatesSource">
+            Grand Live / Grand Concert templates based on uma.moe 2026-08-28 Class 6 statistics
+          </p>
+          <div id="templatesModalList" class="support-modal-list templates-list"></div>
+        </div>
+      </div>
+
+      <div id="statusMsg" class="inline-note muted"></div>
+    </main>
+
+    <script src="/js/i18n-core.js" defer></script>
+    <script src="/js/i18n-pages.js" defer></script>
+    <script src="/js/skill-popup.js" defer></script>
+    <script src="/js/deck.js" defer></script>
+    <script src="/js/scroll-nav.js" defer></script>
+    <script src="/js/nav.js" defer></script>
+    <script src="/js/changelog.js" defer></script>
+    <script src="/js/theme-toggle.js" defer></script>
+  </body>
+</html>

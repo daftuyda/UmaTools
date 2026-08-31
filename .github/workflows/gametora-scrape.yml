@@ -34,19 +34,18 @@ jobs:
 
       - name: Run Full Scrape
         run: |
-          node scripts/gametora.js --what all --server global \
-            --out-uma assets/uma_data.json \
-            --out-supports assets/support_card.json \
-            --out-support-hints assets/support_hints.json \
-            --out-skills assets/skills_all.json
+          node scripts/data/gametora.js --what all --server global \
+            --out-uma public/assets/uma_data.json \
+            --out-supports public/assets/support_card.json \
+            --out-support-hints public/assets/support_hints.json \
+            --out-skills public/assets/skills_all.json
 
       - name: Generate Skills Core
-        run: node scripts/generate-skills-core.js
+        run: node scripts/build/generate-skills-core.js
 
       - name: Commit If Changed
         run: |
-          git add -A assets/uma_data.json assets/support_card.json assets/support_hints.json assets/skills_all.json
-          git add -f assets/skills_core.json
+          git add -A public/assets/uma_data.json public/assets/support_card.json public/assets/support_hints.json public/assets/skills_all.json public/assets/skills_core.json
           if git diff --cached --quiet; then
             echo "No data changes to commit."
             exit 0

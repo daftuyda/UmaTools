@@ -11,7 +11,7 @@ from rapidfuzz import fuzz, process
 from starlette.middleware.base import BaseHTTPMiddleware
 
 BASE_DIR = Path(__file__).resolve().parents[1]
-ASSETS = BASE_DIR / "assets"
+ASSETS = BASE_DIR / "public" / "assets"
 OG_FONT = ASSETS / "fonts" / "PlusJakartaSans-Variable.ttf"
 OG_ICON = ASSETS / "icon-512.png"
 

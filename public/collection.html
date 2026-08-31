@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>UmaTools - Deck Optimizer</title>
+    <meta
+      name="description"
+      content="Build your support card collection and auto-generate optimal 6-card decks for MANT and other training scenarios."
+    />
+    <link rel="canonical" href="https://daftuyda.moe/collection" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
+    <meta name="color-scheme" content="light dark" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="UmaTools" />
+    <meta property="og:title" content="UmaTools - Deck Optimizer" />
+    <meta
+      property="og:description"
+      content="Build your support card collection and auto-generate optimal 6-card decks for MANT and other training scenarios."
+    />
+    <meta property="og:url" content="https://daftuyda.moe/collection" />
+    <meta property="og:image" content="https://daftuyda.moe/api/og?page=collection" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="UmaTools - Deck Optimizer" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="UmaTools - Deck Optimizer" />
+    <meta
+      name="twitter:description"
+      content="Build your support card collection and auto-generate optimal 6-card decks for MANT and other training scenarios."
+    />
+    <meta name="twitter:image" content="https://daftuyda.moe/api/og?page=collection" />
+    <meta name="twitter:image:alt" content="UmaTools - Deck Optimizer" />
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=optional"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=optional"
+      rel="stylesheet"
+      media="print"
+      onload="this.media = 'all'"
+    />
+    <noscript
+      ><link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=optional"
+        rel="stylesheet"
+    /></noscript>
+    <link rel="preload" href="/assets/support_hints.json" as="fetch" crossorigin />
+    <link rel="stylesheet" href="/css/air.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://daftuyda.moe/#organization",
+            "name": "UmaTools",
+            "url": "https://daftuyda.moe/",
+            "logo": "https://daftuyda.moe/assets/icon-512.png",
+            "sameAs": ["https://github.com/daftuyda/UmaTools", "https://youtube.com/@MaybeVoid"]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://daftuyda.moe/#website",
+            "url": "https://daftuyda.moe/",
+            "name": "UmaTools",
+            "publisher": { "@id": "https://daftuyda.moe/#organization" },
+            "inLanguage": "en"
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://daftuyda.moe/collection#webpage",
+            "url": "https://daftuyda.moe/collection",
+            "name": "Deck Optimizer",
+            "description": "Build your support card collection and auto-generate optimal decks for training scenarios.",
+            "isPartOf": { "@id": "https://daftuyda.moe/#website" },
+            "about": { "@id": "https://daftuyda.moe/#organization" },
+            "inLanguage": "en"
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://daftuyda.moe/collection#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://daftuyda.moe/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Deck Optimizer",
+                "item": "https://daftuyda.moe/collection"
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+  </head>
+  <body class="ui-revamp-page app-revamp">
+    <div id="site-nav-slot" class="site-nav-slot" aria-hidden="true"></div>
+    <script>
+      (function () {
+        try {
+          var theme = localStorage.getItem('umatools-theme');
+          var pref = localStorage.getItem('umasearch-darkmode');
+          var dark = theme
+            ? theme === 'dark' || theme === 'oled'
+            : pref
+              ? pref === 'dark'
+              : window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var root = document.documentElement;
+          root.classList.add('is-loading');
+          root.classList.toggle('dark', dark);
+          root.classList.toggle('oled', theme === 'oled');
+          root.dataset.theme = theme || (dark ? 'dark' : 'light');
+          root.style.colorScheme = dark ? 'dark' : 'light';
+
+          var pageLoaded = false;
+          var navReady = !document.querySelector('script[src="/js/nav.js"]');
+          var release = function () {
+            root.classList.remove('is-loading');
+          };
+          var tryRelease = function () {
+            if (!pageLoaded || !navReady) return;
+            if (document.fonts && document.fonts.ready) {
+              Promise.race([
+                document.fonts.ready,
+                new Promise(function (resolve) {
+                  setTimeout(resolve, 1200);
+                }),
+              ]).then(function () {
+                requestAnimationFrame(release);
+              });
+            } else {
+              requestAnimationFrame(release);
+            }
+          };
+          window.addEventListener('load', function () {
+            pageLoaded = true;
+            tryRelease();
+          });
+          window.addEventListener('nav:ready', function () {
+            navReady = true;
+            tryRelease();
+          });
+          window.setTimeout(function () {
+            pageLoaded = true;
+            navReady = true;
+            tryRelease();
+          }, 2400);
+        } catch (e) {}
+      })();
+    </script>
+
+    <main id="main" class="container">
+      <h1 data-i18n="collection.title">Deck Optimizer</h1>
+
+      <button
+        id="modeToggleBtn"
+        aria-label="Toggle dark/light mode"
+        class="mode-toggle-btn"
+        title="Toggle dark/light mode"
+        data-i18n-aria="common.toggleDarkLight"
+        data-i18n-title="common.toggleDarkLight"
+      >
+        <svg
+          id="iconSun"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="feather feather-sun"
+        >
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg
+          id="iconMoon"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="feather feather-moon"
+          style="display: none"
+        >
+          <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+        </svg>
+      </button>
+
+      <!-- Tab Buttons -->
+      <div class="co-tabs">
+        <button class="co-tab active" data-tab="collection" data-i18n="collection.tabCollection">
+          My Collection
+        </button>
+        <button class="co-tab" data-tab="optimizer" data-i18n="collection.tabOptimizer">
+          Deck Optimizer
+        </button>
+      </div>
+
+      <!-- ═══ Collection Tab ═══ -->
+      <div class="co-tab-panel active" id="panelCollection">
+        <!-- Import/Export bar -->
+        <div class="co-toolbar">
+          <span id="collectionCount" class="co-count">0 cards</span>
+          <button id="importBtn" class="btn btn-sm" data-i18n="collection.import">Import</button>
+          <button id="exportBtn" class="btn btn-sm" data-i18n="collection.export">Export</button>
+          <button
+            id="clearCollectionBtn"
+            class="btn btn-sm btn-danger"
+            data-i18n="collection.clearAll"
+          >
+            Clear All
+          </button>
+        </div>
+
+        <!-- Search & filters -->
+        <div class="co-search-bar">
+          <input
+            type="text"
+            id="cardSearch"
+            placeholder="Search support cards..."
+            data-i18n-placeholder="collection.searchPlaceholder"
+            autocomplete="off"
+          />
+        </div>
+        <div class="co-filters">
+          <div id="typeFilters" class="co-filter-row"></div>
+          <div id="rarityFilters" class="co-filter-row"></div>
+        </div>
+
+        <!-- Search Results -->
+        <div id="searchResults" class="co-card-grid" hidden></div>
+
+        <!-- My Collection -->
+        <section id="myCollection" class="co-section">
+          <div class="deck-section-title" data-i18n="collection.myCards">My Cards</div>
+          <div id="collectionGrid" class="co-card-grid"></div>
+          <div id="collectionEmpty" class="co-empty" data-i18n="collection.emptyMsg">
+            Search and add cards above to build your collection.
+          </div>
+        </section>
+      </div>
+
+      <!-- ═══ Optimizer Tab ═══ -->
+      <div class="co-tab-panel" id="panelOptimizer">
+        <!-- Scenario selector -->
+        <div class="co-section">
+          <div class="deck-section-title" data-i18n="collection.scenario">Scenario</div>
+          <div class="co-scenario-bar">
+            <select id="scenarioSelect">
+              <option value="mant">MANT (Class 6)</option>
+            </select>
+            <button id="optimizeBtn" class="btn btn-primary" data-i18n="collection.optimize">
+              Optimize Decks
+            </button>
+          </div>
+        </div>
+
+        <!-- Variant filters -->
+        <div class="co-section">
+          <div class="deck-section-title" data-i18n="collection.variants">Variant Filters</div>
+          <div class="co-variant-bar">
+            <div class="co-variant-group">
+              <label data-i18n="collection.paceStyle">Pace Style</label>
+              <select id="styleFilter">
+                <option value="all">All</option>
+                <option value="front">Front</option>
+                <option value="pace">Pace</option>
+                <option value="late">Late</option>
+                <option value="end">End</option>
+              </select>
+            </div>
+            <div class="co-variant-group">
+              <label data-i18n="collection.distance">Distance</label>
+              <select id="distanceFilter">
+                <option value="all">All</option>
+                <option value="short">Short</option>
+                <option value="mile">Mile</option>
+                <option value="medium">Medium</option>
+                <option value="long">Long</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Progress -->
+        <div id="optimizeProgress" class="co-progress" hidden>
+          <div class="co-progress-bar"><div class="co-progress-fill"></div></div>
+          <span class="co-progress-label">Optimizing...</span>
+        </div>
+
+        <!-- Results -->
+        <div id="optimizeResults" class="co-results"></div>
+      </div>
+
+      <!-- Import/Export Modal -->
+      <div id="importExportModal" class="support-modal" hidden>
+        <div class="support-modal-backdrop"></div>
+        <div class="support-modal-content">
+          <div class="support-modal-header">
+            <span id="ioModalTitle" class="support-modal-title">Import / Export</span>
+            <button class="support-modal-close" aria-label="Close" data-i18n-aria="common.close">
+              &times;
+            </button>
+          </div>
+          <div class="co-io-body">
+            <textarea id="ioTextarea" rows="10" placeholder="Paste JSON here..."></textarea>
+            <div class="co-io-actions">
+              <button id="ioConfirmBtn" class="btn btn-primary">Confirm</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="statusMsg" class="inline-note muted"></div>
+    </main>
+
+    <script src="/js/i18n-core.js" defer></script>
+    <script src="/js/i18n-pages.js" defer></script>
+    <script src="/js/collection.js" defer></script>
+    <script src="/js/scroll-nav.js" defer></script>
+    <script src="/js/nav.js" defer></script>
+    <script src="/js/changelog.js" defer></script>
+    <script src="/js/theme-toggle.js" defer></script>
+  </body>
+</html>

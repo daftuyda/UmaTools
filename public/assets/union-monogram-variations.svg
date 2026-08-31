@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="680" viewBox="0 0 1200 680">
+  <defs>
+    <linearGradient id="page" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#101927" />
+      <stop offset="1" stop-color="#080d15" />
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#000" flood-opacity="0.28" />
+    </filter>
+
+    <!-- Original asymmetric ligature. -->
+    <symbol id="heritage" viewBox="0 0 64 64">
+      <path d="M8 9h11v28c0 8 4 12 13 12s13-4 13-12V23h11v15c0 14-9 21-24 21S8 52 8 38V9Z" />
+      <path d="M35 7h23v10H35z" />
+    </symbol>
+
+    <!-- The T crossbar is centred over the right side of a balanced U. -->
+    <symbol id="balance" viewBox="0 0 64 64">
+      <path d="M7 10h11v27c0 8 5 12 14 12s14-4 14-12V10h11v28c0 14-9 21-25 21S7 52 7 38V10Z" />
+      <path d="M28 6h31v10H28z" />
+    </symbol>
+
+    <!-- A freestanding T occupies the U's internal counter. -->
+    <symbol id="inline" viewBox="0 0 64 64">
+      <path d="M6 9h11v28c0 9 5 13 15 13s15-4 15-13V9h11v29c0 14-9 21-26 21S6 52 6 38V9Z" />
+      <path d="M21 12h22v9h-6v20H27V21h-6v-9Z" />
+    </symbol>
+
+    <!-- Angled terminals add a faster, more assertive stance. -->
+    <symbol id="forward" viewBox="0 0 64 64">
+      <path d="m5 8 13 5v24c0 8 4 12 13 12s13-4 13-12V22l12 4v12c0 14-9 21-25 21S5 52 5 38V8Z" />
+      <path d="m35 7 25 8-8 9-20-7 3-10Z" />
+    </symbol>
+
+    <!-- A light monoline with the T crossbar centred precisely on its stem. -->
+    <symbol id="ribbon" viewBox="0 0 64 64">
+      <path d="M12 11v26c0 11 6.5 17 18 17s18-7 18-19V12" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M37 12h22" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" />
+    </symbol>
+
+    <!-- A compact seal uses the U/T as negative space. -->
+    <mask id="seal-cut" maskUnits="userSpaceOnUse" x="0" y="0" width="64" height="64">
+      <circle cx="32" cy="32" r="29" fill="#fff" />
+      <path d="M15 17v18c0 10 6 15 17 15s17-5 17-15V25" fill="none" stroke="#000" stroke-width="8" stroke-linecap="square" />
+      <path d="M34 16h20M44 16v18" fill="none" stroke="#000" stroke-width="8" stroke-linecap="square" />
+    </mask>
+    <symbol id="seal" viewBox="0 0 64 64">
+      <circle cx="32" cy="32" r="29" mask="url(#seal-cut)" />
+    </symbol>
+
+    <style>
+      .heading { fill: #f5f7fb; font: 750 32px system-ui, sans-serif; letter-spacing: -0.8px; }
+      .subheading { fill: #9ba8b9; font: 500 15px system-ui, sans-serif; }
+      .number { fill: #78a8ff; font: 800 11px system-ui, sans-serif; letter-spacing: 1.5px; }
+      .name { fill: #f5f7fb; font: 750 22px system-ui, sans-serif; }
+      .detail { fill: #9ba8b9; font: 500 13px system-ui, sans-serif; }
+      .wordmark { fill: #101827; font: 760 14px system-ui, sans-serif; letter-spacing: -0.2px; }
+      .tagline { fill: #617087; font: 750 7px system-ui, sans-serif; letter-spacing: 0.8px; }
+      .mark { fill: #fff; color: #fff; }
+      .mark-dark { fill: #101827; color: #101827; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="680" fill="url(#page)" />
+  <text x="55" y="61" class="heading">Union monogram studies</text>
+  <text x="55" y="90" class="subheading">Six ways to fuse the U and T into one compact, ownable signature.</text>
+
+  <!-- Heritage -->
+  <g transform="translate(55 125)" filter="url(#shadow)">
+    <rect width="350" height="240" rx="22" fill="#151e2d" stroke="#35455b" />
+    <use href="#heritage" x="28" y="25" width="88" height="88" class="mark" />
+    <text x="140" y="47" class="number">01 / HERITAGE</text>
+    <text x="140" y="78" class="name">Heritage</text>
+    <text x="140" y="101" class="detail">Original asymmetric UT</text>
+    <rect x="24" y="145" width="302" height="67" rx="15" fill="#f4f7fb" />
+    <use href="#heritage" x="39" y="160" width="37" height="37" class="mark-dark" />
+    <text x="89" y="178" class="wordmark">UmaTools</text>
+    <text x="89" y="193" class="tagline">TRAINING TOOLKIT</text>
+  </g>
+
+  <!-- Balance -->
+  <g transform="translate(425 125)" filter="url(#shadow)">
+    <rect width="350" height="240" rx="22" fill="#151e2d" stroke="#35455b" />
+    <use href="#balance" x="28" y="25" width="88" height="88" class="mark" />
+    <text x="140" y="47" class="number">02 / BALANCE</text>
+    <text x="140" y="78" class="name">Balance</text>
+    <text x="140" y="101" class="detail">Stable geometric ligature</text>
+    <rect x="24" y="145" width="302" height="67" rx="15" fill="#f4f7fb" />
+    <use href="#balance" x="39" y="160" width="37" height="37" class="mark-dark" />
+    <text x="89" y="178" class="wordmark">UmaTools</text>
+    <text x="89" y="193" class="tagline">TRAINING TOOLKIT</text>
+  </g>
+
+  <!-- Inline -->
+  <g transform="translate(795 125)" filter="url(#shadow)">
+    <rect width="350" height="240" rx="22" fill="#151e2d" stroke="#35455b" />
+    <use href="#inline" x="28" y="25" width="88" height="88" class="mark" />
+    <text x="140" y="47" class="number">03 / INLINE</text>
+    <text x="140" y="78" class="name">Inline</text>
+    <text x="140" y="101" class="detail">T nested inside the U</text>
+    <rect x="24" y="145" width="302" height="67" rx="15" fill="#f4f7fb" />
+    <use href="#inline" x="39" y="160" width="37" height="37" class="mark-dark" />
+    <text x="89" y="178" class="wordmark">UmaTools</text>
+    <text x="89" y="193" class="tagline">TRAINING TOOLKIT</text>
+  </g>
+
+  <!-- Forward -->
+  <g transform="translate(55 395)" filter="url(#shadow)">
+    <rect width="350" height="240" rx="22" fill="#151e2d" stroke="#35455b" />
+    <use href="#forward" x="28" y="25" width="88" height="88" class="mark" />
+    <text x="140" y="47" class="number">04 / FORWARD</text>
+    <text x="140" y="78" class="name">Forward</text>
+    <text x="140" y="101" class="detail">Fast angular terminals</text>
+    <rect x="24" y="145" width="302" height="67" rx="15" fill="#f4f7fb" />
+    <use href="#forward" x="39" y="160" width="37" height="37" class="mark-dark" />
+    <text x="89" y="178" class="wordmark">UmaTools</text>
+    <text x="89" y="193" class="tagline">TRAINING TOOLKIT</text>
+  </g>
+
+  <!-- Ribbon -->
+  <g transform="translate(425 395)" filter="url(#shadow)">
+    <rect width="350" height="240" rx="22" fill="#151e2d" stroke="#35455b" />
+    <use href="#ribbon" x="28" y="25" width="88" height="88" class="mark" />
+    <text x="140" y="47" class="number">05 / RIBBON</text>
+    <text x="140" y="78" class="name">Ribbon</text>
+    <text x="140" y="101" class="detail">Light, centred monoline</text>
+    <rect x="24" y="145" width="302" height="67" rx="15" fill="#f4f7fb" />
+    <use href="#ribbon" x="39" y="160" width="37" height="37" class="mark-dark" />
+    <text x="89" y="178" class="wordmark">UmaTools</text>
+    <text x="89" y="193" class="tagline">TRAINING TOOLKIT</text>
+  </g>
+
+  <!-- Seal -->
+  <g transform="translate(795 395)" filter="url(#shadow)">
+    <rect width="350" height="240" rx="22" fill="#151e2d" stroke="#35455b" />
+    <use href="#seal" x="28" y="25" width="88" height="88" class="mark" />
+    <text x="140" y="47" class="number">06 / SEAL</text>
+    <text x="140" y="78" class="name">Seal</text>
+    <text x="140" y="101" class="detail">Negative-space signature</text>
+    <rect x="24" y="145" width="302" height="67" rx="15" fill="#f4f7fb" />
+    <use href="#seal" x="39" y="160" width="37" height="37" class="mark-dark" />
+    <text x="89" y="178" class="wordmark">UmaTools</text>
+    <text x="89" y="193" class="tagline">TRAINING TOOLKIT</text>
+  </g>
+</svg>

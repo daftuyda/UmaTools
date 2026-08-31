@@ -1,0 +1,41 @@
+{
+  "version": "2026-08 Beta",
+  "summary": {
+    "en": "A complete UmaTools suite overhaul with Grand Live updates and beta polish.",
+    "ja": "UmaTools全体の刷新、グランドライブ更新、ベータ版の改善。"
+  },
+  "entries": [
+    {
+      "en": "Redesigned the full site with a professional navigation bar, new UmaTools brand mark, consistent workspace widths, rounded layered surfaces, richer accents, shadows, and subtle animation.",
+      "ja": "プロフェッショナルなナビゲーション、新しいUmaToolsブランドマーク、統一された画面幅、丸みのある階層的なデザイン、アクセント、影、控えめなアニメーションでサイト全体を刷新しました。"
+    },
+    {
+      "en": "Improved mobile, OLED, modal, footer, spacing, and overflow behavior throughout the toolkit.",
+      "ja": "ツールキット全体でモバイル、OLED、モーダル、フッター、余白、オーバーフロー表示を改善しました。"
+    },
+    {
+      "en": "Updated the Optimizer with clearer evolution and linked-skill relationships, a standardized build workspace, improved skill details, and a polished quick tour.",
+      "ja": "オプティマイザーに進化スキルと関連スキルの分かりやすい表示、統一されたビルド画面、詳細なスキル情報、改善されたクイックツアーを追加しました。"
+    },
+    {
+      "en": "Overhauled Deck Builder layouts and selectors, fixed viewport-centered modals, and added Grand Live / Grand Concert templates that include required Light Hello decks.",
+      "ja": "デッキビルダーのレイアウトと選択画面を刷新し、モーダルの表示位置を修正しました。必須のライトハローを含むグランドライブ／グランドコンサート用テンプレートも追加しました。"
+    },
+    {
+      "en": "Standardized race configuration and rating layouts, added faster rank navigation, clarified clickable skill names, and converted raw skill effects into player-friendly values.",
+      "ja": "レース設定とレーティング画面を統一し、ランクへのクイック移動、クリック可能なスキル名の明確化、スキル効果の分かりやすい数値表示を追加しました。"
+    },
+    {
+      "en": "Refined Stamina Check, Support Hints, Accel Checker, Token Planner, Skill Library, and Umadle with clearer cards, spacing, scrolling, results, and popouts.",
+      "ja": "スタミナチェック、サポートヒント、加速チェッカー、トークンプランナー、スキル一覧、ウマドルのカード、余白、スクロール、結果、ポップアップ表示を改善しました。"
+    },
+    {
+      "en": "Updated the Grand Live planner with English song and token names, refreshed scenario data, and improved planning controls.",
+      "ja": "グランドライブプランナーに英語の楽曲名とトークン名を追加し、シナリオデータと計画操作を更新しました。"
+    },
+    {
+      "en": "Reorganized the project, refreshed suite-wide documentation, and expanded automated checks for routes, data, assets, performance, and mobile compatibility.",
+      "ja": "プロジェクト構成とサイト全体のドキュメントを更新し、ルート、データ、アセット、パフォーマンス、モバイル互換性の自動チェックを拡充しました。"
+    }
+  ]
+}

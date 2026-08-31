@@ -1,0 +1,699 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>UmaTools - Rating Calculator</title>
+    <meta
+      name="description"
+      content="Standalone Uma Musume rating calculator with stats, skills, and race aptitude inputs."
+    />
+    <link rel="canonical" href="https://daftuyda.moe/calculator" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
+    <meta name="color-scheme" content="light dark" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="UmaTools" />
+    <meta property="og:title" content="UmaTools - Rating Calculator" />
+    <meta
+      property="og:description"
+      content="Standalone Uma Musume rating calculator with stats, skills, and race aptitude inputs."
+    />
+    <meta property="og:url" content="https://daftuyda.moe/calculator" />
+    <meta property="og:image" content="https://daftuyda.moe/api/og?page=calculator" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="UmaTools - Rating Calculator" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="UmaTools - Rating Calculator" />
+    <meta
+      name="twitter:description"
+      content="Standalone Uma Musume rating calculator with stats, skills, and race aptitude inputs."
+    />
+    <meta name="twitter:image" content="https://daftuyda.moe/api/og?page=calculator" />
+    <meta name="twitter:image:alt" content="UmaTools - Rating Calculator" />
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=optional"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=optional"
+      rel="stylesheet"
+      media="print"
+      onload="this.media = 'all'"
+    />
+    <noscript
+      ><link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=optional"
+        rel="stylesheet"
+    /></noscript>
+    <link rel="preload" href="/assets/skills_all.json" as="fetch" crossorigin />
+    <link rel="stylesheet" href="/css/air.css" />
+    <script>
+      // Image optimization helper - creates picture elements with WebP and fallback
+      (function () {
+        'use strict';
+
+        /**
+         * Creates a picture element HTML string with WebP source and fallback
+         * @param {string} src - Original image source (PNG/JPG)
+         * @param {string} alt - Alt text for the image
+         * @param {string} className - CSS class name(s) for the img element
+         * @param {Object} attrs - Additional attributes (loading, decoding, fetchpriority, etc.)
+         * @returns {string} HTML string for picture element
+         */
+        window.createPictureHTML = function (src, alt, className, attrs) {
+          if (!src) return '';
+
+          attrs = attrs || {};
+          var loading = attrs.loading || 'lazy';
+          var decoding = attrs.decoding || 'async';
+          var fetchpriority = attrs.fetchpriority || '';
+
+          // Convert .png or .jpg to .webp
+          var webpSrc = src.replace(/\.(png|jpg|jpeg)$/i, '.webp');
+
+          // Build attributes string
+          var attrStr = className ? ` class="${className}"` : '';
+          attrStr += ` alt="${alt || ''}"`;
+          attrStr += ` loading="${loading}"`;
+          attrStr += ` decoding="${decoding}"`;
+          if (fetchpriority) {
+            attrStr += ` fetchpriority="${fetchpriority}"`;
+          }
+
+          // Return picture element with WebP source and fallback
+          return (
+            `<picture>` +
+            `<source srcset="${webpSrc}" type="image/webp">` +
+            `<img src="${src}"${attrStr}>` +
+            `</picture>`
+          );
+        };
+      })();
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://daftuyda.moe/#organization",
+            "name": "UmaTools",
+            "url": "https://daftuyda.moe/",
+            "logo": "https://daftuyda.moe/assets/icon-512.png",
+            "sameAs": ["https://github.com/daftuyda/UmaTools", "https://youtube.com/@MaybeVoid"]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://daftuyda.moe/#website",
+            "url": "https://daftuyda.moe/",
+            "name": "UmaTools",
+            "publisher": { "@id": "https://daftuyda.moe/#organization" },
+            "inLanguage": "en"
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://daftuyda.moe/calculator#webpage",
+            "url": "https://daftuyda.moe/calculator",
+            "name": "Rating Calculator",
+            "description": "Standalone Uma Musume rating calculator with stats, skills, and race aptitude inputs.",
+            "isPartOf": { "@id": "https://daftuyda.moe/#website" },
+            "about": { "@id": "https://daftuyda.moe/#organization" },
+            "inLanguage": "en"
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://daftuyda.moe/calculator#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://daftuyda.moe/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Calculator",
+                "item": "https://daftuyda.moe/calculator"
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+    <!-- No-flash dark mode (matches other pages) -->
+
+    <script defer src="/_vercel/insights/script.js"></script>
+  </head>
+  <body class="ui-revamp-page app-revamp">
+    <div id="site-nav-slot" class="site-nav-slot" aria-hidden="true"></div>
+    <script>
+      (function () {
+        try {
+          var theme = localStorage.getItem('umatools-theme');
+          var pref = localStorage.getItem('umasearch-darkmode');
+          var dark = theme
+            ? theme === 'dark' || theme === 'oled'
+            : pref
+              ? pref === 'dark'
+              : window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var root = document.documentElement;
+          root.classList.add('is-loading');
+          root.classList.toggle('dark', dark);
+          root.classList.toggle('oled', theme === 'oled');
+          root.dataset.theme = theme || (dark ? 'dark' : 'light');
+          root.style.colorScheme = dark ? 'dark' : 'light';
+
+          var pageLoaded = false;
+          var navReady = !document.querySelector('script[src="/js/nav.js"]');
+          var release = function () {
+            root.classList.remove('is-loading');
+          };
+          var tryRelease = function () {
+            if (!pageLoaded || !navReady) return;
+            if (document.fonts && document.fonts.ready) {
+              Promise.race([
+                document.fonts.ready,
+                new Promise(function (resolve) {
+                  setTimeout(resolve, 1200);
+                }),
+              ]).then(function () {
+                requestAnimationFrame(release);
+              });
+            } else {
+              requestAnimationFrame(release);
+            }
+          };
+          window.addEventListener('load', function () {
+            pageLoaded = true;
+            tryRelease();
+          });
+          window.addEventListener('nav:ready', function () {
+            navReady = true;
+            tryRelease();
+          });
+          window.setTimeout(function () {
+            pageLoaded = true;
+            navReady = true;
+            tryRelease();
+          }, 2400);
+        } catch (e) {}
+      })();
+    </script>
+
+    <!-- Same floating toggle button used across site; nav.js will relocate it into the navbar when present -->
+    <button
+      id="modeToggleBtn"
+      aria-label="Toggle dark/light mode"
+      data-i18n-aria="common.toggleDarkLight"
+      class="mode-toggle-btn"
+      title="Toggle dark/light mode"
+      data-i18n-title="common.toggleDarkLight"
+    >
+      <svg
+        id="iconSun"
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line>
+        <line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+      </svg>
+      <svg
+        id="iconMoon"
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        style="display: none"
+      >
+        <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+      </svg>
+    </button>
+
+    <main id="main" class="container">
+      <h1 data-i18n="calculator.title">Rating Calculator</h1>
+      <div class="tutorial-help-row">
+        <button
+          id="tutorial-open"
+          class="btn btn-secondary tutorial-open-link"
+          type="button"
+          aria-haspopup="dialog"
+          aria-expanded="false"
+        >
+          <span data-i18n="calculator.helpTutorial">Help / Tutorial</span>
+        </button>
+      </div>
+
+      <!-- Combined Race Config + Stats/Rating -->
+      <section
+        class="card card-elevated calculator-top-section race-config-container"
+        id="calculator-config-section"
+        data-scroll-section
+        data-scroll-label="Config"
+      >
+        <div class="calculator-top-grid">
+          <!-- Left: Race Configuration -->
+          <div class="race-config-pane">
+            <div class="race-card-header">
+              <h2 id="raceConfigTitle" data-i18n="common.raceConfig">Race Configuration</h2>
+            </div>
+            <div class="opt-grid">
+              <div class="kv-row">
+                <div class="k" data-i18n="common.track">Track</div>
+                <div class="v row">
+                  <label>
+                    <span data-i18n="common.turf">Turf</span>
+                    <select id="cfg-turf">
+                      <option value="S">S</option>
+                      <option value="A" selected>A</option>
+                      <option value="B">B</option>
+                      <option value="C">C</option>
+                      <option value="D">D</option>
+                      <option value="E">E</option>
+                      <option value="F">F</option>
+                      <option value="G">G</option>
+                    </select>
+                  </label>
+                  <label>
+                    <span data-i18n="common.dirt">Dirt</span>
+                    <select id="cfg-dirt">
+                      <option value="S">S</option>
+                      <option value="A">A</option>
+                      <option value="B">B</option>
+                      <option value="C">C</option>
+                      <option value="D">D</option>
+                      <option value="E">E</option>
+                      <option value="F">F</option>
+                      <option value="G" selected>G</option>
+                    </select>
+                  </label>
+                </div>
+              </div>
+              <div class="kv-row">
+                <div class="k" data-i18n="common.distance">Distance</div>
+                <div class="v row">
+                  <label>
+                    <span data-i18n="common.sprint">Sprint</span>
+                    <select id="cfg-sprint">
+                      <option value="S">S</option>
+                      <option value="A">A</option>
+                      <option value="B">B</option>
+                      <option value="C">C</option>
+                      <option value="D" selected>D</option>
+                      <option value="E">E</option>
+                      <option value="F">F</option>
+                      <option value="G">G</option>
+                    </select>
+                  </label>
+                  <label>
+                    <span data-i18n="common.mile">Mile</span>
+                    <select id="cfg-mile">
+                      <option value="S">S</option>
+                      <option value="A">A</option>
+                      <option value="B">B</option>
+                      <option value="C" selected>C</option>
+                      <option value="D">D</option>
+                      <option value="E">E</option>
+                      <option value="F">F</option>
+                      <option value="G">G</option>
+                    </select>
+                  </label>
+                  <label>
+                    <span data-i18n="common.medium">Medium</span>
+                    <select id="cfg-medium">
+                      <option value="S">S</option>
+                      <option value="A" selected>A</option>
+                      <option value="B">B</option>
+                      <option value="C">C</option>
+                      <option value="D">D</option>
+                      <option value="E">E</option>
+                      <option value="F">F</option>
+                      <option value="G">G</option>
+                    </select>
+                  </label>
+                  <label>
+                    <span data-i18n="common.long">Long</span>
+                    <select id="cfg-long">
+                      <option value="S">S</option>
+                      <option value="A">A</option>
+                      <option value="B" selected>B</option>
+                      <option value="C">C</option>
+                      <option value="D">D</option>
+                      <option value="E">E</option>
+                      <option value="F">F</option>
+                      <option value="G">G</option>
+                    </select>
+                  </label>
+                </div>
+              </div>
+              <div class="kv-row">
+                <div class="k" data-i18n="common.strategy">Strategy</div>
+                <div class="v row">
+                  <label>
+                    <span data-i18n="common.front">Front</span>
+                    <select id="cfg-front">
+                      <option value="S">S</option>
+                      <option value="A" selected>A</option>
+                      <option value="B">B</option>
+                      <option value="C">C</option>
+                      <option value="D">D</option>
+                      <option value="E">E</option>
+                      <option value="F">F</option>
+                      <option value="G">G</option>
+                    </select>
+                  </label>
+                  <label>
+                    <span data-i18n="common.pace">Pace</span>
+                    <select id="cfg-pace">
+                      <option value="S">S</option>
+                      <option value="A">A</option>
+                      <option value="B" selected>B</option>
+                      <option value="C">C</option>
+                      <option value="D">D</option>
+                      <option value="E">E</option>
+                      <option value="F">F</option>
+                      <option value="G">G</option>
+                    </select>
+                  </label>
+                  <label>
+                    <span data-i18n="common.late">Late</span>
+                    <select id="cfg-late">
+                      <option value="S">S</option>
+                      <option value="A">A</option>
+                      <option value="B">B</option>
+                      <option value="C" selected>C</option>
+                      <option value="D">D</option>
+                      <option value="E">E</option>
+                      <option value="F">F</option>
+                      <option value="G">G</option>
+                    </select>
+                  </label>
+                  <label>
+                    <span data-i18n="common.end">End</span>
+                    <select id="cfg-end">
+                      <option value="S">S</option>
+                      <option value="A">A</option>
+                      <option value="B" selected>B</option>
+                      <option value="C">C</option>
+                      <option value="D">D</option>
+                      <option value="E">E</option>
+                      <option value="F">F</option>
+                      <option value="G">G</option>
+                    </select>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Stats & Rating -->
+          <div class="stats-rating-pane" id="rating-card">
+            <div class="rating-card-header">
+              <h2 id="ratingCalcTitle" data-i18n="calculator.statsRating">Stats &amp; Rating</h2>
+            </div>
+            <div class="rating-grid">
+              <label
+                ><span data-i18n="common.speed">Speed</span>
+                <input
+                  id="stat-speed"
+                  type="number"
+                  min="0"
+                  max="2500"
+                  step="1"
+                  value="0"
+                  inputmode="numeric"
+                />
+              </label>
+              <label
+                ><span data-i18n="common.stamina">Stamina</span>
+                <input
+                  id="stat-stamina"
+                  type="number"
+                  min="0"
+                  max="2500"
+                  step="1"
+                  value="0"
+                  inputmode="numeric"
+                />
+              </label>
+              <label
+                ><span data-i18n="common.power">Power</span>
+                <input
+                  id="stat-power"
+                  type="number"
+                  min="0"
+                  max="2500"
+                  step="1"
+                  value="0"
+                  inputmode="numeric"
+                />
+              </label>
+              <label
+                ><span data-i18n="common.guts">Guts</span>
+                <input
+                  id="stat-guts"
+                  type="number"
+                  min="0"
+                  max="2500"
+                  step="1"
+                  value="0"
+                  inputmode="numeric"
+                />
+              </label>
+              <label
+                ><span data-i18n="common.wisdom">Wisdom</span>
+                <input
+                  id="stat-wisdom"
+                  type="number"
+                  min="0"
+                  max="2500"
+                  step="1"
+                  value="0"
+                  inputmode="numeric"
+                />
+              </label>
+            </div>
+            <div
+              class="rating-grid"
+              style="grid-template-columns: repeat(2, minmax(120px, 1fr)); margin-top: 0.4rem"
+            >
+              <label
+                ><span data-i18n="common.starLevel">Star Level</span>
+                <select id="star-level">
+                  <option value="1">&#9733;1</option>
+                  <option value="2">&#9733;2</option>
+                  <option value="3" selected>&#9733;3</option>
+                  <option value="4">&#9733;4</option>
+                  <option value="5">&#9733;5</option>
+                </select>
+              </label>
+              <label
+                ><span data-i18n="common.uniqueSkillLevel">Unique Skill Level</span>
+                <select id="unique-level">
+                  <option value="1">Lv1</option>
+                  <option value="2">Lv2</option>
+                  <option value="3" selected>Lv3</option>
+                  <option value="4">Lv4</option>
+                  <option value="5">Lv5</option>
+                  <option value="6">Lv6</option>
+                </select>
+              </label>
+            </div>
+            <div class="rating-summary">
+              <div class="pill">
+                <div class="label" data-i18n="common.stats">Stats</div>
+                <div id="rating-stats-score" class="value">0</div>
+              </div>
+              <div class="pill">
+                <div class="label" data-i18n="common.skills">Skills</div>
+                <div id="rating-skills-score" class="value">0</div>
+              </div>
+              <div class="pill">
+                <div class="label" data-i18n="common.unique">Unique</div>
+                <div id="rating-unique-bonus" class="value">0</div>
+              </div>
+            </div>
+            <div class="rating-projected-row rating-hero">
+              <div class="pill rating-total-pill">
+                <div class="label" data-i18n="common.projectedRating">Projected Rating</div>
+                <div id="rating-total" class="value">0</div>
+                <div class="rating-progress" aria-live="polite">
+                  <div class="rating-progress-label">
+                    <span id="rating-next-label">Next: G+</span>
+                    <span id="rating-next-needed">+300</span>
+                  </div>
+                  <div
+                    class="rating-progress-bar"
+                    role="progressbar"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                    aria-valuenow="0"
+                  >
+                    <div id="rating-progress-fill" class="rating-progress-fill"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="rating-badge" id="rating-badge">
+                <div
+                  id="rating-badge-sprite"
+                  class="rating-badge-sprite"
+                  role="img"
+                  aria-label="Projected rank badge"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Selected Skills Display -->
+      <section
+        class="card card-elevated"
+        id="selected-skills-section"
+        style="margin-bottom: 16px"
+        data-scroll-section
+        data-scroll-label="Selected"
+      >
+        <h3 style="margin: 0.2rem 0 0.5rem 0" data-i18n="calculator.selectedSkills">
+          Selected Skills
+        </h3>
+        <div id="results" class="results">
+          <div
+            class="grid"
+            style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px"
+          >
+            <div class="pill">
+              <b data-i18n="calculator.skillCount">Skills:</b> <span id="skill-count">0</span>
+            </div>
+            <div class="pill">
+              <b data-i18n="calculator.skillScore">Skill Score:</b>
+              <span id="total-skill-score">0</span>
+            </div>
+          </div>
+          <div class="results-list" id="selected-list" style="margin-top: 0.75rem"></div>
+        </div>
+      </section>
+
+      <!-- Skill Rows (simplified - no cost, hint, or must buy) -->
+      <section
+        class="card card-elevated"
+        id="calculator-skill-rows"
+        data-scroll-section
+        data-scroll-label="Skills"
+      >
+        <div class="toolbar calculator-skill-toolbar" role="group" aria-label="Skill rows">
+          <span class="muted" data-i18n="calculator.addSkillsHint"
+            >Add skills to calculate your build's rating</span
+          >
+          <div class="spacer"></div>
+          <label
+            class="target-check"
+            title="Only include GameTora official English skill names from name_en."
+            data-i18n-title="calculator.officialEnOnlyTitle"
+          >
+            <input id="official-en-only" type="checkbox" checked />
+            <span data-i18n="calculator.officialEnOnly">Official EN Skills Only</span>
+          </label>
+          <div id="lib-status" class="status" aria-live="polite"></div>
+          <button id="clear-all" class="btn" type="button" data-i18n="calculator.clearAll">
+            Clear All Skills
+          </button>
+        </div>
+
+        <div id="rows" class="rows calculator-rows">
+          <div class="skeleton-row" aria-hidden="true">
+            <div class="skeleton skeleton-text medium"></div>
+            <div class="skeleton skeleton-text long"></div>
+            <div class="skeleton skeleton-text short"></div>
+            <div class="skeleton skeleton-text short"></div>
+            <div class="skeleton skeleton-text medium"></div>
+          </div>
+          <div class="skeleton-row" aria-hidden="true">
+            <div class="skeleton skeleton-text medium"></div>
+            <div class="skeleton skeleton-text long"></div>
+            <div class="skeleton skeleton-text short"></div>
+            <div class="skeleton skeleton-text short"></div>
+            <div class="skeleton skeleton-text medium"></div>
+          </div>
+          <div class="skeleton-row" aria-hidden="true">
+            <div class="skeleton skeleton-text medium"></div>
+            <div class="skeleton skeleton-text long"></div>
+            <div class="skeleton skeleton-text short"></div>
+            <div class="skeleton skeleton-text short"></div>
+            <div class="skeleton skeleton-text medium"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div id="rating-float" class="rating-float" aria-live="polite">
+      <div class="rating-float-main">
+        <div class="rating-float-badge" aria-hidden="true">
+          <div id="rating-float-badge-sprite" class="rating-float-badge-sprite"></div>
+        </div>
+        <div class="rating-float-meta">
+          <div class="label" data-i18n="calculator.floatProjected">Projected</div>
+          <div id="rating-float-total" class="value">0</div>
+        </div>
+      </div>
+      <div class="rating-float-progress">
+        <div class="rating-progress-label">
+          <span id="rating-float-next-label">Next: G+ at 300</span>
+          <span id="rating-float-next-needed">+0</span>
+        </div>
+        <div
+          id="rating-float-progress-bar"
+          class="rating-progress-bar"
+          role="progressbar"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuenow="0"
+        >
+          <div id="rating-float-progress-fill" class="rating-progress-fill"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/js/i18n-core.js" defer></script>
+    <script src="/js/i18n-pages.js" defer></script>
+    <script src="/js/skill-popup.js" defer></script>
+    <script src="/js/rating-shared.js" defer></script>
+    <script src="/js/tutorial.js" defer></script>
+    <script src="/js/calculator.js" defer></script>
+
+    <script src="/js/scroll-nav.js" defer></script>
+    <script src="/js/nav.js" defer></script>
+    <script src="/js/changelog.js" defer></script>
+    <script src="/js/theme-toggle.js" defer></script>
+  </body>
+</html>

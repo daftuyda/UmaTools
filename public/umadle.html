@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>UmaTools - Umadle Daily Guess</title>
+    <meta
+      name="description"
+      content="Play the Umadle daily guessing game with Uma Musume stats and clues."
+    />
+    <link rel="canonical" href="https://daftuyda.moe/umadle" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
+    <meta name="color-scheme" content="light dark" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="UmaTools" />
+    <meta property="og:title" content="UmaTools - Umadle Daily Guess" />
+    <meta
+      property="og:description"
+      content="Play the Umadle daily guessing game with Uma Musume stats and clues."
+    />
+    <meta property="og:url" content="https://daftuyda.moe/umadle" />
+    <meta property="og:image" content="https://daftuyda.moe/api/og?page=umadle" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="UmaTools - Umadle Daily Guess" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="UmaTools - Umadle Daily Guess" />
+    <meta
+      name="twitter:description"
+      content="Play the Umadle daily guessing game with Uma Musume stats and clues."
+    />
+    <meta name="twitter:image" content="https://daftuyda.moe/api/og?page=umadle" />
+    <meta name="twitter:image:alt" content="UmaTools - Umadle Daily Guess" />
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=optional"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=optional"
+      rel="stylesheet"
+      media="print"
+      onload="this.media = 'all'"
+    />
+    <noscript
+      ><link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=optional"
+        rel="stylesheet"
+    /></noscript>
+    <link rel="stylesheet" href="/css/air.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://daftuyda.moe/#organization",
+            "name": "UmaTools",
+            "url": "https://daftuyda.moe/",
+            "logo": "https://daftuyda.moe/assets/icon-512.png",
+            "sameAs": ["https://github.com/daftuyda/UmaTools", "https://youtube.com/@MaybeVoid"]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://daftuyda.moe/#website",
+            "url": "https://daftuyda.moe/",
+            "name": "UmaTools",
+            "publisher": { "@id": "https://daftuyda.moe/#organization" },
+            "inLanguage": "en"
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://daftuyda.moe/umadle#webpage",
+            "url": "https://daftuyda.moe/umadle",
+            "name": "Umadle Daily Guess",
+            "description": "Play the Umadle daily guessing game with Uma Musume stats and clues.",
+            "isPartOf": { "@id": "https://daftuyda.moe/#website" },
+            "about": { "@id": "https://daftuyda.moe/#organization" },
+            "inLanguage": "en"
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://daftuyda.moe/umadle#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://daftuyda.moe/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Umadle",
+                "item": "https://daftuyda.moe/umadle"
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+  </head>
+  <body class="ui-revamp-page app-revamp">
+    <div id="site-nav-slot" class="site-nav-slot" aria-hidden="true"></div>
+    <script>
+      (function () {
+        try {
+          var theme = localStorage.getItem('umatools-theme');
+          var pref = localStorage.getItem('umasearch-darkmode');
+          var dark = theme
+            ? theme === 'dark' || theme === 'oled'
+            : pref
+              ? pref === 'dark'
+              : window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var root = document.documentElement;
+          root.classList.add('is-loading');
+          root.classList.toggle('dark', dark);
+          root.classList.toggle('oled', theme === 'oled');
+          root.dataset.theme = theme || (dark ? 'dark' : 'light');
+          root.style.colorScheme = dark ? 'dark' : 'light';
+
+          var pageLoaded = false;
+          var navReady = !document.querySelector('script[src="/js/nav.js"]');
+          var release = function () {
+            root.classList.remove('is-loading');
+          };
+          var tryRelease = function () {
+            if (!pageLoaded || !navReady) return;
+            if (document.fonts && document.fonts.ready) {
+              Promise.race([
+                document.fonts.ready,
+                new Promise(function (resolve) {
+                  setTimeout(resolve, 1200);
+                }),
+              ]).then(function () {
+                requestAnimationFrame(release);
+              });
+            } else {
+              requestAnimationFrame(release);
+            }
+          };
+          window.addEventListener('load', function () {
+            pageLoaded = true;
+            tryRelease();
+          });
+          window.addEventListener('nav:ready', function () {
+            navReady = true;
+            tryRelease();
+          });
+          window.setTimeout(function () {
+            pageLoaded = true;
+            navReady = true;
+            tryRelease();
+          }, 2400);
+        } catch (e) {}
+      })();
+    </script>
+
+    <main id="main" class="container umadle-page">
+      <h1 data-i18n="umadle.title">Umadle</h1>
+
+      <button
+        id="modeToggleBtn"
+        aria-label="Toggle dark/light mode"
+        class="mode-toggle-btn"
+        title="Toggle dark/light mode"
+        data-i18n-aria="common.toggleDarkLight"
+        data-i18n-title="common.toggleDarkLight"
+      >
+        <svg
+          id="iconSun"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg
+          id="iconMoon"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          style="display: none"
+        >
+          <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+        </svg>
+      </button>
+
+      <section class="search-panel">
+        <button id="pickUmaBtn" class="pick-uma-btn" type="button">
+          <span class="pick-uma-label" data-i18n="umadle.selectUma">Select an Uma...</span>
+        </button>
+        <div id="legend" class="status">
+          Legend: <b>&#10003;</b> exact match, <span class="sym up">&#9650;</span> your guess is
+          lower (go up), <span class="sym down">&#9660;</span> your guess is higher (go down)
+        </div>
+      </section>
+
+      <!-- Character Picker Modal -->
+      <div id="umaPickerModal" class="support-modal" hidden>
+        <div class="support-modal-backdrop"></div>
+        <div class="support-modal-content">
+          <div class="support-modal-header">
+            <span class="support-modal-title" data-i18n="umadle.selectCharacter"
+              >Select Character</span
+            >
+            <button class="support-modal-close" aria-label="Close" data-i18n-aria="common.close">
+              &times;
+            </button>
+          </div>
+          <div class="support-modal-filters">
+            <input
+              id="umaPickerSearch"
+              type="text"
+              placeholder="Search by name..."
+              autocomplete="off"
+              data-i18n-placeholder="common.searchByName"
+            />
+          </div>
+          <div id="umaPickerList" class="support-modal-list"></div>
+        </div>
+      </div>
+
+      <div id="rows" class="umadle-grid"></div>
+      <div id="footer" class="status"></div>
+    </main>
+
+    <!-- WIN MODAL -->
+    <div id="winModal" class="modal-backdrop" aria-hidden="true">
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="winTitle">
+        <h3 id="winTitle" data-i18n="umadle.youGotIt">You got it! &#127881;</h3>
+        <p id="winMsg" class="muted"></p>
+        <div class="btn-row">
+          <button id="winNewBtn" class="btn primary" data-i18n="umadle.newUma">New UMA</button>
+          <button id="winCloseBtn" class="btn" data-i18n="umadle.keepBoard">Keep Board</button>
+        </div>
+      </div>
+    </div>
+    <script src="/js/i18n-core.js" defer></script>
+    <script src="/js/i18n-pages.js" defer></script>
+    <script type="module" src="/js/umadle.js"></script>
+
+    <script src="/js/nav.js" defer></script>
+    <script src="/js/changelog.js" defer></script>
+    <script src="/js/theme-toggle.js" defer></script>
+  </body>
+</html>

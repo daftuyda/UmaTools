@@ -1,153 +1,138 @@
 # UmaTools
 
-A fast Uma Musume training toolkit with event OCR, skill optimization, rating calculation, deck building, and more. Supports English and Japanese.
+UmaTools is a responsive Uma Musume companion suite for planning training runs, checking race requirements, exploring game data, and handling common day-to-day decisions. The tools share one navigation system, visual language, settings panel, English/Japanese localization layer, and mobile-first interface.
 
-**Live site**: [daftuyda.moe](https://daftuyda.moe)
+**Live site:** [daftuyda.moe](https://daftuyda.moe)
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/daftuyda/UmaTools)
+## The suite
 
----
+| Area | Tool | Purpose |
+| --- | --- | --- |
+| Rating | [Skill Optimizer](https://daftuyda.moe/optimizer) | Build the strongest affordable skill set for Rating, Team Trials, or Aptitude Test goals. |
+| Rating | [Rating Calculator](https://daftuyda.moe/calculator) | Project a final rating from stats, aptitudes, stars, unique level, and purchased skills. |
+| Tools | [Event OCR](https://daftuyda.moe/events) | Capture an event screen, identify it, and compare its outcomes. |
+| Tools | [Support Hint Finder](https://daftuyda.moe/hints) | Find support cards that provide a chosen set of skill hints. |
+| Tools | [Deck Builder](https://daftuyda.moe/deck) | Assemble a character and six-card support deck, inspect effects, and load scenario-aware templates. |
+| Tools | [Deck Optimizer](https://daftuyda.moe/collection) | Build recommendations from the support cards in your collection. |
+| Tools | [Stamina Calculator](https://daftuyda.moe/stamina) | Compare available stamina and recovery against a race-specific requirement. |
+| Tools | [Valid Accel Checker](https://daftuyda.moe/accel) | Find acceleration skills whose activation windows fit a selected course. |
+| Tools | [Grand Live Token Planner](https://daftuyda.moe/token-planner) | Plan Grand Live songs and track the five performance-token totals still required. |
+| Data | [Skill Library](https://daftuyda.moe/skills) | Search and filter skills by type, cost, rating value, efficiency, effects, and sources. |
+| Data | [Rating Rank Breakdown](https://daftuyda.moe/rank-breakdown) | Browse rating thresholds and jump directly to major rank families. |
+| Fun | [Randomizer](https://daftuyda.moe/random) | Generate characters and support decks with configurable filters. |
+| Fun | [Umadle](https://daftuyda.moe/umadle) | Play the daily Uma Musume character guessing game. |
 
-## Features
+## Shared experience
 
-### [Event Helper](https://daftuyda.moe/events)
+- Responsive desktop and mobile layouts with a consistent wide content shell.
+- Light, dark, and OLED themes with an accessible UmaTools brand mark.
+- English and Japanese interfaces plus Global/JP data filtering.
+- Shared race-configuration controls, cards, dialogs, buttons, spacing, and elevation.
+- Clickable skill names across the suite, opening a unit-aware skill detail dialog.
+- Local saves and shareable links where a planning tool supports them.
+- Service-worker caching for core pages and assets.
+- Keyboard navigation, reduced-motion support, and viewport-centred dialogs.
 
-Real-time event lookup powered by OCR. Capture your game screen, and UmaTools reads the event name, shows all options, scores them, and highlights the best choice.
+## Repository structure
 
-### [Support Hint Finder](https://daftuyda.moe/hints)
-
-Search for support cards by skill hints. Add hints as filter chips, choose AND/OR matching, and filter by rarity (SSR / SR / R) to find the cards you need.
-
-### [Skill Optimizer](https://daftuyda.moe/optimizer)
-
-Maximize your build's rating or Team Trials consistency under a skill-point budget. Set your race config and aptitudes, add skills with hint levels, and let the optimizer pick the best combination. Supports gold/lower linking, circle skill upgrades, build saving, and shareable links.
-
-- **Rating mode** — maximizes total rating score
-- **Team Trials mode** — prioritizes skill activation consistency over raw score
-- **Aptitude Test mode** — maximizes aptitude test points, then rating as tiebreaker
-
-### [Rating Calculator](https://daftuyda.moe/calculator)
-
-Standalone rating projection. Enter your final stats, star rarity, unique skill level, and selected skills to see the projected rating and badge progress. Supports all ranks from G through the new Legend (LS24) tier.
-
-### [Deck Builder](https://daftuyda.moe/deck)
-
-Build training decks with 1 main character + up to 6 support cards. Filter by type, rarity, and aptitudes. View combined stat bonuses, skill hints, and synergy analysis. Save decks locally, share via encoded URL, or open directly in the Skill Optimizer.
-
-### [Skill Library](https://daftuyda.moe/skills)
-
-Browse the complete skill database with detailed metadata — cost, rating score, efficiency (score per SP), type, and category. Sort, search, and filter by skill type. Click any skill for a popup with full description, activation conditions, support card sources, and character availability.
-
-### [Rank Breakdown](https://daftuyda.moe/rank-breakdown)
-
-Reference table for all rating badge tiers from G through LS24, including threshold ranges and icon sprites used by the calculator/optimizer.
-
-### [Stamina Check](https://daftuyda.moe/stamina)
-
-Verify whether your uma has enough stamina for the race. Set distance, surface, condition, style, and mood, then enter stats and recovery skills to compare needed vs. actual stamina.
-
-### [Accel Checker](https://daftuyda.moe/accel)
-
-Check which acceleration skills are valid for a given race setup. Select distance, surface, running style, and position to see which accel skills can activate with VAC timing logic. Supports both global-only and JP skill pools.
-
-### [Umadle](https://daftuyda.moe/umadle)
-
-A daily guessing game. Pick an uma, compare stats and hint grids, and narrow down the answer.
-
-### [Randomizer](https://daftuyda.moe/random)
-
-Roll a random 5-card support deck or pick a random uma. Filter by rarity, exclude cards you don't want, and optionally enable 2A- speed.
-
----
-
-## Localization
-
-UmaTools supports **English** and **Japanese** interfaces. Switch the site language via the Settings menu in the navigation bar. Server selection (EN / JP) controls which skill names, support cards, and characters are displayed.
-
-Want to help translate? See the [Translation Guide](docs/translations.md) for how the i18n system works, how to add a new language, and how to update existing translations.
-
----
-
-## Documentation
-
-For deeper technical details on how things work under the hood:
-
-| Doc                                       | What it covers                                                                                                                                                |
-| ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Rating System](docs/rating-system.md)    | Stat scoring formula (0–2500), skill score buckets, cost discounts, gold/circle skill linking, knapsack optimization, badge tiers (G through LS24, 298 tiers) |
-| [Team Trials](docs/team-trials.md)        | Consistency-first skill selection, automated skill scoring, trigger analysis, green/volatile penalties, expected value scoring, tuning weights                |
-| [OCR Guide](docs/ocr-guide.md)            | Image preprocessing pipeline, Tesseract config, fuzzy matching algorithm, tuning thresholds, troubleshooting                                                  |
-| [Translation Guide](docs/translations.md) | i18n system, adding new languages, key naming conventions, variable interpolation, testing coverage                                                           |
-| [Accel Checker](docs/accel-checker.md)    | VAC timing logic, data pipeline from master.mdb, segment classification, offset judgment, uncertainty scoring, impact estimation                               |
-
----
-
-## Navigation Structure
-
-The site is organized into four groups:
-
-| Group      | Pages                                  |
-| ---------- | -------------------------------------- |
-| **Rating** | Optimizer, Calculator                                |
-| **Tools**  | Event OCR, Support Hints, Deck Builder, Stamina Check, Accel Checker |
-| **Data**   | Skill Library, Rank Breakdown                        |
-| **Fun**    | Randomizer, Umadle                     |
-
----
-
-## Acknowledgements
-
-- Game data sourced from [GameTora](https://gametora.com) and [GameWith](https://gamewith.jp)
-
----
-
-<details>
-<summary><strong>Local Development</strong></summary>
-
-Requires [Node.js](https://nodejs.org) and the [Vercel CLI](https://vercel.com/download).
-
-```bash
-npm i -g vercel
-git clone https://github.com/daftuyda/Uma-Event-Helper-Web.git
-cd Uma-Event-Helper-Web
-vercel dev --debug
+```text
+UmaTools/
+|-- public/                 # Complete deployable website
+|   |-- assets/             # Game data, images, fonts, audio, and brand assets
+|   |-- css/air.css         # Canonical shared stylesheet
+|   |-- js/                 # Browser modules and page controllers
+|   |-- *.html              # Public page entry points
+|   |-- sw.js               # Service worker
+|   `-- site.webmanifest
+|-- api/                    # Vercel FastAPI functions, including social images
+|-- scripts/                # Maintenance tooling grouped by purpose
+|   |-- audit/              # Static-reference, browser, and Lighthouse checks
+|   |-- build/              # Asset and data build steps
+|   `-- data/               # GameTora, GameWith, and compatibility importers
+|-- tests/
+|   |-- fixtures/           # Stable test inputs
+|   `-- unit/               # Versioned Node unit tests
+|-- docs/
+|   |-- guides/             # Maintained feature and contributor guides
+|   `-- images/             # Diagrams used by the guides
+|-- .github/workflows/      # Automated data refresh
+|-- package.json            # Build, sync, audit, and validation commands
+`-- vercel.json             # Deployment, routes, headers, and API configuration
 ```
 
-</details>
+`public/` is the deployment root. Browser URLs remain `/optimizer`, `/assets/...`, `/js/...`, and so on; the repository layout does not leak into public URLs.
 
-## Data Sync
+See [Architecture](docs/architecture.md) for component ownership, data flow, and maintenance rules.
 
-Refresh only GameTora skill metadata:
+## Local development
+
+Requirements:
+
+- Node.js 20 or newer.
+- Python 3 only for the API and Python-backed data utilities.
+- The Vercel CLI for local parity with production routing and functions.
+
+```bash
+git clone https://github.com/daftuyda/UmaTools.git
+cd UmaTools
+npm install
+npx vercel dev
+```
+
+For a static-only preview, serve the `public/` directory with any local HTTP server.
+
+## Common commands
+
+```bash
+npm run build             # Validate CSS, normalize JSON, and create missing WebP assets
+npm run lint              # JavaScript and Python linting
+npm test                  # Rating and Team Trials tests
+npm run check             # Full lint, unit, data, markup, reference, and route gate
+npm run check:static      # Verify local page, asset, CSS, and service-worker references
+npm run test:data         # Parse every deployed JSON dataset and manifest
+npm run test:smoke        # Serve the site and verify every clean route and critical asset
+npm run audit:lighthouse  # Mobile Lighthouse audit of primary tools
+npm run audit:ios         # Check important paths for iOS Safari compatibility
+```
+
+Set `LIGHTHOUSE_PAGES` to a comma-separated subset such as `optimizer,calculator` when iterating
+locally. The audit server uses Brotli/gzip like the deployment host, while the default command still
+checks all four primary tools against the performance, interactivity, and layout-shift targets.
+
+## Data maintenance
+
+Runtime data lives in `public/assets/`. Game-facing URLs still begin with `/assets/`.
 
 ```bash
 npm run sync:skills-all
-```
-
-Refresh skill CSVs (`assets/uma_skills.csv`, `assets/uma_skills_jp.csv`):
-
-```bash
+npm run sync:uma
+npm run sync:supports
+npm run sync:races
+npm run sync:accel-compat
 npm run sync:uma-skills
-```
-
-This command also writes scrape metadata to `.cache_gamewith/gamewith_metadata.json`.
-Both skill CSVs are expanded from `assets/skills_all.json` so Global and JP modes follow the full
-GameTora skill list. GameWith simulator rows are used as the score/affinity overlay; fan/unofficial
-EN is stored in `alias_name`, and localized EN is stored in `localized_name`.
-
-Full skill data refresh (recommended):
-
-```bash
 npm run refresh:data
 ```
 
-## Checks
+The scheduled workflow in `.github/workflows/gametora-scrape.yml` refreshes the core GameTora datasets. Local scrape caches are ignored and are not part of the deployable repository.
 
-```bash
-npm run format
-npm run lint
-npm test
-npm run check
-```
+See the [data-tooling guide](scripts/data/README.md) for generator ownership, optional scraper
+dependencies, and the retained browser fallback.
+
+## Documentation
+
+| Document | Covers |
+| --- | --- |
+| [Architecture](docs/architecture.md) | Folder ownership, runtime boundaries, shared UI, data flow, build, deployment, and maintenance rules. |
+| [Rating System](docs/guides/rating-system.md) | Stat scoring, skill rating, discounts, linked skills, optimization, and rank thresholds. |
+| [Team Trials](docs/guides/team-trials.md) | Consistency scoring, trigger analysis, expected value, and optimizer priorities. |
+| [OCR Guide](docs/guides/ocr-guide.md) | Capture, preprocessing, recognition, matching, and troubleshooting. |
+| [Accel Checker](docs/guides/accel-checker.md) | Course segmentation, valid acceleration windows, uncertainty, and generated data. |
+| [Translation Guide](docs/guides/translations.md) | Translation modules, adding locales, interpolation, and validation. |
+| [Data Tooling](scripts/data/README.md) | Dataset ownership, sync commands, optional dependencies, and generated outputs. |
+
+## Data and acknowledgements
+
+Game data is sourced from [GameTora](https://gametora.com) and [GameWith](https://gamewith.jp). UmaTools is an independent fan project and is not affiliated with Cygames.
 
 ## License
 

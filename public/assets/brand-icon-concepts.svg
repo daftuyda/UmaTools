@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="680" viewBox="0 0 1200 680">
+  <defs>
+    <linearGradient id="page" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#101927" />
+      <stop offset="1" stop-color="#080d15" />
+    </linearGradient>
+    <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6098ff" />
+      <stop offset="1" stop-color="#2462de" />
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#000" flood-opacity="0.28" />
+    </filter>
+
+    <!-- A U/T ligature: product name reduced to one asymmetric silhouette. -->
+    <symbol id="union" viewBox="0 0 64 64">
+      <path d="M8 9h11v28c0 8 4 12 13 12s13-4 13-12V23h11v15c0 14-9 21-24 21S8 52 8 38V9Z" />
+      <path d="M35 7h23v10H35z" />
+    </symbol>
+
+    <!-- A compact crest with ear-like peaks and an internal diamond cut. -->
+    <symbol id="crest" viewBox="0 0 64 64">
+      <path fill-rule="evenodd" d="m8 17 13-10 11 12L43 7l13 10-6 26C48 53 42 59 32 59S16 53 14 43L8 17Zm16 15 8 14 8-14-8-7-8 7Z" />
+    </symbol>
+
+    <!-- Three tapered planes form a forward-moving mane. -->
+    <symbol id="mane" viewBox="0 0 64 64">
+      <path d="M9 13h25L23 27H4L9 13Z" />
+      <path d="M18 27h34L39 43H11l7-16Z" />
+      <path d="M28 43h32L49 57H21l7-14Z" />
+    </symbol>
+
+    <!-- A single-track U with intentionally angled terminals. -->
+    <symbol id="track" viewBox="0 0 64 64">
+      <path fill-rule="evenodd" d="m7 8 13 5v24c0 8 4 12 12 12s12-4 12-12V13L57 8v30c0 14-9 21-25 21S7 52 7 38V8Zm13 5 12 5 12-5v24c0 5-4 7-12 7s-12-2-12-7V13Z" />
+    </symbol>
+
+    <!-- Interlocked chevrons create a sharp, scalable apex. -->
+    <symbol id="apex" viewBox="0 0 64 64">
+      <path d="M5 15h14l13 23 13-23h14L32 60 5 15Z" />
+      <path d="M19 6h26L32 29 19 6Z" />
+    </symbol>
+
+    <!-- Two ribbons interlock into one continuous diamond. -->
+    <symbol id="knot" viewBox="0 0 64 64">
+      <path d="M32 5 59 32 49 42 22 15 32 5Z" />
+      <path d="M15 22 42 49 32 59 5 32l10-10Z" />
+      <path d="m42 15 10 10-27 27-10-10 27-27Z" opacity="0.76" />
+    </symbol>
+
+    <style>
+      .heading { fill: #f5f7fb; font: 750 32px system-ui, sans-serif; letter-spacing: -0.8px; }
+      .subheading { fill: #9ba8b9; font: 500 15px system-ui, sans-serif; }
+      .number { fill: #78a8ff; font: 800 11px system-ui, sans-serif; letter-spacing: 1.5px; }
+      .name { fill: #f5f7fb; font: 750 22px system-ui, sans-serif; }
+      .detail { fill: #9ba8b9; font: 500 13px system-ui, sans-serif; }
+      .wordmark { fill: #101827; font: 760 14px system-ui, sans-serif; letter-spacing: -0.2px; }
+      .tagline { fill: #7f8da1; font: 750 7px system-ui, sans-serif; letter-spacing: 0.8px; }
+      .mark { fill: #fff; }
+      .mark-dark { fill: #101827; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="680" fill="url(#page)" />
+  <text x="55" y="61" class="heading">Brand mark directions</text>
+  <text x="55" y="90" class="subheading">Ownable silhouettes designed to work without a container, label, or color.</text>
+
+  <!-- Union -->
+  <g transform="translate(55 125)" filter="url(#shadow)">
+    <rect width="350" height="240" rx="22" fill="#151e2d" stroke="#35455b" />
+    <use href="#union" x="28" y="25" width="88" height="88" class="mark" />
+    <text x="140" y="47" class="number">01 / UNION</text>
+    <text x="140" y="78" class="name">Union</text>
+    <text x="140" y="101" class="detail">U + T monogram</text>
+    <rect x="24" y="145" width="302" height="67" rx="15" fill="#f4f7fb" />
+    <use href="#union" x="39" y="160" width="37" height="37" class="mark-dark" />
+    <text x="89" y="178" class="wordmark" fill="#101827">UmaTools</text>
+    <text x="89" y="193" class="tagline" fill="#5e6f86">TRAINING TOOLKIT</text>
+  </g>
+
+  <!-- Crest -->
+  <g transform="translate(425 125)" filter="url(#shadow)">
+    <rect width="350" height="240" rx="22" fill="#151e2d" stroke="#35455b" />
+    <use href="#crest" x="28" y="25" width="88" height="88" class="mark" />
+    <text x="140" y="47" class="number">02 / CREST</text>
+    <text x="140" y="78" class="name">Crest</text>
+    <text x="140" y="101" class="detail">Abstract racing emblem</text>
+    <rect x="24" y="145" width="302" height="67" rx="15" fill="#f4f7fb" />
+    <use href="#crest" x="39" y="160" width="37" height="37" class="mark-dark" />
+    <text x="89" y="178" class="wordmark" fill="#101827">UmaTools</text>
+    <text x="89" y="193" class="tagline" fill="#5e6f86">TRAINING TOOLKIT</text>
+  </g>
+
+  <!-- Mane -->
+  <g transform="translate(795 125)" filter="url(#shadow)">
+    <rect width="350" height="240" rx="22" fill="#151e2d" stroke="#35455b" />
+    <use href="#mane" x="28" y="25" width="88" height="88" class="mark" />
+    <text x="140" y="47" class="number">03 / MANE</text>
+    <text x="140" y="78" class="name">Mane</text>
+    <text x="140" y="101" class="detail">Forward layered planes</text>
+    <rect x="24" y="145" width="302" height="67" rx="15" fill="#f4f7fb" />
+    <use href="#mane" x="39" y="160" width="37" height="37" class="mark-dark" />
+    <text x="89" y="178" class="wordmark" fill="#101827">UmaTools</text>
+    <text x="89" y="193" class="tagline" fill="#5e6f86">TRAINING TOOLKIT</text>
+  </g>
+
+  <!-- Track -->
+  <g transform="translate(55 395)" filter="url(#shadow)">
+    <rect width="350" height="240" rx="22" fill="#151e2d" stroke="#35455b" />
+    <use href="#track" x="28" y="25" width="88" height="88" class="mark" />
+    <text x="140" y="47" class="number">04 / TRACK</text>
+    <text x="140" y="78" class="name">Track</text>
+    <text x="140" y="101" class="detail">Geometric single lane</text>
+    <rect x="24" y="145" width="302" height="67" rx="15" fill="#f4f7fb" />
+    <use href="#track" x="39" y="160" width="37" height="37" class="mark-dark" />
+    <text x="89" y="178" class="wordmark" fill="#101827">UmaTools</text>
+    <text x="89" y="193" class="tagline" fill="#5e6f86">TRAINING TOOLKIT</text>
+  </g>
+
+  <!-- Apex -->
+  <g transform="translate(425 395)" filter="url(#shadow)">
+    <rect width="350" height="240" rx="22" fill="#151e2d" stroke="#35455b" />
+    <use href="#apex" x="28" y="25" width="88" height="88" class="mark" />
+    <text x="140" y="47" class="number">05 / APEX</text>
+    <text x="140" y="78" class="name">Apex</text>
+    <text x="140" y="101" class="detail">Interlocked chevrons</text>
+    <rect x="24" y="145" width="302" height="67" rx="15" fill="#f4f7fb" />
+    <use href="#apex" x="39" y="160" width="37" height="37" class="mark-dark" />
+    <text x="89" y="178" class="wordmark" fill="#101827">UmaTools</text>
+    <text x="89" y="193" class="tagline" fill="#5e6f86">TRAINING TOOLKIT</text>
+  </g>
+
+  <!-- Knot -->
+  <g transform="translate(795 395)" filter="url(#shadow)">
+    <rect width="350" height="240" rx="22" fill="#151e2d" stroke="#35455b" />
+    <use href="#knot" x="28" y="25" width="88" height="88" class="mark" />
+    <text x="140" y="47" class="number">06 / KNOT</text>
+    <text x="140" y="78" class="name">Knot</text>
+    <text x="140" y="101" class="detail">Continuous woven form</text>
+    <rect x="24" y="145" width="302" height="67" rx="15" fill="#f4f7fb" />
+    <use href="#knot" x="39" y="160" width="37" height="37" class="mark-dark" />
+    <text x="89" y="178" class="wordmark" fill="#101827">UmaTools</text>
+    <text x="89" y="193" class="tagline" fill="#5e6f86">TRAINING TOOLKIT</text>
+  </g>
+</svg>

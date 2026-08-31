@@ -1,0 +1,145 @@
+{
+  "budget": 360,
+  "raceConfig": {
+    "turf": "A",
+    "dirt": "G",
+    "sprint": "B",
+    "mile": "A",
+    "medium": "A",
+    "long": "C",
+    "front": "A",
+    "pace": "B",
+    "late": "B",
+    "end": "C"
+  },
+  "items": [
+    {
+      "id": "s1",
+      "name": "Reliable Mid Pace",
+      "skillId": "101",
+      "cost": 120,
+      "ratingScore": 170,
+      "category": "yellow",
+      "parentSkillIds": [],
+      "lowerSkillId": "",
+      "required": false
+    },
+    {
+      "id": "s2",
+      "name": "Late Nitro",
+      "skillId": "102",
+      "cost": 160,
+      "ratingScore": 220,
+      "category": "yellow",
+      "parentSkillIds": [],
+      "lowerSkillId": "",
+      "required": false
+    },
+    {
+      "id": "s3",
+      "name": "Late Velocity",
+      "skillId": "103",
+      "cost": 160,
+      "ratingScore": 205,
+      "category": "blue",
+      "parentSkillIds": [],
+      "lowerSkillId": "",
+      "required": false
+    },
+    {
+      "id": "s4",
+      "name": "Risky Overtake",
+      "skillId": "104",
+      "cost": 120,
+      "ratingScore": 240,
+      "category": "yellow",
+      "parentSkillIds": [],
+      "lowerSkillId": "",
+      "required": false
+    }
+  ],
+  "skillMetaById": {
+    "101": {
+      "id": "101",
+      "name": "Reliable Mid Pace",
+      "desc": "Temporarily increases speed at a random point during mid-race.",
+      "conditionGroups": [
+        {
+          "condition": "phase_random==1&order<=8",
+          "effects": [
+            { "type": 27, "value": 1500 }
+          ]
+        }
+      ]
+    },
+    "102": {
+      "id": "102",
+      "name": "Late Nitro",
+      "desc": "Temporarily increases acceleration in the final corner.",
+      "conditionGroups": [
+        {
+          "condition": "is_finalcorner==1&order<=5",
+          "effects": [
+            { "type": 31, "value": 2000 }
+          ]
+        }
+      ]
+    },
+    "103": {
+      "id": "103",
+      "name": "Late Velocity",
+      "desc": "Temporarily increases speed in the last spurt.",
+      "conditionGroups": [
+        {
+          "condition": "is_lastspurt==1&order<=6",
+          "effects": [
+            { "type": 27, "value": 1800 }
+          ]
+        }
+      ]
+    },
+    "104": {
+      "id": "104",
+      "name": "Risky Overtake",
+      "desc": "Temporarily increases speed while overtaking.",
+      "conditionGroups": [
+        {
+          "condition": "phase_random==1&is_overtake==1&order==1",
+          "effects": [
+            { "type": 27, "value": 2400 }
+          ]
+        }
+      ]
+    }
+  },
+  "tierById": {
+    "101": {
+      "skillId": "101",
+      "tierBonus": 0.62,
+      "consistencyAdjustment": 0.05,
+      "tags": ["consistent"],
+      "note": "Fairly consistent utility speed."
+    },
+    "102": {
+      "skillId": "102",
+      "tierBonus": 0.92,
+      "consistencyAdjustment": 0.2,
+      "tags": ["team_trials", "core", "consistent", "accel"],
+      "note": "Team Trials core late acceleration."
+    },
+    "103": {
+      "skillId": "103",
+      "tierBonus": 0.9,
+      "consistencyAdjustment": 0.18,
+      "tags": ["team_trials", "core", "consistent", "speed"],
+      "note": "Team Trials core late speed."
+    },
+    "104": {
+      "skillId": "104",
+      "tierBonus": 0.3,
+      "consistencyAdjustment": -0.28,
+      "tags": ["inconsistent"],
+      "note": "High ceiling but inconsistent proc."
+    }
+  }
+}
