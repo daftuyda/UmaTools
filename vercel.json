@@ -3,6 +3,25 @@
   "buildCommand": "npm run build",
   "outputDirectory": "public",
   "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.daftuyda.moe" }],
+      "destination": "https://daftuyda.moe/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/collection",
+      "destination": "/deck",
+      "permanent": true
+    },
+    {
+      "source": "/collection.html",
+      "destination": "/deck",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/api/og/:page.png",

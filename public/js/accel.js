@@ -6,7 +6,7 @@
 
   const COPY = {
     en: {
-      title: 'Valid Accel Checker',
+      title: 'Uma Musume Acceleration Skill Checker',
       subtitle: 'VAC race timing logic integrated with site-wide server/language settings.',
       raceSetup: 'Race Setup',
       racePreset: 'Race preset',
@@ -460,7 +460,7 @@
   }
 
   function applyStaticCopy() {
-    document.title = `UmaTools - ${t('title')}`;
+    document.title = `${t('title')} | UmaTools`;
     document.querySelectorAll('[data-l10n]').forEach((node) => {
       const key = node.getAttribute('data-l10n');
       if (!key) return;

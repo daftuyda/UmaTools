@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>UmaTools - Skill Optimizer & Rating Calculator</title>
+    <title>Uma Musume Skill Optimizer | UmaTools</title>
     <meta
       name="description"
-      content="Optimize Uma Musume skill builds and ratings with budgets, race targets, and shareable builds."
+      content="Plan an Uma Musume skill build by skill point budget and target race, compare rating value, and share the optimized result."
     />
     <link rel="canonical" href="https://daftuyda.moe/optimizer" />
     <meta name="robots" content="index, follow" />
@@ -16,25 +16,25 @@
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="UmaTools" />
-    <meta property="og:title" content="UmaTools - Skill Optimizer & Rating Calculator" />
+    <meta property="og:title" content="Uma Musume Skill Optimizer | UmaTools" />
     <meta
       property="og:description"
-      content="Optimize Uma Musume skill builds and ratings with budgets, race targets, and shareable builds."
+      content="Plan an Uma Musume skill build by skill point budget and target race, compare rating value, and share the optimized result."
     />
     <meta property="og:url" content="https://daftuyda.moe/optimizer" />
-    <meta property="og:image" content="https://daftuyda.moe/assets/og-default.png" />
+    <meta property="og:image" content="https://daftuyda.moe/api/og?page=optimizer" />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="UmaTools - Skill Optimizer & Rating Calculator" />
+    <meta property="og:image:alt" content="Uma Musume Skill Optimizer | UmaTools" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="UmaTools - Skill Optimizer & Rating Calculator" />
+    <meta name="twitter:title" content="Uma Musume Skill Optimizer | UmaTools" />
     <meta
       name="twitter:description"
-      content="Optimize Uma Musume skill builds and ratings with budgets, race targets, and shareable builds."
+      content="Plan an Uma Musume skill build by skill point budget and target race, compare rating value, and share the optimized result."
     />
-    <meta name="twitter:image" content="https://daftuyda.moe/assets/og-default.png" />
-    <meta name="twitter:image:alt" content="UmaTools - Skill Optimizer & Rating Calculator" />
+    <meta name="twitter:image" content="https://daftuyda.moe/api/og?page=optimizer" />
+    <meta name="twitter:image:alt" content="Uma Musume Skill Optimizer | UmaTools" />
     <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png" />
@@ -128,8 +128,8 @@
             "@type": "WebPage",
             "@id": "https://daftuyda.moe/optimizer#webpage",
             "url": "https://daftuyda.moe/optimizer",
-            "name": "Skill Optimizer & Rating Calculator",
-            "description": "Optimize Uma Musume skill builds and ratings with budgets, race targets, and shareable builds.",
+            "name": "Uma Musume Skill Optimizer",
+            "description": "Plan an Uma Musume skill build by skill point budget and target race, compare rating value, and share the optimized result.",
             "isPartOf": { "@id": "https://daftuyda.moe/#website" },
             "about": { "@id": "https://daftuyda.moe/#organization" },
             "inLanguage": "en"
@@ -417,7 +417,7 @@
       <header class="optimizer-intro">
         <div>
           <div class="optimizer-kicker">UmaTools workspace</div>
-          <h1 data-i18n="optimizer.title">Skill Optimizer &amp; Rating Calculator</h1>
+          <h1 data-i18n="optimizer.title">Uma Musume Skill Optimizer</h1>
           <p>
             Turn a skill-point budget into a focused build, then see the projected rating before you
             commit.
@@ -830,6 +830,7 @@
                       <div
                         class="rating-progress-bar"
                         role="progressbar"
+                        aria-labelledby="rating-next-label"
                         aria-valuemin="0"
                         aria-valuemax="100"
                         aria-valuenow="0"
@@ -1513,6 +1514,7 @@
           id="rating-float-progress-bar"
           class="rating-progress-bar"
           role="progressbar"
+          aria-labelledby="rating-float-next-label"
           aria-valuemin="0"
           aria-valuemax="100"
           aria-valuenow="0"

@@ -3,11 +3,12 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
+    "build:guides": "node scripts/build/generate-guides.js",
     "build:site": "node -e \"require('postcss').parse(require('fs').readFileSync('./public/css/air.css', 'utf8'))\"",
     "minify:json": "node scripts/build/minify-json.js",
     "build:skills-core": "node scripts/build/generate-skills-core.js",
     "build:badges": "node scripts/build/export-badges.js",
-    "build": "npm run build:site && npm run build:skills-core && npm run minify:json && npm run convert:images",
+    "build": "npm run build:guides && npm run build:site && npm run build:skills-core && npm run minify:json && npm run convert:images",
     "watch:site": "prettier --write ./public/css/air.css",
     "convert:images": "node scripts/build/convert-images-webp.js",
     "sync:skills-all": "node scripts/data/gametora.js --what skills --out-skills public/assets/skills_all.json",
@@ -20,7 +21,10 @@
     "sync:event-hints": "python scripts/data/backfill-event-hints.py",
     "refresh:data": "npm run sync:skills-all && npm run sync:races && npm run sync:uma-skills",
     "audit:lighthouse": "node scripts/audit/lighthouse.js",
+    "audit:responsive": "node scripts/audit/responsive-browser.js",
     "audit:ios": "node scripts/audit/check-ios-safari-compat.js",
+    "check:guides": "node scripts/build/generate-guides.js --check",
+    "check:seo": "node scripts/audit/check-seo.js",
     "check:static": "node scripts/audit/check-static-references.js",
     "format:js": "prettier --write .",
     "format:py": "python -m ruff format api",
@@ -30,10 +34,11 @@
     "lint": "npm run lint:js && npm run lint:py",
     "test:team-trials": "node tests/unit/team-trials-optimizer.test.js",
     "test:rating-shared": "node tests/unit/rating-shared.test.js",
+    "test:token-planner": "node tests/unit/token-planner.test.js",
     "test:data": "node scripts/audit/validate-data.js",
     "test:smoke": "node scripts/audit/smoke-routes.js",
-    "test": "npm run test:team-trials && npm run test:rating-shared",
-    "check": "npm run lint && npm run test && npm run check:static && npm run test:data && npm run test:smoke"
+    "test": "npm run test:team-trials && npm run test:rating-shared && npm run test:token-planner",
+    "check": "npm run lint && npm run test && npm run check:guides && npm run check:static && npm run check:seo && npm run test:data && npm run test:smoke"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
@@ -43,6 +48,7 @@
     "lighthouse": "^12.8.2",
     "postcss": "^8.4.35",
     "prettier": "^3.8.1",
+    "puppeteer-core": "24.39.0",
     "sharp": "^0.34.5"
   }
 }

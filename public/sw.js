@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v93';
+const CACHE_VERSION = 'v95';
 const STATIC_CACHE = `umatools-static-${CACHE_VERSION}`;
 const RUNTIME_CACHE = `umatools-runtime-${CACHE_VERSION}`;
 
@@ -47,8 +47,6 @@ const STATIC_ASSETS = [
   '/js/theme-toggle.js',
   '/js/lib/virtual-scroll.js',
   '/deck.html',
-  '/collection.html',
-  '/js/collection.js',
   '/skills.html',
   '/assets/favicon.ico',
   '/assets/favicon-16x16.png',
@@ -57,8 +55,6 @@ const STATIC_ASSETS = [
   '/assets/icon-192.png',
   '/assets/icon-512.png',
   '/assets/umatools-brandmark.svg',
-  '/assets/Rank_tex.webp',
-  '/assets/Rank_tex.png',
 ];
 
 self.addEventListener('install', (event) => {

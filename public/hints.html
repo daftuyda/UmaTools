@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>UmaTools - Support Hint Finder</title>
+    <title>Uma Musume Support Card Hint Finder | UmaTools</title>
     <meta
       name="description"
-      content="Find support cards by hint keywords, rarity filters, and match rules."
+      content="Find Uma Musume support cards that teach the skill hints you need. Search by hint, rarity, and match rules to plan a training deck."
     />
     <link rel="canonical" href="https://daftuyda.moe/hints" />
     <meta name="robots" content="index, follow" />
@@ -16,25 +16,25 @@
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="UmaTools" />
-    <meta property="og:title" content="UmaTools - Support Hint Finder" />
+    <meta property="og:title" content="Uma Musume Support Card Hint Finder | UmaTools" />
     <meta
       property="og:description"
-      content="Find support cards by hint keywords, rarity filters, and match rules."
+      content="Find Uma Musume support cards that teach the skill hints you need. Search by hint, rarity, and match rules to plan a training deck."
     />
     <meta property="og:url" content="https://daftuyda.moe/hints" />
     <meta property="og:image" content="https://daftuyda.moe/api/og?page=hints" />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="UmaTools - Support Hint Finder" />
+    <meta property="og:image:alt" content="Uma Musume Support Card Hint Finder | UmaTools" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="UmaTools - Support Hint Finder" />
+    <meta name="twitter:title" content="Uma Musume Support Card Hint Finder | UmaTools" />
     <meta
       name="twitter:description"
-      content="Find support cards by hint keywords, rarity filters, and match rules."
+      content="Find Uma Musume support cards that teach the skill hints you need. Search by hint, rarity, and match rules to plan a training deck."
     />
     <meta name="twitter:image" content="https://daftuyda.moe/api/og?page=hints" />
-    <meta name="twitter:image:alt" content="UmaTools - Support Hint Finder" />
+    <meta name="twitter:image:alt" content="Uma Musume Support Card Hint Finder | UmaTools" />
     <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png" />
@@ -127,8 +127,8 @@
             "@type": "WebPage",
             "@id": "https://daftuyda.moe/hints#webpage",
             "url": "https://daftuyda.moe/hints",
-            "name": "Support Hint Finder",
-            "description": "Find support cards by hint keywords, rarity filters, and match rules.",
+            "name": "Uma Musume Support Card Hint Finder",
+            "description": "Find Uma Musume support cards that teach the skill hints you need. Search by hint, rarity, and match rules to plan a training deck.",
             "isPartOf": { "@id": "https://daftuyda.moe/#website" },
             "about": { "@id": "https://daftuyda.moe/#organization" },
             "inLanguage": "en"
@@ -298,6 +298,7 @@
       <div class="inline-note muted" id="counts"></div>
       <div class="spacer"></div>
 
+      <h2 class="sr-only" data-i18n="hints.resultsHeading">Matching support cards</h2>
       <div id="results" class="grid">
         <div class="skeleton-card" aria-hidden="true">
           <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.6rem">
@@ -366,6 +367,21 @@
           <div class="skeleton skeleton-text medium"></div>
         </div>
       </div>
+
+      <section class="card tool-guide" aria-labelledby="hints-guide-title">
+        <h2 id="hints-guide-title" data-i18n="hints.guideTitle">
+          Find support cards that teach the hints you need
+        </h2>
+        <p data-i18n="hints.guideIntro">
+          Add one or more skill hints, use AND to require every selected hint or OR to match any of
+          them, and narrow the results by SSR, SR, or R rarity.
+        </p>
+        <h3 data-i18n="seo.relatedTools">Related tools</h3>
+        <p data-i18n-html="hints.guideRelated">
+          Compare candidate cards in the <a href="/deck">Deck Builder</a>, or plan the skills they
+          provide with the <a href="/optimizer">Skill Optimizer</a>.
+        </p>
+      </section>
     </main>
     <script src="/js/i18n-core.js" defer></script>
     <script src="/js/i18n-pages.js" defer></script>

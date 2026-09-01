@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>UmaTools - Rating Rank Breakdown</title>
+    <title>Uma Musume Rating Rank List | UmaTools</title>
     <meta
       name="description"
-      content="View Uma Musume rating rank thresholds and badge icons from G through LS24."
+      content="Browse every Uma Musume character rating rank threshold and badge, from G through LS24, in one searchable reference."
     />
     <link rel="canonical" href="https://daftuyda.moe/rank-breakdown" />
     <meta name="robots" content="index, follow" />
@@ -16,25 +16,25 @@
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="UmaTools" />
-    <meta property="og:title" content="UmaTools - Rating Rank Breakdown" />
+    <meta property="og:title" content="Uma Musume Rating Rank List | UmaTools" />
     <meta
       property="og:description"
-      content="View Uma Musume rating rank thresholds and badge icons from G through LS24."
+      content="Browse every Uma Musume character rating rank threshold and badge, from G through LS24, in one searchable reference."
     />
     <meta property="og:url" content="https://daftuyda.moe/rank-breakdown" />
     <meta property="og:image" content="https://daftuyda.moe/api/og?page=rank" />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="UmaTools - Rating Rank Breakdown" />
+    <meta property="og:image:alt" content="Uma Musume Rating Rank List | UmaTools" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="UmaTools - Rating Rank Breakdown" />
+    <meta name="twitter:title" content="Uma Musume Rating Rank List | UmaTools" />
     <meta
       name="twitter:description"
-      content="View Uma Musume rating rank thresholds and badge icons from G through LS24."
+      content="Browse every Uma Musume character rating rank threshold and badge, from G through LS24, in one searchable reference."
     />
     <meta name="twitter:image" content="https://daftuyda.moe/api/og?page=rank" />
-    <meta name="twitter:image:alt" content="UmaTools - Rating Rank Breakdown" />
+    <meta name="twitter:image:alt" content="Uma Musume Rating Rank List | UmaTools" />
     <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png" />
@@ -83,8 +83,8 @@
             "@type": "WebPage",
             "@id": "https://daftuyda.moe/rank-breakdown#webpage",
             "url": "https://daftuyda.moe/rank-breakdown",
-            "name": "Rating Rank Breakdown",
-            "description": "View Uma Musume rating rank thresholds and badge icons from G through LS24.",
+            "name": "Uma Musume Rating Rank List",
+            "description": "Browse every Uma Musume character rating rank threshold and badge, from G through LS24, in one searchable reference.",
             "isPartOf": { "@id": "https://daftuyda.moe/#website" },
             "about": { "@id": "https://daftuyda.moe/#organization" },
             "inLanguage": "en"
@@ -247,13 +247,16 @@
         </div>
         <div class="rank-overall-progress-wrap" aria-live="polite">
           <div class="rank-overall-progress-label">
-            <span data-i18n="rankBreakdown.overallProgress">Overall Progress</span>
+            <span id="rank-overall-label" data-i18n="rankBreakdown.overallProgress">
+              Overall Progress
+            </span>
             <span id="rank-overall-percent">0%</span>
           </div>
           <div
             id="rank-overall-bar"
             class="rank-overall-progress-bar"
             role="progressbar"
+            aria-labelledby="rank-overall-label"
             aria-valuemin="0"
             aria-valuemax="100"
             aria-valuenow="0"
@@ -287,6 +290,22 @@
             </tbody>
           </table>
         </div>
+      </section>
+
+      <section class="card tool-guide" aria-labelledby="rank-guide-title">
+        <h2 id="rank-guide-title" data-i18n="rankBreakdown.guideTitle">
+          Understand Uma Musume rating ranks
+        </h2>
+        <p data-i18n="rankBreakdown.guideIntro">
+          This table maps numeric evaluation ratings to every named tier from G through LS24. Enter
+          a rating to find its rank, exact threshold, and the points required for the next tier.
+        </p>
+        <h3 data-i18n="seo.relatedTools">Related tools</h3>
+        <p data-i18n-html="rankBreakdown.guideRelated">
+          Estimate a trainee's final score with the <a href="/calculator">Rating Calculator</a>, or
+          test which skill purchases improve it most in the
+          <a href="/optimizer">Skill Optimizer</a>.
+        </p>
       </section>
     </main>
 

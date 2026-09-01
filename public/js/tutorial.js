@@ -13,7 +13,7 @@
   function parseJSON(input, fallback) {
     try {
       return JSON.parse(input);
-    } catch (_) {
+    } catch {
       return fallback;
     }
   }
@@ -60,6 +60,7 @@
       this.active = false;
       this.activeTarget = null;
       this.runtimeListenersAttached = false;
+      this.runtimeFrameId = null;
 
       this.panel = null;
       this.toast = null;
@@ -520,8 +521,13 @@
 
     onRuntimeReposition() {
       if (!this.active) return;
-      this.positionCoachmark();
-      this.updateJumpButton();
+      if (this.runtimeFrameId !== null) return;
+      this.runtimeFrameId = requestAnimationFrame(() => {
+        this.runtimeFrameId = null;
+        if (!this.active) return;
+        this.positionCoachmark();
+        this.updateJumpButton();
+      });
     }
 
     onDocumentKeydown(event) {
@@ -552,7 +558,7 @@
     attachRuntimeEvents() {
       if (this.runtimeListenersAttached) return;
       window.addEventListener('resize', this.onRuntimeReposition);
-      window.addEventListener('scroll', this.onRuntimeReposition, true);
+      window.addEventListener('scroll', this.onRuntimeReposition, { capture: true, passive: true });
       document.addEventListener('keydown', this.onDocumentKeydown);
       this.runtimeListenersAttached = true;
     }
@@ -562,6 +568,10 @@
       window.removeEventListener('resize', this.onRuntimeReposition);
       window.removeEventListener('scroll', this.onRuntimeReposition, true);
       document.removeEventListener('keydown', this.onDocumentKeydown);
+      if (this.runtimeFrameId !== null) {
+        cancelAnimationFrame(this.runtimeFrameId);
+        this.runtimeFrameId = null;
+      }
       this.runtimeListenersAttached = false;
     }
 
@@ -594,7 +604,7 @@
         try {
           const tokens = this.config.getTokens();
           if (tokens && typeof tokens === 'object') return tokens;
-        } catch (_) {
+        } catch {
           return {};
         }
       }
@@ -613,7 +623,7 @@
         if (!raw) return {};
         const parsed = parseJSON(raw, {});
         return parsed && typeof parsed === 'object' ? parsed : {};
-      } catch (_) {
+      } catch {
         return {};
       }
     }
@@ -632,7 +642,7 @@
       );
       try {
         localStorage.setItem(this.stateKey, JSON.stringify(nextState));
-      } catch (_) {}
+      } catch {}
       return nextState;
     }
 

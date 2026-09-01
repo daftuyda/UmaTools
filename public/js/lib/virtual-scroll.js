@@ -10,7 +10,6 @@
 
   var DEFAULT_ITEM_HEIGHT = 50;
   var DEFAULT_BUFFER_SIZE = 5;
-  var DEFAULT_THROTTLE_MS = 16;
 
   /**
    * VirtualScroll - Efficiently renders large lists by only rendering visible items
@@ -44,7 +43,8 @@
     this.contentContainer = null;
     this.renderedElements = {};
     this.visibleRange = { start: 0, end: 0 };
-    this.scrollThrottleTimer = null;
+    this.scrollFrameId = null;
+    this.scrollHandler = null;
     this.observer = null;
 
     this.init();
@@ -78,13 +78,14 @@
 
   VirtualScroll.prototype.attachScrollListener = function () {
     var self = this;
-    this.container.addEventListener('scroll', function () {
-      if (self.scrollThrottleTimer) return;
-      self.scrollThrottleTimer = setTimeout(function () {
+    this.scrollHandler = function () {
+      if (self.scrollFrameId !== null) return;
+      self.scrollFrameId = requestAnimationFrame(function () {
+        self.scrollFrameId = null;
         self.handleScroll();
-        self.scrollThrottleTimer = null;
-      }, DEFAULT_THROTTLE_MS);
-    });
+      });
+    };
+    this.container.addEventListener('scroll', this.scrollHandler, { passive: true });
   };
 
   VirtualScroll.prototype.setupIntersectionObserver = function () {
@@ -102,7 +103,7 @@
       },
       {
         root: this.container,
-        rootMargin: this.itemHeight * this.bufferSize + 'px'
+        rootMargin: this.itemHeight * this.bufferSize + 'px',
       }
     );
   };
@@ -119,8 +120,7 @@
     var viewportHeight = this.container.clientHeight;
 
     var startIndex = Math.floor(scrollTop / this.itemHeight) - this.bufferSize;
-    var endIndex =
-      Math.ceil((scrollTop + viewportHeight) / this.itemHeight) + this.bufferSize;
+    var endIndex = Math.ceil((scrollTop + viewportHeight) / this.itemHeight) + this.bufferSize;
 
     startIndex = Math.max(0, startIndex);
     endIndex = Math.min(this.items.length - 1, endIndex);
@@ -201,7 +201,7 @@
     var scrollTop = index * this.itemHeight;
     this.container.scrollTo({
       top: scrollTop,
-      behavior: behavior || 'smooth'
+      behavior: behavior || 'smooth',
     });
   };
 
@@ -222,9 +222,14 @@
       this.observer = null;
     }
 
-    if (this.scrollThrottleTimer) {
-      clearTimeout(this.scrollThrottleTimer);
-      this.scrollThrottleTimer = null;
+    if (this.scrollFrameId !== null) {
+      cancelAnimationFrame(this.scrollFrameId);
+      this.scrollFrameId = null;
+    }
+
+    if (this.container && this.scrollHandler) {
+      this.container.removeEventListener('scroll', this.scrollHandler);
+      this.scrollHandler = null;
     }
 
     if (this.contentContainer && this.contentContainer.parentNode) {

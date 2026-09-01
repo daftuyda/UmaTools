@@ -6,6 +6,14 @@ const STAT_KEYS = ['Speed', 'Stamina', 'Power', 'Guts', 'Wit'];
 const GRADE_ORDER = { S: 7, A: 6, B: 5, C: 4, D: 3, E: 2, F: 1, G: 0 };
 const SERVER_PREF_KEY = 'umatoolsServer';
 
+function debounce(fn, delay) {
+  let timeoutId = null;
+  return function (...args) {
+    window.clearTimeout(timeoutId);
+    timeoutId = window.setTimeout(() => fn.apply(this, args), delay);
+  };
+}
+
 const $ = (s, r = document) => r.querySelector(s);
 const el = (t, c, txt) => {
   const n = document.createElement(t);
@@ -187,7 +195,7 @@ function renderGuess(rowsWrap, g, target) {
 }
 
 (function init() {
-  fetch(DATA_URL)
+  fetch(DATA_URL, { cache: 'force-cache' })
     .then((r) => r.json())
     .then((data) => {
       // Server filtering
@@ -206,18 +214,28 @@ function renderGuess(rowsWrap, g, target) {
       }
 
       const byLabel = {};
+      const bySlug = new Map();
+      const searchTextByUma = new WeakMap();
       data.forEach((u) => {
         byLabel[buildLabelEN(u).toLowerCase()] = u;
         const jpLabel = buildLabelJP(u).toLowerCase();
         if (jpLabel) byLabel[jpLabel] = u;
+        bySlug.set(u.UmaSlug, u);
       });
+
+      function getSearchText(uma) {
+        let searchText = searchTextByUma.get(uma);
+        if (searchText !== undefined) return searchText;
+        searchText = `${buildLabelEN(uma)} ${buildLabelJP(uma)}`.toLowerCase();
+        searchTextByUma.set(uma, searchText);
+        return searchText;
+      }
 
       // Track guessed slugs
       const guessedSlugs = new Set();
 
       const rows = document.getElementById('rows');
       const pickBtn = document.getElementById('pickUmaBtn');
-      const pickLabel = pickBtn.querySelector('.pick-uma-label');
       const footer = document.getElementById('footer');
 
       // Modal elements
@@ -248,12 +266,7 @@ function renderGuess(rowsWrap, g, target) {
         const pool = getFilteredData();
         const q = filterSearch.toLowerCase();
         const filtered = pool.filter((u) => {
-          if (q) {
-            const labelEN = buildLabelEN(u).toLowerCase();
-            const labelJP = buildLabelJP(u).toLowerCase();
-            if (!labelEN.includes(q) && !labelJP.includes(q)) return false;
-          }
-          return true;
+          return !q || getSearchText(u).includes(q);
         });
 
         if (filtered.length === 0) {
@@ -270,7 +283,7 @@ function renderGuess(rowsWrap, g, target) {
           const itemCls = isGuessed ? 'modal-card-item disabled' : 'modal-card-item';
           const imgSrc = c.UmaImage || '';
           const imgHtml = imgSrc
-            ? `<img class="modal-card-thumb" src="${escHtml(imgSrc)}" alt="" loading="lazy">`
+            ? `<img class="modal-card-thumb" src="${escHtml(imgSrc)}" alt="" loading="lazy" decoding="async" fetchpriority="low">`
             : `<span class="modal-card-initials">${escHtml(initialsOf(name))}</span>`;
           const stars = c.UmaBaseStars ? '\u2605'.repeat(Math.min(c.UmaBaseStars, 5)) : '';
 
@@ -302,16 +315,16 @@ function renderGuess(rowsWrap, g, target) {
       modal.querySelector('.support-modal-backdrop').addEventListener('click', closeModal);
       modal.querySelector('.support-modal-close').addEventListener('click', closeModal);
 
-      searchInput.addEventListener('input', () => {
+      searchInput.addEventListener('input', debounce(() => {
         filterSearch = searchInput.value;
         renderModalList();
-      });
+      }, 140));
 
       listEl.addEventListener('click', (e) => {
         const item = e.target.closest('.modal-card-item');
         if (!item || item.classList.contains('disabled')) return;
         const slug = item.dataset.slug;
-        const found = data.find((u) => u.UmaSlug === slug);
+        const found = bySlug.get(slug);
         if (!found) return;
         closeModal();
         submitGuess(found);

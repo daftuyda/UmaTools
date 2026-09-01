@@ -1,6 +1,5 @@
 /**
- * Lighthouse Performance Test using Puppeteer
- * More reliable approach with better control over Chrome
+ * Cross-device Lighthouse audit for the primary public pages.
  */
 
 const fs = require('fs');
@@ -20,53 +19,102 @@ const OUTPUT_DIR = path.join(PROJECT_ROOT, 'lighthouse-reports');
 
 const PAGE_DEFINITIONS = [
   { name: 'home', path: 'index.html' },
+  { name: 'about', path: 'about.html' },
   { name: 'skills', path: 'skills.html' },
   { name: 'hints', path: 'hints.html' },
+  { name: 'deck', path: 'deck.html' },
   { name: 'optimizer', path: 'optimizer.html' },
-  { name: 'calculator', path: 'calculator.html' }
+  { name: 'calculator', path: 'calculator.html' },
+  { name: 'token-planner', path: 'token-planner.html' },
+  { name: 'guides', path: 'guides.html' },
 ];
-const requestedPages = new Set(
-  (process.env.LIGHTHOUSE_PAGES || '')
+
+const CATEGORY_THRESHOLDS = {
+  performance: 80,
+  accessibility: 90,
+  'best-practices': 90,
+  seo: 90,
+};
+
+function parseList(value) {
+  return value
     .split(',')
-    .map(name => name.trim())
-    .filter(Boolean)
-);
+    .map((item) => item.trim())
+    .filter(Boolean);
+}
+
+const requestedPages = new Set(parseList(process.env.LIGHTHOUSE_PAGES || ''));
 const PAGES = requestedPages.size
-  ? PAGE_DEFINITIONS.filter(page => requestedPages.has(page.name))
+  ? PAGE_DEFINITIONS.filter((page) => requestedPages.has(page.name))
   : PAGE_DEFINITIONS;
+
+const requestedFormFactors = parseList(process.env.LIGHTHOUSE_FORM_FACTORS || 'mobile,desktop');
+const FORM_FACTORS = requestedFormFactors.filter((name) => name === 'mobile' || name === 'desktop');
+
+const requestedCategories = parseList(
+  process.env.LIGHTHOUSE_CATEGORIES || Object.keys(CATEGORY_THRESHOLDS).join(',')
+);
+const CATEGORIES = requestedCategories.filter((category) => category in CATEGORY_THRESHOLDS);
 
 if (!PAGES.length) {
   throw new Error(`LIGHTHOUSE_PAGES did not match: ${[...requestedPages].join(', ')}`);
 }
 
-const opts = {
-  logLevel: 'error',
-  output: ['json', 'html'],
-  onlyCategories: ['performance'],
-  formFactor: 'mobile',
-  throttling: {
-    rttMs: 150,
-    throughputKbps: 1638.4,
-    cpuSlowdownMultiplier: 4
-  },
-  screenEmulation: {
-    mobile: true,
-    width: 360,
-    height: 640,
-    deviceScaleFactor: 2,
-    disabled: false,
-  },
-  port: undefined, // Will be set when Chrome launches
-};
+if (!FORM_FACTORS.length || FORM_FACTORS.length !== requestedFormFactors.length) {
+  throw new Error('LIGHTHOUSE_FORM_FACTORS must contain mobile, desktop, or both');
+}
 
-async function runLighthouse(page, chrome, baseUrl) {
+if (!CATEGORIES.length || CATEGORIES.length !== requestedCategories.length) {
+  throw new Error(
+    `LIGHTHOUSE_CATEGORIES must contain: ${Object.keys(CATEGORY_THRESHOLDS).join(', ')}`
+  );
+}
+
+function createOptions(formFactor) {
+  const mobile = formFactor === 'mobile';
+  return {
+    logLevel: 'error',
+    output: ['json', 'html'],
+    onlyCategories: CATEGORIES,
+    formFactor,
+    throttling: mobile
+      ? {
+          rttMs: 150,
+          throughputKbps: 1638.4,
+          cpuSlowdownMultiplier: 4,
+        }
+      : {
+          rttMs: 40,
+          throughputKbps: 10240,
+          cpuSlowdownMultiplier: 1,
+        },
+    screenEmulation: mobile
+      ? {
+          mobile: true,
+          width: 360,
+          height: 640,
+          deviceScaleFactor: 2,
+          disabled: false,
+        }
+      : {
+          mobile: false,
+          width: 1350,
+          height: 940,
+          deviceScaleFactor: 1,
+          disabled: false,
+        },
+    port: undefined,
+  };
+}
+
+async function runLighthouse(page, formFactor, chrome, baseUrl) {
   const url = `${baseUrl}/${page.path}`;
 
-  console.log(`\n→ Testing ${page.name} (${page.path})...`);
+  console.log(`\n→ Testing ${page.name} (${page.path}, ${formFactor})...`);
 
   try {
     const runnerResult = await lighthouse(url, {
-      ...opts,
+      ...createOptions(formFactor),
       port: chrome.port,
     });
 
@@ -75,46 +123,66 @@ async function runLighthouse(page, chrome, baseUrl) {
     if (reportJson.runtimeError?.code) {
       throw new Error(`${reportJson.runtimeError.code}: ${reportJson.runtimeError.message}`);
     }
-    if (typeof reportJson.categories.performance.score !== 'number') {
-      throw new Error('Lighthouse returned no performance score');
+    for (const category of CATEGORIES) {
+      if (typeof reportJson.categories[category]?.score !== 'number') {
+        throw new Error(`Lighthouse returned no ${category} score`);
+      }
     }
     const reportHtml = runnerResult.report[1];
 
-    const jsonPath = path.join(OUTPUT_DIR, `${page.name}-report.report.json`);
-    const htmlPath = path.join(OUTPUT_DIR, `${page.name}-report.report.html`);
+    const reportName = `${page.name}-${formFactor}-report`;
+    const jsonPath = path.join(OUTPUT_DIR, `${reportName}.report.json`);
+    const htmlPath = path.join(OUTPUT_DIR, `${reportName}.report.html`);
 
     fs.writeFileSync(jsonPath, JSON.stringify(reportJson, null, 2));
     fs.writeFileSync(htmlPath, reportHtml);
 
     // Extract metrics
-    const score = Math.round(reportJson.categories.performance.score * 100);
+    const scores = Object.fromEntries(
+      CATEGORIES.map((category) => [
+        category,
+        Math.round(reportJson.categories[category].score * 100),
+      ])
+    );
     const tti = Math.round(reportJson.audits['interactive']?.numericValue || 0);
     const cls = (reportJson.audits['cumulative-layout-shift']?.numericValue || 0).toFixed(3);
     const fcp = Math.round(reportJson.audits['first-contentful-paint']?.numericValue || 0);
     const lcp = Math.round(reportJson.audits['largest-contentful-paint']?.numericValue || 0);
-    const passed = score >= 80 && tti < 3000 && Number(cls) < 0.1;
+    const categoriesPassed = CATEGORIES.every(
+      (category) => scores[category] >= CATEGORY_THRESHOLDS[category]
+    );
+    const performancePassed =
+      !CATEGORIES.includes('performance') || (tti < 3000 && Number(cls) < 0.1);
+    const passed = categoriesPassed && performancePassed;
 
-    console.log(`${passed ? 'PASS' : 'FAIL'} ${page.name}: Performance ${score}/100`);
-    console.log(`  - Time to Interactive: ${tti}ms`);
-    console.log(`  - CLS: ${cls}`);
-    console.log(`  - FCP: ${fcp}ms`);
-    console.log(`  - LCP: ${lcp}ms`);
+    console.log(`${passed ? 'PASS' : 'FAIL'} ${page.name} (${formFactor})`);
+    for (const [category, score] of Object.entries(scores)) {
+      console.log(`  - ${category}: ${score}/100`);
+    }
+    if (CATEGORIES.includes('performance')) {
+      console.log(`  - Time to Interactive: ${tti}ms`);
+      console.log(`  - CLS: ${cls}`);
+      console.log(`  - FCP: ${fcp}ms`);
+      console.log(`  - LCP: ${lcp}ms`);
+    }
 
     return {
       page: page.name,
+      formFactor,
       passed,
-      score,
+      scores,
       tti,
       cls: parseFloat(cls),
       fcp,
-      lcp
+      lcp,
     };
   } catch (error) {
     console.error(`✗ ${page.name} failed: ${error.message}`);
     return {
       page: page.name,
+      formFactor,
       passed: false,
-      error: error.message
+      error: error.message,
     };
   }
 }
@@ -123,11 +191,14 @@ async function main() {
   // Load ES modules
   await loadModules();
 
-  console.log('🚀 Starting Lighthouse Performance Tests\n');
+  console.log('🚀 Starting cross-device Lighthouse audits\n');
   console.log('Target Requirements:');
-  console.log('  - Performance score: 80+');
+  for (const category of CATEGORIES) {
+    console.log(`  - ${category}: ${CATEGORY_THRESHOLDS[category]}+`);
+  }
   console.log('  - Time to Interactive: < 3000ms (on throttled 4G)');
   console.log('  - Cumulative Layout Shift: < 0.1');
+  console.log(`  - Form factors: ${FORM_FACTORS.join(', ')}`);
   console.log('═'.repeat(60));
 
   // Ensure output directory exists
@@ -154,21 +225,17 @@ async function main() {
     // Launch Chrome
     console.log('\nLaunching Chrome...');
     chrome = await chromeLauncher.launch({
-      chromeFlags: [
-        '--headless=new',
-        '--no-sandbox',
-        '--disable-dev-shm-usage',
-        '--disable-gpu'
-      ]
+      chromeFlags: ['--headless=new', '--no-sandbox', '--disable-dev-shm-usage', '--disable-gpu'],
     });
     console.log('✓ Chrome launched');
 
     // Run tests
-    for (const page of PAGES) {
-      const result = await runLighthouse(page, chrome, baseUrl);
-      results.push(result);
+    for (const formFactor of FORM_FACTORS) {
+      for (const page of PAGES) {
+        const result = await runLighthouse(page, formFactor, chrome, baseUrl);
+        results.push(result);
+      }
     }
-
   } catch (error) {
     console.error(`\n✗ Test runner failed: ${error.message}`);
   } finally {
@@ -179,24 +246,29 @@ async function main() {
     }
 
     console.log('→ Stopping server...');
-    await new Promise(resolve => server.close(resolve));
+    await new Promise((resolve) => server.close(resolve));
   }
 
   // Generate summary
   console.log('\n' + '═'.repeat(60));
   console.log('📊 TEST RESULTS SUMMARY\n');
 
-  const passed = results.filter(r => r.passed).length;
+  const passed = results.filter((r) => r.passed).length;
   const failed = results.length - passed;
 
-  results.forEach(result => {
+  results.forEach((result) => {
     if (result.passed) {
-      console.log(`✓ ${result.page.padEnd(12)} - Score: ${result.score}/100`);
+      const scores = Object.entries(result.scores)
+        .map(([category, score]) => `${category} ${score}`)
+        .join(', ');
+      console.log(`✓ ${result.page.padEnd(12)} ${result.formFactor.padEnd(7)} - ${scores}`);
     } else {
       const reason = result.error
         ? result.error
-        : `score ${result.score}/100, TTI ${result.tti}ms, CLS ${result.cls}`;
-      console.log(`✗ ${result.page.padEnd(12)} - ${reason}`);
+        : `${Object.entries(result.scores)
+            .map(([category, score]) => `${category} ${score}`)
+            .join(', ')}, TTI ${result.tti}ms, CLS ${result.cls}`;
+      console.log(`✗ ${result.page.padEnd(12)} ${result.formFactor.padEnd(7)} - ${reason}`);
     }
   });
 
@@ -211,7 +283,7 @@ async function main() {
   process.exit(failed > 0 ? 1 : 0);
 }
 
-main().catch(error => {
+main().catch((error) => {
   console.error(`Fatal error: ${error.message}`);
   console.error(error.stack);
   process.exit(1);

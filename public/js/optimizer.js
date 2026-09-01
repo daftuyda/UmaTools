@@ -2371,19 +2371,45 @@
     return true;
   }
 
-  async function loadSkillsCSV() {
+  function getSkillsCSVCandidates(lang) {
+    return lang === 'jp'
+      ? ['/assets/uma_skills_jp.csv', './assets/uma_skills_jp.csv', '/assets/uma_skills.csv']
+      : ['/assets/uma_skills.csv', './assets/uma_skills.csv'];
+  }
+
+  function preloadSkillsCSV() {
     const lang = getSkillLanguage();
-    const candidates =
-      lang === 'jp'
-        ? ['/assets/uma_skills_jp.csv', './assets/uma_skills_jp.csv', '/assets/uma_skills.csv']
-        : ['/assets/uma_skills.csv', './assets/uma_skills.csv'];
+    const url = getSkillsCSVCandidates(lang)[0];
+    return fetch(url, { cache: 'force-cache' })
+      .then((response) => {
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        return response.text();
+      })
+      .then((text) => ({ lang, url, text, error: null }))
+      .catch((error) => ({ lang, url, text: '', error }));
+  }
+
+  async function loadSkillsCSV(preloadedCSV = null) {
+    const lang = getSkillLanguage();
+    const candidates = getSkillsCSVCandidates(lang);
     let lastErr = null;
     for (const url of candidates) {
       try {
-        // Use default caching - Vercel headers control TTL
-        const res = await fetch(url, { cache: 'force-cache' });
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const text = await res.text();
+        let text = '';
+        if (preloadedCSV && url === candidates[0]) {
+          const preloaded = await preloadedCSV;
+          preloadedCSV = null;
+          if (preloaded.lang === lang && preloaded.url === url) {
+            if (preloaded.text) text = preloaded.text;
+            else if (preloaded.error) throw preloaded.error;
+          }
+        }
+        if (!text) {
+          // Use default caching - Vercel headers control TTL
+          const res = await fetch(url, { cache: 'force-cache' });
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          text = await res.text();
+        }
         skillsCsvCache = text;
         const ok = loadFromCSVContent(text);
         if (ok) {
@@ -2671,9 +2697,9 @@
         <div class="evo-options" data-empty="true"></div>
       </div>
       <div class="hint-cell">
-        <label data-i18n="optimizer.hintDiscount">${t('optimizer.hintDiscount')}</label>
+        <label for="hint-level-${id}" data-i18n="optimizer.hintDiscount">${t('optimizer.hintDiscount')}</label>
         <div class="hint-controls">
-          <select class="hint-level field-control">
+          <select id="hint-level-${id}" class="hint-level field-control">
             ${HINT_LEVELS.map((lvl) => `<option value="${lvl}">${t('optimizer.hintLvFormat', { lvl: lvl, pct: getTotalHintDiscountPct(lvl) })}</option>`).join('')}
           </select>
           <div class="base-cost" data-empty="true">Base ?</div>
@@ -5192,7 +5218,7 @@
         if (isGold && lowerSkill) {
           lowerCat = canonicalCategory(lowerSkill.category);
           const lowerName = formatSkillDisplayName(lowerSkill);
-          lowerHtml = `<div class="card-lower lower-${lowerCat}" data-skill-name="${attrEsc(lowerSkill.name)}"${lowerSkill.skillId ? ` data-skill-id="${attrEsc(String(lowerSkill.skillId))}"` : ''}>${attrEsc(lowerName)}</div>`;
+          lowerHtml = `<div class="card-lower lower-${lowerCat}" data-skill-name="${attrEsc(lowerSkill.name)}"${lowerSkill.skillId ? ` data-skill-id="${attrEsc(String(lowerSkill.skillId))}"` : ''} tabindex="0" role="button">${attrEsc(lowerName)}</div>`;
         }
 
         const card = document.createElement('div');
@@ -5200,7 +5226,7 @@
         card.className = `skill-card cat-${cat}${isGold ? ' is-gold' : ''} tint-${tintCat}`;
         card.innerHTML =
           `<div class="card-check"></div>` +
-          `<div class="card-name" data-skill-name="${attrEsc(skill.name)}"${skill.skillId ? ` data-skill-id="${attrEsc(String(skill.skillId))}"` : ''} title="${attrEsc(skill.name)}">${attrEsc(displayName)}</div>` +
+          `<div class="card-name" data-skill-name="${attrEsc(skill.name)}"${skill.skillId ? ` data-skill-id="${attrEsc(String(skill.skillId))}"` : ''} tabindex="0" role="button" title="${attrEsc(skill.name)}">${attrEsc(displayName)}</div>` +
           lowerHtml +
           `<div class="card-meta"><span class="card-cost-value">${costText}</span>${typeText ? `<span>${typeText}</span>` : ''}</div>` +
           `<div class="card-hints">` +
@@ -6203,7 +6229,11 @@
         { rootMargin: '200px' }
       );
       observer.observe(card);
+      return;
     }
+
+    // Older browsers without IntersectionObserver still get the decorative
+    // sprite after the critical page work has settled.
     if ('requestIdleCallback' in window) {
       requestIdleCallback(load, { timeout: 2000 });
     } else {
@@ -6384,13 +6414,14 @@
 
   applyLanguageFromURLParams(getURLParams());
 
-  // Init: load core JSON first (CSV depends on officialEnglishNameSet from JSON),
-  // then CSV, then defer full data + team trials to background
+  // Fetch both startup datasets together. CSV parsing still waits for the core
+  // JSON because it depends on the official-English name index built there.
+  const skillsCSVPreload = preloadSkillsCSV();
   loadSkillCostsJSON()
     .catch((err) => {
       console.warn('Skill cost JSON load failed', err);
     })
-    .then(() => loadSkillsCSV())
+    .then(() => loadSkillsCSV(skillsCSVPreload))
     .then(() => finishInit())
     .then(() => backgroundHydrateFullData())
     .catch((err) => {

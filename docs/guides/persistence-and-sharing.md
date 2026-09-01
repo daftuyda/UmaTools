@@ -37,7 +37,6 @@ No application account is required to save these values. Clearing site data, usi
 | `calculatorOfficialEnglishOnly` | `calculator.js`    | Calculator official-English filter.                                        |
 | `umatools-deck`                 | `deck.js`          | Active character, supports, and limit breaks.                              |
 | `umatools-saved-decks`          | `deck.js`          | Named deck snapshots.                                                      |
-| `umatools-collection`           | `collection.js`    | Owned support IDs and limit breaks.                                        |
 | `stamina-checker-state`         | `stamina.js`       | Stamina form values and selected unique recoveries.                        |
 | `umatools-token-planner-v1`     | `token-planner.js` | Preset, filters, held tokens, and song state.                              |
 | `exclude_support_slugs`         | `random.js`        | Support cards excluded from random generation.                             |
@@ -122,7 +121,7 @@ location.reload();
 To inspect a value without changing it:
 
 ```js
-JSON.parse(localStorage.getItem('umatools-collection') || '[]');
+JSON.parse(localStorage.getItem('umatools-deck') || '{}');
 ```
 
 Use the UI's Clear or Delete controls when they exist. They preserve unrelated site preferences and make the intended scope clearer than clearing all site data.

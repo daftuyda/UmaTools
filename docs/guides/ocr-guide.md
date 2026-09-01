@@ -1,6 +1,6 @@
 # OCR Skill Recognition
 
-A developer guide covering the image preprocessing pipeline, Tesseract configuration, fuzzy skill matching, and tuning parameters.
+A developer reference covering the image preprocessing pipeline, Tesseract configuration, fuzzy skill matching, and tuning parameters.
 
 ---
 
@@ -50,8 +50,8 @@ OCR scripts are **not** included in the initial page bundle. They are loaded dyn
 
 ## 2. Source Files
 
-| File                    | Purpose                                         |
-| ----------------------- | ----------------------------------------------- |
+| File                           | Purpose                                         |
+| ------------------------------ | ----------------------------------------------- |
 | `public/js/ocr-preprocess.js`  | Image preprocessing pipeline                    |
 | `public/js/ocr-matcher.js`     | Fuzzy matching, confidence scoring, suggestions |
 | `public/js/ocr.js`             | Main OCR integration, UI, event handlers        |

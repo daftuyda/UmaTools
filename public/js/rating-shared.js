@@ -221,7 +221,7 @@
     const RATING_SPRITE = {
       url: 'assets/Rank_tex.webp',
       fallbackUrl: 'assets/Rank_tex.png',
-      version: '20260225',
+      version: '20260901',
       sheetWidth: 0,
       sheetHeight: 0,
       activeUrl: '',

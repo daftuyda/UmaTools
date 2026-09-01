@@ -209,47 +209,65 @@
   }
 
   function loadHints() {
+    if (Array.isArray(global.__supportHintsData)) {
+      buildCardMap(global.__supportHintsData);
+      return Promise.resolve();
+    }
     return fetchFirst(HINTS_URLS, { cache: 'force-cache' })
       .then(function (cards) {
         if (!Array.isArray(cards)) return;
-        cardById = new Map();
-        cards.forEach(function (card) {
-          if (!card.SupportId) return;
-          cardById.set(String(card.SupportId), {
-            name: card.SupportName || '',
-            nameJP: card.SupportNameJP || '',
-            rarity: card.SupportRarity || '',
-            image: card.SupportImage || '',
-            server: card.SupportServer || '',
-            type: card.SupportType || '',
-          });
-        });
+        global.__supportHintsData = cards;
+        buildCardMap(cards);
       })
       .catch(function () {
         /* silent */
       });
   }
 
+  function buildCardMap(cards) {
+    cardById = new Map();
+    cards.forEach(function (card) {
+      if (!card.SupportId) return;
+      cardById.set(String(card.SupportId), {
+        name: card.SupportName || '',
+        nameJP: card.SupportNameJP || '',
+        rarity: card.SupportRarity || '',
+        image: card.SupportImage || '',
+        server: card.SupportServer || '',
+        type: card.SupportType || '',
+      });
+    });
+  }
+
   function loadUma() {
+    if (Array.isArray(global.__umaData)) {
+      buildUmaMap(global.__umaData);
+      return Promise.resolve();
+    }
     return fetchFirst(UMA_URLS, { cache: 'force-cache' })
       .then(function (chars) {
         if (!Array.isArray(chars)) return;
-        umaById = new Map();
-        chars.forEach(function (u) {
-          if (!u.UmaId) return;
-          umaById.set(String(u.UmaId), {
-            name: u.UmaName || '',
-            nameJP: u.UmaNameJP || '',
-            nickname: u.UmaNickname || '',
-            nicknameJP: u.UmaNicknameJP || '',
-            server: u.UmaServer || '',
-            image: u.UmaImage || '',
-          });
-        });
+        global.__umaData = chars;
+        buildUmaMap(chars);
       })
       .catch(function () {
         /* silent */
       });
+  }
+
+  function buildUmaMap(chars) {
+    umaById = new Map();
+    chars.forEach(function (u) {
+      if (!u.UmaId) return;
+      umaById.set(String(u.UmaId), {
+        name: u.UmaName || '',
+        nameJP: u.UmaNameJP || '',
+        nickname: u.UmaNickname || '',
+        nicknameJP: u.UmaNicknameJP || '',
+        server: u.UmaServer || '',
+        image: u.UmaImage || '',
+      });
+    });
   }
 
   // Resolve card IDs from skill's sup_hint/sup_e arrays into card objects
@@ -333,7 +351,10 @@
     var name = (siteLang === 'ja' && c.nameJP) || c.name;
     var row = '<div class="sp-card-row">';
     if (c.image) {
-      row += '<img class="sp-card-thumb" src="' + escapeHtml(c.image) + '" alt="" loading="lazy">';
+      row +=
+        '<img class="sp-card-thumb" src="' +
+        escapeHtml(c.image) +
+        '" alt="" loading="lazy" decoding="async" fetchpriority="low">';
     }
     var displayName = c.rarity ? name.replace(RARITY_SUFFIX_RE, '') : name;
     row += '<span class="sp-card-name">' + escapeHtml(displayName) + '</span>';
@@ -350,7 +371,10 @@
     var nickname = (siteLang === 'ja' && u.nicknameJP) || u.nickname;
     var row = '<div class="sp-card-row">';
     if (u.image) {
-      row += '<img class="sp-card-thumb" src="' + escapeHtml(u.image) + '" alt="" loading="lazy">';
+      row +=
+        '<img class="sp-card-thumb" src="' +
+        escapeHtml(u.image) +
+        '" alt="" loading="lazy" decoding="async" fetchpriority="low">';
     }
     var label = nickname ? name + ' (' + nickname + ')' : name;
     row += '<span class="sp-card-name">' + escapeHtml(label) + '</span>';
@@ -381,8 +405,7 @@
     html += '<div class="sp-header">';
     html += '<div class="sp-heading">';
     html += '<span class="sp-kicker">' + escapeHtml(t('skillPopup.skillDetails')) + '</span>';
-    html +=
-      '<span class="sp-title" id="skill-popup-title">' + escapeHtml(displayName) + '</span>';
+    html += '<span class="sp-title" id="skill-popup-title">' + escapeHtml(displayName) + '</span>';
     html += '</div>';
     html +=
       '<button type="button" class="sp-close" aria-label="' +
@@ -635,8 +658,7 @@
 
     // Don't interfere with other interactive elements
     // Allow .card-name and .card-lower inside .skill-card to trigger popup
-    if (e.target.closest('.skill-card') && !e.target.closest('.card-name, .card-lower'))
-      return;
+    if (e.target.closest('.skill-card') && !e.target.closest('.card-name, .card-lower')) return;
     if (e.target.closest('input, button, th[data-sort], .ocr-skill-checkbox, .ocr-edit-icon'))
       return;
 

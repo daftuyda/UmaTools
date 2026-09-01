@@ -1,6 +1,6 @@
 # Team Trials: Activation-First Skill Selection
 
-This guide explains how UmaTools selects Team Trials skills, including measured course coverage, Wisdom checks, dependencies, and the expected-value knapsack solver.
+This document explains how UmaTools selects Team Trials skills, including measured course coverage, Wisdom checks, dependencies, and the expected-value knapsack solver.
 
 ## 1. Objective
 

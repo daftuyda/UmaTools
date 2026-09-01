@@ -2,7 +2,7 @@
 
 The Grand Live Token Planner (`/token-planner`) tracks which songs a player wants, which have already been bought, and how many of each Performance token remain to be saved.
 
-The planner is entirely client-side. Song costs, effects, presets, lesson references, and saved state all live in the browser code.
+The planner is entirely client-side. Song costs, effects, presets, technique requirements, and saved state all live in the browser code.
 
 ## Token types
 
@@ -59,17 +59,17 @@ Bulk actions operate on the currently visible songs:
 
 This makes the order of filtering and bulk selection significant. For example, selecting Year 2 and choosing Want Visible changes only Year 2 songs.
 
-## Lesson reference
+## Technique requirement reference
 
-The lesson chips are a static quick reference:
+The technique requirement chips are a static quick reference:
 
-| Stage    | Sequence      |
-| -------- | ------------- |
-| Live 1   | `1-2-3-4-4-2` |
-| Live 2-4 | `2-2-2-4-5-2` |
-| Live 5   | `2-2-2-4-2-2` |
+| Concert stage             | Techniques required per song |
+| ------------------------- | ---------------------------- |
+| Before 1st Concert        | `1-2-3-4-4-2-3`              |
+| Before 2nd to 4th Concert | `2-2-2-4-5-2-2`              |
+| Before Grand Concert      | `2-2-2-4-3-2-2`              |
 
-They do not participate in token totals. If the source planning sheet changes, update the lesson data independently from song costs.
+They do not participate in token totals. If the source planning sheet changes, update the technique requirement data independently from song costs.
 
 ## Persistence
 

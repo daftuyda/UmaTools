@@ -2,58 +2,98 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://daftuyda.moe/</loc>
-    <lastmod>2026-02-26</lastmod>
+    <lastmod>2026-09-01</lastmod>
+  </url>
+  <url>
+    <loc>https://daftuyda.moe/about</loc>
+    <lastmod>2026-09-01</lastmod>
   </url>
   <url>
     <loc>https://daftuyda.moe/optimizer</loc>
-    <lastmod>2026-02-26</lastmod>
+    <lastmod>2026-09-01</lastmod>
   </url>
   <url>
     <loc>https://daftuyda.moe/calculator</loc>
-    <lastmod>2026-02-26</lastmod>
+    <lastmod>2026-09-01</lastmod>
   </url>
   <url>
     <loc>https://daftuyda.moe/stamina</loc>
-    <lastmod>2026-02-26</lastmod>
+    <lastmod>2026-09-01</lastmod>
   </url>
   <url>
     <loc>https://daftuyda.moe/token-planner</loc>
-    <lastmod>2026-05-30</lastmod>
+    <lastmod>2026-09-01</lastmod>
   </url>
   <url>
     <loc>https://daftuyda.moe/events</loc>
-    <lastmod>2026-02-26</lastmod>
+    <lastmod>2026-09-01</lastmod>
   </url>
   <url>
     <loc>https://daftuyda.moe/hints</loc>
-    <lastmod>2026-02-26</lastmod>
+    <lastmod>2026-09-01</lastmod>
   </url>
   <url>
     <loc>https://daftuyda.moe/deck</loc>
-    <lastmod>2026-02-26</lastmod>
-  </url>
-  <url>
-    <loc>https://daftuyda.moe/collection</loc>
-    <lastmod>2026-03-27</lastmod>
+    <lastmod>2026-09-01</lastmod>
   </url>
   <url>
     <loc>https://daftuyda.moe/skills</loc>
-    <lastmod>2026-02-26</lastmod>
+    <lastmod>2026-09-01</lastmod>
   </url>
   <url>
     <loc>https://daftuyda.moe/rank-breakdown</loc>
-    <lastmod>2026-02-28</lastmod>
+    <lastmod>2026-09-01</lastmod>
   </url>
   <url>
     <loc>https://daftuyda.moe/accel</loc>
-    <lastmod>2026-03-02</lastmod>
+    <lastmod>2026-09-01</lastmod>
   </url>
   <url>
     <loc>https://daftuyda.moe/random</loc>
-    <lastmod>2026-02-26</lastmod>
+    <lastmod>2026-09-01</lastmod>
   </url>
   <url>
     <loc>https://daftuyda.moe/umadle</loc>
-    <lastmod>2026-02-26</lastmod>
+    <lastmod>2026-09-01</lastmod>
+  </url>
+  <url>
+    <loc>https://daftuyda.moe/guides</loc>
+    <lastmod>2026-09-01</lastmod>
+  </url>
+  <url>
+    <loc>https://daftuyda.moe/guides/rating-system</loc>
+    <lastmod>2026-09-01</lastmod>
+  </url>
+  <url>
+    <loc>https://daftuyda.moe/guides/team-trials</loc>
+    <lastmod>2026-09-01</lastmod>
+  </url>
+  <url>
+    <loc>https://daftuyda.moe/guides/accel-checker</loc>
+    <lastmod>2026-09-01</lastmod>
+  </url>
+  <url>
+    <loc>https://daftuyda.moe/guides/stamina-calculator</loc>
+    <lastmod>2026-09-01</lastmod>
+  </url>
+  <url>
+    <loc>https://daftuyda.moe/guides/deck-tools</loc>
+    <lastmod>2026-09-01</lastmod>
+  </url>
+  <url>
+    <loc>https://daftuyda.moe/guides/token-planner</loc>
+    <lastmod>2026-09-01</lastmod>
+  </url>
+  <url>
+    <loc>https://daftuyda.moe/guides/ocr-guide</loc>
+    <lastmod>2026-09-01</lastmod>
+  </url>
+  <url>
+    <loc>https://daftuyda.moe/guides/persistence-and-sharing</loc>
+    <lastmod>2026-09-01</lastmod>
+  </url>
+  <url>
+    <loc>https://daftuyda.moe/guides/translations</loc>
+    <lastmod>2026-09-01</lastmod>
   </url>
 </urlset>

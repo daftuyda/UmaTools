@@ -1,5 +1,6 @@
-﻿User-agent: *
+User-agent: *
 Allow: /
+Allow: /api/og
 Disallow: /api/
 Disallow: /_vercel/
 

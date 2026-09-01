@@ -11,6 +11,8 @@
 
   var PAGE_TRANSLATIONS = {
     en: {
+      'home.heroTitle': 'Uma Musume Tools',
+      'home.heroTitleAccent': '& Calculators',
       // ── Home ──
       'home.title': 'Most visited tools',
       'home.subtitle':
@@ -26,7 +28,7 @@
       'home.openCalculator': 'Open Calculator',
       'home.staminaCheck': 'Stamina Check',
       'home.staminaCheckDesc': 'See if your stamina meets distance and style thresholds.',
-      'home.staminaCheckBadge': 'Stamina guide',
+      'home.staminaCheckBadge': 'Race model',
       'home.openStaminaCheck': 'Open Stamina Check',
       'home.tokenPlanner': 'Grand Live Token Planner',
       'home.tokenPlannerDesc':
@@ -50,6 +52,11 @@
         'Build a training deck with 1 character and 6 support cards. See combined hints and bonuses.',
       'home.deckBuilderBadge': 'Team planner',
       'home.openDeckBuilder': 'Open Deck Builder',
+      'home.guides': 'UmaTools Documentation',
+      'home.guidesDesc':
+        'Explore the rating math and planning systems behind UmaTools in detailed player and technical documentation.',
+      'home.guidesBadge': 'Reference library',
+      'home.openGuides': 'Browse Documentation',
       'home.skillLibrary': 'Skill Library',
       'home.skillLibraryDesc':
         'Browse all skills with cost, rating score, efficiency, and sources.',
@@ -60,13 +67,15 @@
       'home.randomizerBadge': 'Fun mode',
       'home.openRandomizer': 'Open Randomizer',
       'home.umadle': 'Umadle',
-      'home.umadleDesc': 'Daily guessing game with Uma Musume data.',
-      'home.umadleBadge': 'Daily challenge',
+      'home.umadleDesc': 'Guess a mystery character using Uma Musume stats and clues.',
+      'home.umadleBadge': 'Character challenge',
       'home.openUmadle': 'Open Umadle',
       'home.rankBreakdown': 'Rating Rank Breakdown',
       'home.rankBreakdownDesc': 'Browse every rating threshold and jump directly to a target rank.',
       'home.rankBreakdownBadge': 'Rating reference',
       'home.openRankBreakdown': 'Open Rank Breakdown',
+
+      'seo.relatedTools': 'Related tools',
 
       // ── Rank Breakdown ──
       'rankBreakdown.title': 'Rating Rank Breakdown',
@@ -88,6 +97,11 @@
       'rankBreakdown.lookupInvalid': 'Enter a valid rating (0 or higher).',
       'rankBreakdown.lookupResult': '{rating} -> {rank} ({range})',
       'rankBreakdown.overallProgress': 'Overall Progress',
+      'rankBreakdown.guideTitle': 'Understand Uma Musume rating ranks',
+      'rankBreakdown.guideIntro':
+        'This table maps numeric evaluation ratings to every named tier from G through LS24. Enter a rating to find its rank, exact threshold, and the points required for the next tier.',
+      'rankBreakdown.guideRelated':
+        'Estimate a final trainee score with the <a href="/calculator">Rating Calculator</a>, or test which skill purchases improve it most in the <a href="/optimizer">Skill Optimizer</a>.',
 
       // ── Changelog ──
       'changelog.whatsNew': "What's New",
@@ -132,7 +146,7 @@
       'calculator.floatProjected': 'Projected',
 
       // ── Optimizer ──
-      'optimizer.title': 'Skill Optimizer & Rating Calculator',
+      'optimizer.title': 'Uma Musume Skill Optimizer',
       'optimizer.loadingSkills': 'Loading skill library...',
       'optimizer.skillReady': 'Skill library ready.',
       'optimizer.csvFallback': 'Failed to load CSV (using fallback)',
@@ -391,6 +405,11 @@
       'events.skillNameRequired': 'Skill name is required',
       'events.costRange': 'Cost must be between 0 and 999',
       'events.hintRange': 'Hint level must be between 0 and 5',
+      'events.guideTitle': 'Find Uma Musume event choices faster',
+      'events.guideIntro':
+        'Search an event name manually or capture its screen for OCR. The matching choices and outcomes help you make a training decision without interrupting your run.',
+      'events.guideRelated':
+        'Check newly offered skills in the <a href="/skills">Skill Library</a>, then compare a complete purchase plan with the <a href="/optimizer">Skill Optimizer</a>.',
 
       // ── Hints ──
       'hints.title': 'Support Hint Finder',
@@ -404,6 +423,13 @@
       'hints.loadSupportFailed': 'Failed to load support data. Please refresh.',
       'hints.copyLink': 'Copy link',
       'hints.counts': '{matched} card(s) matched | {total} cards total | {hints} unique hints',
+      'hints.showMore': 'Show more ({shown} of {total})',
+      'hints.resultsHeading': 'Matching support cards',
+      'hints.guideTitle': 'Find support cards that teach the hints you need',
+      'hints.guideIntro':
+        'Add one or more skill hints, use AND to require every selected hint or OR to match any of them, and narrow the results by SSR, SR, or R rarity.',
+      'hints.guideRelated':
+        'Compare candidate cards in the <a href="/deck">Deck Builder</a>, or plan the skills they provide with the <a href="/optimizer">Skill Optimizer</a>.',
 
       // ── Deck ──
       'deck.title': 'Deck Builder',
@@ -493,22 +519,11 @@
       'deck.effect.failureProtection': 'Failure Protection',
       'deck.effect.initialSkillPoints': 'Initial Skill Points',
       'deck.uniqueEffect': 'Unique Effect',
-
-      // ── Collection / Deck Optimizer ──
-      'collection.title': 'Deck Optimizer',
-      'collection.tabCollection': 'My Collection',
-      'collection.tabOptimizer': 'Deck Optimizer',
-      'collection.import': 'Import',
-      'collection.export': 'Export',
-      'collection.clearAll': 'Clear All',
-      'collection.searchPlaceholder': 'Search support cards...',
-      'collection.myCards': 'My Cards',
-      'collection.emptyMsg': 'Search and add cards above to build your collection.',
-      'collection.scenario': 'Scenario',
-      'collection.optimize': 'Optimize Decks',
-      'collection.variants': 'Variant Filters',
-      'collection.paceStyle': 'Pace Style',
-      'collection.distance': 'Distance',
+      'deck.guideTitle': 'Plan an Uma Musume support deck',
+      'deck.guideIntro':
+        'Select a trainee and up to six support cards, adjust card levels, and review their combined bonuses and skill hints. Save useful decks or copy a share link for later.',
+      'deck.guideRelated':
+        'Find cards for a specific skill in the <a href="/hints">Support Hint Finder</a>, or turn the deck\'s combined hints into a build with the <a href="/optimizer">Skill Optimizer</a>.',
 
       'common.corner': 'Corner',
       'common.straight': 'Straight',
@@ -532,6 +547,11 @@
       'random.notFound': "Couldn't find that support. Please pick one from the list.",
       'random.clickToPick': 'Click "Pick Random Uma" to roll.',
       'random.rollAgain': 'Press "Pick Random Uma" to roll again.',
+      'random.guideTitle': 'Create a random Uma Musume challenge',
+      'random.guideIntro':
+        'Choose the allowed support rarities, exclude cards you do not want, and roll five support cards or a random Uma. Use the result for challenge runs and fresh training ideas.',
+      'random.guideRelated':
+        'Turn a random result into a complete six-card plan in the <a href="/deck">Deck Builder</a>, then choose affordable skills with the <a href="/optimizer">Skill Optimizer</a>.',
 
       // ── Umadle ──
       'umadle.title': 'Umadle',
@@ -546,6 +566,11 @@
       'umadle.newUma': 'New UMA',
       'umadle.keepBoard': 'Keep Board',
       'umadle.allMatch': 'You got it! All stats match.',
+      'umadle.guideTitle': 'How to play Umadle',
+      'umadle.guideIntro':
+        "Choose an Uma Musume for each guess. Exact matches are marked while arrows show whether the hidden character's matching attribute is higher or lower. Follow the clues until you identify the target.",
+      'umadle.guideRelated':
+        'Try another quick challenge with the <a href="/random">Randomizer</a>, or explore character and support combinations in the <a href="/deck">Deck Builder</a>.',
 
       // ── Tutorial ──
       'tutorial.closeTutorial': 'Close tutorial',
@@ -709,6 +734,11 @@
       'skills.noResults': 'No skills match your search.',
       'skills.loading': 'Loading skill data...',
       'skills.skillCount': '{count} skills',
+      'skills.guideTitle': 'How to use the Uma Musume Skill Library',
+      'skills.guideIntro':
+        'Search and filter skills by type, then open a row to compare skill-point cost, rating value, efficiency, effect details, and known sources before spending your points.',
+      'skills.guideRelated':
+        'Add your shortlist to the <a href="/optimizer">Skill Optimizer</a> to find the strongest set for a budget, or use the <a href="/calculator">Rating Calculator</a> to estimate a finished build.',
 
       // ── Skill Popup ──
       'skillPopup.description': 'Description',
@@ -734,6 +764,8 @@
       'common.nextRank': 'Next: {badge} at {threshold}',
     },
     ja: {
+      'home.heroTitle': 'ウマ娘ツール',
+      'home.heroTitleAccent': '＆計算機',
       // ── Home ──
       'home.title': 'よく使われるツール',
       'home.subtitle':
@@ -749,7 +781,7 @@
       'home.openCalculator': '計算機を開く',
       'home.staminaCheck': 'スタミナチェック',
       'home.staminaCheckDesc': 'スタミナが距離と脚質の基準を満たしているか確認できます。',
-      'home.staminaCheckBadge': 'スタミナガイド',
+      'home.staminaCheckBadge': 'レースモデル',
       'home.openStaminaCheck': 'スタミナチェックを開く',
       'home.tokenPlanner': 'グランドライブトークンプランナー',
       'home.tokenPlannerDesc':
@@ -773,6 +805,11 @@
         'キャラ1体とサポカ6枚でデッキを組みます。ヒントとボーナスの一覧も確認できます。',
       'home.deckBuilderBadge': 'デッキ編成',
       'home.openDeckBuilder': 'デッキ編成を開く',
+      'home.guides': 'UmaToolsドキュメント',
+      'home.guidesDesc':
+        'UmaToolsの評価計算や育成計画の仕組みを、プレイヤー向け・技術向けドキュメントで詳しく解説します。',
+      'home.guidesBadge': 'リファレンス',
+      'home.openGuides': 'ドキュメントを見る',
       'home.skillLibrary': 'スキル一覧',
       'home.skillLibraryDesc': 'コスト・評価点・効率・取得元でスキルを検索・閲覧できます。',
       'home.skillLibraryBadge': 'データベース',
@@ -782,14 +819,16 @@
       'home.randomizerBadge': 'おたのしみ',
       'home.openRandomizer': 'ランダマイザーを開く',
       'home.umadle': 'ウマドル',
-      'home.umadleDesc': 'ウマ娘データを使った毎日の推測ゲーム。',
-      'home.umadleBadge': 'デイリーチャレンジ',
+      'home.umadleDesc': 'ウマ娘のステータスとヒントを使ったキャラクター推測ゲーム。',
+      'home.umadleBadge': 'キャラクターチャレンジ',
       'home.openUmadle': 'ウマドルを開く',
       'home.rankBreakdown': 'レーティングランク内訳',
       'home.rankBreakdownDesc':
         'すべてのレーティングしきい値を確認し、目標ランクへ直接移動できます。',
       'home.rankBreakdownBadge': 'レーティング早見表',
       'home.openRankBreakdown': 'ランク内訳を開く',
+
+      'seo.relatedTools': '関連ツール',
 
       // ── Rank Breakdown ──
       'rankBreakdown.title': 'レーティングランク内訳',
@@ -811,6 +850,11 @@
       'rankBreakdown.lookupInvalid': '0以上の有効なレーティングを入力してください。',
       'rankBreakdown.lookupResult': '{rating} -> {rank} ({range})',
       'rankBreakdown.overallProgress': '全体進捗',
+      'rankBreakdown.guideTitle': 'ウマ娘の評価ランクを理解する',
+      'rankBreakdown.guideIntro':
+        'この表では数値の評価点とGからLS24までの各ランクを対応させています。評価点を入力すると、現在のランク、正確なしきい値、次のランクまでに必要な点数を確認できます。',
+      'rankBreakdown.guideRelated':
+        '<a href="/calculator">レーティング計算機</a>で育成ウマ娘の最終評価を見積もるか、<a href="/optimizer">スキルオプティマイザー</a>でどのスキル取得が評価を最も伸ばすか確認できます。',
 
       // ── Changelog ──
       'changelog.whatsNew': '新着情報',
@@ -852,7 +896,7 @@
       'calculator.floatProjected': '予想',
 
       // ── Optimizer ──
-      'optimizer.title': 'スキルオプティマイザー & レーティング計算機',
+      'optimizer.title': 'ウマ娘スキルオプティマイザー',
       'optimizer.loadingSkills': 'スキルライブラリ読み込み中...',
       'optimizer.skillReady': 'スキルライブラリ準備完了。',
       'optimizer.csvFallback': 'CSV読み込み失敗（フォールバック使用）',
@@ -1107,6 +1151,11 @@
       'events.skillNameRequired': 'スキル名は必須です',
       'events.costRange': 'コストは0～999の範囲で入力してください',
       'events.hintRange': 'ヒントレベルは0～5の範囲で入力してください',
+      'events.guideTitle': 'ウマ娘のイベント選択肢をすばやく検索',
+      'events.guideIntro':
+        'イベント名を手動で検索するか、画面をOCRで読み取ります。一致した選択肢と結果を確認できるため、育成を中断せずに判断できます。',
+      'events.guideRelated':
+        '提示されたスキルを<a href="/skills">スキル一覧</a>で確認し、<a href="/optimizer">スキルオプティマイザー</a>で取得プラン全体を比較できます。',
 
       // ── Hints ──
       'hints.title': 'サポートヒント検索',
@@ -1120,6 +1169,13 @@
       'hints.loadSupportFailed': 'サポートデータの読み込みに失敗しました。更新してください。',
       'hints.copyLink': 'リンクをコピー',
       'hints.counts': '{matched}件一致 | 全{total}枚 | ヒント{hints}種',
+      'hints.showMore': 'もっと見る（{shown}/{total}）',
+      'hints.resultsHeading': '一致するサポートカード',
+      'hints.guideTitle': '必要なヒントをくれるサポートカードを検索',
+      'hints.guideIntro':
+        '1つ以上のスキルヒントを追加し、ANDで全ヒント一致、ORでいずれかのヒント一致を指定します。SSR、SR、Rのレアリティでも結果を絞り込めます。',
+      'hints.guideRelated':
+        '候補カードを<a href="/deck">デッキ編成</a>で比較するか、提供されるスキルを<a href="/optimizer">スキルオプティマイザー</a>で計画できます。',
 
       // ── Deck ──
       'deck.title': 'デッキ編成',
@@ -1208,22 +1264,11 @@
       'deck.effect.failureProtection': '失敗率ダウン',
       'deck.effect.initialSkillPoints': '初期スキルPtアップ',
       'deck.uniqueEffect': '固有ボーナス',
-
-      // ── Collection / Deck Optimizer ──
-      'collection.title': 'デッキ最適化',
-      'collection.tabCollection': 'コレクション',
-      'collection.tabOptimizer': 'デッキ最適化',
-      'collection.import': 'インポート',
-      'collection.export': 'エクスポート',
-      'collection.clearAll': '全削除',
-      'collection.searchPlaceholder': 'サポートカードを検索...',
-      'collection.myCards': '所持カード',
-      'collection.emptyMsg': '上の検索からカードを追加してコレクションを構築しましょう。',
-      'collection.scenario': 'シナリオ',
-      'collection.optimize': 'デッキ最適化',
-      'collection.variants': 'バリアントフィルター',
-      'collection.paceStyle': '脚質',
-      'collection.distance': '距離',
+      'deck.guideTitle': 'ウマ娘のサポートデッキを計画する',
+      'deck.guideIntro':
+        '育成ウマ娘と最大6枚のサポートカードを選び、カードレベルを調整して、合計ボーナスとスキルヒントを確認できます。便利なデッキを保存したり、共有リンクをコピーしたりできます。',
+      'deck.guideRelated':
+        '<a href="/hints">サポートヒント検索</a>で特定スキルのカードを探すか、デッキの合計ヒントを<a href="/optimizer">スキルオプティマイザー</a>で構成にできます。',
 
       'common.corner': 'コーナー',
       'common.straight': '直線',
@@ -1247,6 +1292,11 @@
       'random.notFound': 'そのサポートが見つかりません。リストから選んでください。',
       'random.clickToPick': '「ランダムに選ぶ」をクリックしてください。',
       'random.rollAgain': '「ランダムに選ぶ」を押してもう一度引く。',
+      'random.guideTitle': 'ランダムなウマ娘チャレンジを作る',
+      'random.guideIntro':
+        '使用するサポートのレアリティを選び、不要なカードを除外して、5枚のサポートカードまたはウマ娘をランダムに選べます。チャレンジ育成や新しい育成案に活用できます。',
+      'random.guideRelated':
+        '結果を<a href="/deck">デッキ編成</a>で6枚のプランにし、<a href="/optimizer">スキルオプティマイザー</a>で予算内のスキルを選べます。',
 
       // ── Umadle ──
       'umadle.title': 'ウマドル',
@@ -1261,6 +1311,11 @@
       'umadle.newUma': '新しいウマ娘',
       'umadle.keepBoard': 'ボードを保持',
       'umadle.allMatch': '正解！全ステータスが一致しました。',
+      'umadle.guideTitle': 'ウマドルの遊び方',
+      'umadle.guideIntro':
+        '予想するウマ娘を1人ずつ選びます。一致した項目には印が付き、矢印は正解キャラクターの該当値が高いか低いかを示します。ヒントをたどって正解を見つけましょう。',
+      'umadle.guideRelated':
+        '<a href="/random">ランダマイザー</a>でもう1つの手軽なチャレンジを試すか、<a href="/deck">デッキ編成</a>でキャラクターとサポートの組み合わせを検討できます。',
 
       // ── Tutorial ──
       'tutorial.closeTutorial': 'チュートリアルを閉じる',
@@ -1415,6 +1470,11 @@
       'skills.noResults': '一致するスキルがありません。',
       'skills.loading': 'スキルデータ読み込み中...',
       'skills.skillCount': '{count}件のスキル',
+      'skills.guideTitle': 'ウマ娘スキル一覧の使い方',
+      'skills.guideIntro':
+        'スキル名と種類で検索し、行を開いてスキルPtコスト、評価点、効率、効果の詳細、主な取得元を比較してからポイントの使い道を決められます。',
+      'skills.guideRelated':
+        '候補を<a href="/optimizer">スキルオプティマイザー</a>に追加して予算内の最適な組み合わせを探すか、<a href="/calculator">レーティング計算機</a>で完成時の評価を見積もれます。',
 
       // ── Skill Popup ──
       'skillPopup.description': '説明',

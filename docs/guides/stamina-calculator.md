@@ -126,7 +126,7 @@ When changing the model:
 2. Cover every mood, surface condition, and running style affected by the change.
 3. Check the proc-rate switch and all three rushing modes independently.
 4. Verify the Global stat cap and JP maximum.
-5. Update this guide when a coefficient, recovery tier, boundary, or status threshold changes.
+5. Update this document when a coefficient, recovery tier, boundary, or status threshold changes.
 
 ## Source files
 

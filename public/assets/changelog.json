@@ -1,5 +1,5 @@
 {
-  "version": "2026-08-31 Beta",
+  "version": "2026-09-01 Beta",
   "summary": {
     "en": "A major Beta update with more accurate Team Trials planning, in-game Grand Live token colors, expanded documentation, and suite-wide polish.",
     "ja": "チームレース計画の精度向上、ゲーム準拠のグランドライブトークン色、ドキュメント拡充、全体的な改善を含むベータ版アップデート。"
@@ -40,6 +40,10 @@
     {
       "en": "Matched Grand Live Performance Point colors to the game across token legends, costs, totals, held-token labels, and table headers, with accessible light and dark variants.",
       "ja": "グランドライブのパフォーマンスポイント色をゲームに合わせ、凡例、コスト、合計、所持トークン、表見出しに適用しました。ライト／ダークテーマでも見やすい配色です。"
+    },
+    {
+      "en": "Added a dedicated About page and dropdown that organizes nine player and technical reference documents, renamed the public Guides area to Documentation, and refreshed English/Japanese labels and search metadata without changing existing URLs.",
+      "ja": "専用のサイト概要ページとドロップダウンを追加して、プレイヤー向け・技術向けの9件のリファレンスドキュメントを整理しました。公開エリアの名称を「ガイド」から「ドキュメント」に変更し、既存URLを維持したまま英語・日本語ラベルと検索メタデータを更新しました。"
     },
     {
       "en": "Reorganized the project, refreshed suite-wide documentation, and expanded automated checks for routes, data, assets, performance, and mobile compatibility.",

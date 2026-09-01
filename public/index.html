@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>UmaTools - Uma Musume Game Toolkit</title>
+    <title>Uma Musume Tools &amp; Calculators | UmaTools</title>
     <meta
       name="description"
-      content="A collection of Uma Musume tools for build planning, rating calculations, race checks, support data, skills, and more."
+      content="Free Uma Musume tools for skill builds, rating calculations, support decks, stamina checks, race planning, game data, and character challenges."
     />
     <link rel="canonical" href="https://daftuyda.moe/" />
     <meta name="robots" content="index, follow" />
@@ -16,25 +16,25 @@
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="UmaTools" />
-    <meta property="og:title" content="UmaTools - Uma Musume Game Toolkit" />
+    <meta property="og:title" content="Uma Musume Tools &amp; Calculators | UmaTools" />
     <meta
       property="og:description"
-      content="A collection of Uma Musume tools for build planning, rating calculations, race checks, support data, skills, and more."
+      content="Free Uma Musume tools for skill builds, rating calculations, support decks, stamina checks, race planning, game data, and character challenges."
     />
     <meta property="og:url" content="https://daftuyda.moe/" />
     <meta property="og:image" content="https://daftuyda.moe/api/og?page=home" />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="UmaTools - Uma Musume Game Toolkit" />
+    <meta property="og:image:alt" content="Uma Musume Tools &amp; Calculators | UmaTools" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="UmaTools - Uma Musume Game Toolkit" />
+    <meta name="twitter:title" content="Uma Musume Tools &amp; Calculators | UmaTools" />
     <meta
       name="twitter:description"
-      content="A collection of Uma Musume tools for build planning, rating calculations, race checks, support data, skills, and more."
+      content="Free Uma Musume tools for skill builds, rating calculations, support decks, stamina checks, race planning, game data, and character challenges."
     />
     <meta name="twitter:image" content="https://daftuyda.moe/api/og?page=home" />
-    <meta name="twitter:image:alt" content="UmaTools - Uma Musume Game Toolkit" />
+    <meta name="twitter:image:alt" content="Uma Musume Tools &amp; Calculators | UmaTools" />
     <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png" />
@@ -126,8 +126,8 @@
             "@type": "WebPage",
             "@id": "https://daftuyda.moe/#webpage",
             "url": "https://daftuyda.moe/",
-            "name": "UmaTools - Uma Musume Training Toolkit",
-            "description": "UmaTools is a fast Uma Musume toolkit with Event OCR, support hint search, skill optimizer, rating calculator, randomizer, and Umadle.",
+            "name": "Uma Musume Tools & Calculators",
+            "description": "Free Uma Musume tools for skill builds, rating calculations, support decks, stamina checks, race planning, game data, and character challenges.",
             "isPartOf": { "@id": "https://daftuyda.moe/#website" },
             "about": { "@id": "https://daftuyda.moe/#organization" },
             "inLanguage": "en"
@@ -244,7 +244,12 @@
       <section class="home-hero" aria-labelledby="home-hero-title">
         <div class="home-hero-copy">
           <div class="home-kicker">Uma Musume game toolkit</div>
-          <h1 id="home-hero-title">Plan. Calculate.<br /><span>Explore.</span></h1>
+          <h1 id="home-hero-title">
+            <span data-i18n="home.heroTitle">Uma Musume Tools</span><br /><span
+              data-i18n="home.heroTitleAccent"
+              >&amp; Calculators</span
+            >
+          </h1>
         </div>
         <div class="home-hero-side">
           <p data-i18n="home.subtitle">
@@ -309,12 +314,26 @@
           </div>
 
           <div class="card tool-card">
-            <h3 data-i18n="home.umadle">Umadle</h3>
-            <p class="muted" data-i18n="home.umadleDesc">
-              Daily guessing game with Uma Musume data.
+            <h3 data-i18n="home.guides">UmaTools Documentation</h3>
+            <p class="muted" data-i18n="home.guidesDesc">
+              Explore the rating math and planning systems behind UmaTools in detailed player and
+              technical documentation.
             </p>
             <div class="badges">
-              <span class="badge" data-i18n="home.umadleBadge">Daily challenge</span>
+              <span class="badge" data-i18n="home.guidesBadge">Reference library</span>
+            </div>
+            <a class="btn primary" href="/guides" data-i18n="home.openGuides"
+              >Browse Documentation</a
+            >
+          </div>
+
+          <div class="card tool-card">
+            <h3 data-i18n="home.umadle">Umadle</h3>
+            <p class="muted" data-i18n="home.umadleDesc">
+              Guess a mystery character using Uma Musume stats and clues.
+            </p>
+            <div class="badges">
+              <span class="badge" data-i18n="home.umadleBadge">Character challenge</span>
             </div>
             <a class="btn primary" href="/umadle" data-i18n="home.openUmadle">Open Umadle</a>
           </div>
@@ -338,7 +357,7 @@
               See if your stamina meets distance and style thresholds.
             </p>
             <div class="badges">
-              <span class="badge" data-i18n="home.staminaCheckBadge">Stamina guide</span>
+              <span class="badge" data-i18n="home.staminaCheckBadge">Race model</span>
             </div>
             <a class="btn primary" href="/stamina" data-i18n="home.openStaminaCheck"
               >Open Stamina Check</a

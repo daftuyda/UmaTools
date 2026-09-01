@@ -80,6 +80,83 @@
         { label: 'Umadle', i18nKey: 'nav.umadle', path: '/umadle', file: '/umadle.html' },
       ],
     },
+    {
+      label: 'About',
+      i18nKey: 'nav.about',
+      variant: 'guide-directory',
+      menuMetaLabel: 'Reference library',
+      menuMetaI18nKey: 'nav.guideLibrary',
+      children: [
+        {
+          label: 'About UmaTools',
+          i18nKey: 'nav.aboutUmaTools',
+          path: '/about',
+          file: '/about.html',
+          promoted: true,
+        },
+        {
+          label: 'All Documentation',
+          i18nKey: 'nav.allGuides',
+          path: '/guides',
+          file: '/guides.html',
+          promoted: true,
+        },
+        {
+          label: 'Rating & Skills',
+          i18nKey: 'nav.guideRating',
+          path: '/guides/rating-system',
+          file: '/guides/rating-system.html',
+        },
+        {
+          label: 'Team Trials',
+          i18nKey: 'nav.guideTeamTrials',
+          path: '/guides/team-trials',
+          file: '/guides/team-trials.html',
+        },
+        {
+          label: 'Acceleration',
+          i18nKey: 'nav.guideAcceleration',
+          path: '/guides/accel-checker',
+          file: '/guides/accel-checker.html',
+        },
+        {
+          label: 'Stamina',
+          i18nKey: 'nav.guideStamina',
+          path: '/guides/stamina-calculator',
+          file: '/guides/stamina-calculator.html',
+        },
+        {
+          label: 'Deck Builder',
+          i18nKey: 'nav.deckBuilder',
+          path: '/guides/deck-tools',
+          file: '/guides/deck-tools.html',
+        },
+        {
+          label: 'Grand Live',
+          i18nKey: 'nav.guideGrandLive',
+          path: '/guides/token-planner',
+          file: '/guides/token-planner.html',
+        },
+        {
+          label: 'OCR & Recognition',
+          i18nKey: 'nav.guideOcr',
+          path: '/guides/ocr-guide',
+          file: '/guides/ocr-guide.html',
+        },
+        {
+          label: 'Data & Privacy',
+          i18nKey: 'nav.guidePrivacy',
+          path: '/guides/persistence-and-sharing',
+          file: '/guides/persistence-and-sharing.html',
+        },
+        {
+          label: 'Translations',
+          i18nKey: 'nav.guideTranslations',
+          path: '/guides/translations',
+          file: '/guides/translations.html',
+        },
+      ],
+    },
   ];
   const ROUTES =
     Array.isArray(window.NAV_ROUTES) && window.NAV_ROUTES.length
@@ -162,10 +239,11 @@
     return typeof window.t === 'function' ? window.t(key) : fallback || key;
   };
   nav.setAttribute('aria-label', _t('nav.primary'));
+  nav.setAttribute('data-i18n-aria', 'nav.primary');
   nav.innerHTML = `
     <div class="nav-inner">
       <div class="nav-left">
-        <a class="brand" href="/" data-i18n-aria="nav.home" aria-label="${_t('nav.home')}">
+        <a class="brand" href="/">
           <span class="brand-mark" aria-hidden="true">
             <svg viewBox="0 0 640 680" role="img">
               <path d="M24 20c49 0 87 36 122 84v278c0 97 59 151 174 151s174-54 174-151V104c35-48 73-84 122-84 9 0 16 8 16 18v344c0 175-124 282-312 282S8 557 8 382V38c0-10 7-18 16-18Z" />
@@ -180,7 +258,7 @@
         <button class="menu-btn" data-i18n-aria="nav.menu" aria-label="${_t('nav.menu')}" aria-expanded="false">
           <span class="menu-lines" aria-hidden="true"><span></span><span></span><span></span></span>
         </button>
-        <div class="nav-links" role="navigation" data-i18n-aria="nav.primary" aria-label="${_t('nav.primary')}"></div>
+        <div class="nav-links"></div>
       </div>
       <div class="nav-right">
         <a
@@ -306,8 +384,14 @@
     });
     document.addEventListener('keydown', (event) => {
       if (event.key === 'Escape') {
+        const restoreSettingsFocus = settingsOpen;
+        const restoreMenuFocus = navEl.classList.contains('open');
         setSettingsOpen(false);
         closeAllDropdowns();
+        navEl.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+        if (restoreSettingsFocus) settingsToggleBtn.focus();
+        else if (restoreMenuFocus) menuBtn.focus();
       }
     });
   }
@@ -353,7 +437,7 @@
     let bannerDismissed = false;
     try {
       bannerDismissed = localStorage.getItem(BANNER_DISMISS_KEY) === '1';
-    } catch (e) {}
+    } catch {}
     if (!bannerDismissed && giveawayEnd.getTime() > Date.now()) {
       const banner = document.createElement('div');
       banner.className = 'site-banner';
@@ -385,7 +469,7 @@
           if (bannerInterval) clearInterval(bannerInterval);
           try {
             localStorage.setItem(BANNER_DISMISS_KEY, '1');
-          } catch (e) {}
+          } catch {}
         }
       });
       nav.insertAdjacentElement('afterend', banner);
@@ -394,6 +478,7 @@
     const here = location.pathname.replace(/\/+$/, '') || '/';
     const norm = (s) => (s || '').replace(/\/+$/, '') || '/';
     const allLinks = [];
+    let navGroupIndex = 0;
 
     // Build links — supports both flat and grouped routes
     for (const route of ROUTES) {
@@ -401,12 +486,16 @@
         // Dropdown group
         const group = document.createElement('div');
         group.className = 'nav-group';
+        if (route.variant) group.classList.add('nav-group-' + route.variant);
 
         const btn = document.createElement('button');
         btn.type = 'button';
         btn.className = 'nav-group-btn';
         btn.setAttribute('aria-expanded', 'false');
-        btn.setAttribute('aria-haspopup', 'true');
+        const menuId = 'nav-group-menu-' + navGroupIndex++;
+        const triggerId = menuId + '-trigger';
+        btn.id = triggerId;
+        btn.setAttribute('aria-controls', menuId);
         const groupLabel = route.i18nKey ? _t(route.i18nKey, route.label) : route.label;
         btn.innerHTML =
           '<span' +
@@ -419,7 +508,9 @@
 
         const menu = document.createElement('div');
         menu.className = 'nav-group-menu';
-        menu.setAttribute('role', 'menu');
+        if (route.variant) menu.classList.add('nav-group-menu-' + route.variant);
+        menu.id = menuId;
+        menu.setAttribute('aria-labelledby', triggerId);
 
         const menuHeading = document.createElement('div');
         menuHeading.className = 'nav-menu-heading';
@@ -427,7 +518,12 @@
         menuHeadingLabel.textContent = groupLabel;
         if (route.i18nKey) menuHeadingLabel.setAttribute('data-i18n', route.i18nKey);
         const menuHeadingMeta = document.createElement('span');
-        menuHeadingMeta.textContent = 'Workspace';
+        menuHeadingMeta.textContent = route.menuMetaI18nKey
+          ? _t(route.menuMetaI18nKey, route.menuMetaLabel)
+          : route.menuMetaLabel || 'Workspace';
+        if (route.menuMetaI18nKey) {
+          menuHeadingMeta.setAttribute('data-i18n', route.menuMetaI18nKey);
+        }
         menuHeading.appendChild(menuHeadingLabel);
         menuHeading.appendChild(menuHeadingMeta);
         menu.appendChild(menuHeading);
@@ -436,6 +532,8 @@
         for (const child of route.children) {
           const a = document.createElement('a');
           a.className = 'nav-link';
+          if (route.variant) a.classList.add('nav-link-' + route.variant);
+          if (child.promoted) a.classList.add('nav-link-promoted');
           const itemLabel = document.createElement('span');
           itemLabel.className = 'nav-link-label';
           itemLabel.textContent = child.i18nKey ? _t(child.i18nKey, child.label) : child.label;
@@ -449,7 +547,6 @@
           a.appendChild(itemLabel);
           a.appendChild(itemArrow);
           a.href = child.href || child.path || child.file || '#';
-          a.setAttribute('role', 'menuitem');
           if (child.href) {
             a.target = '_blank';
             a.rel = 'noopener noreferrer';
@@ -469,15 +566,96 @@
         }
         if (hasActive) group.classList.add('has-active');
 
+        const menuItems = () => Array.from(menu.querySelectorAll('.nav-link'));
+        const openGroup = (focusIndex) => {
+          setSettingsOpen(false);
+          closeAllDropdowns();
+          group.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+          if (typeof focusIndex === 'number') {
+            window.setTimeout(() => {
+              if (!group.classList.contains('open')) return;
+              const items = menuItems();
+              const targetIndex = focusIndex < 0 ? items.length - 1 : focusIndex;
+              if (items[targetIndex]) items[targetIndex].focus({ preventScroll: true });
+            }, 180);
+          }
+        };
+
         btn.addEventListener('click', (e) => {
           e.stopPropagation();
-          setSettingsOpen(false);
           const wasOpen = group.classList.contains('open');
           closeAllDropdowns();
-          if (!wasOpen) {
-            group.classList.add('open');
-            btn.setAttribute('aria-expanded', 'true');
+          if (!wasOpen) openGroup();
+        });
+
+        btn.addEventListener('keydown', (event) => {
+          if (event.key !== 'ArrowDown' && event.key !== 'ArrowUp') return;
+          event.preventDefault();
+          event.stopPropagation();
+          openGroup(event.key === 'ArrowDown' ? 0 : -1);
+        });
+
+        menu.addEventListener('keydown', (event) => {
+          const items = menuItems();
+          const currentIndex = items.indexOf(document.activeElement);
+          if (event.key === 'Escape') {
+            event.preventDefault();
+            event.stopPropagation();
+            group.classList.remove('open');
+            btn.setAttribute('aria-expanded', 'false');
+            btn.focus();
+            return;
           }
+          const columnCount = Math.max(
+            1,
+            getComputedStyle(menu).gridTemplateColumns.split(/\s+/).filter(Boolean).length
+          );
+          let nextIndex = null;
+          if (event.key === 'ArrowDown') {
+            nextIndex = currentIndex + columnCount;
+            if (nextIndex >= items.length) {
+              nextIndex = items.findIndex(
+                (_, index) => index % columnCount === currentIndex % columnCount
+              );
+            }
+          } else if (event.key === 'ArrowUp') {
+            nextIndex = currentIndex - columnCount;
+            if (nextIndex < 0) {
+              for (let index = items.length - 1; index >= 0; index -= 1) {
+                if (index % columnCount === currentIndex % columnCount) {
+                  nextIndex = index;
+                  break;
+                }
+              }
+            }
+          } else if (
+            event.key === 'ArrowRight' &&
+            columnCount > 1 &&
+            currentIndex % columnCount < columnCount - 1 &&
+            currentIndex + 1 < items.length
+          ) {
+            nextIndex = currentIndex + 1;
+          } else if (
+            event.key === 'ArrowLeft' &&
+            columnCount > 1 &&
+            currentIndex % columnCount > 0
+          ) {
+            nextIndex = currentIndex - 1;
+          } else if (event.key === 'Home') nextIndex = 0;
+          else if (event.key === 'End') nextIndex = items.length - 1;
+          if (nextIndex === null || !items[nextIndex]) return;
+          event.preventDefault();
+          event.stopPropagation();
+          items[nextIndex].focus();
+        });
+
+        group.addEventListener('focusout', () => {
+          window.setTimeout(() => {
+            if (group.contains(document.activeElement)) return;
+            group.classList.remove('open');
+            btn.setAttribute('aria-expanded', 'false');
+          }, 0);
         });
 
         group.appendChild(btn);
@@ -486,7 +664,7 @@
       } else {
         // Flat link (backward compat)
         const a = document.createElement('a');
-        a.className = 'nav-link';
+        a.className = 'nav-link nav-group-btn';
         a.textContent = route.i18nKey ? _t(route.i18nKey, route.label) : route.label;
         if (route.i18nKey) a.setAttribute('data-i18n', route.i18nKey);
         a.href = route.path || route.file || '#';
@@ -494,6 +672,7 @@
         if (route.path) a.dataset.clean = route.path;
         if (here === norm(route.path) || here === norm(route.file)) {
           a.classList.add('active');
+          a.setAttribute('aria-current', 'page');
         }
         linksWrap.appendChild(a);
         allLinks.push(a);
@@ -607,16 +786,29 @@
         </div>
         <div class="footer-links" aria-label="Community links">
           ${FOOTER.map(
-            (l) => `<a href="${l.href}" target="_blank" rel="noopener noreferrer"><span>${l.label}</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3h7v7M13 3 5 11"/></svg></a>`
+            (l) =>
+              `<a href="${l.href}" target="_blank" rel="noopener noreferrer"><span>${l.label}</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3h7v7M13 3 5 11"/></svg></a>`
           ).join('')}
         </div>
       </div>
     `;
     document.body.appendChild(footer);
 
-    const updateNavElevation = () => navEl.classList.toggle('is-scrolled', window.scrollY > 10);
+    let navElevationFrame = null;
+    let navIsElevated = null;
+    const updateNavElevation = () => {
+      navElevationFrame = null;
+      const nextState = window.scrollY > 10;
+      if (nextState === navIsElevated) return;
+      navIsElevated = nextState;
+      navEl.classList.toggle('is-scrolled', nextState);
+    };
+    const queueNavElevationUpdate = () => {
+      if (navElevationFrame !== null) return;
+      navElevationFrame = requestAnimationFrame(updateNavElevation);
+    };
     updateNavElevation();
-    window.addEventListener('scroll', updateNavElevation, { passive: true });
+    window.addEventListener('scroll', queueNavElevationUpdate, { passive: true });
 
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('/sw.js', { updateViaCache: 'none' }).catch(() => {});
@@ -663,7 +855,7 @@
   var AF_KEY = 'umafools-off';
   try {
     if (localStorage.getItem(AF_KEY) === '1' && !forceAF) return;
-  } catch (e) {}
+  } catch {}
 
   var active = true;
   var afStyle = null;
@@ -765,7 +957,7 @@
         if (sun) sun.style.display = 'none';
         if (moon) moon.style.display = 'inline';
       }
-    } catch (e) {}
+    } catch {}
 
     var toggle = document.getElementById('af-toggle');
     if (toggle) toggle.value = 'off';
@@ -800,12 +992,12 @@
       if (sel.value === 'on') {
         try {
           localStorage.removeItem(AF_KEY);
-        } catch (e) {}
+        } catch {}
         enableAF();
       } else {
         try {
           localStorage.setItem(AF_KEY, '1');
-        } catch (e) {}
+        } catch {}
         disableAF();
       }
     });

@@ -250,7 +250,8 @@
     if (m) return m[1];
     const m2 = /^(.+?)\s*\((SSR|SR|R)\)\s*$/.exec(val);
     if (m2) {
-      const [_, n, r] = m2;
+      const n = m2[1];
+      const r = m2[2];
       const nLower = n.toLowerCase();
       const rUpper = r.toUpperCase();
       const hit = supports.find(
@@ -370,7 +371,7 @@
     }
 
     const finalPick = pickNRandom(pool, N);
-    const reduceMotion = false;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduceMotion) {
       els.deckResults.innerHTML = finalPick.map((s) => cardMarkup(s, 'reveal')).join('');
       return;
@@ -501,7 +502,7 @@
 
     const sequence = [...filler, ...tail, winner, ...placeholders];
 
-    const reduceMotion = false;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     // render and explicitly mark the WINNER (index is before the placeholders)
     const winnerIndex = sequence.length - placeholdersCount - 1;

@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>UmaTools - Randomizer</title>
+    <title>Uma Musume Character &amp; Support Randomizer | UmaTools</title>
     <meta
       name="description"
-      content="Roll random support decks and pick random Uma Musume with filters and speed options."
+      content="Randomly select an Uma Musume character or generate a support deck with rarity, type, and animation speed filters."
     />
     <link rel="canonical" href="https://daftuyda.moe/random" />
     <meta name="robots" content="index, follow" />
@@ -16,25 +16,31 @@
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="UmaTools" />
-    <meta property="og:title" content="UmaTools - Randomizer" />
+    <meta property="og:title" content="Uma Musume Character &amp; Support Randomizer | UmaTools" />
     <meta
       property="og:description"
-      content="Roll random support decks and pick random Uma Musume with filters and speed options."
+      content="Randomly select an Uma Musume character or generate a support deck with rarity, type, and animation speed filters."
     />
     <meta property="og:url" content="https://daftuyda.moe/random" />
     <meta property="og:image" content="https://daftuyda.moe/api/og?page=random" />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="UmaTools - Randomizer" />
+    <meta
+      property="og:image:alt"
+      content="Uma Musume Character &amp; Support Randomizer | UmaTools"
+    />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="UmaTools - Randomizer" />
+    <meta name="twitter:title" content="Uma Musume Character &amp; Support Randomizer | UmaTools" />
     <meta
       name="twitter:description"
-      content="Roll random support decks and pick random Uma Musume with filters and speed options."
+      content="Randomly select an Uma Musume character or generate a support deck with rarity, type, and animation speed filters."
     />
     <meta name="twitter:image" content="https://daftuyda.moe/api/og?page=random" />
-    <meta name="twitter:image:alt" content="UmaTools - Randomizer" />
+    <meta
+      name="twitter:image:alt"
+      content="Uma Musume Character &amp; Support Randomizer | UmaTools"
+    />
     <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png" />
@@ -83,8 +89,8 @@
             "@type": "WebPage",
             "@id": "https://daftuyda.moe/random#webpage",
             "url": "https://daftuyda.moe/random",
-            "name": "Randomizer",
-            "description": "Roll random support decks and pick random Uma Musume with filters and speed options.",
+            "name": "Uma Musume Character & Support Randomizer",
+            "description": "Randomly select an Uma Musume character or generate a support deck with rarity, type, and animation speed filters.",
             "isPartOf": { "@id": "https://daftuyda.moe/#website" },
             "about": { "@id": "https://daftuyda.moe/#organization" },
             "inLanguage": "en"
@@ -289,6 +295,22 @@
         </div>
 
         <div id="umaResult" class="grid" aria-live="polite"></div>
+      </section>
+
+      <section class="card tool-guide" aria-labelledby="random-guide-title">
+        <h2 id="random-guide-title" data-i18n="random.guideTitle">
+          Create a random Uma Musume challenge
+        </h2>
+        <p data-i18n="random.guideIntro">
+          Choose the allowed support rarities, exclude cards you do not want, and roll five support
+          cards or a random Uma. Use the result for challenge runs and fresh training ideas.
+        </p>
+        <h3 data-i18n="seo.relatedTools">Related tools</h3>
+        <p data-i18n-html="random.guideRelated">
+          Turn a random result into a complete six-card plan in the
+          <a href="/deck">Deck Builder</a>, then choose affordable skills with the
+          <a href="/optimizer">Skill Optimizer</a>.
+        </p>
       </section>
     </main>
 

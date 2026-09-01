@@ -12,7 +12,7 @@ The repository separates deployable files from maintenance code:
 - `scripts/build/` contains deterministic asset and data build steps.
 - `scripts/data/` contains external data importers and generators.
 - `tests/fixtures/` and `tests/unit/` separate test inputs from executable tests.
-- `docs/guides/` and `docs/images/` separate maintained guidance from its diagrams.
+- `docs/guides/` and `docs/images/` separate maintained documentation from its diagrams.
 
 ## Public application
 
@@ -21,6 +21,11 @@ The repository separates deployable files from maintenance code:
 Each `public/*.html` file is an independent entry point. Vercel clean URLs expose `public/optimizer.html` as `/optimizer`, for example. Absolute browser paths such as `/js/nav.js` and `/assets/skills_all.json` are resolved from `public/`.
 
 Keeping page entry points at the top of `public/` makes static hosting, service-worker caching, clean URLs, and local previews predictable.
+
+`/about` is the indexable project-information route for purpose, organization, local data and
+privacy, credits, contribution, and community links. The generated `/guides` documentation hub and
+its documents provide the maintained feature references, while the remaining top-level routes
+provide the interactive tools and data references.
 
 ### Styling
 
@@ -79,16 +84,24 @@ See `scripts/data/README.md` for ownership and setup details.
 
 ## Build and validation
 
-The build performs three deterministic checks/transforms:
+The build performs four deterministic checks/transforms:
 
-1. Parse `public/css/air.css` to catch invalid CSS.
-2. Split/minify runtime JSON datasets in `public/assets/`.
-3. Create missing WebP companions for raster images.
+1. Publish `docs/guides/*.md` as crawlable documents under `/guides` and copy referenced diagrams.
+2. Parse `public/css/air.css` to catch invalid CSS.
+3. Split/minify runtime JSON datasets in `public/assets/`.
+4. Create missing WebP companions for raster images.
+
+`scripts/build/generate-guides.js` owns the generated documentation hub, document pages, metadata,
+structured data, internal document links, and public diagram copies. Edit the Markdown sources and
+document metadata in the generator, then run `npm run build:guides`; do not hand-edit generated
+HTML. The `check:guides` gate fails when source and published output differ.
 
 Use `npm run check` for linting, unit tests, data/manifest parsing, markup and static-reference
-validation, and route smoke tests. Use
-`npm run audit:lighthouse` when reviewing performance or major layout changes, and
-`npm run audit:ios` before changes that affect mobile browser behavior. The audit tools serve and
+validation, SEO metadata/schema/sitemap coverage, and route smoke tests. Use
+`npm run audit:lighthouse` when reviewing performance or major layout changes,
+`npm run audit:responsive` to catch overflow, runtime, asset, and control-size regressions across
+phone, tablet, and desktop viewports, and `npm run audit:ios` before changes that affect mobile
+browser behavior. The audit tools serve and
 inspect `public/`, not the repository root.
 
 The local audit server negotiates Brotli or gzip so Lighthouse measures the same kind of compressed

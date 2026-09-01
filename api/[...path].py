@@ -17,64 +17,64 @@ OG_ICON = ASSETS / "icon-512.png"
 
 OG_PAGES = {
     "home": {
-        "title": "Uma Musume Training Toolkit",
-        "description": "Faster decisions for training, skills, events, ratings, and more.",
+        "title": "Uma Musume Tools & Calculators",
+        "description": "Free Uma Musume tools for skill builds, rating calculations, support decks, stamina checks, race planning, game data, and character challenges.",
+    },
+    "about": {
+        "title": "About UmaTools & Uma Musume Documentation",
+        "description": "Learn how UmaTools helps Uma Musume players plan skills, ratings, races, and support decks, then explore nine player and technical reference documents.",
     },
     "accel": {
-        "title": "Valid Accel Checker",
-        "description": "Find acceleration skills that activate for your exact race setup.",
+        "title": "Uma Musume Acceleration Skill Checker",
+        "description": "Check which Uma Musume acceleration skills are valid for a race setup using VAC timing logic and Global or Japanese skill data.",
     },
     "calculator": {
-        "title": "Rating Calculator",
-        "description": "Estimate your final rating from stats, skills, and aptitudes.",
-    },
-    "collection": {
-        "title": "Deck Optimizer",
-        "description": "Turn your support collection into a stronger training deck.",
+        "title": "Uma Musume Rating Calculator",
+        "description": "Calculate an Uma Musume character rating from stats, skills, and race aptitudes with a live breakdown of rating points.",
     },
     "deck": {
-        "title": "Deck Builder",
-        "description": "Build a training deck and review combined hints and bonuses.",
+        "title": "Uma Musume Support Deck Builder",
+        "description": "Build an Uma Musume training deck with one character and six support cards, then review combined skill hints, bonuses, and aptitudes.",
     },
     "events": {
-        "title": "Event OCR Helper",
-        "description": "Capture an event screen and find the best outcome instantly.",
+        "title": "Uma Musume Event OCR Search",
+        "description": "Capture an Uma Musume event screen with OCR, find the matching event, and check choice outcomes without typing the event name.",
     },
     "hints": {
-        "title": "Support Hint Finder",
-        "description": "Find support cards by skill hint, rarity, and match rules.",
+        "title": "Uma Musume Support Card Hint Finder",
+        "description": "Find Uma Musume support cards that teach the skill hints you need. Search by hint, rarity, and match rules to plan a training deck.",
     },
     "optimizer": {
-        "title": "Skill Optimizer",
-        "description": "Plan efficient skill builds around your budget and target race.",
+        "title": "Uma Musume Skill Optimizer",
+        "description": "Plan an Uma Musume skill build by skill point budget and target race, compare rating value, and share the optimized result.",
     },
     "random": {
-        "title": "Uma Randomizer",
-        "description": "Roll a fresh character and support deck for your next run.",
+        "title": "Uma Musume Character & Support Randomizer",
+        "description": "Randomly select an Uma Musume character or generate a support deck with rarity, type, and animation speed filters.",
     },
     "rank": {
-        "title": "Rating Rank Breakdown",
-        "description": "Explore rating thresholds and badges from G through LS24.",
+        "title": "Uma Musume Rating Rank List",
+        "description": "Browse every Uma Musume character rating rank threshold and badge, from G through LS24, in one searchable reference.",
     },
     "skills": {
-        "title": "Skill Library",
-        "description": "Search every skill by name, type, cost, score, and efficiency.",
+        "title": "Uma Musume Skill Database",
+        "description": "Search the Uma Musume skill database by name or type, then compare skill point cost, rating score, and rating efficiency.",
     },
     "stamina": {
-        "title": "Stamina Check",
-        "description": "Estimate race stamina needs with recovery and condition settings.",
+        "title": "Uma Musume Stamina Calculator",
+        "description": "Estimate the stamina an Uma Musume needs for a race using distance, stats, recovery skills, strategy, track condition, and mood.",
     },
     "token-planner": {
-        "title": "Grand Live Token Planner",
-        "description": "Plan songs and track every token you still need to save.",
+        "title": "Uma Musume Grand Live Token Planner",
+        "description": "Plan Grand Live songs and track Dance, Passion, Vocal, Visual, and Composure Performance Points for your Uma Musume training run.",
     },
     "umadle": {
-        "title": "Umadle Daily Guess",
-        "description": "Test your Uma Musume knowledge with a new puzzle every day.",
+        "title": "Umadle: Uma Musume Character Guessing Game",
+        "description": "Play Umadle, an Uma Musume character guessing game. Use stats and clues to identify a randomly selected mystery trainee.",
     },
     "not-found": {
         "title": "Page Not Found",
-        "description": "That page left the track. Head back to UmaTools to keep training.",
+        "description": "The page you requested could not be found. Return to UmaTools to browse Uma Musume calculators, planners, and game data.",
     },
 }
 
@@ -156,9 +156,9 @@ def _render_og_image(page: str) -> bytes:
         draw.text((72, title_y), line, font=title_font, fill=(241, 245, 249, 255))
         title_y += title_size + 8
 
-    body_font = _font(26)
+    body_font = _font(25)
     description_y = max(388, title_y + 14)
-    for line in _wrap_text(draw, config["description"], body_font, 780)[:2]:
+    for line in _wrap_text(draw, config["description"], body_font, 880)[:2]:
         draw.text((75, description_y), line, font=body_font, fill=(203, 213, 225, 255))
         description_y += 39
 

@@ -32,11 +32,13 @@
 
   function renderEntries(ul, entries) {
     ul.innerHTML = '';
+    var fragment = document.createDocumentFragment();
     for (var i = 0; i < entries.length; i++) {
       var li = document.createElement('li');
       li.textContent = localized(entries[i]);
-      ul.appendChild(li);
+      fragment.appendChild(li);
     }
+    ul.appendChild(fragment);
   }
 
   function mount(data) {
@@ -114,8 +116,13 @@
     });
 
     // -- close helpers --
+    var closing = false;
     function close() {
+      if (closing) return;
+      closing = true;
       writeDismissed(version);
+      document.removeEventListener('keydown', handleKeydown);
+      window.removeEventListener('i18n:changed', handleLanguageChange);
       backdrop.classList.remove('changelog-visible');
       backdrop.classList.add('changelog-hiding');
       backdrop.addEventListener('transitionend', function handler() {
@@ -128,12 +135,12 @@
     backdrop.addEventListener('click', function (e) {
       if (e.target === backdrop) close();
     });
-    document.addEventListener('keydown', function handler(e) {
+    function handleKeydown(e) {
       if (e.key === 'Escape' && backdrop.parentNode) {
-        document.removeEventListener('keydown', handler);
         close();
       }
-    });
+    }
+    document.addEventListener('keydown', handleKeydown);
 
     // Focus the dismiss button for accessibility
     dismissBtn.focus();
@@ -144,13 +151,14 @@
     }
 
     // Update text when language changes
-    window.addEventListener('i18n:changed', function () {
+    function handleLanguageChange() {
       summary.textContent = localized(data.summary);
       renderEntries(ul, entries);
       if (typeof window.applyI18n === 'function') {
         window.applyI18n(backdrop);
       }
-    });
+    }
+    window.addEventListener('i18n:changed', handleLanguageChange);
   }
 
   var initialized = false;

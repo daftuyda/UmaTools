@@ -20,17 +20,47 @@ const contentTypes = {
 
 function resolveRequestPath(requestUrl) {
   const pathname = decodeURIComponent(new URL(requestUrl, 'http://localhost').pathname);
-  const relative = pathname === '/' ? 'index.html' : pathname.replace(/^\/+/, '');
-  const candidate = path.extname(relative) ? relative : `${relative}.html`;
-  const resolved = path.resolve(publicRoot, candidate);
+  const relative = pathname === '/' ? 'index.html' : pathname.replace(/^\/+|\/+$/g, '');
   const publicPrefix = `${path.resolve(publicRoot)}${path.sep}`;
+  const candidates = path.extname(relative)
+    ? [relative]
+    : [`${relative}.html`, path.join(relative, 'index.html')];
 
-  if (resolved !== path.resolve(publicRoot) && !resolved.startsWith(publicPrefix)) return null;
-  return resolved;
+  for (const candidate of candidates) {
+    const resolved = path.resolve(publicRoot, candidate);
+    if (resolved !== path.resolve(publicRoot) && !resolved.startsWith(publicPrefix)) return null;
+    if (fs.existsSync(resolved) && fs.statSync(resolved).isFile()) return resolved;
+  }
+  return path.resolve(publicRoot, candidates[0]);
+}
+
+function walkHtml(directory = publicRoot) {
+  return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
+    const fullPath = path.join(directory, entry.name);
+    if (entry.isDirectory()) return walkHtml(fullPath);
+    return entry.isFile() && entry.name.endsWith('.html') ? [fullPath] : [];
+  });
+}
+
+function routeForHtml(filePath) {
+  const relative = path.relative(publicRoot, filePath).replaceAll(path.sep, '/');
+  if (relative === 'index.html') return '/';
+  if (relative.endsWith('/index.html')) return `/${relative.slice(0, -'/index.html'.length)}`;
+  return `/${relative.slice(0, -'.html'.length)}`;
 }
 
 function createServer() {
   return http.createServer((request, response) => {
+    const pathname = new URL(request.url || '/', 'http://localhost').pathname;
+    if (pathname === '/_vercel/insights/script.js') {
+      response.writeHead(200, {
+        'Content-Type': 'text/javascript; charset=utf-8',
+        'Cache-Control': 'no-store',
+      });
+      response.end('');
+      return;
+    }
+
     const filePath = resolveRequestPath(request.url || '/');
     if (!filePath || !fs.existsSync(filePath) || !fs.statSync(filePath).isFile()) {
       response.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
@@ -72,15 +102,7 @@ async function requestAndValidate(baseUrl, target, expectedType, bodyCheck) {
 }
 
 async function main() {
-  const htmlFiles = fs
-    .readdirSync(publicRoot, { withFileTypes: true })
-    .filter(entry => entry.isFile() && entry.name.endsWith('.html'))
-    .map(entry => entry.name)
-    .sort();
-
-  const routes = htmlFiles.map(file =>
-    file === 'index.html' ? '/' : `/${path.basename(file, '.html')}`
-  );
+  const routes = walkHtml().map(routeForHtml).sort();
   const assets = [
     ['/css/air.css', 'text/css'],
     ['/js/nav.js', 'text/javascript'],
@@ -101,20 +123,22 @@ async function main() {
 
   try {
     for (const route of routes) {
-      await requestAndValidate(baseUrl, route, 'text/html', body => /<html[\s>]/i.test(body));
+      await requestAndValidate(baseUrl, route, 'text/html', (body) => /<html[\s>]/i.test(body));
     }
     for (const [asset, type] of assets) {
       await requestAndValidate(baseUrl, asset, type);
     }
   } finally {
-    await new Promise(resolve => server.close(resolve));
+    await new Promise((resolve) => server.close(resolve));
   }
 
-  console.log(`Route smoke test passed (${routes.length} pages, ${assets.length} critical assets).`);
+  console.log(
+    `Route smoke test passed (${routes.length} pages, ${assets.length} critical assets).`
+  );
 }
 
 if (require.main === module) {
-  main().catch(error => {
+  main().catch((error) => {
     console.error(`Route smoke test failed: ${error.message}`);
     process.exit(1);
   });

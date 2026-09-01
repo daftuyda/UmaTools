@@ -10,7 +10,7 @@ const failures = [];
 let checked = 0;
 
 function walk(directory, extension) {
-  return fs.readdirSync(directory, { withFileTypes: true }).flatMap(entry => {
+  return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
     const fullPath = path.join(directory, entry.name);
     if (entry.isDirectory()) return walk(fullPath, extension);
     return !extension || path.extname(entry.name) === extension ? [fullPath] : [];
@@ -24,6 +24,12 @@ function resolvePublicPath(urlPath) {
   const directPath = path.join(publicRoot, relativePath);
   if (path.extname(relativePath)) return directPath;
   return path.join(publicRoot, relativePath + '.html');
+}
+
+function getAttribute(tag, name) {
+  const escapedName = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const match = tag.match(new RegExp(`(?:^|\\s)${escapedName}=["']([^"']*)["']`, 'i'));
+  return match ? match[1] : null;
 }
 
 function checkReference(sourceFile, reference) {
@@ -56,6 +62,8 @@ function checkReference(sourceFile, reference) {
 
 for (const htmlFile of walk(publicRoot, '.html')) {
   const html = fs.readFileSync(htmlFile, 'utf8');
+  const markup = html.replace(/<script\b[\s\S]*?<\/script>/gi, '');
+  const relativeHtmlFile = path.relative(projectRoot, htmlFile);
   for (const match of html.matchAll(/(?:src|href)=["']([^"']+)["']/g)) {
     checkReference(htmlFile, match[1]);
   }
@@ -65,19 +73,84 @@ for (const htmlFile of walk(publicRoot, '.html')) {
     ['document language', /<html[^>]+\blang=["'][^"']+["']/i],
     ['title', /<title>[^<]+<\/title>/i],
     ['viewport metadata', /<meta[^>]+name=["']viewport["'][^>]*>/i],
+    ['description metadata', /<meta[^>]+name=["']description["'][^>]*>/i],
+    ['canonical URL', /<link[^>]+rel=["']canonical["'][^>]*>/i],
+    ['main landmark', /<main\b/i],
+    ['page heading', /<h1\b/i],
   ];
   for (const [label, pattern] of requiredMarkup) {
     if (!pattern.test(html)) {
-      failures.push(`${path.relative(projectRoot, htmlFile)} -> missing ${label}`);
+      failures.push(`${relativeHtmlFile} -> missing ${label}`);
     }
   }
 
+  const viewportTag = markup.match(/<meta[^>]+name=["']viewport["'][^>]*>/i)?.[0] || '';
+  const viewportContent = getAttribute(viewportTag, 'content') || '';
+  if (viewportTag && !/\bwidth\s*=\s*device-width\b/i.test(viewportContent)) {
+    failures.push(`${relativeHtmlFile} -> viewport must use width=device-width`);
+  }
+  if (/\buser-scalable\s*=\s*no\b|\bmaximum-scale\s*=\s*1(?:\.0+)?\b/i.test(viewportContent)) {
+    failures.push(`${relativeHtmlFile} -> viewport must not disable page zoom`);
+  }
+
+  const mainCount = [...markup.matchAll(/<main\b/gi)].length;
+  if (mainCount !== 1)
+    failures.push(`${relativeHtmlFile} -> expected one main landmark, found ${mainCount}`);
+
+  const headingCount = [...markup.matchAll(/<h1\b/gi)].length;
+  if (headingCount !== 1)
+    failures.push(`${relativeHtmlFile} -> expected one h1, found ${headingCount}`);
+
   const ids = new Set();
-  for (const match of html.matchAll(/\bid=["']([^"']+)["']/g)) {
+  for (const match of markup.matchAll(/\bid=["']([^"']+)["']/g)) {
     if (ids.has(match[1])) {
-      failures.push(`${path.relative(projectRoot, htmlFile)} -> duplicate id "${match[1]}"`);
+      failures.push(`${relativeHtmlFile} -> duplicate id "${match[1]}"`);
     }
     ids.add(match[1]);
+  }
+
+  for (const match of markup.matchAll(
+    /\b(aria-controls|aria-describedby|aria-labelledby)=["']([^"']+)["']/gi
+  )) {
+    for (const referencedId of match[2].trim().split(/\s+/)) {
+      if (referencedId && !ids.has(referencedId)) {
+        failures.push(`${relativeHtmlFile} -> ${match[1]} references missing id "${referencedId}"`);
+      }
+    }
+  }
+
+  for (const match of markup.matchAll(/<label\b[^>]*\bfor=["']([^"']+)["'][^>]*>/gi)) {
+    if (!ids.has(match[1])) {
+      failures.push(`${relativeHtmlFile} -> label references missing id "${match[1]}"`);
+    }
+  }
+
+  for (const match of markup.matchAll(/<img\b[^>]*>/gi)) {
+    if (getAttribute(match[0], 'alt') === null) {
+      failures.push(`${relativeHtmlFile} -> image missing alt text: ${match[0]}`);
+    }
+  }
+
+  for (const match of markup.matchAll(/<a\b[^>]*\btarget=["']_blank["'][^>]*>/gi)) {
+    const rel = getAttribute(match[0], 'rel') || '';
+    if (!/\bnoopener\b/i.test(rel)) {
+      failures.push(`${relativeHtmlFile} -> target=_blank link missing rel=noopener`);
+    }
+  }
+
+  for (const match of markup.matchAll(/<[^>]+\brole=["'](?:dialog|progressbar)["'][^>]*>/gi)) {
+    const tag = match[0];
+    if (
+      getAttribute(tag, 'aria-label') === null &&
+      getAttribute(tag, 'aria-labelledby') === null &&
+      getAttribute(tag, 'title') === null
+    ) {
+      failures.push(`${relativeHtmlFile} -> named ARIA role is missing an accessible name: ${tag}`);
+    }
+  }
+
+  for (const match of markup.matchAll(/\btabindex=["']([1-9]\d*)["']/gi)) {
+    failures.push(`${relativeHtmlFile} -> avoid positive tabindex (${match[1]})`);
   }
 }
 
@@ -114,9 +187,9 @@ for (const markdownFile of markdownFiles) {
 }
 
 if (failures.length) {
-  console.error(`Static reference check failed (${failures.length} missing):`);
-  failures.forEach(failure => console.error(`- ${failure}`));
+  console.error(`Static site check failed (${failures.length} issues):`);
+  failures.forEach((failure) => console.error(`- ${failure}`));
   process.exit(1);
 }
 
-console.log(`Static reference check passed (${checked} local references).`);
+console.log(`Static site check passed (${checked} local references).`);

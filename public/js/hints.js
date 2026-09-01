@@ -16,7 +16,12 @@
   const counts = document.getElementById('counts');
   const hintList = document.getElementById('hintList');
 
-  // Virtual Scroll removed — grid layout is incompatible with absolute positioning
+  // Keep the responsive grid, but only mount a small result window at a time.
+  // This avoids creating thousands of nodes before the user scrolls to them.
+  const RESULT_CHUNK_SIZE = 32;
+  let visibleResultCount = RESULT_CHUNK_SIZE;
+  let renderedResults = [];
+  let loadMoreObserver = null;
 
   // Pagination state
   const CHUNK_SIZE = 100;
@@ -28,11 +33,15 @@
   if (counts)
     counts.innerHTML = `<span class="loading-indicator">${t('hints.loadingHints')}</span>`;
 
-  let data = [];
   try {
-    const res = await fetch(DATA_URL);
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    rawData = await res.json();
+    if (Array.isArray(window.__supportHintsData)) {
+      rawData = window.__supportHintsData;
+    } else {
+      const res = await fetch(DATA_URL, { cache: 'force-cache' });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      rawData = await res.json();
+      window.__supportHintsData = rawData;
+    }
     totalChunks = Math.ceil(rawData.length / CHUNK_SIZE);
   } catch (err) {
     console.error('Failed to load support hints', err);
@@ -64,7 +73,9 @@
   function localizedCardName(card) {
     if (typeof getLocalizedSupportName === 'function') {
       // getLocalizedSupportName expects { SupportName, SupportNameJP }
-      return cleanCardName(getLocalizedSupportName({ SupportName: card.rawName, SupportNameJP: card.SupportNameJP }));
+      return cleanCardName(
+        getLocalizedSupportName({ SupportName: card.rawName, SupportNameJP: card.SupportNameJP })
+      );
     }
     return card.name;
   }
@@ -157,7 +168,9 @@
         update();
       } else {
         // Update counts during progressive loading to show progress
-        const matched = cards.filter(matchCard).sort((a, b) => localizedCardName(a).localeCompare(localizedCardName(b)));
+        const matched = cards
+          .filter(matchCard)
+          .sort((a, b) => localizedCardName(a).localeCompare(localizedCardName(b)));
         updateCounts(matched);
       }
 
@@ -173,25 +186,46 @@
 
   // Compute allHints dynamically based on currently loaded cards
   function getAllHints() {
-    return Array.from(new Set(cards.flatMap((c) => c.hints))).sort((a, b) =>
-      a.localeCompare(b)
-    );
+    return Array.from(new Set(cards.flatMap((c) => c.hints))).sort((a, b) => a.localeCompare(b));
   }
 
   // Fill datalist — when JP, use JP names as values so they display in dropdown;
   // build reverse map so we can convert JP input back to English for matching.
   let jpToEnHintMap = new Map();
+  let hintOptions = [];
+
+  function refreshHintDatalist() {
+    const query = String(hintInput.value || '')
+      .normalize('NFKC')
+      .toLocaleLowerCase()
+      .trim();
+    const matches = query
+      ? hintOptions.filter((option) => option.searchValue.includes(query))
+      : hintOptions;
+    const fragment = document.createDocumentFragment();
+
+    matches.slice(0, 60).forEach((hint) => {
+      const option = document.createElement('option');
+      option.value = hint.value;
+      fragment.appendChild(option);
+    });
+    hintList.innerHTML = '';
+    hintList.appendChild(fragment);
+  }
+
   function buildHintDatalist() {
     const allHints = getAllHints();
     jpToEnHintMap = new Map();
-    hintList.innerHTML = allHints.map((h) => {
-      var jp = typeof window.getLocalizedSkillName === 'function' ? window.getLocalizedSkillName(h) : h;
-      if (jp !== h) {
-        jpToEnHintMap.set(jp, h);
-        return `<option value="${jp}"></option>`;
-      }
-      return `<option value="${h}"></option>`;
-    }).join('');
+    hintOptions = allHints.map((h) => {
+      var localized =
+        typeof window.getLocalizedSkillName === 'function' ? window.getLocalizedSkillName(h) : h;
+      if (localized !== h) jpToEnHintMap.set(localized, h);
+      return {
+        value: localized,
+        searchValue: localized.normalize('NFKC').toLocaleLowerCase(),
+      };
+    });
+    refreshHintDatalist();
   }
 
   let selected = [];
@@ -226,12 +260,11 @@
   // --- Rendering ---
   function renderChips() {
     chips.innerHTML = selected
-      .map(
-        (h, i) => {
-          var displayName = typeof window.getLocalizedSkillName === 'function' ? window.getLocalizedSkillName(h) : h;
-          return `<span class="chip">${displayName}<button aria-label="Remove ${h}" data-i="${i}">×</button></span>`;
-        }
-      )
+      .map((h, i) => {
+        var displayName =
+          typeof window.getLocalizedSkillName === 'function' ? window.getLocalizedSkillName(h) : h;
+        return `<span class="chip">${displayName}<button aria-label="Remove ${h}" data-i="${i}">×</button></span>`;
+      })
       .join('');
     chips.querySelectorAll('button[data-i]').forEach((btn) => {
       btn.addEventListener('click', () => {
@@ -267,7 +300,10 @@
     const wanted = selected.map(norm).filter(Boolean);
     const hN = norm(hint);
     const isMatch = wanted.some((w) => hN.includes(w));
-    var displayName = typeof window.getLocalizedSkillName === 'function' ? window.getLocalizedSkillName(hint) : hint;
+    var displayName =
+      typeof window.getLocalizedSkillName === 'function'
+        ? window.getLocalizedSkillName(hint)
+        : hint;
     return `<span class="pill ${isMatch ? 'match' : ''}" data-skill-name="${hint}" tabindex="0" role="button">${displayName}</span>`;
   }
 
@@ -278,23 +314,41 @@
 
   const renderBadge = (rarity) => `<span class="badge badge-${rarity}">${rarity}</span>`;
 
-  function renderResults(list) {
+  function disconnectLoadMoreObserver() {
+    if (!loadMoreObserver) return;
+    loadMoreObserver.disconnect();
+    loadMoreObserver = null;
+  }
+
+  function renderResults(list, resetLimit = true) {
+    disconnectLoadMoreObserver();
+    renderedResults = list;
+    if (resetLimit) visibleResultCount = RESULT_CHUNK_SIZE;
+
     if (!list.length) {
       results.innerHTML = '';
       results.className = 'grid';
       return;
     }
 
+    const visibleCards = list.slice(0, visibleResultCount);
+    const hasMore = visibleCards.length < list.length;
     results.className = 'grid';
-    results.innerHTML = list
-      .map((card) => {
-        const displayName = localizedCardName(card);
-        const thumb = card.img && typeof window.createPictureHTML === 'function'
-          ? window.createPictureHTML(card.img, displayName, '', { loading: 'lazy', decoding: 'async', fetchpriority: 'low' })
-          : card.img
-          ? `<img src="${card.img}" alt="${displayName}" loading="lazy" decoding="async" fetchpriority="low">`
-          : `<span>${initialsOf(displayName)}</span>`;
-        return `
+    results.innerHTML =
+      visibleCards
+        .map((card) => {
+          const displayName = localizedCardName(card);
+          const thumb =
+            card.img && typeof window.createPictureHTML === 'function'
+              ? window.createPictureHTML(card.img, displayName, '', {
+                  loading: 'lazy',
+                  decoding: 'async',
+                  fetchpriority: 'low',
+                })
+              : card.img
+                ? `<img src="${card.img}" alt="${displayName}" loading="lazy" decoding="async" fetchpriority="low">`
+                : `<span>${initialsOf(displayName)}</span>`;
+          return `
         <div class="card card-support">
           <div class="card-thumb">${thumb}</div>
           <div class="card-title">
@@ -306,8 +360,37 @@
           </div>
         </div>
       `;
-      })
-      .join('');
+        })
+        .join('') +
+      (hasMore
+        ? `<button type="button" class="btn btn-secondary hints-load-more" aria-controls="results">${t('hints.showMore', {
+            shown: visibleCards.length,
+            total: list.length,
+          })}</button>`
+        : '');
+
+    const loadMoreButton = results.querySelector('.hints-load-more');
+    if (!loadMoreButton) return;
+
+    const revealMore = () => {
+      disconnectLoadMoreObserver();
+      visibleResultCount = Math.min(
+        visibleResultCount + RESULT_CHUNK_SIZE,
+        renderedResults.length
+      );
+      renderResults(renderedResults, false);
+    };
+    loadMoreButton.addEventListener('click', revealMore);
+
+    if ('IntersectionObserver' in window) {
+      loadMoreObserver = new IntersectionObserver(
+        (entries) => {
+          if (entries.some((entry) => entry.isIntersecting)) revealMore();
+        },
+        { rootMargin: '240px 0px' }
+      );
+      loadMoreObserver.observe(loadMoreButton);
+    }
   }
 
   function updateCounts(list) {
@@ -332,7 +415,9 @@
   function update() {
     renderChips();
     writeToURL();
-    const matched = cards.filter(matchCard).sort((a, b) => localizedCardName(a).localeCompare(localizedCardName(b)));
+    const matched = cards
+      .filter(matchCard)
+      .sort((a, b) => localizedCardName(a).localeCompare(localizedCardName(b)));
     renderResults(matched);
     updateCounts(matched);
   }
@@ -372,6 +457,8 @@
       addFromInput();
     }
   });
+  hintInput.addEventListener('input', refreshHintDatalist);
+  hintInput.addEventListener('focus', refreshHintDatalist);
   [modeSelect, fSSR, fSR, fR].forEach((el) => el.addEventListener('change', update));
   clearBtn.addEventListener('click', () => {
     selected = [];

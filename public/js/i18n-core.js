@@ -65,14 +65,26 @@
       'nav.eventOCR': 'Event OCR',
       'nav.supportHints': 'Support Hints',
       'nav.deckBuilder': 'Deck Builder',
-      'nav.deckOptimizer': 'Deck Optimizer',
       'nav.tokenPlanner': 'Token Planner',
       'nav.data': 'Data',
+      'nav.guides': 'Documentation',
       'nav.skillLibrary': 'Skill Library',
       'nav.rankBreakdown': 'Rank Breakdown',
       'nav.fun': 'Fun',
       'nav.randomizer': 'Randomizer',
       'nav.umadle': 'Umadle',
+      'nav.about': 'About',
+      'nav.aboutUmaTools': 'About UmaTools',
+      'nav.allGuides': 'All Documentation',
+      'nav.guideLibrary': 'Reference library',
+      'nav.guideRating': 'Rating & Skills',
+      'nav.guideTeamTrials': 'Team Trials',
+      'nav.guideAcceleration': 'Acceleration',
+      'nav.guideStamina': 'Stamina',
+      'nav.guideGrandLive': 'Grand Live',
+      'nav.guideOcr': 'OCR & Recognition',
+      'nav.guidePrivacy': 'Data & Privacy',
+      'nav.guideTranslations': 'Translations',
       'nav.settings': 'Settings',
       'nav.globalSettings': 'Global Settings',
       'nav.server': 'Server',
@@ -137,14 +149,26 @@
       'nav.eventOCR': 'イベントOCR',
       'nav.supportHints': 'サポートヒント',
       'nav.deckBuilder': 'デッキ編成',
-      'nav.deckOptimizer': 'デッキ最適化',
       'nav.tokenPlanner': 'トークンプランナー',
       'nav.data': 'データ',
+      'nav.guides': 'ドキュメント',
       'nav.skillLibrary': 'スキル一覧',
       'nav.rankBreakdown': 'ランク内訳',
       'nav.fun': 'お楽しみ',
       'nav.randomizer': 'ランダマイザー',
       'nav.umadle': 'ウマドル',
+      'nav.about': 'サイト概要',
+      'nav.aboutUmaTools': 'UmaToolsについて',
+      'nav.allGuides': 'ドキュメント一覧',
+      'nav.guideLibrary': 'リファレンスライブラリ',
+      'nav.guideRating': '評価点とスキル',
+      'nav.guideTeamTrials': 'チーム競技場',
+      'nav.guideAcceleration': '加速スキル',
+      'nav.guideStamina': 'スタミナ',
+      'nav.guideGrandLive': 'グランドライブ',
+      'nav.guideOcr': 'OCR・認識',
+      'nav.guidePrivacy': 'データとプライバシー',
+      'nav.guideTranslations': '翻訳',
       'nav.settings': '設定',
       'nav.globalSettings': '全般設定',
       'nav.server': 'サーバー',
@@ -164,13 +188,13 @@
     currentLang = lang === 'jp' || lang === 'ja' ? 'ja' : 'en';
   }
 
-  function t(key, vars) {
+  function getTranslation(key, vars) {
     var dict = TRANSLATIONS[currentLang] || TRANSLATIONS.en;
     var str = dict[key];
     if (str === undefined) {
       str = TRANSLATIONS.en[key];
     }
-    if (str === undefined) return key;
+    if (str === undefined) return undefined;
     if (vars && typeof vars === 'object') {
       str = str.replace(/\{([a-zA-Z0-9_-]+)\}/g, function (_, k) {
         var v = vars[k];
@@ -180,37 +204,47 @@
     return str;
   }
 
+  function t(key, vars) {
+    var str = getTranslation(key, vars);
+    return str === undefined ? key : str;
+  }
+
   function applyI18n(root) {
     var container = root || document;
     var els = container.querySelectorAll('[data-i18n]');
     for (var i = 0; i < els.length; i++) {
       var el = els[i];
       var key = el.getAttribute('data-i18n');
-      if (key) el.textContent = t(key);
+      var translated = key ? getTranslation(key) : undefined;
+      if (translated !== undefined) el.textContent = translated;
     }
     els = container.querySelectorAll('[data-i18n-html]');
     for (var i = 0; i < els.length; i++) {
       var el = els[i];
       var key = el.getAttribute('data-i18n-html');
-      if (key) el.innerHTML = t(key);
+      var translated = key ? getTranslation(key) : undefined;
+      if (translated !== undefined) el.innerHTML = translated;
     }
     els = container.querySelectorAll('[data-i18n-placeholder]');
     for (var i = 0; i < els.length; i++) {
       var el = els[i];
       var key = el.getAttribute('data-i18n-placeholder');
-      if (key) el.placeholder = t(key);
+      var translated = key ? getTranslation(key) : undefined;
+      if (translated !== undefined) el.placeholder = translated;
     }
     els = container.querySelectorAll('[data-i18n-aria]');
     for (var i = 0; i < els.length; i++) {
       var el = els[i];
       var key = el.getAttribute('data-i18n-aria');
-      if (key) el.setAttribute('aria-label', t(key));
+      var translated = key ? getTranslation(key) : undefined;
+      if (translated !== undefined) el.setAttribute('aria-label', translated);
     }
     els = container.querySelectorAll('[data-i18n-title]');
     for (var i = 0; i < els.length; i++) {
       var el = els[i];
       var key = el.getAttribute('data-i18n-title');
-      if (key) el.setAttribute('title', t(key));
+      var translated = key ? getTranslation(key) : undefined;
+      if (translated !== undefined) el.setAttribute('title', translated);
     }
   }
 
@@ -274,7 +308,8 @@
           var firstJP = enKeyFirstJP.get(key);
           if (firstJP) {
             var firstDisambigKey = key + ' (' + firstJP.trim().toLowerCase() + ')';
-            if (!jpSkillNameMap.has(firstDisambigKey)) jpSkillNameMap.set(firstDisambigKey, firstJP);
+            if (!jpSkillNameMap.has(firstDisambigKey))
+              jpSkillNameMap.set(firstDisambigKey, firstJP);
           }
         }
       });
@@ -284,12 +319,19 @@
       var jpname = ((skill && skill.jpname) || '').trim();
       indexSkill(jpname, [skill.name_en, skill.enname, skill.jpname, skill.name]);
       if (skill.gene_version) {
-        var gvJp = ((skill.gene_version.jpname) || '').trim();
-        indexSkill(gvJp, [skill.gene_version.name_en, skill.gene_version.enname, skill.gene_version.jpname, skill.gene_version.name]);
+        var gvJp = (skill.gene_version.jpname || '').trim();
+        indexSkill(gvJp, [
+          skill.gene_version.name_en,
+          skill.gene_version.enname,
+          skill.gene_version.jpname,
+          skill.gene_version.name,
+        ]);
       }
     });
     // Notify pages that JP skill names are now available for re-rendering
-    try { window.dispatchEvent(new Event('i18n:jpnames-ready')); } catch (_) {}
+    try {
+      window.dispatchEvent(new Event('i18n:jpnames-ready'));
+    } catch (_) {}
   }
 
   function getLocalizedSkillName(name) {
@@ -318,6 +360,10 @@
         TRANSLATIONS[lang][key] = langTranslations[key];
       }
     }
+
+    // Deferred page dictionaries may arrive after common labels were applied.
+    // Apply them immediately without exposing raw translation keys in the DOM.
+    if (document.readyState !== 'loading') applyI18n();
   }
 
   window.t = t;

@@ -10,15 +10,23 @@
   const SUPPORT_TYPES = ['Speed', 'Stamina', 'Power', 'Guts', 'Wit', 'Friend', 'Group'];
   const RARITY_ORDER = ['SSR', 'SR', 'R'];
 
+  function debounce(fn, delay) {
+    let timeoutId = null;
+    return function (...args) {
+      window.clearTimeout(timeoutId);
+      timeoutId = window.setTimeout(() => fn.apply(this, args), delay);
+    };
+  }
+
   // i18n mappings for support type filter buttons
   const TYPE_I18N = {
-    'Speed': 'common.speed',
-    'Stamina': 'common.stamina',
-    'Power': 'common.power',
-    'Guts': 'common.guts',
-    'Wit': 'deck.wit',
-    'Friend': 'deck.friend',
-    'Group': 'deck.group',
+    Speed: 'common.speed',
+    Stamina: 'common.stamina',
+    Power: 'common.power',
+    Guts: 'common.guts',
+    Wit: 'deck.wit',
+    Friend: 'deck.friend',
+    Group: 'deck.group',
   };
 
   // i18n mappings for effect names
@@ -63,16 +71,16 @@
 
   // i18n mappings for character filter buttons
   const CHAR_FILTER_I18N = {
-    'Short': 'common.sprint',
-    'Mile': 'common.mile',
-    'Medium': 'common.medium',
-    'Long': 'common.long',
-    'Turf': 'common.turf',
-    'Dirt': 'common.dirt',
-    'Front': 'common.front',
-    'Pace': 'common.pace',
-    'Late': 'common.late',
-    'End': 'common.end',
+    Short: 'common.sprint',
+    Mile: 'common.mile',
+    Medium: 'common.medium',
+    Long: 'common.long',
+    Turf: 'common.turf',
+    Dirt: 'common.dirt',
+    Front: 'common.front',
+    Pace: 'common.pace',
+    Late: 'common.late',
+    End: 'common.end',
   };
 
   // Limit break labels (5 stops)
@@ -155,6 +163,8 @@
   // State
   let characters = [];
   let supports = [];
+  const supportSearchTextCache = new WeakMap();
+  const characterSearchTextCache = new WeakMap();
   let selectedChar = null;
   let selectedSupports = []; // card objects
   let supportLbStops = []; // per-card LB stop (0-4), parallel to selectedSupports
@@ -188,11 +198,21 @@
   showStatus(t('deck.loadingData'));
 
   try {
-    const [charRes, supRes] = await Promise.all([fetch(CHAR_URL), fetch(SUPPORT_URL)]);
-    if (!charRes.ok) throw new Error(t('deck.failedCharData'));
-    if (!supRes.ok) throw new Error(t('deck.failedSupportData'));
-    characters = await charRes.json();
-    supports = await supRes.json();
+    const characterPromise = Array.isArray(window.__umaData)
+      ? Promise.resolve(window.__umaData)
+      : fetch(CHAR_URL, { cache: 'force-cache' }).then((response) => {
+          if (!response.ok) throw new Error(t('deck.failedCharData'));
+          return response.json();
+        });
+    const supportPromise = Array.isArray(window.__supportHintsData)
+      ? Promise.resolve(window.__supportHintsData)
+      : fetch(SUPPORT_URL, { cache: 'force-cache' }).then((response) => {
+          if (!response.ok) throw new Error(t('deck.failedSupportData'));
+          return response.json();
+        });
+    [characters, supports] = await Promise.all([characterPromise, supportPromise]);
+    window.__umaData = characters;
+    window.__supportHintsData = supports;
     showStatus('');
   } catch (err) {
     showStatus(t('deck.failedLoadData'));
@@ -206,9 +226,13 @@
   async function loadSkillsAll() {
     if (skillsAllMap) return skillsAllMap;
     try {
-      const res = await fetch('/assets/skills_all.json');
-      if (!res.ok) return null;
-      const data = await res.json();
+      let data = window.__skillsAllData;
+      if (!Array.isArray(data)) {
+        const res = await fetch('/assets/skills_all.json', { cache: 'force-cache' });
+        if (!res.ok) return null;
+        data = await res.json();
+        window.__skillsAllData = data;
+      }
       skillsAllMap = new Map(data.map((s) => [String(s.id), s]));
       return skillsAllMap;
     } catch {
@@ -533,7 +557,10 @@
           hintDetails.set(h.Name, { sources: [], totalLevel: 0, skillId: h.SkillId });
         }
         const entry = hintDetails.get(h.Name);
-        entry.sources.push({ cardName: cleanCardName(getLocalizedSupportName(card)), hintLevel: cardHintLv });
+        entry.sources.push({
+          cardName: cleanCardName(getLocalizedSupportName(card)),
+          hintLevel: cardHintLv,
+        });
         entry.totalLevel += cardHintLv;
       }
     }
@@ -616,10 +643,10 @@
   function renderCharacter() {
     if (!selectedChar) {
       charDisplay.innerHTML = `
-        <div class="deck-support-slot" data-action="open-char-picker">
-          <div class="slot-placeholder">+</div>
-          <div class="slot-placeholder-text">${t('deck.selectChar')}</div>
-        </div>`;
+        <button type="button" class="deck-support-slot" data-action="open-char-picker">
+          <span class="slot-placeholder">+</span>
+          <span class="slot-placeholder-text">${t('deck.selectChar')}</span>
+        </button>`;
       return;
     }
     const c = selectedChar;
@@ -654,7 +681,11 @@
     const apt = c.UmaAptitudes;
     if (apt && Object.keys(apt).length) {
       aptHtml = '<div class="deck-aptitudes">';
-      const APT_GROUP_I18N = { 'Surface': 'deck.surface', 'Distance': 'deck.distance', 'Strategy': 'deck.strategy' };
+      const APT_GROUP_I18N = {
+        Surface: 'deck.surface',
+        Distance: 'deck.distance',
+        Strategy: 'deck.strategy',
+      };
       for (const [group, entries] of Object.entries(apt)) {
         const groupLabel = APT_GROUP_I18N[group] ? t(APT_GROUP_I18N[group]) : group;
         aptHtml += `<div class="apt-group"><span class="apt-group-label">${escHtml(groupLabel)}</span>`;
@@ -670,9 +701,8 @@
     const locChar = getLocalizedUmaName(c);
     const charImgSrc = c.UmaImage || '';
     const charImgHtml = charImgSrc
-      ? `<img class="char-thumb" src="${escHtml(charImgSrc)}" alt="${escHtml(locChar.name)}" loading="lazy">`
+      ? `<img class="char-thumb" src="${escHtml(charImgSrc)}" alt="${escHtml(locChar.name)}" loading="lazy" decoding="async" fetchpriority="low">`
       : '';
-
 
     charDisplay.innerHTML = `
       <div class="deck-character-card">
@@ -698,7 +728,7 @@
         const name = cleanCardName(getLocalizedSupportName(s));
         const imgSrc = s.SupportImage || '';
         const imgHtml = imgSrc
-          ? `<img class="support-thumb" src="${escHtml(imgSrc)}" alt="${escHtml(name)}" loading="lazy">`
+          ? `<img class="support-thumb" src="${escHtml(imgSrc)}" alt="${escHtml(name)}" loading="lazy" decoding="async" fetchpriority="low">`
           : `<div class="support-initials">${escHtml(initialsOf(name))}</div>`;
 
         const typeStr = s.SupportType || '';
@@ -725,10 +755,10 @@
           </div>`;
       } else {
         html += `
-          <div class="deck-support-slot" data-action="open-picker">
-            <div class="slot-placeholder">+</div>
-            <div class="slot-placeholder-text">${t('deck.addCard')}</div>
-          </div>`;
+          <button type="button" class="deck-support-slot" data-action="open-picker">
+            <span class="slot-placeholder">+</span>
+            <span class="slot-placeholder-text">${t('deck.addCard')}</span>
+          </button>`;
       }
     }
 
@@ -918,7 +948,10 @@
             let cls = 'hint-pill';
             if (isShared) cls += ' shared';
             if (isAptMatch) cls += ' apt-match';
-            var hintDisplayName = typeof window.getLocalizedSkillName === 'function' ? window.getLocalizedSkillName(h.name) : h.name;
+            var hintDisplayName =
+              typeof window.getLocalizedSkillName === 'function'
+                ? window.getLocalizedSkillName(h.name)
+                : h.name;
             const label = isShared ? `${hintDisplayName} (${h.count})` : hintDisplayName;
             const tooltip = h.sources.join(', ');
             html += `<span class="${cls}" data-skill-name="${escHtml(h.name)}" tabindex="0" role="button" title="${escHtml(tooltip)}">${escHtml(label)}</span>`;
@@ -949,7 +982,10 @@
         html += '<div class="synergy-shared-hints">';
         for (const sh of sharedHints) {
           const srcNames = sh.sources.map((s) => s.cardName).join(', ');
-          var shDisplayName = typeof window.getLocalizedSkillName === 'function' ? window.getLocalizedSkillName(sh.name) : sh.name;
+          var shDisplayName =
+            typeof window.getLocalizedSkillName === 'function'
+              ? window.getLocalizedSkillName(sh.name)
+              : sh.name;
           html += `<div class="synergy-hint-row">
             <span class="hint-pill shared" data-skill-name="${escHtml(sh.name)}" tabindex="0" role="button">${escHtml(shDisplayName)}</span>
             <span class="synergy-detail">Lv${sh.effectiveLevel} (${sh.discountPct}% off) &mdash; ${escHtml(srcNames)}</span>
@@ -1146,7 +1182,9 @@
     for (let i = 0; i < decks.length; i++) {
       const d = decks[i];
       const charObj = d.char ? findCharBySlug(d.char) : null;
-      const charName = charObj ? getLocalizedUmaName(charObj).name || d.char : t('deck.noCharacter');
+      const charName = charObj
+        ? getLocalizedUmaName(charObj).name || d.char
+        : t('deck.noCharacter');
       const supCount = (d.supports || []).length;
 
       html += `<div class="saved-deck-item" data-idx="${i}">
@@ -1516,6 +1554,15 @@
     return eff?.values?.[idx] ?? 0;
   }
 
+  function getSupportSearchText(card) {
+    let searchText = supportSearchTextCache.get(card);
+    if (searchText !== undefined) return searchText;
+    searchText =
+      `${cleanCardName(card.SupportName)} ${cleanCardName(card.SupportNameJP || '')}`.toLowerCase();
+    supportSearchTextCache.set(card, searchText);
+    return searchText;
+  }
+
   function getFilteredSupports() {
     const search = filterSearch.toLowerCase();
     const selectedSlugs = new Set(selectedSupports.map((s) => s.SupportSlug));
@@ -1525,8 +1572,7 @@
         if (!matchesServer(s)) return false;
         if (filterTypes.size > 0 && !filterTypes.has(s.SupportType)) return false;
         if (filterRarity && s.SupportRarity !== filterRarity) return false;
-        if (search && !cleanCardName(s.SupportName).toLowerCase().includes(search) &&
-            !cleanCardName(s.SupportNameJP || '').toLowerCase().includes(search)) return false;
+        if (search && !getSupportSearchText(s).includes(search)) return false;
         return true;
       })
       .map((s) => {
@@ -1560,7 +1606,7 @@
         : '';
       const imgSrc = s.SupportImage || '';
       const imgHtml = imgSrc
-        ? `<img class="modal-card-thumb" src="${escHtml(imgSrc)}" alt="" loading="lazy">`
+        ? `<img class="modal-card-thumb" src="${escHtml(imgSrc)}" alt="" loading="lazy" decoding="async" fetchpriority="low">`
         : `<span class="modal-card-initials">${escHtml(initialsOf(name))}</span>`;
 
       const valBadge = sortByEffect
@@ -1623,10 +1669,13 @@
   supportModal.querySelector('.support-modal-backdrop').addEventListener('click', closePickerModal);
   supportModal.querySelector('.support-modal-close').addEventListener('click', closePickerModal);
 
-  supportSearch.addEventListener('input', () => {
-    filterSearch = supportSearch.value;
-    renderModalList();
-  });
+  supportSearch.addEventListener(
+    'input',
+    debounce(() => {
+      filterSearch = supportSearch.value;
+      renderModalList();
+    }, 140)
+  );
 
   supportModalList.addEventListener('click', (e) => {
     const item = e.target.closest('.modal-card-item');
@@ -1738,14 +1787,7 @@
     const search = charFilterSearch.toLowerCase();
     return characters.filter((c) => {
       if (!matchesServer(c)) return false;
-      if (search) {
-        const name = (c.UmaName || '').toLowerCase();
-        const nick = (c.UmaNickname || '').toLowerCase();
-        const nameJP = (c.UmaNameJP || '').toLowerCase();
-        const nickJP = (c.UmaNicknameJP || '').toLowerCase();
-        if (!name.includes(search) && !nick.includes(search) &&
-            !nameJP.includes(search) && !nickJP.includes(search)) return false;
-      }
+      if (search && !getCharacterSearchText(c).includes(search)) return false;
       // AND across groups: must pass all non-empty groups
       const apt = c.UmaAptitudes;
       if (!aptitudePassesFilter(apt, 'Distance', charFilterDist)) return false;
@@ -1753,6 +1795,22 @@
       if (!aptitudePassesFilter(apt, 'Strategy', charFilterStrat)) return false;
       return true;
     });
+  }
+
+  function getCharacterSearchText(character) {
+    let searchText = characterSearchTextCache.get(character);
+    if (searchText !== undefined) return searchText;
+    searchText = [
+      character.UmaName,
+      character.UmaNickname,
+      character.UmaNameJP,
+      character.UmaNicknameJP,
+    ]
+      .filter(Boolean)
+      .join(' ')
+      .toLowerCase();
+    characterSearchTextCache.set(character, searchText);
+    return searchText;
   }
 
   const charDistFiltersEl = document.getElementById('charDistFilters');
@@ -1814,7 +1872,7 @@
       const cls = isSelected ? 'modal-card-item disabled' : 'modal-card-item';
       const imgSrc = c.UmaImage || '';
       const imgHtml = imgSrc
-        ? `<img class="modal-card-thumb" src="${escHtml(imgSrc)}" alt="" loading="lazy">`
+        ? `<img class="modal-card-thumb" src="${escHtml(imgSrc)}" alt="" loading="lazy" decoding="async" fetchpriority="low">`
         : `<span class="modal-card-initials">${escHtml(initialsOf(name))}</span>`;
       const stars = c.UmaBaseStars ? '\u2605'.repeat(Math.min(c.UmaBaseStars, 5)) : '';
 
@@ -1847,10 +1905,13 @@
   charModal.querySelector('.support-modal-backdrop').addEventListener('click', closeCharModal);
   charModal.querySelector('.support-modal-close').addEventListener('click', closeCharModal);
 
-  charSearchInput.addEventListener('input', () => {
-    charFilterSearch = charSearchInput.value;
-    renderCharModalList();
-  });
+  charSearchInput.addEventListener(
+    'input',
+    debounce(() => {
+      charFilterSearch = charSearchInput.value;
+      renderCharModalList();
+    }, 140)
+  );
 
   charModalList.addEventListener('click', (e) => {
     const item = e.target.closest('.modal-card-item');

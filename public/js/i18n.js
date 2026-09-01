@@ -11,6 +11,8 @@
 
   var TRANSLATIONS = {
     en: {
+      'home.heroTitle': 'Uma Musume Tools',
+      'home.heroTitleAccent': '& Calculators',
       // ── Common ──
       'common.speed': 'Speed',
       'common.stamina': 'Stamina',
@@ -67,11 +69,24 @@
       'nav.deckBuilder': 'Deck Builder',
       'nav.tokenPlanner': 'Token Planner',
       'nav.data': 'Data',
+      'nav.guides': 'Documentation',
       'nav.skillLibrary': 'Skill Library',
       'nav.rankBreakdown': 'Rank Breakdown',
       'nav.fun': 'Fun',
       'nav.randomizer': 'Randomizer',
       'nav.umadle': 'Umadle',
+      'nav.about': 'About',
+      'nav.aboutUmaTools': 'About UmaTools',
+      'nav.allGuides': 'All Documentation',
+      'nav.guideLibrary': 'Reference library',
+      'nav.guideRating': 'Rating & Skills',
+      'nav.guideTeamTrials': 'Team Trials',
+      'nav.guideAcceleration': 'Acceleration',
+      'nav.guideStamina': 'Stamina',
+      'nav.guideGrandLive': 'Grand Live',
+      'nav.guideOcr': 'OCR & Recognition',
+      'nav.guidePrivacy': 'Data & Privacy',
+      'nav.guideTranslations': 'Translations',
       'nav.settings': 'Settings',
       'nav.globalSettings': 'Global Settings',
       'nav.server': 'Server',
@@ -96,7 +111,7 @@
       'home.openCalculator': 'Open Calculator',
       'home.staminaCheck': 'Stamina Check',
       'home.staminaCheckDesc': 'See if your stamina meets distance and style thresholds.',
-      'home.staminaCheckBadge': 'Stamina guide',
+      'home.staminaCheckBadge': 'Race model',
       'home.openStaminaCheck': 'Open Stamina Check',
       'home.tokenPlanner': 'Grand Live Token Planner',
       'home.tokenPlannerDesc':
@@ -120,6 +135,11 @@
         'Build a training deck with 1 character and 6 support cards. See combined hints and bonuses.',
       'home.deckBuilderBadge': 'Team planner',
       'home.openDeckBuilder': 'Open Deck Builder',
+      'home.guides': 'UmaTools Documentation',
+      'home.guidesDesc':
+        'Explore the rating math and planning systems behind UmaTools in detailed player and technical documentation.',
+      'home.guidesBadge': 'Reference library',
+      'home.openGuides': 'Browse Documentation',
       'home.skillLibrary': 'Skill Library',
       'home.skillLibraryDesc':
         'Browse all skills with cost, rating score, efficiency, and sources.',
@@ -130,14 +150,14 @@
       'home.randomizerBadge': 'Fun mode',
       'home.openRandomizer': 'Open Randomizer',
       'home.umadle': 'Umadle',
-      'home.umadleDesc': 'Daily guessing game with Uma Musume data.',
-      'home.umadleBadge': 'Daily challenge',
+      'home.umadleDesc': 'Guess a mystery character using Uma Musume stats and clues.',
+      'home.umadleBadge': 'Character challenge',
       'home.openUmadle': 'Open Umadle',
       'home.rankBreakdown': 'Rating Rank Breakdown',
-      'home.rankBreakdownDesc':
-        'Browse every rating threshold and jump directly to a target rank.',
+      'home.rankBreakdownDesc': 'Browse every rating threshold and jump directly to a target rank.',
       'home.rankBreakdownBadge': 'Rating reference',
       'home.openRankBreakdown': 'Open Rank Breakdown',
+      'seo.relatedTools': 'Related tools',
       'home.raceScheduler': 'Race Scheduler',
       'home.raceSchedulerDesc': 'Plan and track your race schedule across campaigns.',
       'home.raceSchedulerBadge': 'External tool',
@@ -207,7 +227,7 @@
       'calculator.floatProjected': 'Projected',
 
       // ── Optimizer ──
-      'optimizer.title': 'Skill Optimizer & Rating Calculator',
+      'optimizer.title': 'Uma Musume Skill Optimizer',
       'optimizer.loadingSkills': 'Loading skill library...',
       'optimizer.skillReady': 'Skill library ready.',
       'optimizer.csvFallback': 'Failed to load CSV (using fallback)',
@@ -443,6 +463,11 @@
       'events.skillNameRequired': 'Skill name is required',
       'events.costRange': 'Cost must be between 0 and 999',
       'events.hintRange': 'Hint level must be between 0 and 5',
+      'events.guideTitle': 'Find Uma Musume event choices faster',
+      'events.guideIntro':
+        'Search an event name manually or capture its screen for OCR. The matching choices and outcomes help you make a training decision without interrupting your run.',
+      'events.guideRelated':
+        'Check newly offered skills in the <a href="/skills">Skill Library</a>, then compare a complete purchase plan with the <a href="/optimizer">Skill Optimizer</a>.',
 
       // ── Hints ──
       'hints.title': 'Support Hint Finder',
@@ -455,8 +480,9 @@
       'hints.loadFailed': 'Failed to load support hints.',
       'hints.loadSupportFailed': 'Failed to load support data. Please refresh.',
       'hints.copyLink': 'Copy link',
-      'hints.counts':
-        '{matched} card(s) matched | {total} cards total | {hints} unique hints',
+      'hints.counts': '{matched} card(s) matched | {total} cards total | {hints} unique hints',
+      'hints.showMore': 'Show more ({shown} of {total})',
+      'hints.resultsHeading': 'Matching support cards',
 
       // ── Deck ──
       'deck.title': 'Deck Builder',
@@ -763,6 +789,8 @@
     },
 
     ja: {
+      'home.heroTitle': 'ウマ娘ツール',
+      'home.heroTitleAccent': '＆計算機',
       // ── Common ──
       'common.speed': 'スピード',
       'common.stamina': 'スタミナ',
@@ -819,11 +847,24 @@
       'nav.deckBuilder': 'デッキ編成',
       'nav.tokenPlanner': 'トークンプランナー',
       'nav.data': 'データ',
+      'nav.guides': 'ドキュメント',
       'nav.skillLibrary': 'スキル一覧',
       'nav.rankBreakdown': 'ランク内訳',
       'nav.fun': 'お楽しみ',
       'nav.randomizer': 'ランダマイザー',
       'nav.umadle': 'ウマドル',
+      'nav.about': 'サイト概要',
+      'nav.aboutUmaTools': 'UmaToolsについて',
+      'nav.allGuides': 'ドキュメント一覧',
+      'nav.guideLibrary': 'リファレンスライブラリ',
+      'nav.guideRating': '評価点とスキル',
+      'nav.guideTeamTrials': 'チーム競技場',
+      'nav.guideAcceleration': '加速スキル',
+      'nav.guideStamina': 'スタミナ',
+      'nav.guideGrandLive': 'グランドライブ',
+      'nav.guideOcr': 'OCR・認識',
+      'nav.guidePrivacy': 'データとプライバシー',
+      'nav.guideTranslations': '翻訳',
       'nav.settings': '設定',
       'nav.globalSettings': '全般設定',
       'nav.server': 'サーバー',
@@ -848,7 +889,7 @@
       'home.openCalculator': '計算機を開く',
       'home.staminaCheck': 'スタミナチェック',
       'home.staminaCheckDesc': 'スタミナが距離と脚質の基準を満たしているか確認できます。',
-      'home.staminaCheckBadge': 'スタミナガイド',
+      'home.staminaCheckBadge': 'レースモデル',
       'home.openStaminaCheck': 'スタミナチェックを開く',
       'home.tokenPlanner': 'グランドライブトークンプランナー',
       'home.tokenPlannerDesc':
@@ -872,6 +913,11 @@
         'キャラ1体とサポカ6枚でデッキを組みます。ヒントとボーナスの一覧も確認できます。',
       'home.deckBuilderBadge': 'デッキ編成',
       'home.openDeckBuilder': 'デッキ編成を開く',
+      'home.guides': 'UmaToolsドキュメント',
+      'home.guidesDesc':
+        'UmaToolsの評価計算や育成計画の仕組みを、プレイヤー向け・技術向けドキュメントで詳しく解説します。',
+      'home.guidesBadge': 'リファレンス',
+      'home.openGuides': 'ドキュメントを見る',
       'home.skillLibrary': 'スキル一覧',
       'home.skillLibraryDesc': 'コスト・評価点・効率・取得元でスキルを検索・閲覧できます。',
       'home.skillLibraryBadge': 'データベース',
@@ -881,13 +927,15 @@
       'home.randomizerBadge': 'おたのしみ',
       'home.openRandomizer': 'ランダマイザーを開く',
       'home.umadle': 'ウマドル',
-      'home.umadleDesc': 'ウマ娘データを使った毎日の推測ゲーム。',
-      'home.umadleBadge': 'デイリーチャレンジ',
+      'home.umadleDesc': 'ウマ娘のステータスとヒントを使ったキャラクター推測ゲーム。',
+      'home.umadleBadge': 'キャラクターチャレンジ',
       'home.openUmadle': 'ウマドルを開く',
       'home.rankBreakdown': 'レーティングランク内訳',
-      'home.rankBreakdownDesc': 'すべてのレーティングしきい値を確認し、目標ランクへ直接移動できます。',
+      'home.rankBreakdownDesc':
+        'すべてのレーティングしきい値を確認し、目標ランクへ直接移動できます。',
       'home.rankBreakdownBadge': 'レーティング早見表',
       'home.openRankBreakdown': 'ランク内訳を開く',
+      'seo.relatedTools': '関連ツール',
       'home.raceScheduler': 'レーススケジューラー',
       'home.raceSchedulerDesc': 'キャンペーン全体のレーススケジュールを計画・管理。',
       'home.raceSchedulerBadge': '外部ツール',
@@ -954,7 +1002,7 @@
       'calculator.floatProjected': '予想',
 
       // ── Optimizer ──
-      'optimizer.title': 'スキルオプティマイザー & レーティング計算機',
+      'optimizer.title': 'ウマ娘スキルオプティマイザー',
       'optimizer.loadingSkills': 'スキルライブラリ読み込み中...',
       'optimizer.skillReady': 'スキルライブラリ準備完了。',
       'optimizer.csvFallback': 'CSV読み込み失敗（フォールバック使用）',
@@ -1186,6 +1234,11 @@
       'events.skillNameRequired': 'スキル名は必須です',
       'events.costRange': 'コストは0～999の範囲で入力してください',
       'events.hintRange': 'ヒントレベルは0～5の範囲で入力してください',
+      'events.guideTitle': 'ウマ娘のイベント選択肢をすばやく検索',
+      'events.guideIntro':
+        'イベント名を手動で検索するか、画面をOCRで読み取ります。一致した選択肢と結果を確認できるため、育成を中断せずに判断できます。',
+      'events.guideRelated':
+        '提示されたスキルを<a href="/skills">スキル一覧</a>で確認し、<a href="/optimizer">スキルオプティマイザー</a>で取得プラン全体を比較できます。',
 
       // ── Hints ──
       'hints.title': 'サポートヒント検索',
@@ -1198,8 +1251,9 @@
       'hints.loadFailed': 'サポートヒントの読み込みに失敗しました。',
       'hints.loadSupportFailed': 'サポートデータの読み込みに失敗しました。更新してください。',
       'hints.copyLink': 'リンクをコピー',
-      'hints.counts':
-        '{matched}件一致 | 全{total}枚 | ヒント{hints}種',
+      'hints.counts': '{matched}件一致 | 全{total}枚 | ヒント{hints}種',
+      'hints.showMore': 'もっと見る（{shown}/{total}）',
+      'hints.resultsHeading': '一致するサポートカード',
 
       // ── Deck ──
       'deck.title': 'デッキ編成',
@@ -1445,8 +1499,7 @@
       'teamTrials.consistentGoldPrioritized':
         '安定した金スキルがチームレースのレーティング価値で優先。',
       'teamTrials.multipleHighProc': '複数の選択肢が高い発動信頼性（65%以上）。',
-      'teamTrials.prioritizesConsistent':
-        '発動スコアリングで安定した金スキルを優先。',
+      'teamTrials.prioritizesConsistent': '発動スコアリングで安定した金スキルを優先。',
       'teamTrials.averageConsistency': '平均安定度スコア: {score}%。',
       'teamTrials.totalSVReport': '合計SV: {sv}（{cost} SP使用）。',
       'teamTrials.riskyPick': 'リスク選択: {name} は推定信頼性が低い。',
@@ -1508,13 +1561,13 @@
     currentLang = lang === 'jp' || lang === 'ja' ? 'ja' : 'en';
   }
 
-  function t(key, vars) {
+  function getTranslation(key, vars) {
     var dict = TRANSLATIONS[currentLang] || TRANSLATIONS.en;
     var str = dict[key];
     if (str === undefined) {
       str = TRANSLATIONS.en[key];
     }
-    if (str === undefined) return key;
+    if (str === undefined) return undefined;
     if (vars && typeof vars === 'object') {
       str = str.replace(/\{([a-zA-Z0-9_-]+)\}/g, function (_, k) {
         var v = vars[k];
@@ -1524,37 +1577,47 @@
     return str;
   }
 
+  function t(key, vars) {
+    var str = getTranslation(key, vars);
+    return str === undefined ? key : str;
+  }
+
   function applyI18n(root) {
     var container = root || document;
     var els = container.querySelectorAll('[data-i18n]');
     for (var i = 0; i < els.length; i++) {
       var el = els[i];
       var key = el.getAttribute('data-i18n');
-      if (key) el.textContent = t(key);
+      var translated = key ? getTranslation(key) : undefined;
+      if (translated !== undefined) el.textContent = translated;
     }
     els = container.querySelectorAll('[data-i18n-html]');
     for (var i = 0; i < els.length; i++) {
       var el = els[i];
       var key = el.getAttribute('data-i18n-html');
-      if (key) el.innerHTML = t(key);
+      var translated = key ? getTranslation(key) : undefined;
+      if (translated !== undefined) el.innerHTML = translated;
     }
     els = container.querySelectorAll('[data-i18n-placeholder]');
     for (var i = 0; i < els.length; i++) {
       var el = els[i];
       var key = el.getAttribute('data-i18n-placeholder');
-      if (key) el.placeholder = t(key);
+      var translated = key ? getTranslation(key) : undefined;
+      if (translated !== undefined) el.placeholder = translated;
     }
     els = container.querySelectorAll('[data-i18n-aria]');
     for (var i = 0; i < els.length; i++) {
       var el = els[i];
       var key = el.getAttribute('data-i18n-aria');
-      if (key) el.setAttribute('aria-label', t(key));
+      var translated = key ? getTranslation(key) : undefined;
+      if (translated !== undefined) el.setAttribute('aria-label', translated);
     }
     els = container.querySelectorAll('[data-i18n-title]');
     for (var i = 0; i < els.length; i++) {
       var el = els[i];
       var key = el.getAttribute('data-i18n-title');
-      if (key) el.setAttribute('title', t(key));
+      var translated = key ? getTranslation(key) : undefined;
+      if (translated !== undefined) el.setAttribute('title', translated);
     }
   }
 
@@ -1618,7 +1681,8 @@
           var firstJP = enKeyFirstJP.get(key);
           if (firstJP) {
             var firstDisambigKey = key + ' (' + firstJP.trim().toLowerCase() + ')';
-            if (!jpSkillNameMap.has(firstDisambigKey)) jpSkillNameMap.set(firstDisambigKey, firstJP);
+            if (!jpSkillNameMap.has(firstDisambigKey))
+              jpSkillNameMap.set(firstDisambigKey, firstJP);
           }
         }
       });
@@ -1628,12 +1692,19 @@
       var jpname = ((skill && skill.jpname) || '').trim();
       indexSkill(jpname, [skill.name_en, skill.enname, skill.jpname, skill.name]);
       if (skill.gene_version) {
-        var gvJp = ((skill.gene_version.jpname) || '').trim();
-        indexSkill(gvJp, [skill.gene_version.name_en, skill.gene_version.enname, skill.gene_version.jpname, skill.gene_version.name]);
+        var gvJp = (skill.gene_version.jpname || '').trim();
+        indexSkill(gvJp, [
+          skill.gene_version.name_en,
+          skill.gene_version.enname,
+          skill.gene_version.jpname,
+          skill.gene_version.name,
+        ]);
       }
     });
     // Notify pages that JP skill names are now available for re-rendering
-    try { window.dispatchEvent(new Event('i18n:jpnames-ready')); } catch (_) {}
+    try {
+      window.dispatchEvent(new Event('i18n:jpnames-ready'));
+    } catch (_) {}
   }
 
   function getLocalizedSkillName(name) {

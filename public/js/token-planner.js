@@ -12,9 +12,9 @@
   ];
 
   const LESSONS = [
-    { label: 'Live 1', value: '1-2-3-4-4-2' },
-    { label: 'Live 2-4', value: '2-2-2-4-5-2' },
-    { label: 'Live 5', value: '2-2-2-4-2-2' },
+    { label: 'Before 1st Concert', value: '1-2-3-4-4-2-3' },
+    { label: 'Before 2nd to 4th Concert', value: '2-2-2-4-5-2-2' },
+    { label: 'Before Grand Concert', value: '2-2-2-4-3-2-2' },
   ];
 
   const SONGS = [

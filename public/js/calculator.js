@@ -69,19 +69,23 @@
   });
 
   let skillsByCategory = {};
-  let categories = [];
-  const preferredOrder = ['golden', 'yellow', 'blue', 'green', 'red', 'purple', 'evo', 'ius'];
   let skillIndex = new Map();
   let skillLookupLoose = new Map();
   let allSkillNames = [];
+  let allSkillNamesNormalized = [];
+  let datalistPrefix1Index = new Map();
+  let datalistPrefix2Index = new Map();
   const MAX_SKILL_SUGGESTIONS = 300;
   const MAX_SKILL_SUGGESTIONS_WITH_PREFIX = 2000;
+  const DATALIST_CACHE_MAX_KEYS = 40;
 
   // Track active skill keys for duplicate detection
   const activeSkillKeys = new Map();
 
   // Shared datalist for all skill inputs
   let sharedSkillDatalist = null;
+  let datalistSuggestionCache = new Map();
+  let lastDatalistPrefix = null;
   let officialEnglishNameSet = new Set();
   let localizedNameSet = new Set();
   const externalAliasLookup = new Map();
@@ -427,6 +431,24 @@
     skillLookupLoose = nextLooseLookup;
     names.sort((a, b) => a.localeCompare(b));
     allSkillNames = names;
+    allSkillNamesNormalized = names.map((name) => normalize(name));
+    datalistPrefix1Index = new Map();
+    datalistPrefix2Index = new Map();
+    allSkillNamesNormalized.forEach((normalizedName, index) => {
+      if (!normalizedName) return;
+      const prefix1 = normalizedName.slice(0, 1);
+      const prefix2 = normalizedName.slice(0, 2);
+      if (prefix1) {
+        if (!datalistPrefix1Index.has(prefix1)) datalistPrefix1Index.set(prefix1, []);
+        datalistPrefix1Index.get(prefix1).push(index);
+      }
+      if (prefix2.length === 2) {
+        if (!datalistPrefix2Index.has(prefix2)) datalistPrefix2Index.set(prefix2, []);
+        datalistPrefix2Index.get(prefix2).push(index);
+      }
+    });
+    datalistSuggestionCache.clear();
+    lastDatalistPrefix = null;
     rebuildSharedDatalist();
     refreshAllRows();
   }
@@ -496,7 +518,6 @@
         },
       ],
     };
-    categories = Object.keys(skillsByCategory);
     rebuildSkillCaches();
     libStatus.textContent = `Using fallback skills (${reason})`;
   }
@@ -679,7 +700,7 @@
       if (!catMap[type]) catMap[type] = [];
       const resolvedJpName = isJPCSV
         ? jpOriginalName
-        : (aliasNames.find((a) => hasJapaneseScript(a)) || '');
+        : aliasNames.find((a) => hasJapaneseScript(a)) || '';
       catMap[type].push({
         name,
         jpName: resolvedJpName,
@@ -693,12 +714,6 @@
       loaded++;
     }
     skillsByCategory = catMap;
-    categories = Object.keys(catMap).sort((a, b) => {
-      const ia = preferredOrder.indexOf(a),
-        ib = preferredOrder.indexOf(b);
-      if (ia !== -1 || ib !== -1) return (ia === -1 ? 999 : ia) - (ib === -1 ? 999 : ib);
-      return a.localeCompare(b);
-    });
     lastCSVLoadStats = {
       loaded,
       filteredOut,
@@ -717,6 +732,7 @@
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const list = await res.json();
         if (!Array.isArray(list) || !list.length) continue;
+        window.__skillsAllData = list;
         const nextOfficialNames = new Set();
         const allNameEn = new Set(); // all valid EN name_en values
         const pendingLocalizedNames = []; // JP ennames to filter, finalized after loop
@@ -752,8 +768,14 @@
         list.forEach((entry) => {
           const name = (entry?.name_en || '').trim();
           const geneName = (entry?.gene_version?.name_en || '').trim();
-          if (name) { nextOfficialNames.add(normalizeOfficialSkillName(name)); allNameEn.add(normalize(name)); }
-          if (geneName) { nextOfficialNames.add(normalizeOfficialSkillName(geneName)); allNameEn.add(normalize(geneName)); }
+          if (name) {
+            nextOfficialNames.add(normalizeOfficialSkillName(name));
+            allNameEn.add(normalize(name));
+          }
+          if (geneName) {
+            nextOfficialNames.add(normalizeOfficialSkillName(geneName));
+            allNameEn.add(normalize(geneName));
+          }
           // Collect JP-server English names (enname) that differ from EN name_en,
           // but only if the enname isn't also a valid name_en of any skill
           const jpEnName = (entry?.enname || '').trim();
@@ -805,18 +827,44 @@
     return true;
   }
 
-  async function loadSkillsCSV() {
+  function getSkillsCSVCandidates(lang) {
+    return lang === 'jp'
+      ? ['/assets/uma_skills_jp.csv', './assets/uma_skills_jp.csv', '/assets/uma_skills.csv']
+      : ['/assets/uma_skills.csv', './assets/uma_skills.csv'];
+  }
+
+  function preloadSkillsCSV() {
     const lang = getSkillLanguage();
-    const candidates =
-      lang === 'jp'
-        ? ['/assets/uma_skills_jp.csv', './assets/uma_skills_jp.csv', '/assets/uma_skills.csv']
-        : ['/assets/uma_skills.csv', './assets/uma_skills.csv'];
+    const url = getSkillsCSVCandidates(lang)[0];
+    return fetch(url, { cache: 'force-cache' })
+      .then((response) => {
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        return response.text();
+      })
+      .then((text) => ({ lang, url, text, error: null }))
+      .catch((error) => ({ lang, url, text: '', error }));
+  }
+
+  async function loadSkillsCSV(preloadedCSV = null) {
+    const lang = getSkillLanguage();
+    const candidates = getSkillsCSVCandidates(lang);
     let lastErr = null;
     for (const url of candidates) {
       try {
-        const res = await fetch(url, { cache: 'force-cache' });
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const text = await res.text();
+        let text = '';
+        if (preloadedCSV && url === candidates[0]) {
+          const preloaded = await preloadedCSV;
+          preloadedCSV = null;
+          if (preloaded.lang === lang && preloaded.url === url) {
+            if (preloaded.text) text = preloaded.text;
+            else if (preloaded.error) throw preloaded.error;
+          }
+        }
+        if (!text) {
+          const res = await fetch(url, { cache: 'force-cache' });
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          text = await res.text();
+        }
         skillsCsvCache = text;
         const ok = loadFromCSVContent(text);
         if (ok) {
@@ -832,11 +880,6 @@
     libStatus.textContent = t('calculator.csvFallback');
     applyFallbackSkills('CSV not found / blocked');
     return false;
-  }
-
-  function isGoldCategory(cat) {
-    const v = (cat || '').toLowerCase();
-    return v === 'golden' || v === 'gold' || v.includes('gold');
   }
 
   function canonicalCategory(cat) {
@@ -880,24 +923,69 @@
     sharedSkillDatalist = document.createElement('datalist');
     sharedSkillDatalist.id = 'skills-datalist-shared';
     document.body.appendChild(sharedSkillDatalist);
-    rebuildSharedDatalist();
     return sharedSkillDatalist;
   }
 
   function rebuildSharedDatalist(prefix = '') {
     if (!sharedSkillDatalist) return;
-    sharedSkillDatalist.innerHTML = '';
     const normalizedPrefix = normalize(prefix);
+    if (normalizedPrefix === lastDatalistPrefix) return;
+    lastDatalistPrefix = normalizedPrefix;
+
     const suggestionLimit = normalizedPrefix
       ? MAX_SKILL_SUGGESTIONS_WITH_PREFIX
       : MAX_SKILL_SUGGESTIONS;
+
+    const cacheKey = `${normalizedPrefix}|${suggestionLimit}`;
+    let suggestionNames = datalistSuggestionCache.get(cacheKey);
+    if (!suggestionNames) {
+      suggestionNames = [];
+      let candidateIndexes = null;
+      if (normalizedPrefix) {
+        candidateIndexes =
+          normalizedPrefix.length >= 2
+            ? datalistPrefix2Index.get(normalizedPrefix.slice(0, 2)) || []
+            : datalistPrefix1Index.get(normalizedPrefix) || [];
+      }
+
+      const prefixIndexes = new Set();
+      if (candidateIndexes) {
+        for (let i = 0; i < candidateIndexes.length; i++) {
+          if (suggestionNames.length >= suggestionLimit) break;
+          const index = candidateIndexes[i];
+          if (!allSkillNamesNormalized[index]?.startsWith(normalizedPrefix)) continue;
+          suggestionNames.push(allSkillNames[index]);
+          prefixIndexes.add(index);
+        }
+      } else {
+        for (let i = 0; i < allSkillNames.length && suggestionNames.length < suggestionLimit; i++) {
+          suggestionNames.push(allSkillNames[i]);
+          prefixIndexes.add(i);
+        }
+      }
+
+      if (normalizedPrefix && suggestionNames.length < suggestionLimit) {
+        for (
+          let i = 0;
+          i < allSkillNamesNormalized.length && suggestionNames.length < suggestionLimit;
+          i++
+        ) {
+          if (prefixIndexes.has(i) || !allSkillNamesNormalized[i]?.includes(normalizedPrefix)) {
+            continue;
+          }
+          suggestionNames.push(allSkillNames[i]);
+        }
+      }
+
+      if (datalistSuggestionCache.size >= DATALIST_CACHE_MAX_KEYS) {
+        datalistSuggestionCache.clear();
+      }
+      datalistSuggestionCache.set(cacheKey, suggestionNames);
+    }
+
+    sharedSkillDatalist.innerHTML = '';
     const frag = document.createDocumentFragment();
-    let added = 0;
-    // Phase 1: prefix matches first
-    var prefixSet = new Set();
-    allSkillNames.forEach((name, i) => {
-      if (added >= suggestionLimit) return;
-      if (normalizedPrefix && !normalize(name).startsWith(normalizedPrefix)) return;
+    suggestionNames.forEach((name) => {
       const opt = document.createElement('option');
       opt.value = name;
       const skill = findSkillByName(name);
@@ -908,28 +996,7 @@
         opt.textContent = display;
       }
       frag.appendChild(opt);
-      prefixSet.add(i);
-      added++;
     });
-    // Phase 2: substring matches (skip already-added prefix matches)
-    if (normalizedPrefix && added < suggestionLimit) {
-      allSkillNames.forEach((name, i) => {
-        if (added >= suggestionLimit) return;
-        if (prefixSet.has(i)) return;
-        if (!normalize(name).includes(normalizedPrefix)) return;
-        const opt = document.createElement('option');
-        opt.value = name;
-        const skill = findSkillByName(name);
-        const isCanonical = !!skill && normalize(name) === normalize(skill.name);
-        const display = isCanonical ? formatSkillDisplayName(skill) : name;
-        if (display && display !== name) {
-          opt.label = display;
-          opt.textContent = display;
-        }
-        frag.appendChild(opt);
-        added++;
-      });
-    }
     sharedSkillDatalist.appendChild(frag);
   }
 
@@ -1209,28 +1276,45 @@
     setCategoryDisplay(row.dataset.skillCategory || '');
 
     if (skillInput) {
+      let lastSyncedValue = skillInput.value;
       const syncFromInput = () => {
+        lastSyncedValue = skillInput.value;
         rebuildSharedDatalist(skillInput.value || '');
         syncSkillCategory({ triggerUpdate: true });
       };
-      skillInput.addEventListener('input', syncFromInput);
-      skillInput.addEventListener('change', syncFromInput);
-      skillInput.addEventListener('blur', syncFromInput);
+      let inputSyncTimer = null;
+      const syncFromTyping = () => {
+        window.clearTimeout(inputSyncTimer);
+        inputSyncTimer = window.setTimeout(() => {
+          inputSyncTimer = null;
+          syncFromInput();
+        }, 160);
+      };
+      const syncFromCommit = () => {
+        window.clearTimeout(inputSyncTimer);
+        inputSyncTimer = null;
+        syncFromInput();
+      };
+      skillInput.addEventListener('input', syncFromTyping);
+      skillInput.addEventListener('change', syncFromCommit);
+      skillInput.addEventListener('blur', syncFromCommit);
       skillInput.addEventListener('keyup', (event) => {
-        if (event.key === 'Enter') syncFromInput();
+        if (event.key === 'Enter') syncFromCommit();
       });
       let monitorId = null;
       const startMonitor = () => {
         rebuildSharedDatalist(skillInput.value || '');
         if (monitorId) return;
-        let lastValue = skillInput.value;
+        lastSyncedValue = skillInput.value;
         monitorId = window.setInterval(() => {
-          if (!document.body.contains(skillInput)) return;
-          if (skillInput.value !== lastValue) {
-            lastValue = skillInput.value;
-            syncFromInput();
+          if (!document.body.contains(skillInput)) {
+            stopMonitor();
+            return;
           }
-        }, 120);
+          if (skillInput.value !== lastSyncedValue) {
+            syncFromCommit();
+          }
+        }, 500);
       };
       const stopMonitor = () => {
         if (!monitorId) return;
@@ -1345,6 +1429,7 @@
         { rootMargin: '200px' }
       );
       observer.observe(card);
+      return;
     }
     if ('requestIdleCallback' in window) {
       requestIdleCallback(load, { timeout: 2000 });
@@ -1452,8 +1537,9 @@
   // Initialize
   async function init() {
     // Load skills library
+    const skillsCSVPreload = preloadSkillsCSV();
     await loadOfficialEnglishSkillSet();
-    await loadSkillsCSV();
+    await loadSkillsCSV(skillsCSVPreload);
     if (libStatus && /loading/i.test(libStatus.textContent || '')) {
       libStatus.textContent = t('calculator.skillReady');
     }

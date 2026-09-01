@@ -15,25 +15,17 @@
     var nav = buildNav(sectionList);
     document.body.appendChild(nav);
 
-    // Track which section is in view
-    new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (!entry.isIntersecting) return;
-          var idx = sectionList.indexOf(entry.target);
-          if (idx !== -1) currentIndex = idx;
-        });
-      },
-      { rootMargin: '-20% 0px -70% 0px' }
-    ).observe(sections[0]);
-
-    // Observe all sections
+    // Track which section is in view with one observer for the whole list.
+    var sectionIndexes = new Map();
+    sectionList.forEach(function (section, index) {
+      sectionIndexes.set(section, index);
+    });
     var observer = new IntersectionObserver(
       function (entries) {
         entries.forEach(function (entry) {
           if (!entry.isIntersecting) return;
-          var idx = sectionList.indexOf(entry.target);
-          if (idx !== -1) currentIndex = idx;
+          var idx = sectionIndexes.get(entry.target);
+          if (typeof idx === 'number') currentIndex = idx;
         });
       },
       { rootMargin: '-20% 0px -70% 0px' }

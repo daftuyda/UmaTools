@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>UmaTools - Rating Calculator</title>
+    <title>Uma Musume Rating Calculator | UmaTools</title>
     <meta
       name="description"
-      content="Standalone Uma Musume rating calculator with stats, skills, and race aptitude inputs."
+      content="Calculate an Uma Musume character rating from stats, skills, and race aptitudes with a live breakdown of rating points."
     />
     <link rel="canonical" href="https://daftuyda.moe/calculator" />
     <meta name="robots" content="index, follow" />
@@ -16,25 +16,25 @@
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="UmaTools" />
-    <meta property="og:title" content="UmaTools - Rating Calculator" />
+    <meta property="og:title" content="Uma Musume Rating Calculator | UmaTools" />
     <meta
       property="og:description"
-      content="Standalone Uma Musume rating calculator with stats, skills, and race aptitude inputs."
+      content="Calculate an Uma Musume character rating from stats, skills, and race aptitudes with a live breakdown of rating points."
     />
     <meta property="og:url" content="https://daftuyda.moe/calculator" />
     <meta property="og:image" content="https://daftuyda.moe/api/og?page=calculator" />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="UmaTools - Rating Calculator" />
+    <meta property="og:image:alt" content="Uma Musume Rating Calculator | UmaTools" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="UmaTools - Rating Calculator" />
+    <meta name="twitter:title" content="Uma Musume Rating Calculator | UmaTools" />
     <meta
       name="twitter:description"
-      content="Standalone Uma Musume rating calculator with stats, skills, and race aptitude inputs."
+      content="Calculate an Uma Musume character rating from stats, skills, and race aptitudes with a live breakdown of rating points."
     />
     <meta name="twitter:image" content="https://daftuyda.moe/api/og?page=calculator" />
-    <meta name="twitter:image:alt" content="UmaTools - Rating Calculator" />
+    <meta name="twitter:image:alt" content="Uma Musume Rating Calculator | UmaTools" />
     <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png" />
@@ -127,8 +127,8 @@
             "@type": "WebPage",
             "@id": "https://daftuyda.moe/calculator#webpage",
             "url": "https://daftuyda.moe/calculator",
-            "name": "Rating Calculator",
-            "description": "Standalone Uma Musume rating calculator with stats, skills, and race aptitude inputs.",
+            "name": "Uma Musume Rating Calculator",
+            "description": "Calculate an Uma Musume character rating from stats, skills, and race aptitudes with a live breakdown of rating points.",
             "isPartOf": { "@id": "https://daftuyda.moe/#website" },
             "about": { "@id": "https://daftuyda.moe/#organization" },
             "inLanguage": "en"
@@ -555,6 +555,7 @@
                   <div
                     class="rating-progress-bar"
                     role="progressbar"
+                    aria-labelledby="rating-next-label"
                     aria-valuemin="0"
                     aria-valuemax="100"
                     aria-valuenow="0"
@@ -675,6 +676,7 @@
           id="rating-float-progress-bar"
           class="rating-progress-bar"
           role="progressbar"
+          aria-labelledby="rating-float-next-label"
           aria-valuemin="0"
           aria-valuemax="100"
           aria-valuenow="0"
