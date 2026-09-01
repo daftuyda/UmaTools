@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Uma Musume Acceleration Skill Checker | UmaTools</title>
+    <meta
+      name="description"
+      content="Check which Uma Musume acceleration skills are valid for a race setup using VAC timing logic and Global or Japanese skill data."
+    />
+    <link rel="canonical" href="https://daftuyda.moe/accel" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
+    <meta name="color-scheme" content="light dark" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="UmaTools" />
+    <meta property="og:title" content="Uma Musume Acceleration Skill Checker | UmaTools" />
+    <meta
+      property="og:description"
+      content="Check which Uma Musume acceleration skills are valid for a race setup using VAC timing logic and Global or Japanese skill data."
+    />
+    <meta property="og:url" content="https://daftuyda.moe/accel" />
+    <meta property="og:image" content="https://daftuyda.moe/api/og/v1/accel.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Uma Musume Acceleration Skill Checker | UmaTools" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Uma Musume Acceleration Skill Checker | UmaTools" />
+    <meta
+      name="twitter:description"
+      content="Check which Uma Musume acceleration skills are valid for a race setup using VAC timing logic and Global or Japanese skill data."
+    />
+    <meta name="twitter:image" content="https://daftuyda.moe/api/og/v1/accel.png" />
+    <meta name="twitter:image:alt" content="Uma Musume Acceleration Skill Checker | UmaTools" />
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=optional"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=optional"
+      rel="stylesheet"
+      media="print"
+      onload="this.media = 'all'"
+    />
+    <noscript
+      ><link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=optional"
+        rel="stylesheet"
+    /></noscript>
+    <link rel="stylesheet" href="/css/air.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://daftuyda.moe/#organization",
+            "name": "UmaTools",
+            "url": "https://daftuyda.moe/",
+            "logo": "https://daftuyda.moe/assets/icon-512.png",
+            "sameAs": ["https://github.com/daftuyda/UmaTools", "https://youtube.com/@MaybeVoid"]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://daftuyda.moe/#website",
+            "url": "https://daftuyda.moe/",
+            "name": "UmaTools",
+            "publisher": { "@id": "https://daftuyda.moe/#organization" },
+            "inLanguage": "en"
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://daftuyda.moe/accel#webpage",
+            "url": "https://daftuyda.moe/accel",
+            "name": "Uma Musume Acceleration Skill Checker",
+            "description": "Check which Uma Musume acceleration skills are valid for a race setup using VAC timing logic and Global or Japanese skill data.",
+            "isPartOf": { "@id": "https://daftuyda.moe/#website" },
+            "about": { "@id": "https://daftuyda.moe/#organization" },
+            "inLanguage": "en"
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://daftuyda.moe/accel#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://daftuyda.moe/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Acceleration Skill Checker",
+                "item": "https://daftuyda.moe/accel"
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+  </head>
+  <body class="ui-revamp-page app-revamp">
+    <div id="site-nav-slot" class="site-nav-slot" aria-hidden="true"></div>
+    <script>
+      (function () {
+        try {
+          var theme = localStorage.getItem('umatools-theme');
+          var pref = localStorage.getItem('umasearch-darkmode');
+          var dark = theme
+            ? theme === 'dark' || theme === 'oled'
+            : pref
+              ? pref === 'dark'
+              : window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var root = document.documentElement;
+          root.classList.add('is-loading');
+          root.classList.toggle('dark', dark);
+          root.classList.toggle('oled', theme === 'oled');
+          root.dataset.theme = theme || (dark ? 'dark' : 'light');
+          root.style.colorScheme = dark ? 'dark' : 'light';
+
+          var pageLoaded = false;
+          var navReady = !document.querySelector('script[src="/js/nav.js"]');
+          var release = function () {
+            root.classList.remove('is-loading');
+          };
+          var tryRelease = function () {
+            if (!pageLoaded || !navReady) return;
+            if (document.fonts && document.fonts.ready) {
+              Promise.race([
+                document.fonts.ready,
+                new Promise(function (resolve) {
+                  setTimeout(resolve, 1200);
+                }),
+              ]).then(function () {
+                requestAnimationFrame(release);
+              });
+            } else {
+              requestAnimationFrame(release);
+            }
+          };
+          window.addEventListener('load', function () {
+            pageLoaded = true;
+            tryRelease();
+          });
+          window.addEventListener('nav:ready', function () {
+            navReady = true;
+            tryRelease();
+          });
+          window.setTimeout(function () {
+            pageLoaded = true;
+            navReady = true;
+            tryRelease();
+          }, 2400);
+        } catch (e) {}
+      })();
+    </script>
+    <button
+      id="modeToggleBtn"
+      aria-label="Toggle dark/light mode"
+      data-i18n-aria="common.toggleDarkLight"
+      class="mode-toggle-btn"
+      title="Toggle dark/light mode"
+      data-i18n-title="common.toggleDarkLight"
+    >
+      <svg
+        id="iconSun"
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="feather feather-sun"
+      >
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line>
+        <line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+      </svg>
+      <svg
+        id="iconMoon"
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="feather feather-moon"
+        style="display: none"
+      >
+        <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+      </svg>
+    </button>
+
+    <main id="main" class="accel-page container">
+      <h1 data-l10n="title">Valid Accel Checker</h1>
+
+      <div class="accel-layout">
+        <section
+          class="card card-elevated race-config-container accel-controls"
+          aria-label="Checker setup"
+        >
+          <div class="accel-section">
+            <h2 data-l10n="raceSetup">Race Setup</h2>
+            <div class="accel-setup-grid">
+              <label>
+                <span data-l10n="racePreset">Race preset</span>
+                <select id="presetSel">
+                  <option value="">- Select race -</option>
+                </select>
+              </label>
+              <label>
+                <span data-l10n="distance">Distance</span>
+                <select id="distSel">
+                  <option value="">- Select distance -</option>
+                </select>
+              </label>
+              <label>
+                <span data-l10n="trackType">Track type</span>
+                <select id="gtSel">
+                  <option value="">- Select track -</option>
+                </select>
+              </label>
+              <label>
+                <span data-l10n="trackCondition">Track condition</span>
+                <select id="gcSel">
+                  <option value="">- Select condition -</option>
+                </select>
+              </label>
+              <label>
+                <span data-l10n="racecourse">Racecourse</span>
+                <select id="venueSel">
+                  <option value="">- Select racecourse -</option>
+                </select>
+              </label>
+              <label>
+                <span data-l10n="mood">Mood (optional)</span>
+                <select id="mvSel">
+                  <option value="">All moods</option>
+                </select>
+              </label>
+              <label>
+                <span data-l10n="skillNameFilter">Skill name filter (optional)</span>
+                <input
+                  id="skillSearch"
+                  type="text"
+                  data-l10n-placeholder="skillNameFilterPlaceholder"
+                  placeholder="Search by EN or JP skill name"
+                  autocomplete="off"
+                />
+              </label>
+            </div>
+          </div>
+
+          <div class="accel-section">
+            <h2 data-l10n="rarityFilter">Rarity Filter</h2>
+            <div id="rarityFilters" class="accel-rarity">
+              <button
+                class="accel-rarity-btn active"
+                type="button"
+                data-rarity="all"
+                aria-pressed="true"
+              >
+                <span data-l10n="rarityAll">All</span>
+              </button>
+              <button class="accel-rarity-btn" type="button" data-rarity="1" aria-pressed="false">
+                <span data-l10n="rarityWhite">White</span>
+              </button>
+              <button class="accel-rarity-btn" type="button" data-rarity="2" aria-pressed="false">
+                <span data-l10n="rarityGold">Gold</span>
+              </button>
+              <button class="accel-rarity-btn" type="button" data-rarity="3" aria-pressed="false">
+                <span data-l10n="raritySubUnique">Sub-Unique</span>
+              </button>
+              <button class="accel-rarity-btn" type="button" data-rarity="4" aria-pressed="false">
+                <span data-l10n="rarityUnique">Unique</span>
+              </button>
+              <button class="accel-rarity-btn" type="button" data-rarity="6" aria-pressed="false">
+                <span data-l10n="rarityEvolution">Evolution</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="accel-section">
+            <h2 data-l10n="courseDetails">Course Details</h2>
+            <div class="accel-inline-grid">
+              <label>
+                <span data-l10n="finalPhaseStart">Final phase start (ls)</span>
+                <input id="manLS" type="number" min="0" max="4000" placeholder="ex: 1333" />
+              </label>
+              <label>
+                <span data-l10n="finalCorner">Final corner (fc)</span>
+                <input id="manFC" type="number" min="0" max="4000" placeholder="ex: 1230" />
+              </label>
+              <label>
+                <span data-l10n="finalStraight">Final straight (fs)</span>
+                <input id="manFS" type="number" min="0" max="4000" placeholder="ex: 1500" />
+              </label>
+            </div>
+
+            <div class="slope-group">
+              <div class="slope-header">
+                <h3 data-l10n="uphill">Uphill Sections</h3>
+                <button
+                  id="addUpBtn"
+                  class="btn btn-secondary"
+                  type="button"
+                  data-l10n="addSection"
+                >
+                  Add section
+                </button>
+              </div>
+              <div id="upRows" class="slope-rows"></div>
+            </div>
+
+            <div class="slope-group">
+              <div class="slope-header">
+                <h3 data-l10n="downhill">Downhill Sections</h3>
+                <button
+                  id="addDnBtn"
+                  class="btn btn-secondary"
+                  type="button"
+                  data-l10n="addSection"
+                >
+                  Add section
+                </button>
+              </div>
+              <div id="dnRows" class="slope-rows"></div>
+            </div>
+          </div>
+
+          <div id="formError" class="accel-error" role="alert" hidden></div>
+
+          <div class="accel-actions">
+            <button id="searchBtn" class="btn primary" type="button" data-l10n="search">
+              Search Valid Acceleration
+            </button>
+            <button id="resetBtn" class="btn btn-secondary" type="button" data-l10n="reset">
+              Reset
+            </button>
+          </div>
+        </section>
+
+        <section class="card card-elevated accel-results" aria-live="polite">
+          <div class="results-head">
+            <div class="results-main">
+              <h2 data-l10n="results">Results</h2>
+              <p class="muted" data-l10n="resultsSub">
+                Output is sorted by activation timing, uncertainty, and effect value.
+              </p>
+            </div>
+            <div class="results-stats">
+              <div class="mini-stat">
+                <span data-l10n="dbSkills">DB skills</span>
+                <strong id="dbCnt">-</strong>
+              </div>
+              <div class="mini-stat">
+                <span data-l10n="serverMode">Server mode</span>
+                <strong id="serverMode">-</strong>
+              </div>
+              <div class="mini-stat">
+                <span data-l10n="validSkills">Valid skills</span>
+                <strong id="resCnt">-</strong>
+                <span id="resTot"></span>
+              </div>
+            </div>
+          </div>
+
+          <div id="chips" class="chips"></div>
+          <div id="warnBox" class="warn-box" hidden data-l10n="missingCourseInfoWarning">
+            Final corner (fc) or final straight (fs) is missing. Accuracy may decrease.
+          </div>
+          <div id="resBody" class="results-body"></div>
+        </section>
+      </div>
+    </main>
+
+    <script src="/js/i18n-core.js" defer></script>
+    <script src="/js/i18n-pages.js" defer></script>
+    <script src="/js/skill-popup.js" defer></script>
+    <script src="/js/accel.js" defer></script>
+    <script src="/js/nav.js" defer></script>
+    <script src="/js/changelog.js" defer></script>
+    <script src="/js/theme-toggle.js" defer></script>
+  </body>
+</html>

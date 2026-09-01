@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Uma Musume Tools &amp; Calculators | UmaTools</title>
+    <meta
+      name="description"
+      content="Free Uma Musume tools for skill builds, rating calculations, support decks, stamina checks, race planning, game data, and character challenges."
+    />
+    <link rel="canonical" href="https://daftuyda.moe/" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
+    <meta name="color-scheme" content="light dark" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="UmaTools" />
+    <meta property="og:title" content="Uma Musume Tools &amp; Calculators | UmaTools" />
+    <meta
+      property="og:description"
+      content="Free Uma Musume tools for skill builds, rating calculations, support decks, stamina checks, race planning, game data, and character challenges."
+    />
+    <meta property="og:url" content="https://daftuyda.moe/" />
+    <meta property="og:image" content="https://daftuyda.moe/api/og/v1/home.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Uma Musume Tools &amp; Calculators | UmaTools" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Uma Musume Tools &amp; Calculators | UmaTools" />
+    <meta
+      name="twitter:description"
+      content="Free Uma Musume tools for skill builds, rating calculations, support decks, stamina checks, race planning, game data, and character challenges."
+    />
+    <meta name="twitter:image" content="https://daftuyda.moe/api/og/v1/home.png" />
+    <meta name="twitter:image:alt" content="Uma Musume Tools &amp; Calculators | UmaTools" />
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=optional"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=optional"
+      rel="stylesheet"
+      media="print"
+      onload="this.media = 'all'"
+    />
+    <noscript
+      ><link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=optional"
+        rel="stylesheet"
+    /></noscript>
+    <link rel="stylesheet" href="/css/air.css" />
+    <script>
+      // Image optimization helper - creates picture elements with WebP and fallback
+      (function () {
+        'use strict';
+
+        /**
+         * Creates a picture element HTML string with WebP source and fallback
+         * @param {string} src - Original image source (PNG/JPG)
+         * @param {string} alt - Alt text for the image
+         * @param {string} className - CSS class name(s) for the img element
+         * @param {Object} attrs - Additional attributes (loading, decoding, fetchpriority, etc.)
+         * @returns {string} HTML string for picture element
+         */
+        window.createPictureHTML = function (src, alt, className, attrs) {
+          if (!src) return '';
+
+          attrs = attrs || {};
+          var loading = attrs.loading || 'lazy';
+          var decoding = attrs.decoding || 'async';
+          var fetchpriority = attrs.fetchpriority || '';
+
+          // Convert .png or .jpg to .webp
+          var webpSrc = src.replace(/\.(png|jpg|jpeg)$/i, '.webp');
+
+          // Build attributes string
+          var attrStr = className ? ` class="${className}"` : '';
+          attrStr += ` alt="${alt || ''}"`;
+          attrStr += ` loading="${loading}"`;
+          attrStr += ` decoding="${decoding}"`;
+          if (fetchpriority) {
+            attrStr += ` fetchpriority="${fetchpriority}"`;
+          }
+
+          // Return picture element with WebP source and fallback
+          return (
+            `<picture>` +
+            `<source srcset="${webpSrc}" type="image/webp">` +
+            `<img src="${src}"${attrStr}>` +
+            `</picture>`
+          );
+        };
+      })();
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://daftuyda.moe/#organization",
+            "name": "UmaTools",
+            "url": "https://daftuyda.moe/",
+            "logo": "https://daftuyda.moe/assets/icon-512.png",
+            "sameAs": ["https://github.com/daftuyda/UmaTools", "https://youtube.com/@MaybeVoid"]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://daftuyda.moe/#website",
+            "url": "https://daftuyda.moe/",
+            "name": "UmaTools",
+            "publisher": { "@id": "https://daftuyda.moe/#organization" },
+            "inLanguage": "en"
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://daftuyda.moe/#webpage",
+            "url": "https://daftuyda.moe/",
+            "name": "Uma Musume Tools & Calculators",
+            "description": "Free Uma Musume tools for skill builds, rating calculations, support decks, stamina checks, race planning, game data, and character challenges.",
+            "isPartOf": { "@id": "https://daftuyda.moe/#website" },
+            "about": { "@id": "https://daftuyda.moe/#organization" },
+            "inLanguage": "en"
+          }
+        ]
+      }
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+  </head>
+  <body class="ui-revamp-page home-revamp">
+    <div id="site-nav-slot" class="site-nav-slot" aria-hidden="true"></div>
+    <script>
+      (function () {
+        try {
+          var theme = localStorage.getItem('umatools-theme');
+          var pref = localStorage.getItem('umasearch-darkmode');
+          var dark = theme
+            ? theme === 'dark' || theme === 'oled'
+            : pref
+              ? pref === 'dark'
+              : window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var root = document.documentElement;
+          root.classList.add('is-loading');
+          root.classList.toggle('dark', dark);
+          root.classList.toggle('oled', theme === 'oled');
+          root.dataset.theme = theme || (dark ? 'dark' : 'light');
+          root.style.colorScheme = dark ? 'dark' : 'light';
+
+          var pageLoaded = false;
+          var navReady = !document.querySelector('script[src="/js/nav.js"]');
+          var release = function () {
+            root.classList.remove('is-loading');
+          };
+          var tryRelease = function () {
+            if (!pageLoaded || !navReady) return;
+            if (document.fonts && document.fonts.ready) {
+              Promise.race([
+                document.fonts.ready,
+                new Promise(function (resolve) {
+                  setTimeout(resolve, 1200);
+                }),
+              ]).then(function () {
+                requestAnimationFrame(release);
+              });
+            } else {
+              requestAnimationFrame(release);
+            }
+          };
+          window.addEventListener('load', function () {
+            pageLoaded = true;
+            tryRelease();
+          });
+          window.addEventListener('nav:ready', function () {
+            navReady = true;
+            tryRelease();
+          });
+          window.setTimeout(function () {
+            pageLoaded = true;
+            navReady = true;
+            tryRelease();
+          }, 2400);
+        } catch (e) {}
+      })();
+    </script>
+
+    <main id="main" class="container home-shell">
+      <button
+        id="modeToggleBtn"
+        aria-label="Toggle dark/light mode"
+        data-i18n-aria="common.toggleDarkLight"
+        class="mode-toggle-btn"
+        title="Toggle dark/light mode"
+        data-i18n-title="common.toggleDarkLight"
+      >
+        <svg
+          id="iconSun"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="feather feather-sun"
+        >
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg
+          id="iconMoon"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="feather feather-moon"
+          style="display: none"
+        >
+          <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+        </svg>
+      </button>
+
+      <section class="home-hero" aria-labelledby="home-hero-title">
+        <div class="home-hero-copy">
+          <div class="home-kicker">Uma Musume game toolkit</div>
+          <h1 id="home-hero-title">
+            <span data-i18n="home.heroTitle">Uma Musume Tools</span><br /><span
+              data-i18n="home.heroTitleAccent"
+              >&amp; Calculators</span
+            >
+          </h1>
+        </div>
+        <div class="home-hero-side">
+          <p data-i18n="home.subtitle">
+            Build planners, rating calculators, race checks, and game data—all together in one
+            toolkit.
+          </p>
+          <div class="home-hero-actions">
+            <a class="hero-button primary" href="/optimizer" data-i18n="home.openOptimizer"
+              >Open Optimizer</a
+            >
+            <a class="hero-button" href="/calculator" data-i18n="home.openCalculator"
+              >Open Calculator</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <section class="home-tools" aria-labelledby="home-tools-title">
+        <div class="home-section-heading">
+          <h2 id="home-tools-title" data-i18n="home.title">Most visited tools</h2>
+          <p data-i18n="home.trafficSummary">Ordered by the pages players visit most.</p>
+        </div>
+        <div class="tool-grid">
+          <div class="card tool-card">
+            <h3 data-i18n="home.skillOptimizer">Skill Optimizer</h3>
+            <p class="muted" data-i18n="home.skillOptimizerDesc">
+              Plan skill builds and check synergy with target races.
+            </p>
+            <div class="badges">
+              <span class="badge" data-i18n="home.skillOptimizerBadge">Build planner</span>
+            </div>
+            <a class="btn primary" href="/optimizer" data-i18n="home.openOptimizer"
+              >Open Optimizer</a
+            >
+          </div>
+
+          <div class="card tool-card">
+            <h3 data-i18n="home.ratingCalculator">Rating Calculator</h3>
+            <p class="muted" data-i18n="home.ratingCalculatorDesc">
+              Estimate rating points with a live stat breakdown.
+            </p>
+            <div class="badges">
+              <span class="badge" data-i18n="home.ratingCalculatorBadge">Stats calculator</span>
+            </div>
+            <a class="btn primary" href="/calculator" data-i18n="home.openCalculator"
+              >Open Calculator</a
+            >
+          </div>
+
+          <div class="card tool-card">
+            <h3 data-i18n="home.deckBuilder">Deck Builder</h3>
+            <p class="muted" data-i18n="home.deckBuilderDesc">
+              Build a training deck with 1 character and 6 support cards. See combined hints and
+              bonuses.
+            </p>
+            <div class="badges">
+              <span class="badge" data-i18n="home.deckBuilderBadge">Team planner</span>
+            </div>
+            <a class="btn primary" href="/deck" data-i18n="home.openDeckBuilder"
+              >Open Deck Builder</a
+            >
+          </div>
+
+          <div class="card tool-card">
+            <h3 data-i18n="home.guides">UmaTools Documentation</h3>
+            <p class="muted" data-i18n="home.guidesDesc">
+              Explore the rating math and planning systems behind UmaTools in detailed player and
+              technical documentation.
+            </p>
+            <div class="badges">
+              <span class="badge" data-i18n="home.guidesBadge">Reference library</span>
+            </div>
+            <a class="btn primary" href="/guides" data-i18n="home.openGuides"
+              >Browse Documentation</a
+            >
+          </div>
+
+          <div class="card tool-card">
+            <h3 data-i18n="home.umadle">Umadle</h3>
+            <p class="muted" data-i18n="home.umadleDesc">
+              Guess a mystery character using Uma Musume stats and clues.
+            </p>
+            <div class="badges">
+              <span class="badge" data-i18n="home.umadleBadge">Character challenge</span>
+            </div>
+            <a class="btn primary" href="/umadle" data-i18n="home.openUmadle">Open Umadle</a>
+          </div>
+
+          <div class="card tool-card">
+            <h3 data-i18n="home.randomizer">Randomizer</h3>
+            <p class="muted" data-i18n="home.randomizerDesc">
+              Spin up randomized challenges or inspiration runs.
+            </p>
+            <div class="badges">
+              <span class="badge" data-i18n="home.randomizerBadge">Fun mode</span>
+            </div>
+            <a class="btn primary" href="/random" data-i18n="home.openRandomizer"
+              >Open Randomizer</a
+            >
+          </div>
+
+          <div class="card tool-card">
+            <h3 data-i18n="home.staminaCheck">Stamina Check</h3>
+            <p class="muted" data-i18n="home.staminaCheckDesc">
+              See if your stamina meets distance and style thresholds.
+            </p>
+            <div class="badges">
+              <span class="badge" data-i18n="home.staminaCheckBadge">Race model</span>
+            </div>
+            <a class="btn primary" href="/stamina" data-i18n="home.openStaminaCheck"
+              >Open Stamina Check</a
+            >
+          </div>
+
+          <div class="card tool-card">
+            <h3 data-i18n="home.supportHints">Support Hints</h3>
+            <p class="muted" data-i18n="home.supportHintsDesc">
+              Find support cards by hint keywords and rarity filters.
+            </p>
+            <div class="badges">
+              <span class="badge" data-i18n="home.supportHintsBadge">Hint finder</span>
+            </div>
+            <a class="btn primary" href="/hints" data-i18n="home.openSupportHints"
+              >Open Support Hints</a
+            >
+          </div>
+
+          <div class="card tool-card">
+            <h3 data-i18n="home.skillLibrary">Skill Library</h3>
+            <p class="muted" data-i18n="home.skillLibraryDesc">
+              Browse all skills with cost, rating score, efficiency, and sources.
+            </p>
+            <div class="badges">
+              <span class="badge" data-i18n="home.skillLibraryBadge">Database</span>
+            </div>
+            <a class="btn primary" href="/skills" data-i18n="home.openSkillLibrary"
+              >Open Skill Library</a
+            >
+          </div>
+
+          <div class="card tool-card">
+            <h3 data-i18n="home.eventOCR">Event OCR</h3>
+            <p class="muted" data-i18n="home.eventOCRDesc">
+              Capture event screens and search outcomes instantly.
+            </p>
+            <div class="badges">
+              <span class="badge" data-i18n="home.eventOCRBadge">OCR search</span>
+            </div>
+            <a class="btn primary" href="/events" data-i18n="home.openEventOCR">Open Event OCR</a>
+          </div>
+
+          <div class="card tool-card">
+            <h3 data-i18n="home.accelChecker">Accel Checker</h3>
+            <p class="muted" data-i18n="home.accelCheckerDesc">
+              Check which acceleration skills are valid for your race setup.
+            </p>
+            <div class="badges">
+              <span class="badge" data-i18n="home.accelCheckerBadge">VAC checker</span>
+            </div>
+            <a class="btn primary" href="/accel" data-i18n="home.openAccelChecker"
+              >Open Accel Checker</a
+            >
+          </div>
+
+          <div class="card tool-card">
+            <h3 data-i18n="home.rankBreakdown">Rating Rank Breakdown</h3>
+            <p class="muted" data-i18n="home.rankBreakdownDesc">
+              Browse every rating threshold and jump directly to a target rank.
+            </p>
+            <div class="badges">
+              <span class="badge" data-i18n="home.rankBreakdownBadge">Rating reference</span>
+            </div>
+            <a class="btn primary" href="/rank-breakdown" data-i18n="home.openRankBreakdown"
+              >Open Rank Breakdown</a
+            >
+          </div>
+
+          <div class="card tool-card">
+            <h3 data-i18n="home.tokenPlanner">Grand Live Token Planner</h3>
+            <p class="muted" data-i18n="home.tokenPlannerDesc">
+              Choose target songs and track the five Grand Live token totals you still need.
+            </p>
+            <div class="badges">
+              <span class="badge" data-i18n="home.tokenPlannerBadge">Scenario planner</span>
+            </div>
+            <a class="btn primary" href="/token-planner" data-i18n="home.openTokenPlanner"
+              >Open Token Planner</a
+            >
+          </div>
+
+          <div class="card tool-card">
+            <h3 data-i18n="home.raceScheduler">Race Scheduler</h3>
+            <p class="muted" data-i18n="home.raceSchedulerDesc">
+              Plan and track your race schedule across campaigns.
+            </p>
+            <div class="badges">
+              <span class="badge" data-i18n="home.raceSchedulerBadge">External tool</span>
+            </div>
+            <a
+              class="btn primary"
+              href="https://race.daftuyda.moe"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-i18n="home.openRaceScheduler"
+              >Open Race Scheduler</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="/js/i18n.js" defer></script>
+    <script src="/js/nav.js" defer></script>
+    <script src="/js/changelog.js" defer></script>
+    <script src="/js/theme-toggle.js" defer></script>
+  </body>
+</html>

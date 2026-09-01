@@ -1,6 +1,0 @@
-﻿User-agent: *
-Allow: /
-Disallow: /api/
-Disallow: /_vercel/
-
-Sitemap: https://daftuyda.moe/sitemap.xml

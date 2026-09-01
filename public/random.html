@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Uma Musume Character &amp; Support Randomizer | UmaTools</title>
+    <meta
+      name="description"
+      content="Randomly select an Uma Musume character or generate a support deck with rarity, type, and animation speed filters."
+    />
+    <link rel="canonical" href="https://daftuyda.moe/random" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
+    <meta name="color-scheme" content="light dark" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="UmaTools" />
+    <meta property="og:title" content="Uma Musume Character &amp; Support Randomizer | UmaTools" />
+    <meta
+      property="og:description"
+      content="Randomly select an Uma Musume character or generate a support deck with rarity, type, and animation speed filters."
+    />
+    <meta property="og:url" content="https://daftuyda.moe/random" />
+    <meta property="og:image" content="https://daftuyda.moe/api/og/v1/random.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Uma Musume Character &amp; Support Randomizer | UmaTools"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Uma Musume Character &amp; Support Randomizer | UmaTools" />
+    <meta
+      name="twitter:description"
+      content="Randomly select an Uma Musume character or generate a support deck with rarity, type, and animation speed filters."
+    />
+    <meta name="twitter:image" content="https://daftuyda.moe/api/og/v1/random.png" />
+    <meta
+      name="twitter:image:alt"
+      content="Uma Musume Character &amp; Support Randomizer | UmaTools"
+    />
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=optional"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=optional"
+      rel="stylesheet"
+      media="print"
+      onload="this.media = 'all'"
+    />
+    <noscript
+      ><link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=optional"
+        rel="stylesheet"
+    /></noscript>
+    <link rel="stylesheet" href="/css/air.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://daftuyda.moe/#organization",
+            "name": "UmaTools",
+            "url": "https://daftuyda.moe/",
+            "logo": "https://daftuyda.moe/assets/icon-512.png",
+            "sameAs": ["https://github.com/daftuyda/UmaTools", "https://youtube.com/@MaybeVoid"]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://daftuyda.moe/#website",
+            "url": "https://daftuyda.moe/",
+            "name": "UmaTools",
+            "publisher": { "@id": "https://daftuyda.moe/#organization" },
+            "inLanguage": "en"
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://daftuyda.moe/random#webpage",
+            "url": "https://daftuyda.moe/random",
+            "name": "Uma Musume Character & Support Randomizer",
+            "description": "Randomly select an Uma Musume character or generate a support deck with rarity, type, and animation speed filters.",
+            "isPartOf": { "@id": "https://daftuyda.moe/#website" },
+            "about": { "@id": "https://daftuyda.moe/#organization" },
+            "inLanguage": "en"
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://daftuyda.moe/random#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://daftuyda.moe/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Randomizer",
+                "item": "https://daftuyda.moe/random"
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+    <!-- No-flash dark mode: pre-apply saved theme before paint -->
+
+    <script defer src="/_vercel/insights/script.js"></script>
+  </head>
+  <body class="ui-revamp-page app-revamp">
+    <div id="site-nav-slot" class="site-nav-slot" aria-hidden="true"></div>
+    <script>
+      (function () {
+        try {
+          var theme = localStorage.getItem('umatools-theme');
+          var pref = localStorage.getItem('umasearch-darkmode');
+          var dark = theme
+            ? theme === 'dark' || theme === 'oled'
+            : pref
+              ? pref === 'dark'
+              : window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var root = document.documentElement;
+          root.classList.add('is-loading');
+          root.classList.toggle('dark', dark);
+          root.classList.toggle('oled', theme === 'oled');
+          root.dataset.theme = theme || (dark ? 'dark' : 'light');
+          root.style.colorScheme = dark ? 'dark' : 'light';
+
+          var pageLoaded = false;
+          var navReady = !document.querySelector('script[src="/js/nav.js"]');
+          var release = function () {
+            root.classList.remove('is-loading');
+          };
+          var tryRelease = function () {
+            if (!pageLoaded || !navReady) return;
+            if (document.fonts && document.fonts.ready) {
+              Promise.race([
+                document.fonts.ready,
+                new Promise(function (resolve) {
+                  setTimeout(resolve, 1200);
+                }),
+              ]).then(function () {
+                requestAnimationFrame(release);
+              });
+            } else {
+              requestAnimationFrame(release);
+            }
+          };
+          window.addEventListener('load', function () {
+            pageLoaded = true;
+            tryRelease();
+          });
+          window.addEventListener('nav:ready', function () {
+            navReady = true;
+            tryRelease();
+          });
+          window.setTimeout(function () {
+            pageLoaded = true;
+            navReady = true;
+            tryRelease();
+          }, 2400);
+        } catch (e) {}
+      })();
+    </script>
+    <button
+      id="modeToggleBtn"
+      aria-label="Toggle dark/light mode"
+      class="mode-toggle-btn"
+      title="Toggle dark/light mode"
+      data-i18n-aria="common.toggleDarkLight"
+      data-i18n-title="common.toggleDarkLight"
+    >
+      <svg
+        id="iconSun"
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="feather feather-sun"
+      >
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line>
+        <line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+      </svg>
+      <svg
+        id="iconMoon"
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="feather feather-moon"
+        style="display: none"
+      >
+        <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+      </svg>
+    </button>
+
+    <main id="main" class="container">
+      <h1 data-i18n="random.title">Randomizer</h1>
+
+      <!-- Support Deck Randomizer -->
+      <section
+        id="supportRandomizer"
+        class="result"
+        data-scroll-section
+        data-scroll-label="Support"
+      >
+        <div class="choice">
+          <h3 data-i18n="random.supportDeck">Support Deck (5 cards)</h3>
+          <div class="toolbar" role="group" aria-label="Support filters">
+            <label><input type="checkbox" id="fSSR" checked /> SSR</label>
+            <label><input type="checkbox" id="fSR" checked /> SR</label>
+            <label><input type="checkbox" id="fR" checked /> R</label>
+
+            <div style="flex: 1 1 220px"></div>
+
+            <label class="toggle" style="margin-right: 0.75rem"
+              ><input type="checkbox" id="speed2x" />
+              <span data-i18n="random.doubleSpeed">2&times; speed</span></label
+            >
+            <button class="btn primary" id="rollBtn" type="button" data-i18n="random.roll5">
+              Roll 5
+            </button>
+            <button class="btn" id="clearExBtn" type="button" data-i18n="random.clearExclusions">
+              Clear Exclusions
+            </button>
+          </div>
+
+          <div class="toolbar" role="group" aria-label="Exclude cards">
+            <input
+              list="supportList"
+              id="excludeInput"
+              placeholder="Exclude a support (choose from list)"
+              data-i18n-placeholder="random.excludePlaceholder"
+            />
+            <datalist id="supportList"></datalist>
+            <button class="btn" id="addExBtn" type="button" data-i18n="random.addExclusions">
+              Add to Exclusions
+            </button>
+          </div>
+
+          <div id="excludeChips" class="chips" aria-live="polite"></div>
+        </div>
+
+        <div id="deckResults" class="grid" aria-live="polite"></div>
+      </section>
+
+      <div class="spacer"></div>
+
+      <!-- Uma Randomizer -->
+      <section id="umaRandomizer" class="result" data-scroll-section data-scroll-label="Uma">
+        <div class="choice">
+          <h3 data-i18n="random.randomUma">Random Uma</h3>
+          <div class="toolbar">
+            <label class="toggle" style="margin-right: 0.75rem"
+              ><input type="checkbox" id="speed2xUma" />
+              <span data-i18n="random.doubleSpeed">2&times; speed</span></label
+            >
+            <button
+              class="btn primary"
+              id="pickUmaBtn"
+              type="button"
+              data-i18n="random.pickRandomUma"
+            >
+              Pick Random Uma
+            </button>
+          </div>
+        </div>
+
+        <div id="umaResult" class="grid" aria-live="polite"></div>
+      </section>
+
+      <section class="card tool-guide" aria-labelledby="random-guide-title">
+        <h2 id="random-guide-title" data-i18n="random.guideTitle">
+          Create a random Uma Musume challenge
+        </h2>
+        <p data-i18n="random.guideIntro">
+          Choose the allowed support rarities, exclude cards you do not want, and roll five support
+          cards or a random Uma. Use the result for challenge runs and fresh training ideas.
+        </p>
+        <h3 data-i18n="seo.relatedTools">Related tools</h3>
+        <p data-i18n-html="random.guideRelated">
+          Turn a random result into a complete six-card plan in the
+          <a href="/deck">Deck Builder</a>, then choose affordable skills with the
+          <a href="/optimizer">Skill Optimizer</a>.
+        </p>
+      </section>
+    </main>
+
+    <script src="/js/i18n-core.js" defer></script>
+    <script src="/js/i18n-pages.js" defer></script>
+    <script src="/js/random.js" defer></script>
+
+    <script src="/js/scroll-nav.js" defer></script>
+    <script src="/js/nav.js" defer></script>
+    <script src="/js/changelog.js" defer></script>
+    <script src="/js/theme-toggle.js" defer></script>
+  </body>
+</html>

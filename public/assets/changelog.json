@@ -1,0 +1,65 @@
+{
+  "version": "2026-09-01 Beta",
+  "summary": {
+    "en": "A major Beta update with more accurate Team Trials planning, in-game Grand Live token colors, expanded documentation, and suite-wide polish.",
+    "ja": "チームレース計画の精度向上、ゲーム準拠のグランドライブトークン色、ドキュメント拡充、全体的な改善を含むベータ版アップデート。"
+  },
+  "entries": [
+    {
+      "en": "Redesigned the full site with a professional navigation bar, new UmaTools brand mark, consistent workspace widths, rounded layered surfaces, richer accents, shadows, and subtle animation.",
+      "ja": "プロフェッショナルなナビゲーション、新しいUmaToolsブランドマーク、統一された画面幅、丸みのある階層的なデザイン、アクセント、影、控えめなアニメーションでサイト全体を刷新しました。"
+    },
+    {
+      "en": "Added a richer, lightweight page backdrop with layered ambient color and a subtle dot field for light and dark themes, while OLED stays true black.",
+      "ja": "ライト／ダークテーマのページ背景に、軽量なアンビエントカラーのレイヤーと控えめなドット模様を追加し、OLEDでは引き続き完全な黒背景を維持します。"
+    },
+    {
+      "en": "Added reliable, page-specific link-preview images across every tool and document, with cache-safe PNG URLs and endpoint validation; the Optimizer preview is unchanged.",
+      "ja": "全ツールとドキュメントにページ別のリンクプレビュー画像を追加し、キャッシュに安全なPNG URLとエンドポイント検証を導入しました。オプティマイザーのプレビューは変更していません。"
+    },
+    {
+      "en": "Improved mobile, OLED, modal, footer, spacing, and overflow behavior throughout the toolkit.",
+      "ja": "ツールキット全体でモバイル、OLED、モーダル、フッター、余白、オーバーフロー表示を改善しました。"
+    },
+    {
+      "en": "Updated the Optimizer with clearer evolution and linked-skill relationships, a standardized build workspace, improved skill details, and a polished quick tour.",
+      "ja": "オプティマイザーに進化スキルと関連スキルの分かりやすい表示、統一されたビルド画面、詳細なスキル情報、改善されたクイックツアーを追加しました。"
+    },
+    {
+      "en": "Restored the Browse Skills card layout, collapsible filters, hint controls, selection states, and full-screen mobile sheet; OLED now preserves functional colors for aptitudes, skill categories, and Umadle feedback.",
+      "ja": "スキル参照画面のカード、折りたたみ式フィルター、ヒント操作、選択状態、モバイル向け全画面表示を修正し、OLEDでも適性、スキル種別、ウマドルの判定に必要な色を維持するようにしました。"
+    },
+    {
+      "en": "Rebuilt Team Trials optimization around racing-strategy compatibility, expected race position, selected-build track coverage, and the correct Wisdom formula; low-coverage and unresolved racecourse greens are excluded, while eligible fixed-condition greens bypass Wisdom.",
+      "ja": "チームレース最適化を脚質適性、想定される隊列位置、選択ビルドのコース適合率、正しい賢さ発動率の式に基づいて再構築しました。低適合率および未対応の競馬場条件を持つ緑スキルは除外し、適合する固定条件の緑スキルは賢さ判定を受けません。"
+    },
+    {
+      "en": "Overhauled Deck Builder layouts and selectors, fixed viewport-centered modals, and added Grand Live / Grand Concert templates that include required Light Hello decks.",
+      "ja": "デッキビルダーのレイアウトと選択画面を刷新し、モーダルの表示位置を修正しました。必須のライトハローを含むグランドライブ／グランドコンサート用テンプレートも追加しました。"
+    },
+    {
+      "en": "Standardized race configuration and rating layouts, added faster rank navigation, clarified clickable skill names, and converted raw skill effects into player-friendly values.",
+      "ja": "レース設定とレーティング画面を統一し、ランクへのクイック移動、クリック可能なスキル名の明確化、スキル効果の分かりやすい数値表示を追加しました。"
+    },
+    {
+      "en": "Refined Stamina Check, Support Hints, Accel Checker, Token Planner, Skill Library, and Umadle with clearer cards, spacing, scrolling, results, and popouts.",
+      "ja": "スタミナチェック、サポートヒント、加速チェッカー、トークンプランナー、スキル一覧、ウマドルのカード、余白、スクロール、結果、ポップアップ表示を改善しました。"
+    },
+    {
+      "en": "Updated the Grand Live planner with English song and token names, refreshed scenario data, and improved planning controls.",
+      "ja": "グランドライブプランナーに英語の楽曲名とトークン名を追加し、シナリオデータと計画操作を更新しました。"
+    },
+    {
+      "en": "Matched Grand Live Performance Point colors to the game across token legends, costs, totals, held-token labels, and table headers, with accessible light and dark variants.",
+      "ja": "グランドライブのパフォーマンスポイント色をゲームに合わせ、凡例、コスト、合計、所持トークン、表見出しに適用しました。ライト／ダークテーマでも見やすい配色です。"
+    },
+    {
+      "en": "Added a dedicated About page and dropdown that organizes nine player and technical reference documents, renamed the public Guides area to Documentation, and refreshed English/Japanese labels and search metadata without changing existing URLs.",
+      "ja": "専用のサイト概要ページとドロップダウンを追加して、プレイヤー向け・技術向けの9件のリファレンスドキュメントを整理しました。公開エリアの名称を「ガイド」から「ドキュメント」に変更し、既存URLを維持したまま英語・日本語ラベルと検索メタデータを更新しました。"
+    },
+    {
+      "en": "Reorganized the project, refreshed suite-wide documentation, and expanded automated checks for routes, data, assets, performance, and mobile compatibility.",
+      "ja": "プロジェクト構成とサイト全体のドキュメントを更新し、ルート、データ、アセット、パフォーマンス、モバイル互換性の自動チェックを拡充しました。"
+    }
+  ]
+}

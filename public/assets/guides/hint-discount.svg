@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 300" font-family="system-ui, -apple-system, sans-serif">
+  <rect width="520" height="300" fill="white"/>
+
+  <!-- Title -->
+  <text x="260" y="22" text-anchor="middle" font-size="15" font-weight="bold" fill="#1f2937">Hint Level Discount + Fast Learner</text>
+
+  <!-- Chart area -->
+  <rect x="70" y="35" width="400" height="210" fill="#fafafa" stroke="#374151" stroke-width="1" rx="4"/>
+
+  <!-- Y-axis grid + labels -->
+  <g stroke="#d1d5db" stroke-width="0.5" fill="#374151" font-size="10" text-anchor="end">
+    <line x1="70" y1="245" x2="470" y2="245"/><text x="65" y="248">0%</text>
+    <line x1="70" y1="203" x2="470" y2="203"/><text x="65" y="206">10%</text>
+    <line x1="70" y1="161" x2="470" y2="161"/><text x="65" y="164">20%</text>
+    <line x1="70" y1="119" x2="470" y2="119"/><text x="65" y="122">30%</text>
+    <line x1="70" y1="77" x2="470" y2="77"/><text x="65" y="80">40%</text>
+    <line x1="70" y1="35" x2="470" y2="35"/><text x="65" y="38">50%</text>
+  </g>
+
+  <!-- Bars: Hint only (blue) -->
+  <g>
+    <!-- Lv0: 0% -->
+    <rect x="90" y="245" width="28" height="0" rx="3" fill="#3b82f6" stroke="#1e3a5f" stroke-width="0.5"/>
+    <!-- Lv1: 10% -->
+    <rect x="155" y="203" width="28" height="42" rx="3" fill="#3b82f6" stroke="#1e3a5f" stroke-width="0.5"/>
+    <!-- Lv2: 20% -->
+    <rect x="220" y="161" width="28" height="84" rx="3" fill="#3b82f6" stroke="#1e3a5f" stroke-width="0.5"/>
+    <!-- Lv3: 30% -->
+    <rect x="285" y="119" width="28" height="126" rx="3" fill="#3b82f6" stroke="#1e3a5f" stroke-width="0.5"/>
+    <!-- Lv4: 35% -->
+    <rect x="350" y="98" width="28" height="147" rx="3" fill="#3b82f6" stroke="#1e3a5f" stroke-width="0.5"/>
+    <!-- Lv5: 40% -->
+    <rect x="415" y="77" width="28" height="168" rx="3" fill="#3b82f6" stroke="#1e3a5f" stroke-width="0.5"/>
+  </g>
+
+  <!-- Bars: With Fast Learner (+10%, orange overlay) -->
+  <g>
+    <!-- Lv0 + FL: 10% -->
+    <rect x="90" y="203" width="28" height="42" rx="3" fill="#f59e0b" stroke="#78350f" stroke-width="0.5" opacity="0.7"/>
+    <!-- Lv1 + FL: 20% -->
+    <rect x="155" y="161" width="28" height="42" rx="3" fill="#f59e0b" stroke="#78350f" stroke-width="0.5" opacity="0.7"/>
+    <!-- Lv2 + FL: 30% -->
+    <rect x="220" y="119" width="28" height="42" rx="3" fill="#f59e0b" stroke="#78350f" stroke-width="0.5" opacity="0.7"/>
+    <!-- Lv3 + FL: 40% -->
+    <rect x="285" y="77" width="28" height="42" rx="3" fill="#f59e0b" stroke="#78350f" stroke-width="0.5" opacity="0.7"/>
+    <!-- Lv4 + FL: 45% -->
+    <rect x="350" y="56" width="28" height="42" rx="3" fill="#f59e0b" stroke="#78350f" stroke-width="0.5" opacity="0.7"/>
+    <!-- Lv5 + FL: 50% (MAX) -->
+    <rect x="415" y="35" width="28" height="42" rx="3" fill="#f59e0b" stroke="#78350f" stroke-width="0.5" opacity="0.7"/>
+  </g>
+
+  <!-- Bar labels (total with Fast Learner) -->
+  <g font-size="9" fill="#1f2937" text-anchor="middle" font-weight="600">
+    <text x="104" y="199">10%</text>
+    <text x="169" y="157">20%</text>
+    <text x="234" y="115">30%</text>
+    <text x="299" y="73">40%</text>
+    <text x="364" y="52">45%</text>
+    <text x="429" y="31">50%</text>
+  </g>
+
+  <!-- X-axis labels -->
+  <g font-size="10" fill="#374151" text-anchor="middle" font-weight="600">
+    <text x="104" y="262">Lv 0</text>
+    <text x="169" y="262">Lv 1</text>
+    <text x="234" y="262">Lv 2</text>
+    <text x="299" y="262">Lv 3</text>
+    <text x="364" y="262">Lv 4</text>
+    <text x="429" y="262">Lv 5</text>
+  </g>
+
+  <!-- Legend -->
+  <g transform="translate(120, 278)">
+    <rect x="0" y="0" width="12" height="12" rx="2" fill="#3b82f6" stroke="#1f2937" stroke-width="0.5"/>
+    <text x="18" y="10" font-size="10" fill="#1f2937">Hint discount</text>
+    <rect x="140" y="0" width="12" height="12" rx="2" fill="#f59e0b" stroke="#1f2937" stroke-width="0.5"/>
+    <text x="158" y="10" font-size="10" fill="#1f2937">+ Fast Learner (+10%)</text>
+  </g>
+
+  <!-- Max cap annotation -->
+  <line x1="415" y1="35" x2="475" y2="35" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <text x="478" y="38" font-size="8" fill="#dc2626" font-weight="700">50% MAX</text>
+</svg>

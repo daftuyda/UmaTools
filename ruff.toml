@@ -5,6 +5,7 @@ extend-exclude = [
   "node_modules",
   "reference",
   "__pycache__",
+  "scripts/data/gametora-browser.py",
 ]
 
 [lint]

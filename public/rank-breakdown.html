@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Uma Musume Rating Rank List | UmaTools</title>
+    <meta
+      name="description"
+      content="Browse every Uma Musume character rating rank threshold and badge, from G through LS24, in one searchable reference."
+    />
+    <link rel="canonical" href="https://daftuyda.moe/rank-breakdown" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
+    <meta name="color-scheme" content="light dark" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="UmaTools" />
+    <meta property="og:title" content="Uma Musume Rating Rank List | UmaTools" />
+    <meta
+      property="og:description"
+      content="Browse every Uma Musume character rating rank threshold and badge, from G through LS24, in one searchable reference."
+    />
+    <meta property="og:url" content="https://daftuyda.moe/rank-breakdown" />
+    <meta property="og:image" content="https://daftuyda.moe/api/og/v1/rank.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Uma Musume Rating Rank List | UmaTools" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Uma Musume Rating Rank List | UmaTools" />
+    <meta
+      name="twitter:description"
+      content="Browse every Uma Musume character rating rank threshold and badge, from G through LS24, in one searchable reference."
+    />
+    <meta name="twitter:image" content="https://daftuyda.moe/api/og/v1/rank.png" />
+    <meta name="twitter:image:alt" content="Uma Musume Rating Rank List | UmaTools" />
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=optional"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=optional"
+      rel="stylesheet"
+      media="print"
+      onload="this.media = 'all'"
+    />
+    <noscript
+      ><link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=optional"
+        rel="stylesheet"
+    /></noscript>
+    <link rel="stylesheet" href="/css/air.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://daftuyda.moe/#organization",
+            "name": "UmaTools",
+            "url": "https://daftuyda.moe/",
+            "logo": "https://daftuyda.moe/assets/icon-512.png",
+            "sameAs": ["https://github.com/daftuyda/UmaTools", "https://youtube.com/@MaybeVoid"]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://daftuyda.moe/#website",
+            "url": "https://daftuyda.moe/",
+            "name": "UmaTools",
+            "publisher": { "@id": "https://daftuyda.moe/#organization" },
+            "inLanguage": "en"
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://daftuyda.moe/rank-breakdown#webpage",
+            "url": "https://daftuyda.moe/rank-breakdown",
+            "name": "Uma Musume Rating Rank List",
+            "description": "Browse every Uma Musume character rating rank threshold and badge, from G through LS24, in one searchable reference.",
+            "isPartOf": { "@id": "https://daftuyda.moe/#website" },
+            "about": { "@id": "https://daftuyda.moe/#organization" },
+            "inLanguage": "en"
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://daftuyda.moe/rank-breakdown#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://daftuyda.moe/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Rank Breakdown",
+                "item": "https://daftuyda.moe/rank-breakdown"
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+  </head>
+  <body class="ui-revamp-page app-revamp">
+    <div id="site-nav-slot" class="site-nav-slot" aria-hidden="true"></div>
+    <script>
+      (function () {
+        try {
+          var theme = localStorage.getItem('umatools-theme');
+          var pref = localStorage.getItem('umasearch-darkmode');
+          var dark = theme
+            ? theme === 'dark' || theme === 'oled'
+            : pref
+              ? pref === 'dark'
+              : window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var root = document.documentElement;
+          root.classList.add('is-loading');
+          root.classList.toggle('dark', dark);
+          root.classList.toggle('oled', theme === 'oled');
+          root.dataset.theme = theme || (dark ? 'dark' : 'light');
+          root.style.colorScheme = dark ? 'dark' : 'light';
+
+          var pageLoaded = false;
+          var navReady = !document.querySelector('script[src="/js/nav.js"]');
+          var release = function () {
+            root.classList.remove('is-loading');
+          };
+          var tryRelease = function () {
+            if (!pageLoaded || !navReady) return;
+            if (document.fonts && document.fonts.ready) {
+              Promise.race([
+                document.fonts.ready,
+                new Promise(function (resolve) {
+                  setTimeout(resolve, 1200);
+                }),
+              ]).then(function () {
+                requestAnimationFrame(release);
+              });
+            } else {
+              requestAnimationFrame(release);
+            }
+          };
+          window.addEventListener('load', function () {
+            pageLoaded = true;
+            tryRelease();
+          });
+          window.addEventListener('nav:ready', function () {
+            navReady = true;
+            tryRelease();
+          });
+          window.setTimeout(function () {
+            pageLoaded = true;
+            navReady = true;
+            tryRelease();
+          }, 2400);
+        } catch (e) {}
+      })();
+    </script>
+    <main id="main" class="container rank-breakdown-page">
+      <h1 data-i18n="rankBreakdown.title">Rating Rank Breakdown</h1>
+
+      <button
+        id="modeToggleBtn"
+        aria-label="Toggle dark/light mode"
+        data-i18n-aria="common.toggleDarkLight"
+        class="mode-toggle-btn"
+        title="Toggle dark/light mode"
+        data-i18n-title="common.toggleDarkLight"
+      >
+        <svg
+          id="iconSun"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="feather feather-sun"
+        >
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg
+          id="iconMoon"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="feather feather-moon"
+          style="display: none"
+        >
+          <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+        </svg>
+      </button>
+
+      <p class="subtle" data-i18n="rankBreakdown.subtitle">
+        Thresholds and badge icons from G to LS24.
+      </p>
+
+      <section class="card card-elevated rank-breakdown-card">
+        <div class="rank-breakdown-toolbar">
+          <label class="rank-lookup-field" for="rating-lookup">
+            <span data-i18n="rankBreakdown.lookupLabel">Find by Rating</span>
+            <input
+              id="rating-lookup"
+              type="number"
+              min="0"
+              step="1"
+              inputmode="numeric"
+              placeholder="Enter rating..."
+              data-i18n-placeholder="rankBreakdown.lookupPlaceholder"
+            />
+          </label>
+          <button
+            id="rating-lookup-go"
+            class="btn"
+            type="button"
+            data-i18n="rankBreakdown.lookupGo"
+          >
+            Go
+          </button>
+          <div id="rating-lookup-result" class="muted" aria-live="polite"></div>
+        </div>
+        <div class="rank-overall-progress-wrap" aria-live="polite">
+          <div class="rank-overall-progress-label">
+            <span id="rank-overall-label" data-i18n="rankBreakdown.overallProgress">
+              Overall Progress
+            </span>
+            <span id="rank-overall-percent">0%</span>
+          </div>
+          <div
+            id="rank-overall-bar"
+            class="rank-overall-progress-bar"
+            role="progressbar"
+            aria-labelledby="rank-overall-label"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-valuenow="0"
+          >
+            <div id="rank-overall-fill" class="rank-overall-progress-fill"></div>
+          </div>
+        </div>
+        <nav class="rank-range-nav" aria-label="Jump to rank range">
+          <div class="rank-range-nav-label">Jump to rank range</div>
+          <div id="rank-range-markers" class="rank-range-markers"></div>
+        </nav>
+        <div class="rank-breakdown-table-wrap">
+          <table class="rank-breakdown-table">
+            <thead>
+              <tr>
+                <th scope="col" data-i18n="rankBreakdown.colIcon">Icon</th>
+                <th scope="col" data-i18n="rankBreakdown.colRank">Rank</th>
+                <th scope="col" class="number-col" data-i18n="rankBreakdown.colMinimum">Minimum</th>
+                <th scope="col" class="number-col" data-i18n="rankBreakdown.colNext">
+                  Next Threshold
+                </th>
+                <th scope="col" class="number-col" data-i18n="rankBreakdown.colRange">Range</th>
+              </tr>
+            </thead>
+            <tbody id="rank-breakdown-body">
+              <tr>
+                <td class="muted" colspan="5" data-i18n="rankBreakdown.loading">
+                  Loading rank breakdown...
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card tool-guide" aria-labelledby="rank-guide-title">
+        <h2 id="rank-guide-title" data-i18n="rankBreakdown.guideTitle">
+          Understand Uma Musume rating ranks
+        </h2>
+        <p data-i18n="rankBreakdown.guideIntro">
+          This table maps numeric evaluation ratings to every named tier from G through LS24. Enter
+          a rating to find its rank, exact threshold, and the points required for the next tier.
+        </p>
+        <h3 data-i18n="seo.relatedTools">Related tools</h3>
+        <p data-i18n-html="rankBreakdown.guideRelated">
+          Estimate a trainee's final score with the <a href="/calculator">Rating Calculator</a>, or
+          test which skill purchases improve it most in the
+          <a href="/optimizer">Skill Optimizer</a>.
+        </p>
+      </section>
+    </main>
+
+    <script src="/js/i18n-core.js" defer></script>
+    <script src="/js/i18n-pages.js" defer></script>
+    <script src="/js/rating-shared.js" defer></script>
+    <script src="/js/rank-breakdown.js" defer></script>
+    <script src="/js/nav.js" defer></script>
+    <script src="/js/changelog.js" defer></script>
+    <script src="/js/theme-toggle.js" defer></script>
+  </body>
+</html>

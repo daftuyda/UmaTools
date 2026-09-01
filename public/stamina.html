@@ -1,0 +1,596 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Uma Musume Stamina Calculator | UmaTools</title>
+    <meta
+      name="description"
+      content="Estimate the stamina an Uma Musume needs for a race using distance, stats, recovery skills, strategy, track condition, and mood."
+    />
+    <link rel="canonical" href="https://daftuyda.moe/stamina" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
+    <meta name="color-scheme" content="light dark" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="UmaTools" />
+    <meta property="og:title" content="Uma Musume Stamina Calculator | UmaTools" />
+    <meta
+      property="og:description"
+      content="Estimate the stamina an Uma Musume needs for a race using distance, stats, recovery skills, strategy, track condition, and mood."
+    />
+    <meta property="og:url" content="https://daftuyda.moe/stamina" />
+    <meta property="og:image" content="https://daftuyda.moe/api/og/v1/stamina.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Uma Musume Stamina Calculator | UmaTools" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Uma Musume Stamina Calculator | UmaTools" />
+    <meta
+      name="twitter:description"
+      content="Estimate the stamina an Uma Musume needs for a race using distance, stats, recovery skills, strategy, track condition, and mood."
+    />
+    <meta name="twitter:image" content="https://daftuyda.moe/api/og/v1/stamina.png" />
+    <meta name="twitter:image:alt" content="Uma Musume Stamina Calculator | UmaTools" />
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=optional"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=optional"
+      rel="stylesheet"
+      media="print"
+      onload="this.media = 'all'"
+    />
+    <noscript
+      ><link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=optional"
+        rel="stylesheet"
+    /></noscript>
+    <link rel="stylesheet" href="/css/air.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://daftuyda.moe/#organization",
+            "name": "UmaTools",
+            "url": "https://daftuyda.moe/",
+            "logo": "https://daftuyda.moe/assets/icon-512.png",
+            "sameAs": ["https://github.com/daftuyda/UmaTools", "https://youtube.com/@MaybeVoid"]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://daftuyda.moe/#website",
+            "url": "https://daftuyda.moe/",
+            "name": "UmaTools",
+            "publisher": { "@id": "https://daftuyda.moe/#organization" },
+            "inLanguage": "en"
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://daftuyda.moe/stamina#webpage",
+            "url": "https://daftuyda.moe/stamina",
+            "name": "Uma Musume Stamina Calculator",
+            "description": "Estimate the stamina an Uma Musume needs for a race using distance, stats, recovery skills, strategy, track condition, and mood.",
+            "isPartOf": { "@id": "https://daftuyda.moe/#website" },
+            "about": { "@id": "https://daftuyda.moe/#organization" },
+            "inLanguage": "en"
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://daftuyda.moe/stamina#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://daftuyda.moe/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Stamina Check",
+                "item": "https://daftuyda.moe/stamina"
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+    <!-- No-flash dark mode: pre-apply saved theme before paint -->
+
+    <script defer src="/_vercel/insights/script.js"></script>
+  </head>
+  <body class="ui-revamp-page app-revamp">
+    <div id="site-nav-slot" class="site-nav-slot" aria-hidden="true"></div>
+    <script>
+      (function () {
+        try {
+          var theme = localStorage.getItem('umatools-theme');
+          var pref = localStorage.getItem('umasearch-darkmode');
+          var dark = theme
+            ? theme === 'dark' || theme === 'oled'
+            : pref
+              ? pref === 'dark'
+              : window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var root = document.documentElement;
+          root.classList.add('is-loading');
+          root.classList.toggle('dark', dark);
+          root.classList.toggle('oled', theme === 'oled');
+          root.dataset.theme = theme || (dark ? 'dark' : 'light');
+          root.style.colorScheme = dark ? 'dark' : 'light';
+
+          var pageLoaded = false;
+          var navReady = !document.querySelector('script[src="/js/nav.js"]');
+          var release = function () {
+            root.classList.remove('is-loading');
+          };
+          var tryRelease = function () {
+            if (!pageLoaded || !navReady) return;
+            if (document.fonts && document.fonts.ready) {
+              Promise.race([
+                document.fonts.ready,
+                new Promise(function (resolve) {
+                  setTimeout(resolve, 1200);
+                }),
+              ]).then(function () {
+                requestAnimationFrame(release);
+              });
+            } else {
+              requestAnimationFrame(release);
+            }
+          };
+          window.addEventListener('load', function () {
+            pageLoaded = true;
+            tryRelease();
+          });
+          window.addEventListener('nav:ready', function () {
+            navReady = true;
+            tryRelease();
+          });
+          window.setTimeout(function () {
+            pageLoaded = true;
+            navReady = true;
+            tryRelease();
+          }, 2400);
+        } catch (e) {}
+      })();
+    </script>
+    <button
+      id="modeToggleBtn"
+      aria-label="Toggle dark/light mode"
+      data-i18n-aria="common.toggleDarkLight"
+      class="mode-toggle-btn"
+      title="Toggle dark/light mode"
+      data-i18n-title="common.toggleDarkLight"
+    >
+      <svg
+        id="iconSun"
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="feather feather-sun"
+      >
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line>
+        <line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+      </svg>
+      <svg
+        id="iconMoon"
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="feather feather-moon"
+        style="display: none"
+      >
+        <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+      </svg>
+    </button>
+
+    <main id="main" class="stamina-page container">
+      <h1 data-i18n="stamina.title">Stamina Calculator</h1>
+
+      <section
+        class="card card-elevated race-config-container"
+        id="stamina-config"
+        aria-labelledby="staminaConfigTitle"
+        data-scroll-section
+        data-scroll-label="Config"
+      >
+        <div class="race-card-grid">
+          <div class="race-config-pane">
+            <div class="race-card-header">
+              <h2 id="staminaConfigTitle" data-i18n="common.raceConfig">Race Configuration</h2>
+            </div>
+            <div class="opt-grid">
+              <div class="kv-row distance-row">
+                <div class="k" data-i18n="common.track">Track</div>
+                <div class="v row">
+                  <label>
+                    <span data-i18n="common.turf">Turf</span>
+                    <select id="apt-turf" data-apt-select data-default="S">
+                      <option value="S" selected>S</option>
+                      <option value="A">A</option>
+                      <option value="B">B</option>
+                      <option value="C">C</option>
+                      <option value="D">D</option>
+                      <option value="E">E</option>
+                      <option value="F">F</option>
+                      <option value="G">G</option>
+                    </select>
+                  </label>
+                  <label>
+                    <span data-i18n="common.dirt">Dirt</span>
+                    <select id="apt-dirt" data-apt-select data-default="S">
+                      <option value="S" selected>S</option>
+                      <option value="A">A</option>
+                      <option value="B">B</option>
+                      <option value="C">C</option>
+                      <option value="D">D</option>
+                      <option value="E">E</option>
+                      <option value="F">F</option>
+                      <option value="G">G</option>
+                    </select>
+                  </label>
+                </div>
+              </div>
+              <div class="kv-row">
+                <div class="k" data-i18n="common.distance">Distance</div>
+                <div class="v row">
+                  <label>
+                    <span data-i18n="common.sprint">Sprint</span>
+                    <select id="apt-sprint" data-apt-select data-default="S">
+                      <option value="S" selected>S</option>
+                      <option value="A">A</option>
+                      <option value="B">B</option>
+                      <option value="C">C</option>
+                      <option value="D">D</option>
+                      <option value="E">E</option>
+                      <option value="F">F</option>
+                      <option value="G">G</option>
+                    </select>
+                  </label>
+                  <label>
+                    <span data-i18n="common.mile">Mile</span>
+                    <select id="apt-mile" data-apt-select data-default="S">
+                      <option value="S" selected>S</option>
+                      <option value="A">A</option>
+                      <option value="B">B</option>
+                      <option value="C">C</option>
+                      <option value="D">D</option>
+                      <option value="E">E</option>
+                      <option value="F">F</option>
+                      <option value="G">G</option>
+                    </select>
+                  </label>
+                  <label>
+                    <span data-i18n="common.medium">Medium</span>
+                    <select id="apt-medium" data-apt-select data-default="S">
+                      <option value="S" selected>S</option>
+                      <option value="A">A</option>
+                      <option value="B">B</option>
+                      <option value="C">C</option>
+                      <option value="D">D</option>
+                      <option value="E">E</option>
+                      <option value="F">F</option>
+                      <option value="G">G</option>
+                    </select>
+                  </label>
+                  <label>
+                    <span data-i18n="common.long">Long</span>
+                    <select id="apt-long" data-apt-select data-default="S">
+                      <option value="S" selected>S</option>
+                      <option value="A">A</option>
+                      <option value="B">B</option>
+                      <option value="C">C</option>
+                      <option value="D">D</option>
+                      <option value="E">E</option>
+                      <option value="F">F</option>
+                      <option value="G">G</option>
+                    </select>
+                  </label>
+                </div>
+              </div>
+              <div class="kv-row">
+                <div class="k" data-i18n="common.strategy">Strategy</div>
+                <div class="v row">
+                  <label>
+                    <span data-i18n="common.front">Front</span>
+                    <select id="apt-front" data-apt-select data-default="A">
+                      <option value="S">S</option>
+                      <option value="A" selected>A</option>
+                      <option value="B">B</option>
+                      <option value="C">C</option>
+                      <option value="D">D</option>
+                      <option value="E">E</option>
+                      <option value="F">F</option>
+                      <option value="G">G</option>
+                    </select>
+                  </label>
+                  <label>
+                    <span data-i18n="common.pace">Pace</span>
+                    <select id="apt-pace" data-apt-select data-default="A">
+                      <option value="S">S</option>
+                      <option value="A" selected>A</option>
+                      <option value="B">B</option>
+                      <option value="C">C</option>
+                      <option value="D">D</option>
+                      <option value="E">E</option>
+                      <option value="F">F</option>
+                      <option value="G">G</option>
+                    </select>
+                  </label>
+                  <label>
+                    <span data-i18n="common.late">Late</span>
+                    <select id="apt-late" data-apt-select data-default="A">
+                      <option value="S">S</option>
+                      <option value="A" selected>A</option>
+                      <option value="B">B</option>
+                      <option value="C">C</option>
+                      <option value="D">D</option>
+                      <option value="E">E</option>
+                      <option value="F">F</option>
+                      <option value="G">G</option>
+                    </select>
+                  </label>
+                  <label>
+                    <span data-i18n="common.end">End</span>
+                    <select id="apt-end" data-apt-select data-default="A">
+                      <option value="S">S</option>
+                      <option value="A" selected>A</option>
+                      <option value="B">B</option>
+                      <option value="C">C</option>
+                      <option value="D">D</option>
+                      <option value="E">E</option>
+                      <option value="F">F</option>
+                      <option value="G">G</option>
+                    </select>
+                  </label>
+                </div>
+              </div>
+              <div class="kv-row">
+                <div class="k" data-i18n="stamina.race">Race</div>
+                <div class="v row">
+                  <label>
+                    <span data-i18n="common.distance">Distance</span>
+                    <input
+                      id="race-distance"
+                      type="number"
+                      min="1000"
+                      max="3600"
+                      step="100"
+                      value="2400"
+                    />
+                  </label>
+                  <label>
+                    <span data-i18n="stamina.surface">Surface</span>
+                    <select id="race-surface">
+                      <option value="Turf" selected data-i18n="common.turf">Turf</option>
+                      <option value="Dirt" data-i18n="common.dirt">Dirt</option>
+                    </select>
+                  </label>
+                  <label>
+                    <span data-i18n="stamina.condition">Condition</span>
+                    <select id="race-condition">
+                      <option value="Firm" selected data-i18n="stamina.firm">Firm</option>
+                      <option value="Good" data-i18n="stamina.good">Good</option>
+                      <option value="Soft" data-i18n="stamina.soft">Soft</option>
+                      <option value="Heavy" data-i18n="stamina.heavy">Heavy</option>
+                    </select>
+                  </label>
+                  <label>
+                    <span data-i18n="stamina.style">Style</span>
+                    <select id="race-style">
+                      <option value="Front" data-i18n="common.front">Front</option>
+                      <option value="Pace" selected data-i18n="common.pace">Pace</option>
+                      <option value="Late" data-i18n="common.late">Late</option>
+                      <option value="End" data-i18n="common.end">End</option>
+                    </select>
+                  </label>
+                  <label>
+                    <span data-i18n="stamina.mood">Mood</span>
+                    <select id="race-mood">
+                      <option value="Great" data-i18n="stamina.great">Great</option>
+                      <option value="Good" data-i18n="stamina.moodGood">Good</option>
+                      <option value="Normal" selected data-i18n="stamina.normal">Normal</option>
+                      <option value="Bad" data-i18n="stamina.bad">Bad</option>
+                      <option value="Awful" data-i18n="stamina.awful">Awful</option>
+                    </select>
+                  </label>
+                </div>
+                <div style="display: none" class="stamina-hint muted" id="distanceHint"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ideal-builder-pane">
+            <div class="ideal-header">
+              <h3 data-i18n="stamina.statsRecovery">Stats &amp; Recovery</h3>
+              <p class="muted" data-i18n="stamina.statsRecoveryHint">
+                Fill in your stat line and recovery skills to match the spreadsheet.
+              </p>
+            </div>
+
+            <div class="stamina-block">
+              <div class="target-group-title" data-i18n="common.stats">Stats</div>
+              <div class="rating-grid stamina-stat-grid">
+                <label
+                  ><span data-i18n="common.speed">Speed</span>
+                  <input id="stat-speed" type="number" min="0" max="2000" step="1" value="1200" />
+                </label>
+                <label
+                  ><span data-i18n="common.stamina">Stamina</span>
+                  <input id="stat-stamina" type="number" min="0" max="2000" step="1" value="900" />
+                </label>
+                <label
+                  ><span data-i18n="common.power">Power</span>
+                  <input id="stat-power" type="number" min="0" max="2000" step="1" value="1200" />
+                </label>
+                <label
+                  ><span data-i18n="common.guts">Guts</span>
+                  <input id="stat-guts" type="number" min="0" max="2000" step="1" value="440" />
+                </label>
+                <label
+                  ><span data-i18n="common.wisdom">Wisdom</span>
+                  <input id="stat-wisdom" type="number" min="0" max="2000" step="1" value="1200" />
+                </label>
+              </div>
+            </div>
+
+            <div class="stamina-block">
+              <div class="target-group-title" data-i18n="stamina.recoverySkills">
+                Recovery Skills
+              </div>
+              <div class="stamina-input-grid">
+                <label
+                  ><span data-i18n="stamina.white">White (1.5%)</span>
+                  <input id="white-count" type="number" min="0" max="20" step="1" value="0" />
+                </label>
+                <label
+                  ><span data-i18n="stamina.other">Other (3.5%)</span>
+                  <input id="mid-count" type="number" min="0" max="20" step="1" value="0" />
+                </label>
+                <label
+                  ><span data-i18n="stamina.gold">Gold (5.5%)</span>
+                  <input id="gold-count" type="number" min="0" max="20" step="1" value="1" />
+                </label>
+              </div>
+            </div>
+
+            <div class="stamina-block">
+              <div class="target-group-title unique-title">
+                <span data-i18n="stamina.uniqueRecovery">Unique Recovery</span>
+                <span class="unique-note muted"
+                  >Check
+                  <a
+                    href="https://gametora.com/umamusume/skills"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Gametora</a
+                  >
+                  to see how much your unique recovery restores.</span
+                >
+              </div>
+              <div class="unique-controls">
+                <label
+                  ><span data-i18n="stamina.uniqueSkill">Unique Skill</span>
+                  <select id="unique-select"></select>
+                </label>
+                <label
+                  ><span data-i18n="stamina.level">Level</span>
+                  <input id="unique-level" type="number" min="1" max="6" step="1" value="1" />
+                </label>
+                <button id="unique-add" class="btn" type="button" data-i18n="common.add">
+                  Add
+                </button>
+              </div>
+              <div id="unique-list" class="unique-list"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="card card-elevated"
+        id="stamina-results"
+        aria-labelledby="staminaResultTitle"
+        data-scroll-section
+        data-scroll-label="Results"
+      >
+        <div class="rating-card-header">
+          <h2 id="staminaResultTitle" data-i18n="stamina.results">Results</h2>
+          <p class="muted" data-i18n="stamina.resultsHint">
+            Outputs match the spreadsheet calculations for stamina needed.
+          </p>
+        </div>
+        <div class="stamina-summary">
+          <div class="rating-summary">
+            <div class="pill">
+              <div class="label" data-i18n="stamina.status">Status</div>
+              <div id="statusPill" class="value status-pill ok">Enough</div>
+            </div>
+            <div class="pill">
+              <div class="label" data-i18n="stamina.staminaNeeded">Stamina Needed</div>
+              <div id="neededStamina" class="value">-</div>
+            </div>
+            <div class="pill">
+              <div class="label" data-i18n="stamina.actualStamina">Actual Stamina</div>
+              <div id="actualStamina" class="value">-</div>
+            </div>
+            <div class="pill">
+              <div class="label" data-i18n="stamina.distanceBucket">Distance Bucket</div>
+              <div id="bucketText" class="value">-</div>
+            </div>
+          </div>
+          <div class="rating-summary">
+            <div class="pill">
+              <div class="label" data-i18n="stamina.skillProcRate">Skill Proc Rate</div>
+              <div id="procRate" class="value">-</div>
+            </div>
+            <div class="pill">
+              <div class="label" data-i18n="stamina.rushingRate">Rushing Rate</div>
+              <div id="rushingRate" class="value">-</div>
+            </div>
+            <div class="pill">
+              <div class="label" data-i18n="stamina.recoveryTotal">Recovery Total</div>
+              <div id="recoveryTotal" class="value">-</div>
+            </div>
+          </div>
+        </div>
+        <div class="stamina-proc-controls">
+          <label class="target-check">
+            <input id="consider-proc" type="checkbox" />
+            <span data-i18n="stamina.considerProc">Consider skill proc rate</span>
+          </label>
+          <label>
+            <span data-i18n="stamina.rushing">Rushing</span>
+            <select id="rushing-mode">
+              <option value="0" selected data-i18n="stamina.never">Never</option>
+              <option value="1" data-i18n="stamina.always">Always</option>
+              <option value="auto" data-i18n="stamina.autoWisdom">Auto (Wisdom)</option>
+            </select>
+          </label>
+        </div>
+        <div class="result-note" id="extraNote"></div>
+      </section>
+    </main>
+
+    <script src="/js/i18n-core.js" defer></script>
+    <script src="/js/i18n-pages.js" defer></script>
+    <script src="/js/stamina.js" defer></script>
+
+    <script src="/js/scroll-nav.js" defer></script>
+    <script src="/js/nav.js" defer></script>
+    <script src="/js/changelog.js" defer></script>
+    <script src="/js/theme-toggle.js" defer></script>
+  </body>
+</html>

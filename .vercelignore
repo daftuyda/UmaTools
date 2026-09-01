@@ -4,7 +4,7 @@ node_modules/
 reference/
 tests/
 badges/
-docs/
+# Keep docs/guides and docs/images: generate-guides.js consumes them during the Vercel build.
 scripts/__pycache__/
 logs/
 .git/

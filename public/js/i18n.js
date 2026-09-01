@@ -1,0 +1,1739 @@
+(function () {
+  'use strict';
+
+  var LANG_KEY = 'umatoolsSiteLanguage';
+  var currentLang = 'en';
+
+  try {
+    var stored = localStorage.getItem(LANG_KEY);
+    if (stored && stored.trim().toLowerCase() === 'jp') currentLang = 'ja';
+  } catch (e) {}
+
+  var TRANSLATIONS = {
+    en: {
+      'home.heroTitle': 'Uma Musume Tools',
+      'home.heroTitleAccent': '& Calculators',
+      // ── Common ──
+      'common.speed': 'Speed',
+      'common.stamina': 'Stamina',
+      'common.power': 'Power',
+      'common.guts': 'Guts',
+      'common.wisdom': 'Wisdom',
+      'common.turf': 'Turf',
+      'common.dirt': 'Dirt',
+      'common.sprint': 'Sprint',
+      'common.mile': 'Mile',
+      'common.medium': 'Medium',
+      'common.long': 'Long',
+      'common.front': 'Front',
+      'common.pace': 'Pace',
+      'common.late': 'Late',
+      'common.end': 'End',
+      'common.track': 'Track',
+      'common.distance': 'Distance',
+      'common.strategy': 'Strategy',
+      'common.add': 'Add',
+      'common.remove': 'Remove',
+      'common.clear': 'Clear',
+      'common.close': 'Close',
+      'common.save': 'Save',
+      'common.search': 'Search',
+      'common.loading': 'Loading...',
+      'common.stats': 'Stats',
+      'common.skills': 'Skills',
+      'common.unique': 'Unique',
+      'common.projected': 'Projected',
+      'common.projectedRating': 'Projected Rating',
+      'common.starLevel': 'Star Level',
+      'common.uniqueSkillLevel': 'Unique Skill Level',
+      'common.raceConfig': 'Race Configuration',
+      'common.searchByName': 'Search by name...',
+      'common.toggleDarkLight': 'Toggle dark/light mode',
+      'common.enough': 'Enough',
+      'common.notEnough': 'Not enough',
+      'common.borderline': 'Borderline',
+      'common.enterValues': 'Enter values',
+      'common.copied': 'Copied!',
+      'common.copyFailed': 'Copy failed—select the address bar to copy.',
+      'common.reset': 'Reset',
+
+      // ── Nav ──
+      'nav.rating': 'Rating',
+      'nav.optimizer': 'Optimizer',
+      'nav.calculator': 'Calculator',
+      'nav.staminaCheck': 'Stamina Check',
+      'nav.raceScheduler': 'Race Scheduler',
+      'nav.tools': 'Tools',
+      'nav.eventOCR': 'Event OCR',
+      'nav.supportHints': 'Support Hints',
+      'nav.deckBuilder': 'Deck Builder',
+      'nav.tokenPlanner': 'Token Planner',
+      'nav.data': 'Data',
+      'nav.guides': 'Documentation',
+      'nav.skillLibrary': 'Skill Library',
+      'nav.rankBreakdown': 'Rank Breakdown',
+      'nav.fun': 'Fun',
+      'nav.randomizer': 'Randomizer',
+      'nav.umadle': 'Umadle',
+      'nav.about': 'About',
+      'nav.aboutUmaTools': 'About UmaTools',
+      'nav.allGuides': 'All Documentation',
+      'nav.guideLibrary': 'Reference library',
+      'nav.guideRating': 'Rating & Skills',
+      'nav.guideTeamTrials': 'Team Trials',
+      'nav.guideAcceleration': 'Acceleration',
+      'nav.guideStamina': 'Stamina',
+      'nav.guideGrandLive': 'Grand Live',
+      'nav.guideOcr': 'OCR & Recognition',
+      'nav.guidePrivacy': 'Data & Privacy',
+      'nav.guideTranslations': 'Translations',
+      'nav.settings': 'Settings',
+      'nav.globalSettings': 'Global Settings',
+      'nav.server': 'Server',
+      'nav.siteLanguage': 'Site Language',
+      'nav.madeWith': 'Made with',
+      'nav.home': 'Uma Tools Home',
+      'nav.menu': 'Menu',
+      'nav.primary': 'Primary',
+
+      // ── Home ──
+      'home.title': 'Most visited tools',
+      'home.subtitle':
+        'Build planners, rating calculators, race checks, and game data—all together in one toolkit.',
+      'home.trafficSummary': 'Ordered by the pages players visit most.',
+      'home.skillOptimizer': 'Skill Optimizer',
+      'home.skillOptimizerDesc': 'Plan skill builds and check synergy with target races.',
+      'home.skillOptimizerBadge': 'Build planner',
+      'home.openOptimizer': 'Open Optimizer',
+      'home.ratingCalculator': 'Rating Calculator',
+      'home.ratingCalculatorDesc': 'Estimate rating points with a live stat breakdown.',
+      'home.ratingCalculatorBadge': 'Stats calculator',
+      'home.openCalculator': 'Open Calculator',
+      'home.staminaCheck': 'Stamina Check',
+      'home.staminaCheckDesc': 'See if your stamina meets distance and style thresholds.',
+      'home.staminaCheckBadge': 'Race model',
+      'home.openStaminaCheck': 'Open Stamina Check',
+      'home.tokenPlanner': 'Grand Live Token Planner',
+      'home.tokenPlannerDesc':
+        'Choose target songs and track the five Grand Live token totals you still need.',
+      'home.tokenPlannerBadge': 'Scenario planner',
+      'home.openTokenPlanner': 'Open Token Planner',
+      'home.accelChecker': 'Accel Checker',
+      'home.accelCheckerDesc': 'Check which acceleration skills are valid for your race setup.',
+      'home.accelCheckerBadge': 'VAC checker',
+      'home.openAccelChecker': 'Open Accel Checker',
+      'home.eventOCR': 'Event OCR',
+      'home.eventOCRDesc': 'Capture event screens and search outcomes instantly.',
+      'home.eventOCRBadge': 'OCR search',
+      'home.openEventOCR': 'Open Event OCR',
+      'home.supportHints': 'Support Hints',
+      'home.supportHintsDesc': 'Find support cards by hint keywords and rarity filters.',
+      'home.supportHintsBadge': 'Hint finder',
+      'home.openSupportHints': 'Open Support Hints',
+      'home.deckBuilder': 'Deck Builder',
+      'home.deckBuilderDesc':
+        'Build a training deck with 1 character and 6 support cards. See combined hints and bonuses.',
+      'home.deckBuilderBadge': 'Team planner',
+      'home.openDeckBuilder': 'Open Deck Builder',
+      'home.guides': 'UmaTools Documentation',
+      'home.guidesDesc':
+        'Explore the rating math and planning systems behind UmaTools in detailed player and technical documentation.',
+      'home.guidesBadge': 'Reference library',
+      'home.openGuides': 'Browse Documentation',
+      'home.skillLibrary': 'Skill Library',
+      'home.skillLibraryDesc':
+        'Browse all skills with cost, rating score, efficiency, and sources.',
+      'home.skillLibraryBadge': 'Database',
+      'home.openSkillLibrary': 'Open Skill Library',
+      'home.randomizer': 'Randomizer',
+      'home.randomizerDesc': 'Spin up randomized challenges or inspiration runs.',
+      'home.randomizerBadge': 'Fun mode',
+      'home.openRandomizer': 'Open Randomizer',
+      'home.umadle': 'Umadle',
+      'home.umadleDesc': 'Guess a mystery character using Uma Musume stats and clues.',
+      'home.umadleBadge': 'Character challenge',
+      'home.openUmadle': 'Open Umadle',
+      'home.rankBreakdown': 'Rating Rank Breakdown',
+      'home.rankBreakdownDesc': 'Browse every rating threshold and jump directly to a target rank.',
+      'home.rankBreakdownBadge': 'Rating reference',
+      'home.openRankBreakdown': 'Open Rank Breakdown',
+      'seo.relatedTools': 'Related tools',
+      'home.raceScheduler': 'Race Scheduler',
+      'home.raceSchedulerDesc': 'Plan and track your race schedule across campaigns.',
+      'home.raceSchedulerBadge': 'External tool',
+      'home.openRaceScheduler': 'Open Race Scheduler',
+
+      // ── Rank Breakdown ──
+      'rankBreakdown.title': 'Rating Rank Breakdown',
+      'rankBreakdown.subtitle': 'Thresholds and badge icons from G to LS24.',
+      'rankBreakdown.loading': 'Loading rank breakdown...',
+      'rankBreakdown.unavailable': 'Unable to load rank breakdown data.',
+      'rankBreakdown.colIcon': 'Icon',
+      'rankBreakdown.colRank': 'Rank',
+      'rankBreakdown.colMinimum': 'Minimum',
+      'rankBreakdown.colNext': 'Next Threshold',
+      'rankBreakdown.colRange': 'Range',
+      'rankBreakdown.maxRank': 'Max rank',
+      'rankBreakdown.rangeTemplate': '{min} - {max}',
+      'rankBreakdown.rangeNoUpper': '{min}+',
+      'rankBreakdown.iconAlt': '{rank} rank icon',
+      'rankBreakdown.lookupLabel': 'Find by Rating',
+      'rankBreakdown.lookupPlaceholder': 'Enter rating...',
+      'rankBreakdown.lookupGo': 'Go',
+      'rankBreakdown.lookupInvalid': 'Enter a valid rating (0 or higher).',
+      'rankBreakdown.lookupResult': '{rating} -> {rank} ({range})',
+      'rankBreakdown.overallProgress': 'Overall Progress',
+
+      // ── Changelog ──
+      'changelog.whatsNew': "What's New",
+      'changelog.dismiss': 'Dismiss changelog',
+
+      // ── 404 ──
+      'error404.title': 'Page Not Found',
+      'error404.message':
+        'Sorry, we could not find that page. Try one of the tools below or return home.',
+      'error404.backHome': 'Back to home',
+
+      // ── Calculator ──
+      'calculator.title': 'Rating Calculator',
+      'calculator.helpTutorial': 'Help / Tutorial',
+      'calculator.statsRating': 'Stats & Rating',
+      'calculator.selectedSkills': 'Selected Skills',
+      'calculator.skillCount': 'Skills:',
+      'calculator.skillScore': 'Skill Score:',
+      'calculator.addSkillsHint': "Add skills to calculate your build's rating",
+      'calculator.officialEnOnly': 'Official EN Skills Only',
+      'calculator.officialEnOnlyTitle':
+        'Only include GameTora official English skill names from name_en.',
+      'calculator.clearAll': 'Clear All Skills',
+      'calculator.loadingSkills': 'Loading skills...',
+      'calculator.skillReady': 'Skill library ready.',
+      'calculator.csvFallback': 'Failed to load CSV (using fallback)',
+      'calculator.startTyping': 'Start typing...',
+      'calculator.noSkills': 'No skills selected yet.',
+      'calculator.tutorialTitle': 'Quick walkthrough',
+      'calculator.tutStep1': 'Match race configuration',
+      'calculator.tutStep1Text':
+        'Set the track, distance, and strategy aptitudes to match your uma.',
+      'calculator.tutStep2': 'Enter stats and star level',
+      'calculator.tutStep2Text':
+        'Fill in the five stats, star level, and unique skill level from your uma.',
+      'calculator.tutStep3': 'Add skills to the calculator',
+      'calculator.tutStep3Text':
+        'Type a skill name to search, then click it to add. The score updates automatically.',
+      'calculator.tutStep4': 'Review selected skills and totals',
+      'calculator.tutStep4Text':
+        'Check the final projected rating and skill score in the summary section.',
+      'calculator.floatProjected': 'Projected',
+
+      // ── Optimizer ──
+      'optimizer.title': 'Uma Musume Skill Optimizer',
+      'optimizer.loadingSkills': 'Loading skill library...',
+      'optimizer.skillReady': 'Skill library ready.',
+      'optimizer.csvFallback': 'Failed to load CSV (using fallback)',
+      'optimizer.startTyping': 'Start typing...',
+      'optimizer.cost': 'Cost',
+      'optimizer.lowerSkill': 'Lower skill...',
+      'optimizer.circleUpgrade': '◎ upgrade...',
+      'optimizer.auto': 'Auto',
+      'optimizer.scoreUnknown': 'Score ?',
+      'optimizer.noStrengths': 'No additional strengths were generated.',
+      'optimizer.noRisks': 'No major risks detected.',
+      'optimizer.noWarnings': 'No optimizer warnings.',
+      'optimizer.viewExplanation': 'View explanation',
+      'optimizer.invalidBudget': 'Please enter a valid skill points budget.',
+      'optimizer.addAtLeastOne': 'Add at least one skill with a valid cost.',
+      'optimizer.copyError': 'Unable to copy shareable link. Copy the URL from the address bar.',
+      'optimizer.invalidBuild': 'Invalid build data.',
+      'optimizer.failedLoadBuild': 'Failed to load build data.',
+      'optimizer.failedEncode': 'Failed to encode build data.',
+      'optimizer.failedCreateLink': 'Failed to create shareable link.',
+      'optimizer.enterBuildName': 'Please enter a build name.',
+      'optimizer.noBuildData': 'No build data to save.',
+      'optimizer.storageQuota':
+        'Storage quota exceeded. Please delete some saved builds to make room.',
+      'optimizer.saveFailed':
+        'Failed to save build. Your browser may have storage disabled or limits exceeded.',
+      'optimizer.helpTutorial': 'Help / Tutorial',
+      'optimizer.skillPointsBudget': 'Skill Points Budget',
+      'optimizer.fastLearner': 'Fast Learner (-10% cost)',
+      'optimizer.officialEnOnly': 'Official EN Skills Only',
+      'optimizer.officialEnOnlyTitle':
+        'Only include GameTora official English skill names from name_en.',
+      'optimizer.optimizeFor': 'Optimize For',
+      'optimizer.optRating': 'Rating',
+      'optimizer.optTeamTrials': 'Team Trials (Consistent)',
+      'optimizer.optAptitudeTest': 'Trainer Aptitude Test',
+      'optimizer.scoringWeights': 'Skill Scoring Weights',
+      'optimizer.weightCostEfficiency': 'Cost Efficiency (SV/SP)',
+      'optimizer.weightConsistency': 'Consistency',
+      'optimizer.raceConfigHint':
+        'Set your target affinities so the optimizer scores skills appropriately.',
+      'optimizer.idealSkillBuilder': 'Ideal Skill Builder',
+      'optimizer.idealBuilderHint':
+        'Pick the aptitudes you care about \u2014 matching rows will be highlighted.',
+      'optimizer.general': 'General',
+      'optimizer.generateBuild': 'Generate Build',
+      'optimizer.ratingCalculator': 'Rating Calculator',
+      'optimizer.ratingCalcHint':
+        "Enter your Uma's final stats, star rarity, and unique skill level. The optimized skill score fills in automatically to project the final evaluation.",
+      'optimizer.statsScore': 'Stats Score',
+      'optimizer.skillScore': 'Skill Score',
+      'optimizer.uniqueBonus': 'Unique Bonus',
+      'optimizer.skillsToBuy': 'Skills to Buy',
+      'optimizer.bestScore': 'Best Score:',
+      'optimizer.usedPoints': 'Used Points:',
+      'optimizer.totalPoints': 'Total Points:',
+      'optimizer.remaining': 'Remaining:',
+      'optimizer.consistency': 'Consistency:',
+      'optimizer.expectedValue': 'Expected Value:',
+      'optimizer.totalSV': 'Total SV:',
+      'optimizer.expectedActivations': 'Expected Activations:',
+      'optimizer.svPerSP': 'SV per SP:',
+      'optimizer.skillDensity': 'Skill Density:',
+      'optimizer.predictedActivationScore': 'Est. Activation Score:',
+      'optimizer.aptitudeTestScore': 'Aptitude Test Score:',
+      'optimizer.explainTeamTrials': 'Explain Team Trials Build',
+      'optimizer.consistencyStrengths': 'Consistency Strengths',
+      'optimizer.risksWarnings': 'Risks & Warnings',
+      'optimizer.optimizerWarnings': 'Optimizer Warnings',
+      'optimizer.rowTip': 'Tip: just enter the skill name and cost - its type auto-detects',
+      'optimizer.imageEnhancement': 'Image Enhancement',
+      'optimizer.debugMode': 'Debug Mode',
+      'optimizer.importJSON': 'Import JSON',
+      'optimizer.uploadScreenshot': 'Upload Screenshot',
+      'optimizer.screenCapture': 'Screen Capture',
+      'optimizer.saveBuild': 'Save Build',
+      'optimizer.viewSavedBuilds': 'View Saved Builds',
+      'optimizer.shareBuild': 'Share Build',
+      'optimizer.clearAllSkills': 'Clear All Skills',
+      'optimizer.browseSkills': 'Browse Skills',
+      'optimizer.searchSkills': 'Search skills...',
+      'optimizer.color': 'Color',
+      'optimizer.showingCount': 'Showing {count} of {total} skills',
+      'optimizer.addSelected': 'Add Selected',
+      'optimizer.detectedSkills': 'Detected Skills',
+      'optimizer.addAllToOptimizer': 'Add All to Optimizer',
+      'optimizer.saveBuildModal': 'Save Build',
+      'optimizer.buildName': 'Build Name',
+      'optimizer.required': '(required)',
+      'optimizer.description': 'Description',
+      'optimizer.optional': '(optional)',
+      'optimizer.buildNamePlaceholder': 'My Awesome Build',
+      'optimizer.buildDescPlaceholder': 'Notes about this build...',
+      'optimizer.cancel': 'Cancel',
+      'optimizer.savedBuilds': 'Saved Builds',
+      'optimizer.editDetectedSkill': 'Edit Detected Skill',
+      'optimizer.skillName': 'Skill Name',
+      'optimizer.skillNamePlaceholder': 'Start typing skill name...',
+      'optimizer.costLabel': 'Cost',
+      'optimizer.costPlaceholder': 'Skill points cost',
+      'optimizer.hintLevel': 'Hint Level',
+      'optimizer.hintLevelRange': '(0-5)',
+      'optimizer.noHint': 'No Hint',
+      'optimizer.hintLv': 'Hint Lv',
+      'optimizer.floatProjected': 'Projected',
+      'optimizer.reference': 'Reference:',
+      'optimizer.tutorialTitle': 'Optimizer quick tour',
+      'optimizer.tutStep1': 'Quick setup path',
+      'optimizer.tutStep1Text':
+        'This lightweight tour is skippable and re-openable any time from this Help / Tutorial button.',
+      'optimizer.tutStep2': 'Add your skill points',
+      'optimizer.tutStep2Short': 'Skill points',
+      'optimizer.tutStep2Text':
+        'Set your available skill points budget here. Recommendations and remaining points use this value.',
+      'optimizer.tutStep3': 'Use Fast Learner when needed',
+      'optimizer.tutStep3Short': 'Fast Learner toggle',
+      'optimizer.tutStep3Text':
+        'Turn this on if your Uma has reduced skill costs. Skill costs update automatically.',
+      'optimizer.tutStep4': 'Optimize for {goalLabel}',
+      'optimizer.tutStep4Short': 'Optimize for goal',
+      'optimizer.tutStep4Text':
+        'Choose the selected goal or category. Current mode is {goalLabel}, and you can switch any time.',
+      'optimizer.tutStep5': 'Match race affinities',
+      'optimizer.tutStep5Short': 'Race configuration',
+      'optimizer.tutStep5Text':
+        'Set track, distance, and strategy to match your Uma. Affinities change how skills are scored.',
+      'optimizer.tutStep6': 'Use the skill builder',
+      'optimizer.tutStep6Short': 'Skill builder',
+      'optimizer.tutStep6Text':
+        'Generate Build auto-picks strong rating skills for your selected categories, then you can fine-tune rows.',
+      'optimizer.tutStep7': 'Enter stats and star level',
+      'optimizer.tutStep7Short': 'Stats and stars',
+      'optimizer.tutStep7Text':
+        'Input final stats, star rarity, and unique level so projected rating matches your Uma.',
+      'optimizer.tutStep8': 'Add skills to the optimizer',
+      'optimizer.tutStep8Short': 'Add skills',
+      'optimizer.tutStep8Text':
+        'Type skills in these rows. Type and category are detected, and costs update with your settings.',
+      'optimizer.tutStep9': 'Find your Skills to Buy',
+      'optimizer.tutStep9Short': 'Skills to Buy',
+      'optimizer.tutStep9Text':
+        'Your recommended purchase list appears here once rows are filled. This is where to read final picks.',
+
+      // ── Skill Popup Effects ──
+      'skillPopup.effectSpeed': 'Speed',
+      'skillPopup.effectStamina': 'Stamina',
+      'skillPopup.effectPower': 'Power',
+      'skillPopup.effectGuts': 'Guts',
+      'skillPopup.effectWisdom': 'Wisdom',
+      'skillPopup.effectRunningStyle': 'Running Style',
+      'skillPopup.effectFieldOfView': 'Field of View',
+      'skillPopup.effectStaminaRecovery': 'Stamina Recovery',
+      'skillPopup.effectLaneChangeSpeed': 'Lane Change Speed',
+      'skillPopup.effectPositionAwareness': 'Position Awareness',
+      'skillPopup.effectPaceControl': 'Pace Control',
+      'skillPopup.effectTargetSpeed': 'Target Speed',
+      'skillPopup.effectLaneMovementSpeed': 'Lane Movement Speed',
+      'skillPopup.effectAcceleration': 'Acceleration',
+      'skillPopup.effectDecelerationBlock': 'Deceleration Block',
+      'skillPopup.effectSpecial': 'Special',
+      'skillPopup.effectStatBoost': 'Stat Boost',
+      'skillPopup.skillDetails': 'Skill details',
+      'skillPopup.rarity': 'Rarity',
+      'skillPopup.ofMaxStamina': 'of maximum stamina',
+      'skillPopup.activeEffect': 'Active',
+
+      // ── Stamina ──
+      'stamina.title': 'Stamina Calculator',
+      'stamina.statsRecovery': 'Stats & Recovery',
+      'stamina.statsRecoveryHint':
+        'Fill in your stat line and recovery skills to match the spreadsheet.',
+      'stamina.recoverySkills': 'Recovery Skills',
+      'stamina.white': 'White (1.5%)',
+      'stamina.other': 'Other (3.5%)',
+      'stamina.gold': 'Gold (5.5%)',
+      'stamina.uniqueRecovery': 'Unique Recovery',
+      'stamina.uniqueRecoveryHint': 'Check Gametora to see how much your unique recovery restores.',
+      'stamina.uniqueSkill': 'Unique Skill',
+      'stamina.level': 'Level',
+      'stamina.selectUnique': 'Select a unique skill',
+      'stamina.noUnique': 'No unique skills added.',
+      'stamina.results': 'Results',
+      'stamina.resultsHint': 'Outputs match the spreadsheet calculations for stamina needed.',
+      'stamina.status': 'Status',
+      'stamina.staminaNeeded': 'Stamina Needed',
+      'stamina.actualStamina': 'Actual Stamina',
+      'stamina.distanceBucket': 'Distance Bucket',
+      'stamina.skillProcRate': 'Skill Proc Rate',
+      'stamina.rushingRate': 'Rushing Rate',
+      'stamina.recoveryTotal': 'Recovery Total',
+      'stamina.considerProc': 'Consider skill proc rate',
+      'stamina.rushing': 'Rushing',
+      'stamina.never': 'Never',
+      'stamina.always': 'Always',
+      'stamina.autoWisdom': 'Auto (Wisdom)',
+      'stamina.borderlineNote': 'Borderline stamina (close to cutoff).',
+      'stamina.needMore': 'Need about {amount} more stamina.',
+      'stamina.race': 'Race',
+      'stamina.surface': 'Surface',
+      'stamina.condition': 'Condition',
+      'stamina.style': 'Style',
+      'stamina.mood': 'Mood',
+      'stamina.firm': 'Firm',
+      'stamina.good': 'Good',
+      'stamina.soft': 'Soft',
+      'stamina.heavy': 'Heavy',
+      'stamina.great': 'Great',
+      'stamina.normal': 'Normal',
+      'stamina.bad': 'Bad',
+      'stamina.awful': 'Awful',
+      'stamina.moodGood': 'Good',
+      'stamina.distanceBucketHint': 'Distance bucket: {category}',
+
+      // ── Events ──
+      'events.title': 'Event OCR',
+      'events.searchPlaceholder': 'Search an event name...',
+      'events.captureOCR': 'Capture Screen for OCR',
+      'events.stopCapture': 'Stop Capture',
+      'events.scanTime': 'Scan Time:',
+      'events.selectScanTime': 'Select OCR scan time',
+      'events.typeAndSearch': 'Type an event name and press Search.',
+      'events.searching': 'Searching\u2026',
+      'events.searchFailed': 'Search failed.',
+      'events.noEvent': 'No event found.',
+      'events.otherMatches': 'Other matches:',
+      'events.recommended': 'Recommended',
+      'events.processingImage': 'Processing image...',
+      'events.ocrFailed': 'Failed to process image. Please try again.',
+      'events.ocrCaptureFailed': 'Failed to process captured frame. Please try again.',
+      'events.skillsApplied': 'Skills Applied!',
+      'events.calcNotAvailable': 'Calculator integration not available. Please refresh the page.',
+      'events.selectOneSkill': 'Please select at least one skill to add.',
+      'events.skillNameRequired': 'Skill name is required',
+      'events.costRange': 'Cost must be between 0 and 999',
+      'events.hintRange': 'Hint level must be between 0 and 5',
+      'events.guideTitle': 'Find Uma Musume event choices faster',
+      'events.guideIntro':
+        'Search an event name manually or capture its screen for OCR. The matching choices and outcomes help you make a training decision without interrupting your run.',
+      'events.guideRelated':
+        'Check newly offered skills in the <a href="/skills">Skill Library</a>, then compare a complete purchase plan with the <a href="/optimizer">Skill Optimizer</a>.',
+
+      // ── Hints ──
+      'hints.title': 'Support Hint Finder',
+      'hints.instruction': 'Type a skill hint (e.g., Medium Corners), press Enter to add it.',
+      'hints.placeholder': 'Add hint (e.g., Medium Corners \u25CB)',
+      'hints.matchAll': 'Match ALL (AND)',
+      'hints.matchAny': 'Match ANY (OR)',
+      'hints.loadingHints': 'Loading hints\u2026',
+      'hints.loadingSupports': 'Loading supports\u2026',
+      'hints.loadFailed': 'Failed to load support hints.',
+      'hints.loadSupportFailed': 'Failed to load support data. Please refresh.',
+      'hints.copyLink': 'Copy link',
+      'hints.counts': '{matched} card(s) matched | {total} cards total | {hints} unique hints',
+      'hints.showMore': 'Show more ({shown} of {total})',
+      'hints.resultsHeading': 'Matching support cards',
+
+      // ── Deck ──
+      'deck.title': 'Deck Builder',
+      'deck.character': 'Character',
+      'deck.supportCards': 'Support Cards ({current}/6)',
+      'deck.selectCharacter': 'Select Character',
+      'deck.selectSupportCard': 'Select Support Card',
+      'deck.savedDecks': 'Saved Decks',
+      'deck.copyShareLink': 'Copy Share Link',
+      'deck.clearAll': 'Clear All',
+      'deck.deckName': 'Deck name...',
+      'deck.noSavedDecks': 'No saved decks yet',
+      'deck.loadingData': 'Loading data\u2026',
+      'deck.failedCharData': 'Failed to load character data',
+      'deck.failedSupportData': 'Failed to load support data',
+      'deck.failedLoadData': 'Failed to load data. Please refresh.',
+      'deck.selectChar': 'Select Character',
+      'deck.addCard': 'Add Card',
+      'deck.noCardsMatch': 'No cards match filters',
+      'deck.noEffectData': 'No effect data',
+      'deck.noCharsMatch': 'No characters match',
+      'deck.removeChar': 'Remove character',
+      'deck.swapCard': 'Swap card',
+      'deck.copyLinkFailed': 'Failed to copy link.',
+      'deck.combinedSummary': 'Combined Summary',
+      'deck.statBonuses': 'Stat Bonuses:',
+      'deck.combinedEffects': 'Combined Effects',
+      'deck.skillHints': 'Skill Hints:',
+      'deck.levelLabel': 'Level:',
+      'deck.wit': 'Wit',
+      'deck.noCharacter': 'No character',
+      'deck.maxSupports': 'Maximum 6 support cards.',
+      'deck.emptySummary': 'Add a character and support cards to see the summary.',
+      'deck.typeBalance': 'Type Balance',
+      'deck.effectStacking': 'Effect Stacking',
+      'deck.hintSynergy': 'Hint Synergy',
+      'deck.characterFit': 'Character Fit',
+      'deck.limitBreakCap': 'LB cap applied: max {score}/100 until card limit breaks improve.',
+      'deck.synergyAnalysis': 'Synergy Analysis',
+      'deck.typeCoverage': 'Type Coverage',
+      'deck.sharedHintDetails': 'Shared Hint Details',
+      'deck.avgHintDiscount': 'Avg discount',
+      'deck.across': 'across',
+      'deck.sharedSkills': 'shared skills',
+      'deck.unique': 'unique',
+      'deck.shared': 'shared',
+      'deck.openInOptimizer': 'Open in Optimizer',
+      'deck.noSupportsForOptimizer': 'Add support cards first.',
+      'deck.metaTemplates': 'Meta Templates',
+      'deck.templatesSource': 'Based on Class 6 statistics from uma.moe',
+      'deck.templateUsage': '{0}% of Class 6 decks',
+      'deck.loadTemplate': 'Load',
+      'deck.sortBy': 'Sort by:',
+      'deck.distance': 'Distance',
+      'deck.surface': 'Surface',
+      'deck.strategy': 'Strategy',
+      'deck.nothingToSave': 'Nothing to save.',
+      'deck.loadedDeck': 'Loaded "{name}"',
+      'deck.loadedTemplate': 'Loaded {distance} template',
+      'deck.friend': 'Friend',
+      'deck.group': 'Group',
+      'deck.effect.raceBonus': 'Race Bonus',
+      'deck.effect.fanBonus': 'Fan Bonus',
+      'deck.effect.trainingEffectiveness': 'Training Effectiveness',
+      'deck.effect.speedBonus': 'Speed Bonus',
+      'deck.effect.staminaBonus': 'Stamina Bonus',
+      'deck.effect.powerBonus': 'Power Bonus',
+      'deck.effect.gutsBonus': 'Guts Bonus',
+      'deck.effect.witBonus': 'Wit Bonus',
+      'deck.effect.skillPointBonus': 'Skill Point Bonus',
+      'deck.effect.hintLevels': 'Hint Levels',
+      'deck.effect.friendshipBonus': 'Friendship Bonus',
+      'deck.effect.initialSpeed': 'Initial Speed',
+      'deck.effect.initialStamina': 'Initial Stamina',
+      'deck.effect.initialPower': 'Initial Power',
+      'deck.effect.initialGuts': 'Initial Guts',
+      'deck.effect.initialWit': 'Initial Wit',
+      'deck.effect.initialFriendshipGauge': 'Initial Friendship Gauge',
+      'deck.effect.hintFrequency': 'Hint Frequency',
+      'deck.effect.specialtyPriority': 'Specialty Priority',
+      'deck.effect.witFriendshipRecovery': 'Wit Friendship Recovery',
+      'deck.effect.moodEffect': 'Mood Effect',
+      'deck.effect.energyCostReduction': 'Energy Cost Reduction',
+      'deck.effect.eventEffectiveness': 'Event Effectiveness',
+      'deck.effect.eventRecovery': 'Event Recovery',
+      'deck.effect.failureProtection': 'Failure Protection',
+      'deck.effect.initialSkillPoints': 'Initial Skill Points',
+
+      'common.corner': 'Corner',
+      'common.straight': 'Straight',
+      'common.debuff': 'Debuff',
+      'common.general': 'General',
+      'common.frontPace': 'Front/Pace',
+      'common.lateEnd': 'Late/End',
+
+      // ── Random ──
+      'random.title': 'Randomizer',
+      'random.supportDeck': 'Support Deck (5 cards)',
+      'random.doubleSpeed': '2\u00D7 speed',
+      'random.roll5': 'Roll 5',
+      'random.clearExclusions': 'Clear Exclusions',
+      'random.excludePlaceholder': 'Exclude a support (choose from list)',
+      'random.addExclusions': 'Add to Exclusions',
+      'random.randomUma': 'Random Uma',
+      'random.pickRandomUma': 'Pick Random Uma',
+      'random.noCards': 'No cards available. Adjust filters or exclusions.',
+      'random.noUmaData': 'No Uma data available.',
+      'random.notFound': "Couldn't find that support. Please pick one from the list.",
+      'random.clickToPick': 'Click "Pick Random Uma" to roll.',
+      'random.rollAgain': 'Press "Pick Random Uma" to roll again.',
+
+      // ── Umadle ──
+      'umadle.title': 'Umadle',
+      'umadle.selectUma': 'Select an Uma...',
+      'umadle.legend': 'Legend:',
+      'umadle.exactMatch': 'exact match,',
+      'umadle.guessLower': 'your guess is lower (go up),',
+      'umadle.guessHigher': 'your guess is higher (go down)',
+      'umadle.selectCharacter': 'Select Character',
+      'umadle.noCharsMatch': 'No characters match',
+      'umadle.youGotIt': 'You got it! \uD83C\uDF89',
+      'umadle.newUma': 'New UMA',
+      'umadle.keepBoard': 'Keep Board',
+      'umadle.allMatch': 'You got it! All stats match.',
+
+      // ── Tutorial ──
+      'tutorial.closeTutorial': 'Close tutorial',
+      'tutorial.jumpToField': 'Jump to highlighted field',
+      'tutorial.back': 'Back',
+      'tutorial.next': 'Next',
+      'tutorial.done': 'Done',
+      'tutorial.skip': 'Skip',
+      'tutorial.keyboardHint': 'Use Left/Right Arrow for steps. Press Esc to skip.',
+      'tutorial.startTour': 'Start tour',
+      'tutorial.notNow': 'Not now',
+      'tutorial.quickSetup': 'Quick setup tour',
+      'tutorial.stepOf': 'Step {current} of {total}',
+      'tutorial.resumeTitle': 'Resume tutorial?',
+      'tutorial.resumeCopy': 'Continue from step {step} of {total}. You can skip anytime.',
+      'tutorial.resume': 'Resume',
+      'tutorial.newHereTitle': 'New here?',
+      'tutorial.newHereCopy':
+        'Take a quick 60-second setup tour. It is lightweight, skippable, and can be reopened any time.',
+      'tutorial.openHelp': 'Open help and tutorial',
+
+      // ── Optimizer (dynamic) ──
+      'optimizer.libraryStillLoading':
+        'Skill library is still loading. Please try again once it finishes.',
+      'optimizer.selectTargetFirst':
+        'Select at least one target aptitude before generating a build.',
+      'optimizer.enterValidBudget': 'Enter a valid positive skill points budget first.',
+      'optimizer.addRecognizedSkill':
+        'Add at least one recognized skill with a cost before generating a build.',
+      'optimizer.requiredExceedBudget': 'Required skills exceed the current budget.',
+      'optimizer.noMatchingRows': 'No existing rows match the selected targets with S-A affinity.',
+      'optimizer.teamTrialsFailed': 'Team Trials optimization failed for the current constraints.',
+      'optimizer.budgetTooLow': 'Budget too low to purchase any matching Team Trials candidates.',
+      'optimizer.highlightedSkills':
+        'Highlighted {chosen}/{total} matching skills (cost {used}/{budget}).',
+      'optimizer.budgetTooLowSkills':
+        'Budget too low to purchase any of the matching skills you entered.',
+      'optimizer.noBuildToShare': 'No build to share.',
+      'optimizer.linkCopied': 'Shareable link copied to clipboard!',
+      'optimizer.noBuildToSave': 'No build to save.',
+      'optimizer.buildLoaded': 'Build "{name}" loaded successfully!',
+      'optimizer.buildLinkCopied': 'Link for "{name}" copied to clipboard!',
+      'optimizer.failedDeleteBuild': 'Failed to delete build.',
+      'optimizer.confirmDelete': 'Delete "{name}"? This cannot be undone.',
+      'optimizer.buildDeleted': 'Build "{name}" deleted.',
+      'optimizer.buildSaved': 'Build "{name}" saved successfully!',
+      'optimizer.buildSavedTrimmed':
+        'Storage limit reached. Kept only your 10 most recent builds. Build "{name}" saved.',
+      'optimizer.csvNotRecognized':
+        'CSV not recognized. Expected headers like: skill_type,name,base/base_value,S_A/B_C/D_E_F/G or apt_1..apt_4,affinity',
+      'optimizer.noSavedBuilds': 'No saved builds yet. Save your current build to get started!',
+      'optimizer.evo': 'Evo:',
+      'optimizer.scoreDisplay': 'Score {score}',
+      'optimizer.load': 'Load',
+      'optimizer.share': 'Share',
+      'optimizer.delete': 'Delete',
+      'optimizer.type': 'Type',
+      'optimizer.skill': 'Skill',
+      'optimizer.hintDiscount': 'Hint Discount',
+      'optimizer.mustBuy': 'Must Buy',
+      'optimizer.lock': 'Lock',
+      'optimizer.removeRow': 'Remove',
+      'optimizer.catGold': 'Gold',
+      'optimizer.catPurple': 'Purple',
+      'optimizer.catEvo': 'Evo',
+      'optimizer.catUnique': 'Unique',
+      'optimizer.hintLvFormat': 'Lv{lvl} ({pct}% off)',
+      'optimizer.loadedSkills': 'Loaded {count} skills',
+      'optimizer.officialEnFiltered': 'Official EN only ({count} filtered)',
+      'optimizer.officialEnUnavailable': 'Official EN filter unavailable',
+      'optimizer.usingFallback': 'Using fallback skills ({reason})',
+      'optimizer.removeGoldToUnlink': 'Remove the gold row to unlink',
+      'optimizer.removeParentToUnlink': 'Remove the parent row to unlink',
+      'optimizer.removeCircleToUnlink': 'Remove the \u25CB row to unlink',
+      'optimizer.uncheckEvo': 'Uncheck the evo option on the gold row',
+      'optimizer.includedWith': '- included with {name}',
+      'optimizer.costScoreDisplay': '- cost {cost}, score {score}',
+      'optimizer.requiredCannotFit': 'Required skills cannot fit within the current budget.',
+      'optimizer.teamTrialsUnavailable': 'Team Trials optimizer module is unavailable.',
+      'optimizer.teamTrialsNoResult': 'Team Trials optimizer failed to produce a result.',
+      'optimizer.noCandidates': 'No candidate skills were provided.',
+      'optimizer.noMatchTargets': 'No skills match the selected Team Trials targets/aptitudes.',
+      'optimizer.optimizationFailed': 'Optimization failed for the current constraints.',
+
+      // ── Events/OCR (dynamic) ──
+      'events.uiFoundReading': 'UI found ({score}%). Reading title\u2026',
+      'events.detectedSearching': 'Detected: "{title}" \u2014 searching\u2026',
+      'events.uiFoundNoText': 'UI found, but OCR produced no text.',
+      'events.waitingForUI': 'Waiting for UI\u2026',
+      'events.selectWindow': 'Select a window or screen to capture\u2026',
+      'events.screenShared': "Screen shared. Click 'Capture Frame' to OCR the current view.",
+      'events.failedVideoPreview': 'Failed to start video preview.',
+      'events.captureCancelled': 'Screen capture cancelled.',
+      'events.captureFailedRetry': 'Screen capture failed. Please try again.',
+      'events.screenCaptureBtn': 'Screen Capture',
+      'events.loadingEngine': 'Loading OCR engine\u2026',
+      'events.captureStarted': 'Screen capture started. Waiting for UI\u2026',
+      'events.captureFailedPerms': 'Screen capture failed (permissions or template).',
+      'events.captureStopped': 'Capture stopped.',
+      'events.captureFrame': 'Capture Frame',
+      'events.noSkillsDetected':
+        'No skills detected. Try a different image, adjust the crop, or use Manual Search below.',
+      'events.clickToEdit': 'Click on a skill to edit its name or hint level',
+      'events.hintLv': 'Hint Lv',
+      'events.didYouMean': 'Did you mean?',
+
+      // ── Team Trials (dynamic) ──
+      'teamTrials.noTriggerGroups': 'No explicit trigger groups; using baseline consistency.',
+      'teamTrials.fixedSetup': 'Condition tied to fixed setup (distance/surface/style).',
+      'teamTrials.raceConditionVaries':
+        'Race-condition requirement varies between Team Trials races.',
+      'teamTrials.alwaysOn': 'Always-on activation condition.',
+      'teamTrials.lateRace': 'Late-race activation window present.',
+      'teamTrials.randomTiming': 'Random timing trigger lowers reliability.',
+      'teamTrials.strictPlacement': 'Strict placement requirement (1st only).',
+      'teamTrials.situationalTrigger': 'Situational trigger (block/overtake/position-change).',
+      'teamTrials.multipleGroups': 'Multiple activation groups increase fallback reliability.',
+      'teamTrials.inconsistent': 'Scored as inconsistent activation.',
+      'teamTrials.core': 'Scored as Team Trials core skill.',
+      'teamTrials.strategyMatch': 'Running style match bonus.',
+      'teamTrials.greenDownweighted':
+        'Green skill is downweighted in Team Trials due to variable race conditions.',
+      'teamTrials.consistentGoldPrioritized':
+        'Consistent gold skill prioritized for Team Trials rating value.',
+      'teamTrials.multipleHighProc': 'Multiple picks have high proc reliability (>= 65%).',
+      'teamTrials.prioritizesConsistent':
+        'Prioritizes consistent gold skills for activation scoring.',
+      'teamTrials.averageConsistency': 'Average consistency score: {score}%.',
+      'teamTrials.totalSVReport': 'Total SV: {sv} across {cost} SP spent.',
+      'teamTrials.riskyPick': 'Risky pick: {name} has lower estimated reliability.',
+      'teamTrials.noCandidates': 'No candidate skills provided.',
+      'teamTrials.filteredSkills':
+        'Filtered {count} skills that do not match selected targets/aptitudes.',
+      'teamTrials.ignoredRequired':
+        'Ignored required skills outside selected targets/aptitudes: {names}.',
+      'teamTrials.noMatchTargets': 'No skills match the selected Team Trials targets/aptitudes.',
+      'teamTrials.fallbackHeuristics':
+        'Some skills had no EN metadata match; used fallback consistency heuristics.',
+      'teamTrials.requiredExceedBudget': 'Required skills exceed the current SP budget.',
+      'teamTrials.noFeasibleSolution':
+        'No feasible Team Trials solution under current budget and constraints.',
+      'teamTrials.noScoredSkills':
+        'No scored skills were selected after conflict/dependency filtering.',
+
+      // ── Skill Library ──
+      'skills.title': 'Skill Library',
+      'skills.searchPlaceholder': 'Search skills by name...',
+      'skills.allTypes': 'All',
+      'skills.name': 'Name',
+      'skills.type': 'Type',
+      'skills.cost': 'Cost',
+      'skills.score': 'Score',
+      'skills.efficiency': 'Efficiency',
+      'skills.noResults': 'No skills match your search.',
+      'skills.loading': 'Loading skill data...',
+      'skills.skillCount': '{count} skills',
+
+      // ── Skill Popup ──
+      'skillPopup.description': 'Description',
+      'skillPopup.effects': 'Effects',
+      'skillPopup.availableFrom': 'Available from',
+      'skillPopup.noCards': 'No support cards found',
+      'skillPopup.hints': 'Hints',
+      'skillPopup.events': 'Events',
+      'skillPopup.characters': 'Characters',
+      'skillPopup.potential': 'Potential',
+      'skillPopup.charEvents': 'Events',
+      'skillPopup.duration': 'Duration',
+      'skillPopup.cost': 'Cost',
+      'skillPopup.english': 'English',
+      'skillPopup.japanese': 'Japanese',
+
+      // ── Rating Shared ──
+      'common.affinityGood': 'good',
+      'common.affinityAverage': 'average',
+      'common.affinityBad': 'bad',
+      'common.affinityTerrible': 'terrible',
+      'common.maxRankReached': 'Max rank reached',
+      'common.nextRank': 'Next: {badge} at {threshold}',
+    },
+
+    ja: {
+      'home.heroTitle': 'ウマ娘ツール',
+      'home.heroTitleAccent': '＆計算機',
+      // ── Common ──
+      'common.speed': 'スピード',
+      'common.stamina': 'スタミナ',
+      'common.power': 'パワー',
+      'common.guts': '根性',
+      'common.wisdom': '賢さ',
+      'common.turf': '芝',
+      'common.dirt': 'ダート',
+      'common.sprint': '短距離',
+      'common.mile': 'マイル',
+      'common.medium': '中距離',
+      'common.long': '長距離',
+      'common.front': '逃げ',
+      'common.pace': '先行',
+      'common.late': '差し',
+      'common.end': '追込',
+      'common.track': 'バ場',
+      'common.distance': '距離',
+      'common.strategy': '脚質',
+      'common.add': '追加',
+      'common.remove': '削除',
+      'common.clear': 'クリア',
+      'common.close': '閉じる',
+      'common.save': '保存',
+      'common.search': '検索',
+      'common.loading': '読み込み中...',
+      'common.stats': 'ステータス',
+      'common.skills': 'スキル',
+      'common.unique': '固有',
+      'common.projected': '予想',
+      'common.projectedRating': '予想レーティング',
+      'common.starLevel': '星レベル',
+      'common.uniqueSkillLevel': '固有スキルレベル',
+      'common.raceConfig': 'レース設定',
+      'common.searchByName': '名前で検索...',
+      'common.toggleDarkLight': 'ダーク/ライトモード切替',
+      'common.enough': '十分',
+      'common.notEnough': '不足',
+      'common.borderline': 'ギリギリ',
+      'common.enterValues': '値を入力',
+      'common.copied': 'コピー完了！',
+      'common.copyFailed': 'コピーに失敗しました。アドレスバーから手動でコピーしてください。',
+      'common.reset': 'リセット',
+
+      // ── Nav ──
+      'nav.rating': 'レーティング',
+      'nav.optimizer': 'オプティマイザー',
+      'nav.calculator': 'カリキュレーター',
+      'nav.staminaCheck': 'スタミナ計算',
+      'nav.raceScheduler': 'レーススケジューラー',
+      'nav.tools': 'ツール',
+      'nav.eventOCR': 'イベントOCR',
+      'nav.supportHints': 'サポートヒント',
+      'nav.deckBuilder': 'デッキ編成',
+      'nav.tokenPlanner': 'トークンプランナー',
+      'nav.data': 'データ',
+      'nav.guides': 'ドキュメント',
+      'nav.skillLibrary': 'スキル一覧',
+      'nav.rankBreakdown': 'ランク内訳',
+      'nav.fun': 'お楽しみ',
+      'nav.randomizer': 'ランダマイザー',
+      'nav.umadle': 'ウマドル',
+      'nav.about': 'サイト概要',
+      'nav.aboutUmaTools': 'UmaToolsについて',
+      'nav.allGuides': 'ドキュメント一覧',
+      'nav.guideLibrary': 'リファレンスライブラリ',
+      'nav.guideRating': '評価点とスキル',
+      'nav.guideTeamTrials': 'チーム競技場',
+      'nav.guideAcceleration': '加速スキル',
+      'nav.guideStamina': 'スタミナ',
+      'nav.guideGrandLive': 'グランドライブ',
+      'nav.guideOcr': 'OCR・認識',
+      'nav.guidePrivacy': 'データとプライバシー',
+      'nav.guideTranslations': '翻訳',
+      'nav.settings': '設定',
+      'nav.globalSettings': '全般設定',
+      'nav.server': 'サーバー',
+      'nav.siteLanguage': 'サイト言語',
+      'nav.madeWith': 'Made with',
+      'nav.home': 'UmaTools ホーム',
+      'nav.menu': 'メニュー',
+      'nav.primary': 'メイン',
+
+      // ── Home ──
+      'home.title': 'よく使われるツール',
+      'home.subtitle':
+        '育成プラン、レーティング計算、レースチェック、ゲームデータをひとつのツールキットにまとめました。',
+      'home.trafficSummary': 'プレイヤーの利用が多いページ順に表示しています。',
+      'home.skillOptimizer': 'スキルオプティマイザー',
+      'home.skillOptimizerDesc': 'スキル構成を計画し、目標レースとのシナジーを確認できます。',
+      'home.skillOptimizerBadge': '構成プランナー',
+      'home.openOptimizer': 'オプティマイザーを開く',
+      'home.ratingCalculator': 'レーティング計算機',
+      'home.ratingCalculatorDesc': 'ステータスの内訳からレーティングを計算します。',
+      'home.ratingCalculatorBadge': 'ステ計算',
+      'home.openCalculator': '計算機を開く',
+      'home.staminaCheck': 'スタミナチェック',
+      'home.staminaCheckDesc': 'スタミナが距離と脚質の基準を満たしているか確認できます。',
+      'home.staminaCheckBadge': 'レースモデル',
+      'home.openStaminaCheck': 'スタミナチェックを開く',
+      'home.tokenPlanner': 'グランドライブトークンプランナー',
+      'home.tokenPlannerDesc':
+        '目標楽曲を選び、必要な5種類のグランドライブトークン数を管理できます。',
+      'home.tokenPlannerBadge': 'シナリオプランナー',
+      'home.openTokenPlanner': 'トークンプランナーを開く',
+      'home.accelChecker': '加速スキルチェッカー',
+      'home.accelCheckerDesc': 'レース設定に対して有効な加速スキルを確認できます。',
+      'home.accelCheckerBadge': 'VAC判定',
+      'home.openAccelChecker': '加速チェッカーを開く',
+      'home.eventOCR': 'イベントOCR',
+      'home.eventOCRDesc': 'イベント画面をキャプチャして結果を即座に検索します。',
+      'home.eventOCRBadge': 'OCR検索',
+      'home.openEventOCR': 'イベントOCRを開く',
+      'home.supportHints': 'サポートヒント',
+      'home.supportHintsDesc': 'ヒントキーワードとレアリティでサポートカードを検索します。',
+      'home.supportHintsBadge': 'ヒント検索',
+      'home.openSupportHints': 'サポートヒントを開く',
+      'home.deckBuilder': 'デッキ編成',
+      'home.deckBuilderDesc':
+        'キャラ1体とサポカ6枚でデッキを組みます。ヒントとボーナスの一覧も確認できます。',
+      'home.deckBuilderBadge': 'デッキ編成',
+      'home.openDeckBuilder': 'デッキ編成を開く',
+      'home.guides': 'UmaToolsドキュメント',
+      'home.guidesDesc':
+        'UmaToolsの評価計算や育成計画の仕組みを、プレイヤー向け・技術向けドキュメントで詳しく解説します。',
+      'home.guidesBadge': 'リファレンス',
+      'home.openGuides': 'ドキュメントを見る',
+      'home.skillLibrary': 'スキル一覧',
+      'home.skillLibraryDesc': 'コスト・評価点・効率・取得元でスキルを検索・閲覧できます。',
+      'home.skillLibraryBadge': 'データベース',
+      'home.openSkillLibrary': 'スキル一覧を開く',
+      'home.randomizer': 'ランダマイザー',
+      'home.randomizerDesc': 'ランダムなチャレンジやインスピレーションランを生成します。',
+      'home.randomizerBadge': 'おたのしみ',
+      'home.openRandomizer': 'ランダマイザーを開く',
+      'home.umadle': 'ウマドル',
+      'home.umadleDesc': 'ウマ娘のステータスとヒントを使ったキャラクター推測ゲーム。',
+      'home.umadleBadge': 'キャラクターチャレンジ',
+      'home.openUmadle': 'ウマドルを開く',
+      'home.rankBreakdown': 'レーティングランク内訳',
+      'home.rankBreakdownDesc':
+        'すべてのレーティングしきい値を確認し、目標ランクへ直接移動できます。',
+      'home.rankBreakdownBadge': 'レーティング早見表',
+      'home.openRankBreakdown': 'ランク内訳を開く',
+      'seo.relatedTools': '関連ツール',
+      'home.raceScheduler': 'レーススケジューラー',
+      'home.raceSchedulerDesc': 'キャンペーン全体のレーススケジュールを計画・管理。',
+      'home.raceSchedulerBadge': '外部ツール',
+      'home.openRaceScheduler': 'レーススケジューラーを開く',
+
+      // ── Rank Breakdown ──
+      'rankBreakdown.title': 'レーティングランク内訳',
+      'rankBreakdown.subtitle': 'GからLS24までのしきい値とランクアイコンを一覧表示します。',
+      'rankBreakdown.loading': 'ランクデータを読み込み中...',
+      'rankBreakdown.unavailable': 'ランクデータを読み込めませんでした。',
+      'rankBreakdown.colIcon': 'アイコン',
+      'rankBreakdown.colRank': 'ランク',
+      'rankBreakdown.colMinimum': '下限',
+      'rankBreakdown.colNext': '次のしきい値',
+      'rankBreakdown.colRange': '範囲',
+      'rankBreakdown.maxRank': '最大ランク',
+      'rankBreakdown.rangeTemplate': '{min} - {max}',
+      'rankBreakdown.rangeNoUpper': '{min}+',
+      'rankBreakdown.iconAlt': '{rank} ランクアイコン',
+      'rankBreakdown.lookupLabel': 'レーティング検索',
+      'rankBreakdown.lookupPlaceholder': 'レーティングを入力...',
+      'rankBreakdown.lookupGo': '移動',
+      'rankBreakdown.lookupInvalid': '0以上の有効なレーティングを入力してください。',
+      'rankBreakdown.lookupResult': '{rating} -> {rank} ({range})',
+      'rankBreakdown.overallProgress': '全体進捗',
+
+      // ── Changelog ──
+      'changelog.whatsNew': '新着情報',
+      'changelog.dismiss': '新着情報を閉じる',
+
+      // ── 404 ──
+      'error404.title': 'ページが見つかりません',
+      'error404.message':
+        '申し訳ございません。ページが見つかりませんでした。以下のツールをお試しいただくか、ホームに戻ってください。',
+      'error404.backHome': 'ホームに戻る',
+
+      // ── Calculator ──
+      'calculator.title': 'レーティング計算機',
+      'calculator.helpTutorial': 'ヘルプ / チュートリアル',
+      'calculator.statsRating': 'ステータス & レーティング',
+      'calculator.selectedSkills': '選択中のスキル',
+      'calculator.skillCount': 'スキル数:',
+      'calculator.skillScore': 'スキルスコア:',
+      'calculator.addSkillsHint': 'スキルを追加してレーティングを計算しましょう',
+      'calculator.officialEnOnly': '公式EN名のみ',
+      'calculator.officialEnOnlyTitle': 'GameTora公式の英語スキル名(name_en)のみ表示します。',
+      'calculator.clearAll': '全スキルをクリア',
+      'calculator.loadingSkills': 'スキル読み込み中...',
+      'calculator.skillReady': 'スキルライブラリ準備完了。',
+      'calculator.csvFallback': 'CSV読み込み失敗（フォールバック使用）',
+      'calculator.startTyping': '入力して検索...',
+      'calculator.noSkills': 'スキルが選択されていません。',
+      'calculator.tutorialTitle': 'クイックガイド',
+      'calculator.tutStep1': 'レース設定を合わせる',
+      'calculator.tutStep1Text': 'ウマ娘に合わせてバ場・距離・脚質の適性を設定します。',
+      'calculator.tutStep2': 'ステータスと星レベルを入力',
+      'calculator.tutStep2Text': '5つのステータス、星レベル、固有スキルレベルを入力します。',
+      'calculator.tutStep3': 'スキルを追加する',
+      'calculator.tutStep3Text':
+        'スキル名を入力して検索し、クリックで追加します。スコアは自動更新されます。',
+      'calculator.tutStep4': 'スキルと合計を確認',
+      'calculator.tutStep4Text':
+        'サマリーセクションで最終的な予想レーティングとスキルスコアを確認します。',
+      'calculator.floatProjected': '予想',
+
+      // ── Optimizer ──
+      'optimizer.title': 'ウマ娘スキルオプティマイザー',
+      'optimizer.loadingSkills': 'スキルライブラリ読み込み中...',
+      'optimizer.skillReady': 'スキルライブラリ準備完了。',
+      'optimizer.csvFallback': 'CSV読み込み失敗（フォールバック使用）',
+      'optimizer.startTyping': '入力して検索...',
+      'optimizer.cost': 'コスト',
+      'optimizer.lowerSkill': '下位スキル...',
+      'optimizer.circleUpgrade': '◎ アップグレード...',
+      'optimizer.auto': '自動',
+      'optimizer.scoreUnknown': 'スコア ?',
+      'optimizer.noStrengths': '追加の強みは生成されませんでした。',
+      'optimizer.noRisks': '重大なリスクは検出されませんでした。',
+      'optimizer.noWarnings': 'オプティマイザーの警告はありません。',
+      'optimizer.viewExplanation': '説明を見る',
+      'optimizer.invalidBudget': '有効なスキルポイント予算を入力してください。',
+      'optimizer.addAtLeastOne': '有効なコストのスキルを1つ以上追加してください。',
+      'optimizer.copyError':
+        '共有リンクのコピーに失敗しました。アドレスバーからURLをコピーしてください。',
+      'optimizer.invalidBuild': '無効なビルドデータです。',
+      'optimizer.failedLoadBuild': 'ビルドデータの読み込みに失敗しました。',
+      'optimizer.failedEncode': 'ビルドデータのエンコードに失敗しました。',
+      'optimizer.failedCreateLink': '共有リンクの作成に失敗しました。',
+      'optimizer.enterBuildName': 'ビルド名を入力してください。',
+      'optimizer.noBuildData': '保存するビルドデータがありません。',
+      'optimizer.storageQuota': 'ストレージ容量超過。保存済みビルドを削除してください。',
+      'optimizer.saveFailed':
+        'ビルドの保存に失敗しました。ブラウザのストレージが無効か制限を超えている可能性があります。',
+      'optimizer.helpTutorial': 'ヘルプ / チュートリアル',
+      'optimizer.skillPointsBudget': 'スキルポイント予算',
+      'optimizer.fastLearner': '切れ者 (-10%コスト)',
+      'optimizer.officialEnOnly': '公式EN名のみ',
+      'optimizer.officialEnOnlyTitle': 'GameTora公式英語スキル名（name_en）のみ表示。',
+      'optimizer.optimizeFor': '最適化対象',
+      'optimizer.optRating': 'レーティング',
+      'optimizer.optTeamTrials': 'チームレース（安定型）',
+      'optimizer.optAptitudeTest': 'トレーナー技能試験',
+      'optimizer.scoringWeights': 'スキル評価ウェイト',
+      'optimizer.weightCostEfficiency': 'コスト効率 (SV/SP)',
+      'optimizer.weightConsistency': '発動安定性',
+      'optimizer.raceConfigHint': 'ターゲット適性を設定して、スキルを適切に評価します。',
+      'optimizer.idealSkillBuilder': '理想スキルビルダー',
+      'optimizer.idealBuilderHint': '重視する適性を選択 \u2014 該当行がハイライトされます。',
+      'optimizer.general': '汎用',
+      'optimizer.generateBuild': 'ビルド生成',
+      'optimizer.ratingCalculator': 'レーティング計算機',
+      'optimizer.ratingCalcHint':
+        'ウマの最終ステータス、星レア度、固有スキルレベルを入力。最適化スキルスコアは自動で反映されます。',
+      'optimizer.statsScore': 'ステータススコア',
+      'optimizer.skillScore': 'スキルスコア',
+      'optimizer.uniqueBonus': '固有ボーナス',
+      'optimizer.skillsToBuy': '取得スキル',
+      'optimizer.bestScore': 'ベストスコア:',
+      'optimizer.usedPoints': '使用ポイント:',
+      'optimizer.totalPoints': '合計ポイント:',
+      'optimizer.remaining': '残りポイント:',
+      'optimizer.consistency': '安定度:',
+      'optimizer.expectedValue': '期待値:',
+      'optimizer.totalSV': '合計SV:',
+      'optimizer.expectedActivations': '期待発動数:',
+      'optimizer.svPerSP': 'SP当たりSV:',
+      'optimizer.skillDensity': 'スキル密度:',
+      'optimizer.predictedActivationScore': '予測発動スコア:',
+      'optimizer.aptitudeTestScore': '技能試験スコア:',
+      'optimizer.explainTeamTrials': 'チームレースビルドの説明',
+      'optimizer.consistencyStrengths': '安定度の強み',
+      'optimizer.risksWarnings': 'リスク & 警告',
+      'optimizer.optimizerWarnings': 'オプティマイザー警告',
+      'optimizer.rowTip': 'ヒント: スキル名とコストを入力するだけで種類が自動判定されます',
+      'optimizer.imageEnhancement': '画像補正',
+      'optimizer.debugMode': 'デバッグモード',
+      'optimizer.importJSON': 'JSONインポート',
+      'optimizer.uploadScreenshot': 'スクリーンショットアップロード',
+      'optimizer.screenCapture': '画面キャプチャ',
+      'optimizer.saveBuild': 'ビルド保存',
+      'optimizer.viewSavedBuilds': '保存済みビルド一覧',
+      'optimizer.shareBuild': 'ビルド共有',
+      'optimizer.clearAllSkills': '全スキルクリア',
+      'optimizer.browseSkills': 'スキル一覧',
+      'optimizer.searchSkills': 'スキルを検索...',
+      'optimizer.color': '色',
+      'optimizer.showingCount': '{total}件中{count}件表示',
+      'optimizer.addSelected': '選択を追加',
+      'optimizer.detectedSkills': '検出スキル',
+      'optimizer.addAllToOptimizer': '全てオプティマイザーに追加',
+      'optimizer.saveBuildModal': 'ビルド保存',
+      'optimizer.buildName': 'ビルド名',
+      'optimizer.required': '（必須）',
+      'optimizer.description': '説明',
+      'optimizer.optional': '（任意）',
+      'optimizer.buildNamePlaceholder': '最強ビルド',
+      'optimizer.buildDescPlaceholder': 'このビルドについてのメモ...',
+      'optimizer.cancel': 'キャンセル',
+      'optimizer.savedBuilds': '保存済みビルド',
+      'optimizer.editDetectedSkill': '検出スキル編集',
+      'optimizer.skillName': 'スキル名',
+      'optimizer.skillNamePlaceholder': 'スキル名を入力...',
+      'optimizer.costLabel': 'コスト',
+      'optimizer.costPlaceholder': 'スキルポイントコスト',
+      'optimizer.hintLevel': 'ヒントレベル',
+      'optimizer.hintLevelRange': '(0-5)',
+      'optimizer.noHint': 'ヒントなし',
+      'optimizer.hintLv': 'ヒント Lv',
+      'optimizer.floatProjected': '予想',
+      'optimizer.reference': '参照:',
+      'optimizer.tutorialTitle': 'オプティマイザー クイックツアー',
+      'optimizer.tutStep1': 'クイックセットアップ',
+      'optimizer.tutStep1Text':
+        'このツアーはスキップ可能で、いつでもヘルプ/チュートリアルボタンから再開できます。',
+      'optimizer.tutStep2': 'スキルポイントを入力',
+      'optimizer.tutStep2Short': 'スキルポイント',
+      'optimizer.tutStep2Text':
+        '利用可能なスキルポイントの予算をここに設定します。推奨と残りポイントはこの値を使用します。',
+      'optimizer.tutStep3': 'たづなを使う',
+      'optimizer.tutStep3Short': 'たづなトグル',
+      'optimizer.tutStep3Text':
+        'ウマ娘のスキルコストが割引される場合はオンにしてください。スキルコストが自動更新されます。',
+      'optimizer.tutStep4': '{goalLabel}で最適化',
+      'optimizer.tutStep4Short': '最適化目標',
+      'optimizer.tutStep4Text':
+        '選択した目標またはカテゴリを選びます。現在のモードは{goalLabel}で、いつでも切り替え可能です。',
+      'optimizer.tutStep5': 'レース適性を合わせる',
+      'optimizer.tutStep5Short': 'レース設定',
+      'optimizer.tutStep5Text':
+        'バ場・距離・脚質をウマ娘に合わせて設定します。適性によりスキルの評価が変わります。',
+      'optimizer.tutStep6': 'スキルビルダーを使う',
+      'optimizer.tutStep6Short': 'スキルビルダー',
+      'optimizer.tutStep6Text':
+        'ビルド生成で選択カテゴリのレーティング高スキルを自動選択し、行を微調整できます。',
+      'optimizer.tutStep7': 'ステータスと星レベルを入力',
+      'optimizer.tutStep7Short': 'ステータスと星',
+      'optimizer.tutStep7Text':
+        '最終ステータス、星レアリティ、固有レベルを入力して予想レーティングをウマ娘に合わせます。',
+      'optimizer.tutStep8': 'スキルを追加する',
+      'optimizer.tutStep8Short': 'スキル追加',
+      'optimizer.tutStep8Text':
+        'これらの行にスキルを入力します。タイプとカテゴリは自動検出され、コストも設定に応じて更新されます。',
+      'optimizer.tutStep9': '購入スキルを確認',
+      'optimizer.tutStep9Short': '購入スキル',
+      'optimizer.tutStep9Text':
+        '行を埋めると推奨購入リストがここに表示されます。最終的な選択はここで確認します。',
+
+      // ── Skill Popup Effects ──
+      'skillPopup.effectSpeed': 'スピード',
+      'skillPopup.effectStamina': 'スタミナ',
+      'skillPopup.effectPower': 'パワー',
+      'skillPopup.effectGuts': '根性',
+      'skillPopup.effectWisdom': '賢さ',
+      'skillPopup.effectRunningStyle': '作戦',
+      'skillPopup.effectFieldOfView': '視野',
+      'skillPopup.effectStaminaRecovery': 'スタミナ回復',
+      'skillPopup.effectLaneChangeSpeed': 'レーン移動速度',
+      'skillPopup.effectPositionAwareness': '位置取り',
+      'skillPopup.effectPaceControl': 'ペース制御',
+      'skillPopup.effectTargetSpeed': '目標速度',
+      'skillPopup.effectLaneMovementSpeed': 'レーン移動速度',
+      'skillPopup.effectAcceleration': '加速',
+      'skillPopup.effectDecelerationBlock': '減速防止',
+      'skillPopup.effectSpecial': '特殊',
+      'skillPopup.effectStatBoost': 'ステータスブースト',
+      'skillPopup.skillDetails': 'スキル詳細',
+      'skillPopup.rarity': 'レアリティ',
+      'skillPopup.ofMaxStamina': '最大スタミナに対して',
+      'skillPopup.activeEffect': '有効',
+
+      // ── Stamina ──
+      'stamina.title': 'スタミナ計算機',
+      'stamina.statsRecovery': 'ステータス & 回復',
+      'stamina.statsRecoveryHint': 'ステータスと回復スキルを入力してください。',
+      'stamina.recoverySkills': '回復スキル',
+      'stamina.white': '白 (1.5%)',
+      'stamina.other': 'その他 (3.5%)',
+      'stamina.gold': '金 (5.5%)',
+      'stamina.uniqueRecovery': '固有回復',
+      'stamina.uniqueRecoveryHint': '固有回復の回復量はGametoraで確認できます。',
+      'stamina.uniqueSkill': '固有スキル',
+      'stamina.level': 'レベル',
+      'stamina.selectUnique': '固有スキルを選択',
+      'stamina.noUnique': '固有スキルが追加されていません。',
+      'stamina.results': '結果',
+      'stamina.resultsHint': 'スタミナ必要量のスプレッドシート計算と一致する出力です。',
+      'stamina.status': 'ステータス',
+      'stamina.staminaNeeded': '必要スタミナ',
+      'stamina.actualStamina': '実スタミナ',
+      'stamina.distanceBucket': '距離区分',
+      'stamina.skillProcRate': 'スキル発動率',
+      'stamina.rushingRate': 'ラッシュ率',
+      'stamina.recoveryTotal': '回復合計',
+      'stamina.considerProc': 'スキル発動率を考慮',
+      'stamina.rushing': 'ラッシュ',
+      'stamina.never': 'なし',
+      'stamina.always': '常時',
+      'stamina.autoWisdom': '自動 (賢さ)',
+      'stamina.borderlineNote': 'スタミナはギリギリです（カットオフに近い）。',
+      'stamina.needMore': 'あと約 {amount} のスタミナが必要です。',
+      'stamina.race': 'レース',
+      'stamina.surface': 'バ場',
+      'stamina.condition': 'バ場状態',
+      'stamina.style': '脚質',
+      'stamina.mood': 'やる気',
+      'stamina.firm': '良',
+      'stamina.good': '稍重',
+      'stamina.soft': '重',
+      'stamina.heavy': '不良',
+      'stamina.great': '絶好調',
+      'stamina.normal': '普通',
+      'stamina.bad': '不調',
+      'stamina.awful': '絶不調',
+      'stamina.moodGood': '好調',
+      'stamina.distanceBucketHint': '距離区分: {category}',
+
+      // ── Events ──
+      'events.title': 'イベントOCR',
+      'events.searchPlaceholder': 'イベント名を検索...',
+      'events.captureOCR': 'OCRでスクリーンキャプチャ',
+      'events.stopCapture': 'キャプチャ停止',
+      'events.scanTime': 'スキャン時間:',
+      'events.selectScanTime': 'OCRスキャン時間を選択',
+      'events.typeAndSearch': 'イベント名を入力して検索してください。',
+      'events.searching': '検索中\u2026',
+      'events.searchFailed': '検索に失敗しました。',
+      'events.noEvent': 'イベントが見つかりません。',
+      'events.otherMatches': 'その他の候補:',
+      'events.recommended': 'おすすめ',
+      'events.processingImage': '画像処理中...',
+      'events.ocrFailed': '画像の処理に失敗しました。もう一度お試しください。',
+      'events.ocrCaptureFailed': 'キャプチャフレームの処理に失敗しました。もう一度お試しください。',
+      'events.skillsApplied': 'スキル適用完了！',
+      'events.calcNotAvailable': '計算機連携が利用できません。ページを更新してください。',
+      'events.selectOneSkill': '追加するスキルを1つ以上選択してください。',
+      'events.skillNameRequired': 'スキル名は必須です',
+      'events.costRange': 'コストは0～999の範囲で入力してください',
+      'events.hintRange': 'ヒントレベルは0～5の範囲で入力してください',
+      'events.guideTitle': 'ウマ娘のイベント選択肢をすばやく検索',
+      'events.guideIntro':
+        'イベント名を手動で検索するか、画面をOCRで読み取ります。一致した選択肢と結果を確認できるため、育成を中断せずに判断できます。',
+      'events.guideRelated':
+        '提示されたスキルを<a href="/skills">スキル一覧</a>で確認し、<a href="/optimizer">スキルオプティマイザー</a>で取得プラン全体を比較できます。',
+
+      // ── Hints ──
+      'hints.title': 'サポートヒント検索',
+      'hints.instruction': 'スキルヒントを入力してEnterで追加します（例: 中距離コーナー）。',
+      'hints.placeholder': 'ヒントを追加（例: 中距離コーナー ○）',
+      'hints.matchAll': '全一致 (AND)',
+      'hints.matchAny': 'いずれか一致 (OR)',
+      'hints.loadingHints': 'ヒント読み込み中\u2026',
+      'hints.loadingSupports': 'サポート読み込み中\u2026',
+      'hints.loadFailed': 'サポートヒントの読み込みに失敗しました。',
+      'hints.loadSupportFailed': 'サポートデータの読み込みに失敗しました。更新してください。',
+      'hints.copyLink': 'リンクをコピー',
+      'hints.counts': '{matched}件一致 | 全{total}枚 | ヒント{hints}種',
+      'hints.showMore': 'もっと見る（{shown}/{total}）',
+      'hints.resultsHeading': '一致するサポートカード',
+
+      // ── Deck ──
+      'deck.title': 'デッキ編成',
+      'deck.character': 'キャラクター',
+      'deck.supportCards': 'サポートカード ({current}/6)',
+      'deck.selectCharacter': 'キャラクターを選択',
+      'deck.selectSupportCard': 'サポートカードを選択',
+      'deck.savedDecks': '保存済みデッキ',
+      'deck.copyShareLink': '共有リンクをコピー',
+      'deck.clearAll': '全てクリア',
+      'deck.deckName': 'デッキ名...',
+      'deck.noSavedDecks': '保存済みデッキはありません',
+      'deck.loadingData': 'データ読み込み中\u2026',
+      'deck.failedCharData': 'キャラクターデータの読み込みに失敗',
+      'deck.failedSupportData': 'サポートデータの読み込みに失敗',
+      'deck.failedLoadData': 'データの読み込みに失敗しました。更新してください。',
+      'deck.selectChar': 'キャラクターを選択',
+      'deck.addCard': 'カードを追加',
+      'deck.noCardsMatch': '条件に一致するカードがありません',
+      'deck.noEffectData': '効果データなし',
+      'deck.noCharsMatch': '一致するキャラクターがいません',
+      'deck.removeChar': 'キャラクターを削除',
+      'deck.swapCard': 'カードを入替',
+      'deck.copyLinkFailed': 'リンクのコピーに失敗しました。',
+      'deck.combinedSummary': '合計サマリー',
+      'deck.statBonuses': 'ステータスボーナス:',
+      'deck.combinedEffects': '合計効果',
+      'deck.skillHints': 'スキルヒント:',
+      'deck.levelLabel': 'レベル:',
+      'deck.wit': '賢さ',
+      'deck.noCharacter': 'キャラクターなし',
+      'deck.maxSupports': 'サポートカードは最大6枚です。',
+      'deck.emptySummary': 'キャラクターとサポートカードを追加してサマリーを表示します。',
+      'deck.typeBalance': 'タイプバランス',
+      'deck.effectStacking': '効果スタッキング',
+      'deck.hintSynergy': 'ヒントシナジー',
+      'deck.characterFit': 'キャラ適合',
+      'deck.limitBreakCap': '上限解放キャップ適用: カードの上限解放を上げるまで最大{score}/100。',
+      'deck.synergyAnalysis': 'シナジー分析',
+      'deck.typeCoverage': 'タイプカバー率',
+      'deck.sharedHintDetails': '共通ヒント詳細',
+      'deck.avgHintDiscount': '平均割引',
+      'deck.across': '/',
+      'deck.sharedSkills': '共通スキル',
+      'deck.unique': 'ユニーク',
+      'deck.shared': '共通',
+      'deck.openInOptimizer': 'オプティマイザーで開く',
+      'deck.noSupportsForOptimizer': 'まずサポートカードを追加してください。',
+      'deck.metaTemplates': 'メタテンプレート',
+      'deck.templatesSource': 'uma.moeのクラス6統計に基づく',
+      'deck.templateUsage': 'クラス6の{0}%が使用',
+      'deck.loadTemplate': '読込',
+      'deck.sortBy': '並べ替え：',
+      'deck.distance': '距離',
+      'deck.surface': 'バ場',
+      'deck.strategy': '脚質',
+      'deck.nothingToSave': '保存するものがありません。',
+      'deck.loadedDeck': '「{name}」を読み込みました',
+      'deck.loadedTemplate': '{distance}テンプレートを読み込みました',
+      'deck.friend': 'フレンド',
+      'deck.group': 'グループ',
+      'deck.effect.raceBonus': 'レースボーナス',
+      'deck.effect.fanBonus': 'ファン数ボーナス',
+      'deck.effect.trainingEffectiveness': 'トレーニング効果アップ',
+      'deck.effect.speedBonus': 'スピードボーナス',
+      'deck.effect.staminaBonus': 'スタミナボーナス',
+      'deck.effect.powerBonus': 'パワーボーナス',
+      'deck.effect.gutsBonus': '根性ボーナス',
+      'deck.effect.witBonus': '賢さボーナス',
+      'deck.effect.skillPointBonus': 'スキルPtボーナス',
+      'deck.effect.hintLevels': 'ヒントLvアップ',
+      'deck.effect.friendshipBonus': '友情ボーナス',
+      'deck.effect.initialSpeed': '初期スピードアップ',
+      'deck.effect.initialStamina': '初期スタミナアップ',
+      'deck.effect.initialPower': '初期パワーアップ',
+      'deck.effect.initialGuts': '初期根性アップ',
+      'deck.effect.initialWit': '初期賢さアップ',
+      'deck.effect.initialFriendshipGauge': '初期絆ゲージアップ',
+      'deck.effect.hintFrequency': 'ヒント発生率アップ',
+      'deck.effect.specialtyPriority': '得意率アップ',
+      'deck.effect.witFriendshipRecovery': '賢さ友情回復量アップ',
+      'deck.effect.moodEffect': 'やる気効果アップ',
+      'deck.effect.energyCostReduction': '体力消費ダウン',
+      'deck.effect.eventEffectiveness': 'イベント効果アップ',
+      'deck.effect.eventRecovery': 'イベント回復量アップ',
+      'deck.effect.failureProtection': '失敗率ダウン',
+      'deck.effect.initialSkillPoints': '初期スキルPtアップ',
+
+      'common.corner': 'コーナー',
+      'common.straight': '直線',
+      'common.debuff': 'デバフ',
+      'common.general': '汎用',
+      'common.frontPace': '逃げ/先行',
+      'common.lateEnd': '差し/追込',
+
+      // ── Random ──
+      'random.title': 'ランダマイザー',
+      'random.supportDeck': 'サポートデッキ (5枚)',
+      'random.doubleSpeed': '2倍速',
+      'random.roll5': '5枚引く',
+      'random.clearExclusions': '除外をクリア',
+      'random.excludePlaceholder': '除外するサポートを選択',
+      'random.addExclusions': '除外に追加',
+      'random.randomUma': 'ランダムウマ娘',
+      'random.pickRandomUma': 'ランダムに選ぶ',
+      'random.noCards': 'カードがありません。フィルターまたは除外を調整してください。',
+      'random.noUmaData': 'ウマ娘データがありません。',
+      'random.notFound': 'そのサポートが見つかりません。リストから選んでください。',
+      'random.clickToPick': '「ランダムに選ぶ」をクリックしてください。',
+      'random.rollAgain': '「ランダムに選ぶ」を押してもう一度引く。',
+
+      // ── Umadle ──
+      'umadle.title': 'ウマドル',
+      'umadle.selectUma': 'ウマ娘を選択...',
+      'umadle.legend': '凡例:',
+      'umadle.exactMatch': '完全一致、',
+      'umadle.guessLower': '予想が低い（上へ）、',
+      'umadle.guessHigher': '予想が高い（下へ）',
+      'umadle.selectCharacter': 'キャラクターを選択',
+      'umadle.noCharsMatch': '一致するキャラクターがいません',
+      'umadle.youGotIt': '正解！ \uD83C\uDF89',
+      'umadle.newUma': '新しいウマ娘',
+      'umadle.keepBoard': 'ボードを保持',
+      'umadle.allMatch': '正解！全ステータスが一致しました。',
+
+      // ── Tutorial ──
+      'tutorial.closeTutorial': 'チュートリアルを閉じる',
+      'tutorial.jumpToField': 'ハイライトされたフィールドに移動',
+      'tutorial.back': '戻る',
+      'tutorial.next': '次へ',
+      'tutorial.done': '完了',
+      'tutorial.skip': 'スキップ',
+      'tutorial.keyboardHint': '左右矢印キーでステップ移動。Escでスキップ。',
+      'tutorial.startTour': 'ツアー開始',
+      'tutorial.notNow': '後で',
+      'tutorial.quickSetup': 'クイックセットアップツアー',
+      'tutorial.stepOf': 'ステップ {current} / {total}',
+      'tutorial.resumeTitle': 'チュートリアルを再開しますか？',
+      'tutorial.resumeCopy': 'ステップ {step} / {total} から続行します。いつでもスキップできます。',
+      'tutorial.resume': '再開',
+      'tutorial.newHereTitle': '初めてですか？',
+      'tutorial.newHereCopy':
+        '60秒のクイックセットアップツアーです。軽量でスキップ可能、いつでも再開できます。',
+      'tutorial.openHelp': 'ヘルプとチュートリアルを開く',
+
+      // ── Optimizer (dynamic) ──
+      'optimizer.libraryStillLoading': 'スキルライブラリの読み込み中です。完了までお待ちください。',
+      'optimizer.selectTargetFirst': 'ビルド生成前に対象適性を1つ以上選択してください。',
+      'optimizer.enterValidBudget': '有効なスキルポイント予算を入力してください。',
+      'optimizer.addRecognizedSkill': 'コスト付きの認識されたスキルを1つ以上追加してください。',
+      'optimizer.requiredExceedBudget': '必須スキルが現在の予算を超えています。',
+      'optimizer.noMatchingRows': '選択したターゲットにS-A適性で一致する行がありません。',
+      'optimizer.teamTrialsFailed': '現在の条件でチームレース最適化に失敗しました。',
+      'optimizer.budgetTooLow': 'チームレース候補を購入するには予算が不足しています。',
+      'optimizer.highlightedSkills':
+        '{chosen}/{total} の一致スキルをハイライト（コスト {used}/{budget}）。',
+      'optimizer.budgetTooLowSkills': '入力されたスキルを購入するには予算が不足しています。',
+      'optimizer.noBuildToShare': '共有するビルドがありません。',
+      'optimizer.linkCopied': '共有リンクをクリップボードにコピーしました！',
+      'optimizer.noBuildToSave': '保存するビルドがありません。',
+      'optimizer.buildLoaded': 'ビルド「{name}」を正常に読み込みました！',
+      'optimizer.buildLinkCopied': '「{name}」のリンクをクリップボードにコピーしました！',
+      'optimizer.failedDeleteBuild': 'ビルドの削除に失敗しました。',
+      'optimizer.confirmDelete': '「{name}」を削除しますか？この操作は取り消せません。',
+      'optimizer.buildDeleted': 'ビルド「{name}」を削除しました。',
+      'optimizer.buildSaved': 'ビルド「{name}」を保存しました！',
+      'optimizer.buildSavedTrimmed':
+        'ストレージ上限に達しました。最新10件のみ保持。ビルド「{name}」を保存しました。',
+      'optimizer.csvNotRecognized':
+        'CSVが認識できません。skill_type, name, base/base_value等のヘッダーが必要です',
+      'optimizer.noSavedBuilds':
+        '保存済みビルドはまだありません。現在のビルドを保存して始めましょう！',
+      'optimizer.evo': 'Evo:',
+      'optimizer.scoreDisplay': 'スコア {score}',
+      'optimizer.load': '読込',
+      'optimizer.share': '共有',
+      'optimizer.delete': '削除',
+      'optimizer.type': 'タイプ',
+      'optimizer.skill': 'スキル',
+      'optimizer.hintDiscount': 'ヒント割引',
+      'optimizer.mustBuy': '必須',
+      'optimizer.lock': 'ロック',
+      'optimizer.removeRow': '削除',
+      'optimizer.catGold': '金',
+      'optimizer.catPurple': '紫',
+      'optimizer.catEvo': '進化',
+      'optimizer.catUnique': '固有',
+      'optimizer.hintLvFormat': 'Lv{lvl} ({pct}%引き)',
+      'optimizer.loadedSkills': '{count}件のスキルを読み込み',
+      'optimizer.officialEnFiltered': '公式ENのみ（{count}件除外）',
+      'optimizer.officialEnUnavailable': '公式ENフィルター利用不可',
+      'optimizer.usingFallback': 'フォールバックスキル使用（{reason}）',
+      'optimizer.removeGoldToUnlink': '金行を削除してリンク解除',
+      'optimizer.removeParentToUnlink': '親行を削除してリンク解除',
+      'optimizer.removeCircleToUnlink': '\u25CB行を削除してリンク解除',
+      'optimizer.uncheckEvo': '金行のevoオプションのチェックを外す',
+      'optimizer.includedWith': '- {name}に含まれる',
+      'optimizer.costScoreDisplay': '- コスト {cost}, スコア {score}',
+      'optimizer.requiredCannotFit': '必須スキルが現在の予算内に収まりません。',
+      'optimizer.teamTrialsUnavailable': 'チームレースオプティマイザーモジュールが利用できません。',
+      'optimizer.teamTrialsNoResult': 'チームレースオプティマイザーが結果を生成できませんでした。',
+      'optimizer.noCandidates': '候補スキルが提供されていません。',
+      'optimizer.noMatchTargets':
+        '選択したチームレースターゲット/適性に一致するスキルがありません。',
+      'optimizer.optimizationFailed': '現在の条件で最適化に失敗しました。',
+
+      // ── Events/OCR (dynamic) ──
+      'events.uiFoundReading': 'UI検出（{score}%）。タイトル読み取り中\u2026',
+      'events.detectedSearching': '検出:「{title}」\u2014 検索中\u2026',
+      'events.uiFoundNoText': 'UIは検出されましたが、OCRがテキストを読み取れませんでした。',
+      'events.waitingForUI': 'UI待機中\u2026',
+      'events.selectWindow': 'キャプチャするウィンドウまたは画面を選択\u2026',
+      'events.screenShared': '画面を共有しました。「フレームキャプチャ」をクリックしてOCRを実行。',
+      'events.failedVideoPreview': 'ビデオプレビューの開始に失敗しました。',
+      'events.captureCancelled': '画面キャプチャがキャンセルされました。',
+      'events.captureFailedRetry': '画面キャプチャに失敗しました。もう一度お試しください。',
+      'events.screenCaptureBtn': '画面キャプチャ',
+      'events.loadingEngine': 'OCRエンジン読み込み中\u2026',
+      'events.captureStarted': '画面キャプチャ開始。UI待機中\u2026',
+      'events.captureFailedPerms': '画面キャプチャに失敗（権限またはテンプレート）。',
+      'events.captureStopped': 'キャプチャ停止。',
+      'events.captureFrame': 'フレームキャプチャ',
+      'events.noSkillsDetected':
+        'スキルが検出されませんでした。別の画像を試すか、切り抜きを調整するか、下の手動検索をご利用ください。',
+      'events.clickToEdit': 'スキルをクリックして名前やヒントレベルを編集',
+      'events.hintLv': 'ヒント Lv',
+      'events.didYouMean': 'もしかして？',
+
+      // ── Team Trials (dynamic) ──
+      'teamTrials.noTriggerGroups': '明示的なトリガーグループなし。ベースライン安定度を使用。',
+      'teamTrials.fixedSetup': '固定セットアップ（距離/バ場/脚質）に紐づく条件。',
+      'teamTrials.raceConditionVaries': 'レース条件がチームレース間で変動します。',
+      'teamTrials.alwaysOn': '常時発動条件。',
+      'teamTrials.lateRace': '終盤発動ウィンドウあり。',
+      'teamTrials.randomTiming': 'ランダムタイミングトリガーで信頼性低下。',
+      'teamTrials.strictPlacement': '厳格な着順条件（1着のみ）。',
+      'teamTrials.situationalTrigger': '状況トリガー（ブロック/追い抜き/ポジション変動）。',
+      'teamTrials.multipleGroups': '複数の発動グループでフォールバック信頼性向上。',
+      'teamTrials.inconsistent': '不安定な発動と評価。',
+      'teamTrials.core': 'チームレースコアスキルと評価。',
+      'teamTrials.strategyMatch': '脚質適性ボーナス。',
+      'teamTrials.greenDownweighted': '緑スキルはレース条件の変動によりチームレースで低評価。',
+      'teamTrials.consistentGoldPrioritized':
+        '安定した金スキルがチームレースのレーティング価値で優先。',
+      'teamTrials.multipleHighProc': '複数の選択肢が高い発動信頼性（65%以上）。',
+      'teamTrials.prioritizesConsistent': '発動スコアリングで安定した金スキルを優先。',
+      'teamTrials.averageConsistency': '平均安定度スコア: {score}%。',
+      'teamTrials.totalSVReport': '合計SV: {sv}（{cost} SP使用）。',
+      'teamTrials.riskyPick': 'リスク選択: {name} は推定信頼性が低い。',
+      'teamTrials.noCandidates': '候補スキルが提供されていません。',
+      'teamTrials.filteredSkills': '選択したターゲット/適性に一致しない{count}件のスキルを除外。',
+      'teamTrials.ignoredRequired': '選択したターゲット/適性外の必須スキルを無視: {names}。',
+      'teamTrials.noMatchTargets':
+        '選択したチームレースターゲット/適性に一致するスキルがありません。',
+      'teamTrials.fallbackHeuristics':
+        'ENメタデータに一致しないスキルがあり、フォールバックヒューリスティクスを使用。',
+      'teamTrials.requiredExceedBudget': '必須スキルが現在のSP予算を超えています。',
+      'teamTrials.noFeasibleSolution': '現在の予算と条件でチームレースの実行可能な解がありません。',
+      'teamTrials.noScoredSkills':
+        'コンフリクト/依存関係フィルタリング後にスコア付きスキルが選択されませんでした。',
+
+      // ── Skill Library ──
+      'skills.title': 'スキル一覧',
+      'skills.searchPlaceholder': 'スキル名で検索...',
+      'skills.allTypes': 'すべて',
+      'skills.name': '名前',
+      'skills.type': 'タイプ',
+      'skills.cost': 'コスト',
+      'skills.score': 'スコア',
+      'skills.efficiency': '効率',
+      'skills.noResults': '一致するスキルがありません。',
+      'skills.loading': 'スキルデータ読み込み中...',
+      'skills.skillCount': '{count}件のスキル',
+
+      // ── Skill Popup ──
+      'skillPopup.description': '説明',
+      'skillPopup.effects': '効果',
+      'skillPopup.availableFrom': '入手可能',
+      'skillPopup.noCards': 'サポートカードが見つかりません',
+      'skillPopup.hints': 'ヒント',
+      'skillPopup.events': 'イベント',
+      'skillPopup.characters': 'キャラクター',
+      'skillPopup.potential': 'ポテンシャル',
+      'skillPopup.charEvents': 'イベント',
+      'skillPopup.duration': '持続時間',
+      'skillPopup.cost': 'コスト',
+      'skillPopup.english': '英語',
+      'skillPopup.japanese': '日本語',
+
+      // ── Rating Shared ──
+      'common.affinityGood': '得意',
+      'common.affinityAverage': '普通',
+      'common.affinityBad': '苦手',
+      'common.affinityTerrible': '非常に苦手',
+      'common.maxRankReached': '最高ランク到達',
+      'common.nextRank': '次: {badge} ({threshold})',
+    },
+  };
+
+  function getLang() {
+    return currentLang;
+  }
+
+  function setLang(lang) {
+    currentLang = lang === 'jp' || lang === 'ja' ? 'ja' : 'en';
+  }
+
+  function getTranslation(key, vars) {
+    var dict = TRANSLATIONS[currentLang] || TRANSLATIONS.en;
+    var str = dict[key];
+    if (str === undefined) {
+      str = TRANSLATIONS.en[key];
+    }
+    if (str === undefined) return undefined;
+    if (vars && typeof vars === 'object') {
+      str = str.replace(/\{([a-zA-Z0-9_-]+)\}/g, function (_, k) {
+        var v = vars[k];
+        return v === undefined || v === null ? '' : String(v);
+      });
+    }
+    return str;
+  }
+
+  function t(key, vars) {
+    var str = getTranslation(key, vars);
+    return str === undefined ? key : str;
+  }
+
+  function applyI18n(root) {
+    var container = root || document;
+    var els = container.querySelectorAll('[data-i18n]');
+    for (var i = 0; i < els.length; i++) {
+      var el = els[i];
+      var key = el.getAttribute('data-i18n');
+      var translated = key ? getTranslation(key) : undefined;
+      if (translated !== undefined) el.textContent = translated;
+    }
+    els = container.querySelectorAll('[data-i18n-html]');
+    for (var i = 0; i < els.length; i++) {
+      var el = els[i];
+      var key = el.getAttribute('data-i18n-html');
+      var translated = key ? getTranslation(key) : undefined;
+      if (translated !== undefined) el.innerHTML = translated;
+    }
+    els = container.querySelectorAll('[data-i18n-placeholder]');
+    for (var i = 0; i < els.length; i++) {
+      var el = els[i];
+      var key = el.getAttribute('data-i18n-placeholder');
+      var translated = key ? getTranslation(key) : undefined;
+      if (translated !== undefined) el.placeholder = translated;
+    }
+    els = container.querySelectorAll('[data-i18n-aria]');
+    for (var i = 0; i < els.length; i++) {
+      var el = els[i];
+      var key = el.getAttribute('data-i18n-aria');
+      var translated = key ? getTranslation(key) : undefined;
+      if (translated !== undefined) el.setAttribute('aria-label', translated);
+    }
+    els = container.querySelectorAll('[data-i18n-title]');
+    for (var i = 0; i < els.length; i++) {
+      var el = els[i];
+      var key = el.getAttribute('data-i18n-title');
+      var translated = key ? getTranslation(key) : undefined;
+      if (translated !== undefined) el.setAttribute('title', translated);
+    }
+  }
+
+  // Listen for language change events from the settings panel
+  window.addEventListener('umatools:site-language-change', function (event) {
+    var lang = event && event.detail && event.detail.language;
+    setLang(lang);
+    applyI18n();
+    // Fire custom event so page scripts can re-render dynamic content
+    window.dispatchEvent(new Event('i18n:changed'));
+  });
+
+  // Apply translations once DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function () {
+      applyI18n();
+    });
+  } else {
+    applyI18n();
+  }
+
+  // Expose global API
+  // Localized name helpers — used by deck, random, umadle, hints, skill-popup
+  function getLocalizedUmaName(uma) {
+    if (!uma) return { name: '', nickname: '' };
+    var isJP = currentLang === 'ja';
+    return {
+      name: (isJP && uma.UmaNameJP) || uma.UmaName || '',
+      nickname: (isJP && uma.UmaNicknameJP) || uma.UmaNickname || '',
+    };
+  }
+
+  function getLocalizedSupportName(card) {
+    if (!card) return '';
+    var isJP = currentLang === 'ja';
+    return (isJP && card.SupportNameJP) || card.SupportName || '';
+  }
+
+  // ── JP skill name lookup (shared across all pages) ──
+  var jpSkillNameMap = null; // Map<normalized_name, jp_name>
+
+  function buildJPSkillNameMap(skillsAllData) {
+    if (!Array.isArray(skillsAllData)) return;
+    jpSkillNameMap = new Map();
+    // Track first JP name per key to detect collisions with duplicate EN names
+    var enKeyFirstJP = new Map();
+
+    function indexSkill(jpname, variants) {
+      if (!jpname) return;
+      variants.forEach(function (n) {
+        var key = ((n || '') + '').trim().toLowerCase();
+        if (!key) return;
+        if (!jpSkillNameMap.has(key)) {
+          jpSkillNameMap.set(key, jpname);
+          if (!enKeyFirstJP.has(key)) enKeyFirstJP.set(key, jpname);
+        } else if (jpSkillNameMap.get(key) !== jpname) {
+          // Collision: same EN key maps to different JP names
+          // Add disambiguated entries for both skills
+          var disambigKey = key + ' (' + jpname.trim().toLowerCase() + ')';
+          if (!jpSkillNameMap.has(disambigKey)) jpSkillNameMap.set(disambigKey, jpname);
+          var firstJP = enKeyFirstJP.get(key);
+          if (firstJP) {
+            var firstDisambigKey = key + ' (' + firstJP.trim().toLowerCase() + ')';
+            if (!jpSkillNameMap.has(firstDisambigKey))
+              jpSkillNameMap.set(firstDisambigKey, firstJP);
+          }
+        }
+      });
+    }
+
+    skillsAllData.forEach(function (skill) {
+      var jpname = ((skill && skill.jpname) || '').trim();
+      indexSkill(jpname, [skill.name_en, skill.enname, skill.jpname, skill.name]);
+      if (skill.gene_version) {
+        var gvJp = (skill.gene_version.jpname || '').trim();
+        indexSkill(gvJp, [
+          skill.gene_version.name_en,
+          skill.gene_version.enname,
+          skill.gene_version.jpname,
+          skill.gene_version.name,
+        ]);
+      }
+    });
+    // Notify pages that JP skill names are now available for re-rendering
+    try {
+      window.dispatchEvent(new Event('i18n:jpnames-ready'));
+    } catch (_) {}
+  }
+
+  function getLocalizedSkillName(name) {
+    if (!name) return name || '';
+    if (currentLang !== 'ja') return name;
+    // Lazy-build the map if data is available but map hasn't been built yet
+    if (!jpSkillNameMap && window.__skillsAllData) {
+      buildJPSkillNameMap(window.__skillsAllData);
+    }
+    if (!jpSkillNameMap) return name;
+    var key = (name + '').trim().toLowerCase();
+    return jpSkillNameMap.get(key) || name;
+  }
+
+  window.t = t;
+  window.applyI18n = applyI18n;
+  window.getLocalizedUmaName = getLocalizedUmaName;
+  window.getLocalizedSupportName = getLocalizedSupportName;
+  window.buildJPSkillNameMap = buildJPSkillNameMap;
+  window.getLocalizedSkillName = getLocalizedSkillName;
+  window.I18n = {
+    t: t,
+    apply: applyI18n,
+    getLang: getLang,
+    setLang: setLang,
+    getLocalizedUmaName: getLocalizedUmaName,
+    getLocalizedSupportName: getLocalizedSupportName,
+    buildJPSkillNameMap: buildJPSkillNameMap,
+    getLocalizedSkillName: getLocalizedSkillName,
+    TRANSLATIONS: TRANSLATIONS,
+  };
+})();

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 680" role="img" aria-labelledby="title description">
+  <title id="title">UmaTools brand mark</title>
+  <desc id="description">A geometric U surrounding a centered T, forming the UmaTools monogram.</desc>
+  <defs>
+    <linearGradient id="umatools-mark-gradient" x1="68" y1="38" x2="574" y2="646" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#101216" />
+      <stop offset="0.52" stop-color="#252a31" />
+      <stop offset="1" stop-color="#171a1f" />
+    </linearGradient>
+  </defs>
+  <g fill="url(#umatools-mark-gradient)">
+    <path d="M24 20c49 0 87 36 122 84v278c0 97 59 151 174 151s174-54 174-151V104c35-48 73-84 122-84 9 0 16 8 16 18v344c0 175-124 282-312 282S8 557 8 382V38c0-10 7-18 16-18Z" />
+    <path d="M110 20h420l-65 84c-10 12-20 16-38 16h-37c-7 0-12 6-12 14v252c0 35-26 62-58 62s-58-27-58-62V134c0-8-5-14-12-14h-37c-18 0-28-4-38-16L110 20Z" />
+  </g>
+</svg>

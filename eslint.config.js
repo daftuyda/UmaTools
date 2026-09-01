@@ -13,11 +13,10 @@ module.exports = [
       '.cache_gametora/**',
       '.claude/**',
       '.vercel/**',
-      'assets/**',
+      'public/assets/**',
       'cards/**',
       'node_modules/**',
       'reference/**',
-      'css/theme-d.build.css',
     ],
   },
   js.configs.recommended,
@@ -54,7 +53,7 @@ module.exports = [
     },
   },
   {
-    files: ['tailwind.config.js', 'postcss.config.js', 'scripts/**/*.js'],
+    files: ['scripts/**/*.js'],
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'commonjs',

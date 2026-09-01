@@ -1,5 +1,6 @@
-assets/
+public/assets/
+public/guides.html
+public/guides/
 cards/
-css/theme-d.build.css
 node_modules/
 reference/
