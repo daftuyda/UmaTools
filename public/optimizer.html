@@ -1239,13 +1239,29 @@
     </main>
 
     <!-- Skill Browser Modal -->
-    <div id="skill-browser-backdrop">
-      <div id="skill-browser-modal">
+    <div id="skill-browser-backdrop" aria-hidden="true">
+      <div
+        id="skill-browser-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="skill-browser-title"
+      >
         <div class="modal-header">
-          <h3 data-i18n="optimizer.browseSkills">Browse Skills</h3>
-          <button id="skill-browser-close" class="modal-close" type="button">&times;</button>
+          <h3 id="skill-browser-title" data-i18n="optimizer.browseSkills">Browse Skills</h3>
+          <button
+            id="skill-browser-close"
+            class="modal-close"
+            type="button"
+            aria-label="Close"
+            data-i18n-aria="common.close"
+          >
+            &times;
+          </button>
         </div>
         <div class="modal-body" style="padding-bottom: 0">
+          <label class="sr-only" for="skill-browser-search" data-i18n="optimizer.searchSkills"
+            >Search skills</label
+          >
           <input
             type="text"
             id="skill-browser-search"
@@ -1266,7 +1282,12 @@
               <div class="filter-chips" id="skill-browser-type-chips"></div>
             </div>
           </div>
-          <div class="skill-browser-count" id="skill-browser-count"></div>
+          <div
+            class="skill-browser-count"
+            id="skill-browser-count"
+            role="status"
+            aria-live="polite"
+          ></div>
           <div class="skill-browser-grid" id="skill-browser-grid"></div>
         </div>
         <div class="modal-footer">
@@ -1278,7 +1299,7 @@
           >
             Cancel
           </button>
-          <button id="skill-browser-add" class="btn" type="button" disabled>
+          <button id="skill-browser-add" class="btn primary" type="button" disabled>
             <span data-i18n="optimizer.addSelected">Add Selected</span> (<span
               id="skill-browser-selected-count"
               >0</span

@@ -20,9 +20,49 @@ OG_PAGES = {
         "title": "Uma Musume Tools & Calculators",
         "description": "Free Uma Musume tools for skill builds, rating calculations, support decks, stamina checks, race planning, game data, and character challenges.",
     },
+    "guides": {
+        "title": "UmaTools Documentation",
+        "description": "Explore Uma Musume references for rating, skills, stamina, acceleration, support decks, Team Trials, Event OCR, and Grand Live.",
+    },
+    "guide-rating-system": {
+        "title": "Rating & Skill Optimization Reference",
+        "description": "Understand Uma Musume stat scoring, skill value, hint discounts, dependencies, optimization modes, and every rating rank.",
+    },
+    "guide-team-trials": {
+        "title": "Team Trials Skill Selection Reference",
+        "description": "Learn how course coverage, activation probability, Wisdom, dependencies, and expected value determine a Team Trials skill build.",
+    },
+    "guide-accel-checker": {
+        "title": "Acceleration Skill Timing Reference",
+        "description": "Learn which acceleration skills can activate in a useful last-spurt window and how race conditions change the result.",
+    },
+    "guide-stamina-calculator": {
+        "title": "Stamina Calculator Reference",
+        "description": "Follow the Uma Musume stamina model through race inputs, stat adjustments, recovery skills, phase costs, and result thresholds.",
+    },
+    "guide-deck-tools": {
+        "title": "Support Deck Builder Reference",
+        "description": "Understand limit-break rules, compatibility scoring, templates, skill-hint hand-offs, and saved Uma Musume support decks.",
+    },
+    "guide-token-planner": {
+        "title": "Grand Live Token Planner Reference",
+        "description": "Plan Grand Live songs, calculate Performance Points still needed, use presets, and understand saved planner state.",
+    },
+    "guide-ocr-guide": {
+        "title": "Event OCR & Skill Recognition Reference",
+        "description": "See how screenshots move through cropping, preprocessing, OCR, fuzzy skill matching, confidence checks, and corrections.",
+    },
+    "guide-persistence-and-sharing": {
+        "title": "Data, Privacy & Share Links Reference",
+        "description": "Understand browser storage, shareable deck and skill-build URLs, privacy boundaries, migrations, and safe reset options.",
+    },
+    "guide-translations": {
+        "title": "Translation Contribution Reference",
+        "description": "Contribute UmaTools interface translations using shared modules, fallback rules, placeholders, HTML attributes, and validation tools.",
+    },
     "about": {
         "title": "About UmaTools & Uma Musume Documentation",
-        "description": "Learn how UmaTools helps Uma Musume players plan skills, ratings, races, and support decks, then explore nine player and technical reference documents.",
+        "description": "Learn how UmaTools supports skill, rating, race, and deck planning, then explore nine player and technical documents.",
     },
     "accel": {
         "title": "Uma Musume Acceleration Skill Checker",
@@ -283,18 +323,46 @@ def load_all_events() -> List[Dict]:
     return [events_map[name] for name in sorted(events_map)]
 
 
-EVENTS = load_all_events()
-EVENT_MAP = {e["event_name"]: e for e in EVENTS}
-EVENT_NAMES = list(EVENT_MAP.keys())
+@lru_cache(maxsize=1)
+def _event_index():
+    events = load_all_events()
+    event_map = {event["event_name"]: event for event in events}
+    return event_map, list(event_map.keys())
 
 
 @app.get("/events")
 async def list_events():
-    return {"events": EVENT_NAMES}
+    _, event_names = _event_index()
+    return {"events": event_names}
 
 
 @app.get("/og", response_class=Response)
 async def open_graph_image(page: str = Query(..., description="Open Graph page key")):
+    return _open_graph_response(page)
+
+
+@app.get("/og/{page}.png", response_class=Response)
+async def open_graph_image_file(page: str):
+    return _open_graph_response(page)
+
+
+@app.get("/og/v1/{page}.png", response_class=Response)
+async def open_graph_image_file_v1(page: str):
+    return _open_graph_response(page)
+
+
+@app.head("/og", response_class=Response, include_in_schema=False)
+async def open_graph_image_head(page: str = Query(..., description="Open Graph page key")):
+    return _open_graph_response(page)
+
+
+@app.head("/og/{page}.png", response_class=Response, include_in_schema=False)
+@app.head("/og/v1/{page}.png", response_class=Response, include_in_schema=False)
+async def open_graph_image_file_head(page: str):
+    return _open_graph_response(page)
+
+
+def _open_graph_response(page: str) -> Response:
     if page not in OG_PAGES:
         raise HTTPException(status_code=404, detail="Unknown Open Graph image")
 
@@ -315,13 +383,14 @@ async def get_event_by_name(
     limit: int = Query(5, description="Maximum number of fuzzy matches to return"),
     min_score: float = Query(0, ge=0, le=100, description="Minimum score threshold for matches"),
 ):
-    matches = process.extract(event_name, EVENT_NAMES, scorer=fuzz.ratio, limit=limit)
+    event_map, event_names = _event_index()
+    matches = process.extract(event_name, event_names, scorer=fuzz.ratio, limit=limit)
     filtered = [m for m in matches if m[1] >= min_score]
     if not filtered:
         raise HTTPException(status_code=404, detail="No matches found")
 
     top_name, top_score, _ = filtered[0]
-    top_event = EVENT_MAP[top_name]
+    top_event = event_map[top_name]
     other_matches = [{"event_name": n, "score": s} for n, s, _ in filtered[1:]]
 
     return {

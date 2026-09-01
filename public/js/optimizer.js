@@ -4988,6 +4988,7 @@
     let allCards = [];
     let browserMode = 'append';
     let targetRow = null;
+    let browserReturnFocus = null;
     let renderedGridRevision = -1;
     let filterFrameId = 0;
     const applyFiltersDebounced = debounce(() => applyFilters(), 90);
@@ -5015,6 +5016,8 @@
     function openBrowser(mode = 'append', row = null) {
       browserMode = mode;
       targetRow = row;
+      browserReturnFocus =
+        document.activeElement instanceof HTMLElement ? document.activeElement : browseSkillsBtn;
       selectedSkills.clear();
       activeColorFilters.clear();
       activeTypeFilters.clear();
@@ -5025,6 +5028,7 @@
       applyFilters();
       updateSelectedCount();
       skillBrowserBackdrop.classList.add('open');
+      skillBrowserBackdrop.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
       if (skillBrowserSearch) skillBrowserSearch.focus();
     }
@@ -5035,8 +5039,12 @@
         filterFrameId = 0;
       }
       skillBrowserBackdrop.classList.remove('open');
+      skillBrowserBackdrop.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
       targetRow = null;
+      const returnFocus = browserReturnFocus;
+      browserReturnFocus = null;
+      if (returnFocus?.isConnected) requestAnimationFrame(() => returnFocus.focus());
     }
 
     function buildFilterChips() {
@@ -5047,14 +5055,17 @@
           chip.type = 'button';
           chip.className = 'filter-chip';
           chip.dataset.category = cat;
+          chip.setAttribute('aria-pressed', 'false');
           chip.innerHTML = `<span class="chip-dot dot-${cat}"></span>${CATEGORY_LABELS[cat] || cat}`;
           chip.addEventListener('click', () => {
             if (activeColorFilters.has(cat)) {
               activeColorFilters.delete(cat);
               chip.classList.remove('active');
+              chip.setAttribute('aria-pressed', 'false');
             } else {
               activeColorFilters.add(cat);
               chip.classList.add('active');
+              chip.setAttribute('aria-pressed', 'true');
             }
             applyFilters();
           });
@@ -5071,9 +5082,11 @@
           const parentChip = document.createElement('button');
           parentChip.type = 'button';
           parentChip.className = 'filter-chip';
+          parentChip.setAttribute('aria-expanded', 'false');
           parentChip.innerHTML = `${group.label} <span class="filter-chip-arrow">&#9660;</span>`;
           parentChip.addEventListener('click', () => {
-            wrapper.classList.toggle('expanded');
+            const expanded = wrapper.classList.toggle('expanded');
+            parentChip.setAttribute('aria-expanded', String(expanded));
           });
           wrapper.appendChild(parentChip);
 
@@ -5084,14 +5097,17 @@
             sub.type = 'button';
             sub.className = 'filter-chip';
             sub.dataset.type = typ;
+            sub.setAttribute('aria-pressed', 'false');
             sub.textContent = typ.charAt(0).toUpperCase() + typ.slice(1);
             sub.addEventListener('click', () => {
               if (activeTypeFilters.has(typ)) {
                 activeTypeFilters.delete(typ);
                 sub.classList.remove('active');
+                sub.setAttribute('aria-pressed', 'false');
               } else {
                 activeTypeFilters.add(typ);
                 sub.classList.add('active');
+                sub.setAttribute('aria-pressed', 'true');
               }
               applyFilters();
             });
@@ -5105,14 +5121,17 @@
         generalChip.type = 'button';
         generalChip.className = 'filter-chip';
         generalChip.dataset.type = 'general';
+        generalChip.setAttribute('aria-pressed', 'false');
         generalChip.textContent = 'General';
         generalChip.addEventListener('click', () => {
           if (activeTypeFilters.has('general')) {
             activeTypeFilters.delete('general');
             generalChip.classList.remove('active');
+            generalChip.setAttribute('aria-pressed', 'false');
           } else {
             activeTypeFilters.add('general');
             generalChip.classList.add('active');
+            generalChip.setAttribute('aria-pressed', 'true');
           }
           applyFilters();
         });
@@ -5225,7 +5244,7 @@
         const tintCat = isGold && lowerCat ? lowerCat : cat;
         card.className = `skill-card cat-${cat}${isGold ? ' is-gold' : ''} tint-${tintCat}`;
         card.innerHTML =
-          `<div class="card-check"></div>` +
+          `<button type="button" class="card-check" aria-label="${attrEsc(`${t('optimizer.addSelected')}: ${displayName}`)}" aria-pressed="false"></button>` +
           `<div class="card-name" data-skill-name="${attrEsc(skill.name)}"${skill.skillId ? ` data-skill-id="${attrEsc(String(skill.skillId))}"` : ''} tabindex="0" role="button" title="${attrEsc(skill.name)}">${attrEsc(displayName)}</div>` +
           lowerHtml +
           `<div class="card-meta"><span class="card-cost-value">${costText}</span>${typeText ? `<span>${typeText}</span>` : ''}</div>` +
@@ -5242,8 +5261,25 @@
         let hintLevel = 0;
         let lowerHintLevel = 0;
         const costEl = card.querySelector('.card-cost-value');
+        const selectBtn = card.querySelector('.card-check');
         const hintBtn = card.querySelector('.card-hint-btn');
         const lowerHintBtn = card.querySelector('.card-hint-lower');
+
+        function setSelectedState(selected) {
+          card.classList.toggle('selected', selected);
+          selectBtn.setAttribute('aria-pressed', String(selected));
+        }
+
+        function toggleSelection() {
+          if (selectedSkills.has(addName)) {
+            selectedSkills.delete(addName);
+            setSelectedState(false);
+          } else {
+            selectedSkills.set(addName, { hint: hintLevel, lowerHint: lowerHintLevel });
+            setSelectedState(true);
+          }
+          updateSelectedCount();
+        }
 
         function updateCostDisplay() {
           const discGold = !isNaN(goldCost) ? calculateDiscountedCost(goldCost, hintLevel) : NaN;
@@ -5276,9 +5312,14 @@
             setHintText(lowerHintBtn, lowerHintLevel);
             lowerHintBtn.classList.remove('active');
           }
-          card.classList.remove('selected');
+          setSelectedState(false);
           updateCostDisplay();
         }
+
+        selectBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          toggleSelection();
+        });
 
         hintBtn.addEventListener('click', (e) => {
           e.stopPropagation();
@@ -5303,14 +5344,7 @@
         // Card click toggles selection (not on name/lower/hint)
         card.addEventListener('click', (e) => {
           if (e.target.closest('.card-name, .card-lower, .card-hint-btn')) return;
-          if (selectedSkills.has(addName)) {
-            selectedSkills.delete(addName);
-            card.classList.remove('selected');
-          } else {
-            selectedSkills.set(addName, { hint: hintLevel, lowerHint: lowerHintLevel });
-            card.classList.add('selected');
-          }
-          updateSelectedCount();
+          toggleSelection();
         });
 
         frag.appendChild(card);

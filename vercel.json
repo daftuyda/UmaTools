@@ -24,6 +24,10 @@
   ],
   "rewrites": [
     {
+      "source": "/api/og/v1/:page.png",
+      "destination": "/api/og?page=:page"
+    },
+    {
       "source": "/api/og/:page.png",
       "destination": "/api/og?page=:page"
     }
@@ -61,7 +65,7 @@
       "headers": [{ "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }]
     },
     {
-      "source": "/(.*).(png|jpg|jpeg|webp|svg|ico)",
+      "source": "/assets/(.*).(png|jpg|jpeg|webp|svg|ico)",
       "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
     },
     {

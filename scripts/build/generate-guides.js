@@ -538,6 +538,10 @@ function jsonLd(value) {
   return JSON.stringify(value, null, 2).replace(/</g, '\\u003c');
 }
 
+function socialImageUrl(key) {
+  return `${siteUrl}/api/og/v1/${key}.png`;
+}
+
 function themeScript() {
   return `<script>
       (function () {
@@ -555,7 +559,15 @@ function themeScript() {
     </script>`;
 }
 
-function documentHead({ title, description, canonical, schema, ogType = 'article' }) {
+function documentHead({
+  title,
+  description,
+  canonical,
+  schema,
+  ogType = 'article',
+  socialImageKey = 'home',
+}) {
+  const socialImage = socialImageUrl(socialImageKey);
   return `<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -572,16 +584,16 @@ function documentHead({ title, description, canonical, schema, ogType = 'article
     <meta property="og:title" content="${escapeHtml(title)}" />
     <meta property="og:description" content="${escapeHtml(description)}" />
     <meta property="og:url" content="${canonical}" />
-    <meta property="og:image" content="${siteUrl}/api/og?page=home" />
+    <meta property="og:image" content="${socialImage}" />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="UmaTools Uma Musume training toolkit" />
+    <meta property="og:image:alt" content="${escapeHtml(title)}" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="${escapeHtml(title)}" />
     <meta name="twitter:description" content="${escapeHtml(description)}" />
-    <meta name="twitter:image" content="${siteUrl}/api/og?page=home" />
-    <meta name="twitter:image:alt" content="UmaTools Uma Musume training toolkit" />
+    <meta name="twitter:image" content="${socialImage}" />
+    <meta name="twitter:image:alt" content="${escapeHtml(title)}" />
     <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png" />
@@ -628,7 +640,7 @@ function guideSchema(guide, canonical) {
   const webPageId = `${canonical}#webpage`;
   const articleId = `${canonical}#article`;
   const breadcrumbId = `${canonical}#breadcrumb`;
-  const socialImage = `${siteUrl}/api/og?page=home`;
+  const socialImage = socialImageUrl(`guide-${guide.slug}`);
   return {
     '@context': 'https://schema.org',
     '@graph': [
@@ -724,6 +736,7 @@ ${generatedNotice}
     description: guide.description,
     canonical,
     schema: guideSchema(guide, canonical),
+    socialImageKey: `guide-${guide.slug}`,
   })}
   <body class="ui-revamp-page app-revamp guide-page">
     <a class="skip-link" href="#main">Skip to document</a>
@@ -843,6 +856,7 @@ ${generatedNotice}
     canonical: `${siteUrl}/guides`,
     schema: hubSchema(),
     ogType: 'website',
+    socialImageKey: 'guides',
   })}
   <body class="ui-revamp-page app-revamp guide-page guide-index-page">
     <a class="skip-link" href="#main">Skip to documentation</a>

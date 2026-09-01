@@ -80,7 +80,7 @@ See `scripts/data/README.md` for ownership and setup details.
 
 ## API
 
-`api/[...path].py` provides event endpoints and generated Open Graph images. It reads fonts, icons, and datasets from `public/assets/`. `vercel.json` includes those files with the serverless function and routes `/api/og/:page.png` to the image endpoint.
+`api/[...path].py` provides event endpoints and generated Open Graph images. Social previews use cache-versioned `/api/og/v1/:page.png` URLs, while the original query endpoint remains compatible. Image rendering loads only the bundled font and icon; event datasets are loaded lazily when an event endpoint is requested. `vercel.json` includes the required assets with the serverless function and rewrites versioned PNG URLs to the image endpoint.
 
 ## Build and validation
 

@@ -10,12 +10,24 @@
       "ja": "プロフェッショナルなナビゲーション、新しいUmaToolsブランドマーク、統一された画面幅、丸みのある階層的なデザイン、アクセント、影、控えめなアニメーションでサイト全体を刷新しました。"
     },
     {
+      "en": "Added a richer, lightweight page backdrop with layered ambient color and a subtle dot field for light and dark themes, while OLED stays true black.",
+      "ja": "ライト／ダークテーマのページ背景に、軽量なアンビエントカラーのレイヤーと控えめなドット模様を追加し、OLEDでは引き続き完全な黒背景を維持します。"
+    },
+    {
+      "en": "Added reliable, page-specific link-preview images across every tool and document, with cache-safe PNG URLs and endpoint validation; the Optimizer preview is unchanged.",
+      "ja": "全ツールとドキュメントにページ別のリンクプレビュー画像を追加し、キャッシュに安全なPNG URLとエンドポイント検証を導入しました。オプティマイザーのプレビューは変更していません。"
+    },
+    {
       "en": "Improved mobile, OLED, modal, footer, spacing, and overflow behavior throughout the toolkit.",
       "ja": "ツールキット全体でモバイル、OLED、モーダル、フッター、余白、オーバーフロー表示を改善しました。"
     },
     {
       "en": "Updated the Optimizer with clearer evolution and linked-skill relationships, a standardized build workspace, improved skill details, and a polished quick tour.",
       "ja": "オプティマイザーに進化スキルと関連スキルの分かりやすい表示、統一されたビルド画面、詳細なスキル情報、改善されたクイックツアーを追加しました。"
+    },
+    {
+      "en": "Restored the Browse Skills card layout, collapsible filters, hint controls, selection states, and full-screen mobile sheet; OLED now preserves functional colors for aptitudes, skill categories, and Umadle feedback.",
+      "ja": "スキル参照画面のカード、折りたたみ式フィルター、ヒント操作、選択状態、モバイル向け全画面表示を修正し、OLEDでも適性、スキル種別、ウマドルの判定に必要な色を維持するようにしました。"
     },
     {
       "en": "Rebuilt Team Trials optimization around racing-strategy compatibility, expected race position, selected-build track coverage, and the correct Wisdom formula; low-coverage and unresolved racecourse greens are excluded, while eligible fixed-condition greens bypass Wisdom.",
