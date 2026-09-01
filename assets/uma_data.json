@@ -39702,10 +39702,10 @@
     "UmaImage": "/assets/character_thumbs/114301-victoire-pisa.png"
   },
   {
-    "UmaKey": "Sakura Bakushin O :: 雷の韋駄天",
+    "UmaKey": "Sakura Bakushin O :: Spring-Thunder Speedster",
     "UmaName": "Sakura Bakushin O",
     "UmaNameJP": "サクラバクシンオー",
-    "UmaNickname": "雷の韋駄天",
+    "UmaNickname": "Spring-Thunder Speedster",
     "UmaNicknameJP": "春雷の韋駄天",
     "UmaSlug": "104103-sakura-bakushin-o",
     "UmaId": "104103",
@@ -39872,10 +39872,10 @@
     "UmaImage": "/assets/character_thumbs/104103-sakura-bakushin-o.png"
   },
   {
-    "UmaKey": "North Flight :: 水縹の一閃",
+    "UmaKey": "North Flight :: Pale-Blue Flash",
     "UmaName": "North Flight",
     "UmaNameJP": "ノースフライト",
-    "UmaNickname": "水縹の一閃",
+    "UmaNickname": "Pale-Blue Flash",
     "UmaNicknameJP": "水縹の一閃",
     "UmaSlug": "108202-north-flight",
     "UmaId": "108202",
@@ -41036,10 +41036,10 @@
     "UmaImage": "/assets/character_thumbs/113601-red-desire.png"
   },
   {
-    "UmaKey": "Manhattan Cafe :: 102503-manhattan-cafe",
+    "UmaKey": "Manhattan Cafe :: Ethereal Rose",
     "UmaName": "Manhattan Cafe",
     "UmaNameJP": "マンハッタンカフェ",
-    "UmaNickname": null,
+    "UmaNickname": "Ethereal Rose",
     "UmaNicknameJP": "幽玄薔薇",
     "UmaSlug": "102503-manhattan-cafe",
     "UmaId": "102503",
@@ -41358,10 +41358,10 @@
     "UmaImage": "/assets/character_thumbs/111602-gentildonna.png"
   },
   {
-    "UmaKey": "Curren Bouquetd'or :: 113401-curren-bouquetdor",
+    "UmaKey": "Curren Bouquetd'or :: Couture in Bloom",
     "UmaName": "Curren Bouquetd'or",
     "UmaNameJP": "カレンブーケドール",
-    "UmaNickname": null,
+    "UmaNickname": "Couture in Bloom",
     "UmaNicknameJP": "花宿しのクチュール",
     "UmaSlug": "113401-curren-bouquetdor",
     "UmaId": "113401",
@@ -41529,10 +41529,10 @@
     "UmaImage": "/assets/character_thumbs/113401-curren-bouquetdor.png"
   },
   {
-    "UmaKey": "Narita Top Road :: 107703-narita-top-road",
+    "UmaKey": "Narita Top Road :: Bountiful Dragon Broth Saga",
     "UmaName": "Narita Top Road",
     "UmaNameJP": "ナリタトップロード",
-    "UmaNickname": null,
+    "UmaNickname": "Bountiful Dragon Broth Saga",
     "UmaNicknameJP": "万福龍湯伝・頂",
     "UmaSlug": "107703-narita-top-road",
     "UmaId": "107703",
@@ -41701,10 +41701,10 @@
     "UmaImage": "/assets/character_thumbs/107703-narita-top-road.png"
   },
   {
-    "UmaKey": "Fine Motion :: 102203-fine-motion",
+    "UmaKey": "Fine Motion :: Radiant Noodle Splendor Saga",
     "UmaName": "Fine Motion",
     "UmaNameJP": "ファインモーション",
-    "UmaNickname": null,
+    "UmaNickname": "Radiant Noodle Splendor Saga",
     "UmaNicknameJP": "麺華煌彩伝・極",
     "UmaSlug": "102203-fine-motion",
     "UmaId": "102203",
@@ -42043,10 +42043,10 @@
     "UmaImage": "/assets/character_thumbs/114501-rulership.png"
   },
   {
-    "UmaKey": "Seiun Sky :: 102003-seiun-sky",
+    "UmaKey": "Seiun Sky :: Shoreline Whimsy in Orange",
     "UmaName": "Seiun Sky",
     "UmaNameJP": "セイウンスカイ",
-    "UmaNickname": null,
+    "UmaNickname": "Shoreline Whimsy in Orange",
     "UmaNicknameJP": "渚のきまぐれオランジュ",
     "UmaSlug": "102003-seiun-sky",
     "UmaId": "102003",
@@ -42208,10 +42208,10 @@
     "UmaImage": "/assets/character_thumbs/102003-seiun-sky.png"
   },
   {
-    "UmaKey": "Mejiro Bright :: 107403-mejiro-bright",
+    "UmaKey": "Mejiro Bright :: Seaside Elegance in Chiffon",
     "UmaName": "Mejiro Bright",
     "UmaNameJP": "メジロブライト",
-    "UmaNickname": null,
+    "UmaNickname": "Seaside Elegance in Chiffon",
     "UmaNicknameJP": "海辺のエレガンスシフォン",
     "UmaSlug": "107403-mejiro-bright",
     "UmaId": "107403",
@@ -42687,5 +42687,319 @@
       }
     ],
     "UmaImage": "/assets/character_thumbs/114101-epiphaneia.png"
+  },
+  {
+    "UmaKey": "Shinko Windy :: Chomp-Chomp ☆ Scamp",
+    "UmaName": "Shinko Windy",
+    "UmaNameJP": "シンコウウインディ",
+    "UmaNickname": "Chomp-Chomp ☆ Scamp",
+    "UmaNicknameJP": "ガブガブ☆スキャンプ",
+    "UmaSlug": "104302-shinko-windy",
+    "UmaId": "104302",
+    "UmaServer": "jp",
+    "UmaBaseStars": 3,
+    "UmaBaseStats": {
+      "3★": {
+        "Speed": 98,
+        "Stamina": 85,
+        "Power": 96,
+        "Guts": 91,
+        "Wit": 80
+      },
+      "5★": {
+        "Speed": 120,
+        "Stamina": 103,
+        "Power": 117,
+        "Guts": 111,
+        "Wit": 99
+      },
+      "4★": {
+        "Speed": 109,
+        "Stamina": 94,
+        "Power": 106,
+        "Guts": 101,
+        "Wit": 90
+      }
+    },
+    "UmaStatBonuses": {
+      "Speed": 8,
+      "Stamina": 0,
+      "Power": 8,
+      "Guts": 14,
+      "Wit": 0
+    },
+    "UmaAptitudes": {
+      "Surface": {
+        "Turf": "F",
+        "Dirt": "A"
+      },
+      "Distance": {
+        "Short": "C",
+        "Mile": "A",
+        "Medium": "B",
+        "Long": "G"
+      },
+      "Strategy": {
+        "Front": "G",
+        "Pace": "A",
+        "Late": "B",
+        "End": "F"
+      }
+    },
+    "UmaHeightCm": null,
+    "UmaThreeSizes": {},
+    "UmaObjectives": [
+      {
+        "ObjectiveName": "Junior Make Debut",
+        "Turn": "12",
+        "Time": "Junior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Earn 3,000 fans",
+        "Turn": "25",
+        "Time": "Classic Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Unicorn Stakes",
+        "Turn": "36",
+        "Time": "Classic Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Japan Dirt Derby",
+        "Turn": "37",
+        "Time": "Classic Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Tokai Stakes",
+        "Turn": "50",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "February Stakes",
+        "Turn": "52",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Teio Sho",
+        "Turn": "60",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Champions Cup",
+        "Turn": "71",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "URA Preliminary",
+        "Turn": "74",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "URA Semi-Final",
+        "Turn": "76",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "URA Final",
+        "Turn": "78",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      }
+    ],
+    "UmaEvents": [
+      {
+        "EventName": "オオカミっ子は構われたい",
+        "EventOptions": {
+          "": "Power +15\nSkill Pts +30"
+        }
+      },
+      {
+        "EventName": "親分と、子分と",
+        "EventOptions": {
+          "": "Power +10\nWit +10\nWith All My Might hint +1"
+        }
+      },
+      {
+        "EventName": "悪の親玉と、“女帝”と切り込み隊長",
+        "EventOptions": {
+          "Top Option": "Power +10\nSkill Pts +15",
+          "Bottom Option": "Wit +5\nHead-On hint +1"
+        }
+      }
+    ],
+    "UmaImage": "/assets/character_thumbs/104302-shinko-windy.png"
+  },
+  {
+    "UmaKey": "Fenomeno :: Violet Flame of Fortitude",
+    "UmaName": "Fenomeno",
+    "UmaNameJP": "フェノーメノ",
+    "UmaNickname": "Violet Flame of Fortitude",
+    "UmaNicknameJP": "剛毅なる紫焔",
+    "UmaSlug": "112702-fenomeno",
+    "UmaId": "112702",
+    "UmaServer": "jp",
+    "UmaBaseStars": 3,
+    "UmaBaseStats": {
+      "3★": {
+        "Speed": 79,
+        "Stamina": 109,
+        "Power": 90,
+        "Guts": 87,
+        "Wit": 85
+      },
+      "5★": {
+        "Speed": 97,
+        "Stamina": 133,
+        "Power": 110,
+        "Guts": 107,
+        "Wit": 103
+      },
+      "4★": {
+        "Speed": 88,
+        "Stamina": 121,
+        "Power": 100,
+        "Guts": 97,
+        "Wit": 94
+      }
+    },
+    "UmaStatBonuses": {
+      "Speed": 10,
+      "Stamina": 10,
+      "Power": 0,
+      "Guts": 10,
+      "Wit": 0
+    },
+    "UmaAptitudes": {
+      "Surface": {
+        "Turf": "A",
+        "Dirt": "G"
+      },
+      "Distance": {
+        "Short": "G",
+        "Mile": "G",
+        "Medium": "A",
+        "Long": "A"
+      },
+      "Strategy": {
+        "Front": "C",
+        "Pace": "A",
+        "Late": "E",
+        "End": "G"
+      }
+    },
+    "UmaHeightCm": null,
+    "UmaThreeSizes": {},
+    "UmaObjectives": [
+      {
+        "ObjectiveName": "Junior Make Debut",
+        "Turn": "12",
+        "Time": "Junior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Hopeful Stakes",
+        "Turn": "24",
+        "Time": "Junior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Aoba Sho",
+        "Turn": "32",
+        "Time": "Classic Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Tokyo Yushun (Japanese Derby)",
+        "Turn": "34",
+        "Time": "Classic Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Tenno Sho (Autumn)",
+        "Turn": "44",
+        "Time": "Classic Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Japan Cup",
+        "Turn": "46",
+        "Time": "Classic Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Nikkei Sho",
+        "Turn": "54",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Tenno Sho (Spring)",
+        "Turn": "56",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Takarazuka Kinen",
+        "Turn": "60",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Arima Kinen",
+        "Turn": "72",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "URA Preliminary",
+        "Turn": "74",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "URA Semi-Final",
+        "Turn": "76",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "URA Final",
+        "Turn": "78",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      }
+    ],
+    "UmaEvents": [
+      {
+        "EventName": "潜入！ちょいワル喫茶",
+        "EventOptions": {
+          "": "Stamina +10\nSkill Pts +15"
+        }
+      },
+      {
+        "EventName": "誠実なる信念",
+        "EventOptions": {
+          "": "Stamina +20\nGuts +15\nSkill Pts +30\nAn Honest Step hint +1"
+        }
+      },
+      {
+        "EventName": "最重要任務（？）始動！！",
+        "EventOptions": {
+          "Top Option": "Stamina +10\nSkill Pts +15",
+          "Bottom Option": "Guts +5\nBelieve in Yourself hint +1"
+        }
+      }
+    ],
+    "UmaImage": "/assets/character_thumbs/112702-fenomeno.png"
   }
 ]
