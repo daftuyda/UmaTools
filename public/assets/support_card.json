@@ -637,13 +637,13 @@
     }
   },
   {
-    "EventName": "前向きに検討してます！！",
+    "EventName": "An Optimistic Outlook!",
     "EventOptions": {
       "": "Energy -5\nSpeed +7\nGuts +7\nSkill Pts +7\nBond +5"
     }
   },
   {
-    "EventName": "私だけの強み！！",
+    "EventName": "A Strength That's All My Own!",
     "EventOptions": {
       "": "Energy -5\nSpeed +10\nPower +10\nGuts +10\nLate Surger Straightaways ○ hint +1\nBond +5"
     }
@@ -3300,20 +3300,20 @@
     }
   },
   {
-    "EventName": "クリスエス流のオフ",
+    "EventName": "A Day off with Kris S",
     "EventOptions": {
       "Top Option": "Max Energy +4\nMotivation +1\nBond +5",
       "Bottom Option": "Stamina +7\nPower +7\nGuts +7\nBond +5"
     }
   },
   {
-    "EventName": "対極の矜持",
+    "EventName": "Proud and Polar Opposites",
     "EventOptions": {
       "": "Energy +15\nGuts +10\nCompetitive Spirit ○ hint +2\nBond +5"
     }
   },
   {
-    "EventName": "鬼教官クリスエス",
+    "EventName": "Kris S the Coachinator",
     "EventOptions": {
       "": "Stamina +15\nGuts +15\nSkill Pts +10\nClaw Forward hint +1\nBond +5"
     }
