@@ -170952,7 +170952,7 @@
       }
     ],
     "endesc": "Leader・If you're about to overtake someone, you will get a speed boost; the effect is stronger and lasts longer on Dirt tracks",
-    "enname": "",
+    "enname": "The Scariest Prank Ever♪",
     "gene_version": {
       "activation": 1,
       "condition_groups": [
@@ -171022,7 +171022,7 @@
       }
     ],
     "endesc": "Medium/Long・If you're in the first half of the pack during the second half of the Final Corner, you will get a speed boost; the boost will be greater if someone tried to overtake you during the second half of the race",
-    "enname": "",
+    "enname": "Ironclad Guardian",
     "gene_version": {
       "activation": 1,
       "condition_groups": [
@@ -171093,7 +171093,7 @@
     ],
     "cost": 150,
     "endesc": "Dirt・If there's another girl right in front of you during your last spurt, your acceleration will increase",
-    "enname": "",
+    "enname": "Blast a Hole Through!",
     "evo": [],
     "iconid": 20042,
     "id": 204661,
@@ -171135,7 +171135,7 @@
     ],
     "cost": 150,
     "endesc": "Dirt・If there's another girl right in front of you during your last spurt, your acceleration will slightly increase",
-    "enname": "",
+    "enname": "Through the Sandstorm",
     "iconid": 20041,
     "id": 204662,
     "jpdesc": "ラストスパートの最中なら前が塞がれた時加速力がわずかに上がる＜ダート＞",
@@ -171176,7 +171176,7 @@
     ],
     "cost": 160,
     "endesc": "Short・If you're not in the front at a random point during the first half of the Final Leg, your acceleration will increase",
-    "enname": "",
+    "enname": "Resolute Perseverance",
     "evo": [],
     "iconid": 20042,
     "id": 204671,
@@ -171219,7 +171219,7 @@
     ],
     "cost": 160,
     "endesc": "Short・If you're not in the front at a random point during the first half of the Final Leg, your acceleration will slightly increase",
-    "enname": "",
+    "enname": "Here's My Chance",
     "iconid": 20041,
     "id": 204672,
     "jpdesc": "レース終盤始めのどこかで中団以降だと加速力がわずかに上がる＜短距離＞",
@@ -171265,7 +171265,7 @@
     ],
     "cost": 160,
     "endesc": "Short・If you're not in the front at a random point during the Middle Leg, you will use a little extra stamina to increase your speed",
-    "enname": "",
+    "enname": "Energy Burst",
     "iconid": 20011,
     "id": 204682,
     "jpdesc": "レース中盤のどこかで中団以降だと持久力を少し使って速度が少し上がる＜短距離＞",
@@ -171306,7 +171306,7 @@
       }
     ],
     "endesc": "Leader・At a random point during the second half of the Opening Leg, your speed will increase",
-    "enname": "",
+    "enname": "Rascal Romp!",
     "evo_cond": [
       [
         [
@@ -171367,7 +171367,7 @@
       }
     ],
     "endesc": "Dirt・If another girl has been right behind you for at least three seconds, your speed will increase",
-    "enname": "",
+    "enname": "Bad Girl's Great Escape",
     "evo_cond": [
       [
         [
@@ -171427,7 +171427,7 @@
       }
     ],
     "endesc": "Mile・If you're in the middle of the pack during the Middle Leg and someone is blocking you from the side, you will get a great speed boost",
-    "enname": "",
+    "enname": "Now's the Time to Bloom!",
     "evo_cond": [
       [
         [
@@ -171505,7 +171505,7 @@
       }
     ],
     "endesc": "Leader・If you're in the first half of the pack at a random point on a random Middle Leg straight, you will get a speed boost; the effect lasts longer if your base Stamina is at least 1000",
-    "enname": "",
+    "enname": "Hard-Boiled Detective",
     "evo_cond": [
       [
         [
@@ -171581,7 +171581,7 @@
       }
     ],
     "endesc": "Medium/Long・If you're in the first half of the pack at a random point during the second half of the Middle Leg, your speed will increase; it will increase greatly if your base Guts is at least 1000",
-    "enname": "",
+    "enname": "Finishing Blow: Katsudon!",
     "evo_cond": [
       [
         [
