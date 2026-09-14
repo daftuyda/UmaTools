@@ -52,6 +52,11 @@
           i18nKey: 'nav.raceScheduler',
           href: 'https://race.daftuyda.moe',
         },
+        {
+          label: 'Stitcher',
+          i18nKey: 'nav.stitcher',
+          href: 'https://daftuyda.github.io/Stitcher/',
+        },
       ],
     },
     {
@@ -70,6 +75,11 @@
           path: '/rank-breakdown',
           file: '/rank-breakdown.html',
         },
+        {
+          label: 'Card Tool',
+          i18nKey: 'nav.cardTool',
+          href: 'https://card.notvo.id/',
+        },
       ],
     },
     {
@@ -78,6 +88,7 @@
       children: [
         { label: 'Randomizer', i18nKey: 'nav.randomizer', path: '/random', file: '/random.html' },
         { label: 'Umadle', i18nKey: 'nav.umadle', path: '/umadle', file: '/umadle.html' },
+        { label: 'UmaPeek', i18nKey: 'nav.umapeek', href: 'https://peek.daftuyda.moe/' },
       ],
     },
     {
