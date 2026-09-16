@@ -649,14 +649,14 @@
     }
   },
   {
-    "EventName": "いいんだよ、委員長！",
+    "EventName": "Don't Go Overboard!",
     "EventOptions": {
       "Top Option": "Energy -5\nStamina +10\nPower +10\nInner Post Proficiency ○ hint +1\nBond +5",
       "Bottom Option": "Energy +10\nSkill Pts +15\nBond +5"
     }
   },
   {
-    "EventName": "それでも、委員長！",
+    "EventName": "Going Overboard for You!",
     "EventOptions": {
       "": "Stamina +10\nPower +10\nSkill Pts +15\nBond +5"
     }
@@ -3388,20 +3388,20 @@
     }
   },
   {
-    "EventName": "汝、ギャルの守護者たるべし",
+    "EventName": "One Should Give Gals Their Care",
     "EventOptions": {
       "": "Max Energy +4\nEnergy +10\nSkill Pts +10\nBond +5"
     }
   },
   {
-    "EventName": "汝、ウマドルとなりて盛り上げるべし",
+    "EventName": "One Should Show Umadols Their Utmost",
     "EventOptions": {
       "Top Option": "Speed +15\nWit +10\nPosition Pilfer hint +1\nBond +5",
       "Bottom Option": "Energy +30\nPower +10\nBond +5\nEnergy +10\nPower +5\nBond +5"
     }
   },
   {
-    "EventName": "汝、苫小牧を愛す友を愛すべし",
+    "EventName": "One Should Share Friends' Hometown Love",
     "EventOptions": {
       "": "Energy +10\nSpeed +5\nSkill Pts +5\nSharp Streak hint +1\nBond +5\nEnergy +20\nSpeed +10\nSkill Pts +10\nSharp Streak hint +3\nBond +5"
     }

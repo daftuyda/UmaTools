@@ -16486,7 +16486,7 @@
     "UmaNicknameJP": "死中求活",
     "UmaSlug": "104901-nakayama-festa",
     "UmaId": "104901",
-    "UmaServer": "jp",
+    "UmaServer": "global",
     "UmaBaseStars": 3,
     "UmaBaseStats": {
       "3★": {
@@ -16608,21 +16608,21 @@
     ],
     "UmaEvents": [
       {
-        "EventName": "5分間のスリル",
+        "EventName": "Five-Minute Thrill",
         "EventOptions": {
           "Top Option": "Speed +10\nPower +10",
           "Bottom Option": "Wit +20"
         }
       },
       {
-        "EventName": "物語からリアルへ",
+        "EventName": "From Storyland to Reality",
         "EventOptions": {
           "Top Option": "Guts +20",
           "Bottom Option": "Power +20"
         }
       },
       {
-        "EventName": "ダイスを転がすのは",
+        "EventName": "Rolling the Dice",
         "EventOptions": {
           "Top Option": "Speed +20",
           "Bottom Option": "Guts +20"
@@ -16779,21 +16779,21 @@
     ],
     "UmaEvents": [
       {
-        "EventName": "ひとつの答えを。",
+        "EventName": "One Such Answer",
         "EventOptions": {
           "Top Option": "Guts +20",
           "Bottom Option": "Wit +10\nSkill Pts +15"
         }
       },
       {
-        "EventName": "ゆっくり、じっくり、コツコツと。",
+        "EventName": "Slow, Steady, Steadfast",
         "EventOptions": {
           "Top Option": "Stamina +20",
           "Bottom Option": "Guts +20"
         }
       },
       {
-        "EventName": "積んで、重ねて。",
+        "EventName": "Built on Experience",
         "EventOptions": {
           "Top Option": "Speed +20",
           "Bottom Option": "Guts +20"
