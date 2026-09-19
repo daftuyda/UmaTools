@@ -55,7 +55,7 @@
     },
     "iconid": 20013,
     "id": 110031,
-    "jpdesc": "最終コーナー以降に前方で追いすがっていると最終直線にいるとき不屈の闘志で速度がすごく上がる",
+    "jpdesc": "最終コーナー以降に5番手以内で追いすがっていると最終直線にいるとき不屈の闘志で速度がすごく上がる",
     "jpname": "絶対は、ボクだ",
     "loc": {
       "en": {
@@ -170,7 +170,7 @@
     },
     "iconid": 20013,
     "id": 110131,
-    "jpdesc": "レース終盤以降かつ最終コーナー以降に先団で近寄られると速度を上げ続ける",
+    "jpdesc": "レース終盤以降かつ最終コーナー以降に4番手以内で近寄られると速度を上げ続ける",
     "jpname": "最強の名を懸けて",
     "loc": {
       "en": {
@@ -1152,7 +1152,7 @@
     },
     "iconid": 20013,
     "id": 10351,
-    "jpdesc": "最終コーナー以降に競り合っていると最終直線で前方にいる時強い気持ちが湧き速度が少し上がる",
+    "jpdesc": "最終コーナー以降に競り合っていると最終直線で5番手以内にいる時強い気持ちが湧き速度が少し上がる",
     "jpname": "全力Vサインッ！",
     "loc": {
       "en": {
@@ -1435,7 +1435,7 @@
     },
     "iconid": 20023,
     "id": 10521,
-    "jpdesc": "最終コーナーで後方だと近くのウマ娘を見て持久力を少し回復する",
+    "jpdesc": "最終コーナーで後方にいるとき近くにウマ娘がいると持久力を少し回復する",
     "jpname": "ワクワクよーいドン",
     "loc": {
       "en": {
@@ -3324,7 +3324,7 @@
     },
     "iconid": 20013,
     "id": 100151,
-    "jpdesc": "最終コーナー以降に先団で前または後ろのウマ娘との差が1バ身以内だと王たる輝きで速度が上がる",
+    "jpdesc": "最終コーナー以降に4番手以内で前または後ろのウマ娘との差が1バ身以内だと王たる輝きで速度が上がる",
     "jpname": "ヴィットーリアに捧ぐ舞踏",
     "loc": {
       "en": {
@@ -3626,7 +3626,7 @@
     },
     "iconid": 20013,
     "id": 100231,
-    "jpdesc": "終盤以降の最終コーナー以降で先団だと速度が上がる掛からなければ勝利の方程式を導きすごく上がる",
+    "jpdesc": "終盤以降の最終コーナー以降で4番手以内だと速度が上がる掛からなければ勝利の方程式を導きすごく上がる",
     "jpname": "∴win Q.E.D.",
     "loc": {
       "en": {
@@ -4046,7 +4046,7 @@
     },
     "iconid": 20013,
     "id": 100301,
-    "jpdesc": "レース終盤以降に追い抜いて先団につけていると最終直線で強い意志を持って速度が上がる",
+    "jpdesc": "レース終盤以降に追い抜いて4番手以内につけていると最終直線で強い意志を持って速度が上がる",
     "jpname": "ブルーローズチェイサー",
     "loc": {
       "en": {
@@ -4256,7 +4256,7 @@
     },
     "iconid": 20013,
     "id": 100351,
-    "jpdesc": "最終コーナー以降に競り合っていると最終直線で前方にいる時強い気持ちが湧き速度が上がる",
+    "jpdesc": "最終コーナー以降に競り合っていると最終直線で5番手以内にいる時強い気持ちが湧き速度が上がる",
     "jpname": "勝利のチケットを、君にッ！",
     "loc": {
       "en": {
@@ -4539,7 +4539,7 @@
     },
     "iconid": 20023,
     "id": 100521,
-    "jpdesc": "最終コーナーで後方だと近くのウマ娘を見て持久力を回復する",
+    "jpdesc": "最終コーナーで後方にいるとき近くにウマ娘がいると持久力を回復する",
     "jpname": "ワクワククライマックス",
     "loc": {
       "en": {
@@ -7636,6 +7636,7 @@
             30198,
             30217,
             30243,
+            30255,
             20013,
             20027,
             20033,
@@ -7651,7 +7652,8 @@
             10102,
             10106,
             10115,
-            10124
+            10124,
+            10127
           ]
         ]
       },
@@ -15751,7 +15753,7 @@
     "desc_en": "When the way ahead is jammed early or mid-race, draw on firm willpower to recover endurance and increase navigation.",
     "desc_ko": "레이스 초반 혹은 중반에 앞이 막혔을 때 강한 의지를 유지하며 지구력을 회복하고 코스를 능숙하게 잡는다",
     "desc_tw": "在競賽初期或中期當前方被阻擋時能維持堅強意志來回復持久力並變得擅長爭搶賽道",
-    "endesc": "During the Opening or Middle Leg, if you're being blocked from the front, your lane movement speed will increase and your stamina will recover",
+    "endesc": "During the Opening Leg or Middle Leg, if you're being blocked from the front, your lane movement speed will increase and your stamina will recover",
     "enname": "Will of Steel",
     "evo": [
       {
@@ -15855,7 +15857,7 @@
     "desc_en": "When the way ahead is jammed early or mid-race, lay low to slightly recover endurance and slightly increase navigation.",
     "desc_ko": "레이스 초반 혹은 중반에 앞이 막혔을 때 숨어서 지구력을 약간 회복하고 코스를 약간 능숙하게 잡는다",
     "desc_tw": "在競賽初期或中期當前方被阻擋時能潛伏伺機以略微回復持久力並變得略微擅長爭搶賽道",
-    "endesc": "During the Opening or Middle Leg, if you're being blocked from the front, your lane movement speed will slightly increase and your stamina will slightly recover",
+    "endesc": "During the Opening Leg or Middle Leg, if you're being blocked from the front, your lane movement speed will slightly increase and your stamina will slightly recover",
     "enname": "Undercover",
     "iconid": 20021,
     "id": 200442,
@@ -18372,6 +18374,7 @@
             30213,
             30240,
             30251,
+            30255,
             30260,
             20007,
             20019,
@@ -18392,7 +18395,8 @@
             10059,
             10102,
             10111,
-            10121
+            10121,
+            10127
           ]
         ]
       },
@@ -22254,6 +22258,7 @@
           103503,
           110502,
           111001,
+          111002,
           103501
         ],
         "sup_e": [
@@ -22283,6 +22288,7 @@
             30228,
             30239,
             30248,
+            30255,
             20035,
             20065,
             20069
@@ -22292,7 +22298,8 @@
             10016,
             10070,
             10099,
-            10120
+            10120,
+            10127
           ]
         ]
       },
@@ -22723,6 +22730,7 @@
           110502,
           111001,
           102403,
+          111002,
           100801,
           102401,
           102701,
@@ -22732,10 +22740,13 @@
         "sup_e": [
           [
             30132,
+            30255,
             20018,
             20065
           ],
-          []
+          [
+            10127
+          ]
         ],
         "sup_hint": [
           [
@@ -25083,7 +25094,8 @@
           100402,
           101001,
           101002,
-          106502
+          106502,
+          108602
         ],
         "sup_e": [
           [
@@ -25199,7 +25211,8 @@
           101002,
           106902,
           106502,
-          100403
+          100403,
+          108602
         ],
         "char_e": [
           108701,
@@ -25228,6 +25241,7 @@
             30194,
             30196,
             30218,
+            30253,
             20062,
             20067,
             20081,
@@ -32706,6 +32720,7 @@
             30229,
             30238,
             30251,
+            30253,
             20005,
             20039
           ],
@@ -32980,6 +32995,7 @@
             30053,
             30137,
             30194,
+            30253,
             20039,
             20062
           ],
@@ -33000,6 +33016,7 @@
             30218,
             30229,
             30238,
+            30254,
             20001,
             20024,
             20065,
@@ -33229,7 +33246,8 @@
         ],
         "sup_e": [
           [
-            30185
+            30185,
+            30253
           ],
           []
         ]
@@ -33403,6 +33421,7 @@
             30126,
             30134,
             30205,
+            30253,
             20002,
             20024,
             20067,
@@ -34119,6 +34138,7 @@
             30222,
             30229,
             30238,
+            30254,
             20001,
             20029,
             20048,
@@ -34415,6 +34435,7 @@
             30071,
             30116,
             30194,
+            30253,
             20024,
             20030,
             20062,
@@ -36886,7 +36907,8 @@
         ],
         "char_e": [
           103702,
-          108601
+          108601,
+          108602
         ],
         "sup_e": [
           [
@@ -39565,7 +39587,7 @@
     "desc_en": "Slightly increase ability to pass or challenge another runner early-race or mid-race. (Front Runner)",
     "desc_ko": "레이스 초반 혹은 중반에 추월당하거나 경합했을 때 속도가 약간 상승한다＜작전・도주＞",
     "desc_tw": "在競賽初期或中期被對手追過或發生競爭時速度會略微上升＜作戰．領頭＞",
-    "endesc": "Runner・If you're being overtaken or blocked from the side in the Opening or Middle Leg, your speed will slightly increase",
+    "endesc": "Runner・If you're being overtaken or blocked from the side in the Opening Leg or Middle Leg, your speed will slightly increase",
     "enname": "Lead Pride",
     "iconid": 20011,
     "id": 201272,
@@ -40487,7 +40509,8 @@
         "char_e": [
           107701,
           104503,
-          107702
+          107702,
+          111002
         ],
         "sup_e": [
           [
@@ -40523,6 +40546,7 @@
             30224,
             30231,
             30232,
+            30254,
             20033,
             20035,
             20043,
@@ -40838,7 +40862,8 @@
           102202,
           109902,
           111601,
-          102303
+          102303,
+          108602
         ],
         "sup_e": [
           [
@@ -43375,6 +43400,7 @@
             30192,
             30200,
             30240,
+            30255,
             20013,
             20068
           ],
@@ -43382,7 +43408,8 @@
             10038,
             10057,
             10113,
-            10117
+            10117,
+            10127
           ]
         ]
       },
@@ -43540,7 +43567,8 @@
         "sup_e": [
           [
             30064,
-            30150
+            30150,
+            30255
           ],
           []
         ]
@@ -46084,7 +46112,7 @@
     ],
     "iconid": 30012,
     "id": 201511,
-    "jpdesc": "レース終盤のどこかで目を付けたウマ娘の速度を下げる＜作戦・追込＞",
+    "jpdesc": "レース終盤のどこかで2番手以降だと目を付けたウマ娘の速度を下げる＜作戦・追込＞",
     "jpname": "熱いまなざし",
     "loc": {
       "en": {
@@ -46149,7 +46177,7 @@
     "enname": "Sightlines",
     "iconid": 30011,
     "id": 201512,
-    "jpdesc": "レース終盤のどこかで目を付けたウマ娘の速度をわずかに下げる＜作戦・追込＞",
+    "jpdesc": "レース終盤のどこかで2番手以降だと目を付けたウマ娘の速度をわずかに下げる＜作戦・追込＞",
     "jpname": "まなざし",
     "loc": {
       "en": {
@@ -47839,13 +47867,15 @@
             30110,
             30141,
             30175,
+            30255,
             20008,
             20086
           ],
           [
             10006,
             10015,
-            10031
+            10031,
+            10127
           ]
         ]
       },
@@ -48324,6 +48354,7 @@
             30238,
             30249,
             30252,
+            30253,
             20004,
             20048,
             20050,
@@ -51149,7 +51180,7 @@
     },
     "iconid": 20023,
     "id": 110111,
-    "jpdesc": "中盤に追い抜かれて中団以降だと優しい光で持久力をすごく回復する",
+    "jpdesc": "中盤に追い抜かれて中団以降にいると優しい光で持久力をすごく回復する",
     "jpname": "ゲインヒール・スペリアー",
     "loc": {
       "en": {
@@ -53169,7 +53200,7 @@
     },
     "iconid": 20013,
     "id": 110451,
-    "jpdesc": "最終直線で好位置にいるとき前のウマ娘との差が1バ身以内だと速度と加速力が少し上がる",
+    "jpdesc": "最終直線で4番手以内にいるとき前のウマ娘との差が1バ身以内だと速度と加速力が少し上がる",
     "jpname": "ぐるぐるマミートリック♡",
     "loc": {
       "en": {
@@ -54218,6 +54249,7 @@
           108302,
           111001,
           109601,
+          111002,
           106301
         ],
         "char_e": [
@@ -55400,7 +55432,8 @@
           108601,
           100303,
           110901,
-          112401
+          112401,
+          108602
         ],
         "char_e": [
           100301,
@@ -55450,6 +55483,7 @@
             30196,
             30219,
             30224,
+            30254,
             20033,
             20054,
             20059
@@ -57741,7 +57775,7 @@
     },
     "iconid": 20013,
     "id": 110261,
-    "jpdesc": "中盤のコーナーで先団にいて後ろのウマ娘との差が3バ身以内だと持久力をわずかに回復し速度が上がる",
+    "jpdesc": "中盤のコーナーで4番手以内にいるとき後ろのウマ娘との差が3バ身以内だと持久力をわずかに回復し速度が上がる",
     "jpname": "オペレーション・Cacao",
     "loc": {
       "en": {
@@ -59140,7 +59174,7 @@
     },
     "iconid": 20013,
     "id": 100671,
-    "jpdesc": "最終直線に入ったとき好位置につけていると強い意志で速度が上がる先頭から2バ身以内ならすごく上がる",
+    "jpdesc": "最終直線に入ったとき2～5番手だと強い意志で速度が上がる先頭から2バ身以内ならすごく上がる",
     "jpname": "晦冥を照らせ永遠の耀き",
     "loc": {
       "en": {
@@ -61007,7 +61041,8 @@
           108302,
           110502,
           111001,
-          104202
+          104202,
+          111002
         ],
         "condition_groups": [
           {
@@ -68705,7 +68740,7 @@
     "evo": [],
     "iconid": 30012,
     "id": 202361,
-    "jpdesc": "レース後半にスキルで持久力を回復したライバルのウマ娘の速度を下げる＜ダート＞",
+    "jpdesc": "レース後半にスキルで持久力を回復したライバルのウマ娘1人の速度を下げる＜ダート＞",
     "jpname": "油断大敵",
     "name_en": "Catch 'Em Off Guard",
     "name_ko": "방심은 큰 적",
@@ -68994,7 +69029,8 @@
         "char": [
           103202,
           102902,
-          104503
+          104503,
+          108602
         ],
         "sup_e": [
           [
@@ -69107,7 +69143,8 @@
           102902,
           104503,
           104702,
-          107702
+          107702,
+          108602
         ],
         "char_e": [
           100303,
@@ -70247,7 +70284,7 @@
     },
     "iconid": 20013,
     "id": 100421,
-    "jpdesc": "残り200m地点で先頭ではないとき先頭から4バ身以内だと速度が上がる2バ身以内だとすごく上がる",
+    "jpdesc": "残り200m地点で2番手以降にいるとき先頭から4バ身以内だと速度が上がる2バ身以内だとすごく上がる",
     "jpname": "『I'm possible』",
     "loc": {
       "en": {
@@ -70589,7 +70626,8 @@
             30174,
             30202,
             30229,
-            30236
+            30236,
+            30253
           ],
           []
         ]
@@ -71943,7 +71981,8 @@
       },
       "ko": {
         "char": [
-          108901
+          108901,
+          111002
         ],
         "sup_e": [
           [
@@ -72027,7 +72066,8 @@
       },
       "ko": {
         "char": [
-          108901
+          108901,
+          111002
         ],
         "sup_e": [
           [
@@ -73376,7 +73416,7 @@
     },
     "iconid": 20013,
     "id": 110091,
-    "jpdesc": "レース後半の直線で先団だと速度を少し上げ続ける、先頭で後ろのウマ娘との差が1バ身以内だと速度を上げ続ける",
+    "jpdesc": "レース後半の直線で2番手以内だと速度を少し上げ続ける、先頭で後ろのウマ娘との差が1バ身以内だと速度を上げ続ける",
     "jpname": "Queen's Lumination",
     "loc": {
       "ko": {
@@ -73613,6 +73653,7 @@
           110502,
           111001,
           111101,
+          111002,
           100801
         ],
         "sup_e": [
@@ -75190,7 +75231,7 @@
     },
     "iconid": 20043,
     "id": 100991,
-    "jpdesc": "中盤のコーナーで競り合っていた場合好位置だとラストスパートの最中なら加速力がわずかに上がる余力十分なら効果が増える＜ダート＞",
+    "jpdesc": "中盤のコーナーで競り合っていた場合好位置だとラストスパートの最中なら加速力がわずかに上がる、余力十分なら加速力が上がる＜ダート＞",
     "jpname": "かがやけ☆とまこまい",
     "loc": {
       "ko": {
@@ -75374,7 +75415,8 @@
         ],
         "sup_e": [
           [
-            30196
+            30196,
+            30254
           ],
           []
         ]
@@ -75425,7 +75467,8 @@
       101002,
       108101,
       106302,
-      101003
+      101003,
+      114401
     ],
     "condition_groups": [
       {
@@ -75470,6 +75513,7 @@
         "sup_e": [
           [
             30196,
+            30254,
             20070
           ],
           []
@@ -75480,6 +75524,7 @@
             30196,
             30218,
             30238,
+            30254,
             20063,
             20081
           ],
@@ -77070,7 +77115,8 @@
       107901,
       109201,
       113001,
-      111201
+      111201,
+      114401
     ],
     "char_e": [
       110901,
@@ -92429,7 +92475,7 @@
     "desc_en": "Increase navigation and greatly recover endurance when the way ahead is jammed early or mid-race.",
     "desc_ko": "레이스 초반 혹은 중반에 앞이 막혔을 때 지구력을 많이 회복하고 코스를 능숙하게 잡는다",
     "desc_tw": "在競賽初期或中期當前方被阻擋時大幅回復持久力並變得擅長爭搶賽道",
-    "endesc": "During the Opening or Middle Leg, if you're being blocked from the front, your lane movement speed will increase and your stamina greatly recover",
+    "endesc": "During the Opening Leg or Middle Leg, if you're being blocked from the front, your lane movement speed will increase and your stamina greatly recover",
     "enname": "Not Done Yet!",
     "evo_cond": [
       [
@@ -102762,6 +102808,7 @@
             30243,
             30245,
             30251,
+            30254,
             20073,
             20075,
             20084
@@ -104581,7 +104628,8 @@
         ],
         "sup_e": [
           [
-            30153
+            30153,
+            30253
           ],
           []
         ]
@@ -104685,7 +104733,8 @@
         "sup_hint": [
           [
             30153,
-            30218
+            30218,
+            30253
           ],
           []
         ]
@@ -107245,7 +107294,8 @@
     "char": [
       107202,
       104803,
-      100503
+      100503,
+      114401
     ],
     "char_e": [
       114101
@@ -109118,7 +109168,7 @@
     },
     "iconid": 20013,
     "id": 110361,
-    "jpdesc": "終盤以降の最終コーナー後半以降に追い抜こうとすると速度が上がるレース中盤に追い抜かれて中団につけているとすごく上がる",
+    "jpdesc": "終盤以降の最終コーナー後半以降に追い抜こうとすると速度が上がるレース中盤に追い抜かれて中団にいるとすごく上がる",
     "jpname": "...found you.",
     "loc": {
       "ko": {
@@ -109963,7 +110013,8 @@
   {
     "activation": 1,
     "char": [
-      108601
+      108601,
+      114401
     ],
     "condition_groups": [
       {
@@ -109987,6 +110038,12 @@
         "card_id": 108601,
         "evos": [
           108601111
+        ]
+      },
+      {
+        "card_id": 114401,
+        "evos": [
+          114401111
         ]
       }
     ],
@@ -110045,7 +110102,8 @@
     "activation": 1,
     "char": [
       108601,
-      110902
+      110902,
+      114401
     ],
     "char_e": [
       110901,
@@ -113763,7 +113821,7 @@
     ],
     "desc_ko": "초・중반에 전방에서 추월당하거나 경합했을 때 짧은 시간 동안 속도가 상승하고, 그 후 장거리 레이스에서 레이스 후반에 2위 이내면 속도가 계속해서 다소 상승한다",
     "desc_tw": "初期、中期位於隊列前方被對手追過或發生競爭時，極短時間內使速度上升之後若是長距離競賽，在競賽後半如位居第2以內則使速度稍微持續上升",
-    "endesc": "During the Opening or Middle Leg, if you were overtaken or blocked from the side for at least two seconds, your speed will increase; (Long only) then, if you're in the front in the second half of the race, your speed will slightly increase",
+    "endesc": "During the Opening Leg or Middle Leg, if you were overtaken or blocked from the side for at least two seconds, your speed will increase; (Long only) then, if you're in the front in the second half of the race, your speed will slightly increase",
     "enname": "Becoming Everyone's Joy!",
     "gene_version": {
       "activation": 1,
@@ -116846,7 +116904,7 @@
     },
     "iconid": 20013,
     "id": 10541,
-    "jpdesc": "レース後半に追い抜いて中団以降につけていた場合、残り150mを切ってから前方だと少しの間速度が上がる",
+    "jpdesc": "レース後半に追い抜いて中団以降につけていると、残り150mを切ってから前方だと少しの間速度が上がる",
     "jpname": "ペガサスフルパワー！",
     "loc": {
       "ko": {
@@ -116925,7 +116983,7 @@
     },
     "iconid": 20013,
     "id": 100541,
-    "jpdesc": "レース後半に追い抜いて中団以降につけていた場合、残り150mを切ってから前方だと少しの間速度がすごく上がる",
+    "jpdesc": "レース後半に追い抜いて中団以降につけていると、残り150mを切ってから前方だと少しの間速度がすごく上がる",
     "jpname": "疾風爆走ペガサスダッシュ！",
     "loc": {
       "ko": {
@@ -125078,7 +125136,8 @@
     "loc": {
       "ko": {
         "char_e": [
-          111001
+          111001,
+          111002
         ],
         "sup_hint": [
           [
@@ -125086,6 +125145,7 @@
             30229,
             30238,
             30251,
+            30253,
             20081,
             20087
           ],
@@ -125266,7 +125326,8 @@
             30208,
             30234,
             30235,
-            30252
+            30252,
+            30253
           ],
           []
         ]
@@ -125465,7 +125526,8 @@
             30219,
             30236,
             30238,
-            30243
+            30243,
+            30254
           ],
           [
             10124
@@ -126495,6 +126557,9 @@
     "jpname": "初志貫徹",
     "loc": {
       "ko": {
+        "char": [
+          111002
+        ],
         "sup_e": [
           [
             30209
@@ -126540,7 +126605,8 @@
       113202
     ],
     "char_e": [
-      106302
+      106302,
+      114401
     ],
     "condition_groups": [
       {
@@ -126565,6 +126631,9 @@
     "jpname": "揺るがぬ信念",
     "loc": {
       "ko": {
+        "char": [
+          111002
+        ],
         "sup_e": [
           [
             30209
@@ -129095,7 +129164,8 @@
     "loc": {
       "ko": {
         "char": [
-          111601
+          111601,
+          111002
         ],
         "sup_e": [
           [
@@ -130300,7 +130370,8 @@
         ],
         "sup_hint": [
           [
-            30218
+            30218,
+            30254
           ],
           []
         ]
@@ -132417,10 +132488,15 @@
     "loc": {
       "ko": {
         "char": [
-          107702
+          107702,
+          108602
+        ],
+        "char_e": [
+          111002
         ],
         "sup_e": [
           [
+            30254,
             20084,
             20087
           ],
@@ -132525,6 +132601,9 @@
     "jpname": "逸る足取り",
     "loc": {
       "ko": {
+        "char_e": [
+          108602
+        ],
         "sup_hint": [
           [
             30224,
@@ -132748,7 +132827,7 @@
     ],
     "iconid": 20046,
     "id": 102403111,
-    "jpdesc": "直線で先団だとラストスパートの最中なら加速力が上がる、先頭だと持久力を少し使って効果時間が2倍になる＜逃げ・長距離＞",
+    "jpdesc": "直線で3番手以内だとラストスパートの最中なら加速力が上がる、先頭だと持久力を少し使って効果時間が2倍になる＜逃げ・長距離＞",
     "jpname": "お先に☆テールウィンド",
     "loc": {
       "ko": {
@@ -133866,9 +133945,12 @@
         "sup_hint": [
           [
             30226,
-            30244
+            30244,
+            30255
           ],
-          []
+          [
+            10127
+          ]
         ]
       },
       "zh_tw": {
@@ -135731,10 +135813,12 @@
         ],
         "sup_hint": [
           [
-            30248
+            30248,
+            30255
           ],
           [
-            10120
+            10120,
+            10127
           ]
         ]
       },
@@ -136982,7 +137066,7 @@
     ],
     "iconid": 30056,
     "id": 103602121,
-    "jpdesc": "レース中盤に中団で追い抜かれると前に出て、前5人までのウマ娘の持久力をわずかに減少させる＜長距離＞",
+    "jpdesc": "レース中盤に追い抜かれて中団にいると前に出て、前5人までのウマ娘の持久力をわずかに減少させる＜長距離＞",
     "jpname": "ノイズキャンセリング",
     "loc": {
       "ko": {
@@ -137632,6 +137716,10 @@
     "jpname": "己を信じて",
     "loc": {
       "ko": {
+        "char": [
+          108602,
+          111002
+        ],
         "sup_e": [
           [
             30232
@@ -137640,7 +137728,8 @@
         ],
         "sup_hint": [
           [
-            30232
+            30232,
+            30254
           ],
           [
             10116
@@ -140110,6 +140199,12 @@
       "ko": {
         "char": [
           107901
+        ],
+        "sup_hint": [
+          [
+            30253
+          ],
+          []
         ]
       },
       "zh_tw": {
@@ -147398,6 +147493,13 @@
     "id": 110861,
     "jpdesc": "残り300m地点で先団だと速度が少し上がるスキル発動時、先頭か先頭から2バ身以内だとすごく上がる＜作戦・先行＞",
     "jpname": "解けぬ結い目",
+    "loc": {
+      "ko": {
+        "char": [
+          108602
+        ]
+      }
+    },
     "name_ko": "풀리지 않는 매듭",
     "name_tw": "解不開的誓言",
     "rarity": 5,
@@ -147472,6 +147574,13 @@
     "id": 111101,
     "jpdesc": "レース最終盤でラストスパートの最中なら少しの間速度がすごく上がる中距離レースなら効果が増える＜作戦・先行＞",
     "jpname": "時かけるせせらぎ",
+    "loc": {
+      "ko": {
+        "char": [
+          111002
+        ]
+      }
+    },
     "name_ko": "시간을 달리는 여울",
     "name_tw": "跨越時光的潺潺流水",
     "rarity": 5,
@@ -147615,6 +147724,13 @@
     "id": 108602111,
     "jpdesc": "レース中盤のどこかで速度がすごく上がる＜作戦・先行＞",
     "jpname": "Limitless Love",
+    "loc": {
+      "ko": {
+        "char": [
+          108602
+        ]
+      }
+    },
     "name_ko": "Limitless Love",
     "name_tw": "Limitless Love",
     "pre_evo": {
@@ -147679,6 +147795,13 @@
     "id": 108602211,
     "jpdesc": "レース中盤が迫ったどこかで前方だとしばらくの間速度が上がる＜マイル/中距離＞",
     "jpname": "祝宴の征服者",
+    "loc": {
+      "ko": {
+        "char": [
+          108602
+        ]
+      }
+    },
     "name_ko": "축하연의 정복자",
     "name_tw": "慶宴征服者",
     "pre_evo": {
@@ -147740,6 +147863,13 @@
     "id": 111002111,
     "jpdesc": "レース終盤が迫ったどこかで速度と加速力が少し上がる＜先行・中距離＞",
     "jpname": "栄華の歩み、誰ぞ遮る",
+    "loc": {
+      "ko": {
+        "char": [
+          111002
+        ]
+      }
+    },
     "name_ko": "영화의 발걸음, 막을 자 없으니",
     "name_tw": "榮耀前程，無能人阻",
     "pre_evo": {
@@ -147808,6 +147938,13 @@
     "id": 111002211,
     "jpdesc": "レース終盤が迫ったどこかで速度がすごく上がる＜中距離＞",
     "jpname": "白妙の約定",
+    "loc": {
+      "ko": {
+        "char": [
+          111002
+        ]
+      }
+    },
     "name_ko": "새하얀 약속",
     "name_tw": "潔白無瑕的約定",
     "pre_evo": {
@@ -152549,7 +152686,7 @@
     "cost": 180,
     "desc_ko": "레이스 초반 혹은 중반에 추월당하거나 경합하면 앞으로 나간다＜중거리＞",
     "desc_tw": "在競賽初期或中期若被對手追過或發生競爭會向前邁進＜中距離＞",
-    "endesc": "Medium・If someone overtakes you or blocks you from the side during the Opening or Middle Leg, you will get a speed boost",
+    "endesc": "Medium・If someone overtakes you or blocks you from the side during the Opening Leg or Middle Leg, you will get a speed boost",
     "enname": "Freewheeling",
     "evo": [],
     "iconid": 20012,
@@ -152599,7 +152736,7 @@
     "cost": 180,
     "desc_ko": "레이스 초반 혹은 중반에 추월당하거나 경합하면 약간 앞으로 나간다＜중거리＞",
     "desc_tw": "在競賽初期或中期若被對手追過或發生競爭會略微向前邁進＜中距離＞",
-    "endesc": "Medium・If someone overtakes you or blocks you from the side during the Opening or Middle Leg, you will get a slight speed boost",
+    "endesc": "Medium・If someone overtakes you or blocks you from the side during the Opening Leg or Middle Leg, you will get a slight speed boost",
     "enname": "Carefree Step",
     "iconid": 20011,
     "id": 203862,
@@ -155004,6 +155141,9 @@
   },
   {
     "activation": 1,
+    "char": [
+      114401
+    ],
     "condition_groups": [
       {
         "base_time": 30000,
@@ -155020,7 +155160,14 @@
     "desc_ko": "レース中盤に前方にいると 速度が上がる＜先行・マイル＞",
     "endesc": "Leader・Mile・If you're in the first half of the pack at a random point during the Middle Leg, your speed will increase",
     "enname": "Steadfast Spirit",
-    "evo": [],
+    "evo": [
+      {
+        "card_id": 114401,
+        "evos": [
+          114401211
+        ]
+      }
+    ],
     "iconid": 20012,
     "id": 203961,
     "jpdesc": "レース中盤のどこかで前方だと速度が上がる＜先行・マイル＞",
@@ -155050,7 +155197,8 @@
   {
     "activation": 1,
     "char": [
-      101003
+      101003,
+      114401
     ],
     "condition_groups": [
       {
@@ -158653,6 +158801,7 @@
       100603,
       107703,
       112702,
+      114401,
       110301
     ],
     "char_e": [
@@ -159734,6 +159883,7 @@
       102203
     ],
     "char_e": [
+      114401,
       110301
     ],
     "condition_groups": [
@@ -160075,7 +160225,7 @@
     ],
     "iconid": 20016,
     "id": 105602121,
-    "jpdesc": "終盤に追い抜こうとすると加速力がわずかに上がる、その後最終盤始めのどこかでラストスパートの最中ならしばらくの間速度が上がる＜長距離＞",
+    "jpdesc": "終盤に追い抜こうとすると加速力がわずかに上がる、その後最終盤始めにラストスパートの最中なら追い抜こうとするとしばらくの間速度が上がる＜長距離＞",
     "jpname": "怒涛のラッキー大猛進！",
     "loc": {
       "en": {
@@ -166019,7 +166169,8 @@
     ],
     "char_e": [
       102503,
-      102203
+      102203,
+      114401
     ],
     "condition_groups": [
       {
@@ -173136,6 +173287,228 @@
       "l_1",
       "mil",
       "med"
+    ],
+    "unreleased": [
+      "ko",
+      "zh_tw",
+      "en"
+    ]
+  },
+  {
+    "activation": 0,
+    "char": [
+      114401
+    ],
+    "condition_groups": [
+      {
+        "base_time": 60000,
+        "condition": "phase<=1&change_order_onetime>0&accumulatetime>=5&order_rate<=50@phase<=1&blocked_side_continuetime>=2&accumulatetime>=5&order_rate<=50",
+        "effects": [
+          {
+            "type": 22,
+            "value": 2500
+          }
+        ]
+      },
+      {
+        "base_time": 30000,
+        "condition": "is_activate_other_skill_detail==1&phase==3&distance_type==3",
+        "effects": [
+          {
+            "type": 22,
+            "value": 2500
+          }
+        ]
+      }
+    ],
+    "endesc": "During the Opening Leg or Middle Leg, if you're in the first half of the pack and someone either overtakes you or blocks you from the side for at least 2 seconds, you will get a slight speed boost; (Medium only) then, during the Last Spurt, you will get another slight speed boost",
+    "enname": "Épanouissement by Royal Decree",
+    "gene_version": {
+      "activation": 1,
+      "condition_groups": [
+        {
+          "base_time": 36000,
+          "condition": "phase<=1&change_order_onetime>0&accumulatetime>=5&order_rate<=50@phase<=1&blocked_side_continuetime>=2&accumulatetime>=5&order_rate<=50",
+          "effects": [
+            {
+              "type": 22,
+              "value": 500
+            }
+          ]
+        },
+        {
+          "base_time": 18000,
+          "condition": "is_activate_other_skill_detail==1&phase==3&distance_type==3",
+          "effects": [
+            {
+              "type": 22,
+              "value": 500
+            }
+          ]
+        }
+      ],
+      "cost": 200,
+      "iconid": 20011,
+      "id": 901441,
+      "inherited": true,
+      "parent_skills": [
+        101441
+      ],
+      "rarity": 1,
+      "tid": "z5"
+    },
+    "iconid": 20013,
+    "id": 101441,
+    "jpdesc": "レース序盤または中盤に追い抜かれて前方にいるか前方で競り合うと少し前に出続ける、中距離レースならその後最終盤で短い間少し前に出る",
+    "jpname": "エパヌイスマンの大号令",
+    "rarity": 5,
+    "tid": "z4",
+    "type": [
+      "l_0",
+      "l_1",
+      "nac",
+      "l_3",
+      "med"
+    ],
+    "unreleased": [
+      "ko",
+      "zh_tw",
+      "en"
+    ]
+  },
+  {
+    "activation": 1,
+    "char": [
+      114401
+    ],
+    "condition_groups": [
+      {
+        "base_time": 30000,
+        "condition": "corner_random==3&order_rate<=50",
+        "effects": [
+          {
+            "type": 22,
+            "value": 3500
+          },
+          {
+            "type": 31,
+            "value": 1000
+          }
+        ],
+        "precondition": "distance_type==2@distance_type==3"
+      },
+      {
+        "base_time": 30000,
+        "condition": "is_activate_other_skill_detail==1&phase==3&course_distance==2400",
+        "effects": [
+          {
+            "type": 22,
+            "value": 1500
+          }
+        ]
+      }
+    ],
+    "endesc": "Mile/Medium・If you're in the first half of the pack at a random point on the third corner, you will get a speed boost and your acceleration will slightly increase; (2400 m only) then, during the Last Spurt, you will get a slight speed boost",
+    "enname": "Impeccable",
+    "evo_cond": [
+      [
+        [
+          "stat",
+          3,
+          800
+        ]
+      ],
+      [
+        [
+          "a_skill",
+          "dist",
+          1,
+          2
+        ],
+        [
+          "a_skill",
+          "dist",
+          2,
+          2
+        ]
+      ]
+    ],
+    "iconid": 20016,
+    "id": 114401111,
+    "jpdesc": "最終コーナー前の第3コーナーのどこかで前方だと前に出て加速力がちょっと上がる、2400mならその後最終盤でわずかに前に出る＜マイル/中距離＞",
+    "jpname": "Impeccable",
+    "pre_evo": {
+      "card_id": 114401,
+      "old": 202741
+    },
+    "rarity": 6,
+    "tid": "z6",
+    "type": [
+      "cor",
+      "mil",
+      "med",
+      "l_3"
+    ],
+    "unreleased": [
+      "ko",
+      "zh_tw",
+      "en"
+    ]
+  },
+  {
+    "activation": 1,
+    "char": [
+      114401
+    ],
+    "condition_groups": [
+      {
+        "base_time": 30000,
+        "condition": "phase_random==1&running_style==2&order_rate<=50",
+        "effects": [
+          {
+            "type": 27,
+            "value": 4500
+          }
+        ]
+      }
+    ],
+    "endesc": "Leader・If you're in the first half of the pack at a random point during the Middle Leg, your speed will greatly increase",
+    "enname": "Rose of Steel",
+    "evo_cond": [
+      [
+        [
+          "s_gn_race_w",
+          2,
+          100,
+          4
+        ],
+        [
+          "e_skill",
+          "speed",
+          3
+        ]
+      ],
+      [
+        [
+          "stat",
+          4,
+          600
+        ]
+      ]
+    ],
+    "iconid": 20016,
+    "id": 114401211,
+    "jpdesc": "レース中盤のどこかで前方だと速度がすごく上がる＜作戦・先行＞",
+    "jpname": "Rose of Steel",
+    "pre_evo": {
+      "card_id": 114401,
+      "old": 203961
+    },
+    "rarity": 6,
+    "tid": "z7",
+    "type": [
+      "l_1",
+      "ldr"
     ],
     "unreleased": [
       "ko",

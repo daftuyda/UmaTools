@@ -43160,5 +43160,182 @@
       }
     ],
     "UmaImage": "/assets/character_thumbs/114901-phalaenopsis.png"
+  },
+  {
+    "UmaKey": "Rose Kingdom :: Éclat de Roseraie",
+    "UmaName": "Rose Kingdom",
+    "UmaNameJP": "ローズキングダム",
+    "UmaNickname": "Éclat de Roseraie",
+    "UmaNicknameJP": "Éclat de Roseraie",
+    "UmaSlug": "114401-rose-kingdom",
+    "UmaId": "114401",
+    "UmaServer": "jp",
+    "UmaBaseStars": 3,
+    "UmaBaseStats": {
+      "3★": {
+        "Speed": 94,
+        "Stamina": 88,
+        "Power": 88,
+        "Guts": 86,
+        "Wit": 94
+      },
+      "5★": {
+        "Speed": 114,
+        "Stamina": 108,
+        "Power": 108,
+        "Guts": 105,
+        "Wit": 115
+      },
+      "4★": {
+        "Speed": 104,
+        "Stamina": 98,
+        "Power": 98,
+        "Guts": 95,
+        "Wit": 105
+      }
+    },
+    "UmaStatBonuses": {
+      "Speed": 0,
+      "Stamina": 0,
+      "Power": 10,
+      "Guts": 10,
+      "Wit": 10
+    },
+    "UmaAptitudes": {
+      "Surface": {
+        "Turf": "A",
+        "Dirt": "G"
+      },
+      "Distance": {
+        "Short": "G",
+        "Mile": "A",
+        "Medium": "A",
+        "Long": "C"
+      },
+      "Strategy": {
+        "Front": "G",
+        "Pace": "A",
+        "Late": "B",
+        "End": "G"
+      }
+    },
+    "UmaHeightCm": null,
+    "UmaThreeSizes": {},
+    "UmaObjectives": [
+      {
+        "ObjectiveName": "Junior Make Debut",
+        "Turn": "12",
+        "Time": "Junior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Asahi Hai Futurity Stakes",
+        "Turn": "23",
+        "Time": "Junior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Satsuki Sho",
+        "Turn": "31",
+        "Time": "Classic Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Tokyo Yushun (Japanese Derby)",
+        "Turn": "34",
+        "Time": "Classic Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Kikuka Sho",
+        "Turn": "44",
+        "Time": "Classic Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Japan Cup",
+        "Turn": "46",
+        "Time": "Classic Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Arima Kinen",
+        "Turn": "48",
+        "Time": "Classic Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Nikkei Shinshun Hai",
+        "Turn": "49",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Takarazuka Kinen",
+        "Turn": "60",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Tenno Sho (Autumn)",
+        "Turn": "68",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Japan Cup",
+        "Turn": "70",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Arima Kinen",
+        "Turn": "72",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "URA Preliminary",
+        "Turn": "74",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "URA Semi-Final",
+        "Turn": "76",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "URA Final",
+        "Turn": "78",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      }
+    ],
+    "UmaEvents": [
+      {
+        "EventName": "騎士の在り方？",
+        "EventOptions": {
+          "Top Option": "Stamina +20",
+          "Bottom Option": "Power +20"
+        }
+      },
+      {
+        "EventName": "薔薇の素顔",
+        "EventOptions": {
+          "Top Option": "Stamina +20",
+          "Bottom Option": "Wit +20"
+        }
+      },
+      {
+        "EventName": "薔薇の王と魔王",
+        "EventOptions": {
+          "Top Option": "Wit +20",
+          "Bottom Option": "Guts +20"
+        }
+      }
+    ],
+    "UmaImage": "/assets/character_thumbs/114401-rose-kingdom.png"
   }
 ]
