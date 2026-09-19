@@ -1,4 +1,6 @@
 import json
+import time
+from collections import defaultdict
 from functools import lru_cache
 from io import BytesIO
 from pathlib import Path
@@ -230,6 +232,29 @@ class StripPathPrefix(BaseHTTPMiddleware):
 
 
 app.add_middleware(StripPathPrefix, prefixes=("/api", "/index", "/api/index"))
+
+
+_RATE_LIMIT_WINDOW_SECONDS = 60
+_RATE_LIMIT_MAX_REQUESTS = 30
+_rate_limit_hits: Dict[str, List[float]] = defaultdict(list)
+
+
+class RateLimitMiddleware(BaseHTTPMiddleware):
+    """Simple sliding-window rate limiter to protect CPU-heavy endpoints
+    (image generation, fuzzy matching) from resource exhaustion."""
+
+    async def dispatch(self, request, call_next):
+        client_ip = request.client.host if request.client else "unknown"
+        now = time.monotonic()
+        hits = _rate_limit_hits[client_ip]
+        hits[:] = [t for t in hits if now - t < _RATE_LIMIT_WINDOW_SECONDS]
+        if len(hits) >= _RATE_LIMIT_MAX_REQUESTS:
+            return Response(status_code=429, content="Too many requests")
+        hits.append(now)
+        return await call_next(request)
+
+
+app.add_middleware(RateLimitMiddleware)
 
 
 def _json_load_bom_tolerant(path: Path):
