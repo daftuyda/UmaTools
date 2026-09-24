@@ -15186,7 +15186,7 @@
     "SupportName": "Symboli Kris S (R)",
     "SupportNameJP": "シンボリクリスエス (R)",
     "SupportRarity": "R",
-    "SupportServer": "jp",
+    "SupportServer": "global",
     "SupportType": "Stamina",
     "SupportEffects": [
       {
@@ -40666,7 +40666,7 @@
     "SupportName": "Narita Top Road (SR)",
     "SupportNameJP": "ナリタトップロード (SR)",
     "SupportRarity": "SR",
-    "SupportServer": "jp",
+    "SupportServer": "global",
     "SupportType": "Power",
     "SupportEffects": [
       {
@@ -79381,7 +79381,7 @@
     "SupportName": "Eishin Flash (SSR)",
     "SupportNameJP": "エイシンフラッシュ (SSR)",
     "SupportRarity": "SSR",
-    "SupportServer": "jp",
+    "SupportServer": "global",
     "SupportType": "Speed",
     "SupportEffects": [
       {
