@@ -3407,58 +3407,58 @@
     }
   },
   {
-    "EventName": "混沌に浮かぶ不知火",
+    "EventName": "The Blazing Chaos of the Morning Star",
     "EventOptions": {
       "Top Option": "Stamina +10\nPower +10\nBond +5",
       "Bottom Option": "Energy +15\nMotivation +1\nBond +5"
     }
   },
   {
-    "EventName": "今はまだ、その光には気づけない",
+    "EventName": "A Yet Unnoticed Light",
     "EventOptions": {
       "": "Stamina +10\nPower +10\nMy True Strength hint +1\nBond +5"
     }
   },
   {
-    "EventName": "不器用な2人",
+    "EventName": "Clumsy Pair",
     "EventOptions": {
       "": "Stamina +15\nPower +15\nHot Pursuit hint +3\nBond +5\nStamina +7\nPower +7\nHot Pursuit hint +1\nBond +5"
     }
   },
   {
-    "EventName": "異端児は来ませり",
+    "EventName": "Great, Another Headache",
     "EventOptions": {
       "": "Speed +7\nWit +7\nBond +5\nSpeed +10\nWit +10\nBond +10"
     }
   },
   {
-    "EventName": "お前の脚が役に立つのさ",
+    "EventName": "A Use for the Blaze",
     "EventOptions": {
       "Top Option": "Skill Pts +20\nStudious hint +1\nPace Strategy hint +1\nBond +5",
       "Bottom Option": "Energy +20\nWit +10\nBond +5"
     }
   },
   {
-    "EventName": "過ぎしあの夜、星は光り",
+    "EventName": "Twinkles of One Wintry Eve",
     "EventOptions": {
       "": "Speed +10\nWit +10\nFast & Furious hint +2\nBond +5"
     }
   },
   {
-    "EventName": "それって大人でマーベラスだね",
+    "EventName": "Marvelously Grown-Up",
     "EventOptions": {
       "": "Stamina +5\nGuts +5\nBond +5"
     }
   },
   {
-    "EventName": "元気のヒケツ、教えてあげる",
+    "EventName": "The Secret to Staying Positive",
     "EventOptions": {
       "Top Option": "Stamina +10\nGuts +5\nBond +5",
       "Bottom Option": "Be Still hint +2\nBond +5"
     }
   },
   {
-    "EventName": "閉じ込められちゃった、ね？",
+    "EventName": "Guess We're Trapped",
     "EventOptions": {
       "": "Stamina +10\nDauntless hint +1\nBond +5"
     }

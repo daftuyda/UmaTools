@@ -16810,7 +16810,7 @@
     "UmaNicknameJP": "不凍のアクア・ウィタエ",
     "UmaSlug": "100802-vodka",
     "UmaId": "100802",
-    "UmaServer": "jp",
+    "UmaServer": "global",
     "UmaBaseStars": 3,
     "UmaBaseStats": {
       "3★": {
@@ -16944,20 +16944,20 @@
     ],
     "UmaEvents": [
       {
-        "EventName": "ウオッカには早すぎる",
+        "EventName": "Too Soon for Vodka",
         "EventOptions": {
           "Top Option": "Power +20",
           "Bottom Option": "Speed +20"
         }
       },
       {
-        "EventName": "クリスマスは突然に？",
+        "EventName": "The Holidays Hit You Fast",
         "EventOptions": {
           "": "brp 1\nPower +20\nGuts +10\nCorner Recovery ○ hint +2\nPower +10\nGuts +10\nbrp 2\nSpeed +20\nWit +10\nLate Surger Corners ○ hint +2\nSpeed +10\nWit +10"
         }
       },
       {
-        "EventName": "カッコいいって！？",
+        "EventName": "What Bein' Cool Means",
         "EventOptions": {
           "Top Option": "Stamina +20",
           "Bottom Option": "Winter Runner ○ hint +2"
@@ -16974,7 +16974,7 @@
     "UmaNicknameJP": "緋色のニュイ・エトワレ",
     "UmaSlug": "100902-daiwa-scarlet",
     "UmaId": "100902",
-    "UmaServer": "jp",
+    "UmaServer": "global",
     "UmaBaseStars": 3,
     "UmaBaseStats": {
       "3★": {
@@ -17108,20 +17108,20 @@
     ],
     "UmaEvents": [
       {
-        "EventName": "目指せパーフェクト・クリスマス",
+        "EventName": "Planning the Perfect Party",
         "EventOptions": {
           "Top Option": "Speed +20",
           "Bottom Option": "Wit +20"
         }
       },
       {
-        "EventName": "2人のジングルベル",
+        "EventName": "Jingle Bells for Two",
         "EventOptions": {
           "": "brp 1\nSpeed +20\nStamina +10\nCorner Recovery ○ hint +2\nSpeed +10\nStamina +10\nbrp 2\nWit +20\nGuts +10\nFront Runner Corners ○ hint +2\nWit +10\nGuts +10"
         }
       },
       {
-        "EventName": "何度だって、陽は昇る",
+        "EventName": "The Sun Keeps Rising",
         "EventOptions": {
           "Top Option": "Winter Runner ○ hint +2",
           "Bottom Option": "Power +10\nSkill Pts +15"
