@@ -6866,5 +6866,84 @@
     "EventOptions": {
       "": "Energy +10\nMotivation +1\nSpeed +10\nPower +10\nRampaging Passion hint +1\nA Rousing Shout hint +2\nBond +5"
     }
+  },
+  {
+    "EventName": "見上げた空は眩しくて",
+    "EventOptions": {
+      "Top Option": "Motivation +1\nGuts +10\nBond +5",
+      "Bottom Option": "Energy +10\nGuts +5\nBond +5"
+    }
+  },
+  {
+    "EventName": "手にした花は煌めいて",
+    "EventOptions": {
+      "Top Option": "Guts +15\nBond +5",
+      "Bottom Option": "Skill Pts +15\nBond +5"
+    }
+  },
+  {
+    "EventName": "届けた幸せは、甘く花開いて",
+    "EventOptions": {
+      "": "Guts +15\nBravery Slash hint +1\nBond +5"
+    }
+  },
+  {
+    "EventName": "生徒会副会長の報告書",
+    "EventOptions": {
+      "Top Option": "Energy +10\nMotivation +1\nSpeed +5\nWit +5\nBond +10",
+      "Bottom Option": "Energy +5\nSkill Pts +20\nBond +10"
+    }
+  },
+  {
+    "EventName": "生徒会副会長の根源",
+    "EventOptions": {
+      "Top Option": "Motivation +1\nSpeed +5\nWit +5\nNo Worries hint +1\nBond +5",
+      "Bottom Option": "Motivation +1\nSkill Pts +25\nBond +5"
+    }
+  },
+  {
+    "EventName": "生徒会副会長の“未来”",
+    "EventOptions": {
+      "": "Speed +10\nWit +15\nUnstoppable hint +1\nBreakaway! hint +2\nBond +5"
+    }
+  },
+  {
+    "EventName": "戸惑いのレクチャー",
+    "EventOptions": {
+      "Top Option": "Energy +15\nWit +10\nBond +10",
+      "Bottom Option": "Energy +10\nMotivation +1\nSkill Pts +10\nBond +10"
+    }
+  },
+  {
+    "EventName": "不器用コミュニケーション",
+    "EventOptions": {
+      "Top Option": "Wit +15\nSlipstream hint +1\nBond +5",
+      "Bottom Option": "Stamina +10\nWit +20\nBond +5"
+    }
+  },
+  {
+    "EventName": "ひそやかな温もり",
+    "EventOptions": {
+      "": "Motivation +1\nWit +20\nUnshackled Passion hint +2\nUnwavering Advance hint +1\nBond +5"
+    }
+  },
+  {
+    "EventName": "『かの者、魔界より現れる』",
+    "EventOptions": {
+      "Top Option": "Power +15\nBond +5",
+      "Bottom Option": "Energy +15\nBond +5"
+    }
+  },
+  {
+    "EventName": "『夜の王を討伐せよ！』",
+    "EventOptions": {
+      "": "Motivation +1\nPower +10\nBond +5"
+    }
+  },
+  {
+    "EventName": "『満月に光りしは、赤い石』",
+    "EventOptions": {
+      "": "Power +15\nMoonlight Slash hint +1\nBond +5"
+    }
   }
 ]

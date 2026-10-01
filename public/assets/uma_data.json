@@ -43337,5 +43337,323 @@
       }
     ],
     "UmaImage": "/assets/character_thumbs/114401-rose-kingdom.png"
+  },
+  {
+    "UmaKey": "Symboli Rudolf :: Adamant Sovereign",
+    "UmaName": "Symboli Rudolf",
+    "UmaNameJP": "シンボリルドルフ",
+    "UmaNickname": "Adamant Sovereign",
+    "UmaNicknameJP": "Adamant Sovereign",
+    "UmaSlug": "101703-symboli-rudolf",
+    "UmaId": "101703",
+    "UmaServer": "jp",
+    "UmaBaseStars": 3,
+    "UmaBaseStats": {
+      "3★": {
+        "Speed": 87,
+        "Stamina": 108,
+        "Power": 77,
+        "Guts": 87,
+        "Wit": 91
+      },
+      "5★": {
+        "Speed": 107,
+        "Stamina": 132,
+        "Power": 94,
+        "Guts": 107,
+        "Wit": 110
+      },
+      "4★": {
+        "Speed": 97,
+        "Stamina": 120,
+        "Power": 86,
+        "Guts": 97,
+        "Wit": 100
+      }
+    },
+    "UmaStatBonuses": {
+      "Speed": 0,
+      "Stamina": 10,
+      "Power": 0,
+      "Guts": 10,
+      "Wit": 10
+    },
+    "UmaAptitudes": {
+      "Surface": {
+        "Turf": "A",
+        "Dirt": "G"
+      },
+      "Distance": {
+        "Short": "E",
+        "Mile": "C",
+        "Medium": "A",
+        "Long": "A"
+      },
+      "Strategy": {
+        "Front": "B",
+        "Pace": "A",
+        "Late": "A",
+        "End": "C"
+      }
+    },
+    "UmaHeightCm": null,
+    "UmaThreeSizes": {},
+    "UmaObjectives": [
+      {
+        "ObjectiveName": "Junior Make Debut",
+        "Turn": "12",
+        "Time": "Junior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Saudi Arabia Royal Cup",
+        "Turn": "19",
+        "Time": "Junior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Satsuki Sho",
+        "Turn": "31",
+        "Time": "Classic Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Tokyo Yushun (Japanese Derby)",
+        "Turn": "34",
+        "Time": "Classic Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Kikuka Sho",
+        "Turn": "44",
+        "Time": "Classic Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Arima Kinen",
+        "Turn": "48",
+        "Time": "Classic Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Tenno Sho (Spring)",
+        "Turn": "56",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Japan Cup",
+        "Turn": "70",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Arima Kinen",
+        "Turn": "72",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "URA Preliminary",
+        "Turn": "74",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "URA Semi-Final",
+        "Turn": "76",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "URA Final",
+        "Turn": "78",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      }
+    ],
+    "UmaEvents": [
+      {
+        "EventName": "“皇帝”式仕事術",
+        "EventOptions": {
+          "Top Option": "Stamina +10\nRight-Handed ○ hint +1",
+          "Bottom Option": "Power +10\nLeft-Handed ○ hint +1"
+        }
+      },
+      {
+        "EventName": "黒を纏いて何思う",
+        "EventOptions": {
+          "Top Option": "Power +15\nSkill Pts +15\nStrategist hint +2\nPower +10\nStrategist hint +1",
+          "Bottom Option": "Stamina +15\nSkill Pts +15\nOverflowing Vitality hint +2\nStamina +10\nOverflowing Vitality hint +1"
+        }
+      },
+      {
+        "EventName": "『ベビーウマ娘ハイハイレース』",
+        "EventOptions": {
+          "Top Option": "Skill Pts +15",
+          "Bottom Option": "Energy -10\nSkill Pts +30"
+        }
+      }
+    ],
+    "UmaImage": "/assets/character_thumbs/101703-symboli-rudolf.png"
+  },
+  {
+    "UmaKey": "Air Groove :: Eternal Hekateia",
+    "UmaName": "Air Groove",
+    "UmaNameJP": "エアグルーヴ",
+    "UmaNickname": "Eternal Hekateia",
+    "UmaNicknameJP": "悠久なるヘカテイア",
+    "UmaSlug": "101803-air-groove",
+    "UmaId": "101803",
+    "UmaServer": "jp",
+    "UmaBaseStars": 3,
+    "UmaBaseStats": {
+      "3★": {
+        "Speed": 89,
+        "Stamina": 94,
+        "Power": 78,
+        "Guts": 89,
+        "Wit": 100
+      },
+      "5★": {
+        "Speed": 109,
+        "Stamina": 115,
+        "Power": 96,
+        "Guts": 109,
+        "Wit": 121
+      },
+      "4★": {
+        "Speed": 99,
+        "Stamina": 105,
+        "Power": 87,
+        "Guts": 99,
+        "Wit": 110
+      }
+    },
+    "UmaStatBonuses": {
+      "Speed": 8,
+      "Stamina": 0,
+      "Power": 0,
+      "Guts": 8,
+      "Wit": 14
+    },
+    "UmaAptitudes": {
+      "Surface": {
+        "Turf": "A",
+        "Dirt": "G"
+      },
+      "Distance": {
+        "Short": "C",
+        "Mile": "B",
+        "Medium": "A",
+        "Long": "E"
+      },
+      "Strategy": {
+        "Front": "D",
+        "Pace": "A",
+        "Late": "A",
+        "End": "G"
+      }
+    },
+    "UmaHeightCm": null,
+    "UmaThreeSizes": {},
+    "UmaObjectives": [
+      {
+        "ObjectiveName": "Junior Make Debut",
+        "Turn": "12",
+        "Time": "Junior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Hanshin Juvenile Fillies",
+        "Turn": "23",
+        "Time": "Junior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Oka Sho",
+        "Turn": "31",
+        "Time": "Classic Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Japanese Oaks",
+        "Turn": "34",
+        "Time": "Classic Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Shuka Sho",
+        "Turn": "44",
+        "Time": "Classic Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Osaka Hai",
+        "Turn": "54",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Takarazuka Kinen",
+        "Turn": "60",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Sapporo Kinen",
+        "Turn": "64",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Tenno Sho (Autumn)",
+        "Turn": "68",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "URA Preliminary",
+        "Turn": "74",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "URA Semi-Final",
+        "Turn": "76",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "URA Final",
+        "Turn": "78",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      }
+    ],
+    "UmaEvents": [
+      {
+        "EventName": "悪戯の夜を統べる者",
+        "EventOptions": {
+          "Top Option": "Speed +10\nGrand Fight hint +1",
+          "Bottom Option": "Wit +15\nSkill Pts +15"
+        }
+      },
+      {
+        "EventName": "力宿ると信じればこそ",
+        "EventOptions": {
+          "Top Option": "Speed +15\nSkill Pts +15\nMedium Straightaways ○ hint +2\nSpeed +10\nMedium Straightaways ○ hint +1",
+          "Bottom Option": "Energy +20\nWit +15\nSkill Pts +15\nEnergy +20\nWit +5"
+        }
+      },
+      {
+        "EventName": "揺り籠で眠れ、憂いなく",
+        "EventOptions": {
+          "Top Option": "Skill Pts +15",
+          "Bottom Option": "Energy -10\nSkill Pts +30"
+        }
+      }
+    ],
+    "UmaImage": "/assets/character_thumbs/101803-air-groove.png"
   }
 ]
