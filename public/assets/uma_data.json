@@ -17138,7 +17138,7 @@
     "UmaNicknameJP": "Heroic Author",
     "UmaSlug": "104701-zenno-rob-roy",
     "UmaId": "104701",
-    "UmaServer": "jp",
+    "UmaServer": "global",
     "UmaBaseStars": 3,
     "UmaBaseStats": {
       "3★": {
@@ -17278,21 +17278,21 @@
     ],
     "UmaEvents": [
       {
-        "EventName": "英雄は物語と共に",
+        "EventName": "Heroes Live Through Their Tales",
         "EventOptions": {
           "Top Option": "Speed +20",
           "Bottom Option": "Guts +20"
         }
       },
       {
-        "EventName": "我が剣を受けたのならば",
+        "EventName": "If Struck by My Blade",
         "EventOptions": {
           "Top Option": "Power +20",
           "Bottom Option": "Wit +20"
         }
       },
       {
-        "EventName": "英雄の条件",
+        "EventName": "Hero Qualifications",
         "EventOptions": {
           "Top Option": "Power +10\nGuts +10",
           "Bottom Option": "Stamina +10\nSkill Pts +15"
