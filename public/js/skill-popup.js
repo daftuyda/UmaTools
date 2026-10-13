@@ -59,6 +59,9 @@
   var popupEl = null;
   var backdropEl = null;
   var isOpen = false;
+  var popupGeneration = 0;
+  var focusReturn = null;
+  var inertElements = [];
 
   // ── Helpers ──
   function normalize(str) {
@@ -156,13 +159,18 @@
   }
 
   function loadSkills() {
+    var language = getLanguage();
     if (global.__skillsAllData) {
       buildSkillMaps(global.__skillsAllData);
       return Promise.resolve();
     }
-    return fetchFirst(SKILLS_URLS, { cache: 'force-cache' })
+    return (
+      global.SkillData
+        ? global.SkillData.loadJSON(SKILLS_URLS[0])
+        : fetchFirst(SKILLS_URLS, { cache: 'force-cache' })
+    )
       .then(function (data) {
-        if (!Array.isArray(data)) return;
+        if (language !== getLanguage() || !Array.isArray(data)) return;
         global.__skillsAllData = data;
         buildSkillMaps(data);
         if (typeof global.buildJPSkillNameMap === 'function') global.buildJPSkillNameMap(data);
@@ -607,8 +615,11 @@
   // ── Open / Close ──
   function openPopup(skillName, anchorEl) {
     closePopup();
+    var generation = popupGeneration;
+    var trigger = anchorEl || document.activeElement;
 
     loadData().then(function () {
+      if (generation !== popupGeneration) return;
       var skill = findSkill(skillName);
       if (!skill) return;
 
@@ -627,6 +638,13 @@
 
       document.body.appendChild(backdropEl);
       document.body.appendChild(popupEl);
+      focusReturn = trigger;
+      inertElements = Array.from(document.body.children).filter(function (node) {
+        return node !== popupEl && node !== backdropEl && !node.inert;
+      });
+      inertElements.forEach(function (node) {
+        node.inert = true;
+      });
 
       // Close button handler
       var closeBtn = popupEl.querySelector('.sp-close');
@@ -644,11 +662,18 @@
   }
 
   function closePopup() {
+    popupGeneration += 1;
     if (popupEl && popupEl.parentNode) popupEl.parentNode.removeChild(popupEl);
     if (backdropEl && backdropEl.parentNode) backdropEl.parentNode.removeChild(backdropEl);
     popupEl = null;
     backdropEl = null;
     isOpen = false;
+    inertElements.forEach(function (node) {
+      node.inert = false;
+    });
+    inertElements = [];
+    if (focusReturn && focusReturn.isConnected) focusReturn.focus({ preventScroll: true });
+    focusReturn = null;
   }
 
   // ── Event Delegation ──
@@ -673,7 +698,29 @@
   }
 
   function handleKeydown(e) {
+    if (e.key === 'Tab' && isOpen) {
+      var focusable = Array.from(
+        popupEl.querySelectorAll('button, a[href], input, select, textarea, [tabindex]')
+      ).filter(function (node) {
+        return !node.disabled && node.tabIndex >= 0 && node.getClientRects().length;
+      });
+      var index = focusable.indexOf(document.activeElement);
+      if (!focusable.length) {
+        e.preventDefault();
+        popupEl.focus();
+      } else if (
+        index < 0 ||
+        (!e.shiftKey && index === focusable.length - 1) ||
+        (e.shiftKey && index === 0)
+      ) {
+        e.preventDefault();
+        focusable[e.shiftKey ? focusable.length - 1 : 0].focus();
+      }
+      return;
+    }
     if (e.key === 'Escape' && isOpen) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
       closePopup();
       return;
     }
@@ -693,8 +740,15 @@
 
   // ── Init ──
   function init() {
+    global.addEventListener('umatools:server-change', function () {
+      closePopup();
+      skillsById = null;
+      skillsByName = null;
+      loadPromise = null;
+      global.__skillsAllData = null;
+    });
     document.addEventListener('click', handleClick, true);
-    document.addEventListener('keydown', handleKeydown);
+    document.addEventListener('keydown', handleKeydown, true);
     // Skill data is loaded on-demand when a popup is opened (openPopup → loadData).
     // The JP name map is built by optimizer's backgroundHydrateFullData() or by
     // loadData() on first popup click — no need to eagerly fetch 3.4MB here.

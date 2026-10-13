@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UmaTools audit remediation — 13 October 2026</title>
+<style>body{max-width:1000px;margin:40px auto;padding:0 24px;font:16px/1.6 system-ui;color:#172033;background:#f8fafc}h1,h2{line-height:1.2}table{border-collapse:collapse;width:100%;background:white}th,td{text-align:left;vertical-align:top;padding:12px;border:1px solid #dce3ed}code{font-size:.9em}a{color:#1257ae}.note{padding:16px;background:#e9f1ff;border-left:4px solid #3979da}</style>
+<h1>UmaTools audit remediation</h1>
+<p>13 October 2026 · Local implementation and validation. Changes are uncommitted and have not been deployed.</p>
+<p>The 13 findings in the <a href="2026-10-13-website-audit.html">original audit</a> have corresponding fixes. Original audit evidence is preserved; it describes the pre-fix checkout.</p>
+<table><thead><tr><th>Finding</th><th>Implemented correction</th></tr></thead><tbody>
+<tr><td>F01 · Hint URL injection</td><td>User-supplied chip text is created through DOM text nodes instead of HTML interpolation. Browser tests verify that markup displays literally and does not execute.</td></tr>
+<tr><td>F02 · Empty event data after provider failures</td><td>GameTora rejects missing/empty datasets and failed event fetches. Files write atomically. Provider pipelines stage and validate complete output before publication, with rollback on publication errors.</td></tr>
+<tr><td>F03 · Wit scoring</td><td>Recommendation scoring uses the typed reward parser. Regression fixtures cover Wit, Wisdom, mood, lost statuses, all stats and chance groups.</td></tr>
+<tr><td>F04 · Search race and repeat failure</td><td>Requests are aborted and generation-checked. Clearing and repeating the same query works; delayed old responses cannot overwrite new results.</td></tr>
+<tr><td>F05 · Unbounded solver allocation</td><td>Both solvers cap capacity to the maximum reachable spend. Dense-table and operation limits reject pathological custom/imported costs before allocation. Normal results remain exact; budgets are never silently approximated.</td></tr>
+<tr><td>F06 · Popup focus escape</td><td>Skill dialogs trap Tab/Shift+Tab, make background elements inert, handle Escape and restore focus. Async opens are invalidated when closed. Server changes invalidate cached skill details.</td></tr>
+<tr><td>F07 · Malformed hint URL</td><td>Legacy second-pass percent decoding is guarded. Invalid percent text remains usable without crashing initialization.</td></tr>
+<tr><td>F08 · Unbounded event API parameters</td><td>Event names must contain non-whitespace text and fit within 200 characters; result limits are bounded to 1–20. API tests cover rejected inputs.</td></tr>
+<tr><td>F09 · Incomplete scheduled refresh</td><td>The workflow now publishes races, both skill CSVs, core indexes, acceleration compatibility, master snapshots and thumbnails. Acceleration generation can read the saved JP snapshot in CI.</td></tr>
+<tr><td>F10 · Coupled provider failures</td><td>GameTora, GameWith and Global-master pipelines run independently, including their generators and validation. A failed provider retains previous output while other providers can publish. The local refresh command uses the same staged pipelines.</td></tr>
+<tr><td>F11 · Dependency vulnerabilities</td><td>Updated JavaScript and Python dependencies and lockfile. npm audit and pip-audit reported zero known vulnerabilities in the audited requirements. Node 24 is recommended and used in CI.</td></tr>
+<tr><td>F12 · Missing automated gates</td><td>Push/PR CI runs lint, unit/API/downloader tests, schema validation, routes/SEO/static checks, build, browser regressions and responsive checks. Data validation checks structure, IDs, counts and numeric CSV fields.</td></tr>
+<tr><td>F13 · Windows guide-check failure</td><td>SVG comparison normalizes line endings; generated guide verification passes on this Windows checkout.</td></tr>
+</tbody></table>
+<h2>Additional correctness and optimization work</h2>
+<ul>
+<li>A shared skill repository deduplicates requests and CSV parsing across calculator, optimizer and skills. Server-specific compact master catalogs override matching ratings and costs while retaining community metadata and fallback values.</li>
+<li>Server reloads are serialized. Costs and ratings both reload, and a browser fixture confirms that the same skill receives a different server's cost.</li>
+<li>Single-precision aptitude products fix Studious at G to 60. Calculator row scores now refresh when aptitude settings change.</li>
+<li>The optimizer defers full metadata until needed, preloads critical startup resources, and uses compressed CSV responses. The skill library starts independent downloads together.</li>
+<li>Runtime service-worker caches are bounded to 100 entries/32 MiB, with an 8 MiB per-response cap. Cache writes extend event lifetime; failed precache installation cannot replace the previous worker. Offline clean-URL navigation has a browser regression test.</li>
+<li>OCR loader failures can be retried. Lightweight deployment security headers were added.</li>
+<li>Refreshed community data contains 1,921 skills. Global and JP master snapshots remain separate (732 and 2,194 skill records respectively).</li>
+</ul>
+<h2>Validation</h2>
+<ul>
+<li><code>npm run check</code>: passed, including 10 API tests, 4 downloader tests, scoring/solver regressions, 22 data files/manifests, 536 static references and 25 page routes.</li>
+<li><code>npm run build</code>: passed; generated compact catalogs, API assets, guide output and 10 new WebP companions.</li>
+<li><code>npm run test:browser</code>: passed injection, malformed URL, search ordering/repeat, keyboard focus, Studious G=60, server-switch costs and offline navigation cases.</li>
+<li><code>npm run audit:responsive</code>: 94/94 passed. The heuristic iOS compatibility check passed with its existing requestIdleCallback warning; a fallback is present. This is not testing on a physical iOS device.</li>
+<li>Focused mobile optimizer Lighthouse 13.5 run: performance 98, accessibility/best practices/SEO 100, TTI 2,972 ms, CLS 0.000. This is one local throttled lab result, close to the 3,000 ms target; it is not a field-performance guarantee or a directly controlled comparison with the older Lighthouse version used in the original audit.</li>
+<li>JavaScript lint has zero errors and 18 existing unused-code warnings. Python lint passes. Dependency audits reported zero known vulnerabilities.</li>
+</ul>
+<h2>Remaining evidence limits</h2>
+<div class="note">An automatic JP manifest/database source is still unverified, so JP updates require a local import. The Global community version feed can lag the game. Matching master records improve values but do not supply missing community metadata for every master-only skill. The exact game's midpoint rounding rule still needs a game-backed fixture: float32 products are implemented, while the existing half-up rule is retained (95 × 0.7 currently gives 67). No claim of exhaustive game-mechanic parity is made.</div>
+<p>Broader controller extraction, additional payload splitting and API indexing remain optional follow-ups; no measured API bottleneck justified new infrastructure. The fixes retain the existing static-site architecture.</p>
+</html>

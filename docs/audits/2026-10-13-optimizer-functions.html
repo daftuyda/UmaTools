@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Optimizer function investigation — 13 October 2026</title>
+<style>body{max-width:900px;margin:40px auto;padding:0 24px;font:16px/1.6 system-ui;color:#172033;background:#f8fafc}h1,h2{line-height:1.2}table{border-collapse:collapse;width:100%;background:white}th,td{padding:12px;border:1px solid #dce3ed;text-align:left}code{font-size:.9em}</style>
+<h1>Optimizer function investigation</h1>
+<p>13 October 2026. Investigated an unverified report of worse optimization after a hint change. The reporter's exact build and mode were unavailable, so this establishes a reproducible defect, not the identity of their original case.</p>
+<h2>Confirmed defect: required prerequisites and upgrades</h2>
+<p>The previous flow removed required skills before constructing optional groups, subtracted their costs from the budget, then added their scores back. A gold row's cost already includes its lower skill, while its score replaces that lower skill. Splitting those records caused double counting and made the solver's objective disagree with the displayed rating.</p>
+<p>Reproduction fixture: budget 350; required lower skill costs 100 and scores 100; gold's inclusive cost starts at 300 and scores 400; an independent skill costs 150 and scores 350.</p>
+<table><thead><tr><th>Gold inclusive cost</th><th>Previous displayed rating</th><th>Corrected rating</th></tr></thead><tbody><tr><td>300</td><td>450</td><td>450</td></tr><tr><td>250 (cheaper)</td><td>400</td><td>450</td></tr></tbody></table>
+<p>At the cheaper cost, the old solver incorrectly evaluated the gold build as 500 by adding the required lower skill's replaced score. It therefore displaced the genuinely better 450-point build.</p>
+<h2>Corrections</h2>
+<ul>
+<li>Rating and Team Trials retain complete dependency groups and enforce required membership within each group. Costs and replaced scores are counted once.</li>
+<li>Live, button and target-based rating optimization share the same solve entry point.</li>
+<li>Backtracking handles option zero after required filtering. The old code assumed zero always meant “none,” which is false after filtering.</li>
+<li>Gold/circle dependency groups are processed before their children, including reordered inputs. Parent ID lookup no longer registers a child under its own parent's ID.</li>
+<li>Equal-rating builds choose the least skill-point spend. Reconstruction no longer appends missing required items after optimization.</li>
+<li>The UI says “Rating Score,” since Aptitude Test and Team Trials have different primary objectives. Documentation explains which changes should be monotonic.</li>
+</ul>
+<h2>Function-level optimizations</h2>
+<ul>
+<li>Normalize option costs and objective values once per group, outside the budget loop.</li>
+<li>Use typed rolling score buffers and integer backtracking tables.</li>
+<li>Reuse Team Trials buffers and compare objective components directly, avoiding temporary candidate objects in every transition.</li>
+<li>Remove unused per-row metadata construction and obsolete required-score adjustment/accounting.</li>
+</ul>
+<table><thead><tr><th>Local solver benchmark</th><th>Committed baseline</th><th>Updated</th></tr></thead><tbody><tr><td>Rating</td><td>2.61 ms</td><td>1.78 ms</td></tr><tr><td>Team Trials</td><td>10.67 ms</td><td>3.86 ms</td></tr></tbody></table>
+<p>Node 22.18, 80 independent candidate groups, 3,000-point budget; median of 15 runs after 5 warmups, both implementations executed in the same JavaScript realm. Baseline functions were read from git HEAD. Objective values matched. These are synthetic solver timings, not page-load or device-wide speed guarantees.</p>
+<h2>Validation and scope</h2>
+<p><code>npm run test:optimizer-functions</code> checks 1,200 deterministic generated cases per solver against an independent exhaustive oracle, 300 Team Trials secondary-priority cases, and 12,000 hint/Fast Learner cost combinations against integer percentage arithmetic. Additional fixtures cover required lower/gold/circle/evolution combinations, reordered inputs, result reconstruction, budget monotonicity and cheaper options.</p>
+<p>The browser regression uses real optimizer controls with controlled master values: it changes the gold hint level through 0–5 and back to 0 while keeping its lower skill required. Displayed rating remains 485, with costs 300, 280, 260, 240, 230, 220, 300. The 485 includes the existing A-aptitude multiplier on the independent skill. The full browser suite and repository check gate pass.</p>
+<p>Lowering a hint level makes a skill more expensive and can legitimately lower the optimum. Increasing it must not lower the rating-mode optimum when candidates, requirements, aptitudes and budget are unchanged. Other modes may trade rating for their own objective. This investigation does not independently revalidate every game formula or prove every possible dependency graph. Changes remain local and undeployed.</p>
+</html>

@@ -12,10 +12,9 @@ from typing import Any
 
 ROOT_DIR = Path(__file__).resolve().parents[2]
 
-DEFAULT_MDB_PATH = (
-    Path(os.path.expandvars(r"%APPDATA%\..\LocalLow\Cygames\umamusume\master\master.mdb"))
-    .resolve()
-)
+DEFAULT_MDB_PATH = Path(
+    os.path.expandvars(r"%APPDATA%\..\LocalLow\Cygames\umamusume\master\master.mdb")
+).resolve()
 PUBLIC_ASSETS = ROOT_DIR / "public" / "assets"
 DEFAULT_OUT_SKILLS = PUBLIC_ASSETS / "accel_skills_compat.json"
 DEFAULT_OUT_CHARA = PUBLIC_ASSETS / "accel_skill_chara.json"
@@ -403,40 +402,46 @@ def generate_compat(
     if not mdb_path.exists():
         raise FileNotFoundError(f"master.mdb not found: {mdb_path}")
 
-    con = sqlite3.connect(str(mdb_path))
-    con.row_factory = sqlite3.Row
-    cur = con.cursor()
+    if mdb_path.suffix == ".json":
+        snapshot = json.loads(mdb_path.read_text(encoding="utf-8"))
+        rows = snapshot["skills"]
+        names_by_id = {row["id"]: row.get("name", "") for row in rows}
+        desc_by_id = {row["id"]: row.get("description", "") for row in rows}
+    else:
+        con = sqlite3.connect(str(mdb_path))
+        con.row_factory = sqlite3.Row
+        cur = con.cursor()
 
-    # Read names/descriptions from text_data as fallback when skills_all has no JP strings.
-    names_by_id: dict[int, str] = {}
-    desc_by_id: dict[int, str] = {}
-    for row in cur.execute("SELECT [index], text FROM text_data WHERE category=47"):
-        idx = as_int(row["index"])
-        if idx is not None and row["text"]:
-            names_by_id[idx] = str(row["text"])
-    for row in cur.execute("SELECT [index], text FROM text_data WHERE category=48"):
-        idx = as_int(row["index"])
-        if idx is not None and row["text"]:
-            desc_by_id[idx] = str(row["text"])
+        # Read names/descriptions from text_data as fallback when skills_all has no JP strings.
+        names_by_id: dict[int, str] = {}
+        desc_by_id: dict[int, str] = {}
+        for row in cur.execute("SELECT [index], text FROM text_data WHERE category=47"):
+            idx = as_int(row["index"])
+            if idx is not None and row["text"]:
+                names_by_id[idx] = str(row["text"])
+        for row in cur.execute("SELECT [index], text FROM text_data WHERE category=48"):
+            idx = as_int(row["index"])
+            if idx is not None and row["text"]:
+                desc_by_id[idx] = str(row["text"])
 
-    sql = """
-      SELECT
-        id,
-        rarity,
-        precondition_1, condition_1, float_ability_time_1,
-        ability_type_1_1, float_ability_value_1_1,
-        ability_type_1_2, float_ability_value_1_2,
-        ability_type_1_3, float_ability_value_1_3,
-        precondition_2, condition_2, float_ability_time_2,
-        ability_type_2_1, float_ability_value_2_1,
-        ability_type_2_2, float_ability_value_2_2,
-        ability_type_2_3, float_ability_value_2_3
-      FROM skill_data
-      ORDER BY id
-    """
+        sql = """
+          SELECT
+            id,
+            rarity,
+            precondition_1, condition_1, float_ability_time_1,
+            ability_type_1_1, float_ability_value_1_1,
+            ability_type_1_2, float_ability_value_1_2,
+            ability_type_1_3, float_ability_value_1_3,
+            precondition_2, condition_2, float_ability_time_2,
+            ability_type_2_1, float_ability_value_2_1,
+            ability_type_2_2, float_ability_value_2_2,
+            ability_type_2_3, float_ability_value_2_3
+          FROM skill_data
+          ORDER BY id
+        """
 
-    rows = cur.execute(sql).fetchall()
-    con.close()
+        rows = cur.execute(sql).fetchall()
+        con.close()
 
     out: list[dict[str, Any]] = []
     for row in rows:
@@ -582,8 +587,7 @@ def main() -> int:
         compat_rows = generate_compat(mdb_path, skills_all_map)
         write_json(out_skills, compat_rows)
         print(
-            f"[accel-compat] wrote {len(compat_rows)} entries -> "
-            f"{out_skills.relative_to(ROOT_DIR)}"
+            f"[accel-compat] wrote {len(compat_rows)} entries -> {out_skills.relative_to(ROOT_DIR)}"
         )
 
         if args.with_chara:
@@ -591,8 +595,7 @@ def main() -> int:
             chara_map = build_skill_chara_map(compat_rows, skills_all_map, uma_name_map)
             write_json(out_chara, chara_map)
             print(
-                f"[accel-compat] wrote {len(chara_map)} keys -> "
-                f"{out_chara.relative_to(ROOT_DIR)}"
+                f"[accel-compat] wrote {len(chara_map)} keys -> {out_chara.relative_to(ROOT_DIR)}"
             )
     except Exception as exc:  # pragma: no cover - CLI error path
         print(f"[accel-compat] {exc}", file=sys.stderr)

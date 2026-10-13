@@ -989,7 +989,7 @@
           it.lowerRowId &&
           idToIdx.has(it.lowerRowId)
         );
-        var priority = goldWithLinkedLower || hasCircleLink || hasParent || hasLower ? 0 : 1;
+        var priority = goldWithLinkedLower ? 0 : hasCircleLink ? 1 : hasParent || hasLower ? 2 : 3;
         return { idx: idx, priority: priority };
       })
       .sort(function (a, b) {
@@ -1183,203 +1183,144 @@
     return groups;
   }
 
-  function expandRequired(items) {
-    var idToIdx = new Map(
-      items.map(function (it, idx) {
-        return [it.id, idx];
+  function optimizeGroups(groups, items, budget) {
+    if (!Number.isSafeInteger(budget) || budget < 0) throw new RangeError('Invalid budget');
+    var required = new Set(
+      items
+        .map(function (it, i) {
+          return it.required ? i : -1;
+        })
+        .filter(function (i) {
+          return i >= 0;
+        })
+    );
+    var represented = new Set(
+      groups.flatMap(function (opts) {
+        return opts.flatMap(function (o) {
+          return o.items || [];
+        });
       })
     );
-    var skillIdToIdx = new Map(),
-      parentGoldToChild = new Map();
-    items.forEach(function (it, idx) {
-      if (it.skillId != null && it.skillId !== '') skillIdToIdx.set(String(it.skillId), idx);
-      if (it.parentGoldId) parentGoldToChild.set(it.parentGoldId, idx);
-    });
-    var reqIds = new Set(
-      items
-        .filter(function (it) {
-          return !!it.required;
-        })
-        .map(function (it) {
-          return it.id;
-        })
-    );
-    var changed = true;
-    while (changed) {
-      changed = false;
-      Array.from(reqIds).forEach(function (id) {
-        var idx = idToIdx.get(id);
-        if (idx == null) return;
-        var it = items[idx];
-        if (it.lowerRowId && idToIdx.has(it.lowerRowId) && !reqIds.has(it.lowerRowId)) {
-          reqIds.add(it.lowerRowId);
-          changed = true;
-        }
-        // If this ○ skill is a lower for a gold and has a ◎ circle upgrade, require it too
-        if (
-          it.parentGoldId &&
-          it.circleRowId &&
-          idToIdx.has(it.circleRowId) &&
-          !reqIds.has(it.circleRowId)
-        ) {
-          reqIds.add(it.circleRowId);
-          changed = true;
-        }
-        if (it.lowerSkillId != null && it.lowerSkillId !== '') {
-          var li = skillIdToIdx.get(String(it.lowerSkillId));
-          if (li != null) {
-            var lid = items[li] && items[li].id;
-            if (lid && !reqIds.has(lid)) {
-              reqIds.add(lid);
-              changed = true;
-            }
-          }
-        }
-        (Array.isArray(it.parentSkillIds) ? it.parentSkillIds : []).forEach(function (pid) {
-          var pi = skillIdToIdx.get(String(pid));
-          if (pi == null) return;
-          var pId = items[pi] && items[pi].id;
-          if (pId && !reqIds.has(pId)) {
-            reqIds.add(pId);
-            changed = true;
-          }
+    groups = groups.map(function (opts) {
+      var needed = new Set(
+        opts
+          .flatMap(function (o) {
+            return o.items || [];
+          })
+          .filter(function (i) {
+            return required.has(i);
+          })
+      );
+      return opts.filter(function (o) {
+        return Array.from(needed).every(function (i) {
+          return (o.items || []).includes(i);
         });
-        if (it.id && parentGoldToChild.has(it.id)) {
-          var ci = parentGoldToChild.get(it.id),
-            cId = items[ci] && items[ci].id;
-          if (cId && !reqIds.has(cId)) {
-            reqIds.add(cId);
-            changed = true;
-          }
-        }
       });
-    }
-    var reqItems = items.filter(function (it) {
-      return reqIds.has(it.id);
     });
-    var reqGold = new Set(
-      reqItems
-        .filter(function (it) {
-          return isGold(it.category);
-        })
-        .map(function (it) {
-          return it.id;
-        })
-    );
-    var lowerIncluded = new Set();
-    reqItems.forEach(function (it) {
-      if (!reqGold.has(it.id)) return;
-      if (it.lowerRowId && reqIds.has(it.lowerRowId)) lowerIncluded.add(it.lowerRowId);
-      if (it.lowerSkillId != null && it.lowerSkillId !== '') {
-        var li = skillIdToIdx.get(String(it.lowerSkillId));
-        if (li != null) {
-          var lid = items[li] && items[li].id;
-          if (lid && reqIds.has(lid)) lowerIncluded.add(lid);
-        }
-      }
-      if (it.id && parentGoldToChild.has(it.id)) {
-        var ci = parentGoldToChild.get(it.id),
-          cId = items[ci] && items[ci].id;
-        if (cId && reqIds.has(cId)) lowerIncluded.add(cId);
-      }
-    });
-    // Circle pairs: when ○ (base) and ◎ (upgrade) are both required,
-    // skip ○'s expected value since ◎ replaces it. Keep ○'s cost (circle costs are additive).
-    var circleBaseValueSkip = new Set();
-    reqItems.forEach(function (it) {
-      if (it.circleRowId && reqIds.has(it.circleRowId)) {
-        circleBaseValueSkip.add(it.id);
-      }
-    });
-    var reqCost = 0,
-      reqExpected = 0;
-    reqItems.forEach(function (it) {
-      if (lowerIncluded.has(it.id)) return;
-      reqCost += Math.max(0, Math.floor(num(it.cost, 0)));
-      if (circleBaseValueSkip.has(it.id)) return;
-      reqExpected += Math.max(0, Math.floor(num(it.expectedValueInt, 0)));
-    });
-    return {
-      requiredIds: reqIds,
-      requiredItems: reqItems,
-      requiredCost: reqCost,
-      requiredExpected: reqExpected,
-    };
-  }
-
-  function better(cand, curr) {
-    // Team Trials priority:
-    // 1) Highest expected value (SV/cost * consistency² -- captures both gold premium and reliability)
-    // 2) Highest total SV (gold=12, white=5 -- rewards gold activation points)
-    // 3) Highest expected activations (consistency sum)
-    // 4) Highest rating (tiebreaker)
-    if (cand.value !== curr.value) return cand.value > curr.value;
-    if (cand.sv !== curr.sv) return cand.sv > curr.sv;
-    if (cand.activations !== curr.activations) return cand.activations > curr.activations;
-    if (cand.rating !== curr.rating) return cand.rating > curr.rating;
-    return cand.tie < curr.tie;
-  }
-
-  function optimizeGroups(groups, items, budget) {
-    var B = Math.max(0, Math.floor(num(budget, 0))),
+    if (
+      Array.from(required).some(function (i) {
+        return !represented.has(i);
+      }) ||
+      groups.some(function (opts) {
+        return !opts.length;
+      })
+    )
+      return { error: 'required_unreachable', chosen: [], used: 0, value: 0, sv: 0 };
+    var maxSpend = groups.reduce(function (sum, opts) {
+      return (
+        sum +
+        Math.max(
+          0,
+          ...opts.map(function (o) {
+            return Math.max(0, Math.floor(num(o.cost, 0)));
+          })
+        )
+      );
+    }, 0);
+    var B = Math.min(budget, maxSpend),
       G = groups.length,
       NEG = -1e15;
-    // Simplified DP: no core mask tracking (skill effects don't matter for TT scoring)
-    var vPrev = new Array(B + 1).fill(NEG);
-    var cPrev = new Array(B + 1).fill(NEG);
-    var sPrev = new Array(B + 1).fill(NEG);
-    var rPrev = new Array(B + 1).fill(NEG);
-    for (var b = 0; b <= B; b += 1) {
-      vPrev[b] = 0;
-      cPrev[b] = 0;
-      sPrev[b] = 0;
-      rPrev[b] = 0;
+    if (
+      !Number.isSafeInteger(B) ||
+      (B + 1) * (G + 8) > 8_000_000 ||
+      (B + 1) *
+        groups.reduce(function (sum, opts) {
+          return sum + opts.length;
+        }, 0) >
+        40_000_000
+    ) {
+      return { best: 0, chosen: [], used: 0, error: 'problem_too_large' };
     }
+    // Simplified DP: no core mask tracking (skill effects don't matter for TT scoring)
+    var vPrev = new Float64Array(B + 1);
+    var cPrev = new Float64Array(B + 1);
+    var sPrev = new Float64Array(B + 1);
+    var rPrev = new Float64Array(B + 1);
+    var vCur = new Float64Array(B + 1),
+      cCur = new Float64Array(B + 1),
+      sCur = new Float64Array(B + 1),
+      rCur = new Float64Array(B + 1);
     var choiceK = Array.from({ length: G + 1 }, function () {
-      var a = new Int16Array(B + 1);
+      var a = new Int32Array(B + 1);
       a.fill(-1);
       return a;
     });
     for (var g = 1; g <= G; g += 1) {
-      var opts = groups[g - 1];
-      var vCur = new Array(B + 1).fill(NEG);
-      var cCur = new Array(B + 1).fill(NEG);
-      var sCur = new Array(B + 1).fill(NEG);
-      var rCur = new Array(B + 1).fill(NEG);
+      var opts = groups[g - 1].map(function (o) {
+        return {
+          cost: Math.max(0, Math.floor(num(o.cost, 0))),
+          value: Math.max(0, Math.floor(num(o.value, 0))),
+          consistency: Math.max(0, Math.floor(num(o.consistency, 0))),
+          sv: Math.max(0, Math.floor(num(o.sv, 0))),
+          rating: Math.max(0, Math.floor(num(o.rating, 0))),
+        };
+      });
+      vCur.fill(NEG);
+      cCur.fill(NEG);
+      sCur.fill(NEG);
+      rCur.fill(NEG);
       for (var pb = 0; pb <= B; pb += 1) {
         if (vPrev[pb] <= NEG / 2) continue;
         for (var k = 0; k < opts.length; k += 1) {
           var o = opts[k],
-            w = Math.max(0, Math.floor(num(o.cost, 0))),
+            w = o.cost,
             nb = pb + w;
           if (nb > B) continue;
-          var cand = {
-            value: vPrev[pb] + Math.max(0, Math.floor(num(o.value, 0))),
-            activations: cPrev[pb] + Math.max(0, Math.floor(num(o.consistency, 0))),
-            sv: sPrev[pb] + Math.max(0, Math.floor(num(o.sv, 0))),
-            rating: rPrev[pb] + Math.max(0, Math.floor(num(o.rating, 0))),
-            tie: k,
-          };
-          var curr = {
-            value: vCur[nb],
-            activations: cCur[nb],
-            sv: sCur[nb],
-            rating: rCur[nb],
-            tie: choiceK[g][nb] === -1 ? 999 : choiceK[g][nb],
-          };
-          if (better(cand, curr)) {
-            vCur[nb] = cand.value;
-            cCur[nb] = cand.activations;
-            sCur[nb] = cand.sv;
-            rCur[nb] = cand.rating;
+          var value = vPrev[pb] + o.value,
+            sv = sPrev[pb] + o.sv,
+            activations = cPrev[pb] + o.consistency,
+            rating = rPrev[pb] + o.rating;
+          // Lexicographic objective, without allocating objects in the hot loop.
+          if (
+            value > vCur[nb] ||
+            (value === vCur[nb] &&
+              (sv > sCur[nb] ||
+                (sv === sCur[nb] &&
+                  (activations > cCur[nb] ||
+                    (activations === cCur[nb] &&
+                      (rating > rCur[nb] ||
+                        (rating === rCur[nb] && (choiceK[g][nb] < 0 || k < choiceK[g][nb]))))))))
+          ) {
+            vCur[nb] = value;
+            cCur[nb] = activations;
+            sCur[nb] = sv;
+            rCur[nb] = rating;
             choiceK[g][nb] = k;
           }
         }
       }
+      var vSwap = vPrev;
       vPrev = vCur;
+      vCur = vSwap;
+      var cSwap = cPrev;
       cPrev = cCur;
+      cCur = cSwap;
+      var sSwap = sPrev;
       sPrev = sCur;
+      sCur = sSwap;
+      var rSwap = rPrev;
       rPrev = rCur;
+      rCur = rSwap;
     }
     // Find best state
     var best = null;
@@ -1674,24 +1615,7 @@
       };
     }
     if (met.missingMeta > 0) warnings.push(window.t('teamTrials.fallbackHeuristics'));
-    var req = expandRequired(items);
-    if (req.requiredCost > budget) {
-      return {
-        error: 'required_unreachable',
-        chosen: [],
-        used: 0,
-        best: 0,
-        totalRatingScore: 0,
-        consistencyScore: 0,
-        perSkillBreakdown: [],
-        warnings: [window.t('teamTrials.requiredExceedBudget')],
-        explain: { strengths: [], risks: [window.t('teamTrials.requiredExceedBudget')] },
-      };
-    }
-    var optional = items.filter(function (it) {
-      return !req.requiredIds.has(it.id);
-    });
-    var groupResult = optimizeGroups(buildGroups(optional), optional, budget - req.requiredCost);
+    var groupResult = optimizeGroups(buildGroups(items), items, budget);
     if (groupResult.error) {
       return {
         error: groupResult.error,
@@ -1710,12 +1634,6 @@
     }
     var chosen = [],
       seen = new Set();
-    req.requiredItems.forEach(function (it) {
-      if (it && it.id && !seen.has(it.id)) {
-        seen.add(it.id);
-        chosen.push(Object.assign({}, it));
-      }
-    });
     groupResult.chosen.forEach(function (it) {
       if (it && it.id && !seen.has(it.id)) {
         seen.add(it.id);
@@ -1756,10 +1674,10 @@
     return {
       error: null,
       chosen: chosen,
-      used: req.requiredCost + groupResult.used,
+      used: groupResult.used,
       best: t.rating,
       totalRatingScore: t.rating,
-      totalExpectedValue: Math.max(0, (req.requiredExpected + groupResult.value) / 10000),
+      totalExpectedValue: Math.max(0, groupResult.value / 10000),
       consistencyScore: clamp(t.consistency, 0, 1),
       consistencySum: t.cSum,
       consistentGoldCount: t.consistentGoldCount,

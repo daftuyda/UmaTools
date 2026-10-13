@@ -5,7 +5,8 @@ const _t = (k, v) => (typeof window.t === 'function' ? window.t(k, v) : k);
 const API_BASE = window.API_BASE || `${location.protocol}//${location.host}`;
 
 let LAST_QUERY_KEY = null; // normalized key for last query
-let LAST_PAYLOAD = null; // optional cache (if you decide to reuse it later)
+let searchGeneration = 0;
+let searchController = null;
 
 const $ = (sel, root = document) => root.querySelector(sel);
 const el = (tag, className, text) => {
@@ -155,12 +156,12 @@ function dedupeGroups(groups) {
   return out;
 }
 
-async function fetchEventByName(q, { limit = 5, min_score = 0 } = {}) {
+async function fetchEventByName(q, { limit = 5, min_score = 0, signal } = {}) {
   const cleanQ = scrubMarkers(q);
   const url = `${API_BASE}/event_by_name?event_name=${encodeURIComponent(
     cleanQ
   )}&limit=${limit}&min_score=${min_score}`;
-  const res = await fetch(url);
+  const res = await fetch(url, { signal });
   if (!res.ok)
     throw new Error(
       `API error ${res.status}: ${(await res.text().catch(() => '')) || res.statusText}`
@@ -173,9 +174,10 @@ async function performSearch(q) {
   const result = $('#result');
   const queryKey = normalizeQueryKey(q);
 
-  if (queryKey && queryKey === LAST_QUERY_KEY) {
-    return; // silently skip re-rendering
-  }
+  const generation = ++searchGeneration;
+  searchController?.abort();
+  searchController = new AbortController();
+  LAST_QUERY_KEY = null;
 
   clear(status);
   clear(result);
@@ -189,13 +191,19 @@ async function performSearch(q) {
 
   let payload;
   try {
-    payload = await fetchEventByName(qClean, { limit: 6, min_score: 0 });
+    payload = await fetchEventByName(qClean, {
+      limit: 6,
+      min_score: 0,
+      signal: searchController.signal,
+    });
   } catch (e) {
+    if (generation !== searchGeneration || e.name === 'AbortError') return;
     clear(status);
     status.textContent = e.message || _t('events.searchFailed');
     return;
   }
 
+  if (generation !== searchGeneration) return;
   clear(status);
 
   const match = payload?.match?.data;
@@ -215,7 +223,6 @@ async function performSearch(q) {
   renderEvent(cleaned, payload?.other_matches || []);
 
   LAST_QUERY_KEY = queryKey;
-  LAST_PAYLOAD = payload;
 }
 
 function renderEvent(evt, otherMatches) {

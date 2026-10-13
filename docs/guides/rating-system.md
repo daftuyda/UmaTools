@@ -211,8 +211,11 @@ This means you never "double-dip" on scores for linked skill pairs.
 
 Base skill costs are sourced from:
 
-1. **`public/assets/skills_all.json`** (primary source) -- contains detailed skill metadata including costs and relationships.
-2. **`public/assets/uma_skills.csv`** (fallback) -- the fallback skill database.
+1. **The selected server's game master snapshot** supplies matching base ratings and skill point costs. A compact static catalog is tried first, then our catalog API.
+2. **GameTora metadata** supplies names, categories and relationships; its values remain the fallback when a master record is unavailable.
+3. **The server's skill CSV** supplies aptitude/category information and additional fallback records.
+
+The source label identifies the server and available game-data version. JP never silently uses the Global master snapshot. Aptitude products use single-precision arithmetic, fixing Studious at G aptitude to 60; midpoint ties retain the existing half-up rule pending game-backed verification.
 
 When a skill is added to the optimizer, the base cost is stored in `row.dataset.baseCost` so discounting can be recalculated if the hint level changes.
 
@@ -243,6 +246,19 @@ finalCost     = floor(baseCost * max(0, 1 - totalDiscount))
 ```
 
 The `max(0, ...)` ensures the multiplier never goes negative (though in practice the maximum combined discount is 50%: hint level 5 at 40% plus Fast Learner at 10%).
+
+### Hint Changes and Optimization
+
+Increasing a hint level lowers skill costs. In rating mode, with the same candidates,
+requirements, budget and aptitudes, the best rating should stay the same or increase.
+Decreasing a hint level can lower the result because fewer skills fit the budget.
+Required lower skills stay grouped with their gold, circle or evolution upgrades:
+purchase costs and replacement scores are counted once. Equal-rating builds prefer
+lower skill-point spend.
+
+The **Rating Score** display always shows rating. Aptitude Test and Team Trials modes
+optimize their own objectives, so their chosen build can have a lower rating while
+improving the mode's objective. Compare the relevant score for the selected mode.
 
 ### Manual Cost Entries
 

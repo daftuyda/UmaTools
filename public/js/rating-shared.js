@@ -142,11 +142,11 @@
           if (prev === undefined || mult > prev) groupMax.set(group, mult);
         });
         if (groupMax.size > 0) {
-          let factor = 1.0;
+          let value = Math.fround(baseScore);
           groupMax.forEach((mult) => {
-            factor *= mult;
+            value = Math.fround(value * Math.fround(mult));
           });
-          return Math.round(baseScore * factor);
+          return Math.round(value);
         }
       }
       const bucket = getBucketForSkill(skill.checkType);

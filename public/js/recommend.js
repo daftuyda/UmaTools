@@ -13,10 +13,6 @@ const STAT_KEYS = new Set([
   'pwr',
   'int',
 ]);
-const ENERGY_KEYS = new Set(['energy', 'stamina (energy)']);
-const BOND_KEY = 'bond';
-const MOOD_KEY = 'mood';
-const HINT_KEY = 'hint';
 
 function toNum(val) {
   const n = Number(String(val).replace(/[^\-0-9.]/g, ''));
@@ -73,7 +69,7 @@ function parseHeaderPercent(header) {
 }
 
 export function parseRewardLine(line) {
-  const raw = norm(line);
+  const raw = norm(line).replace(/^motivation\b/i, 'Mood');
   const lower = lc(raw);
 
   if (!raw) return { type: 'text', text: raw };
@@ -115,6 +111,9 @@ export function parseRewardLine(line) {
   }
 
   if (lower.startsWith('mood ')) {
+    if (/^mood (up|down)/i.test(raw)) {
+      return { type: 'mood', value: /^mood up/i.test(raw) ? 1 : -1, raw };
+    }
     const num = toNum(raw.split(/\s+/).slice(1).join(' '));
     return { type: 'mood', value: num, raw };
   }
@@ -139,6 +138,7 @@ export function parseRewardLine(line) {
   if (/^lose\s+/i.test(raw)) {
     return { type: 'status_loss', text: raw.replace(/^lose\s+/i, ''), raw };
   }
+  if (/status$/i.test(raw)) return { type: 'status_gain', text: raw, raw };
 
   return { type: 'text', text: raw };
 }
@@ -287,44 +287,10 @@ export function scoreOption(groups) {
       return sum / 5; // expected value when we don't know which stat was last trained
     }
 
-    m = s.match(/^(Speed|Power|Stamina|Guts|Wisdom|Intelligence)\s*([+\-]?\d+)/i);
-    if (m) {
-      const key = m[1].toLowerCase();
-      const val = Number(m[2]);
-      const mult =
-        key === 'guts'
-          ? 0.6
-          : key === 'wisdom' || key === 'intelligence'
-            ? 0.8 // matches your file’s STAT_MULT
-            : 1.0;
-      return 1.0 * mult * val;
-    }
-
-    m = s.match(/\bbond\s*([+\-]?\d+)/i);
-    if (m) return 0.25 * Number(m[1]);
-
-    m = s.match(/^Mood\s*([+\-]?\d+)/i);
-    if (m) return 3.0 * Number(m[1]);
-
-    m = s.match(/\bhint\s*([+\-]?\d+)/i);
-    if (m) return 4.0 * Number(m[1] || 1);
-
-    if (/^Get\s+/i.test(s) || /status$/i.test(s)) {
-      const name = normStatusName(s);
-      const custom = STATUS_WEIGHTS[name];
-      return custom !== undefined ? custom : -1.0;
-    }
-    if (/^Lose\s+/i.test(s)) {
-      const name = normStatusName(s);
-      const custom = STATUS_WEIGHTS[name];
-      return custom !== undefined ? -custom : 1.0;
-    }
-
-    return 0;
+    return scoreItem(parseRewardLine(s)).score;
   }
 
-  const isStatLine = (ln) =>
-    /^(Speed|Power|Stamina|Guts|Wisdom|Intelligence)\s*[+\-]?\d+/i.test(ln);
+  const isStatLine = (line) => parseRewardLine(line).type === 'stat';
 
   let pendingStatRun = []; // holds numeric scores for a contiguous run of stat-only single-line groups
 

@@ -90,7 +90,6 @@
   let localizedNameSet = new Set();
   const externalAliasLookup = new Map();
   let skillsCsvCache = '';
-  let loadedSkillLibraryLanguage = '';
   let lastCSVLoadStats = {
     loaded: 0,
     filteredOut: 0,
@@ -271,6 +270,7 @@
   }
 
   function updateSelectedSkillsDisplay() {
+    rowsEl.querySelectorAll('.calculator-row').forEach((row) => row.refreshScore?.());
     const skills = collectSkills();
     const totalScore = skills.reduce((sum, s) => sum + s.score, 0);
 
@@ -523,46 +523,7 @@
   }
 
   function parseCSV(text) {
-    const rows = [];
-    let i = 0,
-      field = '',
-      row = [],
-      inQuotes = false;
-    while (i < text.length) {
-      const c = text[i];
-      if (inQuotes) {
-        if (c === '"') {
-          if (text[i + 1] === '"') {
-            field += '"';
-            i++;
-          } else {
-            inQuotes = false;
-          }
-        } else {
-          field += c;
-        }
-      } else {
-        if (c === '"') inQuotes = true;
-        else if (c === ',') {
-          row.push(field);
-          field = '';
-        } else if (c === '\r') {
-        } else if (c === '\n') {
-          row.push(field);
-          rows.push(row);
-          row = [];
-          field = '';
-        } else {
-          field += c;
-        }
-      }
-      i++;
-    }
-    if (field.length || row.length) {
-      row.push(field);
-      rows.push(row);
-    }
-    return rows;
+    return window.SkillData.parseCSV(text);
   }
 
   function loadFromCSVContent(csvText) {
@@ -724,13 +685,13 @@
   }
 
   async function loadOfficialEnglishSkillSet() {
+    const requestedLanguage = getSkillLanguage();
     const candidates = ['/assets/skills_all.json', './assets/skills_all.json'];
     let lastErr = null;
     for (const url of candidates) {
       try {
-        const res = await fetch(url, { cache: 'force-cache' });
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const list = await res.json();
+        const list = await window.SkillData.loadJSON(url);
+        if (requestedLanguage !== getSkillLanguage()) return false;
         if (!Array.isArray(list) || !list.length) continue;
         window.__skillsAllData = list;
         const nextOfficialNames = new Set();
@@ -829,7 +790,7 @@
 
   function getSkillsCSVCandidates(lang) {
     return lang === 'jp'
-      ? ['/assets/uma_skills_jp.csv', './assets/uma_skills_jp.csv', '/assets/uma_skills.csv']
+      ? ['/assets/uma_skills_jp.csv', './assets/uma_skills_jp.csv']
       : ['/assets/uma_skills.csv', './assets/uma_skills.csv'];
   }
 
@@ -865,10 +826,11 @@
           if (!res.ok) throw new Error(`HTTP ${res.status}`);
           text = await res.text();
         }
+        text = await window.SkillData.overlayCSV(text, lang === 'jp' ? 'jp' : 'global');
+        if (lang !== getSkillLanguage()) return false;
         skillsCsvCache = text;
         const ok = loadFromCSVContent(text);
         if (ok) {
-          loadedSkillLibraryLanguage = lang;
           updateSkillLibraryStatus();
           return true;
         }
@@ -1272,6 +1234,7 @@
     }
 
     row.syncSkillCategory = syncSkillCategory;
+    row.refreshScore = () => updateScoreDisplay(findSkillByName(skillInput.value.trim()));
     row.cleanupSkillTracking = removeSkillKeyTracking;
     setCategoryDisplay(row.dataset.skillCategory || '');
 
@@ -1587,12 +1550,9 @@
         updateSelectedSkillsDisplay();
       });
     }
-    window.addEventListener('umatools:server-change', async (event) => {
-      const nextLang =
-        (event?.detail?.server || '').toString().trim().toLowerCase() === 'jp' ? 'jp' : 'en';
-      const currentLang = loadedSkillLibraryLanguage || getSkillLanguage();
+    window.SkillData.onServerChange(async () => {
       updateOfficialEnglishToggleState();
-      if (nextLang === currentLang) return;
+      await loadOfficialEnglishSkillSet();
       await loadSkillsCSV();
       ensureOneEmptyRow();
       updateSelectedSkillsDisplay();

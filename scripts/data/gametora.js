@@ -140,7 +140,11 @@ function gtDecrypt(encoded, key) {
 
 function writeJsonFile(filePath, data) {
   ensureDir(path.dirname(filePath));
-  fs.writeFileSync(filePath, `${JSON.stringify(data, null, 2)}\n`, 'utf8');
+  const temporary = `${filePath}.${process.pid}.tmp`;
+  try {
+    fs.writeFileSync(temporary, `${JSON.stringify(data, null, 2)}\n`, 'utf8');
+    fs.renameSync(temporary, filePath);
+  } finally { fs.rmSync(temporary, {force:true}); }
 }
 
 // ---------------------------------------------------------------------------
@@ -350,15 +354,13 @@ async function syncSkillsAll(outPath, noFetch) {
   const manifest = await loadManifest(noFetch);
   const url = manifestUrl(manifest, 'skills');
   if (!url) {
-    console.error('[skills] No skills hash in manifest');
-    return null;
+    throw new Error('[skills] No skills hash in manifest');
   }
 
   const skills = await fetchJsonCached(url, noFetch);
   const arr = Array.isArray(skills) ? skills : skills?.skills || skills?.items || [];
   if (!arr.length) {
-    console.error('[skills] Empty skills payload');
-    return null;
+    throw new Error('[skills] Empty skills payload');
   }
 
   writeJsonFile(outPath, arr);
@@ -380,8 +382,7 @@ async function buildCharacters(outPath, manifest, noFetch, thumbDir) {
   ]);
 
   if (!charCards || !charCards.length) {
-    console.error('[character] No character-cards data');
-    return { count: 0 };
+    throw new Error('[character] No character-cards data');
   }
 
   // Build lookup maps
@@ -419,8 +420,9 @@ async function buildCharacters(outPath, manifest, noFetch, thumbDir) {
       );
     }
   } catch (err) {
-    console.log(`[character] Warning: could not load training events: ${err.message}`);
+    throw new Error(`[character] Could not load training events: ${err.message}`);
   }
+  if (!Object.keys(eventsByCardId).length) throw new Error('[character] No parsed training events');
 
   const result = [];
 
@@ -711,7 +713,8 @@ function parseCardEffects(effectsArr, effectTypeLookup) {
         values[i] = rawValues[i];
         continue;
       }
-      let prev = null, next = null;
+      let prev = null,
+        next = null;
       for (const bp of breakpoints) {
         if (bp.i <= i) prev = bp;
         if (bp.i > i && !next) next = bp;
@@ -725,7 +728,7 @@ function parseCardEffects(effectsArr, effectTypeLookup) {
         const prevLv = EFFECT_LEVELS[prev.i];
         const nextLv = EFFECT_LEVELS[next.i];
         const curLv = EFFECT_LEVELS[i];
-        values[i] = Math.floor(prev.v + (next.v - prev.v) * (curLv - prevLv) / (nextLv - prevLv));
+        values[i] = Math.floor(prev.v + ((next.v - prev.v) * (curLv - prevLv)) / (nextLv - prevLv));
       }
     }
 
@@ -755,8 +758,7 @@ async function buildSupports(outEventsPath, outHintsPath, manifest, noFetch, thu
   ]);
 
   if (!supportCards || !supportCards.length) {
-    console.error('[support] No support-cards data');
-    return { cards: 0, hints: 0, events: 0 };
+    throw new Error('[support] No support-cards data');
   }
 
   // Build support effect type lookup: id → { name, symbol }
@@ -787,8 +789,9 @@ async function buildSupports(outEventsPath, outHintsPath, manifest, noFetch, thu
       eventsBySupport = parseTrainingEventsByEntity(allEvts, teNamesEn, teNamesJa, evrew, skillMap);
     }
   } catch (err) {
-    console.log(`[support] Warning: could not load training events: ${err.message}`);
+    throw new Error(`[support] Could not load training events: ${err.message}`);
   }
+  if (!Object.keys(eventsBySupport).length) throw new Error('[support] No parsed training events');
 
   // Build hints and events
   const hints = [];
@@ -878,6 +881,7 @@ async function buildSupports(outEventsPath, outHintsPath, manifest, noFetch, thu
     }
   }
 
+  if (!allEvents.length) throw new Error('[support] Refusing to publish empty events');
   writeJsonFile(outHintsPath, hints);
   writeJsonFile(outEventsPath, allEvents);
 
@@ -1057,12 +1061,10 @@ async function buildRaces(outPath, manifest, noFetch) {
   ]);
 
   if (!Array.isArray(racesRaw) || !racesRaw.length) {
-    console.error('[races] No races data');
-    return { count: 0 };
+    throw new Error('[races] No races data');
   }
   if (!Array.isArray(racetracksRaw) || !racetracksRaw.length) {
-    console.error('[races] No racetracks data');
-    return { count: 0 };
+    throw new Error('[races] No racetracks data');
   }
 
   const coursesById = new Map();

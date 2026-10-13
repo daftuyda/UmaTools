@@ -157,7 +157,7 @@
         <span class="guide-eyebrow">Rating &amp; skills</span>
         <h1>Uma Musume Rating and Skill Optimization</h1>
         <p>Understand stat scoring, skill value, discounts, dependencies, optimization modes, and every rating rank.</p>
-        <div class="guide-meta"><span>Updated September 1, 2026</span><span>15 min read</span></div>
+        <div class="guide-meta"><span>Updated September 1, 2026</span><span>16 min read</span></div>
         <div class="guide-actions"><a class="btn primary" href="/calculator">Open Rating Calculator</a>
 <a class="btn" href="/optimizer">Open Skill Optimizer</a>
 <a class="btn" href="/rank-breakdown">Browse Rank Breakdown</a></div>
@@ -251,7 +251,8 @@ statScore = STAT_SCORES[stat]</code></pre>
 <figure class="guide-figure"><img src="/assets/guides/hint-discount.svg" alt="Hint Discount Chart" width="520" height="300" loading="lazy" decoding="async" /><figcaption>Hint Discount Chart</figcaption></figure>
 <h3 id="base-costs">Base Costs</h3>
 <p>Base skill costs are sourced from:</p>
-<ol><li><strong><code>public/assets/skills_all.json</code></strong> (primary source) -- contains detailed skill metadata including costs and relationships.</li><li><strong><code>public/assets/uma_skills.csv</code></strong> (fallback) -- the fallback skill database.</li></ol>
+<ol><li><strong>The selected server&#39;s game master snapshot</strong> supplies matching base ratings and skill point costs. A compact static catalog is tried first, then our catalog API.</li><li><strong>GameTora metadata</strong> supplies names, categories and relationships; its values remain the fallback when a master record is unavailable.</li><li><strong>The server&#39;s skill CSV</strong> supplies aptitude/category information and additional fallback records.</li></ol>
+<p>The source label identifies the server and available game-data version. JP never silently uses the Global master snapshot. Aptitude products use single-precision arithmetic, fixing Studious at G aptitude to 60; midpoint ties retain the existing half-up rule pending game-backed verification.</p>
 <p>When a skill is added to the optimizer, the base cost is stored in <code>row.dataset.baseCost</code> so discounting can be recalculated if the hint level changes.</p>
 <h3 id="hint-discount-table">Hint Discount Table</h3>
 <p>Hint levels reduce the cost of a skill. The discount percentages are:</p>
@@ -263,6 +264,9 @@ statScore = STAT_SCORES[stat]</code></pre>
 <pre><code class="language-text">totalDiscount = hintDiscount + fastLearnerDiscount
 finalCost     = floor(baseCost * max(0, 1 - totalDiscount))</code></pre>
 <p>The <code>max(0, ...)</code> ensures the multiplier never goes negative (though in practice the maximum combined discount is 50%: hint level 5 at 40% plus Fast Learner at 10%).</p>
+<h3 id="hint-changes-and-optimization">Hint Changes and Optimization</h3>
+<p>Increasing a hint level lowers skill costs. In rating mode, with the same candidates, requirements, budget and aptitudes, the best rating should stay the same or increase. Decreasing a hint level can lower the result because fewer skills fit the budget. Required lower skills stay grouped with their gold, circle or evolution upgrades: purchase costs and replacement scores are counted once. Equal-rating builds prefer lower skill-point spend.</p>
+<p>The <strong>Rating Score</strong> display always shows rating. Aptitude Test and Team Trials modes optimize their own objectives, so their chosen build can have a lower rating while improving the mode&#39;s objective. Compare the relevant score for the selected mode.</p>
 <h3 id="manual-cost-entries">Manual Cost Entries</h3>
 <p>If a user manually types a cost value into the cost field (rather than letting it auto-populate from the skill database), the manually entered value is used as-is. <strong>Manual costs bypass discounting entirely</strong> -- the optimizer uses whatever number is in the cost field.</p>
 <h3 id="discount-examples">Discount Examples</h3>

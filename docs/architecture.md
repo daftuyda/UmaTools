@@ -72,7 +72,15 @@ Runtime data lives in `public/assets/` and is requested by browser code through 
 
 Maintenance scripts write to `public/assets/` while keeping browser-facing URLs unchanged. PNG and WebP files with the same stem are intentional: WebP is preferred and PNG remains the compatibility fallback.
 
-The scheduled GameTora workflow refreshes core data and commits changed outputs.
+The scheduled workflow stages independent GameTora, GameWith and Global-master refreshes,
+validates each complete pipeline, and commits successful outputs. Failed pipelines retain
+previous data. `public/js/skill-data.js` shares requests, CSV parsing and master overlays
+between calculator, optimizer and skills. Server changes serialize metadata and CSV reloads.
+Master values override legacy values by ID while provider metadata enriches the records.
+Compact master catalogs avoid downloading raw snapshot details for startup.
+
+The service worker bounds runtime cache entries and bytes and attaches asynchronous writes
+to fetch-event lifetimes. A failed precache install cannot replace the previous worker.
 The maintained Node importer is `scripts/data/gametora.js`. The isolated
 `scripts/data/gametora-browser.py` Selenium implementation is retained only as a manual fallback
 for data, including `career.json`, that the scheduled importer does not currently regenerate.
@@ -84,12 +92,13 @@ See `scripts/data/README.md` for ownership and setup details.
 
 ## Build and validation
 
-The build performs four deterministic checks/transforms:
+The build performs these deterministic checks/transforms:
 
 1. Publish `docs/guides/*.md` as crawlable documents under `/guides` and copy referenced diagrams.
 2. Parse `public/css/air.css` to catch invalid CSS.
 3. Split/minify runtime JSON datasets in `public/assets/`.
 4. Create missing WebP companions for raster images.
+5. Generate compact master catalogs and stage the API runtime assets.
 
 `scripts/build/generate-guides.js` owns the generated documentation hub, document pages, metadata,
 structured data, internal document links, and public diagram copies. Edit the Markdown sources and
@@ -124,3 +133,11 @@ markup errors without requiring a browser session.
 4. Do not delete PNG/WebP pairs solely because their stems match.
 5. Update the README and relevant technical document whenever behavior, ownership, data sources, or commands change.
 6. Run the build, lint, tests, and a static reference check before merging a structural change.
+
+
+Pull requests and pushes run `.github/workflows/check.yml` with Node 24 and Python 3.12.
+Install `requirements-dev.txt` for API, downloader and Python lint/test dependencies.
+The check gate includes schema validation and downloader regressions; browser regressions
+cover URL injection, search races, keyboard focus and float32 scoring. The build also
+creates compact master catalogs and stages API assets. Dependency audit commands are
+`npm audit` and `python -m pip_audit -r requirements-dev.txt` (install pip-audit separately).

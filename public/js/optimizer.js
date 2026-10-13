@@ -244,7 +244,6 @@
   let officialEnglishNameSet = new Set();
   let officialEnglishNameMap = new Map(); // normalized name -> official EN name
   let skillsCsvCache = '';
-  let loadedSkillLibraryLanguage = '';
   let lastCSVLoadStats = {
     loaded: 0,
     filteredOut: 0,
@@ -441,6 +440,7 @@
   }
 
   async function loadSkillCostsJSON() {
+    const requestedLanguage = getSkillLanguage();
     const candidates = [
       '/assets/skills_core.json',
       './assets/skills_core.json',
@@ -450,11 +450,13 @@
     for (const url of candidates) {
       try {
         // Use default caching - Vercel headers control TTL
-        const res = await fetch(url, { cache: 'force-cache' });
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const list = await res.json();
+        const list = await window.SkillData.loadJSON(url);
+        if (requestedLanguage !== getSkillLanguage()) return false;
         if (!Array.isArray(list) || !list.length) continue;
         cachedRawSkillsList = list;
+        skillCostMapExact.clear();
+        skillCostMapNormalized.clear();
+        skillCostMapByJP.clear();
         const isFullData = url.includes('skills_all');
         loadedFullSkillData = isFullData;
         const nextOfficialEnglishNames = new Set();
@@ -1519,29 +1521,15 @@
       budgetInput && budgetInput.focus();
       return;
     }
-    const { items, rowsMeta } = collectItems();
+    const { items } = collectItems();
     if (!items.length) {
       setAutoStatus(t('optimizer.addRecognizedSkill'), true);
       return;
     }
     const requiredSummary = expandRequired(items);
-    if (requiredSummary.requiredCost > budget) {
-      setAutoStatus(t('optimizer.requiredExceedBudget'), true);
-      renderResults(
-        {
-          best: 0,
-          chosen: [],
-          used: 0,
-          error: 'required_unreachable',
-          purpleTotalPenalty: getTotalPurplePenalty(items),
-        },
-        budget
-      );
-      return;
-    }
     const includeGeneral = targets.includes('general');
     const targetSet = new Set(targets.filter((t) => t !== 'general'));
-    let optionalCandidates = items.filter(
+    const optionalCandidates = items.filter(
       (it) =>
         !requiredSummary.requiredIds.has(it.id) && matchesAutoTargets(it, targetSet, includeGeneral)
     );
@@ -1576,11 +1564,9 @@
       if (it.lowerRowId && candidateIds.has(it.lowerRowId)) candidateIds.add(it.id);
       if (it.circleRowId && candidateIds.has(it.circleRowId)) candidateIds.add(it.id);
     }
-    optionalCandidates = adjustCircleOptionalScores(
-      items.filter((it) => candidateIds.has(it.id)),
-      requiredSummary
+    const candidates = items.filter(
+      (it) => candidateIds.has(it.id) || requiredSummary.requiredIds.has(it.id)
     );
-    const candidates = optionalCandidates.concat(requiredSummary.requiredItems);
     if (!candidates.length) {
       setAutoStatus(t('optimizer.noMatchingRows'), true);
       return;
@@ -1612,14 +1598,16 @@
       );
       return;
     }
-    const groups = buildGroups(optionalCandidates, rowsMeta);
-    const result = optimizeGrouped(
-      groups,
-      optionalCandidates,
-      budget - requiredSummary.requiredCost
-    );
-    if (result.error === 'required_unreachable') {
-      setAutoStatus(t('optimizer.requiredExceedBudget'), true);
+    const result = optimizeRatingBuild(candidates, budget);
+    if (result.error) {
+      setAutoStatus(
+        t(
+          result.error === 'required_unreachable'
+            ? 'optimizer.requiredExceedBudget'
+            : 'optimizer.optimizationFailed'
+        ),
+        true
+      );
       renderResults({ ...result, purpleTotalPenalty: getTotalPurplePenalty(items) }, budget);
       return;
     }
@@ -1629,9 +1617,6 @@
     }
     const mergedResult = {
       ...result,
-      chosen: requiredSummary.requiredItems.concat(result.chosen),
-      used: result.used + requiredSummary.requiredCost,
-      best: result.best + requiredSummary.requiredScore,
       purpleTotalPenalty: getTotalPurplePenalty(items),
     };
     applyAutoHighlights(
@@ -1685,7 +1670,7 @@
       clearResults();
       return;
     }
-    const { items, rowsMeta } = collectItems();
+    const { items } = collectItems();
     if (!items.length) {
       clearResults();
       return;
@@ -1695,33 +1680,8 @@
       renderResults({ ...teamResult, purpleTotalPenalty: getTotalPurplePenalty(items) }, budget);
       return;
     }
-    const requiredSummary = expandRequired(items);
-    if (requiredSummary.requiredCost > budget) {
-      renderResults(
-        {
-          best: 0,
-          chosen: [],
-          used: 0,
-          error: 'required_unreachable',
-          purpleTotalPenalty: getTotalPurplePenalty(items),
-        },
-        budget
-      );
-      return;
-    }
-    const optionalItems = adjustCircleOptionalScores(
-      items.filter((it) => !requiredSummary.requiredIds.has(it.id)),
-      requiredSummary
-    );
-    const groups = buildGroups(optionalItems, rowsMeta);
-    const result = optimizeGrouped(groups, optionalItems, budget - requiredSummary.requiredCost);
-    const mergedResult = {
-      ...result,
-      chosen: requiredSummary.requiredItems.concat(result.chosen),
-      used: result.used + requiredSummary.requiredCost,
-      best: result.best + requiredSummary.requiredScore,
-      purpleTotalPenalty: getTotalPurplePenalty(items),
-    };
+    const result = optimizeRatingBuild(items, budget);
+    const mergedResult = { ...result, purpleTotalPenalty: getTotalPurplePenalty(items) };
     renderResults(mergedResult, budget);
   }
   let autoOptimizeIdleHandle = null;
@@ -2080,46 +2040,7 @@
   }
 
   function parseCSV(text) {
-    const rows = [];
-    let i = 0,
-      field = '',
-      row = [],
-      inQuotes = false;
-    while (i < text.length) {
-      const c = text[i];
-      if (inQuotes) {
-        if (c === '"') {
-          if (text[i + 1] === '"') {
-            field += '"';
-            i++;
-          } else {
-            inQuotes = false;
-          }
-        } else {
-          field += c;
-        }
-      } else {
-        if (c === '"') inQuotes = true;
-        else if (c === ',') {
-          row.push(field);
-          field = '';
-        } else if (c === '\r') {
-        } else if (c === '\n') {
-          row.push(field);
-          rows.push(row);
-          row = [];
-          field = '';
-        } else {
-          field += c;
-        }
-      }
-      i++;
-    }
-    if (field.length || row.length) {
-      row.push(field);
-      rows.push(row);
-    }
-    return rows;
+    return window.SkillData.parseCSV(text);
   }
 
   function loadFromCSVContent(csvText) {
@@ -2373,7 +2294,7 @@
 
   function getSkillsCSVCandidates(lang) {
     return lang === 'jp'
-      ? ['/assets/uma_skills_jp.csv', './assets/uma_skills_jp.csv', '/assets/uma_skills.csv']
+      ? ['/assets/uma_skills_jp.csv', './assets/uma_skills_jp.csv']
       : ['/assets/uma_skills.csv', './assets/uma_skills.csv'];
   }
 
@@ -2410,10 +2331,11 @@
           if (!res.ok) throw new Error(`HTTP ${res.status}`);
           text = await res.text();
         }
+        text = await window.SkillData.overlayCSV(text, lang === 'jp' ? 'jp' : 'global');
+        if (lang !== getSkillLanguage()) return false;
         skillsCsvCache = text;
         const ok = loadFromCSVContent(text);
         if (ok) {
-          loadedSkillLibraryLanguage = lang;
           updateSkillLibraryStatus();
           return true;
         }
@@ -3592,7 +3514,6 @@
 
   function collectItems() {
     const items = [];
-    const rowsMeta = [];
     const rows = rowsEl.querySelectorAll('.optimizer-row');
     const mode = getOptimizeMode();
     rows.forEach((row) => {
@@ -3683,28 +3604,17 @@
         hintLevel,
         required,
       });
-      rowsMeta.push({
-        id: rowId,
-        category,
-        parentGoldId,
-        parentCircleId,
-        parentEvoId,
-        lowerRowId,
-        circleRowId,
-        evoRowIds,
-      });
     });
-    return { items, rowsMeta };
+    return { items };
   }
 
-  function buildGroups(items, rowsMeta) {
+  function buildGroups(items) {
     const idToIndex = new Map(items.map((it, i) => [it.id, i]));
     const skillIdToIndex = new Map();
     const indicesByName = new Map();
     const evoParentCache = new Map();
     items.forEach((it, i) => {
       if (it.skillId) skillIdToIndex.set(String(it.skillId), i);
-      if (it.lowerSkillId) skillIdToIndex.set(String(it.lowerSkillId), i);
       const key = normalize(it.name);
       if (key) {
         if (!indicesByName.has(key)) indicesByName.set(key, []);
@@ -3731,7 +3641,17 @@
     }
     const used = new Array(items.length).fill(false);
     const groups = [];
-    for (let i = 0; i < items.length; i++) {
+    const priority = (it) => {
+      if (it.isEvo || canonicalCategory(it.category) === 'evo') return it.parentEvoId ? 5 : 0;
+      if (isGoldCategory(it.category)) return 1;
+      if (it.circleRowId) return 2;
+      if (it.parentSkillIds?.length || it.lowerSkillId) return 3;
+      return 4;
+    };
+    const order = items
+      .map((_, index) => index)
+      .sort((a, b) => priority(items[a]) - priority(items[b]));
+    for (const i of order) {
       if (used[i]) continue;
       const it = items[i];
       let handled = false;
@@ -3825,7 +3745,9 @@
       if (Array.isArray(it.parentSkillIds) && it.parentSkillIds.length)
         parentCandidates.push(...it.parentSkillIds);
       if (it.lowerSkillId) parentCandidates.push(it.lowerSkillId);
-      const pid = parentCandidates.find((pid) => skillIdToIndex.has(String(pid)));
+      const pid = parentCandidates.find(
+        (pid) => skillIdToIndex.has(String(pid)) && skillIdToIndex.get(String(pid)) !== i
+      );
       if (pid !== undefined && !isGoldCategory(it.category)) {
         const j = skillIdToIndex.get(String(pid));
         if (!used[j]) {
@@ -4024,11 +3946,14 @@
   }
 
   function optimizeGrouped(groups, items, budget) {
-    const B = Math.max(0, Math.floor(budget));
+    if (!Number.isSafeInteger(budget) || budget < 0) throw new RangeError('Invalid budget');
     const requiredSet = new Set();
     items.forEach((it, idx) => {
       if (it.required) requiredSet.add(idx);
     });
+    const represented = new Set(groups.flatMap((opts) => opts.flatMap((o) => o.items || [])));
+    if ([...requiredSet].some((index) => !represented.has(index)))
+      return { best: 0, chosen: [], used: 0, error: 'required_unreachable' };
     const filteredGroups = groups.map((opts) => {
       const reqInGroup = new Set();
       opts.forEach((o) => {
@@ -4049,16 +3974,36 @@
       return { best: 0, chosen: [], used: 0, error: 'required_unreachable' };
     }
     const G = filteredGroups.length;
+    const maxSpend = filteredGroups.reduce(
+      (sum, opts) => sum + Math.max(0, ...opts.map((o) => Math.max(0, Math.floor(o.cost || 0)))),
+      0
+    );
+    const B = Math.min(budget, maxSpend);
+    // Reject pathological custom/imported costs before allocating dense DP tables.
+    // Never approximate or silently lower the user's budget.
+    if (
+      !Number.isSafeInteger(B) ||
+      (B + 1) * (G + 3) > 8_000_000 ||
+      (B + 1) * filteredGroups.reduce((sum, opts) => sum + opts.length, 0) > 40_000_000
+    ) {
+      return { best: 0, chosen: [], used: 0, error: 'problem_too_large' };
+    }
     const NEG = -1e15;
     // Performance optimization: use rolling array for dp (only need prev and curr rows)
     // This reduces memory from O(G × B) to O(2 × B) for dp array
-    let dpPrev = new Array(B + 1).fill(0); // dp[0] starts at 0
-    let dpCurr = new Array(B + 1).fill(NEG);
+    let dpPrev = new Float64Array(B + 1); // dp[0] starts at 0
+    let dpCurr = new Float64Array(B + 1);
     // We still need full choice array for reconstruction
-    const choice = Array.from({ length: G + 1 }, () => new Array(B + 1).fill(-1));
+    const choice = Array.from({ length: G + 1 }, () => new Int32Array(B + 1).fill(-1));
     for (let g = 1; g <= G; g++) {
       const opts = filteredGroups[g - 1];
       const hasNone = opts.some((o) => o.none);
+      const prepared = opts.map((o, index) => ({
+        index,
+        none: o.none,
+        cost: Math.max(0, Math.floor(o.cost || 0)),
+        score: Math.max(0, Math.floor(o.score || 0)),
+      }));
       for (let b = 0; b <= B; b++) {
         if (hasNone) {
           dpCurr[b] = dpPrev[b];
@@ -4067,11 +4012,11 @@
           dpCurr[b] = NEG;
           choice[g][b] = -1;
         }
-        for (let k = 0; k < opts.length; k++) {
-          const o = opts[k];
+        for (let k = 0; k < prepared.length; k++) {
+          const o = prepared[k];
           if (o.none) continue;
-          const w = Math.max(0, Math.floor(o.cost));
-          const v = Math.max(0, Math.floor(o.score));
+          const w = o.cost;
+          const v = o.score;
           if (w <= b && dpPrev[b - w] > NEG / 2) {
             const cand = dpPrev[b - w] + v;
             if (cand > dpCurr[b]) {
@@ -4085,19 +4030,26 @@
       const temp = dpPrev;
       dpPrev = dpCurr;
       dpCurr = temp;
-      dpCurr.fill(NEG); // Reset for next iteration
     }
     // After loop, dpPrev contains dp[G]
     if (dpPrev[B] <= NEG / 2) {
       return { best: 0, chosen: [], used: 0, error: 'required_unreachable' };
     }
     // reconstruct
-    let b = B;
+    // Prefer the cheapest build at the optimal score without another DP dimension.
+    let low = 0,
+      high = B;
+    while (low < high) {
+      const mid = Math.floor((low + high) / 2);
+      if (dpPrev[mid] >= dpPrev[B]) high = mid;
+      else low = mid + 1;
+    }
+    let b = low;
     const chosen = [];
     for (let g = G; g >= 1; g--) {
       const opts = filteredGroups[g - 1];
       const k = choice[g][b];
-      if (k > 0) {
+      if (k >= 0 && !opts[k].none) {
         const o = opts[k];
         const picks = o.combo || (typeof o.pick === 'number' ? [o.pick] : []);
         if (o.combo) {
@@ -4130,46 +4082,19 @@
       }
     }
     chosen.reverse();
-    const idToIndex = new Map(items.map((it, idx) => [it.id, idx]));
-    const chosenIds = new Set(chosen.map((it) => it.id));
-    let addedScore = 0;
-    let addedCost = 0;
-    requiredSet.forEach((idx) => {
-      const it = items[idx];
-      if (!it || chosenIds.has(it.id)) return;
-      chosen.push({ ...it, forced: true });
-      chosenIds.add(it.id);
-      addedScore += Math.max(0, Math.floor(it.score || 0));
-      addedCost += Math.max(0, Math.floor(it.cost || 0));
-      if (it.lowerRowId && idToIndex.has(it.lowerRowId)) {
-        const lower = items[idToIndex.get(it.lowerRowId)];
-        if (lower && !chosenIds.has(lower.id)) {
-          chosen.push({ ...lower, forced: true });
-          chosenIds.add(lower.id);
-          addedScore += Math.max(0, Math.floor(lower.score || 0));
-          addedCost += Math.max(0, Math.floor(lower.cost || 0));
-          // Also include the lower's ◎ circle upgrade if it exists
-          if (lower.circleRowId && idToIndex.has(lower.circleRowId)) {
-            const circle = items[idToIndex.get(lower.circleRowId)];
-            if (circle && !chosenIds.has(circle.id)) {
-              chosen.push({ ...circle, forced: true });
-              chosenIds.add(circle.id);
-              addedScore += Math.max(0, Math.floor(circle.score || 0));
-              addedCost += Math.max(0, Math.floor(circle.cost || 0));
-            }
-          }
-        }
-      }
-    });
     const used = chosen.reduce(
       (sum, it) => (it.comboComponent ? sum : sum + Math.max(0, Math.floor(it.cost))),
       0
     );
-    const best = dpPrev[B] + addedScore;
+    const best = dpPrev[B];
     if (used > B) {
       return { best: 0, chosen: [], used: 0, error: 'required_unreachable' };
     }
     return { best, chosen, used };
+  }
+
+  function optimizeRatingBuild(items, budget) {
+    return optimizeGrouped(buildGroups(items), items, budget);
   }
 
   function expandRequired(items) {
@@ -4236,62 +4161,7 @@
         }
       });
     }
-    const requiredItems = items.filter((it) => requiredIds.has(it.id));
-    const requiredGoldIds = new Set(
-      requiredItems.filter((it) => isGoldCategory(it.category)).map((it) => it.id)
-    );
-    const lowerIncludedIds = new Set();
-    requiredItems.forEach((it) => {
-      if (!requiredGoldIds.has(it.id)) return;
-      if (it.lowerRowId && requiredIds.has(it.lowerRowId)) lowerIncludedIds.add(it.lowerRowId);
-      if (it.lowerSkillId !== undefined && it.lowerSkillId !== null) {
-        const lowerIdx = skillIdToIndex.get(String(it.lowerSkillId));
-        if (lowerIdx !== undefined) {
-          const lowerId = items[lowerIdx]?.id;
-          if (lowerId && requiredIds.has(lowerId)) lowerIncludedIds.add(lowerId);
-        }
-      }
-      if (it.id && parentGoldToChild.has(it.id)) {
-        const childIdx = parentGoldToChild.get(it.id);
-        const childId = items[childIdx]?.id;
-        if (childId && requiredIds.has(childId)) lowerIncludedIds.add(childId);
-      }
-    });
-    const requiredCost = requiredItems.reduce((sum, it) => {
-      if (lowerIncludedIds.has(it.id)) return sum;
-      return sum + Math.max(0, Math.floor(it.cost));
-    }, 0);
-    // Circle pairs: when ○ (base) and ◎ (upgrade) are both required,
-    // skip ○'s score since ◎ replaces it. Keep ○'s cost (circle costs are additive).
-    const circleBaseScoreSkipIds = new Set();
-    requiredItems.forEach((it) => {
-      if (it.circleRowId && requiredIds.has(it.circleRowId)) {
-        circleBaseScoreSkipIds.add(it.id);
-      }
-    });
-    const requiredScore = requiredItems.reduce((sum, it) => {
-      if (lowerIncludedIds.has(it.id)) return sum;
-      if (circleBaseScoreSkipIds.has(it.id)) return sum;
-      return sum + Math.max(0, Math.floor(it.score));
-    }, 0);
-    return { requiredIds, requiredItems, requiredCost, requiredScore };
-  }
-
-  // When ○ is required but ◎ is optional, adjust ◎'s optimization score to
-  // be incremental (◎ - ○) so the optimizer correctly evaluates the upgrade value
-  // instead of double-counting the base score.
-  function adjustCircleOptionalScores(optionalItems, requiredSummary) {
-    const requiredById = new Map(requiredSummary.requiredItems.map((it) => [it.id, it]));
-    return optionalItems.map((it) => {
-      if (it.parentCircleId && requiredById.has(it.parentCircleId)) {
-        const parent = requiredById.get(it.parentCircleId);
-        return {
-          ...it,
-          score: Math.max(0, it.score - parent.score),
-        };
-      }
-      return it;
-    });
+    return { requiredIds };
   }
 
   function optimizeTeamTrialsCandidates(items, budget) {
@@ -4416,13 +4286,8 @@
 
     totalRatingScore -= outstandingPurplePenalty;
 
-    // Display the appropriate score in "Best Score"
-    if (mode === 'aptitude-test') {
-      // In aptitude mode, show rating score as best (aptitude shown separately)
-      bestScoreEl.textContent = String(totalRatingScore);
-    } else {
-      bestScoreEl.textContent = String(totalRatingScore);
-    }
+    // Rating stays visible in every mode; other objectives have separate score pills.
+    bestScoreEl.textContent = String(totalRatingScore);
 
     // Show/hide aptitude test score based on mode
     if (aptitudeScorePill && aptitudeScoreEl) {
@@ -4554,6 +4419,7 @@
       else if (result.error === 'team_trials_failed') message = t('optimizer.teamTrialsNoResult');
       else if (result.error === 'no_items') message = t('optimizer.noCandidates');
       else if (result.error === 'no_applicable_skills') message = t('optimizer.noMatchTargets');
+      else if (result.error === 'problem_too_large') message = t('optimizer.problemTooLarge');
       else if (result.error !== 'required_unreachable') message = t('optimizer.optimizationFailed');
       const li = document.createElement('li');
       li.className = 'result-item';
@@ -5529,11 +5395,11 @@
   if (optimizeBtn)
     optimizeBtn.addEventListener('click', () => {
       const budget = parseInt(budgetInput.value, 10);
-      if (isNaN(budget) || budget < 0) {
+      if (!Number.isSafeInteger(budget) || budget < 0) {
         alert(t('optimizer.invalidBudget'));
         return;
       }
-      const { items, rowsMeta } = collectItems();
+      const { items } = collectItems();
       if (!items.length) {
         alert(t('optimizer.addAtLeastOne'));
         return;
@@ -5544,34 +5410,8 @@
         saveState();
         return;
       }
-      const requiredSummary = expandRequired(items);
-      if (requiredSummary.requiredCost > budget) {
-        renderResults(
-          {
-            best: 0,
-            chosen: [],
-            used: 0,
-            error: 'required_unreachable',
-            purpleTotalPenalty: getTotalPurplePenalty(items),
-          },
-          budget
-        );
-        saveState();
-        return;
-      }
-      const optionalItems = adjustCircleOptionalScores(
-        items.filter((it) => !requiredSummary.requiredIds.has(it.id)),
-        requiredSummary
-      );
-      const groups = buildGroups(optionalItems, rowsMeta);
-      const result = optimizeGrouped(groups, optionalItems, budget - requiredSummary.requiredCost);
-      const mergedResult = {
-        ...result,
-        chosen: requiredSummary.requiredItems.concat(result.chosen),
-        used: result.used + requiredSummary.requiredCost,
-        best: result.best + requiredSummary.requiredScore,
-        purpleTotalPenalty: getTotalPurplePenalty(items),
-      };
+      const result = optimizeRatingBuild(items, budget);
+      const mergedResult = { ...result, purpleTotalPenalty: getTotalPurplePenalty(items) };
       renderResults(mergedResult, budget);
       saveState();
     });
@@ -6369,51 +6209,19 @@
     initTutorial();
   }
 
-  function isLowMemoryDevice() {
-    // navigator.deviceMemory: Chrome/Edge/Opera/Samsung Internet (GB of RAM)
-    // Low-memory: <= 2 GB (common on budget tablets/phones)
-    if (typeof navigator !== 'undefined' && navigator.deviceMemory != null) {
-      return navigator.deviceMemory <= 2;
-    }
-    // Fallback heuristic: mobile devices with limited hardware concurrency
-    // Most budget Android devices: 4 cores + no deviceMemory API = likely low-memory
-    if (typeof navigator !== 'undefined' && /Mobi|Android|Tablet/i.test(navigator.userAgent)) {
-      const cores = navigator.hardwareConcurrency || 0;
-      if (cores > 0 && cores <= 4) return true;
-    }
-    return false;
-  }
-
   let hydrationDeferred = false;
 
   async function backgroundHydrateFullData() {
-    if (loadedFullSkillData) {
-      // Already loaded full data (core file was missing, fell back to full)
-      // Just run team trials scoring
-      try {
-        await loadTeamTrialsScoring();
-      } catch (err) {
-        console.warn('Team Trials scoring failed', err);
-      }
-      return;
-    }
-    // On low-memory devices, skip eager background hydration to prevent OOM crashes.
-    // Full data will load on-demand when user switches to Team Trials mode or opens a skill popup.
-    if (isLowMemoryDevice()) {
-      hydrationDeferred = true;
-      console.log('Background hydration skipped: low-memory device detected');
-      return;
-    }
-    await doHydrateFullData();
+    // Full conditions are needed only for Team Trials or details, not rating mode.
+    hydrationDeferred = !loadedFullSkillData;
+    if (getOptimizeMode() === TEAM_TRIALS_MODE) await doHydrateFullData();
   }
 
   async function doHydrateFullData() {
     const candidates = ['/assets/skills_all.json', './assets/skills_all.json'];
     for (const url of candidates) {
       try {
-        const res = await fetch(url, { cache: 'force-cache' });
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const list = await res.json();
+        const list = await window.SkillData.loadJSON(url);
         if (!Array.isArray(list) || !list.length) continue;
         cachedRawSkillsList = list;
         loadedFullSkillData = true;
@@ -6451,7 +6259,7 @@
   // Fetch both startup datasets together. CSV parsing still waits for the core
   // JSON because it depends on the official-English name index built there.
   const skillsCSVPreload = preloadSkillsCSV();
-  loadSkillCostsJSON()
+  const startupReady = loadSkillCostsJSON()
     .catch((err) => {
       console.warn('Skill cost JSON load failed', err);
     })
@@ -6477,12 +6285,9 @@
       saveState();
     });
   }
-  window.addEventListener('umatools:server-change', async (event) => {
-    const nextLang = normalizeSkillLanguage(event?.detail?.server);
-    const currentLang = loadedSkillLibraryLanguage || getSkillLanguage();
-    const forceReload = !!event?.detail?.forceReload;
+  window.SkillData.onServerChange(async () => {
     updateOfficialEnglishToggleState();
-    if (nextLang === currentLang) return;
+    await loadSkillCostsJSON();
     await loadSkillsCSV();
     updateHintOptionLabels();
     refreshAllRowCosts();
@@ -6490,7 +6295,8 @@
     clearAutoHighlights();
     autoOptimizeDebounced();
     saveState();
-  });
+    await backgroundHydrateFullData();
+  }, startupReady);
   window.addEventListener('umatools:site-language-change', () => {
     rebuildSkillCaches();
     updateHintOptionLabels();

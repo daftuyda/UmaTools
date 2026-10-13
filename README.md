@@ -76,14 +76,15 @@ See [Architecture](docs/architecture.md) for component ownership, data flow, and
 
 Requirements:
 
-- Node.js 20 or newer.
+- Node.js 24 recommended (`.nvmrc`); minimum 22.19.
 - Python 3 only for the API and Python-backed data utilities.
 - The Vercel CLI for local parity with production routing and functions.
 
 ```bash
 git clone https://github.com/daftuyda/UmaTools.git
 cd UmaTools
-npm install
+npm ci
+python -m pip install -r requirements-dev.txt
 npx vercel dev
 ```
 
@@ -95,11 +96,11 @@ For a static-only preview, serve the `public/` directory with any local HTTP ser
 npm run build             # Publish documentation, validate CSS, normalize JSON, and create WebP assets
 npm run build:guides      # Publish docs/guides as static documents under /guides
 npm run lint              # JavaScript and Python linting
-npm test                  # Rating and Team Trials tests
+npm test                  # Scoring, solver, provider, downloader, and API regressions
 npm run check             # Full lint, unit, data, markup, reference, and route gate
 npm run check:seo         # Verify metadata, schema, canonicals, sitemap, and internal discovery
 npm run check:static      # Verify local page, asset, CSS, and service-worker references
-npm run test:data         # Parse every deployed JSON dataset and manifest
+npm run test:data         # Validate deployed data schemas, IDs, counts, and CSV values
 npm run test:smoke        # Serve the site and verify every clean route and critical asset
 npm run audit:lighthouse  # Mobile + desktop Lighthouse audit of primary tools
 npm run audit:responsive  # Browser layout/runtime audit across phone, tablet, and desktop

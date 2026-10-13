@@ -965,7 +965,10 @@ function expectedOutputs() {
   for (const image of images) {
     const sourcePath = path.join(imageSourceRoot, image);
     if (!fs.existsSync(sourcePath)) throw new Error(`Missing guide image: ${sourcePath}`);
-    outputs.set(path.join(guideImageRoot, image), fs.readFileSync(sourcePath));
+    outputs.set(
+      path.join(guideImageRoot, image),
+      fs.readFileSync(sourcePath, 'utf8').replace(/\r\n/g, '\n')
+    );
   }
   return outputs;
 }
@@ -1025,7 +1028,7 @@ function validatePublishedOutputSemantics(outputs) {
 
 function contentMatches(filePath, expected) {
   if (!fs.existsSync(filePath)) return false;
-  const actual = fs.readFileSync(filePath);
+  const actual = Buffer.from(fs.readFileSync(filePath, 'utf8').replace(/\r\n/g, '\n'));
   const expectedBuffer = Buffer.isBuffer(expected) ? expected : Buffer.from(expected, 'utf8');
   return actual.equals(expectedBuffer);
 }

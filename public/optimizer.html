@@ -59,6 +59,27 @@
         rel="stylesheet"
     /></noscript>
     <link rel="preload" href="/assets/skills_core.json" as="fetch" crossorigin />
+    <link rel="preload" href="/js/optimizer.js" as="script" />
+    <script>
+      // Discover server-specific startup data before the page controller executes.
+      (function () {
+        var server = 'global';
+        try {
+          if (localStorage.getItem('umatoolsServer') === 'jp') server = 'jp';
+        } catch {}
+        [
+          '/assets/uma_skills' + (server === 'jp' ? '_jp' : '') + '.csv',
+          '/assets/master/' + server + '-core.json',
+        ].forEach(function (url) {
+          var link = document.createElement('link');
+          link.rel = 'preload';
+          link.as = 'fetch';
+          link.crossOrigin = 'anonymous';
+          link.href = url;
+          document.head.appendChild(link);
+        });
+      })();
+    </script>
     <link rel="stylesheet" href="/css/air.css" />
     <!-- Tesseract.js loaded on-demand by ocr.js ensureTesseract() -->
     <script>
@@ -972,7 +993,7 @@
               style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px"
             >
               <div class="pill">
-                <b data-i18n="optimizer.bestScore">Best Score:</b> <span id="best-score">0</span>
+                <b data-i18n="optimizer.bestScore">Rating Score:</b> <span id="best-score">0</span>
               </div>
               <div class="pill">
                 <b data-i18n="optimizer.usedPoints">Used Points:</b> <span id="used-points">0</span>
@@ -1552,19 +1573,26 @@
     <script src="/js/tutorial.js" defer></script>
     <script src="/js/team-trials-optimizer.js" defer></script>
     <script src="/js/skill-scorer.js" defer></script>
+    <script src="/js/skill-data.js" defer></script>
     <script src="/js/optimizer.js" defer></script>
     <!-- OCR scripts lazy-loaded on first use -->
     <script>
       (function () {
         var ocrReady = null;
+        var loadedOCRScripts = new Set();
         var OCR_SCRIPTS = ['/js/ocr-preprocess.js', '/js/ocr-matcher.js', '/js/ocr.js'];
         function loadScript(src) {
+          if (loadedOCRScripts.has(src)) return Promise.resolve();
           return new Promise(function (resolve, reject) {
             var s = document.createElement('script');
             s.src = src;
             s.async = false;
-            s.onload = resolve;
+            s.onload = function () {
+              loadedOCRScripts.add(src);
+              resolve();
+            };
             s.onerror = function () {
+              s.remove();
               reject(new Error('Failed to load ' + src));
             };
             document.head.appendChild(s);
@@ -1576,7 +1604,10 @@
               return chain.then(function () {
                 return loadScript(src);
               });
-            }, Promise.resolve());
+            }, Promise.resolve()).catch(function (error) {
+              ocrReady = null;
+              throw error;
+            });
           }
           return ocrReady;
         }
@@ -1594,7 +1625,6 @@
             });
           }
           if (captureBtn) {
-            var origHandler = captureBtn.onclick;
             captureBtn.onclick = function (e) {
               ensureOCR().then(function () {
                 if (typeof window.startScreenCapture === 'function') {

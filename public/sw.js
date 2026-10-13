@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v95';
+const CACHE_VERSION = 'v97';
 const STATIC_CACHE = `umatools-static-${CACHE_VERSION}`;
 const RUNTIME_CACHE = `umatools-runtime-${CACHE_VERSION}`;
 
@@ -21,6 +21,7 @@ const STATIC_ASSETS = [
   '/css/air.css',
   '/js/nav.js',
   '/js/rating-shared.js',
+  '/js/skill-data.js',
   '/js/tutorial.js',
   '/js/hints.js',
   '/js/random.js',
@@ -62,7 +63,10 @@ self.addEventListener('install', (event) => {
     caches
       .open(STATIC_CACHE)
       .then((cache) => cache.addAll(STATIC_ASSETS))
-      .catch((err) => console.error('[SW] Precache failed:', err))
+      .catch((err) => {
+        console.error('[SW] Precache failed:', err);
+        throw err;
+      })
   );
   self.skipWaiting();
 });
@@ -88,32 +92,61 @@ function cacheFirst(request) {
   return caches.match(request).then((cached) => cached || fetch(request));
 }
 
-function staleWhileRevalidate(request) {
-  return caches.open(RUNTIME_CACHE).then((cache) =>
-    cache.match(request).then((cached) => {
-      const fetchPromise = fetch(request)
-        .then((response) => {
-          if (response && response.status === 200) {
-            cache.put(request, response.clone());
-          }
-          return response;
-        })
-        .catch(() => cached);
-      return cached || fetchPromise;
-    })
-  );
+let cacheWrites = Promise.resolve();
+function storeRuntime(request, response) {
+  if (!response || response.status !== 200) return Promise.resolve();
+  const copy = response.clone();
+  cacheWrites = cacheWrites
+    .catch(() => {})
+    .then(async () => {
+      const bytes = await copy.arrayBuffer();
+      if (bytes.byteLength > 8 * 1024 * 1024) return;
+      const headers = new Headers(copy.headers);
+      headers.delete('Content-Encoding');
+      headers.delete('Content-Length');
+      headers.set('X-Uma-Cache-Bytes', String(bytes.byteLength));
+      const cache = await caches.open(RUNTIME_CACHE);
+      await cache.delete(request);
+      await cache.put(
+        request,
+        new Response(bytes, { status: copy.status, statusText: copy.statusText, headers })
+      );
+      const keys = await cache.keys();
+      let total = 0;
+      for (let i = keys.length - 1; i >= 0; i--) {
+        const entry = await cache.match(keys[i]);
+        total += Number(entry.headers.get('X-Uma-Cache-Bytes') || 0);
+        if (keys.length - i > 100 || total > 32 * 1024 * 1024) await cache.delete(keys[i]);
+      }
+    });
+  return cacheWrites;
 }
 
-function networkFirst(request) {
-  return fetch(request, { cache: 'no-cache' })
-    .then((response) => {
-      if (response && response.status === 200) {
-        const copy = response.clone();
-        caches.open(RUNTIME_CACHE).then((cache) => cache.put(request, copy));
-      }
-      return response;
-    })
-    .catch(() => caches.match(request));
+function staleWhileRevalidate(request, event) {
+  const fetched = fetch(request);
+  event.waitUntil(fetched.then((response) => storeRuntime(request, response)).catch(() => {}));
+  return caches.open(RUNTIME_CACHE).then(async (cache) => {
+    const cached = await cache.match(request);
+    return cached || fetched;
+  });
+}
+
+function networkFirst(request, event) {
+  const fetched = fetch(request, { cache: 'no-cache' });
+  event.waitUntil(fetched.then((response) => storeRuntime(request, response)).catch(() => {}));
+  return fetched.catch(async () => {
+    const cached = await caches.match(request);
+    if (cached) return cached;
+    const url = new URL(request.url);
+    if (request.mode === 'navigate') {
+      url.search = '';
+      if (!url.pathname.endsWith('.html') && url.pathname !== '/') url.pathname += '.html';
+      return (
+        (await caches.match(url.href)) || (await caches.match('/404.html')) || Response.error()
+      );
+    }
+    return Response.error();
+  });
 }
 
 function isCodeAsset(pathname) {
@@ -128,19 +161,21 @@ self.addEventListener('fetch', (event) => {
   if (url.pathname.startsWith('/_vercel/')) return;
 
   if (request.mode === 'navigate') {
-    event.respondWith(networkFirst(request));
+    event.respondWith(networkFirst(request, event));
     return;
   }
 
   if (STATIC_ASSETS.includes(url.pathname)) {
     // Keep code assets fresh without requiring hard refreshes after deploys.
-    event.respondWith(isCodeAsset(url.pathname) ? networkFirst(request) : cacheFirst(request));
+    event.respondWith(
+      isCodeAsset(url.pathname) ? networkFirst(request, event) : cacheFirst(request)
+    );
     return;
   }
 
   // Data files: network-first so share links / fresh data always work
   if (url.pathname.endsWith('.json') || url.pathname.endsWith('.csv')) {
-    event.respondWith(networkFirst(request));
+    event.respondWith(networkFirst(request, event));
     return;
   }
 
@@ -153,7 +188,7 @@ self.addEventListener('fetch', (event) => {
     url.pathname.endsWith('.js') ||
     url.pathname.endsWith('.css')
   ) {
-    event.respondWith(staleWhileRevalidate(request));
+    event.respondWith(staleWhileRevalidate(request, event));
     return;
   }
 });

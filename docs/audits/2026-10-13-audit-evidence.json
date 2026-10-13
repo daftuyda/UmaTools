@@ -1,0 +1,679 @@
+{
+  "date": "2026-10-13",
+  "base_commit": "d2bdb73",
+  "includes_preexisting_uncommitted_master_work": true,
+  "browser_probes": [
+    {
+      "name": "popup-keyboard-focus",
+      "result": {
+        "sequence": [
+          {
+            "tag": "BUTTON",
+            "id": "",
+            "inDialog": true
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "inDialog": true
+          },
+          {
+            "tag": "BODY",
+            "id": "",
+            "inDialog": false
+          },
+          {
+            "tag": "A",
+            "id": "",
+            "inDialog": false
+          },
+          {
+            "tag": "BUTTON",
+            "id": "nav-group-menu-0-trigger",
+            "inDialog": false
+          },
+          {
+            "tag": "BUTTON",
+            "id": "nav-group-menu-1-trigger",
+            "inDialog": false
+          }
+        ],
+        "focusAfterClose": "BUTTON:nav-group-menu-1-trigger"
+      },
+      "errors": []
+    },
+    {
+      "name": "hint-url-script-execution",
+      "result": {
+        "executed": true,
+        "chip": "<span class=\"chip\"><img src=\"x\" onerror=\"window.auditExecuted=1\"><button aria-label=\"Remove &lt;img src=x onerror=\" window.auditexecuted=\"1&quot;\">\" data-i=\"0\"&gt;×</button></span>"
+      },
+      "errors": []
+    },
+    {
+      "name": "hint-malformed-percent",
+      "result": {
+        "body": "tamina to Spare\nMile Corners ○\nShifting Gears\nSpeed Eater\nSympathy\nSlipstream\nShow more (32 of 251)\nFind support cards that teach the hints you need\n\nAdd one or more skill hints, use AND to require every selected hint or OR to match any of them, and narrow the results by SSR, SR, or R rarity.\n\nRelated tools\n\nCompare candidate cards in the Deck Builder, or plan the skills they provide with the Skill Optimizer.\n\nUmaTools\nMade with ❤️\nGitHub\nDiscord"
+      },
+      "errors": [
+        "URI malformed\ndecodeURIComponent (<anonymous>)\nArray.map (<anonymous>)"
+      ]
+    },
+    {
+      "name": "event-search-race",
+      "result": {
+        "displayed": "first"
+      },
+      "errors": []
+    },
+    {
+      "name": "event-search-clear-repeat",
+      "result": {
+        "status": "Type an event name and press Search."
+      },
+      "errors": []
+    },
+    {
+      "name": "offline-clean-route",
+      "result": {
+        "error": null,
+        "url": "http://127.0.0.1:53492/stamina",
+        "title": "Uma Musume Stamina Calculator | UmaTools"
+      },
+      "errors": []
+    }
+  ],
+  "module_probes": {
+    "rewards": [
+      {
+        "input": "Wit +10",
+        "parsed": {
+          "type": "stat",
+          "key": "intelligence",
+          "value": 10,
+          "raw": "Wit +10"
+        },
+        "score": 0
+      },
+      {
+        "input": "Wisdom +10",
+        "parsed": {
+          "type": "stat",
+          "key": "intelligence",
+          "value": 10,
+          "raw": "Wisdom +10"
+        },
+        "score": 8
+      },
+      {
+        "input": "Mood up",
+        "parsed": {
+          "type": "mood",
+          "value": 0,
+          "raw": "Mood up"
+        },
+        "score": 0
+      },
+      {
+        "input": "Mood down",
+        "parsed": {
+          "type": "mood",
+          "value": 0,
+          "raw": "Mood down"
+        },
+        "score": 0
+      },
+      {
+        "input": "Lose Practice Poor status",
+        "parsed": {
+          "type": "status_loss",
+          "text": "Practice Poor status",
+          "raw": "Lose Practice Poor status"
+        },
+        "score": -20
+      }
+    ],
+    "failedTrainingSource": {
+      "cards": 1,
+      "hints": 0,
+      "events": 0
+    },
+    "eventFileAfterFailure": []
+  },
+  "solver_benchmark": [
+    {
+      "budget": 5000,
+      "ms": 114.33459999999998,
+      "best": 5000,
+      "used": 5000,
+      "chosen": 50
+    },
+    {
+      "budget": 30000,
+      "ms": 670.163,
+      "best": 5000,
+      "used": 5000,
+      "chosen": 50
+    }
+  ],
+  "live_checks": [
+    {
+      "url": "https://daftuyda.moe/",
+      "status": 200,
+      "headers": {
+        "Cache-Control": "public, max-age=0, must-revalidate",
+        "Strict-Transport-Security": "max-age=63072000"
+      }
+    },
+    {
+      "url": "https://daftuyda.moe/api/events",
+      "status": 200,
+      "headers": {
+        "Cache-Control": "public, max-age=3600",
+        "Strict-Transport-Security": "max-age=63072000"
+      }
+    },
+    {
+      "url": "https://daftuyda.moe/api/data/v1/global/status",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://peek.daftuyda.moe/",
+      "status": 200,
+      "headers": {
+        "Cache-Control": "public, max-age=0, must-revalidate",
+        "Content-Security-Policy": "default-src 'self'; base-uri 'none'; connect-src 'self'; font-src 'self' https://fonts.gstatic.com; form-action 'self'; frame-ancestors 'none'; img-src 'self' data:; object-src 'none'; script-src 'self'; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+        "Strict-Transport-Security": "max-age=63072000",
+        "X-Content-Type-Options": "nosniff",
+        "X-Frame-Options": "DENY"
+      }
+    },
+    {
+      "url": "https://daftuyda.github.io/Stitcher/",
+      "status": 200,
+      "headers": {
+        "Cache-Control": "max-age=600"
+      }
+    },
+    {
+      "url": "https://card.notvo.id/",
+      "status": 200,
+      "headers": {
+        "Cache-Control": "public, max-age=0, must-revalidate",
+        "Strict-Transport-Security": "max-age=63072000"
+      }
+    }
+  ],
+  "lighthouse": [
+    {
+      "page": "home",
+      "form": "mobile",
+      "fetchTime": "2026-10-13T08:36:48.715Z",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "tti": 1812.7696,
+      "lcp": 1812.7695999999999,
+      "cls": 0,
+      "network": [],
+      "unusedJS": []
+    },
+    {
+      "page": "home",
+      "form": "desktop",
+      "fetchTime": "2026-10-13T08:38:13.805Z",
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "tti": 798.19445,
+      "lcp": 798.19445,
+      "cls": 0.003745318352059925,
+      "network": [],
+      "unusedJS": []
+    },
+    {
+      "page": "about",
+      "form": "mobile",
+      "fetchTime": "2026-10-13T08:36:56.105Z",
+      "scores": {
+        "performance": 94,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "tti": 2566.05335,
+      "lcp": 2566.0533499999997,
+      "cls": 0,
+      "network": [],
+      "unusedJS": []
+    },
+    {
+      "page": "about",
+      "form": "desktop",
+      "fetchTime": "2026-10-13T08:38:21.413Z",
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "tti": 765.8633,
+      "lcp": 765.8633,
+      "cls": 0.003745318352059925,
+      "network": [],
+      "unusedJS": []
+    },
+    {
+      "page": "skills",
+      "form": "mobile",
+      "fetchTime": "2026-10-13T08:37:03.344Z",
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "tti": 1501.2681,
+      "lcp": 1501.2681,
+      "cls": 0,
+      "network": [
+        {
+          "url": "/assets/skills_all.json",
+          "transfer": 284621,
+          "decoded": 3994789
+        },
+        {
+          "url": "/assets/changelog.json",
+          "transfer": 0,
+          "decoded": 6817
+        },
+        {
+          "url": "/assets/uma_skills.csv",
+          "transfer": 0,
+          "decoded": 174971
+        }
+      ],
+      "unusedJS": []
+    },
+    {
+      "page": "skills",
+      "form": "desktop",
+      "fetchTime": "2026-10-13T08:38:29.359Z",
+      "scores": {
+        "performance": 96,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "tti": 778.3179500000001,
+      "lcp": 778.31795,
+      "cls": 0.00962467128854889,
+      "network": [
+        {
+          "url": "/assets/skills_all.json",
+          "transfer": 284621,
+          "decoded": 3994789
+        },
+        {
+          "url": "/assets/changelog.json",
+          "transfer": 0,
+          "decoded": 6817
+        },
+        {
+          "url": "/assets/uma_skills.csv",
+          "transfer": 0,
+          "decoded": 174971
+        }
+      ],
+      "unusedJS": []
+    },
+    {
+      "page": "hints",
+      "form": "mobile",
+      "fetchTime": "2026-10-13T08:37:15.060Z",
+      "scores": {
+        "performance": 98,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "tti": 1921.0084650000003,
+      "lcp": 1528.3027500000003,
+      "cls": 0.01587196180555556,
+      "network": [
+        {
+          "url": "/assets/support_hints.json",
+          "transfer": 41175,
+          "decoded": 2261733
+        },
+        {
+          "url": "/assets/changelog.json",
+          "transfer": 0,
+          "decoded": 6817
+        }
+      ],
+      "unusedJS": []
+    },
+    {
+      "page": "hints",
+      "form": "desktop",
+      "fetchTime": "2026-10-13T08:38:41.639Z",
+      "scores": {
+        "performance": 97,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "tti": 782.1453999999999,
+      "lcp": 782.1453999999999,
+      "cls": 0.04794007490636704,
+      "network": [
+        {
+          "url": "/assets/support_hints.json",
+          "transfer": 41175,
+          "decoded": 2261733
+        },
+        {
+          "url": "/assets/changelog.json",
+          "transfer": 0,
+          "decoded": 6817
+        }
+      ],
+      "unusedJS": []
+    },
+    {
+      "page": "deck",
+      "form": "mobile",
+      "fetchTime": "2026-10-13T08:37:25.918Z",
+      "scores": {
+        "performance": 97,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "tti": 2867.5168000000003,
+      "lcp": 1897.3960000000002,
+      "cls": 0,
+      "network": [
+        {
+          "url": "/assets/uma_data.json",
+          "transfer": 46003,
+          "decoded": 1012987
+        },
+        {
+          "url": "/assets/support_hints.json",
+          "transfer": 41175,
+          "decoded": 2261733
+        },
+        {
+          "url": "/assets/changelog.json",
+          "transfer": 0,
+          "decoded": 6817
+        }
+      ],
+      "unusedJS": []
+    },
+    {
+      "page": "deck",
+      "form": "desktop",
+      "fetchTime": "2026-10-13T08:38:51.887Z",
+      "scores": {
+        "performance": 97,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "tti": 843.3158500000002,
+      "lcp": 843.3158500000001,
+      "cls": 0,
+      "network": [
+        {
+          "url": "/assets/uma_data.json",
+          "transfer": 46003,
+          "decoded": 1012987
+        },
+        {
+          "url": "/assets/support_hints.json",
+          "transfer": 41175,
+          "decoded": 2261733
+        },
+        {
+          "url": "/assets/changelog.json",
+          "transfer": 0,
+          "decoded": 6817
+        }
+      ],
+      "unusedJS": []
+    },
+    {
+      "page": "optimizer",
+      "form": "mobile",
+      "fetchTime": "2026-10-13T08:37:34.006Z",
+      "scores": {
+        "performance": 98,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "tti": 3221.7239999999997,
+      "lcp": 1554.3173999999997,
+      "cls": 0,
+      "network": [
+        {
+          "url": "/assets/skills_core.json",
+          "transfer": 54664,
+          "decoded": 289334
+        },
+        {
+          "url": "/assets/uma_skills.csv",
+          "transfer": 175196,
+          "decoded": 174971
+        },
+        {
+          "url": "/assets/skills_all.json",
+          "transfer": 284621,
+          "decoded": 3994789
+        },
+        {
+          "url": "/assets/changelog.json",
+          "transfer": 0,
+          "decoded": 6817
+        }
+      ],
+      "unusedJS": [
+        {
+          "url": "/js/optimizer.js",
+          "wasted": 26408
+        }
+      ]
+    },
+    {
+      "page": "optimizer",
+      "form": "desktop",
+      "fetchTime": "2026-10-13T08:39:01.172Z",
+      "scores": {
+        "performance": 97,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "tti": 813.18985,
+      "lcp": 813.18985,
+      "cls": 0.014342975535899275,
+      "network": [
+        {
+          "url": "/assets/skills_core.json",
+          "transfer": 54664,
+          "decoded": 289334
+        },
+        {
+          "url": "/assets/uma_skills.csv",
+          "transfer": 175196,
+          "decoded": 174971
+        },
+        {
+          "url": "/assets/skills_all.json",
+          "transfer": 284621,
+          "decoded": 3994789
+        },
+        {
+          "url": "/assets/changelog.json",
+          "transfer": 0,
+          "decoded": 6817
+        }
+      ],
+      "unusedJS": [
+        {
+          "url": "/js/optimizer.js",
+          "wasted": 25781
+        }
+      ]
+    },
+    {
+      "page": "calculator",
+      "form": "mobile",
+      "fetchTime": "2026-10-13T08:37:46.603Z",
+      "scores": {
+        "performance": 98,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "tti": 2414.6464925,
+      "lcp": 1508.6698500000005,
+      "cls": 0,
+      "network": [
+        {
+          "url": "/assets/skills_all.json",
+          "transfer": 284621,
+          "decoded": 3994789
+        },
+        {
+          "url": "/assets/uma_skills.csv",
+          "transfer": 175196,
+          "decoded": 174971
+        },
+        {
+          "url": "/assets/changelog.json",
+          "transfer": 0,
+          "decoded": 6817
+        }
+      ],
+      "unusedJS": []
+    },
+    {
+      "page": "calculator",
+      "form": "desktop",
+      "fetchTime": "2026-10-13T08:39:14.261Z",
+      "scores": {
+        "performance": 96,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "tti": 928.6592499999999,
+      "lcp": 928.6592499999999,
+      "cls": 0.01947565543071161,
+      "network": [
+        {
+          "url": "/assets/skills_all.json",
+          "transfer": 284621,
+          "decoded": 3994789
+        },
+        {
+          "url": "/assets/uma_skills.csv",
+          "transfer": 175196,
+          "decoded": 174971
+        },
+        {
+          "url": "/assets/changelog.json",
+          "transfer": 0,
+          "decoded": 6817
+        }
+      ],
+      "unusedJS": []
+    },
+    {
+      "page": "token-planner",
+      "form": "mobile",
+      "fetchTime": "2026-10-13T08:37:58.136Z",
+      "scores": {
+        "performance": 97,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "tti": 2594.2139000000006,
+      "lcp": 2594.2139,
+      "cls": 0,
+      "network": [],
+      "unusedJS": []
+    },
+    {
+      "page": "token-planner",
+      "form": "desktop",
+      "fetchTime": "2026-10-13T08:39:26.378Z",
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "tti": 767.3425,
+      "lcp": 767.3425,
+      "cls": 0.003745318352059925,
+      "network": [],
+      "unusedJS": []
+    },
+    {
+      "page": "guides",
+      "form": "mobile",
+      "fetchTime": "2026-10-13T08:38:05.893Z",
+      "scores": {
+        "performance": 97,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "tti": 2563.7093999999997,
+      "lcp": 2563.7093999999997,
+      "cls": 0,
+      "network": [],
+      "unusedJS": []
+    },
+    {
+      "page": "guides",
+      "form": "desktop",
+      "fetchTime": "2026-10-13T08:39:34.565Z",
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "tti": 788.6672500000002,
+      "lcp": 788.6672500000001,
+      "cls": 0.003745318352059925,
+      "network": [],
+      "unusedJS": []
+    }
+  ],
+  "optimizer_repeat": {
+    "tti_ms": 3129.7645,
+    "performance": 0.97
+  },
+  "npm_audit_summary": {
+    "info": 0,
+    "low": 0,
+    "moderate": 22,
+    "high": 17,
+    "critical": 0,
+    "total": 39
+  }
+}

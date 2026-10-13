@@ -235,7 +235,14 @@
     const p = new URLSearchParams(location.search);
     const q = (p.get('hints') || '')
       .split(',')
-      .map(decodeURIComponent)
+      .map((value) => {
+        // Older shared links encode each comma-separated hint twice.
+        try {
+          return decodeURIComponent(value);
+        } catch {
+          return value;
+        }
+      })
       .map((s) => s.trim())
       .filter(Boolean);
     const mode = p.get('mode');
@@ -259,13 +266,21 @@
 
   // --- Rendering ---
   function renderChips() {
-    chips.innerHTML = selected
-      .map((h, i) => {
-        var displayName =
-          typeof window.getLocalizedSkillName === 'function' ? window.getLocalizedSkillName(h) : h;
-        return `<span class="chip">${displayName}<button aria-label="Remove ${h}" data-i="${i}">×</button></span>`;
-      })
-      .join('');
+    chips.replaceChildren();
+    selected.forEach((h, i) => {
+      var displayName =
+        typeof window.getLocalizedSkillName === 'function' ? window.getLocalizedSkillName(h) : h;
+      const chip = document.createElement('span');
+      chip.className = 'chip';
+      chip.append(document.createTextNode(displayName));
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.setAttribute('aria-label', `Remove ${h}`);
+      button.dataset.i = String(i);
+      button.textContent = '×';
+      chip.append(button);
+      chips.append(chip);
+    });
     chips.querySelectorAll('button[data-i]').forEach((btn) => {
       btn.addEventListener('click', () => {
         selected.splice(Number(btn.dataset.i), 1);
@@ -363,10 +378,13 @@
         })
         .join('') +
       (hasMore
-        ? `<button type="button" class="btn btn-secondary hints-load-more" aria-controls="results">${t('hints.showMore', {
-            shown: visibleCards.length,
-            total: list.length,
-          })}</button>`
+        ? `<button type="button" class="btn btn-secondary hints-load-more" aria-controls="results">${t(
+            'hints.showMore',
+            {
+              shown: visibleCards.length,
+              total: list.length,
+            }
+          )}</button>`
         : '');
 
     const loadMoreButton = results.querySelector('.hints-load-more');
@@ -374,10 +392,7 @@
 
     const revealMore = () => {
       disconnectLoadMoreObserver();
-      visibleResultCount = Math.min(
-        visibleResultCount + RESULT_CHUNK_SIZE,
-        renderedResults.length
-      );
+      visibleResultCount = Math.min(visibleResultCount + RESULT_CHUNK_SIZE, renderedResults.length);
       renderResults(renderedResults, false);
     };
     loadMoreButton.addEventListener('click', revealMore);

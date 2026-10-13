@@ -1,5 +1,5 @@
-fastapi
-Pillow
-python-multipart
-rapidfuzz
-uvicorn
+fastapi==0.136.1
+Pillow==12.3.0
+python-multipart==0.0.31
+rapidfuzz==3.13.0
+uvicorn==0.51.0

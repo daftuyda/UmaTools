@@ -578,7 +578,7 @@ function computeSkillRatios(selection, appropriateIds, appropriate2Ids) {
 }
 
 function applyRatios(baseValue, ratios) {
-  return ratios.reduce((acc, ratio) => Math.round(acc * ratio), baseValue);
+  return require('../../public/js/skill-data.js').aptitude(baseValue, ratios);
 }
 
 function buildSummaryValues(skill) {

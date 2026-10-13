@@ -1,0 +1,4 @@
+-r requirements.txt
+-r scripts/data/requirements-master.txt
+httpx==0.28.1
+ruff==0.15.1

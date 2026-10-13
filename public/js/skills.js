@@ -124,43 +124,7 @@
 
   // ── CSV Parser (same as optimizer.js) ──
   function parseCSV(text) {
-    var rows = [];
-    var i = 0,
-      field = '',
-      row = [],
-      inQuotes = false;
-    while (i < text.length) {
-      var c = text[i];
-      if (inQuotes) {
-        if (c === '"') {
-          if (text[i + 1] === '"') {
-            field += '"';
-            i++;
-          } else inQuotes = false;
-        } else {
-          field += c;
-        }
-      } else {
-        if (c === '"') inQuotes = true;
-        else if (c === ',') {
-          row.push(field);
-          field = '';
-        } else if (c === '\r') {
-          /* skip */
-        } else if (c === '\n') {
-          row.push(field);
-          rows.push(row);
-          row = [];
-          field = '';
-        } else field += c;
-      }
-      i++;
-    }
-    if (field.length || row.length) {
-      row.push(field);
-      rows.push(row);
-    }
-    return rows;
+    return window.SkillData.parseCSV(text);
   }
 
   function normalizeOfficialName(name) {
@@ -185,12 +149,12 @@
 
   // ── Load JSON cost data + build official EN name set ──
   async function loadCostJSON() {
+    const requestedLanguage = getSkillLanguage();
     var urls = ['/assets/skills_all.json', './assets/skills_all.json'];
     for (var u = 0; u < urls.length; u++) {
       try {
-        var res = await fetch(urls[u], { cache: 'force-cache' });
-        if (!res.ok) continue;
-        var list = await res.json();
+        var list = await window.SkillData.loadJSON(urls[u]);
+        if (requestedLanguage !== getSkillLanguage()) return false;
         if (!Array.isArray(list) || !list.length) continue;
         fullSkillData = list;
         window.__skillsAllData = list;
@@ -279,18 +243,36 @@
   }
 
   // ── Load CSV skills ──
-  async function loadSkillsCSV() {
+  function preloadSkillsCSV() {
+    var lang = getSkillLanguage();
+    return fetch('/assets/uma_skills' + (lang === 'jp' ? '_jp' : '') + '.csv', {
+      cache: 'force-cache',
+    })
+      .then(async function (response) {
+        return response.ok ? { lang, text: await response.text() } : null;
+      })
+      .catch(function () {
+        return null;
+      });
+  }
+  async function loadSkillsCSV(preloaded = null) {
     var lang = getSkillLanguage();
     var candidates =
       lang === 'jp'
-        ? ['/assets/uma_skills_jp.csv', './assets/uma_skills_jp.csv', '/assets/uma_skills.csv']
+        ? ['/assets/uma_skills_jp.csv', './assets/uma_skills_jp.csv']
         : ['/assets/uma_skills.csv', './assets/uma_skills.csv'];
     csvSkillMetaByName = new Map();
     for (var c = 0; c < candidates.length; c++) {
       try {
-        var res = await fetch(candidates[c], { cache: 'force-cache' });
-        if (!res.ok) continue;
-        var text = await res.text();
+        var cached = c === 0 && preloaded ? await preloaded : null;
+        var raw = cached && cached.lang === lang ? cached.text : null;
+        if (!raw) {
+          var res = await fetch(candidates[c], { cache: 'force-cache' });
+          if (!res.ok) continue;
+          raw = await res.text();
+        }
+        var text = await window.SkillData.overlayCSV(raw, lang === 'jp' ? 'jp' : 'global');
+        if (lang !== getSkillLanguage()) return false;
         rawCSVText = text;
         buildCSVSkillMetaIndex(text);
         if (lang === 'jp' && initializeCategoriesFromGameTora()) return true;
@@ -482,6 +464,7 @@
   }
 
   function getFallbackScore(entry, category) {
+    if (Number.isFinite(entry?.grade_value)) return entry.grade_value;
     if (category === 'ius') return 180;
     if (entry && typeof entry.cost === 'number') return entry.cost;
     return 0;
@@ -1041,8 +1024,9 @@
     }
 
     // Load data
+    var csvPreload = preloadSkillsCSV();
     await loadCostJSON();
-    await loadSkillsCSV();
+    await loadSkillsCSV(csvPreload);
 
     renderFilters();
     sortCol = 'efficiency';
@@ -1070,7 +1054,7 @@
     }
 
     // React to server changes
-    window.addEventListener('umatools:server-change', async function () {
+    window.SkillData.onServerChange(async function () {
       if (virtualScroll) {
         virtualScroll.destroy();
         virtualScroll = null;

@@ -61,7 +61,6 @@ function stats(gray) {
   return { mean, std: Math.sqrt(v2) };
 }
 
-
 async function _decodeToCanvasFromBlob(blob) {
   try {
     const bmp = await createImageBitmap(blob);
@@ -189,7 +188,12 @@ function loadScript(src) {
 async function ensureTesseract() {
   if (window.Tesseract) return window.Tesseract;
   if (!tesseractReady) {
-    tesseractReady = loadScript(TESSERACT_SRC).then(() => window.Tesseract);
+    tesseractReady = loadScript(TESSERACT_SRC)
+      .then(() => window.Tesseract)
+      .catch((error) => {
+        tesseractReady = null;
+        throw error;
+      });
   }
   return tesseractReady;
 }

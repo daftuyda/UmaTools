@@ -203,7 +203,7 @@
       'optimizer.skillScore': 'Skill Score',
       'optimizer.uniqueBonus': 'Unique Bonus',
       'optimizer.skillsToBuy': 'Skills to Buy',
-      'optimizer.bestScore': 'Best Score:',
+      'optimizer.bestScore': 'Rating Score:',
       'optimizer.usedPoints': 'Used Points:',
       'optimizer.totalPoints': 'Total Points:',
       'optimizer.remaining': 'Remaining:',
@@ -654,6 +654,8 @@
       'optimizer.noCandidates': 'No candidate skills were provided.',
       'optimizer.noMatchTargets': 'No skills match the selected Team Trials targets/aptitudes.',
       'optimizer.optimizationFailed': 'Optimization failed for the current constraints.',
+      'optimizer.problemTooLarge':
+        'This build is too large to optimize safely. Reduce the candidate list or check custom skill costs.',
 
       // ── Events/OCR (dynamic) ──
       'events.uiFoundReading': 'UI found ({score}%). Reading title\u2026',
@@ -950,7 +952,7 @@
       'optimizer.skillScore': 'スキルスコア',
       'optimizer.uniqueBonus': '固有ボーナス',
       'optimizer.skillsToBuy': '取得スキル',
-      'optimizer.bestScore': 'ベストスコア:',
+      'optimizer.bestScore': '評価点:',
       'optimizer.usedPoints': '使用ポイント:',
       'optimizer.totalPoints': '合計ポイント:',
       'optimizer.remaining': '残りポイント:',
@@ -1397,6 +1399,8 @@
       'optimizer.noMatchTargets':
         '選択したチームレースターゲット/適性に一致するスキルがありません。',
       'optimizer.optimizationFailed': '現在の条件で最適化に失敗しました。',
+      'optimizer.problemTooLarge':
+        '計算量が大きすぎます。候補スキルを減らすか、入力したスキルコストを確認してください。',
 
       // ── Events/OCR (dynamic) ──
       'events.uiFoundReading': 'UI検出（{score}%）。タイトル読み取り中\u2026',

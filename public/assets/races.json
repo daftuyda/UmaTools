@@ -2,7 +2,7 @@
   {
     "id": 305001,
     "race_id": 3050,
-    "name": "キーンランドカップ",
+    "name": "Keeneland Cup",
     "name_en": "Keeneland Cup",
     "venue": "札幌",
     "track_id": 10001,
@@ -35,7 +35,7 @@
   {
     "id": 407201,
     "race_id": 4072,
-    "name": "UHB賞",
+    "name": "UHB Sho",
     "name_en": "UHB Sho",
     "venue": "札幌",
     "track_id": 10001,
@@ -68,7 +68,7 @@
   {
     "id": 408301,
     "race_id": 4083,
-    "name": "すずらん賞",
+    "name": "Suzuran Sho",
     "name_en": "Suzuran Sho",
     "venue": "札幌",
     "track_id": 10001,
@@ -96,7 +96,7 @@
   {
     "id": 407701,
     "race_id": 4077,
-    "name": "クローバー賞",
+    "name": "Clover Sho",
     "name_en": "Clover Sho",
     "venue": "札幌",
     "track_id": 10001,
@@ -124,7 +124,7 @@
   {
     "id": 304701,
     "race_id": 3047,
-    "name": "エルムステークス",
+    "name": "Elm Stakes",
     "name_en": "Elm Stakes",
     "venue": "札幌",
     "track_id": 10001,
@@ -157,7 +157,7 @@
   {
     "id": 304301,
     "race_id": 3043,
-    "name": "クイーンステークス",
+    "name": "Queen Stakes",
     "name_en": "Queen Stakes",
     "venue": "札幌",
     "track_id": 10001,
@@ -190,7 +190,7 @@
   {
     "id": 305101,
     "race_id": 3051,
-    "name": "札幌ジュニアステークス",
+    "name": "Sapporo Junior Stakes",
     "name_en": "Sapporo Junior Stakes",
     "venue": "札幌",
     "track_id": 10001,
@@ -218,7 +218,7 @@
   {
     "id": 407501,
     "race_id": 4075,
-    "name": "コスモス賞",
+    "name": "Cosmos Sho",
     "name_en": "Cosmos Sho",
     "venue": "札幌",
     "track_id": 10001,
@@ -246,7 +246,7 @@
   {
     "id": 202001,
     "race_id": 2020,
-    "name": "札幌記念",
+    "name": "Sapporo Kinen",
     "name_en": "Sapporo Kinen",
     "venue": "札幌",
     "track_id": 10001,
@@ -279,7 +279,7 @@
   {
     "id": 407101,
     "race_id": 4071,
-    "name": "札幌日経オープン",
+    "name": "Sapporo Nikkei Open",
     "name_en": "Sapporo Nikkei Open",
     "venue": "札幌",
     "track_id": 10001,
@@ -312,7 +312,7 @@
   {
     "id": 408201,
     "race_id": 4082,
-    "name": "丹頂ステークス",
+    "name": "Tancho Stakes",
     "name_en": "Tancho Stakes",
     "venue": "札幌",
     "track_id": 10001,
@@ -345,7 +345,7 @@
   {
     "id": 303401,
     "race_id": 3034,
-    "name": "函館スプリントステークス",
+    "name": "Hakodate Sprint Stakes",
     "name_en": "Hakodate Sprint Stakes",
     "venue": "函館",
     "track_id": 10002,
@@ -383,7 +383,7 @@
   {
     "id": 304101,
     "race_id": 3041,
-    "name": "函館ジュニアステークス",
+    "name": "Hakodate Junior Stakes",
     "name_en": "Hakodate Junior Stakes",
     "venue": "函館",
     "track_id": 10002,
@@ -416,7 +416,7 @@
   {
     "id": 406201,
     "race_id": 4062,
-    "name": "大沼ステークス",
+    "name": "Onuma Stakes",
     "name_en": "Onuma Stakes",
     "venue": "函館",
     "track_id": 10002,
@@ -459,7 +459,7 @@
   {
     "id": 406501,
     "race_id": 4065,
-    "name": "マリーンステークス",
+    "name": "Marine Stakes",
     "name_en": "Marine Stakes",
     "venue": "函館",
     "track_id": 10002,
@@ -502,7 +502,7 @@
   {
     "id": 406401,
     "race_id": 4064,
-    "name": "巴賞",
+    "name": "Tomoe Sho",
     "name_en": "Tomoe Sho",
     "venue": "函館",
     "track_id": 10002,
@@ -545,7 +545,7 @@
   {
     "id": 303901,
     "race_id": 3039,
-    "name": "函館記念",
+    "name": "Hakodate Kinen",
     "name_en": "Hakodate Kinen",
     "venue": "函館",
     "track_id": 10002,
@@ -588,7 +588,7 @@
   {
     "id": 304201,
     "race_id": 3042,
-    "name": "アイビスサマーダッシュ",
+    "name": "Ibis Summer Dash",
     "name_en": "Ibis Summer Dash",
     "venue": "福島",
     "track_id": 10003,
@@ -631,7 +631,7 @@
   {
     "id": 405501,
     "race_id": 4055,
-    "name": "韋駄天ステークス",
+    "name": "Idaten Stakes",
     "name_en": "Idaten Stakes",
     "venue": "福島",
     "track_id": 10003,
@@ -669,7 +669,7 @@
   {
     "id": 410101,
     "race_id": 4101,
-    "name": "ルミエールオータムダッシュ",
+    "name": "Lumiere Autumn Dash",
     "name_en": "Lumiere Autumn Dash",
     "venue": "福島",
     "track_id": 10003,
@@ -712,7 +712,7 @@
   {
     "id": 103201,
     "race_id": 1032,
-    "name": "スプリンターズステークス",
+    "name": "Sprinters Stakes",
     "name_en": "Sprinters Stakes",
     "venue": "福島",
     "track_id": 10003,
@@ -734,7 +734,7 @@
   {
     "id": 407601,
     "race_id": 4076,
-    "name": "NST賞",
+    "name": "NST Sho",
     "name_en": "NST Sho",
     "venue": "福島",
     "track_id": 10003,
@@ -767,7 +767,7 @@
   {
     "id": 407001,
     "race_id": 4070,
-    "name": "ダリア賞",
+    "name": "Dahlia Sho",
     "name_en": "Dahlia Sho",
     "venue": "福島",
     "track_id": 10003,
@@ -795,7 +795,7 @@
   {
     "id": 408101,
     "race_id": 4081,
-    "name": "朱鷺ステークス",
+    "name": "Toki Stakes",
     "name_en": "Toki Stakes",
     "venue": "福島",
     "track_id": 10003,
@@ -828,7 +828,7 @@
   {
     "id": 409501,
     "race_id": 4095,
-    "name": "信越ステークス",
+    "name": "Shinetsu Stakes",
     "name_en": "Shinetsu Stakes",
     "venue": "福島",
     "track_id": 10003,
@@ -861,7 +861,7 @@
   {
     "id": 304601,
     "race_id": 3046,
-    "name": "関屋記念",
+    "name": "Sekiya Kinen",
     "name_en": "Sekiya Kinen",
     "venue": "福島",
     "track_id": 10003,
@@ -904,7 +904,7 @@
   {
     "id": 304901,
     "race_id": 3049,
-    "name": "新潟ジュニアステークス",
+    "name": "Niigata Junior Stakes",
     "name_en": "Niigata Junior Stakes",
     "venue": "福島",
     "track_id": 10003,
@@ -942,7 +942,7 @@
   {
     "id": 404401,
     "race_id": 4044,
-    "name": "谷川岳ステークス",
+    "name": "Tanigawadake Stakes",
     "name_en": "Tanigawadake Stakes",
     "venue": "福島",
     "track_id": 10003,
@@ -980,7 +980,7 @@
   {
     "id": 304501,
     "race_id": 3045,
-    "name": "レパードステークス",
+    "name": "Leopard Stakes",
     "name_en": "Leopard Stakes",
     "venue": "福島",
     "track_id": 10003,
@@ -1008,7 +1008,7 @@
   {
     "id": 407901,
     "race_id": 4079,
-    "name": "BSN賞",
+    "name": "BSN Sho",
     "name_en": "BSN Sho",
     "venue": "福島",
     "track_id": 10003,
@@ -1041,7 +1041,7 @@
   {
     "id": 412201,
     "race_id": 4122,
-    "name": "関越ステークス",
+    "name": "Kanetsu Stakes",
     "name_en": "Kanetsu Stakes",
     "venue": "福島",
     "track_id": 10003,
@@ -1084,7 +1084,7 @@
   {
     "id": 302801,
     "race_id": 3028,
-    "name": "新潟大賞典",
+    "name": "Niigata Daishoten",
     "name_en": "Niigata Daishoten",
     "venue": "福島",
     "track_id": 10003,
@@ -1122,7 +1122,7 @@
   {
     "id": 305301,
     "race_id": 3053,
-    "name": "新潟記念",
+    "name": "Niigata Kinen",
     "name_en": "Niigata Kinen",
     "venue": "福島",
     "track_id": 10003,
@@ -1165,7 +1165,7 @@
   {
     "id": 406901,
     "race_id": 4069,
-    "name": "福島テレビオープン",
+    "name": "Fukushima TV Open",
     "name_en": "Fukushima TV Open",
     "venue": "新潟",
     "track_id": 10004,
@@ -1203,7 +1203,7 @@
   {
     "id": 410301,
     "race_id": 4103,
-    "name": "福島ジュニアステークス",
+    "name": "Fukushima Junior Stakes",
     "name_en": "Fukushima Junior Stakes",
     "venue": "新潟",
     "track_id": 10004,
@@ -1236,7 +1236,7 @@
   {
     "id": 410601,
     "race_id": 4106,
-    "name": "福島民友カップ",
+    "name": "Fukushima Minyu Cup",
     "name_en": "Fukushima Minyu Cup",
     "venue": "新潟",
     "track_id": 10004,
@@ -1274,7 +1274,7 @@
   {
     "id": 411901,
     "race_id": 4119,
-    "name": "吾妻小富士ステークス",
+    "name": "Azumakofuji Stakes",
     "name_en": "Azumakofuji Stakes",
     "venue": "新潟",
     "track_id": 10004,
@@ -1307,7 +1307,7 @@
   {
     "id": 302701,
     "race_id": 3027,
-    "name": "福島ウマ娘ステークス",
+    "name": "Fukushima Umamusume Stakes",
     "name_en": "Fukushima Umamusume Stakes",
     "venue": "新潟",
     "track_id": 10004,
@@ -1340,7 +1340,7 @@
   {
     "id": 303601,
     "race_id": 3036,
-    "name": "ラジオNIKKEI賞",
+    "name": "Radio Nikkei Sho",
     "name_en": "Radio Nikkei Sho",
     "venue": "新潟",
     "track_id": 10004,
@@ -1373,7 +1373,7 @@
   {
     "id": 450801,
     "race_id": 4508,
-    "name": "きんもくせい特別",
+    "name": "Kimmokusei Tokubetsu",
     "name_en": "Kimmokusei Tokubetsu",
     "venue": "新潟",
     "track_id": 10004,
@@ -1406,7 +1406,7 @@
   {
     "id": 303801,
     "race_id": 3038,
-    "name": "七夕賞",
+    "name": "Tanabata Sho",
     "name_en": "Tanabata Sho",
     "venue": "新潟",
     "track_id": 10004,
@@ -1444,7 +1444,7 @@
   {
     "id": 306301,
     "race_id": 3063,
-    "name": "福島記念",
+    "name": "Fukushima Kinen",
     "name_en": "Fukushima Kinen",
     "venue": "新潟",
     "track_id": 10004,
@@ -1482,7 +1482,7 @@
   {
     "id": 403801,
     "race_id": 4038,
-    "name": "福島民報杯",
+    "name": "Fukushima Mimpo Hai",
     "name_en": "Fukushima Mimpo Hai",
     "venue": "新潟",
     "track_id": 10004,
@@ -1515,7 +1515,7 @@
   {
     "id": 101301,
     "race_id": 1013,
-    "name": "スプリンターズステークス",
+    "name": "Sprinters Stakes",
     "name_en": "Sprinters Stakes",
     "venue": "中山",
     "track_id": 10005,
@@ -1558,7 +1558,7 @@
   {
     "id": 301901,
     "race_id": 3019,
-    "name": "オーシャンステークス",
+    "name": "Ocean Stakes",
     "name_en": "Ocean Stakes",
     "venue": "中山",
     "track_id": 10005,
@@ -1596,7 +1596,7 @@
   {
     "id": 306901,
     "race_id": 3069,
-    "name": "カペラステークス",
+    "name": "Capella Stakes",
     "name_en": "Capella Stakes",
     "venue": "中山",
     "track_id": 10005,
@@ -1639,7 +1639,7 @@
   {
     "id": 400501,
     "race_id": 4005,
-    "name": "ジャニュアリーステークス",
+    "name": "January Stakes",
     "name_en": "January Stakes",
     "venue": "中山",
     "track_id": 10005,
@@ -1677,7 +1677,7 @@
   {
     "id": 401001,
     "race_id": 4010,
-    "name": "カーバンクルステークス",
+    "name": "Carbuncle Stakes",
     "name_en": "Carbuncle Stakes",
     "venue": "中山",
     "track_id": 10005,
@@ -1715,7 +1715,7 @@
   {
     "id": 402801,
     "race_id": 4028,
-    "name": "千葉ステークス",
+    "name": "Chiba Stakes",
     "name_en": "Chiba Stakes",
     "venue": "中山",
     "track_id": 10005,
@@ -1753,7 +1753,7 @@
   {
     "id": 403601,
     "race_id": 4036,
-    "name": "京葉ステークス",
+    "name": "Keiyo Stakes",
     "name_en": "Keiyo Stakes",
     "venue": "中山",
     "track_id": 10005,
@@ -1791,7 +1791,7 @@
   {
     "id": 403701,
     "race_id": 4037,
-    "name": "春雷ステークス",
+    "name": "Shunrai Stakes",
     "name_en": "Shunrai Stakes",
     "venue": "中山",
     "track_id": 10005,
@@ -1829,7 +1829,7 @@
   {
     "id": 408901,
     "race_id": 4089,
-    "name": "カンナステークス",
+    "name": "Canna Stakes",
     "name_en": "Canna Stakes",
     "venue": "中山",
     "track_id": 10005,
@@ -1867,7 +1867,7 @@
   {
     "id": 410901,
     "race_id": 4109,
-    "name": "ラピスラズリステークス",
+    "name": "Lapis Lazuli Stakes",
     "name_en": "Lapis Lazuli Stakes",
     "venue": "中山",
     "track_id": 10005,
@@ -1910,7 +1910,7 @@
   {
     "id": 411401,
     "race_id": 4114,
-    "name": "クリスマスローズステークス",
+    "name": "Christmas Rose Stakes",
     "name_en": "Christmas Rose Stakes",
     "venue": "中山",
     "track_id": 10005,
@@ -1948,7 +1948,7 @@
   {
     "id": 412301,
     "race_id": 4123,
-    "name": "ながつきステークス",
+    "name": "Nagatsuki Stakes",
     "name_en": "Nagatsuki Stakes",
     "venue": "中山",
     "track_id": 10005,
@@ -1991,7 +1991,7 @@
   {
     "id": 452001,
     "race_id": 4520,
-    "name": "黒松賞",
+    "name": "Kuromatsu Sho",
     "name_en": "Kuromatsu Sho",
     "venue": "中山",
     "track_id": 10005,
@@ -2029,7 +2029,7 @@
   {
     "id": 201301,
     "race_id": 2013,
-    "name": "ニュージーランドトロフィー",
+    "name": "New Zealand Trophy",
     "name_en": "New Zealand Trophy",
     "venue": "中山",
     "track_id": 10005,
@@ -2067,7 +2067,7 @@
   {
     "id": 300401,
     "race_id": 3004,
-    "name": "フェアリーステークス",
+    "name": "Fairy Stakes",
     "name_en": "Fairy Stakes",
     "venue": "中山",
     "track_id": 10005,
@@ -2105,7 +2105,7 @@
   {
     "id": 302501,
     "race_id": 3025,
-    "name": "ダービー卿チャレンジトロフィー",
+    "name": "Lord Derby Challenge Trophy",
     "name_en": "Lord Derby Challenge Trophy",
     "venue": "中山",
     "track_id": 10005,
@@ -2143,7 +2143,7 @@
   {
     "id": 305501,
     "race_id": 3055,
-    "name": "京成杯オータムハンデキャップ",
+    "name": "Keisei Hai Autumn Handicap",
     "name_en": "Keisei Hai Autumn Handicap",
     "venue": "中山",
     "track_id": 10005,
@@ -2186,7 +2186,7 @@
   {
     "id": 307001,
     "race_id": 3070,
-    "name": "ターコイズステークス",
+    "name": "Turquoise Stakes",
     "name_en": "Turquoise Stakes",
     "venue": "中山",
     "track_id": 10005,
@@ -2229,7 +2229,7 @@
   {
     "id": 400201,
     "race_id": 4002,
-    "name": "ジュニアカップ",
+    "name": "Junior Cup",
     "name_en": "Junior Cup",
     "venue": "中山",
     "track_id": 10005,
@@ -2267,7 +2267,7 @@
   {
     "id": 400601,
     "race_id": 4006,
-    "name": "ニューイヤーステークス",
+    "name": "New Year Stakes",
     "name_en": "New Year Stakes",
     "venue": "中山",
     "track_id": 10005,
@@ -2305,7 +2305,7 @@
   {
     "id": 402401,
     "race_id": 4024,
-    "name": "アネモネステークス",
+    "name": "Anemone Stakes",
     "name_en": "Anemone Stakes",
     "venue": "中山",
     "track_id": 10005,
@@ -2343,7 +2343,7 @@
   {
     "id": 402601,
     "race_id": 4026,
-    "name": "東風ステークス",
+    "name": "Kochi Stakes",
     "name_en": "Kochi Stakes",
     "venue": "中山",
     "track_id": 10005,
@@ -2381,7 +2381,7 @@
   {
     "id": 450101,
     "race_id": 4501,
-    "name": "アスター賞",
+    "name": "Aster Sho",
     "name_en": "Aster Sho",
     "venue": "中山",
     "track_id": 10005,
@@ -2419,7 +2419,7 @@
   {
     "id": 450201,
     "race_id": 4502,
-    "name": "サフラン賞",
+    "name": "Saffron Sho",
     "name_en": "Saffron Sho",
     "venue": "中山",
     "track_id": 10005,
@@ -2457,7 +2457,7 @@
   {
     "id": 452301,
     "race_id": 4523,
-    "name": "ひいらぎ賞",
+    "name": "Hiiragi Sho",
     "name_en": "Hiiragi Sho",
     "venue": "中山",
     "track_id": 10005,
@@ -2495,7 +2495,7 @@
   {
     "id": 200501,
     "race_id": 2005,
-    "name": "中山記念",
+    "name": "Nakayama Kinen",
     "name_en": "Nakayama Kinen",
     "venue": "中山",
     "track_id": 10005,
@@ -2541,7 +2541,7 @@
   {
     "id": 201001,
     "race_id": 2010,
-    "name": "スプリングステークス",
+    "name": "Spring Stakes",
     "name_en": "Spring Stakes",
     "venue": "中山",
     "track_id": 10005,
@@ -2587,7 +2587,7 @@
   {
     "id": 203501,
     "race_id": 2035,
-    "name": "スプリングステークス",
+    "name": "Spring Stakes",
     "name_en": "Spring Stakes",
     "venue": "中山",
     "track_id": 10005,
@@ -2627,7 +2627,7 @@
   {
     "id": 302001,
     "race_id": 3020,
-    "name": "中山ウマ娘ステークス",
+    "name": "Nakayama Umamusume Stakes",
     "name_en": "Nakayama Umamusume Stakes",
     "venue": "中山",
     "track_id": 10005,
@@ -2673,7 +2673,7 @@
   {
     "id": 302201,
     "race_id": 3022,
-    "name": "フラワーカップ",
+    "name": "Flower Cup",
     "name_en": "Flower Cup",
     "venue": "中山",
     "track_id": 10005,
@@ -2719,7 +2719,7 @@
   {
     "id": 302401,
     "race_id": 3024,
-    "name": "マーチステークス",
+    "name": "March Stakes",
     "name_en": "March Stakes",
     "venue": "中山",
     "track_id": 10005,
@@ -2765,7 +2765,7 @@
   {
     "id": 400401,
     "race_id": 4004,
-    "name": "ポルックスステークス",
+    "name": "Pollux Stakes",
     "name_en": "Pollux Stakes",
     "venue": "中山",
     "track_id": 10005,
@@ -2811,7 +2811,7 @@
   {
     "id": 401901,
     "race_id": 4019,
-    "name": "総武ステークス",
+    "name": "Sobu Stakes",
     "name_en": "Sobu Stakes",
     "venue": "中山",
     "track_id": 10005,
@@ -2857,7 +2857,7 @@
   {
     "id": 403301,
     "race_id": 4033,
-    "name": "伏竜ステークス",
+    "name": "Fukuryu Stakes",
     "name_en": "Fukuryu Stakes",
     "venue": "中山",
     "track_id": 10005,
@@ -2903,7 +2903,7 @@
   {
     "id": 408601,
     "race_id": 4086,
-    "name": "ラジオ日本賞",
+    "name": "Radio Nippon Sho",
     "name_en": "Radio Nippon Sho",
     "venue": "中山",
     "track_id": 10005,
@@ -2954,7 +2954,7 @@
   {
     "id": 411001,
     "race_id": 4110,
-    "name": "師走ステークス",
+    "name": "Shiwasu Stakes",
     "name_en": "Shiwasu Stakes",
     "venue": "中山",
     "track_id": 10005,
@@ -3005,7 +3005,7 @@
   {
     "id": 411301,
     "race_id": 4113,
-    "name": "ディセンバーステークス",
+    "name": "December Stakes",
     "name_en": "December Stakes",
     "venue": "中山",
     "track_id": 10005,
@@ -3056,7 +3056,7 @@
   {
     "id": 100501,
     "race_id": 1005,
-    "name": "皐月賞",
+    "name": "Satsuki Sho",
     "name_en": "Satsuki Sho",
     "venue": "中山",
     "track_id": 10005,
@@ -3102,7 +3102,7 @@
   {
     "id": 102401,
     "race_id": 1024,
-    "name": "ホープフルステークス",
+    "name": "Hopeful Stakes",
     "name_en": "Hopeful Stakes",
     "venue": "中山",
     "track_id": 10005,
@@ -3148,7 +3148,7 @@
   {
     "id": 102901,
     "race_id": 1029,
-    "name": "天皇賞（秋）",
+    "name": "Tenno Sho (Autumn)",
     "name_en": "Tenno Sho (Autumn)",
     "venue": "中山",
     "track_id": 10005,
@@ -3188,7 +3188,7 @@
   {
     "id": 200601,
     "race_id": 2006,
-    "name": "弥生賞",
+    "name": "Yayoi Sho",
     "name_en": "Yayoi Sho",
     "venue": "中山",
     "track_id": 10005,
@@ -3234,7 +3234,7 @@
   {
     "id": 300201,
     "race_id": 3002,
-    "name": "中山金杯",
+    "name": "Nakayama Kimpai",
     "name_en": "Nakayama Kimpai",
     "venue": "中山",
     "track_id": 10005,
@@ -3280,7 +3280,7 @@
   {
     "id": 300601,
     "race_id": 3006,
-    "name": "京成杯",
+    "name": "Keisei Hai",
     "name_en": "Keisei Hai",
     "venue": "中山",
     "track_id": 10005,
@@ -3326,7 +3326,7 @@
   {
     "id": 305401,
     "race_id": 3054,
-    "name": "紫苑ステークス",
+    "name": "Shion Stakes",
     "name_en": "Shion Stakes",
     "venue": "中山",
     "track_id": 10005,
@@ -3372,7 +3372,7 @@
   {
     "id": 408801,
     "race_id": 4088,
-    "name": "芙蓉ステークス",
+    "name": "Fuyo Stakes",
     "name_en": "Fuyo Stakes",
     "venue": "中山",
     "track_id": 10005,
@@ -3418,7 +3418,7 @@
   {
     "id": 451701,
     "race_id": 4517,
-    "name": "葉牡丹賞",
+    "name": "Habotan Sho",
     "name_en": "Habotan Sho",
     "venue": "中山",
     "track_id": 10005,
@@ -3464,7 +3464,7 @@
   {
     "id": 103101,
     "race_id": 1031,
-    "name": "ジャパンカップ",
+    "name": "Japan Cup",
     "name_en": "Japan Cup",
     "venue": "中山",
     "track_id": 10005,
@@ -3504,7 +3504,7 @@
   {
     "id": 200301,
     "race_id": 2003,
-    "name": "アメリカJCC",
+    "name": "American JCC",
     "name_en": "American JCC",
     "venue": "中山",
     "track_id": 10005,
@@ -3550,7 +3550,7 @@
   {
     "id": 202301,
     "race_id": 2023,
-    "name": "セントライト記念",
+    "name": "St. Lite Kinen",
     "name_en": "St. Lite Kinen",
     "venue": "中山",
     "track_id": 10005,
@@ -3596,7 +3596,7 @@
   {
     "id": 202501,
     "race_id": 2025,
-    "name": "オールカマー",
+    "name": "All Comers",
     "name_en": "All Comers",
     "venue": "中山",
     "track_id": 10005,
@@ -3647,7 +3647,7 @@
   {
     "id": 102301,
     "race_id": 1023,
-    "name": "有馬記念",
+    "name": "Arima Kinen",
     "name_en": "Arima Kinen",
     "venue": "中山",
     "track_id": 10005,
@@ -3698,7 +3698,7 @@
   {
     "id": 201101,
     "race_id": 2011,
-    "name": "日経賞",
+    "name": "Nikkei Sho",
     "name_en": "Nikkei Sho",
     "venue": "中山",
     "track_id": 10005,
@@ -3744,7 +3744,7 @@
   {
     "id": 701901,
     "race_id": 7019,
-    "name": "有馬記念",
+    "name": "Arima Kinen",
     "name_en": "Arima Kinen",
     "venue": "中山",
     "track_id": 10005,
@@ -3784,7 +3784,7 @@
   {
     "id": 702301,
     "race_id": 7023,
-    "name": "有馬記念",
+    "name": "Arima Kinen",
     "name_en": "Arima Kinen",
     "venue": "中山",
     "track_id": 10005,
@@ -3824,7 +3824,7 @@
   {
     "id": 203301,
     "race_id": 2033,
-    "name": "ステイヤーズステークス",
+    "name": "Stayers Stakes",
     "name_en": "Stayers Stakes",
     "venue": "中山",
     "track_id": 10005,
@@ -3887,7 +3887,7 @@
   {
     "id": 201801,
     "race_id": 2018,
-    "name": "京王杯スプリングカップ",
+    "name": "Keio Hai Spring Cup",
     "name_en": "Keio Hai Spring Cup",
     "venue": "東京",
     "track_id": 10006,
@@ -3929,7 +3929,7 @@
   {
     "id": 203001,
     "race_id": 2030,
-    "name": "京王杯ジュニアステークス",
+    "name": "Keio Hai Junior Stakes",
     "name_en": "Keio Hai Junior Stakes",
     "venue": "東京",
     "track_id": 10006,
@@ -3971,7 +3971,7 @@
   {
     "id": 300801,
     "race_id": 3008,
-    "name": "根岸ステークス",
+    "name": "Negishi Stakes",
     "name_en": "Negishi Stakes",
     "venue": "東京",
     "track_id": 10006,
@@ -4009,7 +4009,7 @@
   {
     "id": 401201,
     "race_id": 4012,
-    "name": "クロッカスステークス",
+    "name": "Crocus Stakes",
     "name_en": "Crocus Stakes",
     "venue": "東京",
     "track_id": 10006,
@@ -4051,7 +4051,7 @@
   {
     "id": 401701,
     "race_id": 4017,
-    "name": "バレンタインステークス",
+    "name": "Valentine Stakes",
     "name_en": "Valentine Stakes",
     "venue": "東京",
     "track_id": 10006,
@@ -4089,7 +4089,7 @@
   {
     "id": 405701,
     "race_id": 4057,
-    "name": "欅ステークス",
+    "name": "Keyaki Stakes",
     "name_en": "Keyaki Stakes",
     "venue": "東京",
     "track_id": 10006,
@@ -4127,7 +4127,7 @@
   {
     "id": 406301,
     "race_id": 4063,
-    "name": "パラダイスステークス",
+    "name": "Paradise Stakes",
     "name_en": "Paradise Stakes",
     "venue": "東京",
     "track_id": 10006,
@@ -4174,7 +4174,7 @@
   {
     "id": 409201,
     "race_id": 4092,
-    "name": "グリーンチャンネルカップ",
+    "name": "Green Channel Cup",
     "name_en": "Green Channel Cup",
     "venue": "東京",
     "track_id": 10006,
@@ -4217,7 +4217,7 @@
   {
     "id": 410201,
     "race_id": 4102,
-    "name": "オーロカップ",
+    "name": "Oro Cup",
     "name_en": "Oro Cup",
     "venue": "東京",
     "track_id": 10006,
@@ -4264,7 +4264,7 @@
   {
     "id": 410501,
     "race_id": 4105,
-    "name": "霜月ステークス",
+    "name": "Shimotsuki Stakes",
     "name_en": "Shimotsuki Stakes",
     "venue": "東京",
     "track_id": 10006,
@@ -4307,7 +4307,7 @@
   {
     "id": 450901,
     "race_id": 4509,
-    "name": "オキザリス賞",
+    "name": "Oxalis Sho",
     "name_en": "Oxalis Sho",
     "venue": "東京",
     "track_id": 10006,
@@ -4345,7 +4345,7 @@
   {
     "id": 100101,
     "race_id": 1001,
-    "name": "フェブラリーステークス",
+    "name": "February Stakes",
     "name_en": "February Stakes",
     "venue": "東京",
     "track_id": 10006,
@@ -4383,7 +4383,7 @@
   {
     "id": 100701,
     "race_id": 1007,
-    "name": "NHKマイルカップ",
+    "name": "NHK Mile Cup",
     "name_en": "NHK Mile Cup",
     "venue": "東京",
     "track_id": 10006,
@@ -4425,7 +4425,7 @@
   {
     "id": 100801,
     "race_id": 1008,
-    "name": "ヴィクトリアマイル",
+    "name": "Victoria Mile",
     "name_en": "Victoria Mile",
     "venue": "東京",
     "track_id": 10006,
@@ -4467,7 +4467,7 @@
   {
     "id": 101101,
     "race_id": 1011,
-    "name": "安田記念",
+    "name": "Yasuda Kinen",
     "name_en": "Yasuda Kinen",
     "venue": "東京",
     "track_id": 10006,
@@ -4514,7 +4514,7 @@
   {
     "id": 103001,
     "race_id": 1030,
-    "name": "マイルチャンピオンシップ南部杯",
+    "name": "Mile Championship Nambu Hai",
     "name_en": "Mile Championship Nambu Hai",
     "venue": "東京",
     "track_id": 10006,
@@ -4546,7 +4546,7 @@
   {
     "id": 301001,
     "race_id": 3010,
-    "name": "東京新聞杯",
+    "name": "Tokyo Shimbun Hai",
     "name_en": "Tokyo Shimbun Hai",
     "venue": "東京",
     "track_id": 10006,
@@ -4588,7 +4588,7 @@
   {
     "id": 301101,
     "race_id": 3011,
-    "name": "クイーンカップ",
+    "name": "Queen Cup",
     "name_en": "Queen Cup",
     "venue": "東京",
     "track_id": 10006,
@@ -4630,7 +4630,7 @@
   {
     "id": 303301,
     "race_id": 3033,
-    "name": "ユニコーンステークス",
+    "name": "Unicorn Stakes",
     "name_en": "Unicorn Stakes",
     "venue": "東京",
     "track_id": 10006,
@@ -4668,7 +4668,7 @@
   {
     "id": 305701,
     "race_id": 3057,
-    "name": "サウジアラビアロイヤルカップ",
+    "name": "Saudi Arabia Royal Cup",
     "name_en": "Saudi Arabia Royal Cup",
     "venue": "東京",
     "track_id": 10006,
@@ -4710,7 +4710,7 @@
   {
     "id": 305801,
     "race_id": 3058,
-    "name": "富士ステークス",
+    "name": "Fuji Stakes",
     "name_en": "Fuji Stakes",
     "venue": "東京",
     "track_id": 10006,
@@ -4757,7 +4757,7 @@
   {
     "id": 305901,
     "race_id": 3059,
-    "name": "アルテミスステークス",
+    "name": "Artemis Stakes",
     "name_en": "Artemis Stakes",
     "venue": "東京",
     "track_id": 10006,
@@ -4799,7 +4799,7 @@
   {
     "id": 306201,
     "race_id": 3062,
-    "name": "武蔵野ステークス",
+    "name": "Musashino Stakes",
     "name_en": "Musashino Stakes",
     "venue": "東京",
     "track_id": 10006,
@@ -4842,7 +4842,7 @@
   {
     "id": 401801,
     "race_id": 4018,
-    "name": "ヒヤシンスステークス",
+    "name": "Hyacinth Stakes",
     "name_en": "Hyacinth Stakes",
     "venue": "東京",
     "track_id": 10006,
@@ -4880,7 +4880,7 @@
   {
     "id": 404001,
     "race_id": 4040,
-    "name": "オアシスステークス",
+    "name": "Oasis Stakes",
     "name_en": "Oasis Stakes",
     "venue": "東京",
     "track_id": 10006,
@@ -4918,7 +4918,7 @@
   {
     "id": 405201,
     "race_id": 4052,
-    "name": "青竜ステークス",
+    "name": "Seiryu Stakes",
     "name_en": "Seiryu Stakes",
     "venue": "東京",
     "track_id": 10006,
@@ -4956,7 +4956,7 @@
   {
     "id": 405901,
     "race_id": 4059,
-    "name": "アハルテケステークス",
+    "name": "Akhalteke Stakes",
     "name_en": "Akhalteke Stakes",
     "venue": "東京",
     "track_id": 10006,
@@ -4999,7 +4999,7 @@
   {
     "id": 410701,
     "race_id": 4107,
-    "name": "キャピタルステークス",
+    "name": "Capital Stakes",
     "name_en": "Capital Stakes",
     "venue": "東京",
     "track_id": 10006,
@@ -5046,7 +5046,7 @@
   {
     "id": 450501,
     "race_id": 4505,
-    "name": "プラタナス賞",
+    "name": "Platanus Sho",
     "name_en": "Platanus Sho",
     "venue": "東京",
     "track_id": 10006,
@@ -5084,7 +5084,7 @@
   {
     "id": 451201,
     "race_id": 4512,
-    "name": "赤松賞",
+    "name": "Akamatsu Sho",
     "name_en": "Akamatsu Sho",
     "venue": "東京",
     "track_id": 10006,
@@ -5126,7 +5126,7 @@
   {
     "id": 451401,
     "race_id": 4514,
-    "name": "カトレア賞",
+    "name": "Cattleya Sho",
     "name_en": "Cattleya Sho",
     "venue": "東京",
     "track_id": 10006,
@@ -5164,7 +5164,7 @@
   {
     "id": 451501,
     "race_id": 4515,
-    "name": "ベゴニア賞",
+    "name": "Begonia Sho",
     "name_en": "Begonia Sho",
     "venue": "東京",
     "track_id": 10006,
@@ -5206,7 +5206,7 @@
   {
     "id": 202601,
     "race_id": 2026,
-    "name": "毎日王冠",
+    "name": "Mainichi Okan",
     "name_en": "Mainichi Okan",
     "venue": "東京",
     "track_id": 10006,
@@ -5253,7 +5253,7 @@
   {
     "id": 202801,
     "race_id": 2028,
-    "name": "府中ウマ娘ステークス",
+    "name": "Fuchu Umamusume Stakes",
     "name_en": "Fuchu Umamusume Stakes",
     "venue": "東京",
     "track_id": 10006,
@@ -5300,7 +5300,7 @@
   {
     "id": 301201,
     "race_id": 3012,
-    "name": "共同通信杯",
+    "name": "Kyodo News Hai",
     "name_en": "Kyodo News Hai",
     "venue": "東京",
     "track_id": 10006,
@@ -5342,7 +5342,7 @@
   {
     "id": 303201,
     "race_id": 3032,
-    "name": "エプソムカップ",
+    "name": "Epsom Cup",
     "name_en": "Epsom Cup",
     "venue": "東京",
     "track_id": 10006,
@@ -5389,7 +5389,7 @@
   {
     "id": 306401,
     "race_id": 3064,
-    "name": "東京スポーツ杯ジュニアステークス",
+    "name": "Tokyo Sports Hai Junior Stakes",
     "name_en": "Tokyo Sports Hai Junior Stakes",
     "venue": "東京",
     "track_id": 10006,
@@ -5431,7 +5431,7 @@
   {
     "id": 404301,
     "race_id": 4043,
-    "name": "スイートピーステークス",
+    "name": "Sweetpea Stakes",
     "name_en": "Sweetpea Stakes",
     "venue": "東京",
     "track_id": 10006,
@@ -5473,7 +5473,7 @@
   {
     "id": 405301,
     "race_id": 4053,
-    "name": "メイステークス",
+    "name": "May Stakes",
     "name_en": "May Stakes",
     "venue": "東京",
     "track_id": 10006,
@@ -5515,7 +5515,7 @@
   {
     "id": 409601,
     "race_id": 4096,
-    "name": "アイビーステークス",
+    "name": "Ivy Stakes",
     "name_en": "Ivy Stakes",
     "venue": "東京",
     "track_id": 10006,
@@ -5557,7 +5557,7 @@
   {
     "id": 101601,
     "race_id": 1016,
-    "name": "天皇賞（秋）",
+    "name": "Tenno Sho (Autumn)",
     "name_en": "Tenno Sho (Autumn)",
     "venue": "東京",
     "track_id": 10006,
@@ -5604,7 +5604,7 @@
   {
     "id": 102801,
     "race_id": 1028,
-    "name": "皐月賞",
+    "name": "Satsuki Sho",
     "name_en": "Satsuki Sho",
     "venue": "東京",
     "track_id": 10006,
@@ -5640,7 +5640,7 @@
   {
     "id": 201501,
     "race_id": 2015,
-    "name": "フローラステークス",
+    "name": "Flora Stakes",
     "name_en": "Flora Stakes",
     "venue": "東京",
     "track_id": 10006,
@@ -5682,7 +5682,7 @@
   {
     "id": 401101,
     "race_id": 4011,
-    "name": "白富士ステークス",
+    "name": "Shirafuji Stakes",
     "name_en": "Shirafuji Stakes",
     "venue": "東京",
     "track_id": 10006,
@@ -5724,7 +5724,7 @@
   {
     "id": 404501,
     "race_id": 4045,
-    "name": "プリンシパルステークス",
+    "name": "Principal Stakes",
     "name_en": "Principal Stakes",
     "venue": "東京",
     "track_id": 10006,
@@ -5766,7 +5766,7 @@
   {
     "id": 409401,
     "race_id": 4094,
-    "name": "オクトーバーステークス",
+    "name": "October Stakes",
     "name_en": "October Stakes",
     "venue": "東京",
     "track_id": 10006,
@@ -5813,7 +5813,7 @@
   {
     "id": 450701,
     "race_id": 4507,
-    "name": "百日草特別",
+    "name": "Hyakunichiso Tokubetsu",
     "name_en": "Hyakunichiso Tokubetsu",
     "venue": "東京",
     "track_id": 10006,
@@ -5855,7 +5855,7 @@
   {
     "id": 404801,
     "race_id": 4048,
-    "name": "ブリリアントステークス",
+    "name": "Brilliant Stakes",
     "name_en": "Brilliant Stakes",
     "venue": "東京",
     "track_id": 10006,
@@ -5893,7 +5893,7 @@
   {
     "id": 409801,
     "race_id": 4098,
-    "name": "ブラジルカップ",
+    "name": "Brazil Cup",
     "name_en": "Brazil Cup",
     "venue": "東京",
     "track_id": 10006,
@@ -5936,7 +5936,7 @@
   {
     "id": 412001,
     "race_id": 4120,
-    "name": "スレイプニルステークス",
+    "name": "Sleipnir Stakes",
     "name_en": "Sleipnir Stakes",
     "venue": "東京",
     "track_id": 10006,
@@ -5979,7 +5979,7 @@
   {
     "id": 100901,
     "race_id": 1009,
-    "name": "オークス",
+    "name": "Japanese Oaks",
     "name_en": "Japanese Oaks",
     "venue": "東京",
     "track_id": 10006,
@@ -6025,7 +6025,7 @@
   {
     "id": 101001,
     "race_id": 1010,
-    "name": "東京優駿（日本ダービー）",
+    "name": "Tokyo Yushun (Japanese Derby)",
     "name_en": "Tokyo Yushun (Japanese Derby)",
     "venue": "東京",
     "track_id": 10006,
@@ -6071,7 +6071,7 @@
   {
     "id": 101901,
     "race_id": 1019,
-    "name": "ジャパンカップ",
+    "name": "Japan Cup",
     "name_en": "Japan Cup",
     "venue": "東京",
     "track_id": 10006,
@@ -6122,7 +6122,7 @@
   {
     "id": 201601,
     "race_id": 2016,
-    "name": "青葉賞",
+    "name": "Aoba Sho",
     "name_en": "Aoba Sho",
     "venue": "東京",
     "track_id": 10006,
@@ -6168,7 +6168,7 @@
   {
     "id": 404601,
     "race_id": 4046,
-    "name": "メトロポリタンステークス",
+    "name": "Metropolitan Stakes",
     "name_en": "Metropolitan Stakes",
     "venue": "東京",
     "track_id": 10006,
@@ -6214,7 +6214,7 @@
   {
     "id": 701301,
     "race_id": 1010,
-    "name": "東京優駿（日本ダービー）",
+    "name": "Tokyo Yushun (Japanese Derby)",
     "name_en": "Tokyo Yushun (Japanese Derby)",
     "venue": "東京",
     "track_id": 10006,
@@ -6254,7 +6254,7 @@
   {
     "id": 701701,
     "race_id": 7017,
-    "name": "ジャパンカップ",
+    "name": "Japan Cup",
     "name_en": "Japan Cup",
     "venue": "東京",
     "track_id": 10006,
@@ -6294,7 +6294,7 @@
   {
     "id": 201901,
     "race_id": 2019,
-    "name": "目黒記念",
+    "name": "Meguro Kinen",
     "name_en": "Meguro Kinen",
     "venue": "東京",
     "track_id": 10006,
@@ -6340,7 +6340,7 @@
   {
     "id": 203101,
     "race_id": 2031,
-    "name": "アルゼンチン共和国杯",
+    "name": "Copa Republica Argentina",
     "name_en": "Copa Republica Argentina",
     "venue": "東京",
     "track_id": 10006,
@@ -6391,7 +6391,7 @@
   {
     "id": 301401,
     "race_id": 3014,
-    "name": "ダイヤモンドステークス",
+    "name": "Diamond Stakes",
     "name_en": "Diamond Stakes",
     "venue": "東京",
     "track_id": 10006,
@@ -6445,7 +6445,7 @@
   {
     "id": 100201,
     "race_id": 1002,
-    "name": "高松宮記念",
+    "name": "Takamatsunomiya Kinen",
     "name_en": "Takamatsunomiya Kinen",
     "venue": "中京",
     "track_id": 10007,
@@ -6483,7 +6483,7 @@
   {
     "id": 303501,
     "race_id": 3035,
-    "name": "CBC賞",
+    "name": "CBC Sho",
     "name_en": "CBC Sho",
     "venue": "中京",
     "track_id": 10007,
@@ -6526,7 +6526,7 @@
   {
     "id": 302101,
     "race_id": 3021,
-    "name": "ファルコンステークス",
+    "name": "Falcon Stakes",
     "name_en": "Falcon Stakes",
     "venue": "中京",
     "track_id": 10007,
@@ -6564,7 +6564,7 @@
   {
     "id": 303701,
     "race_id": 3037,
-    "name": "プロキオンステークス",
+    "name": "Procyon Stakes",
     "name_en": "Procyon Stakes",
     "venue": "中京",
     "track_id": 10007,
@@ -6607,7 +6607,7 @@
   {
     "id": 402501,
     "race_id": 4025,
-    "name": "昇竜ステークス",
+    "name": "Shoryu Stakes",
     "name_en": "Shoryu Stakes",
     "venue": "中京",
     "track_id": 10007,
@@ -6645,7 +6645,7 @@
   {
     "id": 452201,
     "race_id": 4522,
-    "name": "つわぶき賞",
+    "name": "Tsuwabuki Sho",
     "name_en": "Tsuwabuki Sho",
     "venue": "中京",
     "track_id": 10007,
@@ -6683,7 +6683,7 @@
   {
     "id": 452501,
     "race_id": 4525,
-    "name": "寒椿賞",
+    "name": "Kantsubaki Sho",
     "name_en": "Kantsubaki Sho",
     "venue": "中京",
     "track_id": 10007,
@@ -6721,7 +6721,7 @@
   {
     "id": 304001,
     "race_id": 3040,
-    "name": "中京記念",
+    "name": "Chukyo Kinen",
     "name_en": "Chukyo Kinen",
     "venue": "中京",
     "track_id": 10007,
@@ -6764,7 +6764,7 @@
   {
     "id": 406801,
     "race_id": 4068,
-    "name": "中京ジュニアステークス",
+    "name": "Chukyo Junior Stakes",
     "name_en": "Chukyo Junior Stakes",
     "venue": "中京",
     "track_id": 10007,
@@ -6802,7 +6802,7 @@
   {
     "id": 451801,
     "race_id": 4518,
-    "name": "こうやまき賞",
+    "name": "Koyamaki Sho",
     "name_en": "Koyamaki Sho",
     "venue": "中京",
     "track_id": 10007,
@@ -6840,7 +6840,7 @@
   {
     "id": 102001,
     "race_id": 1020,
-    "name": "チャンピオンズカップ",
+    "name": "Champions Cup",
     "name_en": "Champions Cup",
     "venue": "中京",
     "track_id": 10007,
@@ -6887,7 +6887,7 @@
   {
     "id": 200201,
     "race_id": 2002,
-    "name": "東海ステークス",
+    "name": "Tokai Stakes",
     "name_en": "Tokai Stakes",
     "venue": "中京",
     "track_id": 10007,
@@ -6929,7 +6929,7 @@
   {
     "id": 406601,
     "race_id": 4066,
-    "name": "名鉄杯",
+    "name": "Meitetsu Hai",
     "name_en": "Meitetsu Hai",
     "venue": "中京",
     "track_id": 10007,
@@ -6976,7 +6976,7 @@
   {
     "id": 200701,
     "race_id": 2007,
-    "name": "金鯱賞",
+    "name": "Kinko Sho",
     "name_en": "Kinko Sho",
     "venue": "中京",
     "track_id": 10007,
@@ -7018,7 +7018,7 @@
   {
     "id": 300501,
     "race_id": 3005,
-    "name": "愛知杯",
+    "name": "Aichi Hai",
     "name_en": "Aichi Hai",
     "venue": "中京",
     "track_id": 10007,
@@ -7060,7 +7060,7 @@
   {
     "id": 306801,
     "race_id": 3068,
-    "name": "中日新聞杯",
+    "name": "Chunichi Shimbun Hai",
     "name_en": "Chunichi Shimbun Hai",
     "venue": "中京",
     "track_id": 10007,
@@ -7107,7 +7107,7 @@
   {
     "id": 300701,
     "race_id": 3007,
-    "name": "シルクロードステークス",
+    "name": "Silk Road Stakes",
     "name_en": "Silk Road Stakes",
     "venue": "京都",
     "track_id": 10008,
@@ -7145,7 +7145,7 @@
   {
     "id": 306601,
     "race_id": 3066,
-    "name": "京阪杯",
+    "name": "Keihan Hai",
     "name_en": "Keihan Hai",
     "venue": "京都",
     "track_id": 10008,
@@ -7188,7 +7188,7 @@
   {
     "id": 400301,
     "race_id": 4003,
-    "name": "淀短距離ステークス",
+    "name": "Yodo Tankyori Stakes",
     "name_en": "Yodo Tankyori Stakes",
     "venue": "京都",
     "track_id": 10008,
@@ -7226,7 +7226,7 @@
   {
     "id": 401301,
     "race_id": 4013,
-    "name": "大和ステークス",
+    "name": "Yamato Stakes",
     "name_en": "Yamato Stakes",
     "venue": "京都",
     "track_id": 10008,
@@ -7264,7 +7264,7 @@
   {
     "id": 404101,
     "race_id": 4041,
-    "name": "天王山ステークス",
+    "name": "Tennozan Stakes",
     "name_en": "Tennozan Stakes",
     "venue": "京都",
     "track_id": 10008,
@@ -7302,7 +7302,7 @@
   {
     "id": 404701,
     "race_id": 4047,
-    "name": "鞍馬ステークス",
+    "name": "Kurama Stakes",
     "name_en": "Kurama Stakes",
     "venue": "京都",
     "track_id": 10008,
@@ -7340,7 +7340,7 @@
   {
     "id": 405001,
     "race_id": 4050,
-    "name": "葵ステークス",
+    "name": "Aoi Stakes",
     "name_en": "Aoi Stakes",
     "venue": "京都",
     "track_id": 10008,
@@ -7378,7 +7378,7 @@
   {
     "id": 409101,
     "race_id": 4091,
-    "name": "オパールステークス",
+    "name": "Opal Stakes",
     "name_en": "Opal Stakes",
     "venue": "京都",
     "track_id": 10008,
@@ -7421,7 +7421,7 @@
   {
     "id": 409701,
     "race_id": 4097,
-    "name": "室町ステークス",
+    "name": "Muromachi Stakes",
     "name_en": "Muromachi Stakes",
     "venue": "京都",
     "track_id": 10008,
@@ -7464,7 +7464,7 @@
   {
     "id": 410801,
     "race_id": 4108,
-    "name": "オータムリーフステークス",
+    "name": "Autumn Leaf Stakes",
     "name_en": "Autumn Leaf Stakes",
     "venue": "京都",
     "track_id": 10008,
@@ -7507,7 +7507,7 @@
   {
     "id": 202901,
     "race_id": 2029,
-    "name": "スワンステークス",
+    "name": "Swan Stakes",
     "name_en": "Swan Stakes",
     "venue": "京都",
     "track_id": 10008,
@@ -7550,7 +7550,7 @@
   {
     "id": 301301,
     "race_id": 3013,
-    "name": "京都ウマ娘ステークス",
+    "name": "Kyoto Umamusume Stakes",
     "name_en": "Kyoto Umamusume Stakes",
     "venue": "京都",
     "track_id": 10008,
@@ -7588,7 +7588,7 @@
   {
     "id": 306001,
     "race_id": 3060,
-    "name": "ファンタジーステークス",
+    "name": "Fantasy Stakes",
     "name_en": "Fantasy Stakes",
     "venue": "京都",
     "track_id": 10008,
@@ -7626,7 +7626,7 @@
   {
     "id": 400701,
     "race_id": 4007,
-    "name": "紅梅ステークス",
+    "name": "Kobai Stakes",
     "name_en": "Kobai Stakes",
     "venue": "京都",
     "track_id": 10008,
@@ -7664,7 +7664,7 @@
   {
     "id": 400801,
     "race_id": 4008,
-    "name": "すばるステークス",
+    "name": "Subaru Stakes",
     "name_en": "Subaru Stakes",
     "venue": "京都",
     "track_id": 10008,
@@ -7702,7 +7702,7 @@
   {
     "id": 403901,
     "race_id": 4039,
-    "name": "橘ステークス",
+    "name": "Tachibana Stakes",
     "name_en": "Tachibana Stakes",
     "venue": "京都",
     "track_id": 10008,
@@ -7740,7 +7740,7 @@
   {
     "id": 404201,
     "race_id": 4042,
-    "name": "端午ステークス",
+    "name": "Tango Stakes",
     "name_en": "Tango Stakes",
     "venue": "京都",
     "track_id": 10008,
@@ -7778,7 +7778,7 @@
   {
     "id": 405101,
     "race_id": 4051,
-    "name": "栗東ステークス",
+    "name": "Ritto Stakes",
     "name_en": "Ritto Stakes",
     "venue": "京都",
     "track_id": 10008,
@@ -7816,7 +7816,7 @@
   {
     "id": 405801,
     "race_id": 4058,
-    "name": "安土城ステークス",
+    "name": "Azuchijo Stakes",
     "name_en": "Azuchijo Stakes",
     "venue": "京都",
     "track_id": 10008,
@@ -7854,7 +7854,7 @@
   {
     "id": 409301,
     "race_id": 4093,
-    "name": "もみじステークス",
+    "name": "Momiji Stakes",
     "name_en": "Momiji Stakes",
     "venue": "京都",
     "track_id": 10008,
@@ -7892,7 +7892,7 @@
   {
     "id": 450301,
     "race_id": 4503,
-    "name": "りんどう賞",
+    "name": "Rindo Sho",
     "name_en": "Rindo Sho",
     "venue": "京都",
     "track_id": 10008,
@@ -7930,7 +7930,7 @@
   {
     "id": 450601,
     "race_id": 4506,
-    "name": "なでしこ賞",
+    "name": "Nadeshiko Sho",
     "name_en": "Nadeshiko Sho",
     "venue": "京都",
     "track_id": 10008,
@@ -7968,7 +7968,7 @@
   {
     "id": 451301,
     "race_id": 4513,
-    "name": "秋明菊賞",
+    "name": "Shumeigiku Sho",
     "name_en": "Shumeigiku Sho",
     "venue": "京都",
     "track_id": 10008,
@@ -8006,7 +8006,7 @@
   {
     "id": 101801,
     "race_id": 1018,
-    "name": "マイルチャンピオンシップ",
+    "name": "Mile Championship",
     "name_en": "Mile Championship",
     "venue": "京都",
     "track_id": 10008,
@@ -8049,7 +8049,7 @@
   {
     "id": 201401,
     "race_id": 2014,
-    "name": "マイラーズカップ",
+    "name": "Milers Cup",
     "name_en": "Milers Cup",
     "venue": "京都",
     "track_id": 10008,
@@ -8087,7 +8087,7 @@
   {
     "id": 203201,
     "race_id": 2032,
-    "name": "デイリー杯ジュニアステークス",
+    "name": "Daily Hai Junior Stakes",
     "name_en": "Daily Hai Junior Stakes",
     "venue": "京都",
     "track_id": 10008,
@@ -8125,7 +8125,7 @@
   {
     "id": 300101,
     "race_id": 3001,
-    "name": "京都金杯",
+    "name": "Kyoto Kimpai",
     "name_en": "Kyoto Kimpai",
     "venue": "京都",
     "track_id": 10008,
@@ -8163,7 +8163,7 @@
   {
     "id": 300301,
     "race_id": 3003,
-    "name": "シンザン記念",
+    "name": "Shinzan Kinen",
     "name_en": "Shinzan Kinen",
     "venue": "京都",
     "track_id": 10008,
@@ -8201,7 +8201,7 @@
   {
     "id": 401401,
     "race_id": 4014,
-    "name": "エルフィンステークス",
+    "name": "Elfin Stakes",
     "name_en": "Elfin Stakes",
     "venue": "京都",
     "track_id": 10008,
@@ -8239,7 +8239,7 @@
   {
     "id": 401501,
     "race_id": 4015,
-    "name": "洛陽ステークス",
+    "name": "Rakuyo Stakes",
     "name_en": "Rakuyo Stakes",
     "venue": "京都",
     "track_id": 10008,
@@ -8277,7 +8277,7 @@
   {
     "id": 451601,
     "race_id": 4516,
-    "name": "白菊賞",
+    "name": "Shiragiku Sho",
     "name_en": "Shiragiku Sho",
     "venue": "京都",
     "track_id": 10008,
@@ -8315,7 +8315,7 @@
   {
     "id": 300901,
     "race_id": 3009,
-    "name": "きさらぎ賞",
+    "name": "Kisaragi Sho",
     "name_en": "Kisaragi Sho",
     "venue": "京都",
     "track_id": 10008,
@@ -8353,7 +8353,7 @@
   {
     "id": 306101,
     "race_id": 3061,
-    "name": "みやこステークス",
+    "name": "Miyako Stakes",
     "name_en": "Miyako Stakes",
     "venue": "京都",
     "track_id": 10008,
@@ -8396,7 +8396,7 @@
   {
     "id": 404901,
     "race_id": 4049,
-    "name": "都大路ステークス",
+    "name": "Miyakooji Stakes",
     "name_en": "Miyakooji Stakes",
     "venue": "京都",
     "track_id": 10008,
@@ -8434,7 +8434,7 @@
   {
     "id": 405401,
     "race_id": 4054,
-    "name": "鳳雛ステークス",
+    "name": "Hosu Stakes",
     "name_en": "Hosu Stakes",
     "venue": "京都",
     "track_id": 10008,
@@ -8472,7 +8472,7 @@
   {
     "id": 405601,
     "race_id": 4056,
-    "name": "白百合ステークス",
+    "name": "Shirayuri Stakes",
     "name_en": "Shirayuri Stakes",
     "venue": "京都",
     "track_id": 10008,
@@ -8510,7 +8510,7 @@
   {
     "id": 409901,
     "race_id": 4099,
-    "name": "萩ステークス",
+    "name": "Hagi Stakes",
     "name_en": "Hagi Stakes",
     "venue": "京都",
     "track_id": 10008,
@@ -8548,7 +8548,7 @@
   {
     "id": 410001,
     "race_id": 4100,
-    "name": "カシオペアステークス",
+    "name": "Cassiopeia Stakes",
     "name_en": "Cassiopeia Stakes",
     "venue": "京都",
     "track_id": 10008,
@@ -8591,7 +8591,7 @@
   {
     "id": 412401,
     "race_id": 4124,
-    "name": "太秦ステークス",
+    "name": "Uzumasa Stakes",
     "name_en": "Uzumasa Stakes",
     "venue": "京都",
     "track_id": 10008,
@@ -8634,7 +8634,7 @@
   {
     "id": 451101,
     "race_id": 4511,
-    "name": "もちの木賞",
+    "name": "Mochinoki Sho",
     "name_en": "Mochinoki Sho",
     "venue": "京都",
     "track_id": 10008,
@@ -8672,7 +8672,7 @@
   {
     "id": 302901,
     "race_id": 3029,
-    "name": "平安ステークス",
+    "name": "Heian Stakes",
     "name_en": "Heian Stakes",
     "venue": "京都",
     "track_id": 10008,
@@ -8710,7 +8710,7 @@
   {
     "id": 401601,
     "race_id": 4016,
-    "name": "アルデバランステークス",
+    "name": "Aldebaran Stakes",
     "name_en": "Aldebaran Stakes",
     "venue": "京都",
     "track_id": 10008,
@@ -8748,7 +8748,7 @@
   {
     "id": 101401,
     "race_id": 1014,
-    "name": "秋華賞",
+    "name": "Shuka Sho",
     "name_en": "Shuka Sho",
     "venue": "京都",
     "track_id": 10008,
@@ -8786,7 +8786,7 @@
   {
     "id": 306501,
     "race_id": 3065,
-    "name": "京都ジュニアステークス",
+    "name": "Kyoto Junior Stakes",
     "name_en": "Kyoto Junior Stakes",
     "venue": "京都",
     "track_id": 10008,
@@ -8824,7 +8824,7 @@
   {
     "id": 400901,
     "race_id": 4009,
-    "name": "若駒ステークス",
+    "name": "Wakagoma Stakes",
     "name_en": "Wakagoma Stakes",
     "venue": "京都",
     "track_id": 10008,
@@ -8862,7 +8862,7 @@
   {
     "id": 410401,
     "race_id": 4104,
-    "name": "アンドロメダステークス",
+    "name": "Andromeda Stakes",
     "name_en": "Andromeda Stakes",
     "venue": "京都",
     "track_id": 10008,
@@ -8905,7 +8905,7 @@
   {
     "id": 450401,
     "race_id": 4504,
-    "name": "紫菊賞",
+    "name": "Shigiku Sho",
     "name_en": "Shigiku Sho",
     "venue": "京都",
     "track_id": 10008,
@@ -8943,7 +8943,7 @@
   {
     "id": 451001,
     "race_id": 4510,
-    "name": "黄菊賞",
+    "name": "Kigiku Sho",
     "name_en": "Kigiku Sho",
     "venue": "京都",
     "track_id": 10008,
@@ -8981,7 +8981,7 @@
   {
     "id": 101701,
     "race_id": 1017,
-    "name": "エリザベス女王杯",
+    "name": "Queen Elizabeth II Cup",
     "name_en": "Queen Elizabeth II Cup",
     "venue": "京都",
     "track_id": 10008,
@@ -9024,7 +9024,7 @@
   {
     "id": 102501,
     "race_id": 1025,
-    "name": "宝塚記念",
+    "name": "Takarazuka Kinen",
     "name_en": "Takarazuka Kinen",
     "venue": "京都",
     "track_id": 10008,
@@ -9056,7 +9056,7 @@
   {
     "id": 200401,
     "race_id": 2004,
-    "name": "京都記念",
+    "name": "Kyoto Kinen",
     "name_en": "Kyoto Kinen",
     "venue": "京都",
     "track_id": 10008,
@@ -9094,7 +9094,7 @@
   {
     "id": 201701,
     "race_id": 2017,
-    "name": "京都新聞杯",
+    "name": "Kyoto Shimbun Hai",
     "name_en": "Kyoto Shimbun Hai",
     "venue": "京都",
     "track_id": 10008,
@@ -9132,7 +9132,7 @@
   {
     "id": 200101,
     "race_id": 2001,
-    "name": "日経新春杯",
+    "name": "Nikkei Shinshun Hai",
     "name_en": "Nikkei Shinshun Hai",
     "venue": "京都",
     "track_id": 10008,
@@ -9170,7 +9170,7 @@
   {
     "id": 202701,
     "race_id": 2027,
-    "name": "京都大賞典",
+    "name": "Kyoto Daishoten",
     "name_en": "Kyoto Daishoten",
     "venue": "京都",
     "track_id": 10008,
@@ -9213,7 +9213,7 @@
   {
     "id": 101501,
     "race_id": 1015,
-    "name": "菊花賞",
+    "name": "Kikuka Sho",
     "name_en": "Kikuka Sho",
     "venue": "京都",
     "track_id": 10008,
@@ -9259,7 +9259,7 @@
   {
     "id": 102601,
     "race_id": 1026,
-    "name": "菊花賞",
+    "name": "Kikuka Sho",
     "name_en": "Kikuka Sho",
     "venue": "京都",
     "track_id": 10008,
@@ -9299,7 +9299,7 @@
   {
     "id": 400101,
     "race_id": 4001,
-    "name": "万葉ステークス",
+    "name": "Manyo Stakes",
     "name_en": "Manyo Stakes",
     "venue": "京都",
     "track_id": 10008,
@@ -9345,7 +9345,7 @@
   {
     "id": 701001,
     "race_id": 7010,
-    "name": "菊花賞",
+    "name": "Kikuka Sho",
     "name_en": "Kikuka Sho",
     "venue": "京都",
     "track_id": 10008,
@@ -9385,7 +9385,7 @@
   {
     "id": 100601,
     "race_id": 1006,
-    "name": "天皇賞（春）",
+    "name": "Tenno Sho (Spring)",
     "name_en": "Tenno Sho (Spring)",
     "venue": "京都",
     "track_id": 10008,
@@ -9431,7 +9431,7 @@
   {
     "id": 202101,
     "race_id": 2021,
-    "name": "セントウルステークス",
+    "name": "Centaur Stakes",
     "name_en": "Centaur Stakes",
     "venue": "阪神",
     "track_id": 10009,
@@ -9474,7 +9474,7 @@
   {
     "id": 403201,
     "race_id": 4032,
-    "name": "マーガレットステークス",
+    "name": "Marguerite Stakes",
     "name_en": "Marguerite Stakes",
     "venue": "阪神",
     "track_id": 10009,
@@ -9512,7 +9512,7 @@
   {
     "id": 411201,
     "race_id": 4112,
-    "name": "タンザナイトステークス",
+    "name": "Tanzanite Stakes",
     "name_en": "Tanzanite Stakes",
     "venue": "阪神",
     "track_id": 10009,
@@ -9555,7 +9555,7 @@
   {
     "id": 452401,
     "race_id": 4524,
-    "name": "さざんか賞",
+    "name": "Sazanka Sho",
     "name_en": "Sazanka Sho",
     "venue": "阪神",
     "track_id": 10009,
@@ -9593,7 +9593,7 @@
   {
     "id": 200801,
     "race_id": 2008,
-    "name": "フィリーズレビュー",
+    "name": "Fillies' Revue",
     "name_en": "Fillies' Revue",
     "venue": "阪神",
     "track_id": 10009,
@@ -9631,7 +9631,7 @@
   {
     "id": 203401,
     "race_id": 2034,
-    "name": "阪神カップ",
+    "name": "Hanshin Cup",
     "name_en": "Hanshin Cup",
     "venue": "阪神",
     "track_id": 10009,
@@ -9674,7 +9674,7 @@
   {
     "id": 301701,
     "race_id": 3017,
-    "name": "阪急杯",
+    "name": "Hankyu Hai",
     "name_en": "Hankyu Hai",
     "venue": "阪神",
     "track_id": 10009,
@@ -9712,7 +9712,7 @@
   {
     "id": 402201,
     "race_id": 4022,
-    "name": "ポラリスステークス",
+    "name": "Polaris Stakes",
     "name_en": "Polaris Stakes",
     "venue": "阪神",
     "track_id": 10009,
@@ -9750,7 +9750,7 @@
   {
     "id": 403101,
     "race_id": 4031,
-    "name": "コーラルステークス",
+    "name": "Coral Stakes",
     "name_en": "Coral Stakes",
     "venue": "阪神",
     "track_id": 10009,
@@ -9788,7 +9788,7 @@
   {
     "id": 406001,
     "race_id": 4060,
-    "name": "天保山ステークス",
+    "name": "Tempozan Stakes",
     "name_en": "Tempozan Stakes",
     "venue": "阪神",
     "track_id": 10009,
@@ -9831,7 +9831,7 @@
   {
     "id": 408401,
     "race_id": 4084,
-    "name": "エニフステークス",
+    "name": "Enif Stakes",
     "name_en": "Enif Stakes",
     "venue": "阪神",
     "track_id": 10009,
@@ -9874,7 +9874,7 @@
   {
     "id": 408701,
     "race_id": 4087,
-    "name": "ききょうステークス",
+    "name": "Kikyo Stakes",
     "name_en": "Kikyo Stakes",
     "venue": "阪神",
     "track_id": 10009,
@@ -9912,7 +9912,7 @@
   {
     "id": 411501,
     "race_id": 4115,
-    "name": "ギャラクシーステークス",
+    "name": "Galaxy Stakes",
     "name_en": "Galaxy Stakes",
     "venue": "阪神",
     "track_id": 10009,
@@ -9955,7 +9955,7 @@
   {
     "id": 451901,
     "race_id": 4519,
-    "name": "万両賞",
+    "name": "Manryo Sho",
     "name_en": "Manryo Sho",
     "venue": "阪神",
     "track_id": 10009,
@@ -9993,7 +9993,7 @@
   {
     "id": 931207,
     "race_id": 19002,
-    "name": "阪神ウマ娘ステークス_ストーリーレース用",
+    "name": "Hanshin Umamusume Stakes (Story Race Use)",
     "name_en": "Hanshin Umamusume Stakes (Story Race Use)",
     "venue": "阪神",
     "track_id": 10009,
@@ -10025,7 +10025,7 @@
   {
     "id": 100401,
     "race_id": 1004,
-    "name": "桜花賞",
+    "name": "Oka Sho",
     "name_en": "Oka Sho",
     "venue": "阪神",
     "track_id": 10009,
@@ -10063,7 +10063,7 @@
   {
     "id": 102101,
     "race_id": 1021,
-    "name": "阪神ジュベナイルフィリーズ",
+    "name": "Hanshin Juvenile Fillies",
     "name_en": "Hanshin Juvenile Fillies",
     "venue": "阪神",
     "track_id": 10009,
@@ -10101,7 +10101,7 @@
   {
     "id": 102201,
     "race_id": 1022,
-    "name": "朝日杯フューチュリティステークス",
+    "name": "Asahi Hai Futurity Stakes",
     "name_en": "Asahi Hai Futurity Stakes",
     "venue": "阪神",
     "track_id": 10009,
@@ -10139,7 +10139,7 @@
   {
     "id": 103301,
     "race_id": 1033,
-    "name": "マイルチャンピオンシップ",
+    "name": "Mile Championship",
     "name_en": "Mile Championship",
     "venue": "阪神",
     "track_id": 10009,
@@ -10171,7 +10171,7 @@
   {
     "id": 201201,
     "race_id": 2012,
-    "name": "阪神ウマ娘ステークス",
+    "name": "Hanshin Umamusume Stakes",
     "name_en": "Hanshin Umamusume Stakes",
     "venue": "阪神",
     "track_id": 10009,
@@ -10209,7 +10209,7 @@
   {
     "id": 301601,
     "race_id": 3016,
-    "name": "アーリントンカップ",
+    "name": "Arlington Cup",
     "name_en": "Arlington Cup",
     "venue": "阪神",
     "track_id": 10009,
@@ -10247,7 +10247,7 @@
   {
     "id": 301801,
     "race_id": 3018,
-    "name": "チューリップ賞",
+    "name": "Tulip Sho",
     "name_en": "Tulip Sho",
     "venue": "阪神",
     "track_id": 10009,
@@ -10285,7 +10285,7 @@
   {
     "id": 403001,
     "race_id": 4030,
-    "name": "六甲ステークス",
+    "name": "Rokko Stakes",
     "name_en": "Rokko Stakes",
     "venue": "阪神",
     "track_id": 10009,
@@ -10323,7 +10323,7 @@
   {
     "id": 406101,
     "race_id": 4061,
-    "name": "米子ステークス",
+    "name": "Yonago Stakes",
     "name_en": "Yonago Stakes",
     "venue": "阪神",
     "track_id": 10009,
@@ -10366,7 +10366,7 @@
   {
     "id": 409001,
     "race_id": 4090,
-    "name": "ポートアイランドステークス",
+    "name": "Port Island Stakes",
     "name_en": "Port Island Stakes",
     "venue": "阪神",
     "track_id": 10009,
@@ -10409,7 +10409,7 @@
   {
     "id": 411101,
     "race_id": 4111,
-    "name": "リゲルステークス",
+    "name": "Rigel Stakes",
     "name_en": "Rigel Stakes",
     "venue": "阪神",
     "track_id": 10009,
@@ -10452,7 +10452,7 @@
   {
     "id": 452601,
     "race_id": 4526,
-    "name": "千両賞",
+    "name": "Senryo Sho",
     "name_en": "Senryo Sho",
     "venue": "阪神",
     "track_id": 10009,
@@ -10490,7 +10490,7 @@
   {
     "id": 700901,
     "race_id": 7009,
-    "name": "朝日杯フューチュリティステークス",
+    "name": "Asahi Hai Futurity Stakes",
     "name_en": "Asahi Hai Futurity Stakes",
     "venue": "阪神",
     "track_id": 10009,
@@ -10522,7 +10522,7 @@
   {
     "id": 202201,
     "race_id": 2022,
-    "name": "ローズステークス",
+    "name": "Rose Stakes",
     "name_en": "Rose Stakes",
     "venue": "阪神",
     "track_id": 10009,
@@ -10560,7 +10560,7 @@
   {
     "id": 302301,
     "race_id": 3023,
-    "name": "毎日杯",
+    "name": "Mainichi Hai",
     "name_en": "Mainichi Hai",
     "venue": "阪神",
     "track_id": 10009,
@@ -10598,7 +10598,7 @@
   {
     "id": 302601,
     "race_id": 3026,
-    "name": "アンタレスステークス",
+    "name": "Antares Stakes",
     "name_en": "Antares Stakes",
     "venue": "阪神",
     "track_id": 10009,
@@ -10640,7 +10640,7 @@
   {
     "id": 402101,
     "race_id": 4021,
-    "name": "大阪城ステークス",
+    "name": "Osakajo Stakes",
     "name_en": "Osakajo Stakes",
     "venue": "阪神",
     "track_id": 10009,
@@ -10678,7 +10678,7 @@
   {
     "id": 408501,
     "race_id": 4085,
-    "name": "野路菊ステークス",
+    "name": "Nojigiku Stakes",
     "name_en": "Nojigiku Stakes",
     "venue": "阪神",
     "track_id": 10009,
@@ -10716,7 +10716,7 @@
   {
     "id": 411601,
     "race_id": 4116,
-    "name": "ベテルギウスステークス",
+    "name": "Betelgeuse Stakes",
     "name_en": "Betelgeuse Stakes",
     "venue": "阪神",
     "track_id": 10009,
@@ -10763,7 +10763,7 @@
   {
     "id": 412101,
     "race_id": 4121,
-    "name": "三宮ステークス",
+    "name": "Sannomiya Stakes",
     "name_en": "Sannomiya Stakes",
     "venue": "阪神",
     "track_id": 10009,
@@ -10810,7 +10810,7 @@
   {
     "id": 100301,
     "race_id": 1003,
-    "name": "大阪杯",
+    "name": "Osaka Hai",
     "name_en": "Osaka Hai",
     "venue": "阪神",
     "track_id": 10009,
@@ -10856,7 +10856,7 @@
   {
     "id": 303001,
     "race_id": 3030,
-    "name": "鳴尾記念",
+    "name": "Naruo Kinen",
     "name_en": "Naruo Kinen",
     "venue": "阪神",
     "track_id": 10009,
@@ -10907,7 +10907,7 @@
   {
     "id": 303101,
     "race_id": 3031,
-    "name": "マーメイドステークス",
+    "name": "Mermaid Stakes",
     "name_en": "Mermaid Stakes",
     "venue": "阪神",
     "track_id": 10009,
@@ -10958,7 +10958,7 @@
   {
     "id": 305601,
     "race_id": 3056,
-    "name": "シリウスステークス",
+    "name": "Sirius Stakes",
     "name_en": "Sirius Stakes",
     "venue": "阪神",
     "track_id": 10009,
@@ -11009,7 +11009,7 @@
   {
     "id": 306701,
     "race_id": 3067,
-    "name": "チャレンジカップ",
+    "name": "Challenge Cup",
     "name_en": "Challenge Cup",
     "venue": "阪神",
     "track_id": 10009,
@@ -11060,7 +11060,7 @@
   {
     "id": 402301,
     "race_id": 4023,
-    "name": "仁川ステークス",
+    "name": "Nigawa Stakes",
     "name_en": "Nigawa Stakes",
     "venue": "阪神",
     "track_id": 10009,
@@ -11106,7 +11106,7 @@
   {
     "id": 402701,
     "race_id": 4027,
-    "name": "若葉ステークス",
+    "name": "Wakaba Stakes",
     "name_en": "Wakaba Stakes",
     "venue": "阪神",
     "track_id": 10009,
@@ -11152,7 +11152,7 @@
   {
     "id": 403501,
     "race_id": 4035,
-    "name": "忘れな草賞",
+    "name": "Wasurenagusa Sho",
     "name_en": "Wasurenagusa Sho",
     "venue": "阪神",
     "track_id": 10009,
@@ -11198,7 +11198,7 @@
   {
     "id": 452101,
     "race_id": 4521,
-    "name": "エリカ賞",
+    "name": "Erica Sho",
     "name_en": "Erica Sho",
     "venue": "阪神",
     "track_id": 10009,
@@ -11244,7 +11244,7 @@
   {
     "id": 101201,
     "race_id": 1012,
-    "name": "宝塚記念",
+    "name": "Takarazuka Kinen",
     "name_en": "Takarazuka Kinen",
     "venue": "阪神",
     "track_id": 10009,
@@ -11295,7 +11295,7 @@
   {
     "id": 103401,
     "race_id": 1034,
-    "name": "エリザベス女王杯",
+    "name": "Queen Elizabeth Cup",
     "name_en": "Queen Elizabeth Cup",
     "venue": "阪神",
     "track_id": 10009,
@@ -11335,7 +11335,7 @@
   {
     "id": 402001,
     "race_id": 4020,
-    "name": "すみれステークス",
+    "name": "Sumire Stakes",
     "name_en": "Sumire Stakes",
     "venue": "阪神",
     "track_id": 10009,
@@ -11381,7 +11381,7 @@
   {
     "id": 202401,
     "race_id": 2024,
-    "name": "神戸新聞杯",
+    "name": "Kobe Shimbun Hai",
     "name_en": "Kobe Shimbun Hai",
     "venue": "阪神",
     "track_id": 10009,
@@ -11427,7 +11427,7 @@
   {
     "id": 200901,
     "race_id": 2009,
-    "name": "阪神大賞典",
+    "name": "Hanshin Daishoten",
     "name_en": "Hanshin Daishoten",
     "venue": "阪神",
     "track_id": 10009,
@@ -11473,7 +11473,7 @@
   {
     "id": 102701,
     "race_id": 1027,
-    "name": "天皇賞（春）",
+    "name": "Tenno Sho (Spring)",
     "name_en": "Tenno Sho (Spring)",
     "venue": "阪神",
     "track_id": 10009,
@@ -11513,7 +11513,7 @@
   {
     "id": 304801,
     "race_id": 3048,
-    "name": "北九州記念",
+    "name": "Kitakyushu Kinen",
     "name_en": "Kitakyushu Kinen",
     "venue": "小倉",
     "track_id": 10010,
@@ -11551,7 +11551,7 @@
   {
     "id": 305201,
     "race_id": 3052,
-    "name": "小倉ジュニアステークス",
+    "name": "Kokura Junior Stakes",
     "name_en": "Kokura Junior Stakes",
     "venue": "小倉",
     "track_id": 10010,
@@ -11584,7 +11584,7 @@
   {
     "id": 407401,
     "race_id": 4074,
-    "name": "フェニックス賞",
+    "name": "Phoenix Sho",
     "name_en": "Phoenix Sho",
     "venue": "小倉",
     "track_id": 10010,
@@ -11617,7 +11617,7 @@
   {
     "id": 407801,
     "race_id": 4078,
-    "name": "ひまわり賞",
+    "name": "Himawari Sho",
     "name_en": "Himawari Sho",
     "venue": "小倉",
     "track_id": 10010,
@@ -11644,7 +11644,7 @@
   {
     "id": 411801,
     "race_id": 4118,
-    "name": "北九州短距離ステークス",
+    "name": "Kitakyushu Tankyori Stakes",
     "name_en": "Kitakyushu Tankyori Stakes",
     "venue": "小倉",
     "track_id": 10010,
@@ -11677,7 +11677,7 @@
   {
     "id": 407301,
     "race_id": 4073,
-    "name": "阿蘇ステークス",
+    "name": "Aso Stakes",
     "name_en": "Aso Stakes",
     "venue": "小倉",
     "track_id": 10010,
@@ -11715,7 +11715,7 @@
   {
     "id": 301501,
     "race_id": 3015,
-    "name": "小倉大賞典",
+    "name": "Kokura Daishoten",
     "name_en": "Kokura Daishoten",
     "venue": "小倉",
     "track_id": 10010,
@@ -11748,7 +11748,7 @@
   {
     "id": 408001,
     "race_id": 4080,
-    "name": "小倉日経オープン",
+    "name": "Kokura Nikkei Open",
     "name_en": "Kokura Nikkei Open",
     "venue": "小倉",
     "track_id": 10010,
@@ -11786,7 +11786,7 @@
   {
     "id": 304401,
     "race_id": 3044,
-    "name": "小倉記念",
+    "name": "Kokura Kinen",
     "name_en": "Kokura Kinen",
     "venue": "小倉",
     "track_id": 10010,
@@ -11824,7 +11824,7 @@
   {
     "id": 110401,
     "race_id": 1104,
-    "name": "JBCスプリント",
+    "name": "JBC Sprint",
     "name_en": "JBC Sprint",
     "venue": "大井",
     "track_id": 10101,
@@ -11857,7 +11857,7 @@
   {
     "id": 203701,
     "race_id": 2037,
-    "name": "東京盃",
+    "name": "Tokyo Hai",
     "name_en": "Tokyo Hai",
     "venue": "大井",
     "track_id": 10101,
@@ -11890,7 +11890,7 @@
   {
     "id": 307201,
     "race_id": 3072,
-    "name": "東京スプリント",
+    "name": "Tokyo Sprint",
     "name_en": "Tokyo Sprint",
     "venue": "大井",
     "track_id": 10101,
@@ -11918,7 +11918,7 @@
   {
     "id": 110301,
     "race_id": 1103,
-    "name": "JBCレディスクラシック",
+    "name": "JBC Ladies’ Classic",
     "name_en": "JBC Ladies’ Classic",
     "venue": "大井",
     "track_id": 10101,
@@ -11951,7 +11951,7 @@
   {
     "id": 203601,
     "race_id": 2036,
-    "name": "レディスプレリュード",
+    "name": "Ladies' Prelude",
     "name_en": "Ladies' Prelude",
     "venue": "大井",
     "track_id": 10101,
@@ -11984,7 +11984,7 @@
   {
     "id": 307101,
     "race_id": 3071,
-    "name": "TCK女王盃",
+    "name": "TCK Jo-o Hai",
     "name_en": "TCK Jo-o Hai",
     "venue": "大井",
     "track_id": 10101,
@@ -12012,7 +12012,7 @@
   {
     "id": 110101,
     "race_id": 1101,
-    "name": "帝王賞",
+    "name": "Teio Sho",
     "name_en": "Teio Sho",
     "venue": "大井",
     "track_id": 10101,
@@ -12040,7 +12040,7 @@
   {
     "id": 110201,
     "race_id": 1102,
-    "name": "ジャパンダートダービー",
+    "name": "Japan Dirt Derby",
     "name_en": "Japan Dirt Derby",
     "venue": "大井",
     "track_id": 10101,
@@ -12068,7 +12068,7 @@
   {
     "id": 110501,
     "race_id": 1105,
-    "name": "JBCクラシック",
+    "name": "JBC Classic",
     "name_en": "JBC Classic",
     "venue": "大井",
     "track_id": 10101,
@@ -12101,7 +12101,7 @@
   {
     "id": 110601,
     "race_id": 1106,
-    "name": "東京大賞典",
+    "name": "Tokyo Daishoten",
     "name_en": "Tokyo Daishoten",
     "venue": "大井",
     "track_id": 10101,
@@ -12132,9 +12132,31 @@
     ]
   },
   {
+    "id": 111201,
+    "race_id": 1112,
+    "name": "JBC Sprint",
+    "name_en": "JBC Sprint",
+    "venue": "船橋",
+    "track_id": 10103,
+    "course_id": 11301,
+    "distance": 1400,
+    "gt": 2,
+    "ls": 933,
+    "fc": 900,
+    "fs": 1100,
+    "us": [],
+    "ds": [],
+    "terrain": 2,
+    "grade": 100,
+    "group": 1,
+    "season": 3,
+    "entries": 12,
+    "instances": []
+  },
+  {
     "id": 110801,
     "race_id": 1108,
-    "name": "全日本ジュニア優駿",
+    "name": "Zen-Nippon Junior Yushun",
     "name_en": "Zen-Nippon Junior Yushun",
     "venue": "船橋",
     "track_id": 10103,
@@ -12160,9 +12182,31 @@
     ]
   },
   {
+    "id": 111101,
+    "race_id": 1111,
+    "name": "JBC Ladies’ Classic",
+    "name_en": "JBC Ladies’ Classic",
+    "venue": "船橋",
+    "track_id": 10103,
+    "course_id": 11302,
+    "distance": 1600,
+    "gt": 2,
+    "ls": 1067,
+    "fc": 1100,
+    "fs": 1300,
+    "us": [],
+    "ds": [],
+    "terrain": 2,
+    "grade": 100,
+    "group": 1,
+    "season": 3,
+    "entries": 14,
+    "instances": []
+  },
+  {
     "id": 307301,
     "race_id": 3073,
-    "name": "スパーキングレディーカップ",
+    "name": "Sparking Lady Cup",
     "name_en": "Sparking Lady Cup",
     "venue": "船橋",
     "track_id": 10103,
@@ -12195,7 +12239,7 @@
   {
     "id": 110701,
     "race_id": 1107,
-    "name": "川崎記念",
+    "name": "Kawasaki Kinen",
     "name_en": "Kawasaki Kinen",
     "venue": "船橋",
     "track_id": 10103,
@@ -12221,9 +12265,31 @@
     ]
   },
   {
+    "id": 111301,
+    "race_id": 1113,
+    "name": "JBC Classic",
+    "name_en": "JBC Classic",
+    "venue": "船橋",
+    "track_id": 10103,
+    "course_id": 11303,
+    "distance": 2100,
+    "gt": 2,
+    "ls": 1400,
+    "fc": 1600,
+    "fs": 1800,
+    "us": [],
+    "ds": [],
+    "terrain": 2,
+    "grade": 100,
+    "group": 1,
+    "season": 3,
+    "entries": 14,
+    "instances": []
+  },
+  {
     "id": 203801,
     "race_id": 2038,
-    "name": "エンプレス杯",
+    "name": "Empress Hai",
     "name_en": "Empress Hai",
     "venue": "船橋",
     "track_id": 10103,
@@ -12251,7 +12317,7 @@
   {
     "id": 203901,
     "race_id": 2039,
-    "name": "関東オークス",
+    "name": "Kanto Oaks",
     "name_en": "Kanto Oaks",
     "venue": "船橋",
     "track_id": 10103,
@@ -12277,9 +12343,31 @@
     ]
   },
   {
+    "id": 111501,
+    "race_id": 1115,
+    "name": "JBC Sprint",
+    "name_en": "JBC Sprint",
+    "venue": "盛岡",
+    "track_id": 10104,
+    "course_id": 11401,
+    "distance": 1000,
+    "gt": 2,
+    "ls": 667,
+    "fc": 540,
+    "fs": 692,
+    "us": [],
+    "ds": [],
+    "terrain": 2,
+    "grade": 100,
+    "group": 1,
+    "season": 3,
+    "entries": 14,
+    "instances": []
+  },
+  {
     "id": 110901,
     "race_id": 1109,
-    "name": "かしわ記念",
+    "name": "Kashiwa Kinen",
     "name_en": "Kashiwa Kinen",
     "venue": "盛岡",
     "track_id": 10104,
@@ -12305,9 +12393,31 @@
     ]
   },
   {
+    "id": 111401,
+    "race_id": 1114,
+    "name": "JBC Ladies’ Classic",
+    "name_en": "JBC Ladies’ Classic",
+    "venue": "盛岡",
+    "track_id": 10104,
+    "course_id": 11402,
+    "distance": 1600,
+    "gt": 2,
+    "ls": 1067,
+    "fc": 970,
+    "fs": 1292,
+    "us": [],
+    "ds": [],
+    "terrain": 2,
+    "grade": 100,
+    "group": 1,
+    "season": 3,
+    "entries": 14,
+    "instances": []
+  },
+  {
     "id": 307401,
     "race_id": 3074,
-    "name": "マリーンカップ",
+    "name": "Marine Cup",
     "name_en": "Marine Cup",
     "venue": "盛岡",
     "track_id": 10104,
@@ -12338,9 +12448,31 @@
     ]
   },
   {
+    "id": 111601,
+    "race_id": 1116,
+    "name": "JBC Classic",
+    "name_en": "JBC Classic",
+    "venue": "盛岡",
+    "track_id": 10104,
+    "course_id": 11403,
+    "distance": 1800,
+    "gt": 2,
+    "ls": 1200,
+    "fc": 1170,
+    "fs": 1492,
+    "us": [],
+    "ds": [],
+    "terrain": 2,
+    "grade": 100,
+    "group": 1,
+    "season": 3,
+    "entries": 14,
+    "instances": []
+  },
+  {
     "id": 204101,
     "race_id": 2041,
-    "name": "さざんかテレビ杯",
+    "name": "Sazanka TV Hai",
     "name_en": "Sazanka TV Hai",
     "venue": "盛岡",
     "track_id": 10104,
@@ -12373,7 +12505,7 @@
   {
     "id": 307501,
     "race_id": 3075,
-    "name": "クイーン賞",
+    "name": "Queen Sho",
     "name_en": "Queen Sho",
     "venue": "盛岡",
     "track_id": 10104,
@@ -12406,7 +12538,7 @@
   {
     "id": 204001,
     "race_id": 2040,
-    "name": "ダイオライト記念",
+    "name": "Diolite Kinen",
     "name_en": "Diolite Kinen",
     "venue": "盛岡",
     "track_id": 10104,
@@ -12432,9 +12564,45 @@
     ]
   },
   {
+    "id": 111801,
+    "race_id": 1118,
+    "name": "JBC Sprint",
+    "name_en": "JBC Sprint",
+    "venue": "佐賀",
+    "track_id": 10105,
+    "course_id": 11501,
+    "distance": 1200,
+    "gt": 2,
+    "ls": 800,
+    "fc": 700,
+    "fs": 900,
+    "us": [
+      [
+        100,
+        475
+      ],
+      [
+        975,
+        1150
+      ]
+    ],
+    "ds": [
+      [
+        475,
+        925
+      ]
+    ],
+    "terrain": 2,
+    "grade": 100,
+    "group": 1,
+    "season": 3,
+    "entries": 16,
+    "instances": []
+  },
+  {
     "id": 307701,
     "race_id": 3077,
-    "name": "クラスターカップ",
+    "name": "Cluster Cup",
     "name_en": "Cluster Cup",
     "venue": "佐賀",
     "track_id": 10105,
@@ -12481,7 +12649,7 @@
   {
     "id": 111001,
     "race_id": 1110,
-    "name": "マイルチャンピオンシップ南部杯",
+    "name": "M.C. Nambu Hai",
     "name_en": "M.C. Nambu Hai",
     "venue": "佐賀",
     "track_id": 10105,
@@ -12526,9 +12694,85 @@
     ]
   },
   {
+    "id": 111701,
+    "race_id": 1117,
+    "name": "JBC Ladies’ Classic",
+    "name_en": "JBC Ladies’ Classic",
+    "venue": "佐賀",
+    "track_id": 10105,
+    "course_id": 11503,
+    "distance": 1800,
+    "gt": 2,
+    "ls": 1200,
+    "fc": 1100,
+    "fs": 1500,
+    "us": [
+      [
+        0,
+        150
+      ],
+      [
+        1575,
+        1750
+      ]
+    ],
+    "ds": [
+      [
+        700,
+        1150
+      ]
+    ],
+    "terrain": 2,
+    "grade": 100,
+    "group": 1,
+    "season": 3,
+    "entries": 16,
+    "instances": []
+  },
+  {
+    "id": 111901,
+    "race_id": 1119,
+    "name": "JBC Classic",
+    "name_en": "JBC Classic",
+    "venue": "佐賀",
+    "track_id": 10105,
+    "course_id": 11504,
+    "distance": 2000,
+    "gt": 2,
+    "ls": 1333,
+    "fc": 1300,
+    "fs": 1700,
+    "us": [
+      [
+        175,
+        350
+      ],
+      [
+        900,
+        1275
+      ],
+      [
+        1775,
+        1950
+      ]
+    ],
+    "ds": [
+      [
+        1275,
+        1725
+      ]
+    ],
+    "terrain": 2,
+    "grade": 100,
+    "group": 1,
+    "season": 3,
+    "entries": 16,
+    "instances": []
+  },
+  {
     "id": 307601,
     "race_id": 3076,
-    "name": "マーキュリーカップ",
+    "name": "Mercury Cup",
     "name_en": "Mercury Cup",
     "venue": "佐賀",
     "track_id": 10105,
@@ -12579,7 +12823,7 @@
   {
     "id": 120101,
     "race_id": 1201,
-    "name": "凱旋門賞",
+    "name": "Prix de l'Arc de Triomphe",
     "name_en": "Prix de l'Arc de Triomphe",
     "venue": "ロンシャン",
     "track_id": 10201,
@@ -12611,7 +12855,7 @@
   {
     "id": 931201,
     "race_id": 17201,
-    "name": "ニエル賞",
+    "name": "Prix Niel",
     "name_en": "Prix Niel",
     "venue": "ロンシャン",
     "track_id": 10201,
@@ -12649,7 +12893,7 @@
   {
     "id": 931202,
     "race_id": 17202,
-    "name": "フォワ賞",
+    "name": "Prix Foy",
     "name_en": "Prix Foy",
     "venue": "ロンシャン",
     "track_id": 10201,
@@ -12687,7 +12931,7 @@
   {
     "id": 931203,
     "race_id": 17203,
-    "name": "凱旋門賞",
+    "name": "Prix de l'Arc de Triomphe",
     "name_en": "Prix de l'Arc de Triomphe",
     "venue": "ロンシャン",
     "track_id": 10201,
@@ -12719,7 +12963,7 @@
   {
     "id": 931204,
     "race_id": 17203,
-    "name": "凱旋門賞",
+    "name": "Prix de l'Arc de Triomphe",
     "name_en": "Prix de l'Arc de Triomphe",
     "venue": "ロンシャン",
     "track_id": 10201,
@@ -12751,7 +12995,7 @@
   {
     "id": 931205,
     "race_id": 17203,
-    "name": "凱旋門賞",
+    "name": "Prix de l'Arc de Triomphe",
     "name_en": "Prix de l'Arc de Triomphe",
     "venue": "ロンシャン",
     "track_id": 10201,
@@ -12783,7 +13027,7 @@
   {
     "id": 931206,
     "race_id": 19001,
-    "name": "アメリカンオークス",
+    "name": "American Oaks",
     "name_en": "American Oaks",
     "venue": "サンタアニタパーク",
     "track_id": 10202,

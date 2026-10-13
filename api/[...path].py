@@ -2,7 +2,7 @@ import json
 from functools import lru_cache
 from io import BytesIO
 from pathlib import Path
-from typing import Dict, List
+from typing import Dict, List, Literal
 
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.responses import Response
@@ -122,6 +122,71 @@ OG_PAGES = {
 }
 
 app = FastAPI()
+
+
+@lru_cache(maxsize=4)
+def _read_master_snapshot(server: str, modified_ns: int, size: int):
+    return json.loads((ASSETS / "master" / f"{server}.json").read_text(encoding="utf-8"))
+
+
+def _master_snapshot(server: str):
+    path = ASSETS / "master" / f"{server}.json"
+    try:
+        stat = path.stat()
+    except FileNotFoundError:
+        raise HTTPException(status_code=503, detail=f"No {server} master snapshot imported")
+    return _read_master_snapshot(server, stat.st_mtime_ns, stat.st_size)
+
+
+def _master_metadata(snapshot):
+    return {key: value for key, value in snapshot.items() if key != "skills"}
+
+
+@app.get("/data/v1/{server}/status")
+def master_status(server: Literal["global", "jp"]):
+    return _master_metadata(_master_snapshot(server))
+
+
+@app.get("/data/v1/{server}/skills")
+def master_skills(
+    server: Literal["global", "jp"],
+    q: str = Query(default="", max_length=200),
+    offset: int = Query(default=0, ge=0),
+    limit: int = Query(default=100, ge=1, le=1000),
+):
+    snapshot = _master_snapshot(server)
+    skills = snapshot["skills"]
+    if q:
+        query = q.casefold()
+        skills = [
+            skill for skill in skills if query in skill["name"].casefold() or q == str(skill["id"])
+        ]
+    return {
+        **_master_metadata(snapshot),
+        "total": len(skills),
+        "offset": offset,
+        "limit": limit,
+        "skills": skills[offset : offset + limit],
+    }
+
+
+@app.get("/data/v1/{server}/catalog")
+def master_catalog(server: Literal["global", "jp"]):
+    snapshot = _master_snapshot(server)
+    fields = ("id", "name", "grade_value", "need_skill_point")
+    return {
+        **_master_metadata(snapshot),
+        "skills": [{key: skill.get(key) for key in fields} for skill in snapshot["skills"]],
+    }
+
+
+@app.get("/data/v1/{server}/skills/{skill_id}")
+def master_skill(server: Literal["global", "jp"], skill_id: int):
+    snapshot = _master_snapshot(server)
+    for skill in snapshot["skills"]:
+        if skill["id"] == skill_id:
+            return {**_master_metadata(snapshot), "skill": skill}
+    raise HTTPException(status_code=404, detail="Skill not present in this server snapshot")
 
 
 def _font(size: int, weight: str = "Regular") -> ImageFont.FreeTypeFont:
@@ -382,8 +447,10 @@ def _open_graph_response(page: str) -> Response:
 
 @app.get("/event_by_name")
 async def get_event_by_name(
-    event_name: str = Query(..., description="Event name to lookup"),
-    limit: int = Query(5, description="Maximum number of fuzzy matches to return"),
+    event_name: str = Query(
+        ..., min_length=1, max_length=200, pattern=r"\S", description="Event name to lookup"
+    ),
+    limit: int = Query(5, ge=1, le=20, description="Maximum number of fuzzy matches to return"),
     min_score: float = Query(0, ge=0, le=100, description="Minimum score threshold for matches"),
 ):
     event_map, event_names = _event_index()

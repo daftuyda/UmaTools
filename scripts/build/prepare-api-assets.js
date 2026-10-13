@@ -15,6 +15,8 @@ const runtimeFiles = [
   'support_card.json',
   'uma_data.json',
   'career.json',
+  'master/global.json',
+  'master/jp.json',
 ];
 
 function prepareApiAssets({

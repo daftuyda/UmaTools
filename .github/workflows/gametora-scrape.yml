@@ -32,25 +32,45 @@ jobs:
           node-version: '24'
           package-manager-cache: false
 
-      - name: Run Full Scrape
-        run: |
-          node scripts/data/gametora.js --what all --server global \
-            --out-uma public/assets/uma_data.json \
-            --out-supports public/assets/support_card.json \
-            --out-support-hints public/assets/support_hints.json \
-            --out-skills public/assets/skills_all.json
+      - name: Set Up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
 
-      - name: Generate Skills Core
-        run: node scripts/build/generate-skills-core.js
+      - name: Install Downloader Dependencies
+        run: python -m pip install -r scripts/data/requirements-master.txt
+
+      - name: Refresh GameTora
+        id: gametora
+        continue-on-error: true
+        run: node scripts/data/refresh-provider.js gametora
+
+      - name: Refresh GameWith
+        id: gamewith
+        continue-on-error: true
+        run: node scripts/data/refresh-provider.js gamewith
+
+      - name: Refresh Global Master
+        id: master
+        continue-on-error: true
+        run: node scripts/data/refresh-provider.js master
+
+      - name: Report Provider Failures
+        if: steps.master.outcome == 'failure' || steps.gametora.outcome == 'failure' || steps.gamewith.outcome == 'failure'
+        run: echo "::warning::A provider pipeline failed. Its previous validated files were retained; other providers can still publish."
 
       - name: Commit If Changed
         run: |
-          git add -A public/assets/uma_data.json public/assets/support_card.json public/assets/support_hints.json public/assets/skills_all.json public/assets/skills_core.json
+          git add -A public/assets/uma_data.json public/assets/support_card.json public/assets/support_hints.json public/assets/skills_all.json public/assets/skills_core.json public/assets/races.json public/assets/uma_skills.csv public/assets/uma_skills_jp.csv public/assets/accel_skills_compat.json public/assets/master public/assets/character_thumbs public/assets/support_thumbs
           if git diff --cached --quiet; then
             echo "No data changes to commit."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git commit -m "chore: update gametora data"
+          git commit -m "chore: update game data"
           git push
+
+      - name: Fail When Every Provider Failed
+        if: steps.master.outcome == 'failure' && steps.gametora.outcome == 'failure' && steps.gamewith.outcome == 'failure'
+        run: exit 1
