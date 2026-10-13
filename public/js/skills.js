@@ -464,8 +464,8 @@
   }
 
   function getFallbackScore(entry, category) {
-    if (Number.isFinite(entry?.grade_value)) return entry.grade_value;
     if (category === 'ius') return 180;
+    if (Number.isFinite(entry?.grade_value)) return entry.grade_value;
     if (entry && typeof entry.cost === 'number') return entry.cost;
     return 0;
   }
@@ -481,7 +481,8 @@
     var category = deriveGameToraCategory(entry, csvMeta);
     var name = getGameToraDisplayName(entry);
     var cost = getGameToraCost(entry, category);
-    var score = csvMeta ? csvMeta.score : getFallbackScore(entry, category);
+    var score =
+      category === 'ius' ? 180 : csvMeta ? csvMeta.score : getFallbackScore(entry, category);
     var aliases = getGameToraAliases(entry, name);
     var jpName = ((entry && entry.jpname) || '').trim();
 

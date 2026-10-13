@@ -118,6 +118,42 @@ async function main() {
   try {
     global.fetch = async (url) => ({
       ok: true,
+      json: async () => JSON.parse(fs.readFileSync(path.join(root, 'public', url), 'utf8')),
+    });
+    delete require.cache[require.resolve('../../public/js/skill-data')];
+    const realSkillData = require('../../public/js/skill-data');
+    for (const server of ['global', 'jp']) {
+      const catalog = await realSkillData.loadJSON('/assets/skills_all.json', server);
+      const native = catalog.find((skill) => skill.id === 110031);
+      assert.equal(native.grade_value, 340);
+      assert.equal(native.gene_version.grade_value, 180);
+      const file = server === 'jp' ? 'uma_skills_jp.csv' : 'uma_skills.csv';
+      const input = fs.readFileSync(path.join(root, 'public/assets', file), 'utf8');
+      const rows = realSkillData.parseCSV(await realSkillData.overlayCSV(input, server));
+      const header = rows.shift();
+      const inherited = rows.filter((row) => row[header.indexOf('skill_type')] === 'ius');
+      assert.ok(inherited.length > 0);
+      for (const row of inherited) {
+        for (const field of ['base_value', 'S_A', 'B_C', 'D_E_F', 'G']) {
+          assert.equal(row[header.indexOf(field)], '180', `${server}: ${row[0]} ${field}`);
+        }
+      }
+      const synthetic = await realSkillData.overlayCSV(
+        'name,skill_type,base_value,S_A,B_C,D_E_F,G,affinity_role,check_type\n絶対は、ボクだ,ius,340,374,306,272,238,Late/Mile,Late/Mile',
+        server
+      );
+      assert.deepEqual(realSkillData.parseCSV(synthetic)[1].slice(2), [
+        '180',
+        '180',
+        '180',
+        '180',
+        '180',
+        '',
+        '',
+      ]);
+    }
+    global.fetch = async (url) => ({
+      ok: true,
       json: async () =>
         url.includes('master/')
           ? {

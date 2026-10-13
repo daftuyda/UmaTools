@@ -161,6 +161,16 @@
         else if (names.get(key)?.id !== skill.id) names.set(key, null);
       }
     for (const row of rows.slice(1)) {
+      // Purchased uniques have a flat rating; native names can match the same aliases.
+      if (normalize(row[at('skill_type')]) === 'ius') {
+        for (const field of ['base_value', 's_a', 'b_c', 'd_e_f', 'g']) {
+          if (at(field) >= 0) row[at(field)] = '180';
+        }
+        for (const field of ['affinity_role', 'check_type']) {
+          if (at(field) >= 0) row[at(field)] = '';
+        }
+        continue;
+      }
       const keys = [
         row[at('name')],
         row[at('localized_name')],

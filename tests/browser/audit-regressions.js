@@ -99,6 +99,22 @@ async function main() {
       Number(await session.page.$eval('.skill-score-display', (e) => e.textContent)),
       60
     );
+    await session.page.evaluate(() => {
+      const input = document.querySelector('.skill-name');
+      input.value = 'Certain Victory';
+      input.dispatchEvent(new Event('input', { bubbles: true }));
+      input.dispatchEvent(new Event('change', { bubbles: true }));
+    });
+    await session.page.waitForFunction(
+      () => Number(document.querySelector('.skill-score-display')?.textContent) === 180
+    );
+    for (const level of ['1', '6']) {
+      await session.page.select('#unique-level', level);
+      assert.equal(
+        Number(await session.page.$eval('.skill-score-display', (e) => e.textContent)),
+        180
+      );
+    }
     await session.close();
     // Exercise real consumers through a completed switch and a rapid switch pair.
     for (const route of ['/calculator', '/optimizer', '/skills']) {
