@@ -43655,5 +43655,170 @@
       }
     ],
     "UmaImage": "/assets/character_thumbs/101803-air-groove.png"
+  },
+  {
+    "UmaKey": "Duramente :: Claret Nosferatu",
+    "UmaName": "Duramente",
+    "UmaNameJP": "ドゥラメンテ",
+    "UmaNickname": "Claret Nosferatu",
+    "UmaNicknameJP": "Claret Nosferatu",
+    "UmaSlug": "110802-duramente",
+    "UmaId": "110802",
+    "UmaServer": "jp",
+    "UmaBaseStars": 3,
+    "UmaBaseStats": {
+      "3★": {
+        "Speed": 101,
+        "Stamina": 105,
+        "Power": 91,
+        "Guts": 75,
+        "Wit": 78
+      },
+      "5★": {
+        "Speed": 123,
+        "Stamina": 129,
+        "Power": 111,
+        "Guts": 92,
+        "Wit": 95
+      },
+      "4★": {
+        "Speed": 112,
+        "Stamina": 117,
+        "Power": 101,
+        "Guts": 84,
+        "Wit": 86
+      }
+    },
+    "UmaStatBonuses": {
+      "Speed": 8,
+      "Stamina": 0,
+      "Power": 0,
+      "Guts": 8,
+      "Wit": 14
+    },
+    "UmaAptitudes": {
+      "Surface": {
+        "Turf": "A",
+        "Dirt": "G"
+      },
+      "Distance": {
+        "Short": "G",
+        "Mile": "A",
+        "Medium": "A",
+        "Long": "C"
+      },
+      "Strategy": {
+        "Front": "G",
+        "Pace": "C",
+        "Late": "A",
+        "End": "A"
+      }
+    },
+    "UmaHeightCm": null,
+    "UmaThreeSizes": {},
+    "UmaObjectives": [
+      {
+        "ObjectiveName": "Junior Make Debut",
+        "Turn": "12",
+        "Time": "Junior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Kyodo News Hai",
+        "Turn": "27",
+        "Time": "Classic Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Satsuki Sho",
+        "Turn": "31",
+        "Time": "Classic Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Tokyo Yushun (Japanese Derby)",
+        "Turn": "34",
+        "Time": "Classic Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Kikuka Sho",
+        "Turn": "44",
+        "Time": "Classic Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Nakayama Kinen",
+        "Turn": "52",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Osaka Hai",
+        "Turn": "54",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Takarazuka Kinen",
+        "Turn": "60",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Tenno Sho (Autumn)",
+        "Turn": "68",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Japan Cup",
+        "Turn": "70",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "URA Preliminary",
+        "Turn": "74",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "URA Semi-Final",
+        "Turn": "76",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "URA Final",
+        "Turn": "78",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      }
+    ],
+    "UmaEvents": [
+      {
+        "EventName": "トリック・トリック・トリック！",
+        "EventOptions": {
+          "Top Option": "Skill Pts +15\nForward Step by Step hint +1",
+          "Bottom Option": "Energy +10\nForward Step by Step hint +1"
+        }
+      },
+      {
+        "EventName": "No, no! ホラーナイト",
+        "EventOptions": {
+          "Top Option": "Wit +20\nSkill Pts +30\nWit +5\nSkill Pts +15",
+          "Bottom Option": "Energy +20\nGuts +20\nEnergy +10\nGuts +5"
+        }
+      },
+      {
+        "EventName": "WILD/ROSE",
+        "EventOptions": {
+          "Top Option": "Bare Passion hint +1",
+          "Bottom Option": "Energy +15"
+        }
+      }
+    ],
+    "UmaImage": "/assets/character_thumbs/110802-duramente.png"
   }
 ]

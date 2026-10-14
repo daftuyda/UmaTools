@@ -49682,7 +49682,8 @@
       104402,
       110602,
       105502,
-      111902
+      111902,
+      110802
     ],
     "char_e": [
       104401,
@@ -98997,7 +98998,8 @@
     "char": [
       110701,
       113501,
-      100503
+      100503,
+      110802
     ],
     "char_e": [
       114501
@@ -118814,7 +118816,8 @@
       111902
     ],
     "char_e": [
-      110801
+      110801,
+      110802
     ],
     "condition_groups": [
       {
@@ -149409,7 +149412,8 @@
     "activation": 1,
     "char": [
       104003,
-      113001
+      113001,
+      110802
     ],
     "condition_groups": [
       {
@@ -149450,6 +149454,12 @@
         "evos": [
           113001111
         ]
+      },
+      {
+        "card_id": 110802,
+        "evos": [
+          110802111
+        ]
       }
     ],
     "iconid": 20012,
@@ -149481,7 +149491,8 @@
     "activation": 1,
     "char": [
       104003,
-      113001
+      113001,
+      110802
     ],
     "char_e": [
       107403
@@ -153343,7 +153354,8 @@
   {
     "activation": 1,
     "char": [
-      113501
+      113501,
+      110802
     ],
     "condition_groups": [
       {
@@ -164025,7 +164037,7 @@
     ],
     "iconid": 20346,
     "id": 413021,
-    "jpdesc": "レース中盤に追い抜くか先頭だと速度が上がる、その後最終盤始めの方でラストスパートの最中なら速度がわずかに上がる",
+    "jpdesc": "レース中盤に追い抜くか先頭だと速度が上がる、その後最終盤始めのどこかでラストスパートの最中なら速度がわずかに上がる",
     "jpname": "新しい夢への旅路",
     "name_ko": "新しい夢への旅路",
     "pre_evo": {
@@ -175027,6 +175039,316 @@
     "tid": "zk",
     "type": [
       "nac"
+    ],
+    "unreleased": [
+      "ko",
+      "zh_tw",
+      "en"
+    ]
+  },
+  {
+    "activation": 0,
+    "char": [
+      110802
+    ],
+    "condition_groups": [
+      {
+        "base_time": 40000,
+        "condition": "phase_laterhalf_random==1&order_rate<=90&order_rate>=30&distance_type==3",
+        "effects": [
+          {
+            "type": 27,
+            "value": 5500
+          }
+        ]
+      },
+      {
+        "base_time": 40000,
+        "condition": "phase_laterhalf_random==1&order_rate<=90&order_rate>=30",
+        "effects": [
+          {
+            "type": 27,
+            "value": 4500
+          }
+        ]
+      }
+    ],
+    "endesc": "If you're in the middle of the pack at a random point during the second half of the Middle Leg, your speed will greatly increase; in Medium races, it will increase tremendously instead",
+    "enname": "",
+    "gene_version": {
+      "activation": 1,
+      "condition_groups": [
+        {
+          "base_time": 24000,
+          "condition": "phase_laterhalf_random==1&order_rate<=90&order_rate>=30",
+          "effects": [
+            {
+              "type": 27,
+              "value": 2500
+            }
+          ]
+        }
+      ],
+      "cost": 200,
+      "iconid": 20011,
+      "id": 911081,
+      "inherited": true,
+      "parent_skills": [
+        111081
+      ],
+      "rarity": 1,
+      "tid": "zm"
+    },
+    "iconid": 20013,
+    "id": 111081,
+    "jpdesc": "終盤が迫ったどこかで中団だと少しの間速度がすごく上がる中距離レースなら少しの間ものすごく上がる",
+    "jpname": "かくて宿りし血は目覚め",
+    "rarity": 5,
+    "tid": "zl",
+    "type": [
+      "l_1",
+      "med",
+      "nac"
+    ],
+    "unreleased": [
+      "ko",
+      "zh_tw",
+      "en"
+    ]
+  },
+  {
+    "activation": 1,
+    "char": [
+      110802
+    ],
+    "condition_groups": [
+      {
+        "base_time": 30000,
+        "condition": "running_style==4&phase==1&change_order_onetime<0",
+        "effects": [
+          {
+            "type": 22,
+            "value": 3500
+          }
+        ]
+      }
+    ],
+    "cost": 190,
+    "endesc": "Chaser・If you overtake someone during the Middle Leg, you will get a speed boost",
+    "enname": "",
+    "evo": [
+      {
+        "card_id": 110802,
+        "evos": [
+          110802211
+        ]
+      }
+    ],
+    "iconid": 20012,
+    "id": 204801,
+    "jpdesc": "レース中盤に追い抜くと前に出る＜作戦・追込＞",
+    "jpname": "抜山蓋世",
+    "rarity": 2,
+    "tid": "zn",
+    "type": [
+      "cha",
+      "l_1"
+    ],
+    "unreleased": [
+      "ko",
+      "zh_tw",
+      "en"
+    ],
+    "versions": [
+      204802
+    ]
+  },
+  {
+    "activation": 1,
+    "char": [
+      110802
+    ],
+    "condition_groups": [
+      {
+        "base_time": 30000,
+        "condition": "running_style==4&phase==1&change_order_onetime<0",
+        "effects": [
+          {
+            "type": 22,
+            "value": 1500
+          }
+        ]
+      }
+    ],
+    "cost": 190,
+    "endesc": "Chaser・If you overtake someone during the Middle Leg, you will get a slight speed boost",
+    "enname": "",
+    "iconid": 20011,
+    "id": 204802,
+    "jpdesc": "レース中盤に追い抜くとわずかに前に出る＜作戦・追込＞",
+    "jpname": "規格外",
+    "rarity": 1,
+    "tid": "zo",
+    "type": [
+      "cha",
+      "l_1"
+    ],
+    "unreleased": [
+      "ko",
+      "zh_tw",
+      "en"
+    ],
+    "versions": [
+      204801
+    ]
+  },
+  {
+    "activation": 1,
+    "char": [
+      110802
+    ],
+    "condition_groups": [
+      {
+        "base_time": 24000,
+        "condition": "phase_random==1&order_rate>=40&distance_type==3",
+        "effects": [
+          {
+            "type": 22,
+            "value": 5500
+          }
+        ],
+        "precondition": "running_style==3@running_style==4"
+      },
+      {
+        "base_time": 24000,
+        "condition": "phase_random==1",
+        "effects": [
+          {
+            "type": 22,
+            "value": 3500
+          }
+        ],
+        "precondition": "running_style==3@running_style==4"
+      }
+    ],
+    "endesc": "Betweener/Chaser・At a random point during the Middle Leg, you will get a speed boost; (Medium only) if you're not in the front when it activates, the speed boost will be tremendous",
+    "enname": "",
+    "evo_cond": [
+      [
+        [
+          "gn_race_w",
+          100,
+          5
+        ],
+        [
+          "e_skill",
+          "speed",
+          3
+        ]
+      ],
+      [
+        [
+          "stat",
+          1,
+          800
+        ]
+      ]
+    ],
+    "iconid": 20016,
+    "id": 110802111,
+    "jpdesc": "レース中盤のどこかで前に出る中距離レースでスキル発動時中団以降だとものすごく前に出る＜差し/追込＞",
+    "jpname": "魔の刻、来たれり",
+    "pre_evo": {
+      "card_id": 110802,
+      "old": 203671
+    },
+    "rarity": 6,
+    "tid": "zp",
+    "type": [
+      "l_1",
+      "med",
+      "btw",
+      "cha"
+    ],
+    "unreleased": [
+      "ko",
+      "zh_tw",
+      "en"
+    ]
+  },
+  {
+    "activation": 1,
+    "char": [
+      110802
+    ],
+    "condition_groups": [
+      {
+        "base_time": 30000,
+        "condition": "phase==1&change_order_onetime<0&distance_type==3",
+        "effects": [
+          {
+            "type": 22,
+            "value": 3500
+          },
+          {
+            "type": 22,
+            "value": 1500
+          }
+        ],
+        "precondition": "running_style==3@running_style==4"
+      },
+      {
+        "base_time": 30000,
+        "condition": "phase==1&change_order_onetime<0",
+        "effects": [
+          {
+            "type": 22,
+            "value": 3500
+          }
+        ],
+        "precondition": "running_style==3@running_style==4"
+      }
+    ],
+    "endesc": "Betweener/Chaser・If you overtake someone during the Middle Leg, you will get a speed boost; the effect is stronger in Medium races",
+    "enname": "",
+    "evo_cond": [
+      [
+        [
+          "stat",
+          5,
+          800
+        ]
+      ],
+      [
+        [
+          "a_skill",
+          "strat",
+          3,
+          2
+        ],
+        [
+          "a_skill",
+          "strat",
+          4,
+          2
+        ]
+      ]
+    ],
+    "iconid": 20016,
+    "id": 110802211,
+    "jpdesc": "レース中盤に追い抜くと前に出るさらに中距離レースなら加えてわずかに前に出る＜差し/追込＞",
+    "jpname": "喰らえども、喰らえども",
+    "pre_evo": {
+      "card_id": 110802,
+      "old": 204801
+    },
+    "rarity": 6,
+    "tid": "zq",
+    "type": [
+      "l_1",
+      "med",
+      "btw",
+      "cha"
     ],
     "unreleased": [
       "ko",
