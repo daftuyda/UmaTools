@@ -662,13 +662,13 @@
     }
   },
   {
-    "EventName": "いつだってテイエムオペラオー",
+    "EventName": "The Ever-Prepared T.M. Opera O",
     "EventOptions": {
       "": "Stamina +10\nSkill Pts +10\nBond +5"
     }
   },
   {
-    "EventName": "みんなのテイエムオペラオー",
+    "EventName": "Everyone's T.M. Opera O",
     "EventOptions": {
       "Top Option": "Motivation +1\nBond +15",
       "Bottom Option": "Stamina +15\nPreferred Position hint +1\nBond +5"
@@ -3464,20 +3464,20 @@
     }
   },
   {
-    "EventName": "風の呼ぶほうへ",
+    "EventName": "Where the Wind Calls",
     "EventOptions": {
       "": "Guts +10\nBond +5\nSpeed +5\nGuts +15\nBond +10"
     }
   },
   {
-    "EventName": "味わい深く香る風",
+    "EventName": "An Evocative Flavor",
     "EventOptions": {
       "Top Option": "Energy +20\nBond +5",
       "Bottom Option": "Speed +5\nGuts +5\nSlipstream hint +1\nBond +5"
     }
   },
   {
-    "EventName": "いつか見た夢を",
+    "EventName": "The Dream I Saw",
     "EventOptions": {
       "": "Speed +3\nPower +3\nGuts +10\nAmbitious Breeze hint +1\nBond +5\nSpeed +7\nPower +7\nGuts +15\nAmbitious Breeze hint +3\nBond +5"
     }

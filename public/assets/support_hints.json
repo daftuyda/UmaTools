@@ -16002,7 +16002,7 @@
     "SupportName": "Yamanin Zephyr (R)",
     "SupportNameJP": "ヤマニンゼファー (R)",
     "SupportRarity": "R",
-    "SupportServer": "jp",
+    "SupportServer": "global",
     "SupportType": "Guts",
     "SupportEffects": [
       {
@@ -40894,7 +40894,7 @@
     "SupportName": "TM Opera O (SR)",
     "SupportNameJP": "テイエムオペラオー (SR)",
     "SupportRarity": "SR",
-    "SupportServer": "jp",
+    "SupportServer": "global",
     "SupportType": "Stamina",
     "SupportEffects": [
       {
@@ -80370,7 +80370,7 @@
     "SupportName": "Yamanin Zephyr (SSR)",
     "SupportNameJP": "ヤマニンゼファー (SSR)",
     "SupportRarity": "SSR",
-    "SupportServer": "jp",
+    "SupportServer": "global",
     "SupportType": "Guts",
     "SupportEffects": [
       {

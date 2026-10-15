@@ -17309,7 +17309,7 @@
     "UmaNicknameJP": "餓狼",
     "UmaSlug": "101602-narita-brian",
     "UmaId": "101602",
-    "UmaServer": "jp",
+    "UmaServer": "global",
     "UmaBaseStars": 3,
     "UmaBaseStats": {
       "3★": {
@@ -17473,20 +17473,20 @@
     ],
     "UmaEvents": [
       {
-        "EventName": "モチつ持たれつ",
+        "EventName": "Mochi-vation",
         "EventOptions": {
           "": "Stamina +20\nGuts +10\nStamina to Spare hint +2"
         }
       },
       {
-        "EventName": "誓いはいつまでも",
+        "EventName": "Forever by Your Side",
         "EventOptions": {
           "Top Option": "Speed +20",
           "Bottom Option": "Power +20"
         }
       },
       {
-        "EventName": "無頼なれども",
+        "EventName": "Not-So-Lone Wolf",
         "EventOptions": {
           "Top Option": "Energy +15",
           "Bottom Option": "Feature Act hint +2"
