@@ -3483,58 +3483,58 @@
     }
   },
   {
-    "EventName": "おなじ気持ちで、夢中に",
+    "EventName": "Engrossed in Enjoyment",
     "EventOptions": {
       "": "Energy +15\nMotivation +1\nBond +5"
     }
   },
   {
-    "EventName": "おなじ気持ちで、真心を",
+    "EventName": "Sharing in Sincerity",
     "EventOptions": {
       "Top Option": "Speed +7\nStamina +7\nGuts +7\nFree-Spirited hint +1\nBond +5",
       "Bottom Option": "Energy +25\nBond +5"
     }
   },
   {
-    "EventName": "おなじ気持ちで、願いを",
+    "EventName": "Driven in Desire",
     "EventOptions": {
       "": "Speed +4\nStamina +10\nGuts +4\nNo Stopping Me! hint +1\nBond +5\nSpeed +8\nStamina +15\nGuts +8\nNo Stopping Me! hint +3\nBond +5"
     }
   },
   {
-    "EventName": "むかし、袖を通した着物",
+    "EventName": "Past: A Kimono Worn Long Ago",
     "EventOptions": {
       "Top Option": "Wit +10\nIntense Gaze hint +1\nBond +5\nWit +15\nIntense Gaze hint +3\nRestraint hint +1\nBond +10",
       "Bottom Option": "Energy +15\nBond +5"
     }
   },
   {
-    "EventName": "いま、帯をしめる",
+    "EventName": "Present: Tying the Obi",
     "EventOptions": {
       "": "Skill Pts +25\nBond +5"
     }
   },
   {
-    "EventName": "みらい、鼻緒はきりりと",
+    "EventName": "Future: Taut Sandal Straps",
     "EventOptions": {
       "": "Power +7\nWit +7\nRazor-Sharp Steps hint +1\nBond +5\nPower +15\nWit +15\nRazor-Sharp Steps hint +3\nBond +5"
     }
   },
   {
-    "EventName": "導き手の憂い",
+    "EventName": "Woe of a Guiding Hand",
     "EventOptions": {
       "": "Power +10\nPressure hint +1\nBond +5"
     }
   },
   {
-    "EventName": "あの日の背比べ",
+    "EventName": "Sizing Up to the Past",
     "EventOptions": {
       "Top Option": "Energy +15\nBond +5",
       "Bottom Option": "Power +15\nBond +5"
     }
   },
   {
-    "EventName": "背中合わせ",
+    "EventName": "A Rivalry Renewed",
     "EventOptions": {
       "": "Stamina +5\nPower +10\nCooldown hint +1\nBond +5"
     }

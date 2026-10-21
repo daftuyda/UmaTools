@@ -80653,7 +80653,7 @@
     "SupportName": "Special Week (SSR)",
     "SupportNameJP": "スペシャルウィーク (SSR)",
     "SupportRarity": "SSR",
-    "SupportServer": "jp",
+    "SupportServer": "global",
     "SupportType": "Stamina",
     "SupportEffects": [
       {
@@ -80936,7 +80936,7 @@
     "SupportName": "Sweep Tosho (SSR)",
     "SupportNameJP": "スイープトウショウ (SSR)",
     "SupportRarity": "SSR",
-    "SupportServer": "jp",
+    "SupportServer": "global",
     "SupportType": "Wit",
     "SupportEffects": [
       {
@@ -81204,7 +81204,7 @@
     "SupportName": "Grass Wonder (SSR)",
     "SupportNameJP": "グラスワンダー (SSR)",
     "SupportRarity": "SSR",
-    "SupportServer": "jp",
+    "SupportServer": "global",
     "SupportType": "Power",
     "SupportEffects": [
       {
