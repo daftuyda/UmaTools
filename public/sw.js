@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v98';
+const CACHE_VERSION = 'v99';
 const STATIC_CACHE = `umatools-static-${CACHE_VERSION}`;
 const RUNTIME_CACHE = `umatools-runtime-${CACHE_VERSION}`;
 
@@ -45,6 +45,7 @@ const STATIC_ASSETS = [
   '/js/skill-scorer.js',
   '/js/team-trials-optimizer.js',
   '/js/changelog.js',
+  '/js/home.js',
   '/js/theme-toggle.js',
   '/js/lib/virtual-scroll.js',
   '/deck.html',

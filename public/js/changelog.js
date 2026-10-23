@@ -41,11 +41,12 @@
     ul.appendChild(fragment);
   }
 
-  function mount(data) {
+  function mount(data, force) {
     var version = data.version;
     var entries = data.entries;
     if (!version || !entries || !entries.length) return;
-    if (readDismissed() === version) return;
+    if (!force && readDismissed() === version) return;
+    if (document.querySelector('.changelog-backdrop')) return;
 
     var _t = function (key) {
       return typeof window.t === 'function' ? window.t(key) : key;
@@ -162,20 +163,42 @@
   }
 
   var initialized = false;
+  var dataPromise = null;
+
+  function load() {
+    if (!dataPromise) {
+      dataPromise = fetch('/assets/changelog.json').then(function (res) {
+        if (!res.ok) throw new Error(res.status);
+        return res.json();
+      });
+    }
+    return dataPromise;
+  }
 
   function init() {
     if (initialized) return;
     initialized = true;
-    fetch('/assets/changelog.json')
-      .then(function (res) {
-        if (!res.ok) throw new Error(res.status);
-        return res.json();
+    load()
+      .then(function (data) {
+        mount(data, false);
       })
-      .then(mount)
       .catch(function () {
         // Silently fail — changelog is non-critical
       });
   }
+
+  // Lets pages show the latest summary and reopen the changelog on demand.
+  window.UmaChangelog = {
+    load: load,
+    localized: localized,
+    open: function () {
+      load()
+        .then(function (data) {
+          mount(data, true);
+        })
+        .catch(function () {});
+    },
+  };
 
   // Wait for nav to be ready so we can insert after it
   var navReady = false;

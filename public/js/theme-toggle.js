@@ -97,8 +97,47 @@
     });
   }
 
+  // Accent color sits on top of the neutral Graphite theme; blue is the default.
+  var ACCENT_KEY = 'umatools-accent';
+  var ACCENTS = ['blue', 'mono', 'green', 'violet', 'pink', 'orange'];
+
+  function normalizeAccent(value) {
+    return ACCENTS.indexOf(value) === -1 ? 'blue' : value;
+  }
+
+  function applyAccent(value, persist) {
+    var accent = normalizeAccent(value);
+    document.documentElement.dataset.accent = accent;
+    var radio = document.querySelector('input[name="nav-accent"][value="' + accent + '"]');
+    if (radio) radio.checked = true;
+    if (persist) {
+      try {
+        localStorage.setItem(ACCENT_KEY, accent);
+      } catch {}
+    }
+    window.dispatchEvent(new CustomEvent('umatools:accent-change', { detail: { accent: accent } }));
+  }
+
+  var initialAccent = 'blue';
+  try {
+    initialAccent = localStorage.getItem(ACCENT_KEY);
+  } catch {}
+  applyAccent(initialAccent, false);
+
+  window.UmaAccent = {
+    list: ACCENTS.slice(),
+    get: function () {
+      return normalizeAccent(document.documentElement.dataset.accent);
+    },
+    set: function (accent, options) {
+      applyAccent(accent, !options || options.persist !== false);
+    },
+  };
+
   window.addEventListener('storage', function (event) {
-    if (event.key === THEME_KEY) {
+    if (event.key === ACCENT_KEY) {
+      applyAccent(event.newValue, false);
+    } else if (event.key === THEME_KEY) {
       applyTheme(event.newValue, false, true);
     } else if (event.key === LEGACY_KEY) {
       applyTheme(readStoredTheme() || (event.newValue === 'dark' ? 'dark' : 'light'), false, true);
