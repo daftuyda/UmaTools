@@ -50,8 +50,6 @@
 
   function createAffinityHelpers(cfg) {
     const ROLE_GROUP = Object.freeze({
-      turf: 'surface',
-      dirt: 'surface',
       sprint: 'distance',
       mile: 'distance',
       medium: 'distance',
@@ -82,6 +80,8 @@
 
     function getBucketForSkill(checkType) {
       const ct = normalize(checkType);
+      // Turf/Dirt restrict activation but never scale a skill's rating.
+      if (ct === 'turf' || ct === 'dirt') return 'base';
       const map = {
         turf: cfg.turf,
         dirt: cfg.dirt,
@@ -100,6 +100,7 @@
     }
 
     function getRoleMultiplier(roleKey) {
+      if (!ROLE_GROUP[roleKey]) return null;
       const map = {
         turf: cfg.turf,
         dirt: cfg.dirt,

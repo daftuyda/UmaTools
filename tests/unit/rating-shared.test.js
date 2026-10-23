@@ -54,14 +54,14 @@ function testAffinityHelpers() {
 
   assert.strictEqual(helpers.getBucketForGrade('A'), 'good');
   assert.strictEqual(helpers.getBucketForGrade('F'), 'bad');
-  assert.strictEqual(helpers.getBucketForSkill('turf'), 'good');
-  assert.strictEqual(helpers.getBucketForSkill('dirt'), 'terrible');
+  assert.strictEqual(helpers.getBucketForSkill('turf'), 'base');
+  assert.strictEqual(helpers.getBucketForSkill('dirt'), 'base');
 
   const skill = {
     checkType: 'turf',
-    score: { good: 120, average: 80, bad: 40, terrible: 0 },
+    score: { base: 100, good: 120, average: 80, bad: 40, terrible: 0 },
   };
-  assert.strictEqual(helpers.evaluateSkillScore(skill), 120);
+  assert.strictEqual(helpers.evaluateSkillScore(skill), 100);
 }
 
 function testMultiAffinitySkillScoring() {
@@ -92,6 +92,23 @@ function testMultiAffinitySkillScoring() {
   cfg.mile.value = 'C';
   cfg.medium.value = 'A';
   assert.strictEqual(helpers.evaluateSkillScore(sameGroupSkill), 110);
+
+  for (const grade of ['S', 'A', 'B', 'C', 'D', 'E', 'F', 'G']) {
+    cfg.dirt.value = grade;
+    const dirtSkill = {
+      checkType: 'Dirt',
+      score: { base: 217, good: 239, average: 195, bad: 174, terrible: 152 },
+    };
+    assert.strictEqual(helpers.evaluateSkillScore(dirtSkill), 217);
+    assert.strictEqual(
+      helpers.evaluateSkillScore({ checkType: 'Dirt/Mile/Pace', score: { base: 100 } }),
+      63
+    );
+    assert.strictEqual(
+      helpers.evaluateSkillScore({ checkType: 'Turf/Dirt', score: { base: 217 } }),
+      217
+    );
+  }
 }
 
 function testPurpleSkillRatingNormalization() {

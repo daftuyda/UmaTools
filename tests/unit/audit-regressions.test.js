@@ -138,6 +138,30 @@ async function main() {
           assert.equal(row[header.indexOf(field)], '180', `${server}: ${row[0]} ${field}`);
         }
       }
+      const surfaceRows = rows.filter((row) =>
+        /^(turf|dirt)$/i.test(row[header.indexOf('affinity_role')])
+      );
+      assert.ok(surfaceRows.length > 0);
+      for (const row of surfaceRows) {
+        for (const field of ['S_A', 'B_C', 'D_E_F', 'G']) {
+          assert.equal(
+            Number(row[header.indexOf(field)]),
+            Number(row[header.indexOf('base_value')]),
+            server + ': ' + row[header.indexOf('name')] + ' ' + field
+          );
+        }
+      }
+      const dirt = rows.find(
+        (row) => row[header.indexOf('localized_name')] === 'Down in the Dirt ○'
+      );
+      assert.equal(dirt[header.indexOf('S_A')], '217');
+      const mixedSurface = realSkillData.parseCSV(
+        await realSkillData.overlayCSV(
+          'name,skill_type,base_value,S_A,B_C,D_E_F,G,affinity_role\nSurface test,yellow,100,,,,,Dirt/Mile/Pace',
+          server
+        )
+      )[1];
+      assert.deepEqual(mixedSurface.slice(3, 7), ['121', '81', '64', '49']);
       const synthetic = await realSkillData.overlayCSV(
         'name,skill_type,base_value,S_A,B_C,D_E_F,G,affinity_role,check_type\n絶対は、ボクだ,ius,340,374,306,272,238,Late/Mile,Late/Mile',
         server

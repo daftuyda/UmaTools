@@ -191,18 +191,17 @@
       const base = Number(row[baseIndex]);
       if (!Number.isFinite(base)) continue;
       const check = normalize(row[at('affinity_role')] || row[at('check_type')]);
+      // Surface restrictions affect activation, not rating aptitude multipliers.
       const groups = new Set(
         check
           .split('/')
           .filter(Boolean)
           .map((role) =>
-            ['turf', 'dirt'].includes(role)
-              ? 'surface'
-              : ['sprint', 'mile', 'medium', 'long'].includes(role)
-                ? 'distance'
-                : ['front', 'pace', 'late', 'end'].includes(role)
-                  ? 'style'
-                  : null
+            ['sprint', 'mile', 'medium', 'long'].includes(role)
+              ? 'distance'
+              : ['front', 'pace', 'late', 'end'].includes(role)
+                ? 'style'
+                : null
           )
           .filter(Boolean)
       );
