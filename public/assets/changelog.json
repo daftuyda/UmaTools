@@ -1,10 +1,26 @@
 {
-  "version": "2026-10-23 Beta",
+  "version": "2026-10-24 Beta",
   "summary": {
-    "en": "A new site layout with a sidebar for every tool, a neutral Graphite theme with your choice of accent color, a simpler homepage, and more accurate skill ratings.",
-    "ja": "全ツールを並べたサイドバー、アクセントカラーを選べるニュートラルなグラファイトテーマ、シンプルになったホーム画面、より正確なスキル評価を含むアップデート。"
+    "en": "Team Trials now uses simulated skill activation rates across observed tracks, evolution purchases and results are clearer, and the floating rank display takes up less space. This Beta also includes the new sidebar, homepage, and Graphite themes.",
+    "ja": "チーム競技場の観測コースに基づくシミュレーションでスキル発動率を評価するようになりました。進化スキルの購入処理と結果表示を修正し、フローティングランク表示をコンパクトにしました。このBetaには、新しいサイドバー、ホーム画面、グラファイトテーマも含まれます。"
   },
   "entries": [
+    {
+      "en": "Team Trials optimization now weights skills by estimated activation rates using GlobalSim simulations and the observed Team Trials course pool. Skills without matching simulation data still use heuristic estimates.",
+      "ja": "チーム競技場の最適化で、GlobalSimのシミュレーションと観測されたチーム競技場のコース構成に基づき、推定発動率でスキルを重み付けするようにしました。対応するシミュレーションデータがないスキルには、引き続きヒューリスティックな推定を使用します。"
+    },
+    {
+      "en": "Fixed evolution selection and scoring: buying an evolution requires its gold skill and any prerequisites, costs no extra SP beyond that purchase, and replaces the gold skill’s rating instead of adding to it.",
+      "ja": "進化スキルの選択と評価を修正しました。進化には元の金スキルと前提スキルの購入が必要で、進化自体に追加のスキルPtはかかりません。評価点は金スキルに加算せず、進化スキルの評価点に置き換えます。"
+    },
+    {
+      "en": "Evolution results now show one Gold → Evolution entry with a single cost and rating, keeping included prerequisites underneath instead of listing the evolution separately at the end. Team Trials metrics also have clearer spacing.",
+      "ja": "進化スキルの結果を「金スキル → 進化スキル」の1項目にまとめ、費用と評価点を一度だけ表示するようにしました。前提スキルはその下に表示し、進化スキルが末尾に別項目として表示される問題を修正しました。チーム競技場の指標表示の間隔も調整しました。"
+    },
+    {
+      "en": "The floating rank display is now a small box showing the rank icon, rating, and points needed for the next rank. Hover to expand the details; keyboard and touch controls are also supported.",
+      "ja": "フローティングランク表示を、ランクアイコン・評価点・次のランクまでの必要点数だけを示す小さなボックスにしました。カーソルを合わせると詳細を展開でき、キーボードとタッチ操作にも対応しています。"
+    },
     {
       "en": "Replaced the dropdown menus with a sidebar that lists every tool by group, highlights the page you are on, and remembers which groups you collapse. On desktop you can shrink it to a slim icon bar for more room; on phones and tablets it opens as a slide-out menu.",
       "ja": "ドロップダウンメニューを、全ツールをグループごとに表示するサイドバーに置き換えました。現在のページを強調表示し、折りたたんだグループを記憶します。デスクトップでは細いアイコンバーに縮めて画面を広く使え、スマートフォンとタブレットではスライド式メニューとして開きます。"
