@@ -11318,7 +11318,7 @@ main.home-page {
   top: 0;
   right: 0;
   width: 96px;
-  height: 120px;
+  height: 96px;
   z-index: 110;
   color: var(--text-soft);
   pointer-events: none;
@@ -11332,7 +11332,7 @@ main.home-page {
 @media (max-width: 640px) {
   .halloween-corner {
     width: 64px;
-    height: 80px;
+    height: 64px;
   }
 }
 @media print {
