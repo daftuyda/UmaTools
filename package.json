@@ -36,7 +36,7 @@
     "lint:js": "eslint .",
     "lint:py": "python -m ruff check api scripts/data",
     "lint": "npm run lint:js && npm run lint:py",
-    "test:team-trials": "node tests/unit/team-trials-optimizer.test.js",
+    "test:team-trials": "node tests/unit/team-trials-optimizer.test.js && node tests/unit/team-trials-calibration.test.js",
     "test:rating-shared": "node tests/unit/rating-shared.test.js",
     "test:token-planner": "node tests/unit/token-planner.test.js",
     "test:api": "python -m unittest discover -s tests/unit -p test_api.py",
@@ -47,7 +47,8 @@
     "build:master-core": "node scripts/build/generate-master-core.js",
     "test:audit-regressions": "node tests/unit/audit-regressions.test.js",
     "test:browser": "node tests/browser/audit-regressions.js",
-    "test:optimizer-functions": "node tests/unit/optimizer-functions.test.js"
+    "test:optimizer-functions": "node tests/unit/optimizer-functions.test.js",
+    "calibrate:team-trials": "node scripts/data/calibrate-team-trials.js"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

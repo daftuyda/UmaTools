@@ -29,3 +29,6 @@ logs/security/
 /reference
 /badges
 /lighthouse-reports
+
+# Offline Team Trials simulation build and scratch files
+/.tmp-team-trials/

@@ -1,0 +1,706 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "file": "track data.xlsx",
+    "sha256": "555bf5f3aea90f3ebfdb6414a2b7d51077f650510b293af6b226f5aa4d3f28cb",
+    "credit": "Workbook credits Ruben for analysis",
+    "weighting": "Equal weight per listed course row within each category; these are pool entries, not race occurrence counts.",
+    "layoutMapping": "Repeated venue/distance rows assigned to distinct course IDs in ascending order; their equal weights make row order immaterial."
+  },
+  "categories": {
+    "sprint": [
+      {
+        "row": 4,
+        "track": "Sapporo",
+        "distance": 1200,
+        "courseIds": [
+          10101
+        ]
+      },
+      {
+        "row": 5,
+        "track": "Hakodate",
+        "distance": 1000,
+        "courseIds": [
+          10201
+        ]
+      },
+      {
+        "row": 6,
+        "track": "Hakodate",
+        "distance": 1200,
+        "courseIds": [
+          10202
+        ]
+      },
+      {
+        "row": 7,
+        "track": "Fukushima",
+        "distance": 1200,
+        "courseIds": [
+          10401
+        ]
+      },
+      {
+        "row": 8,
+        "track": "Niigata",
+        "distance": 1000,
+        "courseIds": [
+          10301
+        ]
+      },
+      {
+        "row": 9,
+        "track": "Niigata",
+        "distance": 1200,
+        "courseIds": [
+          10302
+        ]
+      },
+      {
+        "row": 10,
+        "track": "Niigata",
+        "distance": 1400,
+        "courseIds": [
+          10303
+        ]
+      },
+      {
+        "row": 11,
+        "track": "Tokyo",
+        "distance": 1400,
+        "courseIds": [
+          10601
+        ]
+      },
+      {
+        "row": 12,
+        "track": "Nakayama",
+        "distance": 1200,
+        "courseIds": [
+          10501
+        ]
+      },
+      {
+        "row": 13,
+        "track": "Chukyo",
+        "distance": 1200,
+        "courseIds": [
+          10701
+        ]
+      },
+      {
+        "row": 14,
+        "track": "Chukyo",
+        "distance": 1400,
+        "courseIds": [
+          10702
+        ]
+      },
+      {
+        "row": 15,
+        "track": "Kyoto",
+        "distance": 1200,
+        "courseIds": [
+          10801
+        ]
+      },
+      {
+        "row": 16,
+        "track": "Kyoto",
+        "distance": 1400,
+        "courseIds": [
+          10802
+        ]
+      },
+      {
+        "row": 17,
+        "track": "Kyoto",
+        "distance": 1400,
+        "courseIds": [
+          10803
+        ]
+      },
+      {
+        "row": 18,
+        "track": "Hanshin",
+        "distance": 1200,
+        "courseIds": [
+          10901
+        ]
+      },
+      {
+        "row": 19,
+        "track": "Hanshin",
+        "distance": 1400,
+        "courseIds": [
+          10902
+        ]
+      },
+      {
+        "row": 20,
+        "track": "Kokura",
+        "distance": 1200,
+        "courseIds": [
+          11001
+        ]
+      }
+    ],
+    "mile": [
+      {
+        "row": 26,
+        "track": "Sapporo",
+        "distance": 1500,
+        "courseIds": [
+          10102
+        ]
+      },
+      {
+        "row": 27,
+        "track": "Sapporo",
+        "distance": 1800,
+        "courseIds": [
+          10103
+        ]
+      },
+      {
+        "row": 28,
+        "track": "Hakodate",
+        "distance": 1800,
+        "courseIds": [
+          10203
+        ]
+      },
+      {
+        "row": 29,
+        "track": "Fukushima",
+        "distance": 1800,
+        "courseIds": [
+          10402
+        ]
+      },
+      {
+        "row": 30,
+        "track": "Niigata",
+        "distance": 1600,
+        "courseIds": [
+          10304
+        ]
+      },
+      {
+        "row": 31,
+        "track": "Niigata",
+        "distance": 1800,
+        "courseIds": [
+          10305
+        ]
+      },
+      {
+        "row": 32,
+        "track": "Tokyo",
+        "distance": 1600,
+        "courseIds": [
+          10602
+        ]
+      },
+      {
+        "row": 33,
+        "track": "Tokyo",
+        "distance": 1800,
+        "courseIds": [
+          10603
+        ]
+      },
+      {
+        "row": 34,
+        "track": "Nakayama",
+        "distance": 1600,
+        "courseIds": [
+          10502
+        ]
+      },
+      {
+        "row": 35,
+        "track": "Nakayama",
+        "distance": 1800,
+        "courseIds": [
+          10503
+        ]
+      },
+      {
+        "row": 36,
+        "track": "Chukyo",
+        "distance": 1600,
+        "courseIds": [
+          10703
+        ]
+      },
+      {
+        "row": 37,
+        "track": "Kyoto",
+        "distance": 1600,
+        "courseIds": [
+          10804
+        ]
+      },
+      {
+        "row": 38,
+        "track": "Kyoto",
+        "distance": 1600,
+        "courseIds": [
+          10805
+        ]
+      },
+      {
+        "row": 39,
+        "track": "Kyoto",
+        "distance": 1800,
+        "courseIds": [
+          10806
+        ]
+      },
+      {
+        "row": 40,
+        "track": "Hanshin",
+        "distance": 1600,
+        "courseIds": [
+          10903
+        ]
+      },
+      {
+        "row": 41,
+        "track": "Hanshin",
+        "distance": 1800,
+        "courseIds": [
+          10904
+        ]
+      },
+      {
+        "row": 42,
+        "track": "Kokura",
+        "distance": 1800,
+        "courseIds": [
+          11002
+        ]
+      }
+    ],
+    "medium": [
+      {
+        "row": 48,
+        "track": "Sapporo",
+        "distance": 2000,
+        "courseIds": [
+          10104
+        ]
+      },
+      {
+        "row": 49,
+        "track": "Hakodate",
+        "distance": 2000,
+        "courseIds": [
+          10204
+        ]
+      },
+      {
+        "row": 50,
+        "track": "Fukushima",
+        "distance": 2000,
+        "courseIds": [
+          10403
+        ]
+      },
+      {
+        "row": 51,
+        "track": "Niigata",
+        "distance": 2000,
+        "courseIds": [
+          10306
+        ]
+      },
+      {
+        "row": 52,
+        "track": "Niigata",
+        "distance": 2000,
+        "courseIds": [
+          10307
+        ]
+      },
+      {
+        "row": 53,
+        "track": "Niigata",
+        "distance": 2200,
+        "courseIds": [
+          10308
+        ]
+      },
+      {
+        "row": 54,
+        "track": "Niigata",
+        "distance": 2400,
+        "courseIds": [
+          10309
+        ]
+      },
+      {
+        "row": 55,
+        "track": "Tokyo",
+        "distance": 2000,
+        "courseIds": [
+          10604
+        ]
+      },
+      {
+        "row": 56,
+        "track": "Tokyo",
+        "distance": 2300,
+        "courseIds": [
+          10605
+        ]
+      },
+      {
+        "row": 57,
+        "track": "Tokyo",
+        "distance": 2400,
+        "courseIds": [
+          10606
+        ]
+      },
+      {
+        "row": 58,
+        "track": "Nakayama",
+        "distance": 2000,
+        "courseIds": [
+          10504
+        ]
+      },
+      {
+        "row": 59,
+        "track": "Nakayama",
+        "distance": 2200,
+        "courseIds": [
+          10505
+        ]
+      },
+      {
+        "row": 60,
+        "track": "Chukyo",
+        "distance": 2000,
+        "courseIds": [
+          10704
+        ]
+      },
+      {
+        "row": 61,
+        "track": "Chukyo",
+        "distance": 2200,
+        "courseIds": [
+          10705
+        ]
+      },
+      {
+        "row": 62,
+        "track": "Kyoto",
+        "distance": 2000,
+        "courseIds": [
+          10807
+        ]
+      },
+      {
+        "row": 63,
+        "track": "Kyoto",
+        "distance": 2200,
+        "courseIds": [
+          10808
+        ]
+      },
+      {
+        "row": 64,
+        "track": "Kyoto",
+        "distance": 2400,
+        "courseIds": [
+          10809
+        ]
+      },
+      {
+        "row": 65,
+        "track": "Hanshin",
+        "distance": 2000,
+        "courseIds": [
+          10905
+        ]
+      },
+      {
+        "row": 66,
+        "track": "Hanshin",
+        "distance": 2200,
+        "courseIds": [
+          10906
+        ]
+      },
+      {
+        "row": 67,
+        "track": "Hanshin",
+        "distance": 2400,
+        "courseIds": [
+          10907
+        ]
+      },
+      {
+        "row": 68,
+        "track": "Kokura",
+        "distance": 2000,
+        "courseIds": [
+          11003
+        ]
+      }
+    ],
+    "long": [
+      {
+        "row": 74,
+        "track": "Sapporo",
+        "distance": 2600,
+        "courseIds": [
+          10105
+        ]
+      },
+      {
+        "row": 75,
+        "track": "Hakodate",
+        "distance": 2600,
+        "courseIds": [
+          10205
+        ]
+      },
+      {
+        "row": 76,
+        "track": "Fukushima",
+        "distance": 2600,
+        "courseIds": [
+          10404
+        ]
+      },
+      {
+        "row": 77,
+        "track": "Tokyo",
+        "distance": 2500,
+        "courseIds": [
+          10607
+        ]
+      },
+      {
+        "row": 78,
+        "track": "Tokyo",
+        "distance": 3400,
+        "courseIds": [
+          10608
+        ]
+      },
+      {
+        "row": 79,
+        "track": "Nakayama",
+        "distance": 2500,
+        "courseIds": [
+          10506
+        ]
+      },
+      {
+        "row": 80,
+        "track": "Nakayama",
+        "distance": 3600,
+        "courseIds": [
+          10507
+        ]
+      },
+      {
+        "row": 81,
+        "track": "Kyoto",
+        "distance": 3000,
+        "courseIds": [
+          10810
+        ]
+      },
+      {
+        "row": 82,
+        "track": "Kyoto",
+        "distance": 3200,
+        "courseIds": [
+          10811
+        ]
+      },
+      {
+        "row": 83,
+        "track": "Hanshin",
+        "distance": 2600,
+        "courseIds": [
+          10908
+        ]
+      },
+      {
+        "row": 84,
+        "track": "Hanshin",
+        "distance": 3000,
+        "courseIds": [
+          10909
+        ]
+      },
+      {
+        "row": 85,
+        "track": "Kokura",
+        "distance": 2600,
+        "courseIds": [
+          11004
+        ]
+      }
+    ],
+    "dirt": [
+      {
+        "row": 91,
+        "track": "Sapporo",
+        "distance": 1700,
+        "courseIds": [
+          10107
+        ]
+      },
+      {
+        "row": 92,
+        "track": "Hakodate",
+        "distance": 1700,
+        "courseIds": [
+          10207
+        ]
+      },
+      {
+        "row": 93,
+        "track": "Fukushima",
+        "distance": 1700,
+        "courseIds": [
+          10406
+        ]
+      },
+      {
+        "row": 94,
+        "track": "Niigata",
+        "distance": 1800,
+        "courseIds": [
+          10311
+        ]
+      },
+      {
+        "row": 95,
+        "track": "Tokyo",
+        "distance": 1600,
+        "courseIds": [
+          10611
+        ]
+      },
+      {
+        "row": 96,
+        "track": "Nakayama",
+        "distance": 1800,
+        "courseIds": [
+          10509
+        ]
+      },
+      {
+        "row": 97,
+        "track": "Chukyo",
+        "distance": 1800,
+        "courseIds": [
+          10708
+        ]
+      },
+      {
+        "row": 98,
+        "track": "Kyoto",
+        "distance": 1800,
+        "courseIds": [
+          10814
+        ]
+      },
+      {
+        "row": 99,
+        "track": "Hanshin",
+        "distance": 1800,
+        "courseIds": [
+          10912
+        ]
+      },
+      {
+        "row": 100,
+        "track": "Kokura",
+        "distance": 1700,
+        "courseIds": [
+          11006
+        ]
+      },
+      {
+        "row": 101,
+        "track": "Ooi",
+        "distance": 1800,
+        "courseIds": [
+          11102
+        ]
+      },
+      {
+        "row": 102,
+        "track": "Kawasaki",
+        "distance": 1600,
+        "courseIds": [
+          11302
+        ]
+      },
+      {
+        "row": 103,
+        "track": "Funabashi",
+        "distance": 1600,
+        "courseIds": [
+          11402
+        ]
+      },
+      {
+        "row": 104,
+        "track": "Funabashi",
+        "distance": 1800,
+        "courseIds": [
+          11403
+        ]
+      },
+      {
+        "row": 105,
+        "track": "Morioka",
+        "distance": 1600,
+        "courseIds": [
+          11502
+        ]
+      },
+      {
+        "row": 106,
+        "track": "Morioka",
+        "distance": 1800,
+        "courseIds": [
+          11503
+        ]
+      }
+    ]
+  },
+  "conditions": {
+    "season": {
+      "Spring": 0.4,
+      "Summer": 0.2,
+      "Autumn": 0.2,
+      "Winter": 0.2
+    },
+    "weather": {
+      "Sunny": 0.59,
+      "Cloudy": 0.3,
+      "Rainy": 0.1,
+      "Snowy": 0.01
+    },
+    "groundCondition": {
+      "Good": 0.77,
+      "Yielding": 0.12,
+      "Soft": 0.06,
+      "Heavy": 0.05
+    }
+  }
+}

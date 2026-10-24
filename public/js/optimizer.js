@@ -251,6 +251,7 @@
   };
   let lastTTChosen = null; // store last TT result for live predicted score updates
   const TEAM_TRIALS_MODE = 'team_trials';
+  let teamTrialsCalibration = null;
   const teamTrialsSkillMetaById = new Map();
   const teamTrialsSkillMetaByName = new Map();
   const teamTrialsTierById = new Map();
@@ -4182,6 +4183,7 @@
         wisdom: Number(ratingInputs.wisdom?.value) || 900,
         raceConfig: getRaceConfigSnapshot(),
         autoTargets: getSelectedAutoTargets(),
+        activationCalibration: getSkillLanguage() === 'en' ? teamTrialsCalibration : null,
         skillMetaById: teamTrialsSkillMetaById,
         skillMetaByName: teamTrialsSkillMetaByName,
         tierById: teamTrialsTierById,
@@ -4556,7 +4558,13 @@
           const consistency = Number.isFinite(breakdown.consistencyScore)
             ? Math.round(Math.max(0, Math.min(1, breakdown.consistencyScore)) * 100)
             : 0;
-          const metrics = `cost ${cost}, rating ${rating}, score/SP ${ratio.toFixed(2)}, consistency ${consistency}%`;
+          const evidenceLabel =
+            breakdown.calibration?.source === 'globalsim'
+              ? 'simulated'
+              : breakdown.calibration
+                ? 'course coverage'
+                : 'heuristic';
+          const metrics = `cost ${cost}, rating ${rating}, score/SP ${ratio.toFixed(2)}, activation ${consistency}% (${evidenceLabel})`;
           const nameEl = document.createElement('span');
           nameEl.className = 'res-name';
           nameEl.setAttribute('data-skill-name', it.name);
@@ -6258,11 +6266,25 @@
 
   // Fetch both startup datasets together. CSV parsing still waits for the core
   // JSON because it depends on the official-English name index built there.
+  const calibrationReady = fetch('/assets/team-trials-calibration.json', {
+    signal: AbortSignal.timeout(10000),
+  })
+    .then((response) => {
+      if (!response.ok) throw new Error('Calibration unavailable: ' + response.status);
+      return response.json();
+    })
+    .then((data) => {
+      teamTrialsCalibration = data;
+    })
+    .catch((error) => {
+      console.warn('Team Trials uses fallback estimates', error);
+    });
   const skillsCSVPreload = preloadSkillsCSV();
   const startupReady = loadSkillCostsJSON()
     .catch((err) => {
       console.warn('Skill cost JSON load failed', err);
     })
+    .then(() => calibrationReady)
     .then(() => loadSkillsCSV(skillsCSVPreload))
     .then(() => finishInit())
     .then(() => backgroundHydrateFullData())
