@@ -1061,10 +1061,15 @@
 
   function isGold(cat) {
     cat = lower(cat);
-    return cat === 'gold' || cat === 'golden' || cat.indexOf('gold') !== -1;
+    return cat === 'evo' || cat === 'gold' || cat === 'golden' || cat.indexOf('gold') !== -1;
   }
 
   function buildGroups(items) {
+    function isEvolution(item) {
+      return (
+        !!item.isEvo || !!item.parentEvoId || String(item.category || '').toLowerCase() === 'evo'
+      );
+    }
     var idToIdx = new Map(
       items.map(function (it, idx) {
         return [it.id, idx];
@@ -1112,6 +1117,7 @@
       if (used[i]) continue;
       var it = items[i],
         handled = false;
+      if (isEvolution(it)) continue;
       if (isGold(it.category) && it.lowerRowId && idToIdx.has(it.lowerRowId)) {
         var linkedLowerIdx = idToIdx.get(it.lowerRowId);
         if (linkedLowerIdx != null && !used[linkedLowerIdx]) {
@@ -1150,7 +1156,7 @@
               value: circleItem.expectedValueInt,
               consistency: circleItem.consistencyInt,
               rating: circleItem.ratingScore || 0,
-              sv: (circleItem.svInt || 0) + (linkedLower.svInt || 0),
+              sv: circleItem.svInt || 0,
               items: [linkedLowerIdx, circleIdx],
             });
             // Gold combo: it.cost already includes gold + ○ + ◎ (via getLowerDiscountedCost)
@@ -1160,7 +1166,7 @@
               value: it.expectedValueInt,
               consistency: it.consistencyInt,
               rating: it.ratingScore || 0,
-              sv: (it.svInt || 0) + (linkedLower.svInt || 0) + (circleItem.svInt || 0),
+              sv: it.svInt || 0,
               items: [linkedLowerIdx, circleIdx, i],
             });
           } else {
@@ -1171,7 +1177,7 @@
               value: it.expectedValueInt,
               consistency: it.consistencyInt,
               rating: it.ratingScore || 0,
-              sv: (it.svInt || 0) + (linkedLower.svInt || 0),
+              sv: it.svInt || 0,
               items: [linkedLowerIdx, i],
             });
           }
@@ -1210,7 +1216,7 @@
               value: up.expectedValueInt,
               consistency: up.consistencyInt,
               rating: up.ratingScore || 0,
-              sv: (up.svInt || 0) + (it.svInt || 0),
+              sv: up.svInt || 0,
               items: [i, circleIdx],
             },
           ]);
@@ -1260,7 +1266,7 @@
               value: it.expectedValueInt,
               consistency: it.consistencyInt,
               rating: it.ratingScore || 0,
-              sv: (it.svInt || 0) + (p.svInt || 0),
+              sv: it.svInt || 0,
               items: [j, i],
             },
           ]);
@@ -1291,6 +1297,52 @@
       ]);
       used[i] = true;
     }
+    // Evolutions replace the terminal gold in its existing purchase group.
+    // Keeping prerequisite indices satisfies required rows without scoring them.
+    items.forEach(function (evo, evoIdx) {
+      if (!isEvolution(evo)) return;
+      var parentIdx = items.findIndex(function (parent) {
+        if (isEvolution(parent) || !isGold(parent.category)) return false;
+        if (evo.parentEvoId) return parent.id === evo.parentEvoId;
+        if (
+          String(parent.evoRowIds || '')
+            .split(',')
+            .includes(evo.id)
+        )
+          return true;
+        if (
+          (evo.parentSkillIds || []).some(function (id) {
+            return String(id) === String(parent.skillId);
+          })
+        )
+          return true;
+        return (evo.evoParentNames || []).some(function (name) {
+          return (
+            String(name).trim().toLowerCase() ===
+            String(parent.name || '')
+              .trim()
+              .toLowerCase()
+          );
+        });
+      });
+      if (parentIdx < 0) return; // Never offer an orphan as a free standalone skill.
+      groups.forEach(function (options) {
+        options.slice().forEach(function (option) {
+          var terminal = option.combo ? option.combo[option.combo.length - 1] : option.pick;
+          if (terminal !== parentIdx) return;
+          var components = (option.combo || [parentIdx]).concat(evoIdx);
+          options.push({
+            combo: components,
+            items: (option.items || [parentIdx]).concat(evoIdx),
+            cost: option.cost,
+            value: evo.expectedValueInt,
+            consistency: evo.consistencyInt,
+            rating: evo.ratingScore || 0,
+            sv: evo.svInt || 0,
+          });
+        });
+      });
+    });
     return groups;
   }
 

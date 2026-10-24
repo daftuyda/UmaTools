@@ -772,3 +772,37 @@ testPrioritizesConsistentGoldSkills();
 testConsistentGoldBeatsHigherExpectedNonGold();
 testGoldUsesExplicitLinkedLowerRowForCosts();
 console.log('Team Trials optimizer tests passed.');
+
+// An evolution is a replacement, never an additional free activation/rating.
+{
+  const meta = (id) => ({id, name:id, conditionGroups:[{condition:'always==1'}]});
+  const lower = {id:'evo-lower',skillId:'801',name:'Lower',category:'yellow',cost:100,ratingScore:100,parentGoldId:'evo-gold'};
+  const gold = {id:'evo-gold',skillId:'802',name:'Gold',category:'gold',cost:300,ratingScore:400,lowerRowId:lower.id,evoRowIds:'evo-one,evo-two',required:true};
+  const evo = {id:'evo-one',skillId:'803',name:'Evolution',category:'evo',isEvo:true,cost:0,ratingScore:600,parentEvoId:gold.id,parentSkillIds:['802']};
+  const otherEvo = {...evo,id:'evo-two',skillId:'804',name:'Alternate evolution',ratingScore:700};
+  const input = {budget:300,wisdom:900,skillMetaById:{'801':meta('801'),'802':meta('802'),'803':meta('803'),'804':meta('804')}};
+  for (const items of [[lower,gold,evo],[evo,gold,lower]]) {
+    const result=TeamTrialsOptimizer.optimizeTeamTrialsBuild({...input,items});
+    assert.strictEqual(result.error,null);
+    assert.strictEqual(result.used,300);
+    assert.strictEqual(result.totalRatingScore,600);
+    assert.strictEqual(result.totalSV,12);
+    assert.strictEqual(result.expectedActivations,0.9);
+    assert.strictEqual(TeamTrialsOptimizer.predictActivationScore(result.chosen,900),1080);
+    assert.deepStrictEqual(result.chosen.filter(x=>!x.comboComponent).map(x=>x.id),[evo.id]);
+    assert.strictEqual(result.chosen.find(x=>x.id===gold.id).ratingScore,0);
+  }
+  const alternatives=TeamTrialsOptimizer.optimizeTeamTrialsBuild({...input,items:[lower,gold,evo,otherEvo]});
+  assert.strictEqual(alternatives.totalRatingScore,700);
+  assert.strictEqual(alternatives.totalSV,12);
+  assert.strictEqual(alternatives.chosen.filter(x=>!x.comboComponent).length,1);
+  assert.strictEqual(TeamTrialsOptimizer.optimizeTeamTrialsBuild({...input,budget:299,items:[gold,evo]}).error,'required_unreachable');
+  const unlinked={...evo,parentEvoId:'',parentSkillIds:[],evoParentNames:['Gold']};
+  assert.strictEqual(TeamTrialsOptimizer.optimizeTeamTrialsBuild({...input,items:[{...gold,lowerRowId:'',evoRowIds:''},unlinked]}).totalRatingScore,600);
+  const orphan=TeamTrialsOptimizer.optimizeTeamTrialsBuild({...input,items:[evo]});
+  assert.strictEqual(orphan.totalRatingScore,0);
+  assert.strictEqual(orphan.chosen.length,0);
+  const withoutEvolution=TeamTrialsOptimizer.optimizeTeamTrialsBuild({...input,items:[lower,gold]});
+  assert.strictEqual(withoutEvolution.totalRatingScore,400);
+}
+console.log('Evolution replacement tests passed.');

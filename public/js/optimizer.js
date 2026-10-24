@@ -6043,6 +6043,38 @@
     if (!floatRoot || !ratingHero) return;
 
     let heroState = 'visible';
+    const toggle = floatRoot.querySelector('.rating-float-main');
+    const details = document.getElementById('rating-float-details');
+    const canHover = () => window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    const expand = (expanded) => {
+      floatRoot.classList.toggle('is-expanded', expanded);
+      toggle?.setAttribute('aria-expanded', String(expanded));
+      if (details) details.hidden = !expanded;
+    };
+    floatRoot.addEventListener('pointerenter', () => {
+      if (canHover()) expand(true);
+    });
+    floatRoot.addEventListener('pointerleave', () => {
+      if (canHover() && !toggle?.matches(':focus-visible')) expand(false);
+    });
+    toggle?.addEventListener('focus', () => {
+      if (canHover() && toggle.matches(':focus-visible')) expand(true);
+    });
+    toggle?.addEventListener('blur', () => {
+      if (!canHover() || !floatRoot.matches(':hover')) expand(false);
+    });
+    toggle?.addEventListener('click', (event) => {
+      expand(canHover() && event.detail > 0 ? true : !floatRoot.classList.contains('is-expanded'));
+    });
+    floatRoot.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        expand(false);
+        event.preventDefault();
+      }
+    });
+    document.addEventListener('pointerdown', (event) => {
+      if (!floatRoot.contains(event.target)) expand(false);
+    });
 
     if (floatRoot.parentElement !== document.body) {
       document.body.appendChild(floatRoot);
@@ -6058,6 +6090,7 @@
     const updateVisibility = () => {
       const shouldShow = heroState === 'above';
       floatRoot.classList.toggle('is-visible', shouldShow);
+      if (!shouldShow) expand(false);
     };
 
     if ('IntersectionObserver' in window) {

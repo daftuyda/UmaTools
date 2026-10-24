@@ -1543,19 +1543,29 @@
     <datalist id="correction-skills-datalist"></datalist>
 
     <div id="rating-float" class="rating-float" aria-live="polite">
-      <div class="rating-float-main">
-        <div class="rating-float-badge" aria-hidden="true">
-          <div id="rating-float-badge-sprite" class="rating-float-badge-sprite"></div>
-        </div>
-        <div class="rating-float-meta">
-          <div class="label" data-i18n="optimizer.floatProjected">Projected</div>
-          <div id="rating-float-total" class="value">0</div>
-        </div>
-      </div>
-      <div class="rating-float-progress">
+      <button
+        type="button"
+        class="rating-float-main"
+        aria-expanded="false"
+        aria-controls="rating-float-details"
+        aria-labelledby="rating-float-label rating-float-total rating-float-next-needed"
+      >
+        <span class="rating-float-badge" aria-hidden="true">
+          <span id="rating-float-badge-sprite" class="rating-float-badge-sprite"></span>
+        </span>
+        <span class="rating-float-meta">
+          <span id="rating-float-label" class="label" data-i18n="optimizer.floatProjected"
+            >Projected</span
+          >
+          <span id="rating-float-total" class="value">0</span>
+        </span>
+        <span id="rating-float-next-needed" class="rating-float-needed" title="Points to next rank"
+          >+0</span
+        >
+      </button>
+      <div id="rating-float-details" class="rating-float-progress" hidden>
         <div class="rating-progress-label">
           <span id="rating-float-next-label">Next: G+ at 300</span>
-          <span id="rating-float-next-needed">+0</span>
         </div>
         <div
           id="rating-float-progress-bar"
