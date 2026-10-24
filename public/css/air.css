@@ -3825,6 +3825,15 @@
   position: relative;
 }
 
+.results-list .result-item.team-trials .res-metrics {
+  display: block;
+  margin-top: 0.25rem;
+}
+
+.results-list .result-item.team-trials .res-explain {
+  margin-top: 0.35rem;
+}
+
 .results-list .result-item.result-child {
   --linked-indent: 1.5rem;
   --linked-gap: var(--space-3);

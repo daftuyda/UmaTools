@@ -343,3 +343,38 @@ assert.equal(
   'required_unreachable'
 );
 console.log('Evolution checkbox collection and prerequisite tests passed.');
+
+// Imported/typed evolutions must render at their gold parent's position too.
+const resultGrouping = loadFunctions('optimizer.js', ['getEvolutionResultParent'], {
+  canonicalCategory: (category) => category,
+  isGoldCategory: (category) => category === 'gold',
+});
+const resultGold = { id: 'gold', category: 'gold', comboComponent: true };
+const resultLower = { id: 'lower', category: 'yellow', comboComponent: true };
+const resultIndex = new Map([
+  ['gold', resultGold],
+  ['lower', resultLower],
+]);
+assert.equal(
+  resultGrouping.getEvolutionResultParent({ isEvo: true, parentEvoId: 'gold' }, resultIndex),
+  resultGold
+);
+assert.equal(
+  resultGrouping.getEvolutionResultParent(
+    { category: 'evo', components: ['lower', 'gold', 'evo'] },
+    resultIndex
+  ),
+  resultGold
+);
+assert.equal(
+  resultGrouping.getEvolutionResultParent(
+    { category: 'yellow', components: ['lower', 'gold'] },
+    resultIndex
+  ),
+  null
+);
+assert.equal(
+  resultGrouping.getEvolutionResultParent({ isEvo: true, components: ['missing'] }, resultIndex),
+  null
+);
+console.log('Evolution result parent grouping tests passed.');

@@ -1,6 +1,13 @@
 """Import the supplied Team Trials course pool without spreadsheet dependencies."""
-import argparse, collections, hashlib, json, pathlib, re, zipfile
+import argparse
+import collections
+import hashlib
+import json
+import pathlib
+import re
 import xml.etree.ElementTree as ET
+import zipfile
+
 
 def import_tracks(workbook, sim):
     ns = {"s": "http://schemas.openxmlformats.org/spreadsheetml/2006/main"}

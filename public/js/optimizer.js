@@ -4208,6 +4208,18 @@
     return result;
   }
 
+  function getEvolutionResultParent(item, byId) {
+    if (!item.isEvo && canonicalCategory(item.category) !== 'evo') return null;
+    const explicitParent = byId.get(item.parentEvoId);
+    if (explicitParent) return explicitParent;
+    // Typed/imported evolutions have purchase components but no hidden-row link.
+    return (
+      (item.components || [])
+        .map((id) => byId.get(id))
+        .find((parent) => parent?.comboComponent && isGoldCategory(parent.category)) || null
+    );
+  }
+
   function renderResults(result, budget) {
     resultsEl.hidden = false;
     usedPointsEl.textContent = String(result.used);
@@ -4433,19 +4445,17 @@
       ratingEngine.updateRatingDisplay(0);
       return;
     }
-    const ordered = [...chosen];
+    const resultById = new Map(chosen.map((it) => [it.id, it]));
+    const ordered = chosen.map((it) => {
+      const parent = getEvolutionResultParent(it, resultById);
+      return parent ? { ...it, isEvo: true, parentEvoId: parent.id } : it;
+    });
     const indexMap = new Map(ordered.map((it, idx) => [it.id, idx]));
     const inputOrderMap = new Map();
-    const selectedEvosByParentId = new Map();
     if (rowsEl) {
       Array.from(rowsEl.querySelectorAll('.optimizer-row')).forEach((row, idx) => {
         const rowId = row?.dataset?.rowId;
         if (rowId && !inputOrderMap.has(rowId)) inputOrderMap.set(rowId, idx);
-        if (!rowId || row.dataset.parentEvoId) return;
-        const selectedEvos = Array.from(row.querySelectorAll('.evo-checkbox:checked'))
-          .map((checkbox) => checkbox.dataset.evoName)
-          .filter(Boolean);
-        if (selectedEvos.length) selectedEvosByParentId.set(rowId, selectedEvos);
       });
     }
     const byId = new Map(ordered.map((it) => [it.id, it]));
@@ -4539,15 +4549,17 @@
       if (baseCategory) li.dataset.baseCategory = baseCategory;
       const linkedGold = lowerToGold.get(it.id);
       const linkedEvo = linkedGold ? evoByParentId.get(linkedGold.id) : null;
-      const linkedSelectedEvos = linkedGold ? selectedEvosByParentId.get(linkedGold.id) || [] : [];
       const includedWithRaw = it.comboComponent
         ? it.comboParentName
         : linkedEvo
           ? linkedEvo.name
-          : linkedSelectedEvos[0]
-            ? linkedSelectedEvos[0]
-            : linkedGold?.name || '';
+          : linkedGold?.name || '';
       const includedWith = includedWithRaw ? formatSkillDisplayName(includedWithRaw) : '';
+      const evoParent = it.isEvo && it.parentEvoId ? byId.get(it.parentEvoId) : null;
+      const evoDisplayName = evoParent
+        ? `${formatSkillDisplayName(evoParent.name)} → ${formatSkillDisplayName(it.name)}`
+        : '';
+      if (evoParent) li.classList.add('result-evo-upgrade');
       if (mode === TEAM_TRIALS_MODE) {
         const breakdown = teamBreakdownMap.get(it.id) || {};
         if (includedWith) {
@@ -4574,7 +4586,7 @@
           if (it.skillId) nameEl.setAttribute('data-skill-id', String(it.skillId));
           nameEl.setAttribute('tabindex', '0');
           nameEl.setAttribute('role', 'button');
-          nameEl.textContent = formatSkillDisplayName(it.name);
+          nameEl.textContent = evoDisplayName || formatSkillDisplayName(it.name);
           const metricsEl = document.createElement('span');
           metricsEl.className = 'res-metrics';
           metricsEl.textContent = metrics;
@@ -4615,12 +4627,8 @@
         // For circle skills, show which tier was chosen
         let displayName = formatSkillDisplayName(it.name);
         const skill = findSkillByName(it.name);
-        const evoParent = it.isEvo && it.parentEvoId ? byId.get(it.parentEvoId) : null;
-        const selectedEvos = selectedEvosByParentId.get(it.id) || [];
         if (evoParent) {
-          displayName = `${formatSkillDisplayName(evoParent.name)} [Evo: ${formatSkillDisplayName(it.name)}]`;
-          li.classList.add('result-evo-upgrade');
-          li.dataset.evoName = formatSkillDisplayName(it.name);
+          displayName = evoDisplayName;
         } else if (circleComboBaseIds.has(it.id) && skill?.circleBaseName) {
           // ◎ upgrade was chosen (combo) — show localized base name with ◎
           displayName = formatCircleDisplayName(formatSkillDisplayName(skill.circleBaseName), '◎');
@@ -4629,12 +4637,6 @@
           displayName = formatCircleDisplayName(formatSkillDisplayName(skill.circleBaseName), '○');
         }
         if (skill?.isEvo && !evoParent) displayName += ' (evo)';
-        if (!evoParent && selectedEvos.length) {
-          const evoLabels = selectedEvos.map((name) => formatSkillDisplayName(name)).join(' / ');
-          displayName += ` [Evo: ${evoLabels}]`;
-          li.classList.add('result-evo-upgrade');
-          li.dataset.evoName = evoLabels;
-        }
         const meta = includedWith
           ? t('optimizer.includedWith', { name: includedWith })
           : t('optimizer.costScoreDisplay', { cost: it.cost, score: displayScore });
