@@ -11311,3 +11311,32 @@ main.home-page {
     transition: none !important;
   }
 }
+
+/* Small Halloween decoration shared by every page. */
+.halloween-corner {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 96px;
+  height: 120px;
+  z-index: 110;
+  color: var(--text-soft);
+  pointer-events: none;
+  user-select: none;
+}
+.halloween-corner svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+@media (max-width: 640px) {
+  .halloween-corner {
+    width: 64px;
+    height: 80px;
+  }
+}
+@media print {
+  .halloween-corner {
+    display: none;
+  }
+}

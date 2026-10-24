@@ -143,4 +143,34 @@
       applyTheme(readStoredTheme() || (event.newValue === 'dark' ? 'dark' : 'light'), false, true);
     }
   });
+
+  // Shared, purely decorative Halloween corner; never intercept page controls.
+  function addHalloweenCorner() {
+    if (document.querySelector('.halloween-corner')) return;
+    var corner = document.createElement('div');
+    corner.className = 'halloween-corner';
+    corner.setAttribute('aria-hidden', 'true');
+    corner.innerHTML = `<svg viewBox="0 0 96 120" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false">
+      <g stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.48">
+        <path d="M96 0H3M96 0L10 36M96 0L31 65M96 0L61 86M96 0V94"/>
+        <path d="M74 0Q76 5 76 8Q81 10 81 15Q86 16 88 20Q91 20 96 22
+          M53 0Q57 9 56 17Q65 20 66 30Q76 31 79 40Q88 39 96 43
+          M32 0Q37 14 37 25Q50 32 51 45Q65 47 71 59Q83 58 96 64
+          M11 0Q18 19 17 33Q36 43 36 60Q55 63 63 79Q79 77 96 85"/>
+        <path d="M63 79V99"/>
+      </g>
+      <g stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M60 102L54 98L51 101M59 105L52 104L49 108M60 108L54 111L53 115M66 102L72 98L75 101M67 105L74 104L77 108M66 108L72 111L73 115M60 110L58 115L59 118M66 110L68 115L67 118"/>
+        <ellipse cx="63" cy="106" rx="4.5" ry="6" fill="currentColor" stroke="none"/>
+        <circle cx="63" cy="100" r="3" fill="currentColor" stroke="none"/>
+      </g>
+      <g fill="#e79a4b"><circle cx="61.9" cy="99.5" r="0.7"/><circle cx="64.1" cy="99.5" r="0.7"/></g>
+    </svg>`;
+    document.body.appendChild(corner);
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', addHalloweenCorner, { once: true });
+  } else {
+    addHalloweenCorner();
+  }
 })();
