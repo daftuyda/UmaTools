@@ -198,7 +198,9 @@
 
   function getAptitudeTestScore(category, isLowerForGold = false) {
     if (isLowerForGold) return 0; // Lower skills don't count
-    return isGoldCategory(category) ? APTITUDE_TEST_SCORE_GOLD : APTITUDE_TEST_SCORE_NORMAL;
+    return isGoldCategory(category) || canonicalCategory(category) === 'evo'
+      ? APTITUDE_TEST_SCORE_GOLD
+      : APTITUDE_TEST_SCORE_NORMAL;
   }
 
   function getEffectiveRatingScore(skill, categoryOverride = '') {
@@ -2206,6 +2208,7 @@
         ? jpOriginalName
         : aliasNames.find((a) => hasJapaneseScript(a)) || '';
       catMap[type].push({
+        category: type,
         name,
         jpName: resolvedJpName,
         aliasNames,
@@ -3551,7 +3554,7 @@
         if (exactEvo) skill = exactEvo;
       }
       if (!skill) return;
-      const category = skill.category || '';
+      const category = parentEvoId || skill.isEvo ? 'evo' : skill.category || '';
       const isLowerForGold = !!parentGoldId; // This row is a lower skill linked to a gold
 
       // Always calculate both scores
