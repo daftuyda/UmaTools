@@ -22,7 +22,6 @@
       label: 'Tools',
       i18nKey: 'nav.tools',
       children: [
-        { label: 'Event OCR', i18nKey: 'nav.eventOCR', path: '/events', file: '/events.html' },
         {
           label: 'Support Hints',
           i18nKey: 'nav.supportHints',
@@ -57,6 +56,7 @@
           i18nKey: 'nav.stitcher',
           href: 'https://daftuyda.github.io/Stitcher/',
         },
+        { label: 'Event OCR', i18nKey: 'nav.eventOCR', path: '/events', file: '/events.html' },
       ],
     },
     {
@@ -243,67 +243,115 @@
       ? window.FOOTER_LINKS
       : DEFAULT_FOOTER;
 
-  // Build navbar element (not in DOM yet)
+  // Line icons for sidebar links, keyed by route path or external URL.
+  const ICON_PATHS = {
+    home: '<path d="M4 11.5 12 5l8 6.5V20a1 1 0 0 1-1 1h-4.5v-6h-5v6H5a1 1 0 0 1-1-1z"/>',
+    sliders:
+      '<path d="M4 6h10M4 12h16M4 18h7"/><circle cx="17" cy="6" r="2"/><circle cx="14" cy="18" r="2"/>',
+    calculator:
+      '<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h2M14 11h2M8 15h2M14 15h2"/>',
+    scan: '<path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3M8 12h8"/>',
+    search: '<circle cx="11" cy="11" r="6.5"/><path d="m20 20-4-4"/>',
+    cards: '<rect x="3" y="6" width="12" height="15" rx="2"/><path d="M8 3h11a2 2 0 0 1 2 2v12"/>',
+    pulse: '<path d="M3 12h4l3-7 4 14 3-7h4"/>',
+    coin: '<circle cx="12" cy="12" r="8"/><path d="M12 8v8M9 11l3-3 3 3"/>',
+    bolt: '<path d="M13 3 5 14h6l-1 7 8-11h-6z"/>',
+    calendar: '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',
+    stitch:
+      '<rect x="3" y="3" width="8" height="18" rx="1.5"/><rect x="13" y="3" width="8" height="18" rx="1.5"/>',
+    book: '<path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 21V5M9 8h6"/>',
+    bars: '<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',
+    card: '<rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M8 17h8"/>',
+    shuffle: '<path d="M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/>',
+    grid: '<rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><path d="M15 15h4v4h-4z"/>',
+    eye: '<path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',
+    info: '<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/>',
+    doc: '<path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h7M9 17h5"/>',
+  };
+  const ROUTE_ICONS = {
+    '/optimizer': 'sliders',
+    '/calculator': 'calculator',
+    '/events': 'scan',
+    '/hints': 'search',
+    '/deck': 'cards',
+    '/stamina': 'pulse',
+    '/token-planner': 'coin',
+    '/accel': 'bolt',
+    'https://race.daftuyda.moe': 'calendar',
+    'https://daftuyda.github.io/Stitcher/': 'stitch',
+    '/skills': 'book',
+    '/rank-breakdown': 'bars',
+    'https://card.notvo.id/': 'card',
+    '/random': 'shuffle',
+    '/umadle': 'grid',
+    'https://peek.daftuyda.moe/': 'eye',
+    '/about': 'info',
+  };
+  const svgIcon = (name, size) =>
+    `<svg width="${size || 18}" height="${size || 18}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICON_PATHS[name] || ICON_PATHS.doc}</svg>`;
+  const BRAND_PATHS = `
+    <path d="M24 20c49 0 87 36 122 84v278c0 97 59 151 174 151s174-54 174-151V104c35-48 73-84 122-84 9 0 16 8 16 18v344c0 175-124 282-312 282S8 557 8 382V38c0-10 7-18 16-18Z" />
+    <path d="M110 20h420l-65 84c-10 12-20 16-38 16h-37c-7 0-12 6-12 14v252c0 35-26 62-58 62s-58-27-58-62V134c0-8-5-14-12-14h-37c-18 0-28-4-38-16L110 20Z" />`;
+  const GROUP_STATE_KEY = 'umatools.sidebarGroups';
+  const ACCENT_OPTIONS = [
+    ['blue', 'Blue'],
+    ['mono', 'Graphite'],
+    ['green', 'Green'],
+    ['violet', 'Violet'],
+    ['pink', 'Pink'],
+    ['orange', 'Orange'],
+  ];
+
+  // Build the sidebar (not in DOM yet). On narrow screens it collapses to a top bar + drawer.
   const nav = document.createElement('nav');
-  nav.className = 'site-nav';
+  nav.className = 'site-sidebar';
   var _t = function (key, fallback) {
     return typeof window.t === 'function' ? window.t(key) : fallback || key;
   };
   nav.setAttribute('aria-label', _t('nav.primary'));
   nav.setAttribute('data-i18n-aria', 'nav.primary');
   nav.innerHTML = `
-    <div class="nav-inner">
-      <div class="nav-left">
-        <a class="brand" href="/">
-          <span class="brand-mark" aria-hidden="true">
-            <svg viewBox="0 0 640 680" role="img">
-              <path d="M24 20c49 0 87 36 122 84v278c0 97 59 151 174 151s174-54 174-151V104c35-48 73-84 122-84 9 0 16 8 16 18v344c0 175-124 282-312 282S8 557 8 382V38c0-10 7-18 16-18Z" />
-              <path d="M110 20h420l-65 84c-10 12-20 16-38 16h-37c-7 0-12 6-12 14v252c0 35-26 62-58 62s-58-27-58-62V134c0-8-5-14-12-14h-37c-18 0-28-4-38-16L110 20Z" />
-            </svg>
-          </span>
-          <span class="brand-copy">
-            <span class="brand-text">UmaTools</span>
-            <span class="brand-subtitle">Training toolkit</span>
-          </span>
-        </a>
-        <button class="menu-btn" data-i18n-aria="nav.menu" aria-label="${_t('nav.menu')}" aria-expanded="false">
-          <span class="menu-lines" aria-hidden="true"><span></span><span></span><span></span></span>
-        </button>
-        <div class="nav-links"></div>
-      </div>
-      <div class="nav-right">
-        <a
-          class="nav-action nav-youtube"
-          href="${YOUTUBE_URL}"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Open MaybeVoid on YouTube"
-          title="YouTube"
-        >
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M21.2 7.1a2.7 2.7 0 0 0-1.9-1.9C17.6 4.75 12 4.75 12 4.75s-5.6 0-7.3.45a2.7 2.7 0 0 0-1.9 1.9A28 28 0 0 0 2.35 12a28 28 0 0 0 .45 4.9 2.7 2.7 0 0 0 1.9 1.9c1.7.45 7.3.45 7.3.45s5.6 0 7.3-.45a2.7 2.7 0 0 0 1.9-1.9 28 28 0 0 0 .45-4.9 28 28 0 0 0-.45-4.9Z" />
-            <path class="youtube-play" d="m10 9 5 3-5 3V9Z" />
-          </svg>
-          <span class="nav-action-label">YouTube</span>
-        </a>
+    <div class="sb-top">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 640 680" role="img">${BRAND_PATHS}</svg>
+        </span>
+        <span class="brand-copy">
+          <span class="brand-text">UmaTools</span>
+          <span class="brand-subtitle">Training toolkit</span>
+        </span>
+      </a>
+      <button class="sb-menu-btn" type="button" data-i18n-aria="nav.menu" aria-label="${_t('nav.menu')}" aria-expanded="false" aria-controls="sb-panel">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <div class="sb-backdrop" aria-hidden="true"></div>
+    <div class="sb-panel" id="sb-panel">
+      <label class="sb-search">
+        ${svgIcon('search', 16)}
+        <input type="search" id="sb-filter" autocomplete="off" spellcheck="false" data-i18n-placeholder="nav.searchTools" placeholder="${_t('nav.searchTools', 'Search tools')}" data-i18n-aria="nav.searchTools" aria-label="${_t('nav.searchTools', 'Search tools')}" />
+        <kbd aria-hidden="true">/</kbd>
+      </label>
+      <div class="sb-links"></div>
+      <p class="sb-empty" hidden data-i18n="nav.noMatches">${_t('nav.noMatches', 'No tools match that search.')}</p>
+      <div class="sb-foot">
         <div class="nav-settings">
           <button
             type="button"
-            class="settings-btn nav-action"
+            class="sb-foot-btn settings-btn"
             id="nav-settings-toggle"
             aria-expanded="false"
             aria-controls="nav-settings-panel"
             aria-haspopup="true"
-            title="${_t('nav.settings')}"
           >
             <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M12 15.25A3.25 3.25 0 1 0 12 8.75a3.25 3.25 0 0 0 0 6.5Z" />
-              <path d="M19.4 13.5a7.7 7.7 0 0 0 0-3l1.35-1.05-1.8-3.1-1.58.65a8.1 8.1 0 0 0-2.6-1.5L14.55 3h-3.6l-.22 2.5A8.1 8.1 0 0 0 8.13 7l-1.58-.65-1.8 3.1L6.1 10.5a7.7 7.7 0 0 0 0 3l-1.35 1.05 1.8 3.1L8.13 17a8.1 8.1 0 0 0 2.6 1.5l.22 2.5h3.6l.22-2.5a8.1 8.1 0 0 0 2.6-1.5l1.58.65 1.8-3.1L19.4 13.5Z" />
+              <circle cx="12" cy="12" r="3" />
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z" />
             </svg>
-            <span class="nav-action-label" data-i18n="nav.settings">${_t('nav.settings')}</span>
+            <span data-i18n="nav.settings">${_t('nav.settings')}</span>
           </button>
           <div
-            class="nav-settings-panel"
+            class="sb-settings-panel"
             id="nav-settings-panel"
             role="group"
             data-i18n-aria="nav.globalSettings"
@@ -333,17 +381,60 @@
                 <option value="oled">OLED</option>
               </select>
             </label>
+            <fieldset class="nav-control nav-accent">
+              <legend>Accent</legend>
+              <div class="nav-accent-swatches">
+                ${ACCENT_OPTIONS.map(
+                  ([value, label]) =>
+                    `<label class="nav-accent-swatch" data-accent-swatch="${value}" title="${label}"><input type="radio" name="nav-accent" value="${value}" aria-label="${label}" /><span aria-hidden="true"></span></label>`
+                ).join('')}
+              </div>
+            </fieldset>
           </div>
         </div>
+        <a
+          class="sb-foot-btn sb-youtube"
+          href="${YOUTUBE_URL}"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Open MaybeVoid on YouTube"
+          title="YouTube"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M21.2 7.1a2.7 2.7 0 0 0-1.9-1.9C17.6 4.75 12 4.75 12 4.75s-5.6 0-7.3.45a2.7 2.7 0 0 0-1.9 1.9A28 28 0 0 0 2.35 12a28 28 0 0 0 .45 4.9 2.7 2.7 0 0 0 1.9 1.9c1.7.45 7.3.45 7.3.45s5.6 0 7.3-.45a2.7 2.7 0 0 0 1.9-1.9 28 28 0 0 0 .45-4.9 28 28 0 0 0-.45-4.9Z" />
+            <path class="youtube-play" d="m10 9 5 3-5 3V9Z" />
+          </svg>
+        </a>
+        <button
+          type="button"
+          class="sb-foot-btn sb-collapse-btn"
+          id="sb-collapse"
+          aria-expanded="true"
+          aria-controls="sb-panel"
+          aria-label="${_t('nav.collapseSidebar', 'Collapse sidebar')}"
+          title="${_t('nav.collapseSidebar', 'Collapse sidebar')}"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3.5" y="4" width="17" height="16" rx="2.5" />
+            <path d="M9.5 4v16M15.5 10l-2 2 2 2" />
+          </svg>
+        </button>
       </div>
     </div>
   `;
 
   const navEl = nav;
-  const linksWrap = nav.querySelector('.nav-links');
-  const menuBtn = nav.querySelector('.menu-btn');
+  const linksWrap = nav.querySelector('.sb-links');
+  const menuBtn = nav.querySelector('.sb-menu-btn');
+  const backdrop = nav.querySelector('.sb-backdrop');
+  const panel = nav.querySelector('.sb-panel');
+  const filterInput = nav.querySelector('#sb-filter');
+  const emptyNote = nav.querySelector('.sb-empty');
   const settingsToggleBtn = nav.querySelector('#nav-settings-toggle');
   const settingsPanel = nav.querySelector('#nav-settings-panel');
+  const collapseBtn = nav.querySelector('#sb-collapse');
+  const drawerQuery = window.matchMedia('(max-width: 960px)');
+  const COLLAPSED_KEY = 'umatools.sidebarCollapsed';
   let settingsOpen = false;
 
   function setSettingsOpen(open) {
@@ -353,37 +444,77 @@
     settingsPanel.hidden = !settingsOpen;
   }
 
-  function closeAllDropdowns() {
-    for (const dd of navEl.querySelectorAll('.nav-group.open')) {
-      dd.classList.remove('open');
-      const btn = dd.querySelector('.nav-group-btn');
-      if (btn) btn.setAttribute('aria-expanded', 'false');
-    }
+  // The panel is an off-screen drawer only below the breakpoint; keep it inert while closed there.
+  function syncPanelInert() {
+    panel.inert = drawerQuery.matches && !navEl.classList.contains('open');
   }
 
-  // Toggle hamburger on mobile
-  menuBtn.addEventListener('click', () => {
-    setSettingsOpen(false);
-    closeAllDropdowns();
-    const open = navEl.classList.toggle('open');
-    menuBtn.setAttribute('aria-expanded', String(open));
-  });
+  function setDrawerOpen(open) {
+    navEl.classList.toggle('open', !!open);
+    menuBtn.setAttribute('aria-expanded', String(!!open));
+    document.documentElement.classList.toggle('sidebar-drawer-open', !!open);
+    syncPanelInert();
+    if (!open) setSettingsOpen(false);
+  }
 
-  // Close menu when a link is chosen
-  linksWrap.addEventListener('click', (e) => {
-    if (e.target.closest('.nav-link')) {
-      setSettingsOpen(false);
-      closeAllDropdowns();
-      navEl.classList.remove('open');
-      menuBtn.setAttribute('aria-expanded', 'false');
+  syncPanelInert();
+
+  // Desktop only: the sidebar can shrink to an icon rail. Each page's head script applies the
+  // saved state before first paint; this keeps the button, tooltips and storage in sync.
+  function isCollapsed() {
+    return document.documentElement.classList.contains('sidebar-collapsed');
+  }
+
+  function syncCollapsedState() {
+    const collapsed = isCollapsed();
+    const label = collapsed
+      ? _t('nav.expandSidebar', 'Expand sidebar')
+      : _t('nav.collapseSidebar', 'Collapse sidebar');
+    collapseBtn.setAttribute('aria-expanded', String(!collapsed));
+    collapseBtn.setAttribute('aria-label', label);
+    collapseBtn.title = label;
+    // Labels are visually hidden in the rail, so name each icon on hover.
+    for (const link of linksWrap.querySelectorAll('.sb-link')) {
+      if (collapsed) link.title = link.querySelector('.sb-link-label').textContent;
+      else link.removeAttribute('title');
     }
+    if (collapsed) settingsToggleBtn.title = _t('nav.settings');
+    else settingsToggleBtn.removeAttribute('title');
+  }
+
+  function setCollapsed(collapsed) {
+    document.documentElement.classList.toggle('sidebar-collapsed', !!collapsed);
+    if (collapsed) {
+      setSettingsOpen(false);
+      filterInput.value = '';
+      applyFilter();
+    }
+    try {
+      localStorage.setItem(COLLAPSED_KEY, collapsed ? '1' : '0');
+    } catch {}
+    syncCollapsedState();
+  }
+
+  collapseBtn.addEventListener('click', () => setCollapsed(!isCollapsed()));
+  // Searching needs room for results, so using the filter opens the rail back up.
+  function expandForSearch() {
+    if (isCollapsed() && !drawerQuery.matches) setCollapsed(false);
+  }
+  filterInput.addEventListener('focus', expandForSearch);
+  nav.querySelector('.sb-search').addEventListener('click', expandForSearch);
+
+  menuBtn.addEventListener('click', () => setDrawerOpen(!navEl.classList.contains('open')));
+  backdrop.addEventListener('click', () => setDrawerOpen(false));
+
+  // Close the drawer when a link is chosen
+  linksWrap.addEventListener('click', (e) => {
+    if (e.target.closest('.sb-link')) setDrawerOpen(false);
   });
 
   if (settingsToggleBtn && settingsPanel) {
     settingsToggleBtn.addEventListener('click', (event) => {
       event.preventDefault();
       event.stopPropagation();
-      closeAllDropdowns();
       setSettingsOpen(!settingsOpen);
     });
     settingsPanel.addEventListener('click', (event) => event.stopPropagation());
@@ -393,25 +524,72 @@
       if (target instanceof Element && target.closest('.nav-settings')) return;
       setSettingsOpen(false);
     });
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape') {
-        const restoreSettingsFocus = settingsOpen;
-        const restoreMenuFocus = navEl.classList.contains('open');
-        setSettingsOpen(false);
-        closeAllDropdowns();
-        navEl.classList.remove('open');
-        menuBtn.setAttribute('aria-expanded', 'false');
-        if (restoreSettingsFocus) settingsToggleBtn.focus();
-        else if (restoreMenuFocus) menuBtn.focus();
-      }
-    });
   }
 
-  // Close dropdown when clicking outside
-  document.addEventListener('click', (event) => {
-    const target = event.target;
-    if (target instanceof Element && target.closest('.nav-group')) return;
-    closeAllDropdowns();
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      const restoreSettingsFocus = settingsOpen;
+      const restoreMenuFocus = navEl.classList.contains('open');
+      setSettingsOpen(false);
+      if (restoreMenuFocus) setDrawerOpen(false);
+      if (restoreSettingsFocus) settingsToggleBtn.focus();
+      else if (restoreMenuFocus) menuBtn.focus();
+      return;
+    }
+    // "/" jumps to the tool filter unless the user is typing somewhere.
+    if (event.key !== '/' || event.ctrlKey || event.metaKey || event.altKey) return;
+    const active = document.activeElement;
+    if (active && (active.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(active.tagName))) {
+      return;
+    }
+    event.preventDefault();
+    if (drawerQuery.matches) setDrawerOpen(true);
+    expandForSearch();
+    filterInput.focus();
+  });
+
+  function readGroupState() {
+    try {
+      return JSON.parse(localStorage.getItem(GROUP_STATE_KEY)) || {};
+    } catch {
+      return {};
+    }
+  }
+
+  function writeGroupState(state) {
+    try {
+      localStorage.setItem(GROUP_STATE_KEY, JSON.stringify(state));
+    } catch {}
+  }
+
+  // Filter sidebar links by label; groups expand while a query is active.
+  function applyFilter() {
+    const query = filterInput.value.trim().toLowerCase();
+    let shown = 0;
+    navEl.classList.toggle('is-filtering', !!query);
+    for (const group of linksWrap.querySelectorAll('.sb-group, .sb-home')) {
+      let groupShown = 0;
+      for (const item of group.querySelectorAll('li')) {
+        const match = !query || item.textContent.toLowerCase().includes(query);
+        item.hidden = !match;
+        if (match) groupShown++;
+      }
+      group.hidden = groupShown === 0;
+      shown += groupShown;
+    }
+    emptyNote.hidden = shown > 0;
+  }
+
+  filterInput.addEventListener('input', applyFilter);
+  filterInput.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+      const first = linksWrap.querySelector('li:not([hidden]) .sb-link');
+      if (first) first.click();
+    } else if (event.key === 'Escape' && filterInput.value) {
+      event.stopPropagation();
+      filterInput.value = '';
+      applyFilter();
+    }
   });
 
   // Collect all leaf links for clean-URL fallback and active marking
@@ -430,7 +608,6 @@
   // This script is deferred on every page, so the body is complete when it runs.
   // Mount before DOMContentLoaded to keep the navigation from shifting the page.
   function mountNavigation() {
-    // Put navbar at top
     const navSlot = document.getElementById('site-nav-slot');
     const skipLink = document.querySelector('.skip-link');
     if (navSlot) {
@@ -440,7 +617,7 @@
     } else {
       document.body.prepend(nav);
     }
-    document.body.classList.add('nav-mounted');
+    document.body.classList.add('nav-mounted', 'has-sidebar');
 
     // Announcement banner with countdown (auto-hides after giveaway ends)
     const giveawayEnd = new Date('2026-04-10T15:00:00Z');
@@ -467,9 +644,9 @@
         const s = Math.floor((diff % 60000) / 1000);
         const time = (d > 0 ? d + 'd ' : '') + h + 'h ' + m + 'm ' + s + 's';
         banner.innerHTML =
-          '<a href="https://discord.gg/hsm" target="_blank" rel="noopener">\uD83C\uDF89 10x 1st Anni Ticket Giveaway \u2014 ' +
+          '<a href="https://discord.gg/hsm" target="_blank" rel="noopener">🎉 10x 1st Anni Ticket Giveaway — ' +
           time +
-          ' left \u2014 Join the Discord!</a><button class="banner-dismiss" aria-label="Dismiss">\u00d7</button>';
+          ' left — Join the Discord!</a><button class="banner-dismiss" aria-label="Dismiss">×</button>';
       }
       updateBannerCountdown();
       bannerInterval = setInterval(updateBannerCountdown, 1000);
@@ -489,205 +666,108 @@
     const here = location.pathname.replace(/\/+$/, '') || '/';
     const norm = (s) => (s || '').replace(/\/+$/, '') || '/';
     const allLinks = [];
+    const groupState = readGroupState();
     let navGroupIndex = 0;
 
-    // Build links — supports both flat and grouped routes
-    for (const route of ROUTES) {
-      if (route.children) {
-        // Dropdown group
-        const group = document.createElement('div');
-        group.className = 'nav-group';
-        if (route.variant) group.classList.add('nav-group-' + route.variant);
-
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = 'nav-group-btn';
-        btn.setAttribute('aria-expanded', 'false');
-        const menuId = 'nav-group-menu-' + navGroupIndex++;
-        const triggerId = menuId + '-trigger';
-        btn.id = triggerId;
-        btn.setAttribute('aria-controls', menuId);
-        const groupLabel = route.i18nKey ? _t(route.i18nKey, route.label) : route.label;
-        btn.innerHTML =
-          '<span' +
-          (route.i18nKey ? ' data-i18n="' + route.i18nKey + '"' : '') +
-          '>' +
-          groupLabel +
-          '</span><svg class="nav-chevron" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">' +
-          '<path d="M3 4.5L6 7.5L9 4.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>' +
-          '</svg>';
-
-        const menu = document.createElement('div');
-        menu.className = 'nav-group-menu';
-        if (route.variant) menu.classList.add('nav-group-menu-' + route.variant);
-        menu.id = menuId;
-        menu.setAttribute('aria-labelledby', triggerId);
-
-        const menuHeading = document.createElement('div');
-        menuHeading.className = 'nav-menu-heading';
-        const menuHeadingLabel = document.createElement('span');
-        menuHeadingLabel.textContent = groupLabel;
-        if (route.i18nKey) menuHeadingLabel.setAttribute('data-i18n', route.i18nKey);
-        const menuHeadingMeta = document.createElement('span');
-        menuHeadingMeta.textContent = route.menuMetaI18nKey
-          ? _t(route.menuMetaI18nKey, route.menuMetaLabel)
-          : route.menuMetaLabel || 'Workspace';
-        if (route.menuMetaI18nKey) {
-          menuHeadingMeta.setAttribute('data-i18n', route.menuMetaI18nKey);
-        }
-        menuHeading.appendChild(menuHeadingLabel);
-        menuHeading.appendChild(menuHeadingMeta);
-        menu.appendChild(menuHeading);
-
-        let hasActive = false;
-        for (const child of route.children) {
-          const a = document.createElement('a');
-          a.className = 'nav-link';
-          if (route.variant) a.classList.add('nav-link-' + route.variant);
-          if (child.promoted) a.classList.add('nav-link-promoted');
-          const itemLabel = document.createElement('span');
-          itemLabel.className = 'nav-link-label';
-          itemLabel.textContent = child.i18nKey ? _t(child.i18nKey, child.label) : child.label;
-          if (child.i18nKey) itemLabel.setAttribute('data-i18n', child.i18nKey);
-          const itemArrow = document.createElement('span');
-          itemArrow.className = 'nav-link-arrow';
-          itemArrow.setAttribute('aria-hidden', 'true');
-          itemArrow.innerHTML = child.href
-            ? '<svg viewBox="0 0 16 16"><path d="M6 3h7v7M13 3 5 11"/></svg>'
-            : '<svg viewBox="0 0 16 16"><path d="m6 3 5 5-5 5"/></svg>';
-          a.appendChild(itemLabel);
-          a.appendChild(itemArrow);
-          a.href = child.href || child.path || child.file || '#';
-          if (child.href) {
-            a.target = '_blank';
-            a.rel = 'noopener noreferrer';
-          }
-          if (child.file) a.dataset.file = child.file;
-          if (child.path) a.dataset.clean = child.path;
-          if (
-            (child.path && here === norm(child.path)) ||
-            (child.file && here === norm(child.file))
-          ) {
-            a.classList.add('active');
-            a.setAttribute('aria-current', 'page');
-            hasActive = true;
-          }
-          menu.appendChild(a);
-          allLinks.push(a);
-        }
-        if (hasActive) group.classList.add('has-active');
-
-        const menuItems = () => Array.from(menu.querySelectorAll('.nav-link'));
-        const openGroup = (focusIndex) => {
-          setSettingsOpen(false);
-          closeAllDropdowns();
-          group.classList.add('open');
-          btn.setAttribute('aria-expanded', 'true');
-          if (typeof focusIndex === 'number') {
-            window.setTimeout(() => {
-              if (!group.classList.contains('open')) return;
-              const items = menuItems();
-              const targetIndex = focusIndex < 0 ? items.length - 1 : focusIndex;
-              if (items[targetIndex]) items[targetIndex].focus({ preventScroll: true });
-            }, 180);
-          }
-        };
-
-        btn.addEventListener('click', (e) => {
-          e.stopPropagation();
-          const wasOpen = group.classList.contains('open');
-          closeAllDropdowns();
-          if (!wasOpen) openGroup();
-        });
-
-        btn.addEventListener('keydown', (event) => {
-          if (event.key !== 'ArrowDown' && event.key !== 'ArrowUp') return;
-          event.preventDefault();
-          event.stopPropagation();
-          openGroup(event.key === 'ArrowDown' ? 0 : -1);
-        });
-
-        menu.addEventListener('keydown', (event) => {
-          const items = menuItems();
-          const currentIndex = items.indexOf(document.activeElement);
-          if (event.key === 'Escape') {
-            event.preventDefault();
-            event.stopPropagation();
-            group.classList.remove('open');
-            btn.setAttribute('aria-expanded', 'false');
-            btn.focus();
-            return;
-          }
-          const columnCount = Math.max(
-            1,
-            getComputedStyle(menu).gridTemplateColumns.split(/\s+/).filter(Boolean).length
-          );
-          let nextIndex = null;
-          if (event.key === 'ArrowDown') {
-            nextIndex = currentIndex + columnCount;
-            if (nextIndex >= items.length) {
-              nextIndex = items.findIndex(
-                (_, index) => index % columnCount === currentIndex % columnCount
-              );
-            }
-          } else if (event.key === 'ArrowUp') {
-            nextIndex = currentIndex - columnCount;
-            if (nextIndex < 0) {
-              for (let index = items.length - 1; index >= 0; index -= 1) {
-                if (index % columnCount === currentIndex % columnCount) {
-                  nextIndex = index;
-                  break;
-                }
-              }
-            }
-          } else if (
-            event.key === 'ArrowRight' &&
-            columnCount > 1 &&
-            currentIndex % columnCount < columnCount - 1 &&
-            currentIndex + 1 < items.length
-          ) {
-            nextIndex = currentIndex + 1;
-          } else if (
-            event.key === 'ArrowLeft' &&
-            columnCount > 1 &&
-            currentIndex % columnCount > 0
-          ) {
-            nextIndex = currentIndex - 1;
-          } else if (event.key === 'Home') nextIndex = 0;
-          else if (event.key === 'End') nextIndex = items.length - 1;
-          if (nextIndex === null || !items[nextIndex]) return;
-          event.preventDefault();
-          event.stopPropagation();
-          items[nextIndex].focus();
-        });
-
-        group.addEventListener('focusout', () => {
-          window.setTimeout(() => {
-            if (group.contains(document.activeElement)) return;
-            group.classList.remove('open');
-            btn.setAttribute('aria-expanded', 'false');
-          }, 0);
-        });
-
-        group.appendChild(btn);
-        group.appendChild(menu);
-        linksWrap.appendChild(group);
-      } else {
-        // Flat link (backward compat)
-        const a = document.createElement('a');
-        a.className = 'nav-link nav-group-btn';
-        a.textContent = route.i18nKey ? _t(route.i18nKey, route.label) : route.label;
-        if (route.i18nKey) a.setAttribute('data-i18n', route.i18nKey);
-        a.href = route.path || route.file || '#';
-        if (route.file) a.dataset.file = route.file;
-        if (route.path) a.dataset.clean = route.path;
-        if (here === norm(route.path) || here === norm(route.file)) {
-          a.classList.add('active');
-          a.setAttribute('aria-current', 'page');
-        }
-        linksWrap.appendChild(a);
-        allLinks.push(a);
+    function buildLink(route, iconName) {
+      const a = document.createElement('a');
+      a.className = 'sb-link';
+      const label = document.createElement('span');
+      label.className = 'sb-link-label';
+      label.textContent = route.i18nKey ? _t(route.i18nKey, route.label) : route.label;
+      if (route.i18nKey) label.setAttribute('data-i18n', route.i18nKey);
+      a.innerHTML = svgIcon(iconName);
+      a.appendChild(label);
+      a.href = route.href || route.path || route.file || '#';
+      if (route.href) {
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        a.insertAdjacentHTML(
+          'beforeend',
+          '<svg class="sb-ext" width="12" height="12" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3h7v7M13 3 5 11"/></svg>'
+        );
       }
+      if (route.file) a.dataset.file = route.file;
+      if (route.path) a.dataset.clean = route.path;
+      const isActive =
+        (route.path && here === norm(route.path)) || (route.file && here === norm(route.file));
+      if (isActive) {
+        a.classList.add('active');
+        a.setAttribute('aria-current', 'page');
+      }
+      allLinks.push(a);
+      const li = document.createElement('li');
+      li.appendChild(a);
+      return { li, isActive };
+    }
+
+    // Home sits above the groups.
+    const homeList = document.createElement('ul');
+    homeList.className = 'sb-list sb-home';
+    homeList.appendChild(
+      buildLink({ label: 'Home', i18nKey: 'nav.homeLink', path: '/', file: '/index.html' }, 'home')
+        .li
+    );
+    linksWrap.appendChild(homeList);
+
+    for (const route of ROUTES) {
+      const children = route.children || [route];
+      const group = document.createElement('section');
+      group.className = 'sb-group';
+      if (route.variant) group.classList.add('sb-group-' + route.variant);
+      const listId = 'sb-group-' + navGroupIndex++;
+
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'sb-group-btn';
+      btn.setAttribute('aria-controls', listId);
+      btn.innerHTML =
+        '<span' +
+        (route.i18nKey ? ' data-i18n="' + route.i18nKey + '"' : '') +
+        '>' +
+        (route.i18nKey ? _t(route.i18nKey, route.label) : route.label) +
+        '</span><svg class="sb-chevron" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">' +
+        '<path d="M3 4.5L6 7.5L9 4.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>' +
+        '</svg>';
+
+      const list = document.createElement('ul');
+      list.className = 'sb-list';
+      list.id = listId;
+      let hasActive = false;
+      for (const child of children) {
+        const key = child.path || child.href || '';
+        const iconName =
+          ROUTE_ICONS[key] || (key.startsWith('/guides') ? 'doc' : child.href ? 'eye' : 'doc');
+        const { li, isActive } = buildLink(child, iconName);
+        if (child.promoted) li.classList.add('sb-promoted');
+        if (isActive) hasActive = true;
+        list.appendChild(li);
+      }
+
+      // Long reference groups start collapsed; the group holding the current page always opens.
+      const stored = groupState[route.label];
+      const expanded = hasActive || (stored === undefined ? !route.variant : stored);
+      group.classList.toggle('collapsed', !expanded);
+      btn.setAttribute('aria-expanded', String(expanded));
+      btn.addEventListener('click', () => {
+        const next = group.classList.contains('collapsed');
+        group.classList.toggle('collapsed', !next);
+        btn.setAttribute('aria-expanded', String(next));
+        groupState[route.label] = next;
+        writeGroupState(groupState);
+      });
+
+      group.appendChild(btn);
+      group.appendChild(list);
+      linksWrap.appendChild(group);
+    }
+
+    syncCollapsedState();
+
+    // Keep the current page's link in view inside a long sidebar.
+    const activeLink = linksWrap.querySelector('.sb-link.active');
+    if (activeLink && !drawerQuery.matches) {
+      requestAnimationFrame(() => activeLink.scrollIntoView({ block: 'nearest' }));
     }
 
     // Prefer clean URLs, fall back to .html if needed
@@ -780,6 +860,17 @@
         if (themeSelect.value !== next) themeSelect.value = next;
       });
     }
+    const accentRadios = nav.querySelectorAll('input[name="nav-accent"]');
+    const currentAccent =
+      window.UmaAccent && typeof window.UmaAccent.get === 'function'
+        ? window.UmaAccent.get()
+        : document.documentElement.dataset.accent || 'blue';
+    accentRadios.forEach((radio) => {
+      radio.checked = radio.value === currentAccent;
+      radio.addEventListener('change', () => {
+        if (radio.checked && window.UmaAccent) window.UmaAccent.set(radio.value);
+      });
+    });
 
     // Footer at bottom
     const footer = document.createElement('footer');
@@ -831,6 +922,7 @@
         window.applyI18n(navEl);
         window.applyI18n(footer);
       }
+      syncCollapsedState();
     });
 
     // Signal that nav is ready so loaders can safely release.
@@ -843,16 +935,10 @@
     document.addEventListener('DOMContentLoaded', mountNavigation, { once: true });
   }
 
-  // Close menu/dropdowns if switching to desktop width
-  window.addEventListener('resize', () => {
-    if (window.innerWidth > 640 && navEl.classList.contains('open')) {
-      navEl.classList.remove('open');
-      menuBtn.setAttribute('aria-expanded', 'false');
-      closeAllDropdowns();
-    }
-    if (window.innerWidth <= 640 && settingsOpen) {
-      setSettingsOpen(false);
-    }
+  // Close the drawer if the window widens past the drawer breakpoint
+  drawerQuery.addEventListener('change', (event) => {
+    if (!event.matches && navEl.classList.contains('open')) setDrawerOpen(false);
+    syncPanelInert();
   });
 })();
 

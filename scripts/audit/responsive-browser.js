@@ -45,13 +45,11 @@ const navigationLanguages = [
     code: 'en',
     trigger: 'About',
     directory: 'All Documentation',
-    meta: 'Reference library',
   },
   {
     code: 'jp',
     trigger: 'サイト概要',
     directory: 'ドキュメント一覧',
-    meta: 'リファレンスライブラリ',
   },
 ];
 
@@ -501,7 +499,7 @@ async function auditDecorativeBackground(browser, baseUrl, viewport, theme) {
   return failures;
 }
 
-async function auditNavigationDropdown(browser, baseUrl, viewport, language) {
+async function auditSidebarNavigation(browser, baseUrl, viewport, language) {
   const page = await browser.newPage();
   const failures = [];
 
@@ -516,145 +514,163 @@ async function auditNavigationDropdown(browser, baseUrl, viewport, language) {
       select.value = languageCode;
       select.dispatchEvent(new Event('change', { bubbles: true }));
     }, language.code);
+    const triggerSelector = '.sb-group-guide-directory > .sb-group-btn';
     await page.waitForFunction(
-      (expected) =>
-        document.querySelector('.nav-group-guide-directory > .nav-group-btn span')?.textContent ===
-        expected,
+      (selector, expected) => document.querySelector(`${selector} span`)?.textContent === expected,
       { timeout: 2_000 },
+      triggerSelector,
       language.trigger
     );
 
-    if (viewport.isMobile) {
-      await page.click('.menu-btn');
-      await new Promise((resolve) => setTimeout(resolve, 250));
+    const drawer = await page.evaluate(() => matchMedia('(max-width: 960px)').matches);
+    if (drawer) {
+      await page.click('.sb-menu-btn');
+      await new Promise((resolve) => setTimeout(resolve, 500));
     }
-    const triggerSelector = '.nav-group-guide-directory > .nav-group-btn';
-    await page.click(triggerSelector);
-    await new Promise((resolve) => setTimeout(resolve, 250));
 
     const state = await page.evaluate(
-      ({ expectedTrigger, expectedDirectory, expectedMeta }) => {
+      ({ selector, expectedTrigger, expectedDirectory }) => {
         const root = document.documentElement;
-        const group = document.querySelector('.nav-group-guide-directory');
-        const trigger = group?.querySelector(':scope > .nav-group-btn');
-        const menu = group?.querySelector(':scope > .nav-group-menu-guide-directory');
-        const menuRect = menu?.getBoundingClientRect();
+        const sidebar = document.querySelector('.site-sidebar');
+        const panelRect = sidebar?.querySelector('.sb-panel')?.getBoundingClientRect();
+        const group = document.querySelector('.sb-group-guide-directory');
+        const trigger = document.querySelector(selector);
+        const list = group?.querySelector('.sb-list');
+        const directoryLink = list
+          ?.querySelector('[data-i18n="nav.allGuides"]')
+          ?.closest('.sb-link');
         const primaryNavigationCount = [
           ...document.querySelectorAll('nav, [role="navigation"]'),
         ].filter(
           (element) => element.getAttribute('aria-label') === window.t('nav.primary')
         ).length;
-        const directoryLabel = menu
-          ?.querySelector('[data-i18n="nav.allGuides"]')
-          ?.textContent.trim();
-        const metaLabel = menu
-          ?.querySelector('.nav-menu-heading > span:last-child')
-          ?.textContent.trim();
 
         return {
+          drawerOpen: sidebar?.classList.contains('open'),
+          menuExpanded: document.querySelector('.sb-menu-btn')?.getAttribute('aria-expanded'),
           expanded: trigger?.getAttribute('aria-expanded') === 'true',
+          listVisible: Boolean(list) && getComputedStyle(list).display !== 'none',
+          listControlled: Boolean(list?.id) && trigger?.getAttribute('aria-controls') === list.id,
           triggerLabel: trigger?.querySelector('span')?.textContent.trim(),
-          directoryLabel,
-          metaLabel,
+          directoryLabel: directoryLink?.textContent.trim(),
+          directoryCurrent: directoryLink?.getAttribute('aria-current') === 'page',
           expectedTrigger,
           expectedDirectory,
-          expectedMeta,
-          menuLabelledByTrigger:
-            Boolean(trigger?.id) && menu?.getAttribute('aria-labelledby') === trigger.id,
           primaryNavigationCount,
           horizontalOverflow: root.scrollWidth > root.clientWidth + 1,
-          menuWithinViewport:
-            Boolean(menuRect) &&
-            menuRect.left >= -1 &&
-            menuRect.right <= root.clientWidth + 1 &&
-            menuRect.top >= -1,
+          panelWithinViewport:
+            Boolean(panelRect) &&
+            panelRect.left >= -1 &&
+            panelRect.right <= root.clientWidth + 1 &&
+            panelRect.top >= -1 &&
+            panelRect.bottom <= innerHeight + 1,
         };
       },
       {
+        selector: triggerSelector,
         expectedTrigger: language.trigger,
         expectedDirectory: language.directory,
-        expectedMeta: language.meta,
       }
     );
 
-    if (!state.expanded) failures.push('dropdown did not expose aria-expanded=true');
+    if (drawer && (!state.drawerOpen || state.menuExpanded !== 'true')) {
+      failures.push('menu button did not open the navigation drawer');
+    }
+    if (!state.expanded || !state.listVisible) {
+      failures.push('group holding the current page is not expanded');
+    }
+    if (!state.listControlled) failures.push('group toggle does not control its list');
     if (state.triggerLabel !== state.expectedTrigger) {
-      failures.push(`trigger label "${state.triggerLabel}" != "${state.expectedTrigger}"`);
+      failures.push(`group label "${state.triggerLabel}" != "${state.expectedTrigger}"`);
     }
     if (state.directoryLabel !== state.expectedDirectory) {
       failures.push(`directory label "${state.directoryLabel}" != "${state.expectedDirectory}"`);
     }
-    if (state.metaLabel !== state.expectedMeta) {
-      failures.push(`meta label "${state.metaLabel}" != "${state.expectedMeta}"`);
-    }
-    if (!state.menuLabelledByTrigger) failures.push('dropdown is not labelled by its trigger');
+    if (!state.directoryCurrent) failures.push('current page link is not marked aria-current');
     if (state.primaryNavigationCount !== 1) {
       failures.push(
         `expected 1 primary navigation landmark, found ${state.primaryNavigationCount}`
       );
     }
-    if (state.horizontalOverflow) failures.push('open dropdown creates horizontal page overflow');
-    if (!state.menuWithinViewport) failures.push('open dropdown leaves the viewport');
+    if (state.horizontalOverflow) failures.push('navigation creates horizontal page overflow');
+    if (!state.panelWithinViewport) failures.push('navigation panel leaves the viewport');
 
-    if (
-      (viewport.name === 'desktop-nav' || viewport.name === 'wide-nav') &&
-      language.code === 'en'
-    ) {
-      await page.keyboard.press('Escape');
-      await page.focus(triggerSelector);
-      await page.keyboard.press('ArrowDown');
-      await new Promise((resolve) => setTimeout(resolve, 250));
-      const firstItemFocused = await page.evaluate(
-        () =>
-          document.activeElement ===
-          document.querySelector('.nav-group-guide-directory .nav-group-menu .nav-link')
-      );
-      if (!firstItemFocused) failures.push('ArrowDown did not focus the first document link');
+    await page.click(triggerSelector);
+    const collapsed = await page.evaluate(
+      (selector) => document.querySelector(selector)?.getAttribute('aria-expanded') === 'false',
+      triggerSelector
+    );
+    if (!collapsed) failures.push('group toggle did not collapse the group');
+    await page.click(triggerSelector);
 
-      await page.keyboard.press('ArrowDown');
-      const expectedSecondIndex = viewport.name === 'wide-nav' ? 2 : 1;
-      const spatialItemFocused = await page.evaluate((expectedIndex) => {
-        const links = [
-          ...document.querySelectorAll('.nav-group-guide-directory .nav-group-menu .nav-link'),
-        ];
-        return document.activeElement === links[expectedIndex];
-      }, expectedSecondIndex);
-      if (!spatialItemFocused) failures.push('ArrowDown did not follow the visual column');
+    if (language.code === 'en') {
+      if (drawer) {
+        await page.keyboard.press('Escape');
+        await new Promise((resolve) => setTimeout(resolve, 100));
+        const escapeState = await page.evaluate(() => ({
+          closed: !document.querySelector('.site-sidebar')?.classList.contains('open'),
+          focusReturned: document.activeElement === document.querySelector('.sb-menu-btn'),
+        }));
+        if (!escapeState.closed) failures.push('Escape did not close the navigation drawer');
+        if (!escapeState.focusReturned) failures.push('Escape did not return focus to the menu');
+      }
 
-      await page.keyboard.press('End');
-      const lastItemFocused = await page.evaluate(() => {
-        const links = [
-          ...document.querySelectorAll('.nav-group-guide-directory .nav-group-menu .nav-link'),
-        ];
-        return document.activeElement === links.at(-1);
+      if (!drawer) {
+        await page.click('#sb-collapse');
+        await new Promise((resolve) => setTimeout(resolve, 300));
+        const readRail = () =>
+          page.evaluate(() => {
+            const sidebar = document.querySelector('.site-sidebar');
+            const links = [...sidebar.querySelectorAll('.sb-link')].filter(
+              (link) => link.getClientRects().length > 0
+            );
+            return {
+              collapsed: document.documentElement.classList.contains('sidebar-collapsed'),
+              width: sidebar.getBoundingClientRect().width,
+              bodyPadding: parseFloat(getComputedStyle(document.body).paddingLeft),
+              expandedState: document.querySelector('#sb-collapse')?.getAttribute('aria-expanded'),
+              visibleLinks: links.length,
+              allTitled: links.every((link) => link.title.trim().length > 0),
+            };
+          });
+        const rail = await readRail();
+        if (!rail.collapsed || rail.width > 100)
+          failures.push('collapse did not shrink the sidebar');
+        if (Math.abs(rail.bodyPadding - rail.width) > 1) {
+          failures.push('page content did not move over for the collapsed sidebar');
+        }
+        if (rail.expandedState !== 'false') failures.push('collapse toggle state not announced');
+        if (!rail.visibleLinks || !rail.allTitled) {
+          failures.push('collapsed rail links are missing or unlabeled');
+        }
+
+        await page.reload({ waitUntil: 'load' });
+        const reloaded = await readRail();
+        if (!reloaded.collapsed || reloaded.width > 100) {
+          failures.push('collapsed sidebar did not persist across reloads');
+        }
+        await page.click('#sb-collapse');
+        await new Promise((resolve) => setTimeout(resolve, 300));
+      }
+
+      await page.evaluate(() => document.activeElement?.blur());
+      await page.keyboard.press('/');
+      await new Promise((resolve) => setTimeout(resolve, 100));
+      await page.keyboard.type('stamina');
+      const filterState = await page.evaluate(() => {
+        const visible = [...document.querySelectorAll('.site-sidebar .sb-link')].filter(
+          (link) => link.getClientRects().length > 0
+        );
+        return {
+          focused: document.activeElement === document.querySelector('#sb-filter'),
+          count: visible.length,
+          allMatch: visible.every((link) => /stamina/i.test(link.textContent)),
+        };
       });
-      if (!lastItemFocused) failures.push('End did not focus the last document link');
-
-      await page.keyboard.press('Escape');
-      const escapeState = await page.evaluate((selector) => {
-        const trigger = document.querySelector(selector);
-        return {
-          collapsed: trigger?.getAttribute('aria-expanded') === 'false',
-          focusReturned: document.activeElement === trigger,
-        };
-      }, triggerSelector);
-      if (!escapeState.collapsed) failures.push('Escape did not collapse the dropdown');
-      if (!escapeState.focusReturned) failures.push('Escape did not return focus to the trigger');
-
-      await page.keyboard.press('ArrowDown');
-      await new Promise((resolve) => setTimeout(resolve, 250));
-      await page.keyboard.press('End');
-      await page.keyboard.press('Tab');
-      await new Promise((resolve) => setTimeout(resolve, 50));
-      const tabState = await page.evaluate((selector) => {
-        const trigger = document.querySelector(selector);
-        return {
-          collapsed: trigger?.getAttribute('aria-expanded') === 'false',
-          focusLeftGroup: !trigger?.closest('.nav-group')?.contains(document.activeElement),
-        };
-      }, triggerSelector);
-      if (!tabState.collapsed) failures.push('Tab did not collapse the dropdown after leaving it');
-      if (!tabState.focusLeftGroup) failures.push('Tab did not move focus beyond the dropdown');
+      if (!filterState.focused) failures.push('"/" did not focus the tool filter');
+      if (!filterState.count || !filterState.allMatch) {
+        failures.push('tool filter did not narrow the links to matches');
+      }
     }
   } catch (error) {
     failures.push(`navigation audit failed: ${error.message}`);
@@ -1115,7 +1131,7 @@ async function main() {
 
     for (const viewport of navigationViewportDefinitions) {
       for (const language of navigationLanguages) {
-        const failures = await auditNavigationDropdown(browser, baseUrl, viewport, language);
+        const failures = await auditSidebarNavigation(browser, baseUrl, viewport, language);
         results.push({
           page: `navigation-${language.code}`,
           viewport: viewport.name,

@@ -35,8 +35,9 @@
       downhill: 0.59,
       uphill: 0.71,
       rightHanded: 0.65,
+      leftHanded: 5 / 17,
       nonStandard: 0.47,
-      distances: { 1000: 2, 1200: 9, 1400: 7 },
+      distances: { 1000: 2, 1200: 9, 1400: 6 },
     },
     mile: {
       downhill: 0.76,
@@ -68,9 +69,9 @@
     },
   };
   var TEAM_TRIAL_FIXED_CONDITION_RATES = {
-    season: { 1: 0.4, 2: 0.22, 3: 0.12, 4: 0.26 },
-    weather: { 1: 0.58, 2: 0.3, 3: 0.11, 4: 0.01 },
-    ground_condition: { 1: 0.77, 2: 0.11, 3: 0.07, 4: 0.05 },
+    season: { 1: 0.4, 2: 0.2, 3: 0.2, 4: 0.2 },
+    weather: { 1: 0.59, 2: 0.3, 3: 0.1, 4: 0.01 },
+    ground_condition: { 1: 0.77, 2: 0.12, 3: 0.06, 4: 0.05 },
   };
 
   function num(v, f) {
@@ -583,11 +584,14 @@
     var targets = new Set(
       (Array.isArray(input && input.autoTargets) ? input.autoTargets : []).map(lower)
     );
-    if (targets.has('dirt')) return ['dirt'];
+    if (targets.has('dirt') && !targets.has('turf')) return ['dirt'];
     var explicitDistances = ['sprint', 'mile', 'medium', 'long'].filter(function (key) {
       return targets.has(key);
     });
-    if (explicitDistances.length) return explicitDistances;
+    if (explicitDistances.length)
+      return explicitDistances.concat(targets.has('dirt') ? ['dirt'] : []);
+    if (targets.has('dirt') && targets.has('turf'))
+      return ['sprint', 'mile', 'medium', 'long', 'dirt'];
 
     var track = allowed && allowed.track;
     if (track && track.size === 1 && track.has('dirt')) return ['dirt'];
@@ -656,7 +660,13 @@
     add(
       comparatorProbability(text, 'rotation', {
         1: averageCourseRate(categories, 'rightHanded'),
-        2: 1 - averageCourseRate(categories, 'rightHanded'),
+        2:
+          categories.reduce(function (sum, category) {
+            var profile = TEAM_TRIAL_COURSE_PROFILES[category];
+            return (
+              sum + (profile.leftHanded == null ? 1 - profile.rightHanded : profile.leftHanded)
+            );
+          }, 0) / categories.length,
       })
     );
     add(
@@ -833,12 +843,12 @@
     return !sawPositionRestriction;
   }
 
-  function skillIsApplicableToContext(skill, allowed) {
+  function skillIsApplicableToContext(skill, allowed, calibrated) {
     if (!skill || typeof skill !== 'object') return true;
     // Type tags are global skill restrictions and must be checked even when
     // the skill also has explicit activation-condition groups.
     if (!typeTagRestrictionPasses(skill, allowed)) return false;
-    if (!positionalStyleRestrictionPasses(skill, allowed)) return false;
+    if (!calibrated && !positionalStyleRestrictionPasses(skill, allowed)) return false;
     var groups = Array.isArray(skill.conditionGroups) ? skill.conditionGroups : [];
     if (!groups.length) return true;
     var sawRestriction = false;
@@ -858,6 +868,80 @@
     if (sawRestriction) return false;
     return true;
   }
+
+  function calibrationSignature(skill) {
+    return JSON.stringify(
+      (skill.conditionGroups || []).map(function (g) {
+        return [g.precondition || '', g.condition || ''];
+      })
+    );
+  }
+
+  // Calibration rates already include course eligibility. Never multiply them
+  // by the heuristic course coverage or apply tier bonuses a second time.
+  function resolveCalibration(skill, input) {
+    var data = input && input.activationCalibration;
+    if (!skill || !data || data.schemaVersion !== 1 || data.method?.wisdomChecks !== false)
+      return null;
+    // These triggers depend on the actual owned deck, raw stats, or a uniform
+    // draw of posts. The baseline sweep does not represent those inputs.
+    if (
+      /(activate_count_|is_activate_any_skill|is_activate_other_skill_detail|is_exist_skill_id|post_number|base_(?:speed|stamina|power|guts|wiz))/.test(
+        calibrationSignature(skill)
+      )
+    )
+      return null;
+    var entry = lookup(data.skills, skill.id);
+    if (
+      !entry ||
+      entry.signature !== calibrationSignature(skill) ||
+      typeof entry.wisdomGated !== 'boolean'
+    )
+      return null;
+    var allowed = deriveAllowedContext(input);
+    var categories = teamTrialCourseCategories(input, allowed);
+    var explicitStyle = STYLE_VALUE_TO_KEY[input.raceConfig?.style];
+    var styles = explicitStyle
+      ? [explicitStyle]
+      : allowed.style.size
+        ? Array.from(allowed.style)
+        : ['front', 'pace', 'late', 'end'];
+    var cells = [];
+    for (var category of categories) {
+      for (var style of styles) {
+        var cell = entry.contexts?.[category]?.[style];
+        if (!cell || !Number.isFinite(cell.rate) || cell.rate < 0 || cell.rate > 1) return null;
+        if (
+          cell.source !== 'course-enumeration' &&
+          (cell.source !== 'globalsim' || !Number.isInteger(cell.samples) || cell.samples < 256)
+        )
+          return null;
+        cells.push(cell);
+      }
+    }
+    if (!cells.length) return null;
+    return {
+      rate:
+        cells.reduce(function (sum, cell) {
+          return sum + cell.rate;
+        }, 0) / cells.length,
+      samples: cells.reduce(function (sum, cell) {
+        return sum + (cell.samples || 0);
+      }, 0),
+      source: cells.every(function (cell) {
+        return cell.source === 'course-enumeration';
+      })
+        ? 'course-enumeration'
+        : 'globalsim',
+      interval95:
+        cells.length === 1 && Array.isArray(cells[0].interval95) ? cells[0].interval95 : null,
+      scenarioRange: cells.length === 1 ? cells[0].scenarioRange || null : null,
+      wisdomGated: entry.wisdomGated,
+      categories: categories,
+      styles: styles,
+    };
+  }
+
   function applyTeamMetrics(items, input, weights) {
     var missMeta = 0;
     var out = items.map(function (it) {
@@ -889,10 +973,36 @@
       }
       var conditionalRate = fixedEligibility ? 1 : clamp(c.score - extraPen, 0.05, 0.99);
       var trackConditionRate = clamp(conditionalRate * course.rate, 0, 1);
-      var wisdomGated = !isGreen(it.category);
+      var calibration = resolveCalibration(skill, input);
+      if (calibration) {
+        trackConditionRate = calibration.rate;
+        conditionalRate = calibration.rate;
+        hasUnmodeledCourseCondition = false;
+        scoreReasons = [
+          calibration.source === 'globalsim'
+            ? 'GlobalSim: ' +
+              Math.round(calibration.rate * 100) +
+              '% trigger coverage across ' +
+              calibration.samples +
+              ' trials (before Wisdom).'
+            : 'Observed course pool: ' +
+              Math.round(calibration.rate * 100) +
+              '% fixed-condition coverage.',
+        ];
+      }
+      if (calibration?.interval95) {
+        scoreReasons.push(
+          '95% sampling interval before Wisdom: ' +
+            Math.round(calibration.interval95[0] * 100) +
+            '–' +
+            Math.round(calibration.interval95[1] * 100) +
+            '%.'
+        );
+      }
+      var wisdomGated = calibration ? calibration.wisdomGated : !isGreen(it.category);
       var wisdomRate = wisdomProcModifier(input && input.wisdom);
       var activationRate = clamp(trackConditionRate * (wisdomGated ? wisdomRate : 1), 0, 1);
-      if (course.hasModeledCondition) {
+      if (!calibration && course.hasModeledCondition) {
         scoreReasons.unshift(
           window.t('teamTrials.courseCoverage', { rate: Math.round(course.rate * 100) })
         );
@@ -921,9 +1031,10 @@
         consistencyScore: activationRate,
         trackConditionRate: trackConditionRate,
         conditionalActivationRate: conditionalRate,
-        courseConditionRate: course.rate,
+        courseConditionRate: calibration && isGreen(it.category) ? calibration.rate : course.rate,
+        calibration: calibration,
         courseCategories: course.categories,
-        hasModeledCourseCondition: !!course.hasModeledCondition,
+        hasModeledCourseCondition: !!calibration || !!course.hasModeledCondition,
         hasUnmodeledCourseCondition: hasUnmodeledCourseCondition,
         wisdomGated: wisdomGated,
         wisdomModifier: wisdomRate,
@@ -941,7 +1052,7 @@
         consistencyInt: Math.round(activationRate * 1000),
         consistentGoldPriority: !!getsGoldPriority,
         consistentGoldInt: getsGoldPriority ? 1 : 0,
-        isRisky: !!c.isRisky || activationRate < 0.42,
+        isRisky: (!calibration && !!c.isRisky) || activationRate < 0.42,
         normalizedSkill: skill || null,
       });
     });
@@ -950,10 +1061,15 @@
 
   function isGold(cat) {
     cat = lower(cat);
-    return cat === 'gold' || cat === 'golden' || cat.indexOf('gold') !== -1;
+    return cat === 'evo' || cat === 'gold' || cat === 'golden' || cat.indexOf('gold') !== -1;
   }
 
   function buildGroups(items) {
+    function isEvolution(item) {
+      return (
+        !!item.isEvo || !!item.parentEvoId || String(item.category || '').toLowerCase() === 'evo'
+      );
+    }
     var idToIdx = new Map(
       items.map(function (it, idx) {
         return [it.id, idx];
@@ -1001,6 +1117,7 @@
       if (used[i]) continue;
       var it = items[i],
         handled = false;
+      if (isEvolution(it)) continue;
       if (isGold(it.category) && it.lowerRowId && idToIdx.has(it.lowerRowId)) {
         var linkedLowerIdx = idToIdx.get(it.lowerRowId);
         if (linkedLowerIdx != null && !used[linkedLowerIdx]) {
@@ -1039,7 +1156,7 @@
               value: circleItem.expectedValueInt,
               consistency: circleItem.consistencyInt,
               rating: circleItem.ratingScore || 0,
-              sv: (circleItem.svInt || 0) + (linkedLower.svInt || 0),
+              sv: circleItem.svInt || 0,
               items: [linkedLowerIdx, circleIdx],
             });
             // Gold combo: it.cost already includes gold + ○ + ◎ (via getLowerDiscountedCost)
@@ -1049,7 +1166,7 @@
               value: it.expectedValueInt,
               consistency: it.consistencyInt,
               rating: it.ratingScore || 0,
-              sv: (it.svInt || 0) + (linkedLower.svInt || 0) + (circleItem.svInt || 0),
+              sv: it.svInt || 0,
               items: [linkedLowerIdx, circleIdx, i],
             });
           } else {
@@ -1060,7 +1177,7 @@
               value: it.expectedValueInt,
               consistency: it.consistencyInt,
               rating: it.ratingScore || 0,
-              sv: (it.svInt || 0) + (linkedLower.svInt || 0),
+              sv: it.svInt || 0,
               items: [linkedLowerIdx, i],
             });
           }
@@ -1099,7 +1216,7 @@
               value: up.expectedValueInt,
               consistency: up.consistencyInt,
               rating: up.ratingScore || 0,
-              sv: (up.svInt || 0) + (it.svInt || 0),
+              sv: up.svInt || 0,
               items: [i, circleIdx],
             },
           ]);
@@ -1149,7 +1266,7 @@
               value: it.expectedValueInt,
               consistency: it.consistencyInt,
               rating: it.ratingScore || 0,
-              sv: (it.svInt || 0) + (p.svInt || 0),
+              sv: it.svInt || 0,
               items: [j, i],
             },
           ]);
@@ -1180,6 +1297,52 @@
       ]);
       used[i] = true;
     }
+    // Evolutions replace the terminal gold in its existing purchase group.
+    // Keeping prerequisite indices satisfies required rows without scoring them.
+    items.forEach(function (evo, evoIdx) {
+      if (!isEvolution(evo)) return;
+      var parentIdx = items.findIndex(function (parent) {
+        if (isEvolution(parent) || !isGold(parent.category)) return false;
+        if (evo.parentEvoId) return parent.id === evo.parentEvoId;
+        if (
+          String(parent.evoRowIds || '')
+            .split(',')
+            .includes(evo.id)
+        )
+          return true;
+        if (
+          (evo.parentSkillIds || []).some(function (id) {
+            return String(id) === String(parent.skillId);
+          })
+        )
+          return true;
+        return (evo.evoParentNames || []).some(function (name) {
+          return (
+            String(name).trim().toLowerCase() ===
+            String(parent.name || '')
+              .trim()
+              .toLowerCase()
+          );
+        });
+      });
+      if (parentIdx < 0) return; // Never offer an orphan as a free standalone skill.
+      groups.forEach(function (options) {
+        options.slice().forEach(function (option) {
+          var terminal = option.combo ? option.combo[option.combo.length - 1] : option.pick;
+          if (terminal !== parentIdx) return;
+          var components = (option.combo || [parentIdx]).concat(evoIdx);
+          options.push({
+            combo: components,
+            items: (option.items || [parentIdx]).concat(evoIdx),
+            cost: option.cost,
+            value: evo.expectedValueInt,
+            consistency: evo.consistencyInt,
+            rating: evo.ratingScore || 0,
+            sv: evo.svInt || 0,
+          });
+        });
+      });
+    });
     return groups;
   }
 
@@ -1564,7 +1727,11 @@
     var requiredMismatch = [];
     var minGreenCourseCoverage = clamp(num(w.minGreenCourseCoverage, 0.4), 0, 1);
     items = items.filter(function (it) {
-      var applicable = skillIsApplicableToContext(it.normalizedSkill, allowedContext);
+      var applicable = skillIsApplicableToContext(
+        it.normalizedSkill,
+        allowedContext,
+        !!it.calibration
+      );
       if (!applicable) {
         filteredOutCount += 1;
         if (it.required) requiredMismatch.push(it.name);
@@ -1615,6 +1782,21 @@
       };
     }
     if (met.missingMeta > 0) warnings.push(window.t('teamTrials.fallbackHeuristics'));
+    var calibratedCount = items.filter(function (it) {
+      return !!it.calibration;
+    }).length;
+    if (calibratedCount)
+      warnings.push(
+        'Simulation/course evidence covers ' +
+          calibratedCount +
+          ' of ' +
+          items.length +
+          ' candidates. Other skills use heuristic estimates. Rates assume a balanced 12-runner field and a small background skill deck.'
+      );
+    else
+      warnings.push(
+        'No matching simulation calibration for these candidates; activation rates use heuristic estimates.'
+      );
     var groupResult = optimizeGroups(buildGroups(items), items, budget);
     if (groupResult.error) {
       return {
@@ -1658,6 +1840,7 @@
         consistencyScore: Number(clamp(num(it.consistencyScore, 0), 0, 1).toFixed(4)),
         trackConditionRate: Number(clamp(num(it.trackConditionRate, 0), 0, 1).toFixed(4)),
         courseConditionRate: Number(clamp(num(it.courseConditionRate, 1), 0, 1).toFixed(4)),
+        calibration: it.calibration || null,
         wisdomGated: it.wisdomGated !== false,
         wisdomModifier: Number(clamp(num(it.wisdomModifier, 1), 0, 1).toFixed(4)),
         activationRate: Number(clamp(num(it.activationRate, 0), 0, 1).toFixed(4)),
@@ -1720,6 +1903,7 @@
   }
 
   return {
+    resolveCalibration: resolveCalibration,
     DEFAULT_WEIGHTS: DEFAULT_WEIGHTS,
     parseCSV: csvParse,
     normalizeSkill: normalizeSkill,

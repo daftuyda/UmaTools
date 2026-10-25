@@ -198,7 +198,9 @@
 
   function getAptitudeTestScore(category, isLowerForGold = false) {
     if (isLowerForGold) return 0; // Lower skills don't count
-    return isGoldCategory(category) ? APTITUDE_TEST_SCORE_GOLD : APTITUDE_TEST_SCORE_NORMAL;
+    return isGoldCategory(category) || canonicalCategory(category) === 'evo'
+      ? APTITUDE_TEST_SCORE_GOLD
+      : APTITUDE_TEST_SCORE_NORMAL;
   }
 
   function getEffectiveRatingScore(skill, categoryOverride = '') {
@@ -251,6 +253,7 @@
   };
   let lastTTChosen = null; // store last TT result for live predicted score updates
   const TEAM_TRIALS_MODE = 'team_trials';
+  let teamTrialsCalibration = null;
   const teamTrialsSkillMetaById = new Map();
   const teamTrialsSkillMetaByName = new Map();
   const teamTrialsTierById = new Map();
@@ -2205,6 +2208,7 @@
         ? jpOriginalName
         : aliasNames.find((a) => hasJapaneseScript(a)) || '';
       catMap[type].push({
+        category: type,
         name,
         jpName: resolvedJpName,
         aliasNames,
@@ -3550,7 +3554,7 @@
         if (exactEvo) skill = exactEvo;
       }
       if (!skill) return;
-      const category = skill.category || '';
+      const category = parentEvoId || skill.isEvo ? 'evo' : skill.category || '';
       const isLowerForGold = !!parentGoldId; // This row is a lower skill linked to a gold
 
       // Always calculate both scores
@@ -4182,6 +4186,7 @@
         wisdom: Number(ratingInputs.wisdom?.value) || 900,
         raceConfig: getRaceConfigSnapshot(),
         autoTargets: getSelectedAutoTargets(),
+        activationCalibration: getSkillLanguage() === 'en' ? teamTrialsCalibration : null,
         skillMetaById: teamTrialsSkillMetaById,
         skillMetaByName: teamTrialsSkillMetaByName,
         tierById: teamTrialsTierById,
@@ -4201,6 +4206,18 @@
       };
     }
     return result;
+  }
+
+  function getEvolutionResultParent(item, byId) {
+    if (!item.isEvo && canonicalCategory(item.category) !== 'evo') return null;
+    const explicitParent = byId.get(item.parentEvoId);
+    if (explicitParent) return explicitParent;
+    // Typed/imported evolutions have purchase components but no hidden-row link.
+    return (
+      (item.components || [])
+        .map((id) => byId.get(id))
+        .find((parent) => parent?.comboComponent && isGoldCategory(parent.category)) || null
+    );
   }
 
   function renderResults(result, budget) {
@@ -4428,19 +4445,17 @@
       ratingEngine.updateRatingDisplay(0);
       return;
     }
-    const ordered = [...chosen];
+    const resultById = new Map(chosen.map((it) => [it.id, it]));
+    const ordered = chosen.map((it) => {
+      const parent = getEvolutionResultParent(it, resultById);
+      return parent ? { ...it, isEvo: true, parentEvoId: parent.id } : it;
+    });
     const indexMap = new Map(ordered.map((it, idx) => [it.id, idx]));
     const inputOrderMap = new Map();
-    const selectedEvosByParentId = new Map();
     if (rowsEl) {
       Array.from(rowsEl.querySelectorAll('.optimizer-row')).forEach((row, idx) => {
         const rowId = row?.dataset?.rowId;
         if (rowId && !inputOrderMap.has(rowId)) inputOrderMap.set(rowId, idx);
-        if (!rowId || row.dataset.parentEvoId) return;
-        const selectedEvos = Array.from(row.querySelectorAll('.evo-checkbox:checked'))
-          .map((checkbox) => checkbox.dataset.evoName)
-          .filter(Boolean);
-        if (selectedEvos.length) selectedEvosByParentId.set(rowId, selectedEvos);
       });
     }
     const byId = new Map(ordered.map((it) => [it.id, it]));
@@ -4534,15 +4549,17 @@
       if (baseCategory) li.dataset.baseCategory = baseCategory;
       const linkedGold = lowerToGold.get(it.id);
       const linkedEvo = linkedGold ? evoByParentId.get(linkedGold.id) : null;
-      const linkedSelectedEvos = linkedGold ? selectedEvosByParentId.get(linkedGold.id) || [] : [];
       const includedWithRaw = it.comboComponent
         ? it.comboParentName
         : linkedEvo
           ? linkedEvo.name
-          : linkedSelectedEvos[0]
-            ? linkedSelectedEvos[0]
-            : linkedGold?.name || '';
+          : linkedGold?.name || '';
       const includedWith = includedWithRaw ? formatSkillDisplayName(includedWithRaw) : '';
+      const evoParent = it.isEvo && it.parentEvoId ? byId.get(it.parentEvoId) : null;
+      const evoDisplayName = evoParent
+        ? `${formatSkillDisplayName(evoParent.name)} → ${formatSkillDisplayName(it.name)}`
+        : '';
+      if (evoParent) li.classList.add('result-evo-upgrade');
       if (mode === TEAM_TRIALS_MODE) {
         const breakdown = teamBreakdownMap.get(it.id) || {};
         if (includedWith) {
@@ -4556,14 +4573,20 @@
           const consistency = Number.isFinite(breakdown.consistencyScore)
             ? Math.round(Math.max(0, Math.min(1, breakdown.consistencyScore)) * 100)
             : 0;
-          const metrics = `cost ${cost}, rating ${rating}, score/SP ${ratio.toFixed(2)}, consistency ${consistency}%`;
+          const evidenceLabel =
+            breakdown.calibration?.source === 'globalsim'
+              ? 'simulated'
+              : breakdown.calibration
+                ? 'course coverage'
+                : 'heuristic';
+          const metrics = `cost ${cost}, rating ${rating}, score/SP ${ratio.toFixed(2)}, activation ${consistency}% (${evidenceLabel})`;
           const nameEl = document.createElement('span');
           nameEl.className = 'res-name';
           nameEl.setAttribute('data-skill-name', it.name);
           if (it.skillId) nameEl.setAttribute('data-skill-id', String(it.skillId));
           nameEl.setAttribute('tabindex', '0');
           nameEl.setAttribute('role', 'button');
-          nameEl.textContent = formatSkillDisplayName(it.name);
+          nameEl.textContent = evoDisplayName || formatSkillDisplayName(it.name);
           const metricsEl = document.createElement('span');
           metricsEl.className = 'res-metrics';
           metricsEl.textContent = metrics;
@@ -4604,12 +4627,8 @@
         // For circle skills, show which tier was chosen
         let displayName = formatSkillDisplayName(it.name);
         const skill = findSkillByName(it.name);
-        const evoParent = it.isEvo && it.parentEvoId ? byId.get(it.parentEvoId) : null;
-        const selectedEvos = selectedEvosByParentId.get(it.id) || [];
         if (evoParent) {
-          displayName = `${formatSkillDisplayName(evoParent.name)} [Evo: ${formatSkillDisplayName(it.name)}]`;
-          li.classList.add('result-evo-upgrade');
-          li.dataset.evoName = formatSkillDisplayName(it.name);
+          displayName = evoDisplayName;
         } else if (circleComboBaseIds.has(it.id) && skill?.circleBaseName) {
           // ◎ upgrade was chosen (combo) — show localized base name with ◎
           displayName = formatCircleDisplayName(formatSkillDisplayName(skill.circleBaseName), '◎');
@@ -4618,12 +4637,6 @@
           displayName = formatCircleDisplayName(formatSkillDisplayName(skill.circleBaseName), '○');
         }
         if (skill?.isEvo && !evoParent) displayName += ' (evo)';
-        if (!evoParent && selectedEvos.length) {
-          const evoLabels = selectedEvos.map((name) => formatSkillDisplayName(name)).join(' / ');
-          displayName += ` [Evo: ${evoLabels}]`;
-          li.classList.add('result-evo-upgrade');
-          li.dataset.evoName = evoLabels;
-        }
         const meta = includedWith
           ? t('optimizer.includedWith', { name: includedWith })
           : t('optimizer.costScoreDisplay', { cost: it.cost, score: displayScore });
@@ -6035,6 +6048,38 @@
     if (!floatRoot || !ratingHero) return;
 
     let heroState = 'visible';
+    const toggle = floatRoot.querySelector('.rating-float-main');
+    const details = document.getElementById('rating-float-details');
+    const canHover = () => window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    const expand = (expanded) => {
+      floatRoot.classList.toggle('is-expanded', expanded);
+      toggle?.setAttribute('aria-expanded', String(expanded));
+      if (details) details.hidden = !expanded;
+    };
+    floatRoot.addEventListener('pointerenter', () => {
+      if (canHover()) expand(true);
+    });
+    floatRoot.addEventListener('pointerleave', () => {
+      if (canHover() && !toggle?.matches(':focus-visible')) expand(false);
+    });
+    toggle?.addEventListener('focus', () => {
+      if (canHover() && toggle.matches(':focus-visible')) expand(true);
+    });
+    toggle?.addEventListener('blur', () => {
+      if (!canHover() || !floatRoot.matches(':hover')) expand(false);
+    });
+    toggle?.addEventListener('click', (event) => {
+      expand(canHover() && event.detail > 0 ? true : !floatRoot.classList.contains('is-expanded'));
+    });
+    floatRoot.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        expand(false);
+        event.preventDefault();
+      }
+    });
+    document.addEventListener('pointerdown', (event) => {
+      if (!floatRoot.contains(event.target)) expand(false);
+    });
 
     if (floatRoot.parentElement !== document.body) {
       document.body.appendChild(floatRoot);
@@ -6050,6 +6095,7 @@
     const updateVisibility = () => {
       const shouldShow = heroState === 'above';
       floatRoot.classList.toggle('is-visible', shouldShow);
+      if (!shouldShow) expand(false);
     };
 
     if ('IntersectionObserver' in window) {
@@ -6258,11 +6304,25 @@
 
   // Fetch both startup datasets together. CSV parsing still waits for the core
   // JSON because it depends on the official-English name index built there.
+  const calibrationReady = fetch('/assets/team-trials-calibration.json', {
+    signal: AbortSignal.timeout(10000),
+  })
+    .then((response) => {
+      if (!response.ok) throw new Error('Calibration unavailable: ' + response.status);
+      return response.json();
+    })
+    .then((data) => {
+      teamTrialsCalibration = data;
+    })
+    .catch((error) => {
+      console.warn('Team Trials uses fallback estimates', error);
+    });
   const skillsCSVPreload = preloadSkillsCSV();
   const startupReady = loadSkillCostsJSON()
     .catch((err) => {
       console.warn('Skill cost JSON load failed', err);
     })
+    .then(() => calibrationReady)
     .then(() => loadSkillsCSV(skillsCSVPreload))
     .then(() => finishInit())
     .then(() => backgroundHydrateFullData())

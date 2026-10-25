@@ -18,6 +18,8 @@
       'home.subtitle':
         'Build planners, rating calculators, race checks, and game data—all together in one toolkit.',
       'home.trafficSummary': 'Ordered by the pages players visit most.',
+      'home.allTools': 'All tools',
+      'home.readChangelog': 'Read changelog',
       'home.skillOptimizer': 'Skill Optimizer',
       'home.skillOptimizerDesc': 'Plan skill builds and check synergy with target races.',
       'home.skillOptimizerBadge': 'Build planner',
@@ -773,6 +775,8 @@
       'home.subtitle':
         '育成プラン、レーティング計算、レースチェック、ゲームデータをひとつのツールキットにまとめました。',
       'home.trafficSummary': 'プレイヤーの利用が多いページ順に表示しています。',
+      'home.allTools': 'すべてのツール',
+      'home.readChangelog': '更新履歴を見る',
       'home.skillOptimizer': 'スキルオプティマイザー',
       'home.skillOptimizerDesc': 'スキル構成を計画し、目標レースとのシナジーを確認できます。',
       'home.skillOptimizerBadge': '構成プランナー',

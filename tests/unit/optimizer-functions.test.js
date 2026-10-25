@@ -287,3 +287,94 @@ for (const fast of [0, 10]) {
 console.log(
   'Optimizer function tests passed: linked/required regressions and 1,200 exhaustive cases per solver, 300 Team Trials tie cases, and 12,000 hint-cost cases.'
 );
+
+// Checkbox evolutions come from the parent lookup, which can lack the category
+// that findSkillByName adds. Exercise collection before either solver.
+const goldSkill = { name: 'Gold', category: 'gold', score: 400 };
+const exactEvolution = { name: 'Evolution', isEvo: true, score: 600 };
+function inputRow(id, skill, dataset = {}) {
+  return {
+    dataset: { rowId: id, ...dataset },
+    querySelector(selector) {
+      return {
+        '.skill-name': { value: skill.name },
+        '.cost': { value: '300' },
+        '.hint-level': { value: '0' },
+        '.required-skill': { checked: id === 'gold' },
+      }[selector];
+    },
+  };
+}
+const goldRow = inputRow('gold', goldSkill, { evoRowIds: 'evolution' });
+const evolutionRow = inputRow('evolution', exactEvolution, { parentEvoId: 'gold' });
+const collection = loadFunctions('optimizer.js', ['getAptitudeTestScore', 'collectItems'], {
+  rowsEl: {
+    querySelectorAll: () => [goldRow, evolutionRow],
+    querySelector: () => goldRow,
+  },
+  getOptimizeMode: () => 'rating',
+  findSkillByName: (name) => (name === 'Gold' ? goldSkill : exactEvolution),
+  getEvosForSkill: () => [exactEvolution],
+  normalize: (name) => name.toLowerCase(),
+  CSS: { escape: (value) => value },
+  getEffectiveRatingScore: (skill) => skill.score,
+  getPurplePenaltyValue: () => 0,
+  canonicalCategory: (category) => category,
+  isGoldCategory: (category) => category === 'gold',
+  APTITUDE_TEST_SCORE_GOLD: 1200,
+  APTITUDE_TEST_SCORE_NORMAL: 400,
+});
+const collected = collection.collectItems().items;
+assert.equal(collected[1].category, 'evo');
+assert.equal(collected[1].cost, 0);
+assert.equal(collected[1].aptitudeScore, 1200);
+assert.equal(rating.optimizeRatingBuild(collected, 300).best, 600);
+assert.equal(rating.optimizeRatingBuild(collected, 299).error, 'required_unreachable');
+global.window = global.window || {};
+window.t = (key) => key;
+const teamApi = require('../../public/js/team-trials-optimizer.js');
+const collectedTeamResult = teamApi.optimizeTeamTrialsBuild({ items: collected, budget: 300 });
+assert.equal(collectedTeamResult.totalRatingScore, 600);
+assert.equal(collectedTeamResult.used, 300);
+assert(collectedTeamResult.chosen.some((item) => item.id === 'gold' && item.comboComponent));
+assert(collectedTeamResult.chosen.some((item) => item.id === 'evolution' && !item.comboComponent));
+assert.equal(
+  teamApi.optimizeTeamTrialsBuild({ items: collected, budget: 299 }).error,
+  'required_unreachable'
+);
+console.log('Evolution checkbox collection and prerequisite tests passed.');
+
+// Imported/typed evolutions must render at their gold parent's position too.
+const resultGrouping = loadFunctions('optimizer.js', ['getEvolutionResultParent'], {
+  canonicalCategory: (category) => category,
+  isGoldCategory: (category) => category === 'gold',
+});
+const resultGold = { id: 'gold', category: 'gold', comboComponent: true };
+const resultLower = { id: 'lower', category: 'yellow', comboComponent: true };
+const resultIndex = new Map([
+  ['gold', resultGold],
+  ['lower', resultLower],
+]);
+assert.equal(
+  resultGrouping.getEvolutionResultParent({ isEvo: true, parentEvoId: 'gold' }, resultIndex),
+  resultGold
+);
+assert.equal(
+  resultGrouping.getEvolutionResultParent(
+    { category: 'evo', components: ['lower', 'gold', 'evo'] },
+    resultIndex
+  ),
+  resultGold
+);
+assert.equal(
+  resultGrouping.getEvolutionResultParent(
+    { category: 'yellow', components: ['lower', 'gold'] },
+    resultIndex
+  ),
+  null
+);
+assert.equal(
+  resultGrouping.getEvolutionResultParent({ isEvo: true, components: ['missing'] }, resultIndex),
+  null
+);
+console.log('Evolution result parent grouping tests passed.');

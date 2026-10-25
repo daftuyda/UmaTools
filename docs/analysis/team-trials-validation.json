@@ -1,0 +1,14 @@
+{
+  "validatedAt": "2026-10-24T01:17:44.138Z",
+  "calibrationSha256": "d780783bb548c48a257fca56850c7cc2dcc37f1338b841eeda2c9a2a1e386e64",
+  "calibrationRaces": 276224,
+  "auditRaces": 31872,
+  "skills": 36,
+  "contexts": 720,
+  "courseChecks": 11952,
+  "exactMatches": true,
+  "independentProcesses": true,
+  "additionalIndependentSeeds": false,
+  "note": "Same-seed reproducibility audit; it does not increase the statistical sample size or establish game fidelity.",
+  "auditWorkerRecoveries": 0
+}

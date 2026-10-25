@@ -140,6 +140,11 @@
           root.classList.toggle('dark', dark);
           root.classList.toggle('oled', theme === 'oled');
           root.dataset.theme = theme || (dark ? 'dark' : 'light');
+          root.dataset.accent = localStorage.getItem('umatools-accent') || 'blue';
+          root.classList.toggle(
+            'sidebar-collapsed',
+            localStorage.getItem('umatools.sidebarCollapsed') === '1'
+          );
           root.style.colorScheme = dark ? 'dark' : 'light';
         } catch (error) {}
       })();

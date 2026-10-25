@@ -96,6 +96,15 @@
       'nav.home': 'Uma Tools Home',
       'nav.menu': 'Menu',
       'nav.primary': 'Primary',
+      'nav.homeLink': 'Home',
+      'nav.searchTools': 'Search tools',
+      'nav.noMatches': 'No tools match that search.',
+      'nav.collapseSidebar': 'Collapse sidebar',
+      'nav.expandSidebar': 'Expand sidebar',
+
+      // ── Changelog ──
+      'changelog.whatsNew': "What's New",
+      'changelog.dismiss': 'Dismiss changelog',
     },
     ja: {
       // ── Common ──
@@ -183,6 +192,15 @@
       'nav.home': 'UmaTools ホーム',
       'nav.menu': 'メニュー',
       'nav.primary': 'メイン',
+      'nav.homeLink': 'ホーム',
+      'nav.searchTools': 'ツールを検索',
+      'nav.noMatches': '一致するツールがありません。',
+      'nav.collapseSidebar': 'サイドバーを折りたたむ',
+      'nav.expandSidebar': 'サイドバーを広げる',
+
+      // ── Changelog ──
+      'changelog.whatsNew': '新着情報',
+      'changelog.dismiss': '新着情報を閉じる',
     },
   };
 
