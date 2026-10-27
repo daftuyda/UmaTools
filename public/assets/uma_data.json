@@ -43820,5 +43820,171 @@
       }
     ],
     "UmaImage": "/assets/character_thumbs/110802-duramente.png"
+  },
+  {
+    "UmaKey": "Daiwa Scarlet :: 100903-daiwa-scarlet",
+    "UmaName": "Daiwa Scarlet",
+    "UmaNameJP": "ダイワスカーレット",
+    "UmaNickname": null,
+    "UmaNicknameJP": "陣風の花紺青",
+    "UmaSlug": "100903-daiwa-scarlet",
+    "UmaId": "100903",
+    "UmaServer": "jp",
+    "UmaBaseStars": 3,
+    "UmaBaseStats": {
+      "3★": {
+        "Speed": 82,
+        "Stamina": 102,
+        "Power": 72,
+        "Guts": 102,
+        "Wit": 92
+      },
+      "5★": {
+        "Speed": 100,
+        "Stamina": 125,
+        "Power": 88,
+        "Guts": 125,
+        "Wit": 112
+      },
+      "4★": {
+        "Speed": 91,
+        "Stamina": 114,
+        "Power": 80,
+        "Guts": 114,
+        "Wit": 101
+      }
+    },
+    "UmaStatBonuses": {
+      "Speed": 0,
+      "Stamina": 5,
+      "Power": 10,
+      "Guts": 0,
+      "Wit": 15
+    },
+    "UmaAptitudes": {
+      "Surface": {
+        "Turf": "A",
+        "Dirt": "G"
+      },
+      "Distance": {
+        "Short": "F",
+        "Mile": "B",
+        "Medium": "A",
+        "Long": "A"
+      },
+      "Strategy": {
+        "Front": "A",
+        "Pace": "A",
+        "Late": "E",
+        "End": "G"
+      }
+    },
+    "UmaHeightCm": null,
+    "UmaThreeSizes": {},
+    "UmaObjectives": [
+      {
+        "ObjectiveName": "Junior Make Debut",
+        "Turn": "12",
+        "Time": "Junior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Tulip Sho",
+        "Turn": "29",
+        "Time": "Classic Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Oka Sho",
+        "Turn": "31",
+        "Time": "Classic Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Japanese Oaks",
+        "Turn": "34",
+        "Time": "Classic Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Tokyo Yushun (Japanese Derby)",
+        "Turn": "34",
+        "Time": "Classic Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Shuka Sho",
+        "Turn": "44",
+        "Time": "Classic Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Queen Elizabeth II Cup",
+        "Turn": "45",
+        "Time": "Classic Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Osaka Hai",
+        "Turn": "54",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Tenno Sho (Autumn)",
+        "Turn": "68",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Arima Kinen",
+        "Turn": "72",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "URA Preliminary",
+        "Turn": "74",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "URA Semi-Final",
+        "Turn": "76",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "URA Final",
+        "Turn": "78",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      }
+    ],
+    "UmaEvents": [
+      {
+        "EventName": "ママを追いかけて",
+        "EventOptions": {
+          "Top Option": "Energy +15\nSkill Pts +15",
+          "Bottom Option": "Wit +10"
+        }
+      },
+      {
+        "EventName": "ママからのメッセージ",
+        "EventOptions": {
+          "Top Option": "Wit +10\nSkill Pts +15\nOutstanding Step hint +1",
+          "Bottom Option": "Energy +15\nMotivation +1\nOutstanding Step hint +1"
+        }
+      },
+      {
+        "EventName": "認め合うふたり",
+        "EventOptions": {
+          "Top Option": "Roused Spirit hint +2",
+          "Bottom Option": "Energy +20",
+          "Option 3": "lo_s +20"
+        }
+      }
+    ],
+    "UmaImage": "/assets/character_thumbs/100903-daiwa-scarlet.png"
   }
 ]

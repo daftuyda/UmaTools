@@ -6945,5 +6945,26 @@
     "EventOptions": {
       "": "Power +15\nMoonlight Slash hint +1\nBond +5"
     }
+  },
+  {
+    "EventName": "神様仏様、マヤノ様",
+    "EventOptions": {
+      "": "Energy +20\nMotivation +1\nPower +5\nBond +10"
+    }
+  },
+  {
+    "EventName": "みんなに必要なもの",
+    "EventOptions": {
+      "Top Option": "Energy +15\nPower +5\nSkill Pts +15\nBond +5",
+      "Bottom Option": "Energy +15\nSkill Pts +5\nIgnited Spirit WIT hint +1\nBond +5"
+    }
+  },
+  {
+    "EventName": "マヤ、わかっちゃった！",
+    "EventOptions": {
+      "Top Option": "Energy +15\nPower +15\nSkill Pts +15\nUnpredecented Prodigy hint +2\nQuick Thinking hint +2\nBond +5\nEnergy +10\nSkill Pts +5\nUnpredecented Prodigy hint +1\nQuick Thinking hint +1\nBond +5",
+      "Bottom Option": "Energy +15\nStamina +15\nSkill Pts +15\nUnpredecented Prodigy hint +2\nExceptional Acumen hint +2\nBond +5\nEnergy +10\nSkill Pts +5\nUnpredecented Prodigy hint +1\nExceptional Acumen hint +1\nBond +5",
+      "Option 3": "Energy +15\nSpeed +15\nSkill Pts +15\nUnpredecented Prodigy hint +2\nAdvantage hint +2\nBond +5\nEnergy +10\nSkill Pts +5\nUnpredecented Prodigy hint +1\nAdvantage hint +1\nBond +5"
+    }
   }
 ]

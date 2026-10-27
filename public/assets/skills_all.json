@@ -6739,6 +6739,7 @@
         30139,
         30189,
         30318,
+        30322,
         20018,
         20086
       ],
@@ -14610,6 +14611,7 @@
         30241,
         30264,
         30267,
+        30322,
         20007,
         20027,
         20100
@@ -14648,6 +14650,7 @@
         30283,
         30289,
         30311,
+        30322,
         20007,
         20015,
         20028,
@@ -18012,6 +18015,7 @@
       104902,
       107602,
       113202,
+      100903,
       100801,
       100901,
       103501
@@ -18834,6 +18838,12 @@
           413041
         ],
         "scenario_id": 13
+      },
+      {
+        "evos": [
+          415041
+        ],
+        "scenario_id": 15
       }
     ],
     "iconid": 20012,
@@ -19250,6 +19260,7 @@
         30188,
         30285,
         30290,
+        30323,
         20013,
         20020,
         20068
@@ -19257,7 +19268,8 @@
       [
         10048,
         10104,
-        10141
+        10141,
+        10149
       ]
     ],
     "sup_hint": [
@@ -27243,6 +27255,7 @@
       103503,
       102003,
       107403,
+      100903,
       100901
     ],
     "condition_groups": [
@@ -33584,6 +33597,7 @@
       105102,
       108702,
       109001,
+      100903,
       100801,
       100901
     ],
@@ -34282,6 +34296,7 @@
       104003,
       108202,
       100503,
+      100903,
       100901
     ],
     "condition_groups": [
@@ -48852,6 +48867,7 @@
         30288,
         30289,
         30307,
+        30322,
         20004,
         20048,
         20050,
@@ -52802,6 +52818,12 @@
     "name_ko": "아오하루 점화・지",
     "name_tw": "青春點火．智慧",
     "rarity": 1,
+    "sup_e": [
+      [
+        30322
+      ],
+      []
+    ],
     "tid": "79",
     "type": [
       "l_0",
@@ -55750,6 +55772,7 @@
       111602,
       102203,
       104302,
+      100903,
       100901,
       102401
     ],
@@ -69464,7 +69487,8 @@
       {
         "card_id": 104503,
         "evos": [
-          104503111
+          104503111,
+          104503121
         ]
       },
       {
@@ -99188,6 +99212,12 @@
         "evos": [
           100503111
         ]
+      },
+      {
+        "evos": [
+          415011
+        ],
+        "scenario_id": 15
       }
     ],
     "iconid": 20012,
@@ -99223,9 +99253,12 @@
       [
         30137,
         30187,
-        30256
+        30256,
+        30323
       ],
-      []
+      [
+        10149
+      ]
     ],
     "tid": "gm",
     "type": [
@@ -99335,9 +99368,12 @@
     "sup_e": [
       [
         30137,
-        30187
+        30187,
+        30323
       ],
-      []
+      [
+        10149
+      ]
     ],
     "sup_hint": [
       [
@@ -108257,6 +108293,12 @@
           411031
         ],
         "scenario_id": 11
+      },
+      {
+        "evos": [
+          415031
+        ],
+        "scenario_id": 15
       }
     ],
     "iconid": 20012,
@@ -111380,6 +111422,12 @@
           106103211,
           106103221
         ]
+      },
+      {
+        "evos": [
+          415061
+        ],
+        "scenario_id": 15
       }
     ],
     "iconid": 20012,
@@ -132994,7 +133042,8 @@
     "activation": 1,
     "char": [
       102403,
-      108702
+      108702,
+      100903
     ],
     "condition_groups": [
       {
@@ -133024,6 +133073,12 @@
         "card_id": 108702,
         "evos": [
           108702111
+        ]
+      },
+      {
+        "card_id": 100903,
+        "evos": [
+          100903111
         ]
       }
     ],
@@ -133064,7 +133119,8 @@
     "activation": 1,
     "char": [
       102403,
-      108702
+      108702,
+      100903
     ],
     "condition_groups": [
       {
@@ -133119,7 +133175,8 @@
   {
     "activation": 1,
     "char": [
-      102403
+      102403,
+      100903
     ],
     "condition_groups": [
       {
@@ -134832,6 +134889,7 @@
         30244,
         30255,
         30302,
+        30322,
         20091
       ],
       [
@@ -139455,7 +139513,8 @@
   {
     "activation": 1,
     "char": [
-      110402
+      110402,
+      100903
     ],
     "condition_groups": [
       {
@@ -139479,6 +139538,12 @@
         "card_id": 110402,
         "evos": [
           110402111
+        ]
+      },
+      {
+        "card_id": 100903,
+        "evos": [
+          100903211
         ]
       }
     ],
@@ -139538,7 +139603,8 @@
   {
     "activation": 1,
     "char": [
-      110402
+      110402,
+      100903
     ],
     "condition_groups": [
       {
@@ -140661,6 +140727,9 @@
     "char": [
       100403,
       103103
+    ],
+    "char_e": [
+      100903
     ],
     "condition_groups": [
       {
@@ -142766,6 +142835,12 @@
           410011
         ],
         "scenario_id": 10
+      },
+      {
+        "evos": [
+          415021
+        ],
+        "scenario_id": 15
       }
     ],
     "iconid": 20012,
@@ -142795,7 +142870,8 @@
     "rarity": 2,
     "sup_e": [
       [
-        30241
+        30241,
+        30322
       ],
       []
     ],
@@ -142878,7 +142954,8 @@
       [
         30256,
         30264,
-        30289
+        30289,
+        30322
       ],
       [
         10132,
@@ -149622,6 +149699,7 @@
         30287,
         30291,
         30304,
+        30322,
         20101
       ],
       [
@@ -153781,6 +153859,7 @@
         30285,
         30289,
         30320,
+        30322,
         20095
       ],
       [
@@ -157211,6 +157290,12 @@
         "evos": [
           109201211
         ]
+      },
+      {
+        "evos": [
+          415051
+        ],
+        "scenario_id": 15
       }
     ],
     "iconid": 20012,
@@ -161083,7 +161168,8 @@
     "sup_hint": [
       [
         30283,
-        30294
+        30294,
+        30322
       ],
       []
     ],
@@ -163797,7 +163883,8 @@
     "sup_hint": [
       [
         30289,
-        30321
+        30321,
+        30322
       ],
       [
         10140
@@ -169951,6 +170038,9 @@
   },
   {
     "activation": 1,
+    "char_e": [
+      100903
+    ],
     "condition_groups": [
       {
         "base_time": 30000,
@@ -170083,7 +170173,7 @@
     "evo_cond": [
       [
         [
-          "unknown"
+          "scen_ramen_ja"
         ]
       ]
     ],
@@ -170130,7 +170220,7 @@
     "evo_cond": [
       [
         [
-          "unknown"
+          "scen_ramen_ja"
         ]
       ]
     ],
@@ -170188,7 +170278,7 @@
       ],
       [
         [
-          "unknown"
+          "scen_ramen_jf"
         ]
       ]
     ],
@@ -170242,7 +170332,7 @@
     "evo_cond": [
       [
         [
-          "unknown"
+          "scen_ramen_ja"
         ]
       ]
     ],
@@ -170294,7 +170384,7 @@
       ],
       [
         [
-          "unknown"
+          "scen_ramen_jf"
         ]
       ]
     ],
@@ -170345,7 +170435,7 @@
       ],
       [
         [
-          "unknown"
+          "scen_ramen_jf"
         ]
       ]
     ],
@@ -171502,7 +171592,8 @@
   {
     "activation": 1,
     "char": [
-      102003
+      102003,
+      100903
     ],
     "condition_groups": [
       {
@@ -172404,6 +172495,12 @@
     "jpdesc": "レース中盤始めのどこかで前方だと速度がわずかに上がり持久力をほんのわずかに回復する＜中距離/長距離＞",
     "jpname": "存在感",
     "rarity": 1,
+    "sup_hint": [
+      [
+        30322
+      ],
+      []
+    ],
     "tid": "yo",
     "type": [
       "med",
@@ -175733,6 +175830,1066 @@
       "med",
       "btw",
       "cha"
+    ],
+    "unreleased": [
+      "ko",
+      "zh_tw",
+      "en"
+    ]
+  },
+  {
+    "activation": 0,
+    "char": [
+      100903
+    ],
+    "condition_groups": [
+      {
+        "base_time": 60000,
+        "condition": "running_style==1&ground_type==1&phase_firsthalf_random==1&order_rate<=40",
+        "effects": [
+          {
+            "type": 27,
+            "value": 3500
+          }
+        ]
+      },
+      {
+        "base_time": 20000,
+        "condition": "is_activate_other_skill_detail==1&run_at_full_speed_random==1&order<=3&distance_type==4",
+        "effects": [
+          {
+            "type": 48,
+            "value": 3000
+          }
+        ]
+      }
+    ],
+    "endesc": "Runner・Turf・If you're near the front at a random point during the first half of the Middle Leg, your speed will increase; (Long only) then, if you're in the top 3 at a random point during your Zenkai Spurt, your Zenkai acceleration will increase",
+    "enname": "Peerless Draw",
+    "gene_version": {
+      "activation": 1,
+      "condition_groups": [
+        {
+          "base_time": 36000,
+          "condition": "running_style==1&ground_type==1&phase_firsthalf_random==1&order_rate<=40",
+          "effects": [
+            {
+              "type": 27,
+              "value": 1500
+            }
+          ]
+        }
+      ],
+      "cost": 200,
+      "iconid": 20011,
+      "id": 920091,
+      "inherited": true,
+      "parent_skills": [
+        120091
+      ],
+      "rarity": 1,
+      "tid": "zs"
+    },
+    "iconid": 20013,
+    "id": 120091,
+    "jpdesc": "中盤始めのどこかで先団だと速度を上げ続ける、長距離レースならその後全開スパート中どこかで3番手以内だと短い間少し伸びを見せる＜逃げ・芝＞",
+    "jpname": "究竟の弓勢",
+    "rarity": 5,
+    "tid": "zr",
+    "type": [
+      "run",
+      "tur",
+      "l_1",
+      "lng"
+    ],
+    "unreleased": [
+      "ko",
+      "zh_tw",
+      "en"
+    ]
+  },
+  {
+    "activation": 1,
+    "condition_groups": [
+      {
+        "base_time": 40000,
+        "condition": "distance_type==3&distance_rate>=50&is_overtake==1@distance_type==3&distance_rate>=50&overtake_target_time>=1",
+        "effects": [
+          {
+            "type": 27,
+            "value": 2500
+          }
+        ]
+      }
+    ],
+    "cost": 180,
+    "endesc": "Medium・During the second half of the race, if you're trying to overtake someone or someone is trying to overtake you, your speed will slightly increase",
+    "enname": "Quick Thinking",
+    "evo": [],
+    "iconid": 20012,
+    "id": 204731,
+    "jpdesc": "レース後半に追い抜こうとするか近寄られるとしばらくの間速度が少し上がる＜中距離＞",
+    "jpname": "機転",
+    "rarity": 2,
+    "sup_e": [
+      [
+        30322
+      ],
+      []
+    ],
+    "tid": "zt",
+    "type": [
+      "med"
+    ],
+    "unreleased": [
+      "ko",
+      "zh_tw",
+      "en"
+    ],
+    "versions": [
+      204732
+    ]
+  },
+  {
+    "activation": 1,
+    "condition_groups": [
+      {
+        "base_time": 40000,
+        "condition": "distance_type==3&distance_rate>=50&is_overtake==1@distance_type==3&distance_rate>=50&overtake_target_time>=1",
+        "effects": [
+          {
+            "type": 27,
+            "value": 500
+          }
+        ]
+      }
+    ],
+    "cost": 180,
+    "endesc": "Medium・During the second half of the race, if you're trying to overtake someone or someone is trying to overtake you, your speed will marginally increase",
+    "enname": "On the Ball",
+    "iconid": 20011,
+    "id": 204732,
+    "jpdesc": "レース後半に追い抜こうとするか近寄られるとしばらくの間速度がちょっと上がる＜中距離＞",
+    "jpname": "如才なし",
+    "rarity": 1,
+    "sup_hint": [
+      [
+        30322
+      ],
+      []
+    ],
+    "tid": "zu",
+    "type": [
+      "med"
+    ],
+    "unreleased": [
+      "ko",
+      "zh_tw",
+      "en"
+    ],
+    "versions": [
+      204731
+    ]
+  },
+  {
+    "activation": 1,
+    "condition_groups": [
+      {
+        "base_time": 30000,
+        "condition": "distance_type==4&phase<=1&change_order_onetime>0&accumulatetime>=5@distance_type==4&phase<=1&blocked_side_continuetime>=2&accumulatetime>=5",
+        "effects": [
+          {
+            "type": 22,
+            "value": 3500
+          }
+        ]
+      }
+    ],
+    "cost": 180,
+    "endesc": "Long・After the first 5 seconds but before the end of the Middle Leg, if someone overtakes you or blocks you from the side for at least 2 seconds, you will get a speed boost",
+    "enname": "Exceptional Acumen",
+    "evo": [],
+    "iconid": 20012,
+    "id": 204741,
+    "jpdesc": "レース序盤または中盤に追い抜かれるか競り合うと前に出る＜長距離＞",
+    "jpname": "希代の才覚",
+    "rarity": 2,
+    "sup_e": [
+      [
+        30322
+      ],
+      []
+    ],
+    "tid": "zv",
+    "type": [
+      "lng",
+      "l_0",
+      "l_1"
+    ],
+    "unreleased": [
+      "ko",
+      "zh_tw",
+      "en"
+    ],
+    "versions": [
+      204742
+    ]
+  },
+  {
+    "activation": 1,
+    "condition_groups": [
+      {
+        "base_time": 30000,
+        "condition": "distance_type==4&phase<=1&change_order_onetime>0&accumulatetime>=5@distance_type==4&phase<=1&blocked_side_continuetime>=2&accumulatetime>=5",
+        "effects": [
+          {
+            "type": 22,
+            "value": 1500
+          }
+        ]
+      }
+    ],
+    "cost": 180,
+    "endesc": "Long・After the first 5 seconds but before the end of the Middle Leg, if someone overtakes you or blocks you from the side for at least 2 seconds, you will get a slight speed boost",
+    "enname": "Intuitive Power",
+    "iconid": 20011,
+    "id": 204742,
+    "jpdesc": "レース序盤または中盤に追い抜かれるか競り合うとわずかに前に出る＜長距離＞",
+    "jpname": "直感力",
+    "rarity": 1,
+    "sup_hint": [
+      [
+        30322
+      ],
+      []
+    ],
+    "tid": "zw",
+    "type": [
+      "lng",
+      "l_0",
+      "l_1"
+    ],
+    "unreleased": [
+      "ko",
+      "zh_tw",
+      "en"
+    ],
+    "versions": [
+      204741
+    ]
+  },
+  {
+    "activation": 1,
+    "condition_groups": [
+      {
+        "base_time": 24000,
+        "condition": "phase_laterhalf_random==0&order_rate<=50",
+        "effects": [
+          {
+            "type": 27,
+            "value": 3500
+          }
+        ]
+      }
+    ],
+    "cost": 180,
+    "endesc": "If you're in the first half of the pack at a random point during the second half of the Opening Leg, your speed will increase",
+    "enname": "Advantage",
+    "evo": [],
+    "iconid": 20012,
+    "id": 204751,
+    "jpdesc": "レース中盤が迫ったどこかで前方だと速度が上がる",
+    "jpname": "アドバンテージ",
+    "rarity": 2,
+    "sup_e": [
+      [
+        30322
+      ],
+      []
+    ],
+    "tid": "zx",
+    "type": [
+      "l_0",
+      "nac"
+    ],
+    "unreleased": [
+      "ko",
+      "zh_tw",
+      "en"
+    ],
+    "versions": [
+      204752
+    ]
+  },
+  {
+    "activation": 1,
+    "condition_groups": [
+      {
+        "base_time": 24000,
+        "condition": "phase_laterhalf_random==0&order_rate<=50",
+        "effects": [
+          {
+            "type": 27,
+            "value": 1500
+          }
+        ]
+      }
+    ],
+    "cost": 180,
+    "endesc": "If you're in the first half of the pack at a random point during the second half of the Opening Leg, your speed will slightly increase",
+    "enname": "Taking the Reins",
+    "iconid": 20011,
+    "id": 204752,
+    "jpdesc": "レース中盤が迫ったどこかで前方だと速度がわずかに上がる",
+    "jpname": "主導権",
+    "rarity": 1,
+    "sup_hint": [
+      [
+        30322
+      ],
+      []
+    ],
+    "tid": "zy",
+    "type": [
+      "l_0",
+      "nac"
+    ],
+    "unreleased": [
+      "ko",
+      "zh_tw",
+      "en"
+    ],
+    "versions": [
+      204751
+    ]
+  },
+  {
+    "activation": 1,
+    "condition_groups": [
+      {
+        "base_time": 20000,
+        "condition": "run_at_full_speed_random==1&distance_type==4",
+        "effects": [
+          {
+            "type": 48,
+            "value": 2000
+          }
+        ]
+      }
+    ],
+    "cost": 180,
+    "endesc": "Long・At a random point during your Zenkai Spurt, your Zenkai acceleration will slightly increase",
+    "enname": "With All I Have",
+    "iconid": 20351,
+    "id": 204762,
+    "jpdesc": "全開スパート中どこかでわずかに伸びを見せる＜長距離＞",
+    "jpname": "死力を尽くして",
+    "rarity": 1,
+    "sup_hint": [
+      [
+        30322
+      ],
+      []
+    ],
+    "tid": "zz",
+    "type": [
+      "lng"
+    ],
+    "unreleased": [
+      "ko",
+      "zh_tw",
+      "en"
+    ]
+  },
+  {
+    "activation": 1,
+    "condition_groups": [
+      {
+        "base_time": 24000,
+        "condition": "all_corner_random==1",
+        "effects": [
+          {
+            "type": 27,
+            "value": 3500
+          }
+        ]
+      }
+    ],
+    "cost": 160,
+    "endesc": "At a random point on a random corner, your speed will increase",
+    "enname": "Spiral Expert",
+    "evo": [],
+    "iconid": 20012,
+    "id": 204811,
+    "jpdesc": "いずれかのコーナーのどこかで速度が上がる",
+    "jpname": "螺旋のエキスパート",
+    "rarity": 2,
+    "tid": "zA",
+    "type": [
+      "cor",
+      "nac"
+    ],
+    "unreleased": [
+      "ko",
+      "zh_tw",
+      "en"
+    ],
+    "versions": [
+      204812
+    ]
+  },
+  {
+    "activation": 1,
+    "condition_groups": [
+      {
+        "base_time": 24000,
+        "condition": "all_corner_random==1",
+        "effects": [
+          {
+            "type": 27,
+            "value": 1500
+          }
+        ]
+      }
+    ],
+    "cost": 160,
+    "endesc": "At a random point on a random corner, your speed will slightly increase",
+    "enname": "Tracing an Arc",
+    "iconid": 20011,
+    "id": 204812,
+    "jpdesc": "いずれかのコーナーのどこかで速度がわずかに上がる",
+    "jpname": "弧を描いて",
+    "rarity": 1,
+    "sup_e": [
+      [
+        30323
+      ],
+      [
+        10149
+      ]
+    ],
+    "tid": "zB",
+    "type": [
+      "cor",
+      "nac"
+    ],
+    "unreleased": [
+      "ko",
+      "zh_tw",
+      "en"
+    ],
+    "versions": [
+      204811
+    ]
+  },
+  {
+    "activation": 1,
+    "char": [
+      100903
+    ],
+    "condition_groups": [
+      {
+        "base_time": 30000,
+        "condition": "running_style==1&phase_random==1&is_badstart==0",
+        "effects": [
+          {
+            "type": 27,
+            "value": 2500
+          }
+        ]
+      },
+      {
+        "base_time": 30000,
+        "condition": "running_style==1&phase_random==1",
+        "effects": [
+          {
+            "type": 27,
+            "value": 1500
+          }
+        ]
+      }
+    ],
+    "cost": 190,
+    "endesc": "Runner・At a random point during the Middle Leg, your speed will slightly increase; the effect is stronger if you didn't have a late start",
+    "enname": "Frankness",
+    "iconid": 20011,
+    "id": 204892,
+    "jpdesc": "レース中盤のどこかで速度がわずかに上がる、出遅れていない場合速度が少し上がる＜作戦・逃げ＞",
+    "jpname": "直情",
+    "rarity": 1,
+    "tid": "zC",
+    "type": [
+      "run",
+      "l_1"
+    ],
+    "unreleased": [
+      "ko",
+      "zh_tw",
+      "en"
+    ]
+  },
+  {
+    "activation": 1,
+    "condition_groups": [
+      {
+        "base_time": 24000,
+        "condition": "is_lastspurt==1&phase_firsthalf_random==3",
+        "effects": [
+          {
+            "type": 27,
+            "value": 3500,
+            "value_scale": 41
+          }
+        ]
+      }
+    ],
+    "cost": 200,
+    "endesc": "If you're in a last spurt at a random point during the first half of the Last Spurt, your speed will increase; if your total Performance Level is at least 30, the effect is stronger",
+    "enname": "Fabled Dream",
+    "evo": [],
+    "iconid": 20382,
+    "id": 210401,
+    "jpdesc": "レース最終盤始めのどこかでラストスパートの最中なら速度が上がる合計演目Lvが30以上なら効果が増える",
+    "jpname": "名にし負う夢",
+    "rarity": 2,
+    "tid": "zD",
+    "type": [
+      "l_3",
+      "nac"
+    ],
+    "unreleased": [
+      "ko",
+      "zh_tw",
+      "en"
+    ],
+    "versions": [
+      210402
+    ]
+  },
+  {
+    "activation": 1,
+    "condition_groups": [
+      {
+        "base_time": 24000,
+        "condition": "is_lastspurt==1&phase_firsthalf_random==3",
+        "effects": [
+          {
+            "type": 27,
+            "value": 1500
+          }
+        ]
+      }
+    ],
+    "cost": 200,
+    "endesc": "If you're in a last spurt at a random point during the first half of the Last Spurt, your speed will slightly increase",
+    "enname": "Call from Afar",
+    "iconid": 20381,
+    "id": 210402,
+    "jpdesc": "レース最終盤始めのどこかでラストスパートの最中なら速度がわずかに上がる",
+    "jpname": "彼方の呼び声",
+    "rarity": 1,
+    "tid": "zE",
+    "type": [
+      "l_3",
+      "nac"
+    ],
+    "unreleased": [
+      "ko",
+      "zh_tw",
+      "en"
+    ],
+    "versions": [
+      210401
+    ]
+  },
+  {
+    "activation": 1,
+    "condition_groups": [
+      {
+        "base_time": 30000,
+        "condition": "distance_rate_after_random==50",
+        "effects": [
+          {
+            "type": 22,
+            "value": 4500
+          },
+          {
+            "type": 9,
+            "value": 150
+          }
+        ]
+      }
+    ],
+    "endesc": "At a random point in the second half of the race, you will get a great speed boost and your stamina will slightly recover",
+    "enname": "Swift Dance",
+    "evo_cond": [
+      [
+        [
+          "scen_shuntaisai_pa"
+        ]
+      ]
+    ],
+    "iconid": 20386,
+    "id": 415011,
+    "jpdesc": "レース後半のどこかですごく前に出て持久力をわずかに回復する",
+    "jpname": "急之舞",
+    "pre_evo": {
+      "old": 202551,
+      "scenario_id": 15
+    },
+    "rarity": 6,
+    "tid": "zF",
+    "type": [
+      "nac"
+    ],
+    "unreleased": [
+      "ko",
+      "zh_tw",
+      "en"
+    ]
+  },
+  {
+    "activation": 1,
+    "condition_groups": [
+      {
+        "base_time": 40000,
+        "condition": "phase_random==1",
+        "effects": [
+          {
+            "type": 22,
+            "value": 3500
+          }
+        ]
+      }
+    ],
+    "endesc": "At a random point during the Middle Leg, you will get a speed boost",
+    "enname": "Auspicious Runner",
+    "evo_cond": [
+      [
+        [
+          "scen_shuntaisai_pa"
+        ]
+      ]
+    ],
+    "iconid": 20386,
+    "id": 415021,
+    "jpdesc": "レース中盤のどこかでしばらくの間前に出る",
+    "jpname": "吉兆の駆け手",
+    "pre_evo": {
+      "old": 203501,
+      "scenario_id": 15
+    },
+    "rarity": 6,
+    "tid": "zG",
+    "type": [
+      "l_1",
+      "nac"
+    ],
+    "unreleased": [
+      "ko",
+      "zh_tw",
+      "en"
+    ]
+  },
+  {
+    "activation": 1,
+    "condition_groups": [
+      {
+        "base_time": 40000,
+        "condition": "phase_corner_random==1",
+        "effects": [
+          {
+            "type": 27,
+            "value": 2500
+          }
+        ]
+      },
+      {
+        "base_time": 24000,
+        "condition": "is_activate_other_skill_detail==1&phase_firsthalf_random==3",
+        "effects": [
+          {
+            "type": 22,
+            "value": 1500
+          }
+        ]
+      }
+    ],
+    "endesc": "At a random point on a random Middle Leg corner, your speed will slightly increase; then, at a random point during the first half of the Last Spurt, you will get a slight speed boost",
+    "enname": "Prayers Answered",
+    "evo_cond": [
+      [
+        [
+          "scen_shuntaisai_pa"
+        ]
+      ]
+    ],
+    "iconid": 20386,
+    "id": 415031,
+    "jpdesc": "レース中盤のコーナーのどこかでしばらくの間速度が少し上がるその後最終盤始めのどこかでわずかに前に出る",
+    "jpname": "満願成就",
+    "pre_evo": {
+      "old": 202721,
+      "scenario_id": 15
+    },
+    "rarity": 6,
+    "tid": "zH",
+    "type": [
+      "nac",
+      "l_3"
+    ],
+    "unreleased": [
+      "ko",
+      "zh_tw",
+      "en"
+    ]
+  },
+  {
+    "activation": 1,
+    "condition_groups": [
+      {
+        "base_time": 24000,
+        "condition": "is_lastspurt==1&phase_firsthalf_random==3",
+        "effects": [
+          {
+            "type": 27,
+            "value": 4500
+          }
+        ]
+      }
+    ],
+    "endesc": "If you're in a last spurt at a random point during the first half of the Last Spurt, your speed will greatly increase",
+    "enname": "Offering of Hope",
+    "evo_cond": [
+      [
+        [
+          "scen_shuntaisai_pa"
+        ]
+      ]
+    ],
+    "iconid": 20386,
+    "id": 415041,
+    "jpdesc": "レース最終盤始めのどこかでラストスパートの最中なら速度がすごく上がる",
+    "jpname": "捧ぐる願い",
+    "pre_evo": {
+      "old": 200511,
+      "scenario_id": 15
+    },
+    "rarity": 6,
+    "tid": "zI",
+    "type": [
+      "l_3",
+      "nac"
+    ],
+    "unreleased": [
+      "ko",
+      "zh_tw",
+      "en"
+    ]
+  },
+  {
+    "activation": 1,
+    "condition_groups": [
+      {
+        "base_time": 24000,
+        "condition": "distance_type==2&phase_firsthalf_random==2@distance_type==3&phase_firsthalf_random==2",
+        "effects": [
+          {
+            "type": 22,
+            "value": 4500
+          }
+        ]
+      }
+    ],
+    "endesc": "Mile/Medium・At a random point during the first half of the Final Leg, you will get a great speed boost",
+    "enname": "Bonfire of Prayer",
+    "evo_cond": [
+      [
+        [
+          "a_skill",
+          "dist",
+          1,
+          2
+        ],
+        [
+          "a_skill",
+          "dist",
+          2,
+          2
+        ]
+      ],
+      [
+        [
+          "scen_shuntaisai_pf"
+        ]
+      ]
+    ],
+    "iconid": 20386,
+    "id": 415051,
+    "jpdesc": "レース終盤始めのどこかですごく前に出る＜マイル/中距離＞",
+    "jpname": "祈りの篝火",
+    "pre_evo": {
+      "old": 204051,
+      "scenario_id": 15
+    },
+    "rarity": 6,
+    "tid": "zJ",
+    "type": [
+      "mil",
+      "l_2",
+      "med"
+    ],
+    "unreleased": [
+      "ko",
+      "zh_tw",
+      "en"
+    ]
+  },
+  {
+    "activation": 1,
+    "condition_groups": [
+      {
+        "base_time": 24000,
+        "condition": "distance_type==1&phase_laterhalf_random==1&order_rate>=40",
+        "effects": [
+          {
+            "type": 27,
+            "value": 4500
+          }
+        ]
+      }
+    ],
+    "endesc": "Short・If you're not near the front at a random point during the second half of the Middle Leg, your speed will greatly increase",
+    "enname": "Vow Set in Stone",
+    "evo_cond": [
+      [
+        [
+          "a_skill",
+          "dist",
+          0,
+          2
+        ]
+      ],
+      [
+        [
+          "scen_shuntaisai_pf"
+        ]
+      ]
+    ],
+    "iconid": 20386,
+    "id": 415061,
+    "jpdesc": "レース終盤が迫ったどこかで中団以降だと速度がすごく上がる＜短距離＞",
+    "jpname": "常磐なる誓い",
+    "pre_evo": {
+      "old": 202751,
+      "scenario_id": 15
+    },
+    "rarity": 6,
+    "tid": "zK",
+    "type": [
+      "sho",
+      "l_1"
+    ],
+    "unreleased": [
+      "ko",
+      "zh_tw",
+      "en"
+    ]
+  },
+  {
+    "activation": 1,
+    "char": [
+      100903
+    ],
+    "condition_groups": [
+      {
+        "base_time": 40000,
+        "condition": "phase_random==1&order_rate<=50",
+        "effects": [
+          {
+            "type": 27,
+            "value": 2500
+          }
+        ],
+        "precondition": "distance_type==3@distance_type==4"
+      },
+      {
+        "base_time": 24000,
+        "condition": "is_badstart==0&is_activate_other_skill_detail==1&is_last_straight_onetime==1&order<=3",
+        "effects": [
+          {
+            "type": 27,
+            "value": 3500
+          }
+        ]
+      }
+    ],
+    "endesc": "Medium/Long・If you're in the first half of the pack at a random point during the Middle Leg, your speed will slightly increase; then, if you didn't have a late start and you're in the top 3 when you enter the Final Straight, your speed will increase",
+    "enname": "A Feat Unheard of Even in Myth",
+    "evo_cond": [
+      [
+        [
+          "cond_e",
+          7
+        ],
+        [
+          "stat",
+          2,
+          600
+        ]
+      ],
+      [
+        [
+          "e_skill",
+          "speed",
+          3
+        ]
+      ]
+    ],
+    "iconid": 20016,
+    "id": 100903111,
+    "jpdesc": "中盤のどこかで前方だとしばらくの間速度が少し上がる、出遅れていない場合その後最終直線に入ったとき3番手以内だと速度が上がる＜中距離/長距離＞",
+    "jpname": "神代も聞かず、この御業",
+    "pre_evo": {
+      "card_id": 100903,
+      "old": 203201
+    },
+    "rarity": 6,
+    "tid": "zL",
+    "type": [
+      "l_1",
+      "med",
+      "lng",
+      "f_s"
+    ],
+    "unreleased": [
+      "ko",
+      "zh_tw",
+      "en"
+    ]
+  },
+  {
+    "activation": 1,
+    "char": [
+      100903
+    ],
+    "condition_groups": [
+      {
+        "base_time": 9000,
+        "condition": "running_style==1&ground_type==1&course_distance>=2000&is_lastspurt==1",
+        "effects": [
+          {
+            "type": 31,
+            "value": 4000
+          }
+        ]
+      }
+    ],
+    "endesc": "Runner・Turf・2000 m+・At the start of your last spurt, your acceleration will increase",
+    "enname": "Behold the Scarlet Gale",
+    "evo_cond": [
+      [
+        [
+          "s_gn_race_w",
+          1,
+          100,
+          3
+        ],
+        [
+          "stat",
+          3,
+          800
+        ]
+      ],
+      [
+        [
+          "stat",
+          5,
+          800
+        ]
+      ]
+    ],
+    "iconid": 20046,
+    "id": 100903211,
+    "jpdesc": "2000m以上のレースならラストスパートの最中に加速力が上がる＜逃げ・芝＞",
+    "jpname": "御覧じろ、緋色の疾風",
+    "pre_evo": {
+      "card_id": 100903,
+      "old": 203381
+    },
+    "rarity": 6,
+    "tid": "zM",
+    "type": [
+      "run",
+      "tur"
+    ],
+    "unreleased": [
+      "ko",
+      "zh_tw",
+      "en"
+    ]
+  },
+  {
+    "activation": 1,
+    "char": [
+      104503
+    ],
+    "condition_groups": [
+      {
+        "base_time": 24000,
+        "condition": "distance_type==4&running_style==2&track_id==10008&phase_straight_random==1",
+        "effects": [
+          {
+            "type": 27,
+            "value": 5500
+          }
+        ]
+      }
+    ],
+    "endesc": "Leader・Long・Kyoto・At a random point on a random Middle Leg straight, your speed will increase tremendously",
+    "enname": "At Yodo, a Mighty River Rises",
+    "evo_cond": [
+      [
+        [
+          "stat",
+          2,
+          600
+        ]
+      ],
+      [
+        [
+          "a_skill",
+          "dist",
+          3,
+          2
+        ]
+      ]
+    ],
+    "iconid": 20016,
+    "id": 104503121,
+    "jpdesc": "京都レース場なら中盤の直線のどこかで速度がものすごく上がる＜先行・長距離＞",
+    "jpname": "淀にて大河となりて",
+    "loc": {
+      "ko": {
+        "char": [
+          104503
+        ]
+      },
+      "zh_tw": {
+        "char": [
+          104503
+        ]
+      }
+    },
+    "pre_evo": {
+      "card_id": 104503,
+      "old": 202371
+    },
+    "rarity": 6,
+    "tid": "zN",
+    "type": [
+      "lng",
+      "ldr"
     ],
     "unreleased": [
       "ko",
