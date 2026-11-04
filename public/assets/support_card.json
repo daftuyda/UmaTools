@@ -675,7 +675,7 @@
     }
   },
   {
-    "EventName": "お見送りします、海まで",
+    "EventName": "I'll See You Off to the Sea",
     "EventOptions": {
       "Top Option": "Energy +10\nMotivation +1\nMeticulous Measures hint +1\nBond +10",
       "Bottom Option": "Speed +10\nCountermeasure hint +1\nBond +10",
@@ -683,7 +683,7 @@
     }
   },
   {
-    "EventName": "あがくのです、新天地まで",
+    "EventName": "I'll Fight a Losing Battle",
     "EventOptions": {
       "Top Option": "Energy +10\nIntimidate hint +3\nBond +10",
       "Bottom Option": "Speed +7\nPower +7\nMad Dash hint +3\nBond +5"
@@ -3540,20 +3540,20 @@
     }
   },
   {
-    "EventName": "できること",
+    "EventName": "What I Can Do",
     "EventOptions": {
       "": "Speed +10\nGuts +10\nBond +5"
     }
   },
   {
-    "EventName": "やってみたこと",
+    "EventName": "What I Can Try",
     "EventOptions": {
       "Top Option": "Energy +15\nSkill Pts +15\nBond +5",
       "Bottom Option": "Speed +7\nPower +7\nGuts +7\nCorner Acceleration ○ hint +1\nBond +5"
     }
   },
   {
-    "EventName": "やりたいこと",
+    "EventName": "What I Want to Do",
     "EventOptions": {
       "": "Speed +7\nPower +7\nGuts +7\nNeck and Neck hint +2\nBond +5"
     }
