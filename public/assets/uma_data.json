@@ -18000,7 +18000,7 @@
     "UmaNicknameJP": "Fun☆Fun☆ぱりない",
     "UmaSlug": "106501-daitaku-helios",
     "UmaId": "106501",
-    "UmaServer": "jp",
+    "UmaServer": "global",
     "UmaBaseStars": 3,
     "UmaBaseStats": {
       "3★": {
@@ -18287,19 +18287,19 @@
     ],
     "UmaEvents": [
       {
-        "EventName": "チョコに集う天使たち",
+        "EventName": "Cupid's Chocolate",
         "EventOptions": {
           "": "Stamina +10\nGuts +10\nSkill Pts +10"
         }
       },
       {
-        "EventName": "White Heartbeat",
+        "EventName": "White Day Tingles",
         "EventOptions": {
           "": "Speed +20\nUp-Tempo hint +2\nSpeed +20"
         }
       },
       {
-        "EventName": "グイグイ貴族大会",
+        "EventName": "Lovestruck Noble Competition",
         "EventOptions": {
           "Top Option": "Power +20",
           "Bottom Option": "All I've Got hint +2"
@@ -18450,19 +18450,19 @@
     ],
     "UmaEvents": [
       {
-        "EventName": "チョコバイスの女神",
+        "EventName": "The Chocorizzler",
         "EventOptions": {
           "": "Speed +20\nSkill Pts +10\nMotivation +2\nSpeed +10\nSkill Pts +10\nMotivation +3\nSkill Pts +10"
         }
       },
       {
-        "EventName": "感謝を込めて、晩餐を",
+        "EventName": "Thanks for Dinner",
         "EventOptions": {
           "": "Stamina +20\nFirm Resolve hint +2"
         }
       },
       {
-        "EventName": "お姉ちゃんにお任せあれ！",
+        "EventName": "Everyone's Big Sis!",
         "EventOptions": {
           "Top Option": "Triple 7s hint +2",
           "Bottom Option": "Guts +20"

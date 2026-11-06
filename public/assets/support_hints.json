@@ -16257,7 +16257,7 @@
     "SupportName": "Aston Machan (R)",
     "SupportNameJP": "アストンマーチャン (R)",
     "SupportRarity": "R",
-    "SupportServer": "jp",
+    "SupportServer": "global",
     "SupportType": "Speed",
     "SupportEffects": [
       {
@@ -41336,7 +41336,7 @@
     "SupportName": "Aston Machan (SR)",
     "SupportNameJP": "アストンマーチャン (SR)",
     "SupportRarity": "SR",
-    "SupportServer": "jp",
+    "SupportServer": "global",
     "SupportType": "Speed",
     "SupportEffects": [
       {
@@ -81638,7 +81638,7 @@
     "SupportName": "K.S.Miracle (SSR)",
     "SupportNameJP": "ケイエスミラクル (SSR)",
     "SupportRarity": "SSR",
-    "SupportServer": "jp",
+    "SupportServer": "global",
     "SupportType": "Guts",
     "SupportEffects": [
       {

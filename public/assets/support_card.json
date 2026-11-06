@@ -3559,13 +3559,13 @@
     }
   },
   {
-    "EventName": "マーベラス的異文化交流",
+    "EventName": "A Marvelous Cultural Exchange",
     "EventOptions": {
       "": "Motivation +1\nSkill Pts +10\nBond +5"
     }
   },
   {
-    "EventName": "マーベラス無限チャージ☆",
+    "EventName": "Marvelously Limitless Energy! ☆",
     "EventOptions": {
       "Top Option": "Skill Pts +30\nStraightaway Recovery hint +1\nBond +5",
       "Bottom Option": "Motivation +1\nEnergy +15\nBond +5",
@@ -3573,45 +3573,45 @@
     }
   },
   {
-    "EventName": "マーベラス枯渇問題",
+    "EventName": "Out of Marvelousness",
     "EventOptions": {
       "": "Speed +10\nStamina +10\nPower +10\nIndomitable hint +3\nBond +5\nSpeed +5\nStamina +5\nPower +5\nIndomitable hint +1\nBond +5"
     }
   },
   {
-    "EventName": "熱い絆！ボノとヒーローに！",
+    "EventName": "Our Everlasting Bond! Becoming Heroes with Bono!",
     "EventOptions": {
       "Top Option": "Speed +10\nPower +10\nFrenzied Late Surgers hint +1\nBond +5",
       "Bottom Option": "Max Energy +4\nBond +10"
     }
   },
   {
-    "EventName": "まっすぐに！心通わすお菓子作り",
+    "EventName": "A Recipe for Communication",
     "EventOptions": {
       "": "Max Energy +4\nSkill Pts +10\nSlick Surge hint +1\nBond +5"
     }
   },
   {
-    "EventName": "変身！ネイチャはプリファイ！？",
+    "EventName": "Nature Transforms Into... Princess Fighter?!",
     "EventOptions": {
       "": "Speed +7\nPower +7\nGuts +7\nSharp Arc hint +2\nBond +5"
     }
   },
   {
-    "EventName": "なんでもあります、ボノ食堂",
+    "EventName": "Bono's Eatery: Everything's On the Menu!",
     "EventOptions": {
       "": "Power +5\nWit +10\nBond +5"
     }
   },
   {
-    "EventName": "ほっとひと息、ボノ食堂",
+    "EventName": "Bono's Eatery: A Place to Relax",
     "EventOptions": {
       "Top Option": "Sunny Days ○ hint +2\nBond +5",
       "Bottom Option": "Energy +10\nWit +5\nBond +5"
     }
   },
   {
-    "EventName": "あなたのそばに、ボノ食堂",
+    "EventName": "Bono's Eatery: Always with You",
     "EventOptions": {
       "": "Power +5\nWit +5\nSkill Pts +10\nPlan X hint +1\nBond +5"
     }
