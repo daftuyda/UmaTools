@@ -3422,20 +3422,6 @@
         }
         syncSkillCategory({ triggerOptimize, allowLinking, updateCost: true });
       };
-      // Debounced version for typing — avoids expensive work on every keystroke
-      const syncFromTyping = () => {
-        const query = skillInput.value || '';
-        const normalizedQuery = normalize(query);
-        // Avoid costly list churn on the exact mobile worst-case path:
-        // empty input and first-character edits.
-        if (!normalizedQuery || normalizedQuery.length < 2) return;
-        const refresh = () => rebuildSharedDatalist(query);
-        if (typeof window.requestIdleCallback === 'function') {
-          window.requestIdleCallback(refresh, { timeout: 250 });
-        } else {
-          window.setTimeout(refresh, 0);
-        }
-      };
       let lastCommittedValue = '';
       let lastCommittedRevision = -1;
       const syncFromCommit = () => {
@@ -3450,10 +3436,10 @@
         lastCommittedRevision = skillLibraryRevision;
         syncFromInput({ triggerOptimize: true, allowLinking: true, refreshSuggestions: false });
       };
-      // Typing updates metadata/costs without creating/removing linked rows.
-      const debouncedSync = debounce(syncFromTyping, 320);
-      // While typing, debounce to avoid per-keystroke DOM thrashing
-      skillInput.addEventListener('input', debouncedSync);
+      // Suggestions are bounded and indexed, so refresh them immediately. This
+      // also prevents a queued update for an old value or another row from
+      // replacing the shared datalist after the user has moved on.
+      skillInput.addEventListener('input', () => rebuildSharedDatalist(skillInput.value || ''));
       // On commit actions (datalist pick, leave field, Enter), sync immediately
       skillInput.addEventListener('change', syncFromCommit);
       skillInput.addEventListener('blur', syncFromCommit);
@@ -4892,7 +4878,6 @@
     let browserReturnFocus = null;
     let renderedGridRevision = -1;
     let filterFrameId = 0;
-    const applyFiltersDebounced = debounce(() => applyFilters(), 90);
 
     function resetCardState() {
       allCards.forEach((entry) => {
@@ -5255,10 +5240,15 @@
         allCards.push({
           el: card,
           name: addName,
-          nameLower: addName.toLowerCase(),
+          // Match the label actually shown as well as the underlying names.
+          // Official/localized labels are not always present in aliasNames.
+          searchText: [addName, skill.name, displayName, skill.localizedName, skill.jpName]
+            .concat(skill.aliasNames || [])
+            .filter(Boolean)
+            .join('\0')
+            .toLowerCase(),
           category: cat,
           checkTypes,
-          aliases: (skill.aliasNames || []).map((a) => a.toLowerCase()),
           visible: true,
           resetState,
         });
@@ -5280,7 +5270,7 @@
         let shown = 0;
 
         allCards.forEach((entry) => {
-          const { el, nameLower, category, checkTypes, aliases } = entry;
+          const { el, searchText, category, checkTypes } = entry;
           let visible = true;
 
           if (activeColorFilters.size > 0 && !activeColorFilters.has(category)) {
@@ -5296,11 +5286,7 @@
             }
           }
 
-          if (visible && query) {
-            const nameMatch = nameLower.includes(query);
-            const aliasMatch = aliases.some((a) => a.includes(query));
-            if (!nameMatch && !aliasMatch) visible = false;
-          }
+          if (visible && query && !searchText.includes(query)) visible = false;
 
           if (entry.visible !== visible) {
             entry.visible = visible;
@@ -5393,7 +5379,7 @@
     if (skillBrowserSearch) {
       skillBrowserSearch.addEventListener('input', () => {
         searchQuery = skillBrowserSearch.value;
-        applyFiltersDebounced();
+        applyFilters();
       });
     }
 

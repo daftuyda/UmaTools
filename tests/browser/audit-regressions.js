@@ -1,4 +1,7 @@
 const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const os = require('node:os');
+const path = require('node:path');
 const launcher = require('chrome-launcher');
 const puppeteer = require('puppeteer-core');
 const { createServer } = require('../../scripts/audit/smoke-routes');
@@ -7,6 +10,7 @@ async function main() {
   const server = createServer();
   await new Promise((resolve) => server.listen(0, '127.0.0.1', resolve));
   const base = `http://127.0.0.1:${server.address().port}`;
+  const chromeProfile = fs.mkdtempSync(path.join(os.tmpdir(), 'umatools-browser-test-'));
   let chrome, browser;
   async function pageFor(route, configure) {
     const context = await browser.createBrowserContext();
@@ -17,7 +21,10 @@ async function main() {
     return { page, close: () => context.close() };
   }
   try {
-    chrome = await launcher.launch({ chromeFlags: ['--headless=new', '--no-sandbox'] });
+    chrome = await launcher.launch({
+      chromeFlags: ['--headless=new', '--no-sandbox'],
+      userDataDir: chromeProfile,
+    });
     browser = await puppeteer.connect({ browserURL: `http://127.0.0.1:${chrome.port}` });
     let session = await pageFor(
       '/hints?hints=' + encodeURIComponent('<img src=x onerror="window.auditExecuted=1">')
@@ -185,6 +192,88 @@ async function main() {
     );
     await session.close();
 
+    // Skill suggestions should track edits immediately without building thousands of options,
+    // and a delayed update from the previous field must not replace the current suggestions.
+    for (const route of ['/calculator', '/optimizer']) {
+      session = await pageFor(route);
+      await session.page.focus('.skill-name');
+      await session.page.waitForSelector('#skills-datalist-shared option');
+      await session.page.evaluate(() => {
+        const first = document.querySelector('.skill-name');
+        first.value = 'Studious';
+        first.dispatchEvent(new Event('change', { bubbles: true }));
+      });
+      await session.page.waitForFunction(
+        () => document.querySelectorAll('.skill-name').length >= 2
+      );
+      const immediate = await session.page.evaluate(() => {
+        const [first, second] = document.querySelectorAll('.skill-name');
+        const edit = (input, value) => {
+          input.focus();
+          input.value = value;
+          input.dispatchEvent(new Event('input', { bubbles: true }));
+        };
+        edit(first, 'Steadfast');
+        edit(second, 'victory');
+        return [...document.querySelectorAll('#skills-datalist-shared option')].map((o) => o.value);
+      });
+      assert.ok(immediate.length > 0 && immediate.length <= 100, `${route}: bounded suggestions`);
+      assert.ok(immediate.every((name) => name.toLowerCase().includes('victory')));
+      await new Promise((resolve) => setTimeout(resolve, 500));
+      const afterDelay = await session.page.$$eval('#skills-datalist-shared option', (options) =>
+        options.map((option) => option.value)
+      );
+      assert.deepEqual(afterDelay, immediate, `${route}: stale edits must not replace suggestions`);
+      const oneCharacter = await session.page.evaluate(() => {
+        const input = document.activeElement;
+        input.value = 'z';
+        input.dispatchEvent(new Event('input', { bubbles: true }));
+        return [...document.querySelectorAll('#skills-datalist-shared option')].map((o) => o.value);
+      });
+      assert.ok(oneCharacter.length > 0 && oneCharacter.length <= 100);
+      assert.ok(oneCharacter.every((name) => name.toLowerCase().includes('z')));
+      const cleared = await session.page.evaluate(() => {
+        const input = document.activeElement;
+        input.value = '';
+        input.dispatchEvent(new Event('input', { bubbles: true }));
+        return [...document.querySelectorAll('#skills-datalist-shared option')].map((o) => o.value);
+      });
+      assert.ok(cleared.length > 0 && cleared.length <= 100);
+      assert.ok(cleared.some((name) => !name.toLowerCase().includes('z')));
+      const localized = await session.page.evaluate(() => {
+        document.documentElement.dataset.siteLanguage = 'jp';
+        window.dispatchEvent(
+          new CustomEvent('umatools:site-language-change', { detail: { language: 'jp' } })
+        );
+        const input = document.activeElement;
+        input.value = '読解力';
+        input.dispatchEvent(new Event('input', { bubbles: true }));
+        return [...document.querySelectorAll('#skills-datalist-shared option')].map((o) => o.value);
+      });
+      assert.ok(localized.includes('読解力'), `${route}: suggestions should follow site language`);
+      if (route === '/optimizer') {
+        await session.page.evaluate(() => {
+          window._openSkillBrowser();
+          const search = document.querySelector('#skill-browser-search');
+          search.value = 'no-such-skill';
+          search.dispatchEvent(new Event('input', { bubbles: true }));
+          search.value = '読解力';
+          search.dispatchEvent(new Event('input', { bubbles: true }));
+        });
+        const modalResults = await session.page.evaluate(async () => {
+          await new Promise((resolve) =>
+            requestAnimationFrame(() => requestAnimationFrame(resolve))
+          );
+          return [...document.querySelectorAll('.skill-card')]
+            .filter((card) => card.style.display !== 'none')
+            .map((card) => card.querySelector('.card-name')?.textContent);
+        });
+        assert.ok(modalResults.some((name) => name.includes('読解力')));
+        assert.ok(modalResults.length < 10, 'modal should apply the latest search');
+      }
+      await session.close();
+    }
+
     // An official name can also be a different skill's translated alias.
     session = await pageFor('/optimizer');
     await session.page.evaluate(() => {
@@ -194,7 +283,7 @@ async function main() {
     });
     const suggestion = await session.page.$eval(
       '#skills-datalist-shared option[value="Steadfast"]',
-      (option) => ({ value: option.value, label: option.label })
+      (option) => ({ value: option.value, label: option.label || option.value })
     );
     assert.deepEqual(suggestion, { value: 'Steadfast', label: 'Steadfast' });
     for (const [name, cost] of [
@@ -375,8 +464,16 @@ async function main() {
       'Browser audit regressions passed: safe hints, URL recovery, search order/retry, modal focus, Studious G=60, server switching, required-skill hint monotonicity, offline clean routes.'
     );
   } finally {
-    if (browser) await browser.disconnect();
-    if (chrome) await chrome.kill();
+    if (browser) await browser.close().catch((error) => console.error('Browser cleanup:', error));
+    try {
+      if (chrome) await chrome.kill();
+    } catch (error) {
+      console.error('Chrome cleanup:', error);
+    }
+    await fs.promises
+      .rm(chromeProfile, { recursive: true, force: true, maxRetries: 10, retryDelay: 200 })
+      .catch((error) => console.error('Browser profile cleanup:', error));
+    server.closeAllConnections();
     await new Promise((resolve) => server.close(resolve));
   }
 }

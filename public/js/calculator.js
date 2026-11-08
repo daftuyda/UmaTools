@@ -75,8 +75,9 @@
   let allSkillNamesNormalized = [];
   let datalistPrefix1Index = new Map();
   let datalistPrefix2Index = new Map();
-  const MAX_SKILL_SUGGESTIONS = 300;
-  const MAX_SKILL_SUGGESTIONS_WITH_PREFIX = 2000;
+  // Keep the native datalist small: browsers rebuild their suggestion popup on
+  // every mutation, and thousands of options make typing sluggish on mobile.
+  const MAX_SKILL_SUGGESTIONS = 100;
   const DATALIST_CACHE_MAX_KEYS = 40;
 
   // Track active skill keys for duplicate detection
@@ -85,6 +86,7 @@
   // Shared datalist for all skill inputs
   let sharedSkillDatalist = null;
   let datalistSuggestionCache = new Map();
+  const datalistLabelCache = new Map();
   let lastDatalistPrefix = null;
   let officialEnglishNameSet = new Set();
   let localizedNameSet = new Set();
@@ -448,6 +450,7 @@
       }
     });
     datalistSuggestionCache.clear();
+    datalistLabelCache.clear();
     lastDatalistPrefix = null;
     rebuildSharedDatalist();
     refreshAllRows();
@@ -894,9 +897,7 @@
     if (normalizedPrefix === lastDatalistPrefix) return;
     lastDatalistPrefix = normalizedPrefix;
 
-    const suggestionLimit = normalizedPrefix
-      ? MAX_SKILL_SUGGESTIONS_WITH_PREFIX
-      : MAX_SKILL_SUGGESTIONS;
+    const suggestionLimit = MAX_SKILL_SUGGESTIONS;
 
     const cacheKey = `${normalizedPrefix}|${suggestionLimit}`;
     let suggestionNames = datalistSuggestionCache.get(cacheKey);
@@ -950,9 +951,13 @@
     suggestionNames.forEach((name) => {
       const opt = document.createElement('option');
       opt.value = name;
-      const skill = findSkillByName(name);
-      const isCanonical = !!skill && normalize(name) === normalize(skill.name);
-      const display = isCanonical ? formatSkillDisplayName(skill) : name;
+      let display = datalistLabelCache.get(name);
+      if (display === undefined) {
+        const skill = findSkillByName(name);
+        const isCanonical = !!skill && normalize(name) === normalize(skill.name);
+        display = isCanonical ? formatSkillDisplayName(skill) : name;
+        datalistLabelCache.set(name, display);
+      }
       if (display && display !== name) {
         opt.label = display;
         opt.textContent = display;
@@ -1242,11 +1247,13 @@
       let lastSyncedValue = skillInput.value;
       const syncFromInput = () => {
         lastSyncedValue = skillInput.value;
-        rebuildSharedDatalist(skillInput.value || '');
         syncSkillCategory({ triggerUpdate: true });
       };
       let inputSyncTimer = null;
       const syncFromTyping = () => {
+        // Refresh the popup immediately; only the more expensive score and
+        // persistence work needs to wait for typing to settle.
+        rebuildSharedDatalist(skillInput.value || '');
         window.clearTimeout(inputSyncTimer);
         inputSyncTimer = window.setTimeout(() => {
           inputSyncTimer = null;
@@ -1256,6 +1263,8 @@
       const syncFromCommit = () => {
         window.clearTimeout(inputSyncTimer);
         inputSyncTimer = null;
+        // Some browsers can commit an autofill without an input event.
+        if (document.activeElement === skillInput) rebuildSharedDatalist(skillInput.value || '');
         syncFromInput();
       };
       skillInput.addEventListener('input', syncFromTyping);
