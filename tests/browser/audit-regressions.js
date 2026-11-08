@@ -185,6 +185,91 @@ async function main() {
     );
     await session.close();
 
+    // An official name can also be a different skill's translated alias.
+    session = await pageFor('/optimizer');
+    await session.page.evaluate(() => {
+      const input = document.querySelector('.optimizer-row .skill-name');
+      input.value = 'Steadfast';
+      input.focus();
+    });
+    const suggestion = await session.page.$eval(
+      '#skills-datalist-shared option[value="Steadfast"]',
+      (option) => ({ value: option.value, label: option.label })
+    );
+    assert.deepEqual(suggestion, { value: 'Steadfast', label: 'Steadfast' });
+    for (const [name, cost] of [
+      ['Steadfast', '160'],
+      ['Firm Resolve', '180'],
+    ]) {
+      await session.page.evaluate((value) => {
+        const input = document.querySelector('.optimizer-row .skill-name');
+        input.value = value;
+        input.dispatchEvent(new Event('change', { bubbles: true }));
+      }, name);
+      await session.page.waitForFunction(
+        (expected) => document.querySelector('.optimizer-row').dataset.baseCost === expected,
+        {},
+        cost
+      );
+    }
+    await session.close();
+
+    // Import IDs take precedence over conflicting names, with name-only fallback.
+    session = await pageFor('/optimizer');
+    await session.page.evaluate(() => {
+      const data = {
+        acquired_skills: [{ skillId: 100011, name: 'Shooting Star' }, { skillId: 201432 }],
+        buyable_skills: [
+          { skillId: 200732, name: 'Firm Resolve', hintLevel: 2 },
+          { id: 202462, name: 'Steadfast', hintLevel: 1 },
+          { skillId: 999999999, name: 'Studious', hintLevel: 0 },
+          { name: 'Corner Recovery ○', hintLevel: 0 },
+        ],
+      };
+      const input = document.querySelector('#json-import-input');
+      const files = new DataTransfer();
+      files.items.add(
+        new File([JSON.stringify(data)], 'skill_tree.json', { type: 'application/json' })
+      );
+      input.files = files.files;
+      input.dispatchEvent(new Event('change', { bubbles: true }));
+    });
+    await session.page.waitForFunction(() =>
+      [...document.querySelectorAll('.optimizer-row .skill-name')].some(
+        (input) => input.value === 'Steadfast'
+      )
+    );
+    const imported = await session.page.evaluate(() =>
+      [...document.querySelectorAll('.optimizer-row')]
+        .filter((row) => !row.dataset.parentGoldId && !row.dataset.parentCircleId)
+        .filter((row) => row.querySelector('.skill-name')?.value)
+        .map((row) => ({
+          name: row.querySelector('.skill-name').value,
+          baseCost: row.dataset.baseCost,
+          score: row.querySelector('.base-cost').textContent,
+          hint: row.querySelector('.hint-level').value,
+          required: row.querySelector('.required-skill').checked,
+          cost: row.querySelector('.cost').value,
+        }))
+    );
+    const steadfast = imported.find((row) => row.name === 'Steadfast');
+    const firmResolve = imported.find((row) => row.name === 'Firm Resolve');
+    assert.equal(steadfast?.baseCost, '160');
+    assert.equal(steadfast?.hint, '2');
+    assert.match(steadfast?.score, /217/);
+    assert.equal(firmResolve?.baseCost, '180');
+    assert.equal(firmResolve?.hint, '1');
+    assert.match(firmResolve?.score, /217/);
+    assert.equal(imported.filter((row) => row.name === 'Studious').length, 1);
+    assert.ok(
+      imported.some(
+        (row) =>
+          row.name === 'Studious' && row.baseCost === '120' && row.required && row.cost === '0'
+      )
+    );
+    assert.ok(imported.some((row) => row.name.startsWith('Corner Recovery')));
+    await session.close();
+
     // Required prerequisite + cheaper gold must not reduce the displayed rating.
     session = await pageFor('/optimizer', async (page) => {
       await page.setRequestInterception(true);

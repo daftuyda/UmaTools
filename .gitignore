@@ -29,6 +29,10 @@ logs/security/
 /reference
 /badges
 /lighthouse-reports
+<<<<<<< Updated upstream
 
 # Offline Team Trials simulation build and scratch files
 /.tmp-team-trials/
+=======
+/.tmp-team-trials
+>>>>>>> Stashed changes

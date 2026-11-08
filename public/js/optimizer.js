@@ -480,14 +480,20 @@
         };
         // Map each name → skill ID so alias enrichment stays within the same skill
         const nameToSkillId = new Map(); // normalized name -> skill ID
+        const ambiguousAliasNames = new Set();
         const registerAliasNames = (names, skillId) => {
           if (!Array.isArray(names) || !names.length) return;
           names.forEach((name) => {
             const key = normalize(name);
             if (!key) return;
-            // Only register aliases within the same skill; don't merge across skills
+            if (ambiguousAliasNames.has(key)) return;
+            // A shared name cannot identify either skill for alias enrichment.
             const existingOwner = nameToSkillId.get(key);
-            if (existingOwner != null && existingOwner !== skillId) return;
+            if (existingOwner != null && existingOwner !== skillId) {
+              ambiguousAliasNames.add(key);
+              externalAliasLookup.delete(key);
+              return;
+            }
             nameToSkillId.set(key, skillId);
             if (!externalAliasLookup.has(key)) externalAliasLookup.set(key, new Set());
             const bucket = externalAliasLookup.get(key);
@@ -564,6 +570,22 @@
             if (gvJpn) {
               const gvJpKey = normalize(gvJpn);
               if (gvJpKey && !skillCostMapByJP.has(gvJpKey)) skillCostMapByJP.set(gvJpKey, meta);
+            }
+          }
+        });
+        // An unofficial alias can also be another skill's official name.
+        // Official names must always display as themselves regardless of catalog order.
+        list.forEach((entry) => {
+          for (const skill of [entry, entry?.gene_version]) {
+            const officialName = (skill?.name_en || '').trim();
+            if (!officialName) continue;
+            nextOfficialNameMap.set(normalize(officialName), officialName);
+            // Cost lookup also indexes aliases, so restore the canonical name's
+            // metadata when an earlier skill used the same text as an alias.
+            const meta = skillCostMapByJP.get(normalize(skill.jpname));
+            if (meta) {
+              skillCostMapExact.set(normalize(officialName), meta);
+              skillCostMapNormalized.set(normalizeCostKey(officialName), meta);
             }
           }
         });
@@ -6556,9 +6578,10 @@
     // Remaining entries are skills the player already purchased during training.
     if (Array.isArray(data.acquired_skills)) {
       data.acquired_skills.slice(1).forEach((s) => {
-        if (s.name) {
+        if (s.name || s.skillId != null || s.id != null) {
           skills.push({
-            name: s.name,
+            name: s.name || '',
+            skillId: s.skillId ?? s.id,
             hint: 0,
             purchased: true,
           });
@@ -6569,9 +6592,10 @@
     // buyable_skills: available to purchase → use hint level
     if (Array.isArray(data.buyable_skills)) {
       data.buyable_skills.forEach((s) => {
-        if (s.name) {
+        if (s.name || s.skillId != null || s.id != null) {
           skills.push({
-            name: s.name,
+            name: s.name || '',
+            skillId: s.skillId ?? s.id,
             hint: typeof s.hintLevel === 'number' ? Math.min(Math.max(s.hintLevel, 0), 5) : 0,
           });
         }
@@ -6580,6 +6604,21 @@
 
     if (skills.length === 0) return;
 
+    // Use IDs when available: a legacy alias can be another skill's official name.
+    // Circle variants still share one row, as they do for manual entry.
+    const importKey = (name, skill) => {
+      const base = skill?.circleUpgradeOf ? findSkillByName(skill.circleUpgradeOf) || skill : skill;
+      const id = base?.skillId;
+      return id != null && id !== '' ? `id:${id}` : `name:${getOCRSkillKey(name, skill)}`;
+    };
+    const importName = (skill, fallback) => {
+      if (!skill) return fallback;
+      const name = skill.name;
+      if (findSkillByName(name)?.skillId === skill.skillId) return name;
+      const disambiguated = skill.jpName ? `${name} (${skill.jpName})` : name;
+      return findSkillByName(disambiguated)?.skillId === skill.skillId ? disambiguated : name;
+    };
+
     // Build existing skill map for dedup
     const allRows = Array.from(rowsEl.querySelectorAll('.optimizer-row'));
     const existingByKey = new Map();
@@ -6587,7 +6626,7 @@
       const name = (row.querySelector('.skill-name')?.value || '').trim();
       if (!name) return;
       const skill = findSkillByName(name);
-      const key = getOCRSkillKey(name, skill);
+      const key = importKey(name, skill);
       if (!existingByKey.has(key)) existingByKey.set(key, row);
     });
 
@@ -6597,8 +6636,12 @@
     let usedLastRow = false;
 
     skills.forEach((skill) => {
-      const resolved = findSkillByName(skill.name);
-      const key = getOCRSkillKey(skill.name, resolved);
+      const resolved =
+        (skill.skillId != null && skillIdIndex.get(String(skill.skillId))) ||
+        findSkillByName(skill.name);
+      const name = importName(resolved, skill.name);
+      if (!name) return;
+      const key = importKey(name, resolved);
       const existingRow = existingByKey.get(key);
 
       if (existingRow) {
@@ -6635,7 +6678,7 @@
       }
 
       const nameInput = targetRow.querySelector('.skill-name');
-      if (nameInput) nameInput.value = skill.name;
+      if (nameInput) nameInput.value = name;
 
       const hintSelect = targetRow.querySelector('.hint-level');
       if (hintSelect && typeof skill.hint === 'number') {
@@ -6678,7 +6721,7 @@
         const linkedName = (linkedRow.querySelector('.skill-name')?.value || '').trim();
         if (!linkedName) continue;
         const linkedSkill = findSkillByName(linkedName);
-        const linkedKey = getOCRSkillKey(linkedName, linkedSkill);
+        const linkedKey = importKey(linkedName, linkedSkill);
         if (!existingByKey.has(linkedKey)) existingByKey.set(linkedKey, linkedRow);
       }
     });
