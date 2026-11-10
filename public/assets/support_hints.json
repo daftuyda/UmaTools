@@ -81888,7 +81888,7 @@
     "SupportName": "Marvelous Sunday (SSR)",
     "SupportNameJP": "マーベラスサンデー (SSR)",
     "SupportRarity": "SSR",
-    "SupportServer": "jp",
+    "SupportServer": "global",
     "SupportType": "Speed",
     "SupportEffects": [
       {
@@ -82161,7 +82161,7 @@
     "SupportName": "Biko Pegasus (SSR)",
     "SupportNameJP": "ビコーペガサス (SSR)",
     "SupportRarity": "SSR",
-    "SupportServer": "jp",
+    "SupportServer": "global",
     "SupportType": "Power",
     "SupportEffects": [
       {
@@ -82393,7 +82393,7 @@
     "SupportName": "Hishi Akebono (SSR)",
     "SupportNameJP": "ヒシアケボノ (SSR)",
     "SupportRarity": "SSR",
-    "SupportServer": "jp",
+    "SupportServer": "global",
     "SupportType": "Wit",
     "SupportEffects": [
       {
