@@ -1,5 +1,11 @@
 [project]
 name = "app"
 version = "0.1.0"
-dependencies = [ "fastapi", "Pillow", "python-multipart", "rapidfuzz", "uvicorn" ]
+dependencies = [
+ "fastapi",
+ "pillow>=13.0.0",
+ "python-multipart",
+ "rapidfuzz",
+ "uvicorn",
+]
 requires-python = "~=3.12.0"
