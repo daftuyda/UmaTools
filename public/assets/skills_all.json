@@ -9839,7 +9839,8 @@
         30296,
         30315,
         30320,
-        20037
+        20037,
+        20102
       ],
       [
         10028,
@@ -9957,7 +9958,8 @@
       107702,
       107802,
       104902,
-      111902
+      111902,
+      102903
     ],
     "condition_groups": [
       {
@@ -13302,7 +13304,8 @@
     "char_e": [
       100302,
       102901,
-      102902
+      102902,
+      102903
     ],
     "condition_groups": [
       {
@@ -14631,7 +14634,8 @@
         30322,
         20007,
         20027,
-        20100
+        20100,
+        20102
       ],
       [
         10030,
@@ -23223,7 +23227,8 @@
         20039,
         20040,
         20068,
-        20095
+        20095,
+        20102
       ],
       [
         10007,
@@ -35481,6 +35486,7 @@
         30265,
         30282,
         30320,
+        30324,
         20004,
         20005,
         20010,
@@ -35943,6 +35949,7 @@
         30265,
         30282,
         30320,
+        30324,
         20011,
         20012,
         20022,
@@ -54969,7 +54976,8 @@
         30043,
         30137,
         30147,
-        30200
+        30200,
+        30324
       ],
       [
         10117
@@ -55913,6 +55921,7 @@
       102203,
       104302,
       100903,
+      102903,
       100901,
       102401
     ],
@@ -64147,8 +64156,10 @@
         30269,
         30272,
         30297,
+        30324,
         20052,
-        20090
+        20090,
+        20102
       ],
       [
         10081
@@ -64865,7 +64876,8 @@
       101202,
       102502,
       102902,
-      102203
+      102203,
+      102903
     ],
     "condition_groups": [
       {
@@ -66597,7 +66609,8 @@
       101901,
       102901,
       101902,
-      102902
+      102902,
+      102903
     ],
     "condition_groups": [
       {
@@ -67816,7 +67829,8 @@
       102901,
       102902,
       108001,
-      108002
+      108002,
+      102903
     ],
     "condition_groups": [
       {
@@ -74784,7 +74798,8 @@
       101602,
       107202,
       108802,
-      107602
+      107602,
+      102903
     ],
     "condition_groups": [
       {
@@ -74827,6 +74842,12 @@
         "card_id": 107602,
         "evos": [
           107602211
+        ]
+      },
+      {
+        "card_id": 102903,
+        "evos": [
+          102903111
         ]
       }
     ],
@@ -74908,7 +74929,8 @@
       104803,
       110002,
       107602,
-      104302
+      104302,
+      102903
     ],
     "char_e": [
       104301,
@@ -101606,7 +101628,8 @@
         30300,
         30304,
         30308,
-        30310
+        30310,
+        30324
       ],
       [
         10106,
@@ -111185,7 +111208,8 @@
     "char": [
       108601,
       110902,
-      114401
+      114401,
+      102903
     ],
     "char_e": [
       110901,
@@ -132422,7 +132446,8 @@
     "sup_hint": [
       [
         30250,
-        20091
+        20091,
+        20102
       ],
       [
         10137
@@ -133606,7 +133631,8 @@
       111002,
       102802,
       100603,
-      114101
+      114101,
+      102903
     ],
     "condition_groups": [
       {
@@ -140251,7 +140277,9 @@
         30265,
         30282,
         30313,
-        20091
+        30324,
+        20091,
+        20102
       ],
       [
         10122,
@@ -148341,6 +148369,12 @@
     "name_ko": "스트레이트 하트",
     "name_tw": "率直的心",
     "rarity": 2,
+    "sup_e": [
+      [
+        30324
+      ],
+      []
+    ],
     "tid": "rf",
     "type": [
       "med",
@@ -148398,6 +148432,7 @@
     "rarity": 1,
     "sup_hint": [
       [
+        30324,
         20094
       ],
       []
@@ -151293,7 +151328,8 @@
     "sup_hint": [
       [
         30258,
-        30306
+        30306,
+        30324
       ],
       []
     ],
@@ -152611,9 +152647,16 @@
     "name_ko": "틈새 공략",
     "name_tw": "乘隙而入",
     "rarity": 1,
+    "sup_e": [
+      [
+        20102
+      ],
+      []
+    ],
     "sup_hint": [
       [
         30306,
+        30324,
         20094
       ],
       []
@@ -153987,6 +154030,12 @@
     "name_ko": "내면의 짐승",
     "name_tw": "內心的野獸",
     "rarity": 1,
+    "sup_hint": [
+      [
+        30324
+      ],
+      []
+    ],
     "tid": "sI",
     "type": [
       "btw",
@@ -154310,7 +154359,8 @@
         30289,
         30320,
         30322,
-        20095
+        20095,
+        20102
       ],
       [
         10132,
@@ -154412,7 +154462,8 @@
         30294,
         30300,
         30308,
-        30311
+        30311,
+        20102
       ],
       [
         10132,
@@ -157778,7 +157829,8 @@
     "activation": 1,
     "char": [
       109201,
-      113001
+      113001,
+      102903
     ],
     "char_e": [
       114901
@@ -159149,7 +159201,8 @@
         30282,
         30297,
         30303,
-        30319
+        30319,
+        30324
       ],
       []
     ],
@@ -161507,7 +161560,8 @@
     ],
     "sup_hint": [
       [
-        30282
+        30282,
+        30324
       ],
       []
     ],
@@ -162465,7 +162519,8 @@
       [
         30285,
         30297,
-        30303
+        30303,
+        30324
       ],
       []
     ],
@@ -163313,7 +163368,8 @@
     "activation": 1,
     "char": [
       101003,
-      108202
+      108202,
+      102903
     ],
     "condition_groups": [
       {
@@ -167874,7 +167930,8 @@
     "sup_hint": [
       [
         30297,
-        30319
+        30319,
+        20102
       ],
       []
     ],
@@ -167933,7 +167990,8 @@
     "sup_hint": [
       [
         30297,
-        30319
+        30319,
+        30324
       ],
       []
     ],
@@ -168489,7 +168547,8 @@
       114101
     ],
     "char_e": [
-      113401
+      113401,
+      102903
     ],
     "condition_groups": [
       {
@@ -169220,6 +169279,9 @@
   },
   {
     "activation": 1,
+    "char": [
+      102903
+    ],
     "condition_groups": [
       {
         "base_time": 30000,
@@ -169236,6 +169298,12 @@
     "endesc": "Mile・If you're in a last spurt at a random point during the first half of the Last Spurt, your speed will increase",
     "enname": "Bursting with Energy",
     "evo": [
+      {
+        "card_id": 102903,
+        "evos": [
+          102903211
+        ]
+      },
       {
         "evos": [
           414061
@@ -169556,7 +169624,8 @@
     "rarity": 1,
     "sup_hint": [
       [
-        30317
+        30317,
+        20102
       ],
       []
     ],
@@ -174579,7 +174648,8 @@
   {
     "activation": 1,
     "char": [
-      114901
+      114901,
+      102903
     ],
     "condition_groups": [
       {
@@ -174921,7 +174991,7 @@
         "precondition": "running_style==2@running_style==3"
       }
     ],
-    "endesc": "Leader/Betweener・At a random point on a random downhill, you will get a great speed boost; in Mile or Medium races, your acceleration will also slightly increase",
+    "endesc": "Leader/Betweener・At a random point on a random downhill, you will get a great speed boost; in Mile and Medium races, your acceleration will also slightly increase",
     "enname": "Secret Art: Downhill Charge",
     "evo_cond": [
       [
@@ -177340,6 +177410,308 @@
     "type": [
       "lng",
       "ldr"
+    ],
+    "unreleased": [
+      "ko",
+      "zh_tw",
+      "en"
+    ]
+  },
+  {
+    "activation": 0,
+    "char": [
+      102903
+    ],
+    "condition_groups": [
+      {
+        "base_time": 50000,
+        "condition": "phase_firsthalf==1&is_overtake==1",
+        "effects": [
+          {
+            "type": 27,
+            "value": 4000
+          }
+        ],
+        "precondition": "distance_type==2@distance_type==3"
+      },
+      {
+        "base_time": 50000,
+        "condition": "phase_firsthalf==1&is_overtake==1",
+        "effects": [
+          {
+            "type": 27,
+            "value": 3500
+          }
+        ]
+      }
+    ],
+    "endesc": "If you're trying to overtake someone during the first half of the Middle Leg, your speed will increase; the effect is stronger in Mile and Medium races",
+    "enname": "Time to Reap, Time to Celebrate",
+    "gene_version": {
+      "activation": 1,
+      "condition_groups": [
+        {
+          "base_time": 30000,
+          "condition": "phase_firsthalf==1&is_overtake==1",
+          "effects": [
+            {
+              "type": 27,
+              "value": 1500
+            }
+          ]
+        }
+      ],
+      "cost": 200,
+      "iconid": 20011,
+      "id": 920291,
+      "inherited": true,
+      "parent_skills": [
+        120291
+      ],
+      "rarity": 1,
+      "tid": "zP"
+    },
+    "iconid": 20013,
+    "id": 120291,
+    "jpdesc": "レース中盤始めに追い抜こうとすると速度が上がるマイルか中距離レースなら効果が増える",
+    "jpname": "今ぞ刈りどき祝祭の季",
+    "rarity": 5,
+    "tid": "zO",
+    "type": [
+      "mil",
+      "med",
+      "nac"
+    ],
+    "unreleased": [
+      "ko",
+      "zh_tw",
+      "en"
+    ]
+  },
+  {
+    "activation": 1,
+    "condition_groups": [
+      {
+        "base_time": 18000,
+        "condition": "running_style==3&phase_random==1",
+        "effects": [
+          {
+            "type": 27,
+            "value": 3500
+          }
+        ]
+      }
+    ],
+    "cost": 140,
+    "endesc": "Betweener・At a random point during the Middle Leg, your speed will increase",
+    "enname": "March to Battle",
+    "evo": [],
+    "iconid": 20012,
+    "id": 204771,
+    "jpdesc": "レース中盤のどこかで速度が上がる＜作戦・差し＞",
+    "jpname": "出陣",
+    "rarity": 2,
+    "sup_e": [
+      [
+        30324
+      ],
+      []
+    ],
+    "tid": "zQ",
+    "type": [
+      "btw",
+      "l_1"
+    ],
+    "unreleased": [
+      "ko",
+      "zh_tw",
+      "en"
+    ],
+    "versions": [
+      204772
+    ]
+  },
+  {
+    "activation": 1,
+    "condition_groups": [
+      {
+        "base_time": 18000,
+        "condition": "running_style==3&phase_random==1",
+        "effects": [
+          {
+            "type": 27,
+            "value": 1500
+          }
+        ]
+      }
+    ],
+    "cost": 140,
+    "endesc": "Betweener・At a random point during the Middle Leg, your speed will slightly increase",
+    "enname": "Raise the Smoke Signal",
+    "iconid": 20011,
+    "id": 204772,
+    "jpdesc": "レース中盤のどこかで速度がわずかに上がる＜作戦・差し＞",
+    "jpname": "狼煙を上げて",
+    "rarity": 1,
+    "sup_hint": [
+      [
+        30324
+      ],
+      []
+    ],
+    "tid": "zR",
+    "type": [
+      "btw",
+      "l_1"
+    ],
+    "unreleased": [
+      "ko",
+      "zh_tw",
+      "en"
+    ],
+    "versions": [
+      204771
+    ]
+  },
+  {
+    "activation": 1,
+    "char": [
+      102903
+    ],
+    "condition_groups": [
+      {
+        "base_time": 24000,
+        "condition": "running_style==2&distance_rate>=50&is_overtake==1&order_rate<=50",
+        "effects": [
+          {
+            "target": 11,
+            "target_details": 0,
+            "type": 27,
+            "value": 1500
+          },
+          {
+            "type": 27,
+            "value": 3500
+          }
+        ]
+      },
+      {
+        "base_time": 24000,
+        "condition": "running_style==2&distance_rate>=50&is_overtake==1",
+        "effects": [
+          {
+            "type": 27,
+            "value": 3500
+          }
+        ]
+      }
+    ],
+    "endesc": "Leader・If you try to overtake someone in the second half of the race, your speed will increase; if you're in the first half of the pack at that time, the speed of all your teammates will also slightly increase (including you, as a bonus to the base effect)",
+    "enname": "'Scuse Me, Com'n Through!",
+    "evo_cond": [
+      [
+        [
+          "s_gn_race_w",
+          2,
+          100,
+          3
+        ],
+        [
+          "stat",
+          4,
+          600
+        ]
+      ],
+      [
+        [
+          "e_skill",
+          "speed",
+          3
+        ]
+      ]
+    ],
+    "iconid": 20016,
+    "id": 102903111,
+    "jpdesc": "レース後半に追い抜こうとすると速度が上がる、さらにスキル発動時前方だと自身を含むチームメンバーの速度がわずかに上がる＜作戦・先行＞",
+    "jpname": "もっす、通してくなンしぇ！",
+    "pre_evo": {
+      "card_id": 102903,
+      "old": 202471
+    },
+    "rarity": 6,
+    "tid": "zS",
+    "type": [
+      "ldr"
+    ],
+    "unreleased": [
+      "ko",
+      "zh_tw",
+      "en"
+    ]
+  },
+  {
+    "activation": 1,
+    "char": [
+      102903
+    ],
+    "condition_groups": [
+      {
+        "base_time": 30000,
+        "condition": "is_lastspurt==1&phase_firsthalf_random==3",
+        "effects": [
+          {
+            "target": 11,
+            "target_details": 0,
+            "type": 27,
+            "value": 1500
+          },
+          {
+            "type": 27,
+            "value": 3500
+          }
+        ],
+        "precondition": "distance_type==2@distance_type==3"
+      }
+    ],
+    "endesc": "Mile/Medium・If you're in a last spurt at a random point during the first half of the Last Spurt, your speed will greatly increase, and the speed of all your teammates will also slightly increase",
+    "enname": "Boundless Bounty",
+    "evo_cond": [
+      [
+        [
+          "stat",
+          1,
+          800
+        ]
+      ],
+      [
+        [
+          "a_skill",
+          "dist",
+          1,
+          2
+        ],
+        [
+          "a_skill",
+          "dist",
+          2,
+          2
+        ]
+      ]
+    ],
+    "iconid": 20016,
+    "id": 102903211,
+    "jpdesc": "レース最終盤始めのどこかでラストスパートの最中なら速度が上がりさらに自身を含むチームメンバーの速度がわずかに上がる＜マイル/中距離＞",
+    "jpname": "万果豊穣",
+    "pre_evo": {
+      "card_id": 102903,
+      "old": 204171
+    },
+    "rarity": 6,
+    "tid": "zT",
+    "type": [
+      "l_3",
+      "mil",
+      "med"
     ],
     "unreleased": [
       "ko",

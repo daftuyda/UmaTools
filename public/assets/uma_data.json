@@ -43986,5 +43986,169 @@
       }
     ],
     "UmaImage": "/assets/character_thumbs/100903-daiwa-scarlet.png"
+  },
+  {
+    "UmaKey": "Yukino Bijin :: 102903-yukino-bijin",
+    "UmaName": "Yukino Bijin",
+    "UmaNameJP": "ユキノビジン",
+    "UmaNickname": null,
+    "UmaNicknameJP": "熟れしめでたし実り姫",
+    "UmaSlug": "102903-yukino-bijin",
+    "UmaId": "102903",
+    "UmaServer": "jp",
+    "UmaBaseStars": 3,
+    "UmaBaseStats": {
+      "3★": {
+        "Speed": 91,
+        "Stamina": 96,
+        "Power": 83,
+        "Guts": 97,
+        "Wit": 83
+      },
+      "5★": {
+        "Speed": 111,
+        "Stamina": 117,
+        "Power": 102,
+        "Guts": 119,
+        "Wit": 101
+      },
+      "4★": {
+        "Speed": 101,
+        "Stamina": 106,
+        "Power": 93,
+        "Guts": 108,
+        "Wit": 92
+      }
+    },
+    "UmaStatBonuses": {
+      "Speed": 15,
+      "Stamina": 0,
+      "Power": 5,
+      "Guts": 10,
+      "Wit": 0
+    },
+    "UmaAptitudes": {
+      "Surface": {
+        "Turf": "A",
+        "Dirt": "B"
+      },
+      "Distance": {
+        "Short": "D",
+        "Mile": "A",
+        "Medium": "A",
+        "Long": "E"
+      },
+      "Strategy": {
+        "Front": "C",
+        "Pace": "A",
+        "Late": "F",
+        "End": "G"
+      }
+    },
+    "UmaHeightCm": null,
+    "UmaThreeSizes": {},
+    "UmaObjectives": [
+      {
+        "ObjectiveName": "Junior Make Debut",
+        "Turn": "12",
+        "Time": "Junior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Hanshin Juvenile Fillies",
+        "Turn": "23",
+        "Time": "Junior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Oka Sho",
+        "Turn": "31",
+        "Time": "Classic Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Japanese Oaks",
+        "Turn": "34",
+        "Time": "Classic Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Queen Stakes",
+        "Turn": "38",
+        "Time": "Classic Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Shuka Sho",
+        "Turn": "44",
+        "Time": "Classic Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Osaka Hai",
+        "Turn": "54",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Victoria Mile",
+        "Turn": "57",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Queen Elizabeth II Cup",
+        "Turn": "69",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Japan Cup",
+        "Turn": "70",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "URA Preliminary",
+        "Turn": "74",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "URA Semi-Final",
+        "Turn": "76",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "URA Final",
+        "Turn": "78",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      }
+    ],
+    "UmaEvents": [
+      {
+        "EventName": "地元っ子、出番です！",
+        "EventOptions": {
+          "Top Option": "Energy +20\nSkill Pts +15\nEnergy +10",
+          "Bottom Option": "Skill Pts +15\nlo_s +20\nlo_s +10"
+        }
+      },
+      {
+        "EventName": "憧れは結ばれて",
+        "EventOptions": {
+          "": "Speed +10\nSkill Pts +15\nAggressive hint +1\nEnergy -10\nAggressive hint +1"
+        }
+      },
+      {
+        "EventName": "じゃじゃ麺に愛を込めて",
+        "EventOptions": {
+          "Top Option": "Energy +10\nGuts +10",
+          "Bottom Option": "Wit +5\nNo Worries hint +1"
+        }
+      }
+    ],
+    "UmaImage": "/assets/character_thumbs/102903-yukino-bijin.png"
   }
 ]

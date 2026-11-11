@@ -1280,6 +1280,20 @@
     }
   },
   {
+    "EventName": "風来坊のごとく",
+    "EventOptions": {
+      "Top Option": "Power +15\nBond +5",
+      "Bottom Option": "Energy +10\nMotivation +1\nBond +5"
+    }
+  },
+  {
+    "EventName": "ゆらりぶらり、ままならぬ",
+    "EventOptions": {
+      "Top Option": "Energy +10\nPower +10\nExploit the Gap hint +1\nBond +5",
+      "Bottom Option": "Energy +20\nSkill Pts +15\nBond +5"
+    }
+  },
+  {
     "EventName": "Dance in Cleats!",
     "EventOptions": {
       "": "Speed +10\nStamina +10\nSoft Step hint +1"
@@ -6965,6 +6979,12 @@
       "Top Option": "Energy +15\nPower +15\nSkill Pts +15\nUnpredecented Prodigy hint +2\nQuick Thinking hint +2\nBond +5\nEnergy +10\nSkill Pts +5\nUnpredecented Prodigy hint +1\nQuick Thinking hint +1\nBond +5",
       "Bottom Option": "Energy +15\nStamina +15\nSkill Pts +15\nUnpredecented Prodigy hint +2\nExceptional Acumen hint +2\nBond +5\nEnergy +10\nSkill Pts +5\nUnpredecented Prodigy hint +1\nExceptional Acumen hint +1\nBond +5",
       "Option 3": "Energy +15\nSpeed +15\nSkill Pts +15\nUnpredecented Prodigy hint +2\nAdvantage hint +2\nBond +5\nEnergy +10\nSkill Pts +5\nUnpredecented Prodigy hint +1\nAdvantage hint +1\nBond +5"
+    }
+  },
+  {
+    "EventName": "万策尽きてなお",
+    "EventOptions": {
+      "": "Motivation +2\nStamina +40\nPower +20\nGuts +10\nStraight Heart hint +2\nMarch to Battle hint +2\nBond +15"
     }
   }
 ]
