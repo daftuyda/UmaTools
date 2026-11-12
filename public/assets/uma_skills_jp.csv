@@ -1910,45 +1910,45 @@ ius,エパヌイスマンの大号令,Épanouissement by Royal Decree,,180.0,,,,
 evo,Impeccable,,,633.0,696.0,570.0,506.0,443.0,Mile/Medium,1,十全十美
 evo,Rose of Steel,,,633.0,696.0,570.0,506.0,443.0,Pace,1,不抜の気概
 ius,Cascading Might,,,180.0,198.0,162.0,144.0,126.0,Pace/Late,0,
-ius,Shadow Ancestress,,,180.0,198.0,180.0,180.0,180.0,Medium,0,
+ius,Shadow Ancestress,,,180.0,,,,,,0,
 gold,一往直前,Unwavering Advance,,508.0,559.0,457.0,406.0,356.0,Medium,0,
 yellow,怯むことなく,Without Flinching,,217.0,239.0,195.0,174.0,152.0,Medium,0,
 green,遊び心,Playful Spirit,,217.0,239.0,195.0,174.0,152.0,Medium/Long,0,
-evo,名優、昇るは天の果て,A Star Soars into Endless Skies,,508.0,615.0,411.0,325.0,249.0,Long/Pace,1,怪物
+evo,名優、昇るは天の果て,A Star Soars into Endless Skies,,633.0,766.0,513.0,405.0,310.0,Long/Pace,1,怪物
 evo,大望は煌めきとなりて,Ambition Becomes Brilliance,,633.0,696.0,570.0,506.0,443.0,Medium/Long,1,気炎万丈
 evo,熱烈峻厳,Fervor and Rigor,,633.0,696.0,570.0,506.0,443.0,Pace/Late,1,熾烈の極み
 evo,“標”に足るために,To Be a Worthy Example,,633.0,766.0,513.0,405.0,310.0,Medium/Pace,1,千鍛万錬
 evo,崇高のアマラントス,Sublime Amarantos,,394.0,477.0,319.0,252.0,193.0,Medium/Pace,1,錦上添花
-evo,ミラクル、起きるかも？,A Miracle Might Happen?,,508.0,,,,,,1,いいとこ入った！
+evo,ミラクル、起きるかも？,A Miracle Might Happen?,,633.0,,,,,,1,いいとこ入った！
 ius,かくて宿りし血は目覚め,Thus the Blood Within Awakens,,180.0,,,,,,0,
-gold,抜山蓋世,"Mountainous Strength, Conquering Might",,190.0,,,,,,0,
-yellow,規格外,Beyond the Ordinary,,190.0,,,,,,0,
+gold,抜山蓋世,"Mountainous Strength, Conquering Might",,508.0,559.0,457.0,406.0,356.0,End,0,
+yellow,規格外,Beyond the Ordinary,,291.0,320.0,262.0,233.0,204.0,End,0,
 evo,魔の刻、来たれり,'Tis Now the Very Witching Time,,0.0,,,,,,1,
-evo,喰らえども、喰らえども,No Matter How Much I Feast...,,0.0,,,,,,1,
-ius,究竟の弓勢,Peerless Draw,,180.0,,,,,,0,
-gold,機転,Quick Thinking,,180.0,,,,,,0,
-yellow,如才なし,On the Ball,,180.0,,,,,,0,
-gold,希代の才覚,Exceptional Acumen,,180.0,,,,,,0,
-yellow,直感力,Intuitive Power,,180.0,,,,,,0,
-gold,アドバンテージ,Advantage,,180.0,,,,,,0,
-yellow,主導権,Taking the Reins,,180.0,,,,,,0,
-yellow,死力を尽くして,With All I Have,,180.0,,,,,,0,
-gold,螺旋のエキスパート,Spiral Expert,,160.0,,,,,,0,
-yellow,弧を描いて,Tracing an Arc,,160.0,,,,,,0,
-yellow,直情,Frankness,,190.0,,,,,,0,
-gold,名にし負う夢,Fabled Dream,,200.0,,,,,,0,
-yellow,彼方の呼び声,Call from Afar,,200.0,,,,,,0,
-evo,急之舞,Swift Dance,,0.0,,,,,,1,
-evo,吉兆の駆け手,Auspicious Runner,,0.0,,,,,,1,
-evo,満願成就,Prayers Answered,,0.0,,,,,,1,
-evo,捧ぐる願い,Offering of Hope,,0.0,,,,,,1,
-evo,祈りの篝火,Bonfire of Prayer,,0.0,,,,,,1,
-evo,常磐なる誓い,Vow Set in Stone,,0.0,,,,,,1,
-evo,神代も聞かず、この御業,A Feat Unheard of Even in Myth,,0.0,,,,,,1,
-evo,御覧じろ、緋色の疾風,Behold the Scarlet Gale,,0.0,,,,,,1,
-evo,淀にて大河となりて,"At Yodo, a Mighty River Rises",,0.0,,,,,,1,
+evo,喰らえども、喰らえども,No Matter How Much I Feast...,,633.0,766.0,570.0,506.0,443.0,Medium/Late/End,1,抜山蓋世
+ius,究竟の弓勢,Peerless Draw,,180.0,198.0,162.0,144.0,126.0,Front,0,
+gold,機転,Quick Thinking,,508.0,559.0,457.0,406.0,356.0,Medium,0,
+yellow,如才なし,On the Ball,,217.0,239.0,195.0,174.0,152.0,Medium,0,
+gold,希代の才覚,Exceptional Acumen,,508.0,559.0,457.0,406.0,356.0,Long,0,
+yellow,直感力,Intuitive Power,,217.0,239.0,195.0,174.0,152.0,Long,0,
+gold,アドバンテージ,Advantage,,508.0,,,,,,0,
+yellow,主導権,Taking the Reins,,217.0,,,,,,0,
+yellow,死力を尽くして,With All I Have,,217.0,239.0,195.0,174.0,152.0,Long,0,
+gold,螺旋のエキスパート,Spiral Expert,,508.0,,,,,,0,
+yellow,弧を描いて,Tracing an Arc,,217.0,,,,,,0,
+yellow,直情,Frankness,,217.0,239.0,195.0,174.0,152.0,Front,0,
+gold,名にし負う夢,Fabled Dream,,633.0,,,,,,0,
+yellow,彼方の呼び声,Call from Afar,,263.0,,,,,,0,
+evo,急之舞,Swift Dance,,758.0,,,,,,1,神速
+evo,吉兆の駆け手,Auspicious Runner,,758.0,,,,,,1,英俊豪傑
+evo,満願成就,Prayers Answered,,633.0,,,,,,1,ネバーギブアップ
+evo,捧ぐる願い,Offering of Hope,,633.0,,,,,,1,全身全霊
+evo,祈りの篝火,Bonfire of Prayer,,633.0,696.0,570.0,506.0,443.0,Mile/Medium,1,燃ゆる魂
+evo,常磐なる誓い,Vow Set in Stone,,633.0,696.0,570.0,506.0,443.0,Sprint,1,気骨稜稜
+evo,神代も聞かず、この御業,A Feat Unheard of Even in Myth,,633.0,696.0,570.0,506.0,443.0,Medium/Long,1,早業
+evo,御覧じろ、緋色の疾風,Behold the Scarlet Gale,,633.0,696.0,570.0,506.0,443.0,Front,1,勝負はここから！
+evo,淀にて大河となりて,"At Yodo, a Mighty River Rises",,633.0,766.0,513.0,405.0,310.0,Long/Pace,1,アンストッパブル
 ius,今ぞ刈りどき祝祭の季,"Time to Reap, Time to Celebrate",,180.0,,,,,,0,
-gold,出陣,March to Battle,,140.0,,,,,,0,
-yellow,狼煙を上げて,Raise the Smoke Signal,,140.0,,,,,,0,
-evo,もっす、通してくなンしぇ！,"'Scuse Me, Com'n Through!",,0.0,,,,,,1,
-evo,万果豊穣,Boundless Bounty,,0.0,,,,,,1,
+gold,出陣,March to Battle,,508.0,559.0,457.0,406.0,356.0,Late,0,
+yellow,狼煙を上げて,Raise the Smoke Signal,,217.0,239.0,195.0,174.0,152.0,Late,0,
+evo,もっす、通してくなンしぇ！,"'Scuse Me, Com'n Through!",,633.0,696.0,570.0,506.0,443.0,Pace,1,猛追
+evo,万果豊穣,Boundless Bounty,,633.0,696.0,570.0,506.0,443.0,Mile/Medium,1,元気溌剌
