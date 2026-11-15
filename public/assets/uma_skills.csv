@@ -1411,7 +1411,7 @@ evo,Surging Crescent Moon,迸る月流星,,633.0,696.0,570.0,506.0,443.0,Medium,
 ius,None Shall Object My Rule,我が覇道、阻むものなし,,180.0,198.0,162.0,144.0,126.0,End,0,
 gold,Sandstorm Slash,砂塵円刃,,508.0,,,,,Dirt,0,
 gold,Brilliant Mind,才気煥発,,508.0,559.0,457.0,406.0,356.0,Medium,0,
-gold,Unpredecented Prodigy,英俊豪傑,,633.0,,,,,,0,
+gold,Unprecedented Prodigy,英俊豪傑,,633.0,,,,,,0,
 yellow,Peerless,比類なき,,263.0,,,,,,0,
 gold,Domineering Glare,睥睨,,633.0,696.0,570.0,506.0,443.0,Medium/Long,0,
 yellow,High Ambitions,覇気十分,,263.0,289.0,237.0,210.0,184.0,Medium/Long,0,
@@ -1419,7 +1419,7 @@ yellow,Glimpse of Light,垣間見た光,,217.0,263.0,176.0,139.0,106.0,Medium/En
 yellow,Gateway to Success,登竜門,,217.0,239.0,195.0,174.0,152.0,End,0,
 gold,Forger of Legends,新たな伝説を築く者,,633.0,,,,,,0,
 yellow,Herald of a New Age,時代を変える者,,263.0,,,,,,0,
-evo,Advent of the Legends,伝説降臨,,758.0,,,,,,1,Unpredecented Prodigy
+evo,Advent of the Legends,伝説降臨,,758.0,,,,,,1,Unprecedented Prodigy
 evo,Ahead of the Gale,疾風より先へ,,633.0,,,,,,1,Beeline Burst
 evo,Crossroads of Revolution,革命の岐路,,633.0,,,,,,1,Exquisite Timing
 evo,Pioneer of Dreams,夢の先駆者,,394.0,433.0,355.0,315.0,276.0,Front,1,Taking the Lead
@@ -1939,7 +1939,7 @@ yellow,Frankness,直情,,217.0,239.0,195.0,174.0,152.0,Front,0,
 gold,Fabled Dream,名にし負う夢,,633.0,,,,,,0,
 yellow,Call from Afar,彼方の呼び声,,263.0,,,,,,0,
 evo,Swift Dance,急之舞,,758.0,,,,,,1,Divine Speed
-evo,Auspicious Runner,吉兆の駆け手,,758.0,,,,,,1,Unpredecented Prodigy
+evo,Auspicious Runner,吉兆の駆け手,,758.0,,,,,,1,Unprecedented Prodigy
 evo,Prayers Answered,満願成就,,633.0,,,,,,1,Never Give Up
 evo,Offering of Hope,捧ぐる願い,,633.0,,,,,,1,In Body and Mind
 evo,Bonfire of Prayer,祈りの篝火,,633.0,696.0,570.0,506.0,443.0,Mile/Medium,1,Soul Ablaze

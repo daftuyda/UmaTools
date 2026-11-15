@@ -2049,7 +2049,7 @@
   {
     "EventName": "Sundown Sinks into Night",
     "EventOptions": {
-      "": "brp 1\nSkill Pts +40\nUma Stan hint +1\nBond +5\nbrp 2\nStamina +15\nGuts +15\nSkill Pts +20\nCome What May hint +3\nBond +5\nbrp 2\nMotivation -1\nGuts +10\nAll I've Got hint +3\nBond +5"
+      "": "brp 1\nSkill Pts +40\nUma Stan hint +1\nBond +5\nbrp 2\nStamina +15\nGuts +15\nSkill Pts +20\nCome What May hint +3\nBond +5\nMotivation -1\nGuts +10\nAll I've Got hint +3\nBond +5"
     }
   },
   {
@@ -3155,7 +3155,7 @@
   {
     "EventName": "Upping the Ante",
     "EventOptions": {
-      "": "brp 1\nSpeed +10\nWit +10\nSkill Pts +20\nNothing Ventured hint +1\nBond +5\nbrp 1\nSkill Pts +10\nRisky Business hint +1\nbrp 2\nSpeed +20\nStamina +20\nWit +20\nSkill Pts +30\nNothing Ventured hint +3\nBond +5\nbrp 2\nSkill Pts +10\nRisky Business hint +1"
+      "": "brp 1\nSpeed +10\nWit +10\nSkill Pts +20\nNothing Ventured hint +1\nBond +5\nSkill Pts +10\nRisky Business hint +1\nbrp 2\nSpeed +20\nStamina +20\nWit +20\nSkill Pts +30\nNothing Ventured hint +3\nBond +5\nSkill Pts +10\nRisky Business hint +1"
     }
   },
   {
@@ -6976,9 +6976,9 @@
   {
     "EventName": "マヤ、わかっちゃった！",
     "EventOptions": {
-      "Top Option": "Energy +15\nPower +15\nSkill Pts +15\nUnpredecented Prodigy hint +2\nQuick Thinking hint +2\nBond +5\nEnergy +10\nSkill Pts +5\nUnpredecented Prodigy hint +1\nQuick Thinking hint +1\nBond +5",
-      "Bottom Option": "Energy +15\nStamina +15\nSkill Pts +15\nUnpredecented Prodigy hint +2\nExceptional Acumen hint +2\nBond +5\nEnergy +10\nSkill Pts +5\nUnpredecented Prodigy hint +1\nExceptional Acumen hint +1\nBond +5",
-      "Option 3": "Energy +15\nSpeed +15\nSkill Pts +15\nUnpredecented Prodigy hint +2\nAdvantage hint +2\nBond +5\nEnergy +10\nSkill Pts +5\nUnpredecented Prodigy hint +1\nAdvantage hint +1\nBond +5"
+      "Top Option": "Energy +15\nPower +15\nSkill Pts +15\nUnprecedented Prodigy hint +2\nQuick Thinking hint +2\nBond +5\nEnergy +10\nSkill Pts +5\nUnprecedented Prodigy hint +1\nQuick Thinking hint +1\nBond +5",
+      "Bottom Option": "Energy +15\nStamina +15\nSkill Pts +15\nUnprecedented Prodigy hint +2\nExceptional Acumen hint +2\nBond +5\nEnergy +10\nSkill Pts +5\nUnprecedented Prodigy hint +1\nExceptional Acumen hint +1\nBond +5",
+      "Option 3": "Energy +15\nSpeed +15\nSkill Pts +15\nUnprecedented Prodigy hint +2\nAdvantage hint +2\nBond +5\nEnergy +10\nSkill Pts +5\nUnprecedented Prodigy hint +1\nAdvantage hint +1\nBond +5"
     }
   },
   {
