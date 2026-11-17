@@ -103812,6 +103812,7 @@
       113201,
       113202,
       114101,
+      107501,
       110301
     ],
     "condition_groups": [
@@ -134095,7 +134096,7 @@
     ],
     "desc_ko": "스타트 시에 가속력이 약간 상승하며 늦은 출발을 하지 않았다면 그 후 레이스 중반에 전방에서 한동안 속도가 상승한다＜도주・단거리＞",
     "desc_tw": "起跑時加速力略微上升若沒有晚起跑，之後在競賽中期位列隊列前方時，一段時間內使速度上升＜領頭．短距離＞",
-    "endesc": "Runner・At the start of the race, your acceleration will slightly increase; if you didn't have a late start and you're in the first half of the pack, then at a random point during the Middle Leg, your speed will increase",
+    "endesc": "Runner・Short・At the start of the race, your acceleration will slightly increase; if you didn't have a late start and you're in the first half of the pack, then at a random point during the Middle Leg, your speed will increase",
     "enname": "The Art of Photobombing",
     "iconid": 20046,
     "id": 108702111,
@@ -137740,6 +137741,9 @@
   },
   {
     "activation": 1,
+    "char": [
+      107501
+    ],
     "condition_groups": [
       {
         "base_time": 30000,
@@ -137757,7 +137761,15 @@
     "desc_tw": "在展開最後衝刺時速度上升＜作戰．居中＞",
     "endesc": "Betweener・If you're in a last spurt at a random point during the first half of the Last Spurt, your speed will increase",
     "enname": "Independence",
-    "evo": [],
+    "evo": [
+      {
+        "card_id": 107501,
+        "evos": [
+          107501211,
+          107501221
+        ]
+      }
+    ],
     "iconid": 20012,
     "id": 203591,
     "jpdesc": "レース最終盤始めのどこかでラストスパートの最中なら速度が上がる＜作戦・差し＞",
@@ -137803,6 +137815,9 @@
   },
   {
     "activation": 1,
+    "char": [
+      107501
+    ],
     "char_e": [
       113201,
       113202,
@@ -144256,7 +144271,8 @@
       109701,
       111401,
       109402,
-      111602
+      111602,
+      107501
     ],
     "char_e": [
       113001,
@@ -149740,7 +149756,7 @@
     ],
     "cost": 190,
     "desc_ko": "レース中盤に速度がわずかに上がる 先頭から4バ身以上離れていると 速度が少し上がる＜作戦・先行＞",
-    "endesc": "Leader・At a random point during the Middle Leg, your speed will slightly increase; the effect is stronger if you're at least 10 lengths behind the first place",
+    "endesc": "Leader・At a random point during the Middle Leg, your speed will slightly increase; the effect is stronger if you're at least 10 meters behind the first place",
     "enname": "Brute Force",
     "iconid": 20011,
     "id": 204012,
@@ -149875,7 +149891,7 @@
       }
     ],
     "desc_ko": "最終直線で先頭か先頭から4バ身以内に いると速度がすごく上がる、さらに 中距離レースで終盤以降に追い抜いて いるとわずかに前に出る＜作戦・差し＞",
-    "endesc": "Betweener・If you're less than 10 lengths away from the first place during the Final Straight, your speed will greatly increase; (Medium only) if you've overtaken someone during the Final Leg, you will also get a small (immediate) speed boost",
+    "endesc": "Betweener・If you're less than 10 meters away from the first place during the Final Straight, your speed will greatly increase; (Medium only) if you've overtaken someone during the Final Leg, you will also get a small (immediate) speed boost",
     "enname": "All in on One Bet",
     "iconid": 20016,
     "id": 104902111,
@@ -150366,7 +150382,7 @@
       }
     ],
     "desc_ko": "有馬記念のコースだと終盤に加速力が 上がる、レース終盤目前に先頭か 先頭から4バ身以内につけていた場合 すごく上がる＜先行・長距離＞",
-    "endesc": "Leader・Long・2500 m・Nakayama・During the Final Leg, your acceleration will increase; it will increase greatly if you were within 10 lengths from the lead around the end of the Middle Leg",
+    "endesc": "Leader・Long・2500 m・Nakayama・During the Final Leg, your acceleration will increase; it will increase greatly if you were within 10 meters from the lead around the end of the Middle Leg",
     "enname": "Let Your Name Shake Heaven and Earth",
     "iconid": 20046,
     "id": 100603211,
@@ -150418,7 +150434,7 @@
       }
     ],
     "desc_ko": "レース終盤始めの方で前方だと加速力が すごく上がる、レース終盤目前に先頭か 先頭から4バ身以内につけていた場合 ものすごく上がる＜先行・マイル＞",
-    "endesc": "Leader・Mile・If you're in the first half of the pack at a random point during the first half of the Final Leg, your acceleration will greatly increase; it will increase tremendously if you were within 10 lengths from the lead around the end of the Middle Leg",
+    "endesc": "Leader・Mile・If you're in the first half of the pack at a random point during the first half of the Final Leg, your acceleration will greatly increase; it will increase tremendously if you were within 10 meters from the lead around the end of the Middle Leg",
     "enname": "The Ashen Monster",
     "iconid": 20046,
     "id": 100603221,
@@ -155408,7 +155424,8 @@
   {
     "activation": 1,
     "char": [
-      111201
+      111201,
+      107501
     ],
     "condition_groups": [
       {
@@ -161500,6 +161517,9 @@
   },
   {
     "activation": 1,
+    "char": [
+      107501
+    ],
     "char_e": [
       114101
     ],
@@ -165191,6 +165211,348 @@
       "l_3",
       "mil",
       "med"
+    ],
+    "unreleased": [
+      "ko",
+      "zh_tw",
+      "en"
+    ]
+  },
+  {
+    "activation": 0,
+    "char": [
+      107501
+    ],
+    "condition_groups": [
+      {
+        "base_time": 30000,
+        "condition": "phase_laterhalf==1&ground_type==1",
+        "effects": [
+          {
+            "type": 27,
+            "value": 2500,
+            "value_scale": 42
+          }
+        ]
+      },
+      {
+        "base_time": 30000,
+        "condition": "is_activate_other_skill_detail==1&distance_rate>=50&distance_rate<=51",
+        "effects": [
+          {
+            "type": 27,
+            "value": 2500,
+            "value_scale": 42
+          }
+        ]
+      },
+      {
+        "base_time": 30000,
+        "condition": "is_activate_other_skill_detail==2&phase==3",
+        "effects": [
+          {
+            "type": 27,
+            "value": 2500,
+            "value_scale": 42
+          }
+        ]
+      }
+    ],
+    "endesc": "Turf・Your speed will slightly increase three times (at the start of the second half of the Middle Leg, halfway through the race, and at the start of the Last Spurt); the effect is stronger in Mile and Medium races",
+    "enname": "Crown of Drifting Snow",
+    "gene_version": {
+      "activation": 1,
+      "condition_groups": [
+        {
+          "base_time": 18000,
+          "condition": "phase_laterhalf==1&ground_type==1",
+          "effects": [
+            {
+              "type": 27,
+              "value": 500
+            }
+          ]
+        },
+        {
+          "base_time": 18000,
+          "condition": "is_activate_other_skill_detail==1&distance_rate>=50&distance_rate<=51",
+          "effects": [
+            {
+              "type": 27,
+              "value": 500
+            }
+          ]
+        },
+        {
+          "base_time": 18000,
+          "condition": "is_activate_other_skill_detail==2&phase==3",
+          "effects": [
+            {
+              "type": 27,
+              "value": 500
+            }
+          ]
+        }
+      ],
+      "cost": 200,
+      "iconid": 20011,
+      "id": 900751,
+      "inherited": true,
+      "parent_skills": [
+        100751
+      ],
+      "rarity": 1,
+      "tid": "zV"
+    },
+    "iconid": 20013,
+    "id": 100751,
+    "jpdesc": "終盤が迫ったとき、中間地点、最終盤の3回、短い間速度が少し上がるマイルか中距離なら効果が増える＜芝＞",
+    "jpname": "灰雪の冠",
+    "rarity": 5,
+    "tid": "zU",
+    "type": [
+      "l_1",
+      "tur",
+      "l_3"
+    ],
+    "unreleased": [
+      "ko",
+      "zh_tw",
+      "en"
+    ]
+  },
+  {
+    "activation": 1,
+    "char": [
+      107501
+    ],
+    "condition_groups": [
+      {
+        "base_time": 40000,
+        "condition": "running_style==3&phase_laterhalf_random==1&order_rate>=40",
+        "effects": [
+          {
+            "type": 27,
+            "value": 2500
+          }
+        ]
+      }
+    ],
+    "cost": 190,
+    "endesc": "Betweener・If you're not in the front at a random point during the second half of the Middle Leg, your speed will slightly increase",
+    "enname": "Wild Hunt",
+    "evo": [
+      {
+        "card_id": 107501,
+        "evos": [
+          107501111
+        ]
+      }
+    ],
+    "iconid": 20012,
+    "id": 204911,
+    "jpdesc": "レース終盤が迫ったどこかで中団以降だとしばらくの間速度が少し上がる＜作戦・差し＞",
+    "jpname": "ワイルドハント",
+    "rarity": 2,
+    "tid": "zW",
+    "type": [
+      "btw",
+      "l_1"
+    ],
+    "unreleased": [
+      "ko",
+      "zh_tw",
+      "en"
+    ],
+    "versions": [
+      204912
+    ]
+  },
+  {
+    "activation": 1,
+    "char": [
+      107501
+    ],
+    "condition_groups": [
+      {
+        "base_time": 40000,
+        "condition": "running_style==3&phase_laterhalf_random==1&order_rate>=40",
+        "effects": [
+          {
+            "type": 27,
+            "value": 500
+          }
+        ]
+      }
+    ],
+    "cost": 190,
+    "endesc": "Betweener・If you're not in the front at a random point during the second half of the Middle Leg, your speed will marginally increase",
+    "enname": "Rending the Silence",
+    "iconid": 20011,
+    "id": 204912,
+    "jpdesc": "レース終盤が迫ったどこかで中団以降だとしばらくの間速度がちょっと上がる＜作戦・差し＞",
+    "jpname": "静寂を裂いて",
+    "rarity": 1,
+    "tid": "zX",
+    "type": [
+      "btw",
+      "l_1"
+    ],
+    "unreleased": [
+      "ko",
+      "zh_tw",
+      "en"
+    ],
+    "versions": [
+      204911
+    ]
+  },
+  {
+    "activation": 1,
+    "char": [
+      107501
+    ],
+    "condition_groups": [
+      {
+        "base_time": 40000,
+        "condition": "running_style==3&phase_laterhalf_random==1",
+        "effects": [
+          {
+            "type": 27,
+            "value": 3500
+          }
+        ]
+      },
+      {
+        "base_time": 12000,
+        "condition": "is_activate_other_skill_detail==1&run_at_full_speed_random==1&order_rate>=20&order_rate<=70",
+        "effects": [
+          {
+            "type": 48,
+            "value": 4000
+          }
+        ],
+        "precondition": "distance_type==2@distance_type==3"
+      }
+    ],
+    "endesc": "Betweener・At a random point during the second half of the Middle Leg, your speed will increase; (Mile/Medium only) then, if you're in the middle of the pack at a random point during your Zenkai Spurt, your Zenkai acceleration will increase",
+    "enname": "Diana's Arrow",
+    "iconid": 20016,
+    "id": 107501111,
+    "jpdesc": "終盤が迫ったどこかでしばらくの間速度が上がる、マイルか中距離ならその後全開スパート中どこかで中団だと伸びを見せる＜作戦・差し＞",
+    "jpname": "ディアナの弓矢",
+    "pre_evo": {
+      "card_id": 107501,
+      "old": 204911
+    },
+    "rarity": 6,
+    "tid": "zY",
+    "type": [
+      "btw",
+      "l_1",
+      "mil",
+      "med"
+    ],
+    "unreleased": [
+      "ko",
+      "zh_tw",
+      "en"
+    ]
+  },
+  {
+    "activation": 1,
+    "char": [
+      107501
+    ],
+    "condition_groups": [
+      {
+        "base_time": 9000,
+        "condition": "running_style==3&distance_type==3&is_lastspurt==1",
+        "effects": [
+          {
+            "type": 31,
+            "value": 3000
+          }
+        ]
+      },
+      {
+        "base_time": 30000,
+        "condition": "is_activate_other_skill_detail==1&phase_firsthalf_random==3",
+        "effects": [
+          {
+            "type": 22,
+            "value": 4500
+          }
+        ]
+      }
+    ],
+    "endesc": "Betweener・Medium・During your last spurt, your acceleration will increase; then, at a random point during the first half of the Last Spurt, you will get a great speed boost",
+    "enname": "Pine in the Snow",
+    "iconid": 20046,
+    "id": 107501211,
+    "jpdesc": "ラストスパートの最中なら加速力が少し上がる、その後レース最終盤始めのどこかですごく前に出る＜差し・中距離＞",
+    "jpname": "雪中の松柏",
+    "pre_evo": {
+      "card_id": 107501,
+      "old": 203591
+    },
+    "rarity": 6,
+    "tid": "zZ",
+    "type": [
+      "btw",
+      "med",
+      "l_3"
+    ],
+    "unreleased": [
+      "ko",
+      "zh_tw",
+      "en"
+    ]
+  },
+  {
+    "activation": 1,
+    "char": [
+      107501
+    ],
+    "condition_groups": [
+      {
+        "base_time": 9000,
+        "condition": "running_style==3&distance_type==2&phase_firsthalf_random==2",
+        "effects": [
+          {
+            "type": 31,
+            "value": 4000
+          }
+        ]
+      },
+      {
+        "base_time": 30000,
+        "condition": "is_activate_other_skill_detail==1&phase_firsthalf_random==3",
+        "effects": [
+          {
+            "type": 22,
+            "value": 1500
+          }
+        ]
+      }
+    ],
+    "endesc": "Betweener・Mile・At a random point during the first half of the Final Leg, your acceleration will increase; then, at a random point during the first half of the Last Spurt, you will get a slight speed boost",
+    "enname": "A Snowscape to Remember",
+    "iconid": 20046,
+    "id": 107501221,
+    "jpdesc": "レース終盤始めのどこかで加速力が上がる、その後レース最終盤始めのどこかでわずかに前に出る＜差し・マイル＞",
+    "jpname": "忘れじの雪景色",
+    "pre_evo": {
+      "card_id": 107501,
+      "old": 203591
+    },
+    "rarity": 6,
+    "tid": "A0",
+    "type": [
+      "btw",
+      "mil",
+      "l_2",
+      "l_3"
     ],
     "unreleased": [
       "ko",

@@ -44197,5 +44197,182 @@
       }
     ],
     "UmaImage": "/assets/character_thumbs/102903-yukino-bijin.png"
+  },
+  {
+    "UmaKey": "Daring Tact :: 107501-daring-tact",
+    "UmaName": "Daring Tact",
+    "UmaNameJP": "デアリングタクト",
+    "UmaNickname": null,
+    "UmaNicknameJP": "白光のレガリア",
+    "UmaSlug": "107501-daring-tact",
+    "UmaId": "107501",
+    "UmaServer": "jp",
+    "UmaBaseStars": 3,
+    "UmaBaseStats": {
+      "3★": {
+        "Speed": 99,
+        "Stamina": 81,
+        "Power": 99,
+        "Guts": 78,
+        "Wit": 93
+      },
+      "5★": {
+        "Speed": 121,
+        "Stamina": 99,
+        "Power": 121,
+        "Guts": 95,
+        "Wit": 114
+      },
+      "4★": {
+        "Speed": 110,
+        "Stamina": 90,
+        "Power": 110,
+        "Guts": 87,
+        "Wit": 103
+      }
+    },
+    "UmaStatBonuses": {
+      "Speed": 0,
+      "Stamina": 0,
+      "Power": 10,
+      "Guts": 10,
+      "Wit": 10
+    },
+    "UmaAptitudes": {
+      "Surface": {
+        "Turf": "A",
+        "Dirt": "G"
+      },
+      "Distance": {
+        "Short": "F",
+        "Mile": "A",
+        "Medium": "A",
+        "Long": "F"
+      },
+      "Strategy": {
+        "Front": "G",
+        "Pace": "D",
+        "Late": "A",
+        "End": "F"
+      }
+    },
+    "UmaHeightCm": null,
+    "UmaThreeSizes": {},
+    "UmaObjectives": [
+      {
+        "ObjectiveName": "Junior Make Debut",
+        "Turn": "12",
+        "Time": "Junior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Elfin Stakes",
+        "Turn": "27",
+        "Time": "Classic Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Oka Sho",
+        "Turn": "31",
+        "Time": "Classic Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Japanese Oaks",
+        "Turn": "34",
+        "Time": "Classic Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Shuka Sho",
+        "Turn": "44",
+        "Time": "Classic Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Japan Cup",
+        "Turn": "46",
+        "Time": "Classic Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Kinko Sho",
+        "Turn": "53",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Objective 8",
+        "Turn": "57",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Victoria Mile",
+        "Turn": "57",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Takarazuka Kinen",
+        "Turn": "60",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Queen Elizabeth Cup",
+        "Turn": "69",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "Japan Cup",
+        "Turn": "70",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "URA Preliminary",
+        "Turn": "74",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "URA Semi-Final",
+        "Turn": "76",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      },
+      {
+        "ObjectiveName": "URA Final",
+        "Turn": "78",
+        "Time": "Senior Year",
+        "ObjectiveCondition": ""
+      }
+    ],
+    "UmaEvents": [
+      {
+        "EventName": "純白",
+        "EventOptions": {
+          "Top Option": "Power +20",
+          "Bottom Option": "Wit +20"
+        }
+      },
+      {
+        "EventName": "愛し恋し、その姿",
+        "EventOptions": {
+          "Top Option": "Guts +20",
+          "Bottom Option": "Power +20"
+        }
+      },
+      {
+        "EventName": "幸子さんは見た！",
+        "EventOptions": {
+          "Top Option": "Speed +20",
+          "Bottom Option": "Stamina +20"
+        }
+      }
+    ],
+    "UmaImage": "/assets/character_thumbs/107501-daring-tact.png"
   }
 ]
